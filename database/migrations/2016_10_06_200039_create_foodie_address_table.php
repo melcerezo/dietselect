@@ -24,7 +24,7 @@ class CreateFoodieAddressTable extends Migration
             $table->string('company');
             $table->string('landmark');
             $table->string('remarks');
-            $table->integer('city');
+            $table->integer('foodie_id');
             $table->timestamps();
         });
     }
