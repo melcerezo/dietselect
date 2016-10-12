@@ -1,0 +1,49 @@
+
+/* ==========================================================================
+   N's custom styles
+   ========================================================================== */
+
+body {
+    font-size: 1em;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg.jpg', sizingMethod='scale')";
+    background: url(/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.n-form-btn-text {
+    font-weight: 700;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
+}
+
+.card .card-title {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.card .card-content .card-title {
+    line-height: normal;
+}
+
+.card .card-content p {
+    margin: 1em 0;
+}
+
+#reset-password {
+    max-width: 450px;
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.error-msg-email, .error-msg-pass, .error-msg-confirm-pass {
+    margin-top: -20px;
+    font-size: 0.8em;
+    color: #e4572e;
+}

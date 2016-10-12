@@ -1,0 +1,50 @@
+
+/* ==========================================================================
+   N's custom styles
+   ========================================================================== */
+
+body {
+    font-size: 1em;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod='scale')";
+    background: url(/img/bg-1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.n-form-btn-text {
+    font-weight: 700;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
+}
+
+.card .card-title {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.card .card-content .card-title {
+    line-height: normal;
+}
+
+div#registration {
+    max-width: 700px;
+    display: block;
+    width: 90%;
+    margin: 1.3333em auto;
+}
+
+.error-msg-name, .error-msg-email, .error-msg-mobile-num, .error-msg-website, .error-msg-url, .error-msg-pass, .error-msg-confirm-pass, .error-msg-read-partner-agrmnt {
+    margin-top: -20px;
+    font-size: 0.8em;
+    color: #e4572e;
+}
+
+.error-msg-read-partner-agrmnt {
+    margin-top: 15px;
+    margin-left: 45px;
+}

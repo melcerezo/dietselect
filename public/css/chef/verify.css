@@ -1,0 +1,10 @@
+#verification-modal {
+    max-width: 360px;
+    max-height: 550px;
+}
+
+.error-msg-verification-code {
+    margin-top: -20px;
+    font-size: 0.8em;
+    color: #e4572e;
+}

@@ -1,0 +1,198 @@
+
+/* ==========================================================================
+   N's custom styles
+   ========================================================================== */
+
+body {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg.jpg', sizingMethod='scale');
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg.jpg', sizingMethod='scale')";
+    background: url(/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+footer {
+    padding-bottom: 10px;
+}
+
+#n-menu {
+    background-color: transparent;
+    box-shadow: none;
+    padding-top: 15px;
+}
+
+a.n-menu-btn {
+    float: right;
+    font-size: 1.25em;
+    color: #e5d7be !important;
+}
+
+a:hover.n-menu-btn {
+    color: #ffefd3 !important;
+}
+
+#welcome-msg {
+    font-size: 1.2em;
+}
+
+a.n-select-btn {
+    display: inline-block;
+    font-weight: bold;
+    width: 100%;
+    color: #e5d7be !important;
+}
+
+a:hover.n-select-btn {
+    color: #ffefd3 !important;
+}
+
+img.n-client-type-icon {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+#welcome-content {
+    margin-top: 43vh;
+}
+
+.card .card-content, .card .card-action {
+    font-size: 1.5em;
+}
+
+.card .card-action a:not(.btn):not(.btn-large):not(.btn-floating) {
+    margin-right: 0;
+}
+
+.card .card-title {
+    font-size: 1em;
+    font-weight: 700;
+}
+
+.card .card-content .card-title {
+    line-height: normal;
+}
+
+.modal {
+    max-height: 75%;
+    width: 75%;
+}
+
+.modal.modal-fixed-footer {
+    height: 75%;
+}
+
+#login-modal {
+    max-width: 360px;
+    min-height: 520px;
+}
+
+#reset-password-modal {
+    max-width: 450px;
+    max-height: 420px;
+}
+
+#foodie-reg-form-modal, #client-type-modal {
+    width: 90%;
+    max-width: 700px;
+}
+
+.error-msg-fname, .error-msg-lname, .error-msg-mobile-num, .error-msg-email, .error-msg-pass, .error-msg-confirm-pass, .error-msg-login-email, .error-msg-login-pass, .error-msg-read-user-agrmnt {
+    margin-top: -20px;
+    font-size: 0.8em;
+    color: #e4572e;
+}
+
+.error-msg-read-user-agrmnt {
+    margin-top: 15px;
+    margin-left: 45px;
+}
+
+button {
+    font-size: 1.5em;
+    width: 50px;
+    height: 50px;
+    transition: all 0.3s ease;
+    background-color: transparent;
+    border: solid 2px #ffefd3;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    color: #ffefd3;
+    margin: 0 0.5%;
+}
+
+button i.fa {
+    font-size: 1.25em;
+}
+
+button.home:hover {
+    background-color: #dbf9a2;
+    border-color: #dbf9a2;
+    color: #80a855;
+}
+
+button.home:focus {
+    background-color: #dbf9a2;
+    border-color: #dbf9a2;
+    color: #80a855;
+}
+
+button.fb:hover {
+    background-color: #2196f3;
+    border-color: #2196f3;
+    color: #ffefd3;
+}
+
+button.fb:focus {
+    background-color: #2196f3;
+    border-color: #2196f3;
+    color: #ffefd3;
+}
+
+button.partner:hover {
+    background-color: #ffd151;
+    border-color: #ffd151;
+    color:#e4572e;
+}
+
+button.partner:focus {
+    background-color: #ffd151;
+    border-color: #ffd151;
+    color: #e4572e;
+}
+
+button.email:hover {
+    background-color: #e4572e;
+    border-color: #e4572e;
+    color: #ffefd3;
+}
+
+button.email:focus {
+    background-color: #e4572e;
+    border-color: #e4572e;
+    color: #ffefd3;
+}
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+
+@media only screen and (min-width: 993px) {
+    body {
+        display: block;
+        flex-direction: inherit;
+    }
+
+    main {
+        flex: 0;
+    }
+
+    button {
+        font-size: 1.3333em;
+        width: 50px;
+        height: 50px;
+    }
+}
