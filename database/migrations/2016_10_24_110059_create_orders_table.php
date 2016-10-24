@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->foreign('id')->references('id')->on('foodies');
             $table->foreign('id')->references('id')->on('plans');
-            $table->string('orderpaid');
+            $table->string('order_is_paid');
             $table->timestamps();
         });
     }
