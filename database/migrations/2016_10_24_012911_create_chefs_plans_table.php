@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateVendorsplansTable extends Migration
+class CreateChefsplansTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateVendorsplansTable extends Migration
      */
     public function up()
     {
-        Schema::create('vendorsplans', function (Blueprint $table) {
+        Schema::create('chefs_plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('id')->references('id')->on('plans');
+            $table->foreign('plans_id')->references('id')->on('plans');
             $table->integer('calories');
             $table->integer('carbohydrates');
             $table->integer('protein');
@@ -32,6 +32,6 @@ class CreateVendorsplansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vendorsplans');
+        Schema::dropIfExists('chefs_plans');
     }
 }

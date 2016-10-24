@@ -16,7 +16,7 @@ class CreateMealsTable extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->increments('id');
             $table->string('mealdescription');
-            $table->foreign('id')->references('id')->on('vendorsplans');
+            $table->foreign('id')->references('id')->on('chefs_plans');
             $table->timestamps();
         });
     }

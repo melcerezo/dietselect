@@ -17,7 +17,7 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->string('daycode');
             $table->string('mealtype');
-            $table->foreign('id')->references('id')->on('meals');
+            $table->foreign('meals_id')->references('id')->on('meals');
             $table->timestamps();
         });
     }

@@ -15,8 +15,8 @@ class CreateAllergiesTable extends Migration
     {
         Schema::create('allergies', function (Blueprint $table) {
             $table->increments('id');
-            $table->foreign('id')->references('id')->on('foodies');
-            $table->foreign('id')->references('id')->on('ingredients');
+            $table->foreign('foodies_id')->references('id')->on('foodies');
+            $table->foreign('ingredients_id')->references('id')->on('ingredients');
             $table->timestamps();
         });
     }
