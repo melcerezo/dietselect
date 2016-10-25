@@ -14,7 +14,7 @@ class CreateAllergiesTable extends Migration
     public function up()
     {
         Schema::create('allergies', function (Blueprint $table) {
-            $table->increments('allergies_git cid');
+            $table->increments('allergies_id');
             $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
             $table->foreign('ingredients_id')->references('id')->on('ingredients');
             $table->timestamps();
