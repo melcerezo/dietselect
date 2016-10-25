@@ -15,13 +15,17 @@ class CreateChefsplansTable extends Migration
     {
         Schema::create('chefs_plans', function (Blueprint $table) {
             $table->increments('chefs_plans_id');
-            $table->foreign('plans_id')->references('plans_id')->on('plans');
+            $table->integer('plans_id')->unsigned();
             $table->integer('calories');
             $table->integer('carbohydrates');
             $table->integer('protein');
             $table->integer('fat');
             $table->double('price');
             $table->timestamps();
+        });
+
+        Schema::table('chefs_plans', function ($table){
+            $table->foreign('plans_id')->references('plans_id')->on('plans');
         });
     }
 

@@ -15,11 +15,16 @@ class CreateAllergiesTable extends Migration
     {
         Schema::create('allergies', function (Blueprint $table) {
             $table->increments('allergies_id');
-            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
+            $table->integer('foodies_id')->unsigned();
             $table->foreign('ingredients_id')->references('id')->on('ingredients');
             $table->timestamps();
         });
+
+        Schema::table('allergies', function ($table){
+            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
+        });
     }
+
 
     /**
      * Reverse the migrations.

@@ -15,10 +15,15 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('orders_id');
-            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
-            $table->foreign('plans_id')->references('plans_id')->on('plans');
+            $table->integer('foodies_id')->unsigned();
+            $table->integer('plans_id')->unsigned();
             $table->string('order_is_paid');
             $table->timestamps();
+        });
+
+        Schema::table('orders', function ($table){
+            $table->foreign('plans_id')->references('plans_id')->on('plans');
+            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
         });
     }
 

@@ -16,8 +16,12 @@ class CreateMealsTable extends Migration
         Schema::create('meals', function (Blueprint $table) {
             $table->increments('meals_id');
             $table->string('mealdescription');
-            $table->foreign('chefs_plans_id')->references('chefs_plans_id')->on('chefs_plans');
+            $table->integer('chefs_plans_id')->unsigned();
             $table->timestamps();
+        });
+
+        Schema::table('meals', function ($table){
+            $table->foreign('chefs_plans_id')->references('chefs_plans_id')->on('chefs_plans');
         });
     }
 
