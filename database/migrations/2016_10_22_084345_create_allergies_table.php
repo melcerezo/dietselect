@@ -14,7 +14,7 @@ class CreateAllergiesTable extends Migration
     public function up()
     {
         Schema::create('allergies', function (Blueprint $table) {
-            $table->increments('allergies_id');
+            $table->increments('id');
             $table->integer('foodies_id')->unsigned();
             $table->integer('ingredients_id')->unsigned();
             $table->timestamps();

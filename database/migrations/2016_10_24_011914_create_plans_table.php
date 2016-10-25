@@ -14,7 +14,7 @@ class CreatePlansTable extends Migration
     public function up()
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->increments('plans_id');
+            $table->increments('id');
             $table->string('daycode');
             $table->string('mealtype');
             $table->integer('meals_id')->unsigned();

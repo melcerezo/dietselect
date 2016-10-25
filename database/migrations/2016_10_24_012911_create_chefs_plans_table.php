@@ -14,7 +14,7 @@ class CreateChefsplansTable extends Migration
     public function up()
     {
         Schema::create('chefs_plans', function (Blueprint $table) {
-            $table->increments('chefs_plans_id');
+            $table->increments('id');
             $table->integer('plans_id')->unsigned();
             $table->integer('calories');
             $table->integer('carbohydrates');
