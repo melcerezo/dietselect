@@ -14,10 +14,10 @@ class CreatePlansTable extends Migration
     public function up()
     {
         Schema::create('plans', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('plans_id');
             $table->string('daycode');
             $table->string('mealtype');
-            $table->foreign('meals_id')->references('id')->on('meals');
+            $table->foreign('meals_id')->references('meals_id')->on('meals');
             $table->timestamps();
         });
     }

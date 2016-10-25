@@ -14,8 +14,8 @@ class CreateChefsplansTable extends Migration
     public function up()
     {
         Schema::create('chefs_plans', function (Blueprint $table) {
-            $table->increments('id');
-            $table->foreign('plans_id')->references('id')->on('plans');
+            $table->increments('chefs_plans_id');
+            $table->foreign('plans_id')->references('plans_id')->on('plans');
             $table->integer('calories');
             $table->integer('carbohydrates');
             $table->integer('protein');

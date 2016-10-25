@@ -14,7 +14,7 @@ class CreateFoodiesTable extends Migration
     public function up()
     {
         Schema::create('foodies', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('foodies_id');
             $table->string('last_name', 100);
             $table->string('first_name', 100);
             $table->char('gender', 1)->nullable(); //Values: M, F, N

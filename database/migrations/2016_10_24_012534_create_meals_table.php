@@ -14,9 +14,9 @@ class CreateMealsTable extends Migration
     public function up()
     {
         Schema::create('meals', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('meals_id');
             $table->string('mealdescription');
-            $table->foreign('id')->references('id')->on('chefs_plans');
+            $table->foreign('chefs_plans_id')->references('chefs_plans_id')->on('chefs_plans');
             $table->timestamps();
         });
     }

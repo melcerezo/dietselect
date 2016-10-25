@@ -14,9 +14,9 @@ class CreateOrdersTable extends Migration
     public function up()
     {
         Schema::create('orders', function (Blueprint $table) {
-            $table->increments('id');
-            $table->foreign('foodies_id')->references('id')->on('foodies');
-            $table->foreign('plans_id')->references('id')->on('plans');
+            $table->increments('orders_id');
+            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
+            $table->foreign('plans_id')->references('plans_id')->on('plans');
             $table->string('order_is_paid');
             $table->timestamps();
         });

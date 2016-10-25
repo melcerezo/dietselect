@@ -14,7 +14,7 @@ class CreateChefsTable extends Migration
     public function up()
     {
         Schema::create('chefs', function (Blueprint $table) {
-            $table->increments('id');
+            $table->increments('chefs_id');
             $table->string('name');
             $table->string('email')->unique();
             $table->string('mobile_number')->unique();
