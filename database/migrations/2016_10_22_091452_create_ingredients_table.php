@@ -32,6 +32,6 @@ class CreateIngredientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ingredients');
+        Schema::drop('ingredients');
     }
 }

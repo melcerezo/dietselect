@@ -32,6 +32,6 @@ class CreateChefsplansTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('chefs_plans');
+        Schema::drop('chefs_plans');
     }
 }
