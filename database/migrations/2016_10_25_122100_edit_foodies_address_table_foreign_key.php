@@ -14,7 +14,7 @@ class EditFoodiesAddressTableForeignKey extends Migration
     public function up()
     {
         Schema::table('foodies_address', function ($table){
-            $table->integer('foodies_id')->unsigned()->changed();
+            $table->integer('foodies_id')->unsigned()->change();
             $table->foreign('foodies_id')->references('id')->on('foodies');
         });
     }
