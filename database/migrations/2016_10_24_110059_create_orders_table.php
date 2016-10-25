@@ -21,10 +21,7 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('orders', function ($table){
-            $table->foreign('plans_id')->references('plans_id')->on('plans');
-            $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
-        });
+
     }
 
     /**

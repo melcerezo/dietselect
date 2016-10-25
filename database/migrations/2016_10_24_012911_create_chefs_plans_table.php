@@ -24,9 +24,7 @@ class CreateChefsplansTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('chefs_plans', function ($table){
-            $table->foreign('plans_id')->references('plans_id')->on('plans');
-        });
+
     }
 
     /**

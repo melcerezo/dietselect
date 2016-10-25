@@ -20,9 +20,7 @@ class CreateMealsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::table('meals', function ($table){
-            $table->foreign('chefs_plans_id')->references('chefs_plans_id')->on('chefs_plans');
-        });
+
     }
 
     /**
