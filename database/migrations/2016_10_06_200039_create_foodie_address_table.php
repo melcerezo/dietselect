@@ -27,6 +27,8 @@ class CreateFoodieAddressTable extends Migration
             $table->integer('foodies_id');
             $table->timestamps();
         });
+
+
     }
 
     /**
