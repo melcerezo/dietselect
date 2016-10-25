@@ -15,7 +15,7 @@ class CreateForeignKeyConstraints extends Migration
     {
         Schema::table('allergies', function ($table){
             $table->foreign('foodies_id')->references('foodies_id')->on('foodies');
-            $table->foreign('ingredients_id')->references('id')->on('ingredients');
+            $table->foreign('ingredients_id')->references('ingredients_id')->on('ingredients');
         });
 
         Schema::table('plans', function ($table){
