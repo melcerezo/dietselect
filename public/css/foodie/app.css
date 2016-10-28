@@ -12,8 +12,51 @@ h1, h2, h3 {
     text-align: left;
 }
 
-header, main, footer {
+main, footer {
     padding-left: 0;
+}
+
+a.brand-logo {
+    color: #fafafa !important;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 0 15px;
+}
+
+ul#foodie-menu-btn img {
+    position: relative;
+    height: 40px;
+    width: 40px;
+}
+
+ul#foodie-menu-btn span {
+    padding-left: 10px;
+}
+
+a.foodie-link {
+    text-align: center;
+}
+
+a.foodie-link i {
+    font-size: 1.5em;
+}
+
+nav .nav-wrapper i {
+    line-height: 56px;
+}
+
+.dropdown-content li:hover {
+    background-color: transparent;
+}
+
+ul.side-nav {
+    top: 56px;
+    z-index: 997;
+}
+
+#sidenav-overlay {
+    z-index: 996;
 }
 
 #n-menu {
@@ -53,7 +96,20 @@ header, main, footer {
    ========================================================================== */
 
 @media only screen and (min-width: 993px) {
-    header, main, footer {
+    main, footer {
         padding-left: 300px;
     }
+
+    nav .nav-wrapper i {
+        line-height: 64px;
+    }
+
+    a.foodie-link {
+        text-align: left;
+    }
+
+    ul.side-nav {
+        top: 64px;
+    }
+
 }
