@@ -52,10 +52,10 @@ class FoodieController extends Controller
         ]);
     }
 
-    public function getID()
+  /*  public function getID()
     {
         return Auth::guard($this->guard)->user()->id;
-    }
+    }*/
     /**
      * Handle a registration request for the application.
      *
