@@ -64,4 +64,25 @@ class FoodieController extends Controller
         ]);
     }
 
+    public function getID()
+    {
+        return Auth::guard($this->guard)->user()->id;
+    }
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveProfileBasicInfo(Request $request)
+    {
+        Validator::make($request->all(), [
+            'last_name' => 'required|max:100',
+            'first_name' => 'required|max:100',
+            'gender' => 'required|max:100',
+            'mobile_number' => 'required|digits:12|unique:foodies',
+            'registration_email' => 'required|email|max:255|unique:foodies,email',
+        ])->validate();
+
+    }
 }
