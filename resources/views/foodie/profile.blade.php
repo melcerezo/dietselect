@@ -6,39 +6,6 @@
     <script src="/js/foodie/profile.js" defer></script>
 @endsection
 
-<<<<<<< HEAD
-@section('content')
-    <header>
-
-    </header>
-    <ul id="slide-out" class="side-nav fixed">
-        <li><div class="userView">
-                <img class="background" src="/img/bg.jpg">
-                <a href="#!user"><img class="circle" src="/img/user.jpg"></a>
-                <a href="#!name"><span class="white-text name">{{ $foodie->first_name . ' ' . $foodie->last_name }}</span></a>
-                <a href="#!email"><span class="white-text email">{{ $foodie->email }}</span></a>
-            </div></li>
-        <li><a href="#!">First Sidebar Link</a></li>
-        <li><a href="#!">Second Sidebar Link</a></li>
-    </ul>
-    <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
-    <main>
-        <div class="container">
-            <div class="row">
-                <div class="col m8 offset-m2">
-                    <h1 class="mustard-text">Foodie Profile</h1>
-                    <p>We want to get to know you more! Please enter the following personal details:</p>
-                    <form role="form" method="post" action="{{ route('foodie.profile.save') }}">
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="firstname" type="text" class="validate" value="{{ $foodie->first_name }}">
-                                <label for="firstname">First Name</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="lastname" type="text" class="validate" value="{{ $foodie->last_name }}">
-                                <label for="lastname">Last Name</label>
-                            </div>
-=======
 @section('page_content')
     <div class="container">
         <div class="row">
