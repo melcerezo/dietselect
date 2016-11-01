@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOrdersTable extends Migration
+class CreatePlanMealsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateOrdersTable extends Migration
      */
     public function up()
     {
-        Schema::create('orders', function (Blueprint $table) {
+        Schema::create('plan_meals', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('chef_id')->unsigned();
-            $table->integer('foodie_id')->unsigned();
             $table->integer('plan_id')->unsigned();
-            $table->string('is_paid');
+            $table->integer('meal_id')->unsigned();
+            $table->char('day', 2); //Possible Values: [MO, TU, WE, TH, FR, SA]
+            $table->string('meal_type');//Possible Values: [breakfast, lunch, dinner, AM snack, PM snack]
             $table->timestamps();
         });
-
-
     }
 
     /**
@@ -32,6 +30,6 @@ class CreateOrdersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('orders');
+        Schema::drop('plan_meals');
     }
 }

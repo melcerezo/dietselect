@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateChefsplansTable extends Migration
+class CreateFoodiePreferencesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,16 @@ class CreateChefsplansTable extends Migration
      */
     public function up()
     {
-        Schema::create('chefs_plans', function (Blueprint $table) {
+        Schema::create('foodie_preferences', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('plans_id')->unsigned();
-            $table->integer('calories');
-            $table->integer('carbohydrates');
-            $table->integer('protein');
-            $table->integer('fat');
-            $table->double('price');
+            $table->integer('foodie_id')->unsigned();
+            $table->string('ingredient');
             $table->timestamps();
         });
 
 
     }
+
 
     /**
      * Reverse the migrations.
@@ -34,6 +31,6 @@ class CreateChefsplansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('chefs_plans');
+        Schema::drop('foodie_preferences');
     }
 }

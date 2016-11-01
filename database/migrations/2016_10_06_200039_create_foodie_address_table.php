@@ -13,7 +13,7 @@ class CreateFoodieAddressTable extends Migration
      */
     public function up()
     {
-        Schema::create('foodies_address', function (Blueprint $table) {
+        Schema::create('foodie_address', function (Blueprint $table) {
             $table->increments('id');
             $table->string('city');
             $table->string('unit');
@@ -24,7 +24,7 @@ class CreateFoodieAddressTable extends Migration
             $table->string('company');
             $table->string('landmark');
             $table->string('remarks');
-            $table->integer('foodies_id');
+            $table->integer('foodie_id')->unsigned();
             $table->timestamps();
         });
 

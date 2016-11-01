@@ -15,9 +15,12 @@ class CreatePlansTable extends Migration
     {
         Schema::create('plans', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('daycode');
-            $table->string('mealtype');
-            $table->integer('meals_id')->unsigned();
+            $table->integer('chef_id')->unsigned();
+            $table->double('calories');
+            $table->double('carbohydrates');
+            $table->double('protein');
+            $table->double('fat');
+            $table->decimal('price');
             $table->timestamps();
         });
 

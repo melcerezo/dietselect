@@ -15,8 +15,13 @@ class CreateMealsTable extends Migration
     {
         Schema::create('meals', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mealdescription');
-            $table->integer('chefs_plans_id')->unsigned();
+            $table->integer('chef_id')->unsigned();
+            $table->string('description');
+            $table->string('main_ingredient');
+            $table->double('calories');
+            $table->double('carbohydrates');
+            $table->double('protein');
+            $table->double('fat');
             $table->timestamps();
         });
 
