@@ -55,7 +55,7 @@
                 <div class="col m8 offset-m2">
                     <h1 class="mustard-text">Foodie Profile</h1>
                     <p>We want to get to know you more! Please enter the following personal details:</p>
-                    <form>
+                    <form role="form" method="post" action="{{ route('foodie.profile.save') }}">
                         <div class="row">
                             <div class="input-field col s6">
                                 <input id="firstname" type="text" class="validate" value="{{ $foodie->first_name }}">

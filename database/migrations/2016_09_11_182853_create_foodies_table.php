@@ -11,6 +11,9 @@ class CreateFoodiesTable extends Migration
      *
      * @return void
      */
+
+
+
     public function up()
     {
         Schema::create('foodies', function (Blueprint $table) {

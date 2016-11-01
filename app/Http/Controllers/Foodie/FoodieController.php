@@ -10,6 +10,8 @@ class FoodieController extends Controller
 {
     use VerifiesSms;
 
+
+    protected $foodies = 'foodies';
     /**
      * Create a new controller instance.
      *
@@ -33,6 +35,18 @@ class FoodieController extends Controller
         ]);
     }
 
+    public function saveProfile()
+    {
+        $gender=Input::get('gender');
+        $username=Input::get('username');
+        $birthday=Input::get('birthday');
+
+        return DB::table($this->foodies)->where('id',$this->getID())->update([
+            'gender' => $gender,
+            'username' =>$username,
+            'birthday' =>$birthday
+        ]);
+    }
     /**
      * Show the foodie profile.
      *
@@ -44,5 +58,10 @@ class FoodieController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
         ]);
+    }
+
+    public function getID()
+    {
+        return Auth::guard($this->guard)->user()->id;
     }
 }

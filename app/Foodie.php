@@ -22,6 +22,8 @@ class Foodie extends Authenticatable
         'mobile_number',
         'joined_newsletter',
         'password',
+        'gender',
+        'birthday'
     ];
 
     /**
@@ -52,6 +54,7 @@ class Foodie extends Authenticatable
     {
         $this->attributes['mobile_number'] = '63' . $value;
     }
+
 
     /**
      * Send the password reset notification.
