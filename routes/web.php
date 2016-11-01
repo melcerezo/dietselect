@@ -28,11 +28,10 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('password/reset/{token}', 'Foodie\Auth\ResetPasswordController@showResetForm')->name('foodie.reset.password');
 
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
-<<<<<<< HEAD
+
     Route::post('profile','Foodie\FoodieController@saveProfile')->name('foodie.profile.save');
-=======
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasicInfo')->name('foodie.profile.basic');
->>>>>>> fc09c67e678b07cbd7f94b0d57d55a4e66fa7575
+
 
     Route::get('register', 'Foodie\Auth\RegisterController@showRegistrationForm')->name('foodie.register.show');
     Route::post('register', 'Foodie\Auth\RegisterController@register')->name('foodie.register');

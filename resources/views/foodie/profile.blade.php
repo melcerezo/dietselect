@@ -50,7 +50,7 @@
                         <div class="input-field col s6">
                             <input id="firstname" type="text" class="validate" value="{{ $foodie->first_name }}">
                             <label for="firstname">First Name</label>
->>>>>>> fc09c67e678b07cbd7f94b0d57d55a4e66fa7575
+
                         </div>
                         <div class="input-field col s6">
                             <input id="lastname" type="text" class="validate" value="{{ $foodie->last_name }}">
