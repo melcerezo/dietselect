@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 
 class FoodieController extends Controller
 {
@@ -38,18 +38,6 @@ class FoodieController extends Controller
         ]);
     }
 
-    public function saveProfile()
-    {
-        $gender = Input::get('gender');
-        $username = Input::get('username');
-        $birthday = Input::get('birthday');
-
-        return DB::table($this->foodies)->where('id', $this->getID())->update([
-            'gender' => $gender,
-            'username' => $username,
-            'birthday' => $birthday
-        ]);
-    }
 
     /**
      * Show the foodie profile.
@@ -83,6 +71,12 @@ class FoodieController extends Controller
             'mobile_number' => 'required|digits:12|unique:foodies',
             'registration_email' => 'required|email|max:255|unique:foodies,email',
         ])->validate();
+
+       /* return DB::table($this->foodies)->where('id',$this->getID())->update([
+            'gender'=> Input::get('gender'),
+            'username'=> Input::get('username'),
+            'birthday'=> Input::get('birthday')
+    ]);*/
 
     }
 }

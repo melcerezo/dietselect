@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-trait VerifiesSms
+trait   VerifiesSms
 {
     /**
      * The name of the verification table
