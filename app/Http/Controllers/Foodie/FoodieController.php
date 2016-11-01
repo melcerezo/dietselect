@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Foodie;
 
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Validator;
 
 class FoodieController extends Controller
 {
@@ -60,8 +62,26 @@ class FoodieController extends Controller
         ]);
     }
 
+<<<<<<< HEAD
     public function getID()
     {
         return Auth::guard($this->guard)->user()->id;
+=======
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function saveProfileBasicInfo(Request $request)
+    {
+        Validator::make($request->all(), [
+            'last_name' => 'required|max:100',
+            'first_name' => 'required|max:100',
+            'gender' => 'required|max:100',
+            'mobile_number' => 'required|digits:12|unique:foodies',
+            'registration_email' => 'required|email|max:255|unique:foodies,email',
+        ])->validate();
+>>>>>>> fc09c67e678b07cbd7f94b0d57d55a4e66fa7575
     }
 }

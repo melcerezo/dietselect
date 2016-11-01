@@ -4,8 +4,12 @@
    ========================================================================== */
 .input-field small.notes {
     position: absolute;
-    bottom: 0;
+    top: 56px;
     color: #999999;
+}
+
+a.profile-save-btn {
+    font-size: 2em;
 }
 
 
