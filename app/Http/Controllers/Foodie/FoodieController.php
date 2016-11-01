@@ -14,6 +14,7 @@ class FoodieController extends Controller
 
 
     protected $foodies = 'foodies';
+    protected $redirectTo = '/foodie/profile';
 
     /**
      * Create a new controller instance.
@@ -52,10 +53,10 @@ class FoodieController extends Controller
         ]);
     }
 
-  /*  public function getID()
+    public function getID()
     {
         return Auth::guard($this->guard)->user()->id;
-    }*/
+    }
     /**
      * Handle a registration request for the application.
      *
@@ -72,11 +73,14 @@ class FoodieController extends Controller
             'registration_email' => 'required|email|max:255|unique:foodies,email',
         ])->validate();
 
-       /* return DB::table($this->foodies)->where('id',$this->getID())->update([
-            'gender'=> Input::get('gender'),
-            'username'=> Input::get('username'),
-            'birthday'=> Input::get('birthday')
-    ]);*/
+        $foodie=Auth::guard('foodies')->user();
+        $foodie->first_name = request["first_name"];
+        $foodie->last_name = request["last_name"];
+        $foodie->gender = request["gender"];
+        $foodie->birthday = request["birthday"];
+        $foodie->username = request["username"];
+
+        return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
     }
 }

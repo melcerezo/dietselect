@@ -13,6 +13,8 @@
                 <h1 class="mustard-text">Foodie Profile</h1>
                 <p>We want to get to know you more! Please enter the following personal details:</p>
                 <form id="basic-profile" method="post" action="{{ route('foodie.profile.basic') }}">
+
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="input-field col s6">
                             <input id="firstname" type="text" class="validate" value="{{ $foodie->first_name }}">
