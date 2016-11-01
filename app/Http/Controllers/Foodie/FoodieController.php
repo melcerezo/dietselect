@@ -14,6 +14,7 @@ class FoodieController extends Controller
 
 
     protected $foodies = 'foodies';
+
     /**
      * Create a new controller instance.
      *
@@ -39,16 +40,17 @@ class FoodieController extends Controller
 
     public function saveProfile()
     {
-        $gender=Input::get('gender');
-        $username=Input::get('username');
-        $birthday=Input::get('birthday');
+        $gender = Input::get('gender');
+        $username = Input::get('username');
+        $birthday = Input::get('birthday');
 
-        return DB::table($this->foodies)->where('id',$this->getID())->update([
+        return DB::table($this->foodies)->where('id', $this->getID())->update([
             'gender' => $gender,
-            'username' =>$username,
-            'birthday' =>$birthday
+            'username' => $username,
+            'birthday' => $birthday
         ]);
     }
+
     /**
      * Show the foodie profile.
      *
@@ -62,26 +64,4 @@ class FoodieController extends Controller
         ]);
     }
 
-<<<<<<< HEAD
-    public function getID()
-    {
-        return Auth::guard($this->guard)->user()->id;
-=======
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function saveProfileBasicInfo(Request $request)
-    {
-        Validator::make($request->all(), [
-            'last_name' => 'required|max:100',
-            'first_name' => 'required|max:100',
-            'gender' => 'required|max:100',
-            'mobile_number' => 'required|digits:12|unique:foodies',
-            'registration_email' => 'required|email|max:255|unique:foodies,email',
-        ])->validate();
->>>>>>> fc09c67e678b07cbd7f94b0d57d55a4e66fa7575
-    }
 }
