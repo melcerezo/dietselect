@@ -62,7 +62,7 @@
                         <div class="input-field col s12">
                             <script>
                                 $(document).ready(function () {
-                                    $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}')
+                                    $('select#address-city').val('{{ $foodie->gender ? $foodie->gender : 0 }}')
                                 });
                             </script>
                             <select id="address-city">

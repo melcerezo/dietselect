@@ -31,21 +31,7 @@ $(document).ready(function() {
                 min: 9000000000,
                 max: 9999999999,
                 digits: true
-            },
-            registration_email: {
-                required: true,
-                email: true
-            },
-            password: {
-                required: true,
-                minlength: 6
-            },
-            password_confirmation: {
-                required: true,
-                minlength: 6,
-                equalTo: "#n-reg-pass"
-            },
-            user_agreement: "required"
+            }
         },
         //For custom messages
         messages: {
