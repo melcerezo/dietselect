@@ -65,20 +65,29 @@ class FoodieController extends Controller
      */
     public function saveProfileBasicInfo(Request $request)
     {
+        // You can use the print_r() function to just print out the data that a variable has.
+        // End it with the die(); statement to end the execution of the method.
+        // print_r($request->all());die();
+
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
-            'gender' => 'required|max:100',
-            'mobile_number' => 'required|digits:12|unique:foodies',
-            'registration_email' => 'required|email|max:255|unique:foodies,email',
         ])->validate();
 
+        // You could also put a message as parameters of the die() function.
+        // die("I have reached this part of the code.");
+
         $foodie=Auth::guard('foodie')->user();
-        $foodie->first_name = request['first_name'];
-        $foodie->last_name = request['last_name'];
-        $foodie->gender = request['gender'];
-        $foodie->birthday = request['birthday'];
-        $foodie->username = request['username'];
+        $foodie->first_name = $request['first_name'];
+        $foodie->last_name = $request['last_name'];
+        $foodie->gender = $request['gender'];
+
+        // You should place meaningful end messages, so you could easily
+        // know when which part you have reached.
+        // die("We just finished setting the gender of the foodie.");
+
+        $foodie->birthday = $request['birthday'];
+        $foodie->username = $request['username'];
         $foodie->save();
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
