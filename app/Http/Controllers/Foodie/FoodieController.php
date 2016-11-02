@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
+use Validator;
 
 class FoodieController extends Controller
 {
@@ -73,12 +73,13 @@ class FoodieController extends Controller
             'registration_email' => 'required|email|max:255|unique:foodies,email',
         ])->validate();
 
-        $foodie=Auth::guard('foodies')->user();
-        $foodie->first_name = request["first_name"];
-        $foodie->last_name = request["last_name"];
-        $foodie->gender = request["gender"];
-        $foodie->birthday = request["birthday"];
-        $foodie->username = request["username"];
+        $foodie=Auth::guard('foodie')->user();
+        $foodie->first_name = request['first_name'];
+        $foodie->last_name = request['last_name'];
+        $foodie->gender = request['gender'];
+        $foodie->birthday = request['birthday'];
+        $foodie->username = request['username'];
+        $foodie->save();
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 

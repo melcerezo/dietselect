@@ -53,7 +53,8 @@
                         </div>
                     </div>
                     <div style="text-align: right;">
-                        <a href="#" class="n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                        <input type="submit" class="hidden"/>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
                     </div>
                 </form>
                 <br/><hr/><br/>
