@@ -17,12 +17,12 @@
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="input-field col s6">
-                            <input id="firstname" type="text" class="validate" value="{{ $foodie->first_name }}">
+                            <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
                             <label for="firstname">First Name</label>
 
                         </div>
                         <div class="input-field col s6">
-                            <input id="lastname" type="text" class="validate" value="{{ $foodie->last_name }}">
+                            <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
                             <label for="lastname">Last Name</label>
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                                     $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}')
                                 });
                             </script>
-                            <select id="gender">
+                            <select id="gender" name="gender">
                                 <option value="0" disabled selected>Please choose</option>
                                 <option value="M">Male</option>
                                 <option value="F">Female</option>
@@ -42,13 +42,13 @@
                             <label>Gender</label>
                         </div>
                         <div class="input-field col m6 s12">
-                            <input id="birthday" type="text" class="datepicker" value="{{ $foodie->birthday }}">
+                            <input id="birthday" name="birthday" type="text" class="datepicker" value="{{ $foodie->birthday }}">
                             <label for="birthday">Birthday</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="username" type="text" class="validate" value="{{ $foodie->username }}">
+                            <input id="username" name="username" type="text" class="validate" value="{{ $foodie->username }}">
                             <label for="username">Username</label>
                         </div>
                     </div>
