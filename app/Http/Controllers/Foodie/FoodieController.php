@@ -65,6 +65,7 @@ class FoodieController extends Controller
      */
     public function saveProfileBasicInfo(Request $request)
     {
+        //die("stuff");
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
@@ -73,12 +74,14 @@ class FoodieController extends Controller
             'registration_email' => 'required|email|max:255|unique:foodies,email',
         ])->validate();
 
+
+
         $foodie=Auth::guard('foodie')->user();
-        $foodie->first_name = request['first_name'];
-        $foodie->last_name = request['last_name'];
-        $foodie->gender = request['gender'];
-        $foodie->birthday = request['birthday'];
-        $foodie->username = request['username'];
+        $foodie->first_name = $request['first_name'];
+        $foodie->last_name = $request['last_name'];
+        $foodie->gender = $request['gender'];
+        $foodie->birthday = $request['birthday'];
+        $foodie->username = $request['username'];
         $foodie->save();
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
