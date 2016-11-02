@@ -1,0 +1,21 @@
+{
+  "name": "diet select",
+  "description": "online healthy food delivery platform",
+  "main": "",
+  "authors": [
+    "ENJA Web Studios"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/neilpette/dietselect.git"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
