@@ -31,7 +31,7 @@
                             <div class="input-field col m6 s12">
                                 <script>
                                     $(document).ready(function () {
-                                        $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}')
+                                        $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}');
                                     });
                                 </script>
                                 <select id="gender" name="gender">
@@ -68,7 +68,7 @@
                             <div class="input-field col s12">
                                 <script>
                                     $(document).ready(function () {
-                                        $('select#address-city').val('{{ $address->city ? $address->city : 0 }}')
+                                        $('select#address-city').val('{{ $address['city'] ? $address['city'] : 0 }}');
                                     });
                                 </script>
                                 <select id="address-city" name="city">
@@ -97,26 +97,31 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-unit" name="unit" type="text" class="validate" value="{{ $address->unit }}">
+                                <input id="address-unit" name="unit" type="text" class="validate" value="{{ $address['unit'] }}">
                                 <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-street" name="street" type="text" class="validate">
+                                <input id="address-street" name="street" type="text" class="validate" value="{{ $address['street'] }}">
                                 <label for="address-street">Street<span class="flame-text">*</span></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-bldg" name="bldg" type="text" class="validate">
+                                <input id="address-bldg" name="bldg" type="text" class="validate" value="{{ $address['bldg'] }}">
                                 <label for="address-bldg">Building</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-brgy" name="brgy" type="text" class="validate">
+                                <input id="address-brgy" name="brgy" type="text" class="validate" value="{{ $address['brgy'] }}">
                                 <label for="address-brgy">Barangay/Village</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
+                                <script>
+                                    $(document).ready(function () {
+                                        $('select#address-city').val('{{ $address['type'] ? $address['type'] : 0 }}');
+                                    });
+                                </script>
                                 <select id="address-type" name="type">
                                     <option value="0" disabled selected>Please choose</option>
                                     <option value="R">Residential</option>
@@ -125,19 +130,19 @@
                                 <label for="address-type">Address Type</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-company" name="company" type="text" class="validate">
+                                <input id="address-company" name="company" type="text" class="validate" value="{{ $address['company'] }}">
                                 <label for="address-company">Company</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="address-landmark" name="landmark" type="text" class="validate">
+                                <input id="address-landmark" name="landmark" type="text" class="validate" value="{{ $address['landmark'] }}">
                                 <label for="address-landmark">Landmark</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255"></textarea>
+                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value="{{ $address['remarks'] }}"></textarea>
                                 <label for="address-remarks">Address Remarks</label>
                             </div>
                         </div>
