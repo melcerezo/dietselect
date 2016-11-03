@@ -29,6 +29,7 @@ Route::group(['prefix' => 'foodie'], function () {
 
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasicInfo')->name('foodie.profile.basic');
+    Route::post('','Foodie\FoodieController@saveProfileAddressInfo')->name('foodie.profile.address');
 
     Route::get('register', 'Foodie\Auth\RegisterController@showRegistrationForm')->name('foodie.register.show');
     Route::post('register', 'Foodie\Auth\RegisterController@register')->name('foodie.register');
