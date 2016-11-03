@@ -61,18 +61,18 @@
                 </div>
 
                 <div>
-                    <form>
+                    <form id="address" method="post" action="{{ route('foodie.profile.address') }}">
                         <h4 id="address-section">Address</h4>
                         <p>This should be the address where your food will be primarily delivered to.</p>
                         <div class="row">
                             <div class="input-field col s12">
                                 <script>
                                     $(document).ready(function () {
-                                        $('select#address-city').val('{{ $foodie->gender ? $foodie->gender : 0 }}')
+                                        $('select#address-city').val('{{ $address->city ? $address->city : 0 }}')
                                     });
                                 </script>
-                                <select id="address-city">
-                                    <option value="0" disabled="" selected="">Please choose</option>
+                                <select id="address-city" name="city">
+                                    <option value="0" disabled selected>Please choose</option>
                                     <option value="Caloocan">Caloocan</option>
                                     <option value="Las Piñas">Las Piñas</option>
                                     <option value="Makati">Makati</option>
@@ -97,47 +97,47 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-unit" type="text" class="validate">
+                                <input id="address-unit" name="unit" type="text" class="validate" value="{{ $address->unit }}">
                                 <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-street" type="text" class="validate">
+                                <input id="address-street" name="street" type="text" class="validate">
                                 <label for="address-street">Street<span class="flame-text">*</span></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-brgy" type="text" class="validate">
-                                <label for="address-brgy">Barangay/Village</label>
+                                <input id="address-bldg" name="bldg" type="text" class="validate">
+                                <label for="address-bldg">Building</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-bldg" type="text" class="validate">
-                                <label for="address-bldg">Building</label>
+                                <input id="address-brgy" name="brgy" type="text" class="validate">
+                                <label for="address-brgy">Barangay/Village</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <select id="address-type">
-                                    <option value="" disabled="" selected="">Please choose</option>
-                                    <option value="1">Residential</option>
-                                    <option value="2">Office</option>
+                                <select id="address-type" name="type">
+                                    <option value="0" disabled selected>Please choose</option>
+                                    <option value="R">Residential</option>
+                                    <option value="O">Office</option>
                                 </select>
                                 <label for="address-type">Address Type</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-company" type="text" class="validate">
+                                <input id="address-company" name="company" type="text" class="validate">
                                 <label for="address-company">Company</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="address-landmark" type="text" class="validate">
+                                <input id="address-landmark" name="landmark" type="text" class="validate">
                                 <label for="address-landmark">Landmark</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="address-remarks" class="materialize-textarea" length="255"></textarea>
+                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255"></textarea>
                                 <label for="address-remarks">Address Remarks</label>
                             </div>
                         </div>
@@ -151,36 +151,37 @@
                 <div>
                     <h4>Allergies</h4>
                     <p>Tell us what you can't eat, so that we can tailor a better diet experience for you!</p>
-                    <form>
+                    <form id="allergies" method="post" action="{{ route('foodie.profile.allergies') }}">
                         <div class="row">
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" class="filled-in" id="allrg-sea"/>
+                                <input type="checkbox" name="allrg['sea']" class="filled-in" id="allrg-sea"/>
                                 <label for="allrg-sea">Seafood</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-squid"/>
+                                <input type="checkbox" name="allrg['squid']" class="filled-in" id="allrg-squid"/>
                                 <label for="allrg-squid">Squid, Shrimp, and Crab</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-fish"/>
+                                <input type="checkbox" name="allrg['fish']" class="filled-in" id="allrg-fish"/>
                                 <label for="allrg-fish">Fish</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" class="filled-in" id="allrg-nuts"/>
+                                <input type="checkbox" name="allrg['nuts']" class="filled-in" id="allrg-nuts"/>
                                 <label for="allrg-nuts">Nuts</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-pork"/>
+                                <input type="checkbox" name="allrg['pork']" class="filled-in" id="allrg-pork"/>
                                 <label for="allrg-pork">Pork</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-beef"/>
+                                <input type="checkbox" name="allrg['beef']" class="filled-in" id="allrg-beef"/>
                                 <label for="allrg-beef">Beef</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" class="filled-in" id="allrg-dairy"/>
+                                <input type="checkbox" name="allrg['dairy']" class="filled-in" id="allrg-dairy"/>
                                 <label for="allrg-dairy">Dairy</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-chick"/>
+                                <input type="checkbox" name="allrg['chick']" class="filled-in" id="allrg-chick"/>
                                 <label for="allrg-chick">Chicken</label><br/>
-                                <input type="checkbox" class="filled-in" id="allrg-egg"/>
+                                <input type="checkbox" name="allrg['egg']" class="filled-in" id="allrg-egg"/>
                                 <label for="allrg-egg">Egg</label><br/><br/>
                             </div>
                             <div class="input-field col s12">
-                                <input id="allrg-others" type="text" class="validate">
+                                <input id="allrg-others" name="allrg['others']" type="text" class="validate">
                                 <label for="allrg-others">Other Allergies</label>
                             </div>
+                            <small class="notes"><span class="flame-text">*</span> If multiple other food allergies, please separate each allergy with a comma (,).</small>
                         </div>
                         <div style="text-align: right;">
                             <input type="submit" class="hidden"/>
@@ -192,24 +193,17 @@
                 <div>
                     <h4>Food Preferences</h4>
                     <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
-                    <form>
+                    <form id="food-preferences" method="post" action="{{ route('foodie.profile.preferences') }}">
                         <div class="row">
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" class="filled-in" id="pref-beef"/>
+                                <input type="checkbox" name="pref['beef']" class="filled-in" id="pref-beef"/>
                                 <label for="pref-beef">Beef-based</label><br/>
-                                <input type="checkbox" class="filled-in" id="pref-pork"/>
+                                <input type="checkbox" name="pref['pork']" class="filled-in" id="pref-pork"/>
                                 <label for="pref-pork">Pork-based</label><br/>
-                                <input type="checkbox" class="filled-in" id="pref-chick"/>
+                                <input type="checkbox" name="pref['chick']" class="filled-in" id="pref-chick"/>
                                 <label for="pref-chick">Chicken-based</label><br/>
-                                <input type="checkbox" class="filled-in" id="pref-fish"/>
+                                <input type="checkbox" name="pref['fish']" class="filled-in" id="pref-fish"/>
                                 <label for="pref-fish">Fish-based</label><br/>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 right-align">
-                                <button class="btn btn-large waves-effect waves-light mustard black-text" type="button" name="action" onclick="window.location.replace('verify.html')">Submit
-                                    <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                                </button>
                             </div>
                         </div>
                         <div style="text-align: right;">
