@@ -94,4 +94,13 @@ class FoodieController extends Controller
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
     }
+
+    public function saveProfileAddressInfo (Request $request)
+    {
+        Validator::make($request->all(), [
+
+        ])->validate();
+
+
+    }
 }
