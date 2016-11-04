@@ -50,6 +50,17 @@ class FoodieController extends Controller
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
+            'address' => array(
+                'city' => '',
+                'unit' => '',
+                'street' => '',
+                'bldg' => '',
+                'brgy' => '',
+                'type' => '',
+                'company' => '',
+                'landmark' => '',
+                'remarks' => '',
+            ),
         ]);
     }
 
