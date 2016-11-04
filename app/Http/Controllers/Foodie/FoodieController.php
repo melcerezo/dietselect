@@ -106,10 +106,18 @@ class FoodieController extends Controller
 
     }
 
-    public function saveProfileAddressInfo (Request $request)
+    public function saveProfileAddress (Request $request)
     {
         Validator::make($request->all(), [
-
+            'city'=> 'required|max:100',
+            'unit' => 'required|max:100',
+            'street' => 'required|max:100',
+            'bldg' => 'required|max:100',
+            'brgy' => 'required|max:100',
+            'type' => 'required|max:100',
+            'company' => 'required|max:100',
+            'landmark' => 'required|max:100',
+            'remarks' => 'required|max:100',
         ])->validate();
 
 
