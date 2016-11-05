@@ -146,21 +146,21 @@ class FoodieController extends Controller
     public function saveProfileAllergies(Request $request)
     {
 
+       // print_r($request['others']);die();
 
 
-       foreach ($request->all() as $key => $value)
+       // print_r($otherAllergiesArray);die();
+
+       foreach ($request->except('others') as $key => $value)
        {
 
             if($value=="1") {
-
 
                 $ingred = DB::table('ingredients')->where('description', $key)->value('id');
                 $alreadyExists = DB::table('allergies')
                     ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
                     ->where('ingredient_id','=',$ingred)->first();
-
-
-                if(is_null($alreadyExists)){
+                if(is_null($alreadyExists)) {
                     $result = DB::table('allergies')->insert([
                         'foodie_id' => Auth::guard('foodie')->user()->id,
                         'ingredient_id' => $ingred,
@@ -168,12 +168,33 @@ class FoodieController extends Controller
                         'updated_at' => new DateTime(),
 
                     ]);
-                }else {
-                    die('already exists');
                 }
+//                else {
+//                    die('already exists');
+//                }
 
             }
        }
+
+        $otherAllergiesInput= $request->input('others');
+        $otherAllergiesArray= explode(',',$otherAllergiesInput);
+        foreach ($otherAllergiesArray as $key => $value){
+
+            $ingred = DB::table('ingredients')->where('description', $value)->value('id');
+            $otherAlreadyExists = DB::table('allergies')
+                ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
+                ->where('ingredient_id','=',$ingred)->first();
+            if(is_null($otherAlreadyExists)){
+                $result = DB::table('allergies')->insert([
+                    'foodie_id' => Auth::guard('foodie')->user()->id,
+                    'ingredient_id' => $ingred,
+                    'created_at' => new DateTime(),
+                    'updated_at' => new DateTime(),
+
+                ]);
+            }
+
+        }
 
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
@@ -186,16 +207,20 @@ class FoodieController extends Controller
             if($value=="1") {
 
                 $ingred=$key;
+                $alreadyExists = DB::table('foodie_preferences')
+                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
+                    ->where('ingredient','=',$ingred)->first();
 
-                $result = DB::table('foodie_preferences')->insert([
-                    'foodie_id' => Auth::guard('foodie')->user()->id,
-                    'ingredient' => $ingred,
-                    'created_at' => new DateTime(),
-                    'updated_at' => new DateTime(),
+                if(is_null($alreadyExists)){
+                    $result = DB::table('foodie_preferences')->insert([
+                         'foodie_id' => Auth::guard('foodie')->user()->id,
+                         'ingredient' => $ingred,
+                         'created_at' => new DateTime(),
+                         'updated_at' => new DateTime(),
 
-                ]);
+                     ]);
 
-
+                }
 
             }
         }
