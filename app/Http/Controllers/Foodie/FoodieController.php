@@ -177,13 +177,16 @@ class FoodieController extends Controller
        }
 
         $otherAllergiesInput= $request->input('others');
-        $otherAllergiesArray= explode(',',$otherAllergiesInput);
-        foreach ($otherAllergiesArray as $key => $value){
 
+        $otherAllergiesArray= explode(',',$otherAllergiesInput);
+
+        foreach ($otherAllergiesArray as $key => $value){
             $ingred = DB::table('ingredients')->where('description', $value)->value('id');
+
             $otherAlreadyExists = DB::table('allergies')
                 ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
                 ->where('ingredient_id','=',$ingred)->first();
+            //if there is no record of the user checking the ingredient checkbox as an allergy, save the record
             if(is_null($otherAlreadyExists)){
                 $result = DB::table('allergies')->insert([
                     'foodie_id' => Auth::guard('foodie')->user()->id,
