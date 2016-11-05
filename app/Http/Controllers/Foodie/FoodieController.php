@@ -155,7 +155,12 @@ class FoodieController extends Controller
 
 
                 $ingred = DB::table('ingredients')->where('description', $key)->value('id');
+                $alreadyExists = DB::table('allergies')
+                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
+                    ->where('ingredient_id','=',$ingred)->first();
 
+
+                if(is_null($alreadyExists)){
                     $result = DB::table('allergies')->insert([
                         'foodie_id' => Auth::guard('foodie')->user()->id,
                         'ingredient_id' => $ingred,
@@ -163,8 +168,9 @@ class FoodieController extends Controller
                         'updated_at' => new DateTime(),
 
                     ]);
-
-
+                }else {
+                    die('already exists');
+                }
 
             }
        }
