@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Validator;
+use DateTime;
 
 class FoodieController extends Controller
 {
@@ -74,7 +76,7 @@ class FoodieController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function saveProfileBasicInfo(Request $request)
+    public function saveProfileBasic(Request $request)
     {
 
         // You can use the print_r() function to just print out the data that a variable has.
@@ -108,6 +110,7 @@ class FoodieController extends Controller
 
     public function saveProfileAddress (Request $request)
     {
+
         Validator::make($request->all(), [
             'city'=> 'required|max:100',
             'unit' => 'required|max:100',
@@ -121,5 +124,76 @@ class FoodieController extends Controller
         ])->validate();
 
 
+        $result=  DB::table('foodie_address')->insert([
+            'city'=> $request['city'],
+            'unit'=> $request['unit'],
+            'street'=>$request['street'],
+            'bldg'=>$request['bldg'],
+            'brgy'=>$request['brgy'],
+            'type'=>$request['type'],
+            'company'=>$request['company'],
+            'landmark'=>$request['landmark'],
+            'remarks'=>$request['remarks'],
+            'created_at'=>new DateTime(),
+            'updated_at'=>new DateTime(),
+            'foodie_id'=>Auth::guard('foodie')->user()->id,
+
+        ]);
+        return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
+
+    }
+
+    public function saveProfileAllergies(Request $request)
+    {
+
+
+
+       foreach ($request->all() as $key => $value)
+       {
+
+            if($value=="1") {
+
+
+                $ingred = DB::table('ingredients')->where('description', $key)->value('id');
+
+                    $result = DB::table('allergies')->insert([
+                        'foodie_id' => Auth::guard('foodie')->user()->id,
+                        'ingredient_id' => $ingred,
+                        'created_at' => new DateTime(),
+                        'updated_at' => new DateTime(),
+
+                    ]);
+
+
+
+            }
+       }
+
+        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+    }
+
+    public function saveProfilePreferences(Request $request)
+    {
+        foreach ($request->all() as $key => $value)
+        {
+
+            if($value=="1") {
+
+                $ingred=$key;
+
+                $result = DB::table('foodie_preferences')->insert([
+                    'foodie_id' => Auth::guard('foodie')->user()->id,
+                    'ingredient' => $ingred,
+                    'created_at' => new DateTime(),
+                    'updated_at' => new DateTime(),
+
+                ]);
+
+
+
+            }
+        }
+
+        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
 }

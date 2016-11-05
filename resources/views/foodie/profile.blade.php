@@ -62,6 +62,7 @@
 
                 <div>
                     <form id="address" method="post" action="{{ route('foodie.profile.address') }}">
+                        {{ csrf_field() }}
                         <h4 id="address-section">Address</h4>
                         <p>This should be the address where your food will be primarily delivered to.</p>
                         <div class="row">
@@ -157,33 +158,43 @@
                     <h4>Allergies</h4>
                     <p>Tell us what you can't eat, so that we can tailor a better diet experience for you!</p>
                     <form id="allergies" method="post" action="{{ route('foodie.profile.allergies') }}">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" name="allrg['sea']" class="filled-in" id="allrg-sea"/>
+                                <input type="hidden" name="seafood" value="0"/>
+                                <input type="checkbox" name="seafood" value="1" class="filled-in" id="allrg-sea"/>
                                 <label for="allrg-sea">Seafood</label><br/>
-                                <input type="checkbox" name="allrg['squid']" class="filled-in" id="allrg-squid"/>
+                                <input type="hidden" name="squid" value="0"/>
+                                <input type="checkbox" name="squid" value="1" class="filled-in" id="allrg-squid"/>
                                 <label for="allrg-squid">Squid, Shrimp, and Crab</label><br/>
-                                <input type="checkbox" name="allrg['fish']" class="filled-in" id="allrg-fish"/>
+                                <input type="hidden" name="fish" value="0"/>
+                                <input type="checkbox" name="fish" value="1" class="filled-in" id="allrg-fish"/>
                                 <label for="allrg-fish">Fish</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" name="allrg['nuts']" class="filled-in" id="allrg-nuts"/>
+                                <input type="hidden" name="nuts" value="0"/>
+                                <input type="checkbox" name="nuts" value="1" class="filled-in" id="allrg-nuts"/>
                                 <label for="allrg-nuts">Nuts</label><br/>
-                                <input type="checkbox" name="allrg['pork']" class="filled-in" id="allrg-pork"/>
+                                <input type="hidden" name="pork" value="0"/>
+                                <input type="checkbox" name="pork" value="1" class="filled-in" id="allrg-pork"/>
                                 <label for="allrg-pork">Pork</label><br/>
-                                <input type="checkbox" name="allrg['beef']" class="filled-in" id="allrg-beef"/>
+                                <input type="hidden" name="beef" value="0"/>
+                                <input type="checkbox" name="beef" value="1" class="filled-in" id="allrg-beef"/>
                                 <label for="allrg-beef">Beef</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" name="allrg['dairy']" class="filled-in" id="allrg-dairy"/>
+                                <input type="hidden" name="dairy" value="0"/>
+                                <input type="checkbox" name="dairy" value="1" class="filled-in" id="allrg-dairy"/>
                                 <label for="allrg-dairy">Dairy</label><br/>
-                                <input type="checkbox" name="allrg['chick']" class="filled-in" id="allrg-chick"/>
+                                <input type="hidden" name="chicken" value="0"/>
+                                <input type="checkbox" name="chicken" value="1" class="filled-in" id="allrg-chick"/>
                                 <label for="allrg-chick">Chicken</label><br/>
-                                <input type="checkbox" name="allrg['egg']" class="filled-in" id="allrg-egg"/>
+                                <input type="hidden" name="egg" value="0"/>
+                                <input type="checkbox" name="egg" value="1" class="filled-in" id="allrg-egg"/>
                                 <label for="allrg-egg">Egg</label><br/><br/>
                             </div>
                             <div class="input-field col s12">
-                                <input id="allrg-others" name="allrg['others']" type="text" class="validate">
+                                <input id="allrg-others" name="others" type="text" class="validate">
                                 <label for="allrg-others">Other Allergies</label>
                             </div>
                             <small class="notes"><span class="flame-text">*</span> If multiple other food allergies, please separate each allergy with a comma (,).</small>
@@ -199,15 +210,20 @@
                     <h4>Food Preferences</h4>
                     <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
                     <form id="food-preferences" method="post" action="{{ route('foodie.profile.preferences') }}">
+                        {{ csrf_field() }}
                         <div class="row">
                             <div class="input-field col l4 s12">
-                                <input type="checkbox" name="pref['beef']" class="filled-in" id="pref-beef"/>
+                                <input type="hidden" name="beef" value="0"/>
+                                <input type="checkbox" name="beef" value="1" class="filled-in" id="pref-beef"/>
                                 <label for="pref-beef">Beef-based</label><br/>
-                                <input type="checkbox" name="pref['pork']" class="filled-in" id="pref-pork"/>
+                                <input type="hidden" name="pork" value="0"/>
+                                <input type="checkbox" name="pork" value="1" class="filled-in" id="pref-pork"/>
                                 <label for="pref-pork">Pork-based</label><br/>
-                                <input type="checkbox" name="pref['chick']" class="filled-in" id="pref-chick"/>
+                                <input type="hidden" name="chicken" value="0"/>
+                                <input type="checkbox" name="chicken" value="1" class="filled-in" id="pref-chick"/>
                                 <label for="pref-chick">Chicken-based</label><br/>
-                                <input type="checkbox" name="pref['fish']" class="filled-in" id="pref-fish"/>
+                                <input type="hidden" name="fish" value="0"/>
+                                <input type="checkbox" name="fish" value="1" class="filled-in" id="pref-fish"/>
                                 <label for="pref-fish">Fish-based</label><br/>
                             </div>
                         </div>
