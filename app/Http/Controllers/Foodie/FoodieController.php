@@ -113,14 +113,14 @@ class FoodieController extends Controller
 
         Validator::make($request->all(), [
             'city'=> 'required|max:100',
-            'unit' => 'required|max:100',
+           // 'unit' => 'required|max:100',
             'street' => 'required|max:100',
-            'bldg' => 'required|max:100',
+           // 'bldg' => 'required|max:100',
             'brgy' => 'required|max:100',
             'type' => 'required|max:100',
-            'company' => 'required|max:100',
-            'landmark' => 'required|max:100',
-            'remarks' => 'required|max:100',
+           // 'company' => 'required|max:100',
+           // 'landmark' => 'required|max:100',
+            //'remarks' => 'required|max:100',
         ])->validate();
 
 
@@ -138,9 +138,14 @@ class FoodieController extends Controller
             'updated_at'=>new DateTime(),
             'foodie_id'=>Auth::guard('foodie')->user()->id,
 
-        ]);
-        return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
+        ]);
+
+        if($result == true) {
+            return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        }else {
+            return redirect($this->redirectTo)->with(['status' => 'Please fill out all the info!']);
+        }
     }
 
     public function saveProfileAllergies(Request $request)

@@ -55,7 +55,6 @@ class Foodie extends Authenticatable
         $this->attributes['mobile_number'] = '63' . $value;
     }
 
-
     /**
      * Send the password reset notification.
      *
@@ -67,3 +66,6 @@ class Foodie extends Authenticatable
         $this->notify(new FoodieResetPassword($token));
     }
 }
+
+
+
