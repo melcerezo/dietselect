@@ -52,17 +52,12 @@ class FoodieController extends Controller
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
-            'address' => array(
-                'city' => '',
-                'unit' => '',
-                'street' => '',
-                'bldg' => '',
-                'brgy' => '',
-                'type' => '',
-                'company' => '',
-                'landmark' => '',
-                'remarks' => '',
-            ),
+            $result= DB::table('address')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
+            'address' => array($result),
+            $allergyResult= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
+            'allergy' => array($allergyResult),
+            $foodPrefResult= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
+            'foodPreferences'=>array($result)
         ]);
     }
 
@@ -156,12 +151,17 @@ class FoodieController extends Controller
 
             if($value=="1") {
 
-                $ingred = DB::table('ingredients')->where('description', $key)->value('id');
+                //$ingred = DB::table('ingredients')->where('description', $key)->value('id');
+                $ingred=$key;
+                //print_r($ingred);die();
                 $alreadyExists = DB::table('allergies')
                     ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
                     ->where('ingredient_id','=',$ingred)->first();
+
                 if(is_null($alreadyExists)) {
+
                     $result = DB::table('allergies')->insert([
+
                         'foodie_id' => Auth::guard('foodie')->user()->id,
                         'ingredient_id' => $ingred,
                         'created_at' => new DateTime(),
@@ -176,28 +176,32 @@ class FoodieController extends Controller
             }
        }
 
-        $otherAllergiesInput= $request->input('others');
+        $otherAllergiesInput = $request->input('others');
+       if($otherAllergiesInput!="") {
 
-        $otherAllergiesArray= explode(',',$otherAllergiesInput);
 
-        foreach ($otherAllergiesArray as $key => $value){
-            $ingred = DB::table('ingredients')->where('description', $value)->value('id');
 
-            $otherAlreadyExists = DB::table('allergies')
-                ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
-                ->where('ingredient_id','=',$ingred)->first();
-            //if there is no record of the user checking the ingredient checkbox as an allergy, save the record
-            if(is_null($otherAlreadyExists)){
-                $result = DB::table('allergies')->insert([
-                    'foodie_id' => Auth::guard('foodie')->user()->id,
-                    'ingredient_id' => $ingred,
-                    'created_at' => new DateTime(),
-                    'updated_at' => new DateTime(),
+           $otherAllergiesArray = explode(',', $otherAllergiesInput);
 
-                ]);
-            }
+           foreach ($otherAllergiesArray as $key => $value) {
+               $ingred = $value;
 
-        }
+               $otherAlreadyExists = DB::table('allergies')
+                   ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                   ->where('ingredient_id', '=', $ingred)->first();
+               //if there is no record of the user checking the ingredient checkbox as an allergy, save the record
+               if (is_null($otherAlreadyExists)) {
+                   $result = DB::table('allergies')->insert([
+                       'foodie_id' => Auth::guard('foodie')->user()->id,
+                       'ingredient_id' => $ingred,
+                       'created_at' => new DateTime(),
+                       'updated_at' => new DateTime(),
+
+                   ]);
+               }
+
+           }
+       }
 
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
