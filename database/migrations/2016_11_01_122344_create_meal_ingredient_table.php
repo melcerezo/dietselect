@@ -16,7 +16,7 @@ class CreateMealIngredientTable extends Migration
         Schema::create('meal_ingredients', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('meal_id')->unsigned();
-            $table->integer('ingredient_id')->unsigned();
+            $table->string('ingredient_id');
             $table->double('grams');
             $table->timestamps();
         });
