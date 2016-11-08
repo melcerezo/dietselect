@@ -140,12 +140,7 @@ class FoodieController extends Controller
 
 
         ]);
-
-        if($result == true) {
             return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
-        }else {
-            return redirect($this->redirectTo)->with(['status' => 'Please fill out all the info!']);
-        }
     }
 
     public function saveProfileAllergies(Request $request)
