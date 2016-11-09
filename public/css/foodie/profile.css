@@ -12,6 +12,10 @@ a.profile-save-btn {
     font-size: 2em;
 }
 
+#basic-profile h4 {
+    text-align: left;
+}
+
 
 /* ==========================================================================
    Media Queries
