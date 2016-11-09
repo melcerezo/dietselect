@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use DateTime;
+//use Illuminate\Support\Collection;
 
 class FoodieController extends Controller
 {
@@ -49,14 +50,29 @@ class FoodieController extends Controller
      */
     public function profile()
     {
-        $resultArray= DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-
+        $address= DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+        //print_r used to see the array $address
+        print_r($address);die('finished setting the address array');
         $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-        return view('foodie.profile')->with([
+        return view('foodie.profile', [])->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
-        ])->with(array('address'=>$resultArray))->with(array('allergies'=>$allergyResultArray))->with(array('foodie_preferences'=>$foodPrefResultArray));
+            //I don't know how to get $address array into the 'address' array below
+           /* 'address' => array(
+                'city' => '',
+                'unit' => '',
+                'street' => '',
+                'bldg' => '',
+                'brgy' => '',
+                'type' => '',
+                'company' => '',
+                'landmark' => '',
+                'remarks' => '',
+            ),*/
+        ]);
+        //Past attempt which resolves into undefined index
+        //->with('address',$resultArray);
 
     }
 
@@ -233,4 +249,8 @@ class FoodieController extends Controller
 
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
+
+
+    //intended for arrays of allergies and foodie_preferences
+    //->with(array('allergies',$allergyResultArray))->with(array('foodie_preferences',$foodPrefResultArray));
 }
