@@ -55,7 +55,7 @@ class FoodieController extends Controller
         print_r($address);die('finished setting the address array');
         $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-        return view('foodie.profile', [])->with([
+        return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             //I don't know how to get $address array into the 'address' array below
