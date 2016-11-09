@@ -49,16 +49,15 @@ class FoodieController extends Controller
      */
     public function profile()
     {
+        $resultArray= DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+
+        $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+        $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
-            $result= DB::table('address')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
-            'address' => array($result),
-            $allergyResult= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
-            'allergy' => array($allergyResult),
-            $foodPrefResult= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id),
-            'foodPreferences'=>array($result)
-        ]);
+        ])->with(array('address'=>$resultArray))->with(array('allergies'=>$allergyResultArray))->with(array('foodie_preferences'=>$foodPrefResultArray));
+
     }
 
     public function getID()
