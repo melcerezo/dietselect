@@ -52,24 +52,25 @@ class FoodieController extends Controller
     {
         $address= DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         //print_r used to see the array $address
-        print_r($address);die('finished setting the address array');
+       // print_r($address);die('finished setting the address array');
+        $addressArray= json_decode(json_encode($address),true);
         $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             //I don't know how to get $address array into the 'address' array below
-           /* 'address' => array(
-                'city' => '',
-                'unit' => '',
-                'street' => '',
-                'bldg' => '',
-                'brgy' => '',
-                'type' => '',
-                'company' => '',
-                'landmark' => '',
-                'remarks' => '',
-            ),*/
+            'address' => array(
+                'city' => $addressArray[0]['city'],
+                'unit' => $addressArray[0]['unit'],
+                'street' => $addressArray[0]['street'],
+                'bldg' => $addressArray[0]['bldg'],
+                'brgy' => $addressArray[0]['brgy'],
+                'type' => $addressArray[0]['type'],
+                'company' => $addressArray[0]['company'],
+                'landmark' => $addressArray[0]['landmark'],
+                'remarks' => $addressArray[0]['remarks'],
+            ),
         ]);
         //Past attempt which resolves into undefined index
         //->with('address',$resultArray);
