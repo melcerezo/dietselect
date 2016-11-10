@@ -9,7 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Validator;
 use DateTime;
-//use Illuminate\Support\Collection;
+use App\Allergy;
+use App\Foodie_Preference;
 
 class FoodieController extends Controller
 {
@@ -54,12 +55,28 @@ class FoodieController extends Controller
         //print_r used to see the array $address
        // print_r($address);die('finished setting the address array');
         $addressArray= json_decode(json_encode($address),true);
-        $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-        $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+        /*~~~ eloquent query for allergies ~~~*/
+        $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
+        /*~~~ eloquent query for food preferences ~~~*/
+        $preferences = Foodie_Preference::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
+        /*
+         * used to check out what $allergies array holds
+         * print_r($allergies);die('set the allergies model query');
+         * used to check out what $preferences array holds
+         * print_r($preferences);die('set the preferences model query');
+         *
+         */
+
+        /*
+         * old method of getting allergies and food preferences
+         * $allergyResultArray= DB::table('allergies')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+         * old method of getting food preference
+         * $foodPrefResultArray= DB::table('foodie_preferences')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+         *
+         */
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
-            //I don't know how to get $address array into the 'address' array below
             'address' => array(
                 'city' => $addressArray[0]['city'],
                 'unit' => $addressArray[0]['unit'],
@@ -71,6 +88,7 @@ class FoodieController extends Controller
                 'landmark' => $addressArray[0]['landmark'],
                 'remarks' => $addressArray[0]['remarks'],
             ),
+
         ]);
         //Past attempt which resolves into undefined index
         //->with('address',$resultArray);
@@ -170,20 +188,35 @@ class FoodieController extends Controller
                 //$ingred = DB::table('ingredients')->where('description', $key)->value('id');
                 $ingred=$key;
                 //print_r($ingred);die();
-                $alreadyExists = DB::table('allergies')
-                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
-                    ->where('ingredient_id','=',$ingred)->first();
 
-                if(is_null($alreadyExists)) {
+                /*~~~ old method for checking existence ~~~*/
+//                $alreadyExists = DB::table('allergies')
+//                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
+//                    ->where('ingredient_id','=',$ingred)->first();
 
-                    $result = DB::table('allergies')->insert([
+                /*~~~ eloquent model method for checking existence ~~~*/
+                if(Allergy::where([
+                    ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                    ['ingredient_id','=',$ingred]
+                ])->count()==0) {
 
-                        'foodie_id' => Auth::guard('foodie')->user()->id,
-                        'ingredient_id' => $ingred,
-                        'created_at' => new DateTime(),
-                        'updated_at' => new DateTime(),
+                   /*~~~ eloquent model method for getting allergies ~~~*/
+                    $allergy=new Allergy;
+                    $allergy->foodie_id= Auth::guard('foodie')->user()->id ;
+                    $allergy->ingredient_id= $ingred;
+                    $allergy->save();
 
-                    ]);
+                   //print_r($allergy);die('set the allergy model');
+
+                   /*~~~ old method for getting allergy ~~~*/
+//                    $result = DB::table('allergies')->insert([
+//
+//                        'foodie_id' => Auth::guard('foodie')->user()->id,
+//                        'ingredient_id' => $ingred,
+//                        'created_at' => new DateTime(),
+//                        'updated_at' => new DateTime(),
+//
+//                    ]);
                 }
 //                else {
 //                    die('already exists');
@@ -202,18 +235,38 @@ class FoodieController extends Controller
            foreach ($otherAllergiesArray as $key => $value) {
                $ingred = $value;
 
-               $otherAlreadyExists = DB::table('allergies')
-                   ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
-                   ->where('ingredient_id', '=', $ingred)->first();
-               //if there is no record of the user checking the ingredient checkbox as an allergy, save the record
-               if (is_null($otherAlreadyExists)) {
-                   $result = DB::table('allergies')->insert([
-                       'foodie_id' => Auth::guard('foodie')->user()->id,
-                       'ingredient_id' => $ingred,
-                       'created_at' => new DateTime(),
-                       'updated_at' => new DateTime(),
+               /*~~~ old method for checking existence ~~~*/
 
-                   ]);
+//               $otherAlreadyExists = DB::table('allergies')
+//                   ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+//                   ->where('ingredient_id', '=', $ingred)->first();
+
+
+               //if there is no record of the user checking the ingredient checkbox as an allergy, save the record
+               /*~~~ eloquent model method for checking existence ~~~*/
+               if (Allergy::where([
+                       ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                       ['ingredient_id','=',$ingred]
+                   ])->count()==0) {
+
+                   /*~~~ eloquent model method for getting allergies ~~~*/
+
+                   $allergy=new Allergy;
+                   $allergy->foodie_id= Auth::guard('foodie')->user()->id ;
+                   $allergy->ingredient_id= $ingred;
+                   $allergy->save();
+
+
+
+                   /*~~~ old method for getting allergy ~~~*/
+
+//                   $result = DB::table('allergies')->insert([
+//                       'foodie_id' => Auth::guard('foodie')->user()->id,
+//                       'ingredient_id' => $ingred,
+//                       'created_at' => new DateTime(),
+//                       'updated_at' => new DateTime(),
+//
+//                   ]);
                }
 
            }
@@ -230,18 +283,35 @@ class FoodieController extends Controller
             if($value=="1") {
 
                 $ingred=$key;
-                $alreadyExists = DB::table('foodie_preferences')
-                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
-                    ->where('ingredient','=',$ingred)->first();
 
-                if(is_null($alreadyExists)){
-                    $result = DB::table('foodie_preferences')->insert([
-                         'foodie_id' => Auth::guard('foodie')->user()->id,
-                         'ingredient' => $ingred,
-                         'created_at' => new DateTime(),
-                         'updated_at' => new DateTime(),
+                /*~~~ old method for checking if exists ~~~*/
+//                $alreadyExists = DB::table('foodie_preferences')
+//                    ->where('foodie_id','=',Auth::guard('foodie')->user()->id)
+//                    ->where('ingredient','=',$ingred)->first();
 
-                     ]);
+
+                /*~~~ eloquent model method for checking existence ~~~*/
+
+                if(Foodie_Preference::where([
+                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                        ['ingredient','=',$ingred]
+                    ])->count()==0){
+
+                    $preference= new Foodie_Preference;
+                    $preference->foodie_id= Auth::guard('foodie')->user()->id;
+                    $preference->ingredient= $ingred;
+                    $preference->save();
+
+
+
+                    /*~~~ old method for insert into foodie_preference table ~~~*/
+//                    $result = DB::table('foodie_preferences')->insert([
+//                         'foodie_id' => Auth::guard('foodie')->user()->id,
+//                         'ingredient' => $ingred,
+//                         'created_at' => new DateTime(),
+//                         'updated_at' => new DateTime(),
+//
+//                     ]);
 
                 }
 
