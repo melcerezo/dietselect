@@ -53,7 +53,7 @@
         <!-- Foodie Dropdown Menu -->
         <ul id='foodie-dropdown' class='dropdown-content'>
             <li>
-                <a href="" class="foodie-link">
+                <a href="{{ route("foodie.profile") }}" class="foodie-link">
                     <i class="fa fa-user" aria-hidden="true"></i>
                     <span class="hide-on-med-and-down">Profile</span>
                 </a>

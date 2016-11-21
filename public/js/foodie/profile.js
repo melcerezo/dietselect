@@ -78,5 +78,5 @@ $(document).ready(function() {
     });
 
     // $('#basic-profile-modal').openModal();
-    $('#address-modal').openModal();
+    $('#allergies-modal').openModal();
 });

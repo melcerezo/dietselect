@@ -37,51 +37,57 @@
                     <div class="modal-content">
                         <h3 class="mustard-text">Foodie Profile</h3>
                         <p>We want to get to know you more! Please enter the following personal details:</p>
-                            <div class="row">
-                                <div class="input-field col s6">
-                                    <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
-                                    <label for="firstname">First Name</label>
-                                </div>
-                                <div class="input-field col s6">
-                                    <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
-                                    <label for="lastname">Last Name</label>
-                                </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
+                                <label for="firstname">First Name</label>
                             </div>
-                            <div class="row">
-                                <div class="input-field col m6 s12">
-                                    <script>
-                                        $(document).ready(function () {
-                                            $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}');
-                                        });
-                                    </script>
-                                    <select id="gender" name="gender">
-                                        <option value="0" disabled selected>Please choose</option>
-                                        <option value="M">Male</option>
-                                        <option value="F">Female</option>
-                                        <option value="N">Prefer not to say</option>
-                                    </select>
-                                    <label>Gender</label>
-                                </div>
-                                <div class="input-field col m6 s12">
-                                    <input id="birthday" name="birthday" type="text" class="datepicker" value="{{ $foodie->birthday }}">
-                                    <label for="birthday">Birthday</label>
-                                </div>
+                            <div class="input-field col s6">
+                                <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
+                                <label for="lastname">Last Name</label>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12">
-                                    <input id="username" name="username" type="text" class="validate" value="{{ $foodie->username }}">
-                                    <label for="username">Username</label>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col m6 s12">
+                                <script>
+                                    $(document).ready(function () {
+                                        $('select#gender').val('{{ $foodie->gender ? $foodie->gender : 0 }}');
+                                    });
+                                </script>
+                                <select id="gender" name="gender">
+                                    <option value="0" disabled selected>Please choose</option>
+                                    <option value="M">Male</option>
+                                    <option value="F">Female</option>
+                                    <option value="N">Prefer not to say</option>
+                                </select>
+                                <label>Gender</label>
                             </div>
-                            <div style="text-align: right;">
-
+                            <div class="input-field col m6 s12">
+                                <input id="birthday" name="birthday" type="text" class="datepicker" value="{{ $foodie->birthday }}">
+                                <label for="birthday">Birthday</label>
                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="username" name="username" type="text" class="validate" value="{{ $foodie->username }}">
+                                <label for="username">Username</label>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="hidden"/>
-                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
                     </div>
                 </form> <!-- End of basic-profile form -->
+            </div>
+
+            <div id="addresses-container">
+                <h4 id="address-section">Delivery Addresses</h4>
+                <ul>
+                    @foreach($addresses as $address)
+                        <li>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</li>
+                    @endforeach
+                </ul>
             </div>
 
             <div id="address-modal" class="modal">
@@ -175,16 +181,16 @@
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="hidden"/>
-                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
                     </div>
                 </form> <!-- End of address form -->
             </div>
 
-            <div id="addresses">
-                <h4 id="address-section">Delivery Addresses</h4>
+            <div id="allergies-container">
+                <h4 id="allergies-section">Allergies :(</h4>
                 <ul>
-                    @foreach($addresses as $address)
-                        <li>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</li>
+                    @foreach($allergies as $allergy)
+                        <li>{{ $allergy->ingredient_id }}</li>
                     @endforeach
                 </ul>
             </div>
@@ -238,37 +244,39 @@
                     </div>
                     <div class="modal-footer">
                         <input type="submit" class="hidden"/>
-                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
                     </div>
                 </form> <!-- End of allergies form -->
             </div>
 
-            <div>
-                <h4>Food Preferences</h4>
-                <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
+            <div id="food-preferences-container">
+                <h4 id="food-preferences-section">Food Preference: {{ $preference->ingredient }}</h4>
+            </div>
+
+            <div id="food-preference-modal" class="modal">
                 <form id="food-preferences" method="post" action="{{ route('foodie.profile.preferences') }}">
                     {{ csrf_field() }}
-                    <div class="row">
-                        <div class="input-field col l4 s12">
-                            <input type="hidden" name="beef" value="0"/>
-                            <input type="checkbox" name="beef" value="1" class="filled-in" id="pref-beef"/>
-                            <label for="pref-beef">Beef-based</label><br/>
-                            <input type="hidden" name="pork" value="0"/>
-                            <input type="checkbox" name="pork" value="1" class="filled-in" id="pref-pork"/>
-                            <label for="pref-pork">Pork-based</label><br/>
-                            <input type="hidden" name="chicken" value="0"/>
-                            <input type="checkbox" name="chicken" value="1" class="filled-in" id="pref-chick"/>
-                            <label for="pref-chick">Chicken-based</label><br/>
-                            <input type="hidden" name="fish" value="0"/>
-                            <input type="checkbox" name="fish" value="1" class="filled-in" id="pref-fish"/>
-                            <label for="pref-fish">Fish-based</label><br/>
+                    <div class="modal-content">
+                        <h4>Food Preferences</h4>
+                        <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
+                        <div class="row">
+                            <div class="input-field col l4 s12">
+                                <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef"/>
+                                <label for="pref-beef">Beef-based</label><br/>
+                                <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork"/>
+                                <label for="pref-pork">Pork-based</label><br/>
+                                <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick"/>
+                                <label for="pref-chick">Chicken-based</label><br/>
+                                <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea"/>
+                                <label for="pref-sea">Seafood-based</label><br/>
+                            </div>
                         </div>
                     </div>
-                    <div style="text-align: right;">
+                    <div class="modal-footer">
                         <input type="submit" class="hidden"/>
-                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
                     </div>
-                </form> <!-- End of food-preferences form -->
+                </form> <!-- End of allergies form -->
             </div>
         </div>
     </div>
