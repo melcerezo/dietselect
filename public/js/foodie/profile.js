@@ -76,4 +76,7 @@ $(document).ready(function() {
             }
         }
     });
+
+    // $('#basic-profile-modal').openModal();
+    $('#address-modal').openModal();
 });
