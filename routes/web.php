@@ -64,4 +64,6 @@ Route::group(['prefix' => 'chef'], function () {
 
     Route::post('verify/sms', 'Chef\Auth\VerificationController@verifySms')->name('chef.verify.sms');
     Route::post('verify/sms/send', 'Chef\Auth\VerificationController@sendNewVerificationCode')->name('chef.verify.sms.send');
+
+    Route::get('mealPlanRead','Chef\SetMealPlanController@getMealPlan');
 });
