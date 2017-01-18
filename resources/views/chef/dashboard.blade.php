@@ -9,27 +9,6 @@
         <link rel="stylesheet" href="/css/chef/verify.css">
         <script src="/js/chef/verification.validate.js" defer></script>
     @endif
-
-    @if (session('after_registration'))
-        <script>
-            jQuery(window).load(function() {
-                var delay = 1500;
-                setTimeout(function() {
-                    Materialize.toast("This is a toast notification!", 5000, 'rounded');
-                }, delay);
-
-                delay = 3000;
-                setTimeout(function() {
-                    Materialize.toast("This will display various important messages and notifications", 5000, 'rounded');
-                }, delay);
-
-                delay = 4500;
-                setTimeout(function() {
-                    Materialize.toast("You can swipe this to dismiss it.", 5000, 'rounded');
-                }, delay);
-            });
-        </script>
-    @endif
 @endsection
 
 @section('content')
