@@ -7,20 +7,40 @@
 @endsection
 
 @section('page_content')
-    <div class="container">
-        <div class="row">
-            <div class="col m8 offset-m2">
-                <div>
-                    <h1 class="mustard-text">Foodie Profile</h1>
-                    <p>We want to get to know you more! Please enter the following personal details:</p>
-                    <form id="basic-profile" method="post" action="{{ route('foodie.profile.basic') }}">
+    <div class="row">
+        <div class="col m12">
+            <!-- Basic Profile -->
+            <div id="basic-profile" class="card-panel">
+                <h2 class="mustard-text">Foodie Profile</h2>
+                <h4>Name: {{ $foodie->first_name . ' ' . $foodie->last_name }} {{ ($foodie->username)? '(' . $foodie->username . ')' : '' }}</h4>
+                <script>
+                    $(document).ready(function () {
+                        var text;
+                        var gender = '{{ $foodie->gender }}';
+                        switch (gender) {
+                            case 'M': text = 'Male'; break;
+                            case 'F': text = 'Female'; break;
+                            case 'N': text = 'Prefer not to say.'; break;
+                            default: text = 'N/A'; break;
+                        }
+                        $('#foodie-gender').text(text);
+                    });
+                </script>
+                <h4>Gender: <span id="foodie-gender"></span></h4>
+                <h4>Birthday: {{ $foodie->birthday }}</h4>
+            </div>
 
-                        {{ csrf_field() }}
+            <!-- Basic Profile Form Modal -->
+            <div id="basic-profile-modal" class="modal">
+                <form id="basic-profile" method="post" action="{{ route('foodie.profile.basic') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-content">
+                        <h3 class="mustard-text">Foodie Profile</h3>
+                        <p>We want to get to know you more! Please enter the following personal details:</p>
                         <div class="row">
                             <div class="input-field col s6">
                                 <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
                                 <label for="firstname">First Name</label>
-
                             </div>
                             <div class="input-field col s6">
                                 <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
@@ -53,23 +73,34 @@
                                 <label for="username">Username</label>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <input type="submit" class="hidden"/>
-                            <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
-                        </div>
-                    </form> <!-- End of basic-profile form -->
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="hidden"/>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                    </div>
+                </form> <!-- End of basic-profile form -->
+            </div>
 
-                <div>
-                    <form id="address" method="post" action="{{ route('foodie.profile.address') }}">
-                        {{ csrf_field() }}
+            <div id="addresses-container">
+                <h4 id="address-section">Delivery Addresses</h4>
+                <ul>
+                    @foreach($addresses as $address)
+                        <li>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div id="address-modal" class="modal">
+                <form id="address" method="post" action="{{ route('foodie.profile.address') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-content">
                         <h4 id="address-section">Address</h4>
                         <p>This should be the address where your food will be primarily delivered to.</p>
                         <div class="row">
                             <div class="input-field col s12">
                                 <script>
                                     $(document).ready(function () {
-                                        $('select#address-city').val('{{ $address['city'] ? $address['city'] : 0 }}');
+                                        $('select#address-city').val('');
                                     });
                                 </script>
                                 <select id="address-city" name="city">
@@ -98,21 +129,21 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-unit" name="unit" type="text" class="validate" value="{{ $address['unit'] }}">
+                                <input id="address-unit" name="unit" type="text" class="validate" value="">
                                 <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-street" name="street" type="text" class="validate" value="{{ $address['street'] }}">
+                                <input id="address-street" name="street" type="text" class="validate" value="">
                                 <label for="address-street">Street<span class="flame-text">*</span></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s6">
-                                <input id="address-bldg" name="bldg" type="text" class="validate" value="{{ $address['bldg'] }}">
+                                <input id="address-bldg" name="bldg" type="text" class="validate" value="">
                                 <label for="address-bldg">Building</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-brgy" name="brgy" type="text" class="validate" value="{{ $address['brgy'] }}">
+                                <input id="address-brgy" name="brgy" type="text" class="validate" value="">
                                 <label for="address-brgy">Barangay/Village</label>
                             </div>
                         </div>
@@ -120,7 +151,7 @@
                             <div class="input-field col s6">
                                 <script>
                                     $(document).ready(function () {
-                                        $('select#address-city').val('{{ $address['type'] ? $address['type'] : 0 }}');
+                                        $('select#address-city').val('');
                                     });
                                 </script>
                                 <select id="address-type" name="type">
@@ -131,34 +162,45 @@
                                 <label for="address-type">Address Type</label>
                             </div>
                             <div class="input-field col s6">
-                                <input id="address-company" name="company" type="text" class="validate" value="{{ $address['company'] }}">
+                                <input id="address-company" name="company" type="text" class="validate" value="">
                                 <label for="address-company">Company</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="address-landmark" name="landmark" type="text" class="validate" value="{{ $address['landmark'] }}">
+                                <input id="address-landmark" name="landmark" type="text" class="validate" value="">
                                 <label for="address-landmark">Landmark</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value="{{ $address['remarks'] }}"></textarea>
+                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value=""></textarea>
                                 <label for="address-remarks">Address Remarks</label>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <input type="submit" class="hidden"/>
-                            <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
-                        </div>
-                    </form> <!-- End of address form -->
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="hidden"/>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                    </div>
+                </form> <!-- End of address form -->
+            </div>
 
-                <div>
-                    <h4>Allergies</h4>
-                    <p>Tell us what you can't eat, so that we can tailor a better diet experience for you!</p>
-                    <form id="allergies" method="post" action="{{ route('foodie.profile.allergies') }}">
-                        {{ csrf_field() }}
+            <div id="allergies-container">
+                <h4 id="allergies-section">Allergies :(</h4>
+                <ul>
+                    @foreach($allergies as $allergy)
+                        <li>{{ $allergy->ingredient_id }}</li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div id="allergies-modal" class="modal">
+                <form id="allergies" method="post" action="{{ route('foodie.profile.allergies') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-content">
+                        <h4>Allergies</h4>
+                        <p>Tell us what you can't eat, so that we can tailor a better diet experience for you!</p>
                         <div class="row">
                             <div class="input-field col l4 s12">
                                 <input type="hidden" name="seafood" value="0"/>
@@ -199,40 +241,42 @@
                             </div>
                             <small class="notes"><span class="flame-text">*</span> If multiple other food allergies, please separate each allergy with a comma (,).</small>
                         </div>
-                        <div style="text-align: right;">
-                            <input type="submit" class="hidden"/>
-                            <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
-                        </div>
-                    </form> <!-- End of allergies form -->
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="hidden"/>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                    </div>
+                </form> <!-- End of allergies form -->
+            </div>
 
-                <div>
-                    <h4>Food Preferences</h4>
-                    <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
-                    <form id="food-preferences" method="post" action="{{ route('foodie.profile.preferences') }}">
-                        {{ csrf_field() }}
+            <div id="food-preferences-container">
+                <h4 id="food-preferences-section">Food Preference: {{ $preference->ingredient }}</h4>
+            </div>
+
+            <div id="food-preference-modal" class="modal">
+                <form id="food-preferences" method="post" action="{{ route('foodie.profile.preferences') }}">
+                    {{ csrf_field() }}
+                    <div class="modal-content">
+                        <h4>Food Preferences</h4>
+                        <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
                         <div class="row">
                             <div class="input-field col l4 s12">
-                                <input type="hidden" name="beef" value="0"/>
-                                <input type="checkbox" name="beef" value="1" class="filled-in" id="pref-beef"/>
+                                <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef"/>
                                 <label for="pref-beef">Beef-based</label><br/>
-                                <input type="hidden" name="pork" value="0"/>
-                                <input type="checkbox" name="pork" value="1" class="filled-in" id="pref-pork"/>
+                                <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork"/>
                                 <label for="pref-pork">Pork-based</label><br/>
-                                <input type="hidden" name="chicken" value="0"/>
-                                <input type="checkbox" name="chicken" value="1" class="filled-in" id="pref-chick"/>
+                                <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick"/>
                                 <label for="pref-chick">Chicken-based</label><br/>
-                                <input type="hidden" name="fish" value="0"/>
-                                <input type="checkbox" name="fish" value="1" class="filled-in" id="pref-fish"/>
-                                <label for="pref-fish">Fish-based</label><br/>
+                                <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea"/>
+                                <label for="pref-sea">Seafood-based</label><br/>
                             </div>
                         </div>
-                        <div style="text-align: right;">
-                            <input type="submit" class="hidden"/>
-                            <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned"><i class="fa fa-save" aria-hidden="true"></i> </a>
-                        </div>
-                    </form> <!-- End of food-preferences form -->
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="hidden"/>
+                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                    </div>
+                </form> <!-- End of allergies form -->
             </div>
         </div>
     </div>
