@@ -73,6 +73,8 @@ class FoodieController extends Controller
     /**
      * Handle a registration request for the application.
      *
+     *
+     *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
