@@ -104,6 +104,10 @@ textarea {
     margin-bottom: 0;
 }
 
+.no-pad-top {
+    padding-top: 0 !important;
+}
+
 .waves-effect.waves-asparagus .waves-ripple {
     /* The alpha value allows the text and background color
     of the button to still show through. */
@@ -123,7 +127,6 @@ main {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Josefin Slab', serif;
     font-weight: 700;
-    text-align: center;
 }
 
 h3 {
@@ -167,6 +170,11 @@ a.n-btn-link {
 
 .material-tooltip .backdrop {
     background-color: #dbf9a2;
+}
+
+.full-width {
+    display: block;
+    width: 100%;
 }
 
 #n-site-preloader  {

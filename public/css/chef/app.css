@@ -6,6 +6,13 @@
 body {
     font-size: 1em;
     background-color: #fafafa;
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod=scale);
+    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod='scale')";
+    background: url(/img/bg-1.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 h1, h2, h3 {
@@ -42,6 +49,12 @@ h1, h2, h3 {
 
 .modal.modal-fixed-footer {
     height: 75%;
+}
+
+.meal-plan-option-btn {
+    display:block;
+    font-size: 3em;
+    text-align: left;
 }
 
 /* ==========================================================================
