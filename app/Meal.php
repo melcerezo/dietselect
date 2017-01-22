@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Meal extends Model
 {
 
+    protected $table='meals';
 
     public function ingredients(){
         return $this->hasMany('App\Ingredient');
@@ -15,4 +16,10 @@ class Meal extends Model
     public function plan(){
         return $this->belongsTo('App\Plan');
     }
+
+    protected $fillable=[
+
+    ];
+
+
 }
