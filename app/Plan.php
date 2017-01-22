@@ -14,6 +14,12 @@ class Plan extends Model
     }
 
     protected $fillable=[
-
+        'calories',
+        'carbohydrates',
+        'protein',
+        'fat',
+        'price'
     ];
+
+
 }

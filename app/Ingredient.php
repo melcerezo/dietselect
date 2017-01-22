@@ -14,6 +14,6 @@ class Ingredient extends Model
     }
 
     protected $fillable=[
-
+        'grams'
     ];
 }

@@ -18,6 +18,13 @@ class Meal extends Model
     }
 
     protected $fillable=[
+        'description',
+        'main_ingredient',
+        'calories',
+        'carbohydrates',
+        'protein',
+        'fat',
+
 
     ];
 
