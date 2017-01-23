@@ -25,7 +25,6 @@ class Meal extends Model
         'protein',
         'fat',
 
-
     ];
 
 
