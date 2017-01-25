@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chef;
 
 use App\Http\Controllers\Controller;
+use App\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,11 +21,11 @@ class MealPlanController extends Controller
 
     public function getMealPlanPage()
     {
+        $plans= Plan::where('chef_id', Auth::guard('chef')->user())->get();
         return view('chef.mealplan')->with([
             'chef' => Auth::guard('chef')->user(),
+            'plan'=> $plans
         ]);
-
-
 
     }
 
