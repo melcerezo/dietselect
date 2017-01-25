@@ -23,6 +23,9 @@ class MealPlanController extends Controller
         return view('chef.mealplan')->with([
             'chef' => Auth::guard('chef')->user(),
         ]);
+
+
+
     }
 
     public function setMeal()
