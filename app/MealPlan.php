@@ -10,7 +10,7 @@ class MealPlan extends Model
     protected $table='meal_plans';
 
     public function meal(){
-        return $this->hasMany('App\Meal');
+        return $this->hasOne('App\Meal');
     }
 
     public function plan(){
