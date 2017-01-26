@@ -10,7 +10,7 @@ class Plan extends Model
     protected $table='plans';
 
     public function mealplans(){
-        return $this->hasOne('App\MealPlan');
+        return $this->hasMany('App\MealPlan');
     }
 
     protected $fillable=[
