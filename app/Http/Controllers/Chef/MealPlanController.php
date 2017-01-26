@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Chef;
 
 use App\Http\Controllers\Controller;
+use App\Meal;
+use App\MealPlan;
 use App\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,6 +30,13 @@ class MealPlanController extends Controller
         ]);
 
     }
+
+    public function prepareMealsPage(Plan $plan){
+        $mealPlan= $plan->mealplans();
+
+
+    }
+
 
     public function setMeal()
     {
