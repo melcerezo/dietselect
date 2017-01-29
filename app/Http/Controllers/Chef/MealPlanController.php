@@ -33,6 +33,10 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan){
         $mealPlan= $plan->mealplans();//for view of the meal plan
+        return view('')->with([
+            'chef' => Auth::guard('chef')->user(),
+
+        ]);
 
 
     }
