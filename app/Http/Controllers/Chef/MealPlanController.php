@@ -32,9 +32,10 @@ class MealPlanController extends Controller
     }
 
     public function prepareMealsPage(Plan $plan){
-        $mealPlan= $plan->mealplans();//for view of the meal plan
+        $mealPlan= $plan::with(['mealplans.meal']);//eager loading of the mealplans, and meals
         return view('')->with([
             'chef' => Auth::guard('chef')->user(),
+            'mealPlan' =>$mealPlan,
 
         ]);
 
@@ -45,7 +46,7 @@ class MealPlanController extends Controller
 
     public function setMeal()
     {
-
+        $meal= Meal::with(['ingredients'])->get();//eager loading of ingredients
     }
 
     //modal that pops up to update meal in meal plan

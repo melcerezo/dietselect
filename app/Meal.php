@@ -12,8 +12,8 @@ class Meal extends Model
         return $this->hasMany('App\Ingredient');
     }
 
-    public function plan(){
-        return $this->belongsTo('App\Plan');
+    public function mealplan(){
+        return $this->hasOne('App\MealPlan');
     }
 
     protected $fillable=[
