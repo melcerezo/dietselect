@@ -8,6 +8,7 @@ use App\MealPlan;
 use App\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use phpDocumentor\Reflection\Types\Integer;
 
 class MealPlanController extends Controller
 {
@@ -32,7 +33,7 @@ class MealPlanController extends Controller
     }
 
     public function prepareMealsPage(Plan $plan){
-        $mealPlan= $plan::with(['mealplans.meal']);//eager loading of the mealplans, and meals
+        $mealPlan= $plan->mealplans()->get();
         return view('')->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlan' =>$mealPlan,
@@ -44,9 +45,15 @@ class MealPlanController extends Controller
 
     // modal that pops up to create meal in meal plan
 
-    public function setMeal()
+    public function setMeal($id)
     {
-        $meal= Meal::with(['ingredients'])->get();//eager loading of ingredients
+        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
+
+
+        $plan_id=$id;
+        $newSetMeal= new MealPlan(['plan_id'=>$plan_id,''=>,''=>,''=>,]);
+
+
     }
 
     //modal that pops up to update meal in meal plan

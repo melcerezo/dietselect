@@ -10,7 +10,7 @@ class MealPlan extends Model
     protected $table='meal_plans';
 
     public function meal(){
-        return $this->belongsTo('App\Meal');
+        return $this->belongsTo('App\Meal','meal_id');
     }
 
     public function plan(){

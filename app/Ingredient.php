@@ -14,6 +14,8 @@ class Ingredient extends Model
     }
 
     protected $fillable=[
+        'meal_id',
+        'ingredient_id',
         'grams'
     ];
 }

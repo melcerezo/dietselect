@@ -13,10 +13,11 @@ class Meal extends Model
     }
 
     public function mealplan(){
-        return $this->hasOne('App\MealPlan');
+        return $this->hasMany('App\MealPlan');
     }
 
     protected $fillable=[
+        'chef_id',
         'description',
         'main_ingredient',
         'calories',
