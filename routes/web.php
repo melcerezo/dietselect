@@ -12,6 +12,11 @@
 */
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
+Route::get('meal/planner', function (){
+    $mealPlans = \App\MealPlan::all();
+    return view('chef.meal_planner', compact('mealPlans'));
+
+});
 
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');

@@ -34,7 +34,7 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan){
         $mealPlan= $plan->mealplans()->get();
-        return view('')->with([
+        return view('chef.meal_planner')->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlan' =>$mealPlan,
 
@@ -47,11 +47,11 @@ class MealPlanController extends Controller
 
     public function setMeal($id)
     {
-        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
+//        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
 
 
         $plan_id=$id;
-        $newSetMeal= new MealPlan(['plan_id'=>$plan_id,''=>,''=>,''=>,]);
+//        $newSetMeal= new MealPlan(['plan_id'=>$plan_id,''=>,''=>,''=>,]);
 
 
     }
