@@ -16,7 +16,7 @@ class CreateAllergiesTable extends Migration
         Schema::create('allergies', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('foodie_id')->unsigned();
-            $table->string('ingredient_id');
+            $table->integer('ingredient_id')->unsigned();
             $table->timestamps();
         });
 

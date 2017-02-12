@@ -14,7 +14,7 @@ class ModifyAllergiesTable extends Migration
     public function up()
     {
         Schema::table('allergies', function ($table) {
-           $table->dropForeign(['ingredient_id']);
+//           $table->dropForeign(['ingredient_id']);
         });
     }
 
