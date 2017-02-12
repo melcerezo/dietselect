@@ -5,6 +5,7 @@ jQuery(window).load(function() {
 });
 
 $(document).ready(function(){
+
     $('.modal-trigger').leanModal();
 
     // Form Submit Buttons

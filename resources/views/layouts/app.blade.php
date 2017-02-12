@@ -29,10 +29,10 @@
 
     <!-- Loads jQuery -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" defer></script>
-    <script>window.jQuery || document.write('<script src="/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+    <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
 
     <!-- Materialize jQuery Script -->
-    <script src="/js/vendor/materialize.js" defer></script>
+    <script src="/js/vendor/materialize.min.js" defer></script>
 
     <!-- jQuery Validation Script -->
     <script src="/js/vendor/jquery.validate.js" defer></script>
@@ -73,5 +73,8 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
     @yield('content')
+
+    @yield('scripts')
+
 </body>
 </html>
