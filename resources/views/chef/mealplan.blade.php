@@ -26,7 +26,8 @@
                                 </div>
                                 <div class="card-reveal center lime lighten-4">
                                     <span class="card-title"><i class="material-icons right">close</i></span>
-                                    <a class="meal-plan-option-btn" href="{{ route('chef.plan.prepare',['plan'=>1]) }}"><span class="fa fa-pencil"></span></a>
+                                    {{-- route will go to the meals table page with id of plan passed --}}
+                                    <a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>1]) }}"><span class="fa fa-pencil"></span></a>
                                     <a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>
                                 </div>
                             </div>
