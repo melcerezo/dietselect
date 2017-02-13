@@ -13,7 +13,8 @@
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 Route::get('meal/planner', function (){
-    $mealPlans = \App\MealPlan::all();
+    $plan = \App\Plan::where('chef_id',1)->first();
+    $mealPlans=$plan->mealplans()->get();
     return view('chef.meal_planner', compact('mealPlans'));
 });
 
@@ -70,7 +71,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('verify/sms/send', 'Chef\Auth\VerificationController@sendNewVerificationCode')->name('chef.verify.sms.send');
 
     Route::get('plan','Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
-    Route::post('plan/{plan}/preparation','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.prepare');
+    Route::get('plan/{plan}/preparation','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.prepare');
     Route::post('plan/create', 'Chef\MealPlanController@setMeal')->name('chef.plan.create');
     Route::post('plan/update', 'Chef\MealPlanController@updateMeal')->name('chef.plan.update');
     Route::post('plan/delete', 'Chef\MealPlanController@deleteMeal')->name('chef.plan.delete');

@@ -20,17 +20,15 @@
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Breakfast')
                         @if($mealPlan->day == 'MO')
-                            {{-- we don't need to use <a> tags, we can use <span> tags --}}
-                            <td><span class="waves-effect waves-light editMeal">{{$mealPlan->meal->description}}</span><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger" >{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TU')
-                            {{-- span tag instead of <a> tag --}}
-                            <td><span class="waves-effect waves-light editMeal">{{$mealPlan->meal->description}}</span><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger" >{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @endif
                     @endif
                 @endforeach
@@ -41,15 +39,15 @@
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Snack')
                         @if($mealPlan->day == 'MO')
-                            <td><a href="#editMeal" class=" waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class=" waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TU')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal" >{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @endif
                     @endif
                 @endforeach
@@ -60,15 +58,15 @@
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Lunch')
                         @if($mealPlan->day == 'MO')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger" >{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TU')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @endif
                     @endif
                 @endforeach
@@ -79,15 +77,15 @@
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Snack')
                         @if($mealPlan->day == 'MO')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TU')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @endif
                     @endif
                 @endforeach
@@ -97,15 +95,15 @@
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Dinner')
                         @if($mealPlan->day == 'MO')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TU')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal" class="waves-effect waves-light ">{{$mealPlan->meal->description}}</a><br></td>
+                            <td><a href="#editMeal" class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br></td>
                         @endif
                     @endif
                 @endforeach
@@ -123,13 +121,5 @@
             <a href="#!" class=" modal-action modal-close waves-effect waves-green -flat">Agree</a>
         </div>
     </div>
-    <script>
-        $(document).ready(function() {
-            /* this will trigger the modal with a click */
-            $('.editMeal').on('click',function(){
-                $('#editMeal').openModal('open');
-            });
-        });
-    </script>
 @endsection
 
