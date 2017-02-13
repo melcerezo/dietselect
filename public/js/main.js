@@ -6,7 +6,6 @@ jQuery(window).load(function() {
 
 $(document).ready(function(){
 
-    $('.modal-trigger').leanModal();
 
     // Form Submit Buttons
     $('div.card-action').on('click', '.n-submit-btn', function(){
