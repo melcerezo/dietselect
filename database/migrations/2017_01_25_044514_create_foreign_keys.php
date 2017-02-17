@@ -30,9 +30,9 @@ class CreateForeignKeys extends Migration
             $table->foreign('chef_id')->references('id')->on('chefs');
         });
 
-        Schema::table('meal_ingredients', function ($table){
+        Schema::table('ingredient_meal', function ($table){
             $table->foreign('meal_id')->references('id')->on('meals');
-//            $table->foreign('ingredient_id')->references('id')->on('ingredients');
+            $table->foreign('ingredient_id')->references('id')->on('ingredients');
         });
 
         Schema::table('plans', function ($table){

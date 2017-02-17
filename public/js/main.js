@@ -8,6 +8,8 @@ $(document).ready(function(){
 
     $('.modal-trigger').leanModal();
 
+    $('select').material_select();
+
     // Form Submit Buttons
     $('div.card-action').on('click', '.n-submit-btn', function(){
         var form = $(this).closest("form");

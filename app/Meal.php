@@ -8,8 +8,13 @@ class Meal extends Model
 {
 
 
-    public function ingredients(){
-        return $this->hasMany('App\Ingredient');
+//    public function ingredients(){
+//        return $this->hasMany('App\Ingredient');
+//    }
+
+    public function ingredients()
+    {
+        return $this->belongsToMany(Ingredient::class);
     }
 
     public function mealplan(){

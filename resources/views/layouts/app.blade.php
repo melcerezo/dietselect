@@ -21,6 +21,8 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="/css/vendor/materialize.css" media="screen,projection">
 
+    {{--<link rel="stylesheet" href="/css/bootstrap-select.min.css">--}}
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
@@ -33,6 +35,8 @@
 
     <!-- Materialize jQuery Script -->
     <script src="/js/vendor/materialize.min.js" defer></script>
+
+    <script src="/js/bootstrap-select.min.js"></script>
 
     <!-- jQuery Validation Script -->
     <script src="/js/vendor/jquery.validate.js" defer></script>

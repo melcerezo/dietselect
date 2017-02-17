@@ -18,6 +18,11 @@ Route::get('meal/planner', function (){
     return view('chef.meal_planner', compact('mealPlans'));
 });
 
+Route::get('compute', function (\Illuminate\Http\Request $request){
+    $grams = $request['grams'] * 0.01;
+    dd($grams);
+});
+
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
@@ -73,6 +78,8 @@ Route::group(['prefix' => 'chef'], function () {
     Route::get('plan','Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
     Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
     Route::post('plan/create', 'Chef\MealPlanController@setMeal')->name('chef.plan.create');
-    Route::post('plan/update', 'Chef\MealPlanController@updateMeal')->name('chef.plan.update');
-    Route::post('plan/delete', 'Chef\MealPlanController@deleteMeal')->name('chef.plan.delete');
+    Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.plan.update');
+    Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.plan.delete');
+
+
 });
