@@ -26,13 +26,27 @@ class MealPlanController extends Controller
     }
 
     public function getMealPlanPage()
+
+
     {
-        $plans = Plan::where('chef_id', Auth::guard('chef')->user())->get();
+        $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
+        $planCount= $plans->count();
         return view('chef.mealplan')->with([
             'chef' => Auth::guard('chef')->user(),
-            'plan' => $plans //get data of meal plan
+            'plans' => $plans, //get data of meal plan
+            'planCount'=>$planCount
         ]);
+    }
 
+    public function createPlan(Request $request)
+    {
+        $plan= new Plan();
+        $plan->chef_id = Auth::guard('chef')->user()->id;
+        $plan->plan_name = $request['plan_name'];
+        $plan->calories= (int)$request['calories'];
+        $plan->price= (float)$request['price'];
+        $plan->save();
+        return back();
     }
 
     public function prepareMealsPage(Plan $plan)
@@ -50,15 +64,15 @@ class MealPlanController extends Controller
 //
 //        die();
 
-
-        $mealPlans = $plan->mealplans()->get();
+        $mealPlans=$plan->mealplans()->get();
+        $mealPlansCount=$mealPlans->count();
+//        dd($mealPlansCount);
         return view('chef.meal_planner')->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
-            'ingredients' => $ingredients,
+            'mealPlansCount'=>$mealPlansCount,
+            'ingredients' => $ingredients
         ]);
-
-
     }
 
     // modal that pops up to create meal in meal plan
@@ -78,7 +92,6 @@ class MealPlanController extends Controller
         $meal->carbohydrates = 10;
         $meal->protein = 10;
         $meal->fat = 10;
-//        dd($meal);
         $meal->save();
         return back();
 

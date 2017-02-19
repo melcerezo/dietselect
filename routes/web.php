@@ -76,10 +76,11 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('verify/sms/send', 'Chef\Auth\VerificationController@sendNewVerificationCode')->name('chef.verify.sms.send');
 
     Route::get('plan','Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
+    Route::post('plan/create','Chef\MealPlanController@createPlan')->name('chef.plan.create');
     Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
-    Route::post('plan/create', 'Chef\MealPlanController@setMeal')->name('chef.plan.create');
-    Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.plan.update');
-    Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.plan.delete');
+    Route::post('plan/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
+    Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
+    Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');
 
 
 });

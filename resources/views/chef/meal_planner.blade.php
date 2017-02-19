@@ -16,6 +16,9 @@
             </thead>
             <tbody>
             <tr>
+                @if($mealPlansCount==0)
+                    <td>NO MEALS YET!</td>
+                @else
                 <td>Breakfast</td>
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Breakfast')
@@ -102,7 +105,6 @@
                 @endforeach
             </tr>
             <tr>
-
                 <td>Snack</td>
                 @foreach($mealPlans as $mealPlan)
                     @if($mealPlan->meal_type == 'Snack')
@@ -157,13 +159,19 @@
                         @endif
                     @endif
                 @endforeach
+                @endif
             </tr>
             </tbody>
         </table>
+        <div>
+            <button data-target="createMeal" class="btn modal-trigger">Create Meal</button>
+        </div>
+
     </div>
 
+    @unless($mealPlansCount==0)
     <div id="editMeal" class="modal">
-        <form action="{{route('chef.plan.update', $mealPlan->id)}}" method="post">
+        <form action="{{route('chef.meal.update', $mealPlan->id)}}" method="post">
             {{csrf_field()}}
 
             <div class="modal-content">
@@ -185,19 +193,24 @@
 
             </div>
             <div class="modal-footer">
-                <button type="submit">Agree</button>
+                <button type="submit">Update</button>
                 {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
             </div>
         </form>
 
     </div>
+    @endunless
 
-    <div class="row col-md-5">
-        <form action="{{url('chef/plan/create')}}" method="post">
+    <div id="createMeal" class="modal">
+        <div class="modal-content">
+        <h4>Create Meal</h4>
+        <form action="{{route('chef.meal.create')}}" method="post">
             {{csrf_field()}}
-            <input type="text" name="description" id="">
-            <input type="submit" value="Submit" class="btn btn-primary">
+                <label for="description">Meal Name:</label>
+                <input type="text" name="description" id="description" class="form-control">
+                <input type="submit" value="Submit" class="btn btn-primary">
         </form>
+        </div>
     </div>
 
 
