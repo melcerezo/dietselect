@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Foodie;
 
+use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
@@ -55,7 +56,7 @@ class FoodieController extends Controller
         $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
         $preference = FoodiePreference::where('foodie_id',Auth::guard('foodie')->user()->id)->first();
 
-        // print_r($preference); die();
+        //print_r($preference); die();
 
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
@@ -218,6 +219,4 @@ class FoodieController extends Controller
     }
 
 
-    //intended for arrays of allergies and foodie_preferences
-    //->with(array('allergies',$allergyResultArray))->with(array('foodie_preferences',$foodPrefResultArray));
 }

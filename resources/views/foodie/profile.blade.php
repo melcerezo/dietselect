@@ -187,7 +187,7 @@
             </div>
 
             <div id="allergies-container">
-                <h4 id="allergies-section">Allergies :(</h4>
+                <h4 id="allergies-section">Allergies :</h4>
                 <ul>
                     @foreach($allergies as $allergy)
                         <li>{{ $allergy->ingredient_id }}</li>
@@ -249,8 +249,13 @@
                 </form> <!-- End of allergies form -->
             </div>
 
+
             <div id="food-preferences-container">
-                <h4 id="food-preferences-section">Food Preference: {{ $preference->ingredient }}</h4>
+                <h4 id="food-preferences-section">Food Preference:
+                @if(isset($preference))
+                {{ $preference->ingredient }}
+                @endif
+                </h4>
             </div>
 
             <div id="food-preference-modal" class="modal">

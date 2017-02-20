@@ -1,0 +1,47 @@
+ {{--<div class="col s12 m6 l4">--}}
+                            {{--<div class="card sticky-action hoverable">--}}
+                                {{--<div class="card-image waves-effect waves-block waves-asparagus">--}}
+                                    {{--<img class="img-responsive activator" src="/img/diet-meal-1.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="card-content">--}}
+                                    {{--<span class="card-title activator grey-text text-darken-4 no-pad-bot center">The Holiday Belly Buster Plan</span>--}}
+                                {{--</div>--}}
+                                {{--<div class="card-reveal center lime lighten-4">--}}
+                                    {{--<span class="card-title"><i class="material-icons right">close</i></span>--}}
+                                    {{-- route will go to the meals table page with id of plan passed --}}
+                                    {{--<a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>1]) }}"><span class="fa fa-pencil"></span></a>--}}
+                                    {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col s12 m6 l4">--}}
+                            {{--<div class="card sticky-action hoverable">--}}
+                                {{--<div class="card-image waves-effect waves-block waves-asparagus">--}}
+                                    {{--<img class="img-responsive activator" src="/img/diet-meal-2.jpg">--}}
+                                {{--</div>--}}
+                                {{--<div class="card-content no-pad-top">--}}
+                                    {{--<h2 class="card-title activator grey-text text-darken-4 no-pad-bot center">Summer Bod Here I Come Plan</h2>--}}
+                                {{--</div>--}}
+                                {{--<div class="card-reveal center lime lighten-4">--}}
+                                    {{--<span class="card-title"><i class="material-icons right">close</i></span>--}}
+                                    {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-pencil"></span></a>--}}
+                                    {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="col s12 m6 l4">--}}
+                            {{--<div class="card sticky-action hoverable">--}}
+                                {{--<div class="card-image waves-effect waves-block waves-asparagus">--}}
+                                    {{--<span class="fa fa-plus-circle light-green-text" style="display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>--}}
+                                {{--</div>--}}
+                                {{--<div class="card-content no-pad-top">--}}
+                                    {{--<h2 class="card-title activator grey-text center text-darken-4 no-pad-bot">Add New Meal Plan</h2>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+
+
+                    Plan::where('chef_id', Auth::guard('chef')->user()->id)->get()
+
+                    $plan->mealplans()->get();
