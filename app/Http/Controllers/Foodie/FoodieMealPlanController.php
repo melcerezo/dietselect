@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Foodie;
 
+use App\Http\Controllers\Controller;
 use App\Chef;
 use App\Meal;
 use App\MealPlan;
