@@ -51,6 +51,9 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('verify/send', 'Foodie\Auth\VerificationController@sendNewVerificationCode')->name('foodie.verify.send');
 
     Route::get('chefs', 'Foodie\FoodieMealPlanController@viewChefs')->name('foodie.chef.show');
+    Route::get('chefs/plan/{id}', 'Foodie\FoodieMealPlanController@viewChefsPlans')->name('foodie.chef.plan');
+    Route::get('chefs/meal/{plan}','Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
+    Route::get('chefs/customize/{meal}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
 
 });
 

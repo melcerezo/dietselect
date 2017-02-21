@@ -89,6 +89,11 @@ ul.side-nav {
 .modal.modal-fixed-footer {
     height: 75%;
 }
+.customize-plan-option-btn {
+    display:block;
+    font-size: 3em;
+    text-align: left;
+}
 
 /* ==========================================================================
    Media Queries

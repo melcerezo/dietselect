@@ -29,4 +29,30 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
+    public function viewChefsPlans($id){
+        $chefPlans=Plan::where('chef_id', $id)->get();
+        $chefsPlanCount= $chefPlans->count();
+        return view('foodie.planSelect')->with([
+            'foodie'=>Auth::guard('foodie')->user(),
+            'plans' => $chefPlans, //get data of meal plan
+            'planCount'=>$chefsPlanCount
+        ]);
+    }
+
+    public function viewChefsMeals(Plan $plan){
+        $mealPlans=$plan->mealplans()->get();
+        $mealPlansCount=$mealPlans->count();
+
+        return view('foodie.mealCustomize')->with([
+            'foodie'=>Auth::guard('foodie')->user(),
+            'mealPlans' => $mealPlans,
+            'mealPlansCount'=>$mealPlansCount
+        ]);
+    }
+
+    public function customizeChefsMeals(Meal $meal, Request $request){
+        //
+    }
+
+
 }

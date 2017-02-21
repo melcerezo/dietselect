@@ -20,7 +20,9 @@
                             <div class="col s12 m6 l4">
                                 <div class="card sticky-action hoverable">
                                     <div class="card-image waves-effect waves-block waves-asparagus">
-                                        <img class="img-responsive activator" src="/img/diet-meal-1.jpg">
+                                        <a href="{{ route('foodie.chef.plan',['id'=>$chef->id]) }}">
+                                            <img class="img-responsive activator" src="/img/diet-meal-1.jpg">
+                                        </a>
                                     </div>
                                     <div class="card-content">
                                         <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$chef->name}}</span>
@@ -28,7 +30,7 @@
                                     <div class="card-reveal center lime lighten-4">
                                         <span class="card-title"><i class="material-icons right">close</i></span>
                                         {{--route will go to the meals table page with id of plan passed--}}
-                                        {{--<a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}"><span class="fa fa-pencil"></span></a>--}}
+                                        {{--<a class="meal-plan-option-btn" href="{{ route('foodie.chef.plan',['id'=>$chef->id]) }}"><span class="fa fa-pencil"></span></a>--}}
                                         {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
                                     </div>
                                 </div>
