@@ -40,6 +40,8 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasic')->name('foodie.profile.basic');
     Route::post('profile/address', 'Foodie\FoodieController@saveProfileAddress')->name('foodie.profile.address');
+    Route::post('profile/address/update', 'Foodie\FoodieController@updateProfileAddress')->name('foodie.address.update');
+    Route::post('profile/address/delete', 'Foodie\FoodieController@deleteProfileAddress')->name('foodie.address.delete');
     Route::post('profile/allergies', 'Foodie\FoodieController@saveProfileAllergies')->name('foodie.profile.allergies');
     Route::post('profile/preferences', 'Foodie\FoodieController@saveProfilePreferences')->name('foodie.profile.preferences');
 
