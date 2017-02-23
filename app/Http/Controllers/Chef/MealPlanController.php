@@ -80,7 +80,7 @@ class MealPlanController extends Controller
 //$id,
     public function setMeal(Request $request)
     {
-        dd($request);
+//        dd($request);
 
 //        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
         // Creation of Meal
