@@ -18,7 +18,7 @@ class Meal extends Model
     }
 
     public function mealplan(){
-        return $this->hasMany('App\MealPlan');
+        return $this->hasMany(MealPlan::class);
     }
 
     protected $fillable=[
