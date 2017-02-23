@@ -70,7 +70,7 @@ class MealPlanController extends Controller
         return view('chef.meal_planner')->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
-            'mealPlansCount'=>$mealPlansCount,
+            'mealPlansCount'=> $mealPlansCount,
             'ingredients' => $ingredients
         ]);
     }
@@ -80,7 +80,7 @@ class MealPlanController extends Controller
 //$id,
     public function setMeal(Request $request)
     {
-
+        dd($request);
 
 //        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
         // Creation of Meal

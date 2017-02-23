@@ -19,32 +19,32 @@
                 @if($mealPlansCount==0)
                     <td>NO MEALS YET!</td>
                 @else
-                <td>Breakfast</td>
-                @foreach($mealPlans as $mealPlan)
-                    @if($mealPlan->meal_type == 'Breakfast')
-                        @if($mealPlan->day == 'MO')
-                            <td><a href="#editMeal"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                        @elseif($mealPlan->day == 'TU')
-                            <td><a href="#editMeal"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                        @elseif($mealPlan->day == 'WE')
-                            <td><a href="#editMeal"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                        @elseif($mealPlan->day == 'TH')
-                            <td><a href="#editMeal"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                        @elseif($mealPlan->day == 'FR')
-                            <td><a href="#editMeal"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
+                    <td>Breakfast</td>
+                    @foreach($mealPlans as $mealPlan)
+                        @if($mealPlan->meal_type == 'Breakfast')
+                            @if($mealPlan->day == 'MO')
+                                <td><a href="#editMeal"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+                            @elseif($mealPlan->day == 'TU')
+                                <td><a href="#editMeal"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+                            @elseif($mealPlan->day == 'WE')
+                                <td><a href="#editMeal"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+                            @elseif($mealPlan->day == 'TH')
+                                <td><a href="#editMeal"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+                            @elseif($mealPlan->day == 'FR')
+                                <td><a href="#editMeal"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+                            @endif
                         @endif
-                    @endif
-                @endforeach
+                    @endforeach
             </tr>
 
             <tr>
@@ -170,46 +170,53 @@
     </div>
 
     @unless($mealPlansCount==0)
-    <div id="editMeal" class="modal">
-        <form action="{{route('chef.meal.update', $mealPlan->id)}}" method="post">
-            {{csrf_field()}}
+        <div id="editMeal" class="modal">
+            <form action="{{route('chef.meal.update', $mealPlan->id)}}" method="post">
+                {{csrf_field()}}
 
-            <div class="modal-content">
-                <h4>Update Meal</h4>
-                <p><label for="description">Description</label></p>
-                <input type="text" name="description" id="" class="form-control">
+                <div class="modal-content">
+                    <h4>Update Meal</h4>
+                    <p><label for="description">Description</label></p>
+                    <input type="text" name="description" id="" class="form-control">
 
-                <p><label for="description">Main Ingredient</label></p>
-                <input type="text" name="main_ingredient" id="" class="form-control">
+                    <p><label for="description">Main Ingredient</label></p>
+                    <input type="text" name="main_ingredient" id="" class="form-control">
 
-                <select name="ingredient">
-                    <option value="" disabled selected>Choose your option</option>
-                    @foreach($ingredients as $ingredient)
-                        <option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>
-                    @endforeach
-                </select>
-                <label for="grams">Grams:</label>
-                <input type="number" name="grams" id="grams" class="form-control">
+                    <select name="ingredient">
+                        <option value="" disabled selected>Choose your option</option>
+                        @foreach($ingredients as $ingredient)
+                            {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
+                        @endforeach
+                    </select>
+                    <label for="grams">Grams:</label>
+                    <input type="number" name="grams" id="grams" class="form-control">
 
-            </div>
-            <div class="modal-footer">
-                <button type="submit">Update</button>
-                {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
-            </div>
-        </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit">Update</button>
+                    {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
+                </div>
+            </form>
 
-    </div>
+        </div>
     @endunless
 
     <div id="createMeal" class="modal">
         <div class="modal-content">
-        <h4>Create Meal</h4>
-        <form action="{{route('chef.meal.create')}}" method="post">
-            {{csrf_field()}}
+            <h4>Create Meal</h4>
+            <form action="{{route('chef.meal.create')}}" method="post">
+                {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
+                <select name="ingredient">
+                    <option value="" disabled selected>Choose your option</option>
+                    @foreach($ingredients as $ingredient)
+                        {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
+                    @endforeach
+                </select>
                 <input type="submit" value="Submit" class="btn btn-primary">
-        </form>
+
+            </form>
         </div>
     </div>
 
