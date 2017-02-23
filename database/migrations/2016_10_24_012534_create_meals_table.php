@@ -18,10 +18,10 @@ class CreateMealsTable extends Migration
             $table->integer('chef_id')->unsigned();
             $table->string('description');
             $table->string('main_ingredient');
-            $table->double('calories');
-            $table->double('carbohydrates');
-            $table->double('protein');
-            $table->double('fat');
+            $table->double('calories')->nullable();
+            $table->double('carbohydrates')->nullable();
+            $table->double('protein')->nullable();
+            $table->double('fat')->nullable();
             $table->timestamps();
         });
 

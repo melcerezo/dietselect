@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Ingredient extends Model
 {
 
-    protected $table='ingredient_meal';
+//    protected $table='meal_ingredients';
 
 //    public function meal(){
 //        return $this->belongsTo('App\Meal');
@@ -18,9 +18,9 @@ class Ingredient extends Model
         return $this->belongsToMany(Meal::class);
     }
 
-    protected $fillable=[
-        'meal_id',
-        'ingredient_id',
-        'grams'
-    ];
+//    protected $fillable=[
+//        'meal_id',
+//        'ingredient_id',
+//        'grams'
+//    ];
 }

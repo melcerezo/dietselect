@@ -184,9 +184,9 @@
 
                     <select name="ingredient">
                         <option value="" disabled selected>Choose your option</option>
-                        @foreach($ingredients as $ingredient)
-                            {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
-                        @endforeach
+                        {{--@foreach($ingredients as $ingredient)--}}
+                        {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
+                        {{--@endforeach--}}
                     </select>
                     <label for="grams">Grams:</label>
                     <input type="number" name="grams" id="grams" class="form-control">
@@ -208,14 +208,43 @@
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
-                <select name="ingredient">
-                    <option value="" disabled selected>Choose your option</option>
+                <select name="day">
+                    <option disabled selected>Choose day</option>
+                    <option>MO</option>
+                    <option>TU</option>
+                    <option>WE</option>
+                    <option>TH</option>
+                    <option>FR</option>
+                </select>
+
+                <select name="meal_type">
+                    <option disabled selected>Choose Meal Type</option>
+                    <option>Breakfast</option>
+                    <option>Morning Snack</option>
+                    <option>Lunch</option>
+                    <option>Afternoon Snack</option>
+                    <option>Dinner</option>
+                </select>
+
+                <select name="main_ingredient">
+                    <option disabled selected>Choose Main Ingredient</option>
+                    <option>Chicken</option>
+                    <option>Beef</option>
+                    <option>Pork</option>
+                    <option>Vegetables</option>
+                </select>
+
+                <select name="ingredients">
+                    <option value="" disabled selected>Choose Ingredient</option>
                     @foreach($ingredients as $ingredient)
-                        {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
+                        <option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>
                     @endforeach
                 </select>
-                <input type="submit" value="Submit" class="btn btn-primary">
 
+                <input type="number" name="grams" id="" class="form-control">
+
+
+                <input type="submit" value="Submit" class="btn btn-primary">
             </form>
         </div>
     </div>
