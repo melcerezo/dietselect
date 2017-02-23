@@ -54,7 +54,7 @@ class MealPlanController extends Controller
 //        $list = Ingredient::all();
 //        $ingredients = $list->take(10);
 
-        $ingredients = DB::table('ingredients')->select('calories', 'protein', 'fat', 'carbohydrates', 'description')->limit(1)->get();
+        $ingredients = DB::table('ingredients')->select('id','calories', 'protein', 'fat', 'carbohydrates', 'description')->limit(5)->get();
 //        foreach ($ingredients as $ingredient) :
 //            echo 'Calories:'. $ingredient->calories * 0.01 .'<br>';
 //            echo 'Protein:'. $ingredient->protein * 0.01 .'<br>';
@@ -87,12 +87,17 @@ class MealPlanController extends Controller
         $meal = new Meal();
         $meal->chef_id = Auth::guard('chef')->user()->id;
         $meal->description = $request['description'];
-        $meal->main_ingredient = 'test_ingredient';
-        $meal->calories = 10;
-        $meal->carbohydrates = 10;
-        $meal->protein = 10;
-        $meal->fat = 10;
+        $meal->main_ingredient = $request['main_ingredient'];
+        $ingredient = $request['ingredients'];
+        $val = Ingredient::where('id', '=', $ingredient)->first();
+        $grams = $request['grams'];
+        $cal = $val->calories * .01 * $grams;
+        $pro = $val->protein * .01 * $grams;
+        $fat = $val->fat * .01 * $grams;
+        $car = $val->carbohydrates * .01 * $grams;
         $meal->save();
+        $meal->ingredients()->sync($request['ingredients'], false);
+        DB::table('meal_plans')->insert(['day' => $request['day'], 'meal_type' => $request['meal_type']]);
         return back();
 
 //        $plan_id=$id;
