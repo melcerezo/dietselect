@@ -12,13 +12,18 @@ class Meal extends Model
 //        return $this->hasMany('App\Ingredient');
 //    }
 
-    public function ingredients()
+    public function ingredient_meal()
     {
-        return $this->belongsToMany(Ingredient::class);
+        return $this->hasMany(IngredientMeal::class);
     }
 
     public function mealplan(){
         return $this->hasMany(MealPlan::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
     }
 
     protected $fillable=[

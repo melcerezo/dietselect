@@ -20,5 +20,10 @@ class Plan extends Model
         'price'
     ];
 
+    public function meals()
+    {
+        return $this->hasMany(Meal::class);
+    }
+
 
 }
