@@ -13,9 +13,9 @@ class Ingredient extends Model
 //        return $this->belongsTo('App\Meal');
 //    }
 
-    public function meals()
+    public function ingredient_meal()
     {
-        return $this->belongsToMany(Meal::class);
+        return $this->hasMany(IngredientMeal::class);
     }
 
 //    protected $fillable=[
