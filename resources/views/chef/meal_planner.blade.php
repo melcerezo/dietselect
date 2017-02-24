@@ -204,7 +204,7 @@
     <div id="createMeal" class="modal">
         <div class="modal-content">
             <h4>Create Meal</h4>
-            <form action="{{route('chef.meal.create')}}" method="post">
+            <form action="{{route('chef.meal.create', $plan->id)}}" method="post">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
