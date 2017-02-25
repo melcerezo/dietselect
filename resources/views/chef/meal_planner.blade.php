@@ -50,7 +50,7 @@
             <tr>
                 <td>Snack</td>
                 @foreach($mealPlans as $mealPlan)
-                    @if($mealPlan->meal_type == 'Snack')
+                    @if($mealPlan->meal_type == 'MorningSnack')
                         @if($mealPlan->day == 'MO')
                             <td><a href="#editMeal"
                                    class=" waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
@@ -107,7 +107,7 @@
             <tr>
                 <td>Snack</td>
                 @foreach($mealPlans as $mealPlan)
-                    @if($mealPlan->meal_type == 'Snack')
+                    @if($mealPlan->meal_type == 'AfternoonSnack')
                         @if($mealPlan->day == 'MO')
                             <td><a href="#editMeal"
                                    class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
@@ -210,28 +210,28 @@
                 <input type="text" name="description" id="description" class="form-control">
                 <select name="day">
                     <option disabled selected>Choose day</option>
-                    <option>MO</option>
-                    <option>TU</option>
-                    <option>WE</option>
-                    <option>TH</option>
-                    <option>FR</option>
+                    <option value="MO">MO</option>
+                    <option value="TU">TU</option>
+                    <option value="WE">WE</option>
+                    <option value="TH">TH</option>
+                    <option value="FR">FR</option>
                 </select>
 
                 <select name="meal_type">
                     <option disabled selected>Choose Meal Type</option>
-                    <option>Breakfast</option>
-                    <option>Morning Snack</option>
-                    <option>Lunch</option>
-                    <option>Afternoon Snack</option>
-                    <option>Dinner</option>
+                    <option value="Breakfast">Breakfast</option>
+                    <option value="MorningSnack">Morning Snack</option>
+                    <option value="Lunch">Lunch</option>
+                    <option value="AfternoonSnack">Afternoon Snack</option>
+                    <option value="Dinner">Dinner</option>
                 </select>
 
                 <select name="main_ingredient">
                     <option disabled selected>Choose Main Ingredient</option>
-                    <option>Chicken</option>
-                    <option>Beef</option>
-                    <option>Pork</option>
-                    <option>Vegetables</option>
+                    <option value="Chicken">Chicken</option>
+                    <option value="Beef">Beef</option>
+                    <option value="Pork">Pork</option>
+                    <option value="Vegetables">Vegetables</option>
                 </select>
 
                 <select name="ingredients">

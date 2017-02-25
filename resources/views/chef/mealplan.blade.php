@@ -39,7 +39,7 @@
                                                 <img class="img-responsive activator" src="/img/diet-meal-1.jpg">
                                             </div>
                                             <div class="card-content">
-                                                <span class="card-title activator grey-text text-darken-4 no-pad-bot center">The Holiday Belly Buster Plan</span>
+                                                <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
                                             </div>
                                             <div class="card-reveal center lime lighten-4">
                                                 <span class="card-title"><i class="material-icons right">close</i></span>
