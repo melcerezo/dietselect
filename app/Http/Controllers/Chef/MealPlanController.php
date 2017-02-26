@@ -54,28 +54,24 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan)
     {
-//        $list = Ingredient::all();
-//        $ingredients = $list->take(10);
-
+//        $meals3=array();
         $ingredients = DB::table('ingredients')->select('id','calories', 'protein', 'fat', 'carbohydrates', 'description')->limit(5)->get();
-        $meals = Meal::take(5);
-//        foreach ($ingredients as $ingredient) :
-//            echo 'Calories:'. $ingredient->calories * 0.01 .'<br>';
-//            echo 'Protein:'. $ingredient->protein * 0.01 .'<br>';
-//            echo 'Fat:'. $ingredient->fat * 0.01 .'<br>';
-//            echo 'Carbohydrates:'. $ingredient->carbohydrates * 0.01 .'<br><br>';
-//        endforeach;
-//
-//        die();
+//        $meals = Meal::take(5);
         $mealPlans=$plan->mealplans()->get();
         $mealPlansCount=$mealPlans->count();
-//        dd($mealPlans);
+        $ingredientmeals=$plan::with('mealplans.meal')->first();
+//        $meals2=$ingredientmeals->mealplans;
+
+//        foreach ($meals2 as $mea){
+//            $meals3[]=$mea->id;
+//        }
+//        dd($mealPlans[0]->meal->description);
         return view('chef.meal_planner', compact('plan'))->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'ingredients' => $ingredients,
-            'meals' => $meals,
+//            'meals3' => $meals3
         ]);
     }
 
@@ -86,8 +82,6 @@ class MealPlanController extends Controller
     {
 
 
-//        $newMeal= new Meal(['chef_id'=> Auth::guard('chef')->user(),'description'=>,'main_ingredient'=>,'calories'=>,'carbohydrates'=>,'protein'=>,'fat'=>,]);
-        // Creation of Meal
         $meal = new Meal();
         $meal->chef_id = Auth::guard('chef')->user()->id;
         $meal->description = $request['description'];
@@ -100,10 +94,12 @@ class MealPlanController extends Controller
         $pro = $val->protein * .01 * $grams;
         $fat = $val->fat * .01 * $grams;
         $car = $val->carbohydrates * .01 * $grams;
-//        $plan->meals()->save($meal);
+        $meal->calories = $cal;
+        $meal->carbohydrates = $car;
+        $meal->protein = $pro;
+        $meal->fat = $fat;
 
         $meal->save();
-//        dd($plan->id);
         DB::table('meal_plans')->insert(
             ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
         );
@@ -112,13 +108,7 @@ class MealPlanController extends Controller
             ['meal_id' => $meal->id, 'ingredient_id' => $request['ingredients'], 'grams' => $grams]
         );
 
-
-//        $meal->ingredients()->sync(array([$request['ingredients'], false, $request['day'], $request['meal_type']]));
-//        DB::table('ingredient_meal')->insert(['meal_id' => $request['day'], 'meal_type' => $request['meal_type']]);
         return back();
-
-//        $plan_id=$id;
-//        $newSetMeal= new MealPlan(['plan_id'=>$plan_id,''=>,''=>,''=>,]);
 
 
     }
@@ -127,30 +117,9 @@ class MealPlanController extends Controller
 
     public function updateMeal(Meal $meal, Request $request)
     {
-
-        $ingredient = Ingredient::where('meal_id', '=', $meal->id)->get();
-
-        $grams = Ingredient::all();
-        $grams = $grams->pluck('grams');
-        $meal->description = $request['description'];
-        $meal->main_ingredient = $request['main_ingredient'];
-        $meal->calories = $request['calories'];
-        $meal->carbohydrates = $request['carbohydrates'];
-        $meal->protein = $request['protein'];
-        $meal->fat = $request['fat'];
+//        $meal
 
 
-
-        $grams = $request['grams'];
-
-        dd($grams);
-        // Ingredients select option
-
-
-        // Select option maybe in the future
-        $meal->save();
-//        $meal->ingredients()->save($meal);
-        $meal->ingredients()->attach($request['ingredient_id'], false);
         return back();
     }
 
