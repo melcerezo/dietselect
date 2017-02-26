@@ -59,13 +59,12 @@ class MealPlanController extends Controller
 //        $meals = Meal::take(5);
         $mealPlans=$plan->mealplans()->get();
         $mealPlansCount=$mealPlans->count();
-        $ingredientmeals=$plan::with('mealplans.meal')->first();
+        $ingredientmeals=$plan::with('mealplans.meal.ingredient_meal')->first();
 //        $meals2=$ingredientmeals->mealplans;
-
-//        foreach ($meals2 as $mea){
-//            $meals3[]=$mea->id;
+//
+//        if($mealPlans->meal->){
+//
 //        }
-//        dd($mealPlans[0]->meal->description);
         return view('chef.meal_planner', compact('plan'))->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,

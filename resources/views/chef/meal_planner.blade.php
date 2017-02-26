@@ -259,10 +259,12 @@
                         <input type="text" name="main_ingredient" class="form-control" value="{{$mealPlans[$i]->meal->main_ingredient}}">
 
                         <select name="ingredient">
-                            <option value="" disabled selected>{{$mealPlans[$i]->}}</option>
+                            @for($j=0;$j<$mealPlans[$i]->meal->ingredient_meal->count();$j++)
+                            <option value="" disabled selected>{{$mealPlans[$i]->meal->ingredient_meal[$j]->ingredient->description}}</option>
                             @foreach($ingredients as $ingredient)
                                 <option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>
                             @endforeach
+                            @endfor
                         </select>
                         <label for="grams">Grams:</label>
                         <input type="number" name="grams" id="grams" class="form-control">
