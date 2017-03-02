@@ -54,57 +54,93 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan)
     {
-//        $meals3=array();
         $ingredients = DB::table('ingredients')->select('id','calories', 'protein', 'fat', 'carbohydrates', 'description')->limit(5)->get();
-//        $meals = Meal::take(5);
         $mealPlans=$plan->mealplans()->get();
         $mealPlansCount=$mealPlans->count();
-        $ingredientmeals=$plan::with('mealplans.meal.ingredient_meal')->first();
-//        $meals2=$ingredientmeals->mealplans;
-//
-//        if($mealPlans->meal->){
-//
-//        }
+        $ingredientsMeal= '';
+        $ingredientCount=DB::table('ingredient_meal')
+        ->join('meals','ingredient_meal.meal_id','=','meals.id')
+        ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+        ->count();
+
+        if($ingredientCount>0){
+            $ingredientsMeal=DB::table('ingredients')
+            ->join('ingredient_meal','ingredients.id','=','ingredient_meal.ingredient_id')
+            ->join('meals','ingredient_meal.meal_id','=','meals.id')
+            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->select('ingredients.description','ingredient_meal.meal_id','ingredient_meal.grams')->get();
+        }
         return view('chef.meal_planner', compact('plan'))->with([
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'ingredients' => $ingredients,
-//            'meals3' => $meals3
+            'ingredientsMeal'=>$ingredientsMeal,
+            'ingredientCount'=>$ingredientCount,
         ]);
+    }
+
+    public function getIngredJson(){
+        $data = DB::table('ingredients')->select('id','description')->limit(5)->get()->toJson();
+
+        $ingreds=json_decode($data, true);
+        $ingredCount=count($ingreds);
+        $i=1;
+//        dd($ingredCount);
+//        dd($ingreds);
+        $jsonData='{data: {';
+            foreach($ingreds as $ingred){
+                if($i<$ingredCount) {
+                    $jsonData .= '"' . $ingred["description"] . '" : null, ';
+                }else{
+                    $jsonData .= '"' . $ingred["description"] . '" : null';
+                }
+            }
+        $jsonData.='}, limit:20}';
+        $response=$jsonData;
+
+        return $response;
     }
 
     // modal that pops up to create meal in meal plan
 
-//$id,
     public function setMeal(Request $request, Plan $plan)
     {
-
-
         $meal = new Meal();
         $meal->chef_id = Auth::guard('chef')->user()->id;
         $meal->description = $request['description'];
         $meal->main_ingredient = $request['main_ingredient'];
-        $ingredient = $request['ingredients'];
+        $meal->calories = 0;
+        $meal->carbohydrates = 0;
+        $meal->protein = 0;
+        $meal->fat = 0;
+        $ingredientCount=count($request['ingredients']);
+//loop starts
+            for($i=0;$i<$ingredientCount;$i++){
 
-        $val = Ingredient::where('id', '=', $ingredient)->first();
-        $grams = $request['grams'];
-        $cal = $val->calories * .01 * $grams;
-        $pro = $val->protein * .01 * $grams;
-        $fat = $val->fat * .01 * $grams;
-        $car = $val->carbohydrates * .01 * $grams;
-        $meal->calories = $cal;
-        $meal->carbohydrates = $car;
-        $meal->protein = $pro;
-        $meal->fat = $fat;
 
+                $ingredient = $request['ingredients'][$i];
+
+                $val = Ingredient::where('id', '=', $ingredient)->first();
+                $grams = $request['grams'][$i];
+                $cal = $val->calories * .01 * $grams;
+                $pro = $val->protein * .01 * $grams;
+                $fat = $val->fat * .01 * $grams;
+                $car = $val->carbohydrates * .01 * $grams;
+                $meal->calories += $cal;
+                $meal->carbohydrates += $car;
+                $meal->protein += $pro;
+                $meal->fat += $fat;
+            }
+//loop ends
         $meal->save();
+        for($i=0;$i<$ingredientCount;$i++){
+            DB::table('ingredient_meal')->insert(
+                ['meal_id' => $meal->id, 'ingredient_id' => $request['ingredients'][$i], 'grams' => $request['grams'][$i]]
+            );
+        }
         DB::table('meal_plans')->insert(
             ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
-        );
-
-        DB::table('ingredient_meal')->insert(
-            ['meal_id' => $meal->id, 'ingredient_id' => $request['ingredients'], 'grams' => $grams]
         );
 
         return back();
@@ -116,7 +152,6 @@ class MealPlanController extends Controller
 
     public function updateMeal(Meal $meal, Request $request)
     {
-//        $meal
 
 
         return back();
