@@ -85,18 +85,18 @@ class MealPlanController extends Controller
 
         $ingreds=json_decode($data, true);
         $ingredCount=count($ingreds);
-        $i=1;
+        $i=0;
 //        dd($ingredCount);
 //        dd($ingreds);
-        $jsonData='{data: {';
+        $jsonData='{"data": {';
             foreach($ingreds as $ingred){
-                if($i<$ingredCount) {
+                if(++$i<$ingredCount) {
                     $jsonData .= '"' . $ingred["description"] . '" : null, ';
                 }else{
                     $jsonData .= '"' . $ingred["description"] . '" : null';
                 }
             }
-        $jsonData.='}, limit:20}';
+        $jsonData.='}, "limit":20}';
         $response=$jsonData;
 
         return $response;

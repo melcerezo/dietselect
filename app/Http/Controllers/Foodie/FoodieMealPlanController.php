@@ -42,11 +42,12 @@ class FoodieMealPlanController extends Controller
     public function viewChefsMeals(Plan $plan){
         $mealPlans=$plan->mealplans()->get();
         $mealPlansCount=$mealPlans->count();
-
+        $ingredients=DB::table('ingredients')->select('id','description')->limit(5)->get();
         return view('foodie.mealCustomize')->with([
             'foodie'=>Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
-            'mealPlansCount'=>$mealPlansCount
+            'mealPlansCount'=>$mealPlansCount,
+            'ingredients'=>$ingredients
         ]);
     }
 

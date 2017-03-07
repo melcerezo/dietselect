@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
+    <script src="/js/ingredientAutocomplete.js"></script>
 @endsection
 
 @section('content')
@@ -157,9 +158,27 @@
 
                         <div class="ingredLabel"><label for="ingredient">Ingredients</label></div>
                         <div class="gramLabel"><label for="grams">Grams</label></div>
+                        <div id="ingredSelect" class="ingredSelect">
                         @for($c=0;$c<$ingredientCount;$c++)
+                            {{--{{dd($ingredientCount)}}--}}
                             @if($ingredientsMeal[$c]->meal_id==$mealPlans[$i]->meal->id)
                                 <div class="ingredSelect">
+                                    {{--<script>--}}
+                                        {{--$count=0;--}}
+                                        {{--$(function(){--}}
+                                            {{--$count=parseInt('{{$c}}')--}}
+                                            {{--$('#ingredSelect').append('<div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredSel'+$count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+--}}
+                                                    {{--'<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+($count)+'" class="inputBehind"></div>');--}}
+                                            {{--$.ajax({--}}
+                                                {{--url:'/chef/getIngredJson',--}}
+                                                {{--success: function(response){--}}
+                                                    {{--ingredSelect($count);--}}
+                                                {{--}--}}
+                                            {{--});--}}
+                                        {{--});--}}
+                                        {{--console.log($count);--}}
+                                    {{--</script>--}}
+
                                     <select name="ingredient">
                                         <option value="" disabled selected>{{$ingredientsMeal[$c]->description}}</option>
                                         @foreach($ingredients as $ingredient)
@@ -172,6 +191,7 @@
                                 </div>
                             @endif
                         @endfor
+                        </div>
                         {{--<label for="grams">Grams:</label>--}}
 
                     </div>
@@ -219,144 +239,25 @@
                     <option value="Vegetables">Vegetables</option>
                 </select>
 
-                <div id="ingredientContainer">
-                    <a id="ingredAdd" href="#"><span class="addIngred">+Add Ingredients Here</span></a>
+                <div id="ingredientContainer" >
+                    <div id="addMoreIngred"><a id="ingredAdd" href="#"><span class="addIngred">+Add Ingredients Here</span></a></div>
+                    <div class="spacer" style="clear: both;"></div>
                 </div>
                 <script>
                     var count=0;
                     $(function(){
-
                         $('#ingredAdd').click(function () {
                             count+=1;
-                            $('#ingredientContainer').prepend('<div class="ingredSelect"><select id="ingredient'+count+'" name="ingredients[]">' +
-                                    '<option value="" disabled selected>Choose Ingredient</option>'+
-                                    ' @foreach($ingredients as $key=>$ingredient)'+
-                                    '<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>'
-                                    +'@endforeach'+
-                                    '</select></div>'+'<div class="ingredGrams"><input type="number" name="grams[]" id="grams'+(count)+'" class="browser-default"></div>');
-
-                            $('select').material_select();
+                            $('#ingredientContainer').prepend('<div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+
+                                    '<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind"></div>');
                             });
                         });
                 </script>
-                <input type="submit" value="Submit" class="btn btn-primary">
+
+                <div><input type="submit" value="Submit" class="btn btn-primary"></div>
             </form>
         </div>
     </div>
-    <div class="row">
-        <div class="col s12">
-            <div class="row">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">textsms</i>
-                    <input type="text" id="autocomplete-input" class="autocomplete">
-                    <label for="autocomplete-input">Autocomplete</label>
-                </div>
-            </div>
-        </div>
-    </div>
-        <script>
 
-        $(function () {
-
-            $.fn.autocomplete = function (options) {
-                // Defaults
-                var defaults = {
-                    data: {}
-                };
-
-                options = $.extend(defaults, options);
-
-                return this.each(function() {
-                    var $input = $(this);
-                    var data = options.data,
-                            $inputDiv = $input.closest('.input-field'); // Div to append on
-
-                    // Check if data isn't empty
-                    if (!$.isEmptyObject(data)) {
-                        // Create autocomplete element
-                        var $autocomplete = $('<ul class="autocomplete-content dropdown-content"></ul>');
-
-                        // Append autocomplete element
-                        if ($inputDiv.length) {
-                            $inputDiv.append($autocomplete); // Set ul in body
-                        } else {
-                            $input.after($autocomplete);
-                        }
-
-                        var highlight = function(string, $el) {
-                            var img = $el.find('img');
-                            var matchStart = $el.text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
-                                    matchEnd = matchStart + string.length - 1,
-                                    beforeMatch = $el.text().slice(0, matchStart),
-                                    matchText = $el.text().slice(matchStart, matchEnd + 1),
-                                    afterMatch = $el.text().slice(matchEnd + 1);
-                            $el.html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
-                            if (img.length) {
-                                $el.prepend(img);
-                            }
-                        };
-
-                        // Perform search
-                        $input.on('keyup', function (e) {
-                            // Capture Enter
-                            if (e.which === 13) {
-                                $autocomplete.find('li').first().click();
-                                return;
-                            }
-
-                            var val = $input.val().toLowerCase();
-                            $autocomplete.empty();
-
-                            // Check if the input isn't empty
-                            if (val !== '') {
-                                for(var key in data) {
-                                    if (data.hasOwnProperty(key) &&
-                                            key.toLowerCase().indexOf(val) !== -1 &&
-                                            key.toLowerCase() !== val) {
-                                        var autocompleteOption = $('<li></li>');
-                                        if(!!data[key]) {
-                                            autocompleteOption.append('<img src="'+ data[key] +'" class="right circle"><span>'+ key +'</span>');
-                                        } else {
-                                            autocompleteOption.append('<span>'+ key +'</span>');
-                                        }
-                                        $autocomplete.append(autocompleteOption);
-
-                                        highlight(val, autocompleteOption);
-                                    }
-                                }
-                            }
-                        });
-
-                        // Set input value
-                        $autocomplete.on('click', 'li', function () {
-                            $input.val($(this).text().trim());
-                            $autocomplete.empty();
-                        });
-                    }
-                });
-            };
-
-            $('input.autocomplete').autocomplete({
-                data: {
-                    "Apple": null,
-                    "Microsoft": null,
-                    "Google": 'http://placehold.it/250x250',
-                    "suck": null
-                },
-                limit: 20, // The max amount of results that can be shown at once. Default: Infinity.
-            });
-
-//            $.ajax({
-//                url:'/chef/getIngredJson',
-//                success: function(response){
-//                    console.log(response);
-//                    $(function(){
-//                        $('input.autocomplete').autocomplete(response);
-//                    })
-//                }
-//            });
-
-        });
-    </script>
 @endsection
 

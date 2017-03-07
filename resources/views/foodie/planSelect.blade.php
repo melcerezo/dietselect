@@ -29,8 +29,12 @@
                                                 <div class="card-reveal center lime lighten-4">
                                                     <span class="card-title"><i class="material-icons right">close</i></span>
                                                     {{--route will go to the meals table page with id of plan passed--}}
-                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal',['plan'=>$plan->id]) }}">
+{{--                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal',['plan'=>$plan->id]) }}">--}}
+                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal', $plan->id) }}">
                                                         <span class="fa fa-pencil"></span>Customize
+                                                    </a>
+                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.order.review', $plan->id) }}">
+                                                        <span class="fa fa-pencil"></span>Standard
                                                     </a>
                                                     {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
                                                 </div>
@@ -45,21 +49,4 @@
             </div>
         </div>
 
-        {{--<div id="createPlan" class="modal">--}}
-            {{--<form action="{{route('chef.plan.create')}}" method="post">--}}
-                {{--{{csrf_field()}}--}}
-                {{--<div class="modal-content">--}}
-                    {{--<label for="plan_name">Plan Name:</label>--}}
-                    {{--<input type="text" name="plan_name" id="plan_name" class="form-control">--}}
-                    {{--<label for="calories">Total Calories:</label>--}}
-                    {{--<input type="text" name="calories" id="calories" class="form-control">--}}
-                    {{--<label for="price">Price:</label>--}}
-                    {{--<input type="text" name="price" id="price" class="form-control">--}}
-                {{--</div>--}}
-                {{--<div class="modal-footer">--}}
-                    {{--<input type="submit" value="Submit" class="btn btn-primary">--}}
-                {{--</div>--}}
-            {{--</form>--}}
-        {{--</div>--}}
-    </div>
 @endsection

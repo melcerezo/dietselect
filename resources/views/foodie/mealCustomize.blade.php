@@ -169,50 +169,39 @@
 
     </div>
 
-    @unless($mealPlansCount==0)
+    @unless($mealPlansCount == 0)
         <div id="editMeal" class="modal">
             <form action="{{route('foodie.meal.custom', $mealPlan->id)}}" method="post">
                 {{csrf_field()}}
 
                 <div class="modal-content">
                     {{'Hello'}}
-                    {{--<h4>Update Meal</h4>--}}
-                    {{--<p><label for="description">Description</label></p>--}}
-                    {{--<input type="text" name="description" id="" class="form-control">--}}
+                    <h4>Update Meal</h4>
+                    <p><label for="description">Description</label></p>
+                    <input type="text" name="description" id="" class="form-control">
 
-                    {{--<p><label for="description">Main Ingredient</label></p>--}}
-                    {{--<input type="text" name="main_ingredient" id="" class="form-control">--}}
+                    <p><label for="description">Main Ingredient</label></p>
+                    <input type="text" name="main_ingredient" id="" class="form-control">
 
-                    {{--<select name="ingredient">--}}
-                        {{--<option value="" disabled selected>Choose your option</option>--}}
-                        {{--@foreach($ingredients as $ingredient)--}}
-                            {{--<option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>--}}
-                        {{--@endforeach--}}
-                    {{--</select>--}}
-                    {{--<label for="grams">Grams:</label>--}}
-                    {{--<input type="number" name="grams" id="grams" class="form-control">--}}
+                    <select name="ingredient">
+                        <option value="" disabled selected>Choose your option</option>
+                        @foreach($ingredients as $ingredient)
+                            <option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>
+                        @endforeach
+                    </select>
+                    <label for="grams">Grams:</label>
+                    <input type="number" name="grams" id="grams" class="form-control">
 
                 </div>
                 <div class="modal-footer">
                     <button type="submit">Update</button>
-                    {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
+                    <a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>
                 </div>
             </form>
 
         </div>
     @endunless
 
-    {{--<div id="createMeal" class="modal">--}}
-        {{--<div class="modal-content">--}}
-            {{--<h4>Create Meal</h4>--}}
-            {{--<form action="{{route('chef.meal.create')}}" method="post">--}}
-                {{--{{csrf_field()}}--}}
-                {{--<label for="description">Meal Name:</label>--}}
-                {{--<input type="text" name="description" id="description" class="form-control">--}}
-                {{--<input type="submit" value="Submit" class="btn btn-primary">--}}
-            {{--</form>--}}
-        {{--</div>--}}
-    {{--</div>--}}
 
 
 @endsection
