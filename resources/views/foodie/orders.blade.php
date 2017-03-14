@@ -11,7 +11,10 @@
         <br>
         {{$plan->price}}
 
-        <button class="btn btn-danger">Button</button>
+        <form action="{{route('foodie.order.create', $plan->id)}}" method="post">
+            {{csrf_field()}}
+            <button type="submit" class="btn btn-danger">Order !!!</button>
+        </form>
     </div>
 
 @endsection

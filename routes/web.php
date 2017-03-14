@@ -58,6 +58,10 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('chefs/customize/{meal}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
+    Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
+
+    // Route after ordering
+    Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
 });
 
