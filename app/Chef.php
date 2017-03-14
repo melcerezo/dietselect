@@ -58,4 +58,8 @@ class Chef extends Authenticatable
     {
         $this->notify(new ChefResetPassword($token));
     }
+
+    public function plans(){
+        return $this->hasMany(Plan::class);
+    }
 }

@@ -25,5 +25,11 @@ class Plan extends Model
         return $this->hasMany(Meal::class);
     }
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
 
+    public function chef(){
+        return $this->belongsTo(Chef::class);
+    }
 }

@@ -65,6 +65,11 @@ class Foodie extends Authenticatable
     {
         $this->notify(new FoodieResetPassword($token));
     }
+
+    public function order(){
+        return $this->hasOne(Order::class);
+    }
+
 }
 
 
