@@ -2,6 +2,7 @@
 @section('head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
     <script src="/js/ingredientAutocomplete.js"></script>
+
 @endsection
 
 @section('content')
@@ -129,6 +130,7 @@
     @unless($mealPlansCount==0)
         @for($i=0;$i<$mealPlansCount;$i++)
             <div id="editMeal-{{$i}}" class="modal">
+                <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
                 <form action="{{route('chef.meal.update', $mealPlans[$i]->id)}}" method="post">
                     {{csrf_field()}}
                     <div class="modal-content">
@@ -148,7 +150,7 @@
                             Fat: {{$mealPlans[$i]->meal->fat}}g
                         </div>
                         <div>
-                            {{$mealPlans[$i]->meal->id}}
+                            {{$mealPlans[$i]->meal->ingredient_meal->count()}}
                         </div>
                         <p><label for="description">Description</label></p>
                         <input type="text" name="description" class="form-control" value="{{$mealPlans[$i]->meal->description}}">
@@ -159,37 +161,15 @@
                         <div class="ingredLabel"><label for="ingredient">Ingredients</label></div>
                         <div class="gramLabel"><label for="grams">Grams</label></div>
                         <div id="ingredSelect" class="ingredSelect">
-                        @for($c=0;$c<$ingredientCount;$c++)
-                            {{--{{dd($ingredientCount)}}--}}
-                            @if($ingredientsMeal[$c]->meal_id==$mealPlans[$i]->meal->id)
-                                <div class="ingredSelect">
-                                    {{--<script>--}}
-                                        {{--$count=0;--}}
-                                        {{--$(function(){--}}
-                                            {{--$count=parseInt('{{$c}}')--}}
-                                            {{--$('#ingredSelect').append('<div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredSel'+$count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+--}}
-                                                    {{--'<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+($count)+'" class="inputBehind"></div>');--}}
-                                            {{--$.ajax({--}}
-                                                {{--url:'/chef/getIngredJson',--}}
-                                                {{--success: function(response){--}}
-                                                    {{--ingredSelect($count);--}}
-                                                {{--}--}}
-                                            {{--});--}}
-                                        {{--});--}}
-                                        {{--console.log($count);--}}
-                                    {{--</script>--}}
-
-                                    <select name="ingredient">
-                                        <option value="" disabled selected>{{$ingredientsMeal[$c]->description}}</option>
-                                        @foreach($ingredients as $ingredient)
-                                            <option value="{{$ingredient->id}}">{{ $ingredient->description }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="ingredGramsContainer">
-                                    <input type="number" name="grams" id="grams" class="form-control" value="{{$ingredientsMeal[$c]->grams}}">
-                                </div>
-                            @endif
+                        @for($j=0;$j<$ingredientCount;$j++)
+                            @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
+                                @if($ingredientsMeal[$j]->meal_id==$mealPlans[$i]->meal->id && $c<1)
+                                    <div class="ingredSelectAdd input-field" >
+                                        <input type="text" value="{{$ingredientsMeal[$j]->description}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$c}}" name="ingredients[]" class="autocomplete inputBehind">
+                                    </div>
+                                    <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div><input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[]" id="grams{{$mealPlans[$i]}}{{$c}}" class="inputBehind"></div>
+                                @endif
+                            @endfor
                         @endfor
                         </div>
                         {{--<label for="grams">Grams:</label>--}}
@@ -243,16 +223,18 @@
                     <div id="addMoreIngred"><a id="ingredAdd" href="#"><span class="addIngred">+Add Ingredients Here</span></a></div>
                     <div class="spacer" style="clear: both;"></div>
                 </div>
-                <script>
-                    var count=0;
-                    $(function(){
-                        $('#ingredAdd').click(function () {
-                            count+=1;
-                            $('#ingredientContainer').prepend('<div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+
-                                    '<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind"></div>');
-                            });
-                        });
-                </script>
+                {{--<script>--}}
+                    {{--var count=0;--}}
+                    {{--$(function(){--}}
+                        {{--$('#ingredAdd').click(function () {--}}
+                            {{--count+=1;--}}
+                            {{--$('#ingredientContainer').prepend('<div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+--}}
+                                    {{--'<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind"></div>');--}}
+                            {{--});--}}
+                        {{----}}
+                        {{----}}
+                        {{--});--}}
+                {{--</script>--}}
 
                 <div><input type="submit" value="Submit" class="btn btn-primary"></div>
             </form>

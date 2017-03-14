@@ -18,9 +18,6 @@ class CreatePlansTable extends Migration
             $table->integer('chef_id')->unsigned();
             $table->string('plan_name');
             $table->double('calories');
-            $table->double('carbohydrates');
-            $table->double('protein');
-            $table->double('fat');
             $table->decimal('price');
             $table->timestamps();
         });

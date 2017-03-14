@@ -54,7 +54,6 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan)
     {
-        $ingredients = DB::table('ingredients')->select('id','calories', 'protein', 'fat', 'carbohydrates', 'description')->limit(5)->get();
         $mealPlans=$plan->mealplans()->get();
         $mealPlansCount=$mealPlans->count();
         $ingredientsMeal= '';
@@ -74,30 +73,51 @@ class MealPlanController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
-            'ingredients' => $ingredients,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
         ]);
     }
 
     public function getIngredJson(){
-        $data = DB::table('ingredients')->select('id','description')->limit(5)->get()->toJson();
 
-        $ingreds=json_decode($data, true);
-        $ingredCount=count($ingreds);
+        $data='';
+
+//        if($type=='protein'){
+
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd','~0500~')
+                    ->orWhere('FdGrp_Cd','~1000~')
+                    ->orWhere('FdGrp_Cd','~1300~')
+                    ->orWhere('FdGrp_Cd','~1500~')
+                ->get();
+
+//        }else if($type=='carbohydrates'){
+//
+//        }
+//        $data = DB::table('ingredients')->select('id','description')->limit(100)->get()->toJson();
+
+        $ingredCount=$data->count();
         $i=0;
 //        dd($ingredCount);
 //        dd($ingreds);
         $jsonData='{"data": {';
-            foreach($ingreds as $ingred){
+            foreach($data as $datum){
                 if(++$i<$ingredCount) {
-                    $jsonData .= '"' . $ingred["description"] . '" : null, ';
-                }else{
-                    $jsonData .= '"' . $ingred["description"] . '" : null';
+                    $jsonData .= '"' . $datum->Long_Desc . '" : null, ';
+                }
+                else{
+                    $jsonData .= '"' . $datum->Long_Desc . '" : null';
                 }
             }
-        $jsonData.='}, "limit":20}';
+        $jsonData.='}, "limit":3}';
         $response=$jsonData;
+        return $response;
+    }
+
+    public function getIngredCount(Meal $meal){
+        $meal_ingredientCount=$meal->ingredient_meal()->count();
+
+        $response=$meal_ingredientCount;
 
         return $response;
     }
@@ -115,13 +135,15 @@ class MealPlanController extends Controller
         $meal->protein = 0;
         $meal->fat = 0;
         $ingredientCount=count($request['ingredients']);
+        $ingredId=[];
 //loop starts
             for($i=0;$i<$ingredientCount;$i++){
 
 
                 $ingredient = $request['ingredients'][$i];
 
-                $val = Ingredient::where('id', '=', $ingredient)->first();
+                $val = DB::table('ingredients')->select('calories','protein','carbohydrates','fat')->where('description','=',$ingredient)->first();
+                $ingredId[$i]=DB::table('ingredients')->select('id')->where('description','=',$ingredient)->first();
                 $grams = $request['grams'][$i];
                 $cal = $val->calories * .01 * $grams;
                 $pro = $val->protein * .01 * $grams;
@@ -136,7 +158,7 @@ class MealPlanController extends Controller
         $meal->save();
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
-                ['meal_id' => $meal->id, 'ingredient_id' => $request['ingredients'][$i], 'grams' => $request['grams'][$i]]
+                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->id, 'grams' => $request['grams'][$i]]
             );
         }
         DB::table('meal_plans')->insert(
@@ -152,6 +174,10 @@ class MealPlanController extends Controller
 
     public function updateMeal(Meal $meal, Request $request)
     {
+        $mealUpdate= $meal;
+        $meal->description = $request['description'];
+        $meal->main_ingredient = $request['main_ingredient'];
+
 
 
         return back();
