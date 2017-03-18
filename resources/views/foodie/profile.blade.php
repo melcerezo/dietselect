@@ -84,13 +84,15 @@
                 </form> <!-- End of basic-profile form -->
             </div>
 
-            <div id="addresses-container">
-                <h4 id="address-section">Delivery Addresses</h4>
+            <div id="addresses-container" class="card-panel">
+                <h2 id="address-section" class="mustard-text">Delivery Addresses</h2>
                 <ul>
                     @foreach($addresses as $address)
-                        <li>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</li>
-                        <button data-target="update-address-modal" class="btn modal-trigger">Edit Address</button>
-                        <button data-target="delete-address-modal" class="btn modal-trigger">Delete Address</button>
+                        <li>
+                            <h4>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</h4>
+                            <button data-target="update-address-modal" class="btn modal-trigger">Edit Address</button>
+                            <button data-target="delete-address-modal" class="btn modal-trigger">Delete Address</button>
+                        </li>
                     @endforeach
                 </ul>
                 <div>
@@ -298,11 +300,11 @@
                 </div>
             </div>
 
-            <div id="allergies-container">
-                <h4 id="allergies-section">Allergies :</h4>
+            <div id="allergies-container" class="card-panel">
+                <h2 id="allergies-section" class="mustard-text">Allergies :</h2>
                 <ul>
                     @foreach($allergies as $allergy)
-                        <li>{{ $allergy->ingredient_id }}</li>
+                        <li><h4>{{ $allergy->allergy }}</h4></li>
                     @endforeach
                 </ul>
                 <div>
@@ -365,12 +367,14 @@
             </div>
 
 
-            <div id="food-preferences-container">
-                <h4 id="food-preferences-section">Food Preference:
+            <div id="food-preferences-container" class="card-panel">
+                <h2 id="food-preferences-section" class="mustard-text">Food Preference</h2>
                 @if(isset($preference))
-                {{ $preference->ingredient }}
+                    <h4>{{ $preference->ingredient }}</h4>
                 @endif
-                </h4>
+                <div>
+                    <button data-target="food-preference-modal" class="btn modal-trigger">Edit Food Preferences</button>
+                </div>
             </div>
 
             <div id="food-preference-modal" class="modal">

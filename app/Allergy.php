@@ -7,11 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Allergy extends Model
 {
 
-   // protected $table= 'allergies';
-
     protected $fillable=[
         'foodie_id',
-        'ingredient'
+        'allergy'
     ];
 
 

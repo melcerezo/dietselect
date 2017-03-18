@@ -177,13 +177,13 @@ class FoodieController extends Controller
                 /*~~~ eloquent model method for checking existence ~~~*/
                 if(Allergy::where([
                     ['foodie_id','=',Auth::guard('foodie')->user()->id],
-                    ['ingredient_id','=',$key]
+                    ['allergy','=',$key]
                 ])->count()==0) {
 
                    /*~~~ eloquent model method for getting allergies ~~~*/
                     $allergy=new Allergy;
                     $allergy->foodie_id = Auth::guard('foodie')->user()->id ;
-                    $allergy->ingredient_id = $key;
+                    $allergy->allergy = $key;
                     $allergy->save();
 
                    //print_r($allergy);die('set the allergy model');
@@ -201,13 +201,13 @@ class FoodieController extends Controller
                /*~~~ eloquent model method for checking existence ~~~*/
                if (Allergy::where([
                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
-                       ['ingredient_id','=',$value]
+                       ['allergy','=',$value]
                    ])->count()==0) {
 
                    /*~~~ eloquent model method for getting allergies ~~~*/
                    $allergy = new Allergy;
                    $allergy->foodie_id = Auth::guard('foodie')->user()->id;
-                   $allergy->ingredient_id = $value;
+                   $allergy->allergy = $value;
                    $allergy->save();
                }
            }
