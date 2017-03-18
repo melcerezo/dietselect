@@ -7,6 +7,7 @@ use App\Chef;
 use App\Meal;
 use App\MealPlan;
 use App\Plan;
+use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +17,9 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class FoodieMealPlanController extends Controller
 {
+    use VerifiesSms;
+
+
     public function __construct()
     {
         $this->middleware('foodie.auth');
@@ -24,6 +28,7 @@ class FoodieMealPlanController extends Controller
     public function viewChefs(){
         $chefs=Chef::all();
         return view('foodie.chefselect')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'chefs'=>$chefs
         ]);

@@ -1,11 +1,9 @@
-@extends('layouts.app')
-@section('head')
+@extends('foodie.layout')
+@section('page_head')
     <title>Chef - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
-    <link rel="stylesheet" href="/css/foodie/app.css">
-    <script src="/js/foodie/app.js" defer></script>
 @endsection
-@section('content')
+@section('page_content')
 
 <div class="container">
     <div class="row">

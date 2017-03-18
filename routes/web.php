@@ -12,16 +12,6 @@
 */
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::get('meal/planner', function (){
-    $plan = \App\Plan::where('chef_id',1)->first();
-    $mealPlans=$plan->mealplans()->get();
-    return view('chef.meal_planner', compact('mealPlans'));
-});
-
-Route::get('compute', function (\Illuminate\Http\Request $request){
-    $grams = $request['grams'] * 0.01;
-    dd($grams);
-});
 
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');

@@ -1,9 +1,15 @@
 @extends('layouts.app')
 @section('head')
     <link rel="stylesheet" href="/css/foodie/app.css">
+    <script>
+        var profileRoute="{{route('foodie.profile')}}";
+        var chefRoute="{{route('foodie.chef.show')}}";
+    </script>
     <script src="/js/foodie/app.js" defer></script>
 
+
     @if ($sms_unverified)
+
         <link rel="stylesheet" href="/css/foodie/verify.css">
         <script src="/js/foodie/verification.validate.js" defer></script>
     @endif
@@ -79,8 +85,9 @@
     <main>
         <!-- Start of Side-nav -->
         <ul id="slide-out" class="side-nav fixed papaya-whip">
-            <li><a href="#!">First Sidebar Link</a></li>
-            <li><a href="#!">Second Sidebar Link</a></li>
+            <li><a id="foodieProfile" href="#!">Profile</a></li>
+            <li><a id="viewChefs" href="#!">View Chefs</a></li>
+            {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 
         @yield('page_content')
