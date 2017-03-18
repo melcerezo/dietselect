@@ -38,6 +38,7 @@ class FoodieMealPlanController extends Controller
         $chefPlans=Plan::where('chef_id', $id)->get();
         $chefsPlanCount= $chefPlans->count();
         return view('foodie.planSelect')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
             'planCount'=>$chefsPlanCount
@@ -62,6 +63,8 @@ class FoodieMealPlanController extends Controller
                 ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
         return view('foodie.mealCustomize', compact('plan'))->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,

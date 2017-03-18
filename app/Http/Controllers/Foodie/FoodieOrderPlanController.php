@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 use App\Http\Controllers\Controller;
-
+use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Order;
 use App\Plan;
 use Illuminate\Http\Request;
@@ -12,11 +12,22 @@ use Illuminate\Support\Facades\Auth;
 class FoodieOrderPlanController extends Controller
 {
 
+    use VerifiesSms;
+
+
+    public function __construct()
+    {
+        $this->middleware('foodie.auth');
+    }
+
     // Shows the order plan
     public function index(Plan $plan)
     {
+        return view('foodie.orders', compact('plan'))->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
 
-        return view('foodie.orders', compact('plan'));
+        ]);
     }
 
 
@@ -35,6 +46,10 @@ class FoodieOrderPlanController extends Controller
         $plan = Plan::where('id', '=', $order->plan_id)->get();
 
         $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', null)->get();
-        return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'));
+        return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
+
+        ]);
     }
 }
