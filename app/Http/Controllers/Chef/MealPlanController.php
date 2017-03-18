@@ -54,7 +54,7 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan)
     {
-        $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")') ->get();
+        $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
         $mealPlansCount=$mealPlans->count();
         $ingredientsMeal= '';
         $ingredientCount=DB::table('ingredient_meal')
@@ -196,7 +196,6 @@ class MealPlanController extends Controller
 
     public function updateMeal(Meal $meal, Request $request)
     {
-        $mealUpdate= $meal;
         $ingredId=[];
         $meal->description = $request['description'];
         $meal->main_ingredient = $request['main_ingredient'];
