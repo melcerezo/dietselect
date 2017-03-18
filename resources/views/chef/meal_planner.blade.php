@@ -131,7 +131,7 @@
         @for($i=0;$i<$mealPlansCount;$i++)
             <div id="editMeal-{{$i}}" class="modal">
                 <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
-                <form action="{{route('chef.meal.update', $mealPlans[$i]->id)}}" method="post">
+                <form id="editMeal" action="{{route('chef.meal.update', $mealPlans[$i]->id)}}" method="post">
                     {{csrf_field()}}
                     <div class="modal-content">
                         {{$mealPlans[$i]->meal->description}}
@@ -164,10 +164,21 @@
                         @for($j=0;$j<$ingredientCount;$j++)
                             @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
                                 @if($ingredientsMeal[$j]->meal_id==$mealPlans[$i]->meal->id && $c<1)
-                                    <div class="ingredSelectAdd input-field" >
-                                        <input type="text" value="{{$ingredientsMeal[$j]->description}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$c}}" name="ingredients[]" class="autocomplete inputBehind">
+                                    <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}" class="ingredSelectContainer">
+                                        <select id="ingredSelectOption{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredient_select[]" class="updateIngredSelect">
+                                            <option disabled selected>{{$ingredientsMeal[$j]->FdGrp_Desc}}</option>
+                                            <option value="chicken">Chicken</option>
+                                            <option value="beef">Beef</option>
+                                            <option value="pork">Pork</option>
+                                            <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
+                                            <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
+                                            <option value="vegetables">Vegetables</option>
+                                        </select>
+                                        <div class="ingredSelectAdd input-field" >
+                                            <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredients[]" class="autocomplete inputBehind">
+                                        </div>
+                                        <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div><input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[]" id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" class="inputBehind"></div>
                                     </div>
-                                    <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div><input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[]" id="grams{{$mealPlans[$i]}}{{$c}}" class="inputBehind"></div>
                                 @endif
                             @endfor
                         @endfor
@@ -175,12 +186,15 @@
                         {{--<label for="grams">Grams:</label>--}}
 
                     </div>
-                    <div class="modal-footer">
-                        <button type="submit">Update</button>
-                        <button>Delete</button>
-                        {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
-                    </div>
+                    <button type="submit" form="editMeal">Update</button>
                 </form>
+                <div class="modal-footer">
+                    <form action="{{route('chef.meal.delete', $mealPlans[$i]->meal->id)}}" method="post">
+                        {{csrf_field()}}
+                        <button type="submit">Delete</button>
+                    </form>
+                    {{--<a href="#!" class="modal-action modal-close waves-effect waves-green -flat">Agree</a>--}}
+                </div>
 
             </div>
         @endfor

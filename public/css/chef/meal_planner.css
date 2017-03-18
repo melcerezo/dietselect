@@ -32,8 +32,12 @@
 .addIngred{
     display: block;
 }
-
-
+.ingredSelectContainer{
+    background-color: #FFF;
+}
+.autocomplete-content{
+    position: inherit;
+}
 
 /*.inputBehind{*/
     /*z-index: 997;*/

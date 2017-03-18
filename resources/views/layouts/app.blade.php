@@ -34,7 +34,7 @@
     <script>window.jQuery || document.write('<script src="/js/vendor/jquery.js"><\/script>')</script>
 
     <!-- Materialize jQuery Script -->
-    <script src="/js/vendor/materialize.min.js" defer></script>
+    <script src="/js/vendor/materialize.js" defer></script>
 
     <script src="/js/bootstrap-select.min.js"></script>
 
