@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Chef;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Http\Controllers\Controller;
+use App\Order;
 use Illuminate\Support\Facades\Auth;
 
 class ChefController extends Controller
@@ -28,9 +29,19 @@ class ChefController extends Controller
      */
     public function index()
     {
+
+        $orders='';
+        $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
+
+        if($ordersCount >0){
+            $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get();
+        }
+
         return view('chef.dashboard')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
+            'ordersCount' => $ordersCount,
+            'orders' => $orders,
         ]);
     }
 }
