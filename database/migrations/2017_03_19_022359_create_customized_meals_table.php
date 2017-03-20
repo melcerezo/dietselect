@@ -14,8 +14,8 @@ class CreateCustomizedMealsTable extends Migration
     public function up()
     {
         Schema::create('customized_meals', function (Blueprint $table) {
-            $table->primary('id');
-            $table->integer('id')->unsigned();
+            $table->increments('id');
+            $table->integer('meal_id')->unsigned();
             $table->integer('foodie_id')->unsigned();
             $table->string('description');
             $table->string('main_ingredient');

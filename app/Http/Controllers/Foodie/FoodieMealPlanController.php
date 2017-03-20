@@ -127,7 +127,7 @@ class FoodieMealPlanController extends Controller
         $updateCarbohydrates = 0;
         $updateProtein = 0;
         $updateFat = 0;
-        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
+//        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
 //        dd($meal);
         for($i=0;$i<$ingredientCountUpdate;$i++){
             $ingredient = $request['ingredients'][$i];
@@ -161,6 +161,28 @@ class FoodieMealPlanController extends Controller
         $carbohydratesUpdate = $updateCarbohydrates;
         $proteinUpdate = $updateProtein;
         $fatUpdate = $updateFat;
+
+        $customize = new CustomizedMeal();
+        $customize->meal_id=$meal->id;
+        $customize->foodie_id = $user;
+        $customize->description = $meal->description;
+        $customize->main_ingredient = $main_ingredient;
+        $customize->calories = $caloriesUpdate;
+        $customize->carbohydrates = $carbohydratesUpdate;
+        $customize->protein = $proteinUpdate;
+        $customize->fat = $fatUpdate;
+        $customize->save();
+
+
+        for($i=0;$i<$ingredientCountUpdate;$i++){
+            $customizeIngredient = new CustomizedIngredientMeal();
+            $customizeIngredient->meal_id = $meal->id;
+            $customizeIngredient->ingredient_id = $ingredId[$i]->NDB_No;
+            $customizeIngredient->grams= $request['grams'][$i];
+            $customizeIngredient->save();
+        }
+
+
 
 
 
