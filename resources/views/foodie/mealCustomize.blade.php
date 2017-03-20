@@ -104,9 +104,9 @@
             @for($i=0;$i<$mealPlansCount;$i++)
                 <div id="editMeal-{{$i}}" class="modal">
                     <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
-                    <form id="editMeal{{$i}}" action="{{route('foodie.meal.custom',$mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
+                    <form id="editMeal{{$i}}" action="{{route('foodie.meal.custom', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
                         {{csrf_field()}}
-                        {{$mealPlans[$i]->id}}
+                        {{$mealPlans[$i]->meal->id}}
                         <div class="modal-content">
                             <h6>Customize Meal</h6>
                             <h4>{{$mealPlans[$i]->meal->description}}</h4>
@@ -144,7 +144,7 @@
                                                     <option value="vegetables">Vegetables</option>
                                                 </select>
                                                 <div class="ingredSelectAdd input-field" >
-                                                    <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredients[]" class="autocomplete inputBehind">
+                                                    <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" n class="autocomplete inputBehind">
                                                 </div>
                                                 <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div><input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[]" id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" class="inputBehind"></div>
                                             </div>
@@ -152,8 +152,6 @@
                                     @endfor
                                 @endfor
                             </div>
-                            {{--<label for="grams">Grams:</label>--}}
-
                         </div>
                         <div class="modal-footer">
                             <button type="submit" form="editMeal{{$i}}">Update</button>
@@ -162,7 +160,4 @@
                 </div>
             @endfor
         @endunless
-
-
-</div>
 @endsection
