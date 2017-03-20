@@ -18,9 +18,6 @@ class PlanTableSeeder extends Seeder
                 'chef_id' => $faker->numberBetween(1,30),
                 'plan_name' => $faker->text(60),
                 'calories' => $faker->randomFloat(),
-                'carbohydrates' => $faker->randomFloat(),
-                'protein' => $faker->randomFloat(),
-                'fat' => $faker->randomFloat(),
                 'price' => rand(2,8)
             ]);
         }

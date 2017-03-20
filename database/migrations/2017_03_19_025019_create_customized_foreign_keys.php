@@ -20,6 +20,8 @@ class CreateCustomizedForeignKeys extends Migration
         Schema::table('customized_meals', function ($table){
             $table->foreign('foodie_id')->references('id')->on('foodies');
         });
+
+
     }
 
     /**

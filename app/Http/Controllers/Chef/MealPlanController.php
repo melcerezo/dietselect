@@ -184,7 +184,7 @@ class MealPlanController extends Controller
             );
         }
         DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
+            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
         );
 
         return back();

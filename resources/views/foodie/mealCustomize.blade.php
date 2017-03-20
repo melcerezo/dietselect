@@ -104,8 +104,9 @@
             @for($i=0;$i<$mealPlansCount;$i++)
                 <div id="editMeal-{{$i}}" class="modal">
                     <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
-                    <form id="editMeal" action="{{route('foodie.meal.custom', $mealPlans[$i]->id)}}" method="post" autocomplete="off">
+                    <form id="editMeal{{$i}}" action="{{route('foodie.meal.custom',$mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
                         {{csrf_field()}}
+                        {{$mealPlans[$i]->id}}
                         <div class="modal-content">
                             <h6>Customize Meal</h6>
                             <h4>{{$mealPlans[$i]->meal->description}}</h4>
@@ -155,7 +156,7 @@
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" form="editMeal">Update</button>
+                            <button type="submit" form="editMeal{{$i}}">Update</button>
                         </div>
                     </form>
                 </div>

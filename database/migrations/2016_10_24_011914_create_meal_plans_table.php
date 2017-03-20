@@ -17,6 +17,7 @@ class CreateMealPlansTable extends Migration
             $table->increments('id');
             $table->integer('plan_id')->unsigned();
             $table->integer('meal_id')->unsigned();
+            $table->integer('customized_meal_id')->unsigned();
             $table->string('day'); //Possible Values: [MO, TU, WE, TH, FR, SA]
             $table->string('meal_type');//Possible Values: [breakfast, lunch, dinner, AM snack, PM snack]
             $table->timestamps();
