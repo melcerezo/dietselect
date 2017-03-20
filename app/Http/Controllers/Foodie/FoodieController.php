@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Foodie;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -39,11 +40,18 @@ class FoodieController extends Controller
      */
     public function index()
     {
-        $orders = CustomizedMeal::where('foodie_id', '=', Auth::guard('foodie')->user()->id);
+        $orders='';
+        $ordersCount=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get()->count();
+
+        if($ordersCount >0){
+            $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get();
+        }
 
         return view('foodie.dashboard')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
+            'orders' => $orders,
+            'ordersCount' => $ordersCount
         ]);
     }
 

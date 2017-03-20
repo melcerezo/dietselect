@@ -13,6 +13,22 @@
                 <div class="card papaya-whip">
                     <div class="card-content">
                         <h4 class="mustard-text">Pending Orders:</h4>
+                        <div>
+                            @if($ordersCount>0)
+                                @foreach($orders as $order)
+                                    <div>
+                                        <div>Chef: {{$order->chef->name}}</div>
+                                        <div>Plan Name: {{$order->plan->plan_name}}</div>
+                                        <div>Plan Price: {{$order->plan->price}}</div>
+                                    </div>
+                                @endforeach
+                                @else
+                                <div>
+                                    <h5>No Pending Orders!</h5>
+                                </div>
+
+                            @endif
+                        </div>
                     </div>
                 </div>
                 <div class="card papaya-whip">
