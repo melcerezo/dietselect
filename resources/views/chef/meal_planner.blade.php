@@ -1,14 +1,19 @@
-@extends('layouts.app')
-@section('head')
+@extends('chef.layout')
+@section('page_head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
     <script src="/js/ingredientAutocomplete.js"></script>
 
 @endsection
 
-@section('content')
+@section('page_content')
                 @if($mealPlansCount==0)
 
                     <div class="container">
+                        <div class="row">
+                            <h2 class="center white-text">Customize Meal Plan</h2>
+                            <span class="center full-width white-text" style="font-size: 1.5em">Customize your Meals to suit you!</span>
+                            <div class="card papaya-whip">
+                                <div class="card-content">
                         <table class="highlight">
                             <thead>
                             <tr>
@@ -42,90 +47,100 @@
                             </tbody>
                             </table>
                         </div>
+                                </div>
+                            </div>
+                        </div>
                 @else
                     <div class="container">
-                        <table class="highlight">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th id="Breakfast">Breakfast</th>
-                                <th id="MorningSnack">Snack</th>
-                                <th id="Lunch">Lunch</th>
-                                <th id="AfternoonSnack">Snack</th>
-                                <th id="Dinner">Dinner</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                    <tr id="Monday">
-                    <th>Monday</th>
-                    @foreach($mealPlans as $id =>$mealPlan)
-                        @if($mealPlan->day == 'MO')
+                            <div class="row">
+                                <h2 class="center white-text">Create Meal Plan</h2>
+                                <span class="center full-width white-text" style="font-size: 1.5em">Make meals to nourish your customers!</span>
+                                <div class="card papaya-whip">
+                                    <div class="card-content">
+                            <table class="highlight">
+                                <thead>
+                                <tr>
+                                    <th></th>
+                                    <th id="Breakfast">Breakfast</th>
+                                    <th id="MorningSnack">Snack</th>
+                                    <th id="Lunch">Lunch</th>
+                                    <th id="AfternoonSnack">Snack</th>
+                                    <th id="Dinner">Dinner</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                        <tr id="Monday">
+                        <th>Monday</th>
+                        @foreach($mealPlans as $id =>$mealPlan)
+                            @if($mealPlan->day == 'MO')
+                                    <td><a href="#editMeal-{{$id}}"
+                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                    </td>
+                            @endif
+                        @endforeach
+                </tr>
+                <tr id="Tuesday">
+                    <th>Tuesday</th>
+                    @foreach($mealPlans as $id=>$mealPlan)
+                        @if($mealPlan->day == 'TU')
+                                <td><a href="#editMeal-{{$id}}"
+                                       class=" waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
+
+                        @endif
+                    @endforeach
+                </tr>
+                <tr id="Wednesday">
+                    <th>Wednesday</th>
+                    @foreach($mealPlans as $id=>$mealPlan)
+                        @if($mealPlan->day == 'WE')
                                 <td><a href="#editMeal-{{$id}}"
                                        class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
                                 </td>
                         @endif
                     @endforeach
-            </tr>
-            <tr id="Tuesday">
-                <th>Tuesday</th>
-                @foreach($mealPlans as $id=>$mealPlan)
-                    @if($mealPlan->day == 'TU')
-                            <td><a href="#editMeal-{{$id}}"
-                                   class=" waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-
-                    @endif
-                @endforeach
-            </tr>
-            <tr id="Wednesday">
-                <th>Wednesday</th>
-                @foreach($mealPlans as $id=>$mealPlan)
-                    @if($mealPlan->day == 'WE')
-                            <td><a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                    @endif
-                @endforeach
-            </tr>
-            <tr id="Thursday">
-                <th>Thursday</th>
-                @foreach($mealPlans as $id=>$mealPlan)
-                    @if($mealPlan->day == 'TH')
-                            <td><a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-                    @endif
-                @endforeach
-            </tr>
-            <tr id="Friday">
-                <th>Friday</th>
-                @foreach($mealPlans as $id=>$mealPlan)
-                    @if($mealPlan->day == 'FR')
-                            <td><a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            </td>
-
-                    @endif
-                @endforeach
-            </tr>
-                    <tr id="Saturday">
-                        <th>Saturday</th>
-                        @foreach($mealPlans as $id=>$mealPlan)
-                            @if($mealPlan->day == 'SA')
+                </tr>
+                <tr id="Thursday">
+                    <th>Thursday</th>
+                    @foreach($mealPlans as $id=>$mealPlan)
+                        @if($mealPlan->day == 'TH')
                                 <td><a href="#editMeal-{{$id}}"
                                        class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
                                 </td>
-                            @endif
-                        @endforeach
-                    </tr>
-            </tbody>
-        </table>
-        @endif
-        <div>
-            <button data-target="createMeal" class="btn modal-trigger">Create Meal</button>
-        </div>
+                        @endif
+                    @endforeach
+                </tr>
+                <tr id="Friday">
+                    <th>Friday</th>
+                    @foreach($mealPlans as $id=>$mealPlan)
+                        @if($mealPlan->day == 'FR')
+                                <td><a href="#editMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                </td>
 
+                        @endif
+                    @endforeach
+                </tr>
+                        <tr id="Saturday">
+                            <th>Saturday</th>
+                            @foreach($mealPlans as $id=>$mealPlan)
+                                @if($mealPlan->day == 'SA')
+                                    <td><a href="#editMeal-{{$id}}"
+                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                    </td>
+                                @endif
+                            @endforeach
+                        </tr>
+                </tbody>
+            </table>
+            @endif
+            <div>
+                <button data-target="createMeal" class="btn modal-trigger">Create Meal</button>
+            </div>
+        </div>
     </div>
+</div>
+</div>
 
     @unless($mealPlansCount==0)
         @for($i=0;$i<$mealPlansCount;$i++)
