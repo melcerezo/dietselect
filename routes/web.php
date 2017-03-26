@@ -57,6 +57,10 @@ Route::group(['prefix' => 'foodie'], function () {
 });
 
 Route::group(['prefix' => 'chef'], function () {
+    // Get MESSAGING view
+    Route::get('message/index', 'MessageController@index')->name('message.index');
+    Route::post('message/send', 'MessageController@send')->name('message.send');
+
     Route::get('/', 'Chef\ChefController@index')->name('chef');
     Route::get('dashboard', 'Chef\ChefController@index')->name('chef.dashboard');
 
