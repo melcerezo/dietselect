@@ -41,10 +41,10 @@ class CreateForeignKeys extends Migration
             ->onDelete('cascade');
         });
 
-//        Schema::table('ingredient_meal', function ($table){
-//            $table->foreign('meal_id')->references('id')->on('meals');
+        Schema::table('ingredient_meal', function ($table){
+            $table->foreign('meal_id')->references('id')->on('meals');
 //            $table->foreign('ingredient_id')->references('NDB_No')->on('ingredients');
-//        });
+        });
 
         Schema::table('plans', function ($table){
             $table->foreign('chef_id')->references('id')->on('chefs')

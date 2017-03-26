@@ -62,8 +62,12 @@ class Chef extends Authenticatable
     public function plans(){
         return $this->hasMany(Plan::class);
     }
+
     public function orders(){
         return $this->hasMany(Order::class);
     }
 
+    public function messages(){
+        return $this->hasMany(Message::class);
+    }
 }

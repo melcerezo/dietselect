@@ -21,7 +21,7 @@ class ChefTableSeeder extends Seeder
                 'mobile_number' => $faker->phoneNumber,
                 'website' => $faker->text(30),
                 'url_name' => $faker->url,
-                'password' => $password,
+                'password' => bcrypt('password'),
             ]);
         }
     }
