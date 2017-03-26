@@ -6,14 +6,13 @@
 @endsection
 
 @section('page_content')
+    <div class="container">
+        <div class="row">
+            <h2 class="center white-text">Customize Meal Plan</h2>
+            <span class="center full-width white-text" style="font-size: 1.5em">Customize your Meals to suit you!</span>
+            <div class="card papaya-whip">
+                <div class="card-content">
                 @if($mealPlansCount==0)
-
-                    <div class="container">
-                        <div class="row">
-                            <h2 class="center white-text">Customize Meal Plan</h2>
-                            <span class="center full-width white-text" style="font-size: 1.5em">Customize your Meals to suit you!</span>
-                            <div class="card papaya-whip">
-                                <div class="card-content">
                         <table class="highlight">
                             <thead>
                             <tr>
@@ -46,17 +45,7 @@
                                 </tr>
                             </tbody>
                             </table>
-                        </div>
-                                </div>
-                            </div>
-                        </div>
                 @else
-                    <div class="container">
-                            <div class="row">
-                                <h2 class="center white-text">Create Meal Plan</h2>
-                                <span class="center full-width white-text" style="font-size: 1.5em">Make meals to nourish your customers!</span>
-                                <div class="card papaya-whip">
-                                    <div class="card-content">
                             <table class="highlight">
                                 <thead>
                                 <tr>
@@ -117,7 +106,6 @@
                                 <td><a href="#editMeal-{{$id}}"
                                        class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
                                 </td>
-
                         @endif
                     @endforeach
                 </tr>

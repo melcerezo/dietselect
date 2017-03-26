@@ -44,4 +44,12 @@ class ChefController extends Controller
             'orders' => $orders,
         ]);
     }
+
+    public function profile(){
+        return view('chef.profile')->with([
+
+        ]);
+    }
+
+
 }
