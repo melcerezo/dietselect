@@ -13,4 +13,13 @@ class Message extends Model
     public function chef(){
         return $this->belongsTo(Chef::class);
     }
+
+
+    protected $fillable=[
+        'sender_id',
+        'receiver_id',
+        'receiver_type',
+        'message',
+        'is_read',
+    ];
 }

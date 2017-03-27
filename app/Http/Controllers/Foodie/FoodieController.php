@@ -47,6 +47,8 @@ class FoodieController extends Controller
             $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get();
         }
 
+
+
         return view('foodie.dashboard')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),

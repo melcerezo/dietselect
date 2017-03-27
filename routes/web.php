@@ -54,12 +54,13 @@ Route::group(['prefix' => 'foodie'], function () {
     // Route after ordering
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
+    // Get MESSAGING view
+    Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
+    Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
+
 });
 
 Route::group(['prefix' => 'chef'], function () {
-    // Get MESSAGING view
-    Route::get('message/index', 'MessageController@index')->name('message.index');
-    Route::post('message/send', 'MessageController@send')->name('message.send');
 
     Route::get('/', 'Chef\ChefController@index')->name('chef');
     Route::get('dashboard', 'Chef\ChefController@index')->name('chef.dashboard');
@@ -93,5 +94,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
     Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');
 
-
+    // Get MESSAGING view
+    Route::get('message/index', 'Chef\ChefMessageController@index')->name('chef.message.index');
+    Route::post('message/send', 'Chef\ChefMessageController@send')->name('chef.message.send');
 });
