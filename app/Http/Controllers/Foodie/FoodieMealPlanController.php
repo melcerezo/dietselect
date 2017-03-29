@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Foodie;
 
+use App\CustomizedIngredientMeal;
+use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Chef;
 use App\Meal;
 use App\MealPlan;
 use App\Plan;
+use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -16,6 +19,9 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class FoodieMealPlanController extends Controller
 {
+    use VerifiesSms;
+
+
     public function __construct()
     {
         $this->middleware('foodie.auth');
@@ -24,6 +30,7 @@ class FoodieMealPlanController extends Controller
     public function viewChefs(){
         $chefs=Chef::all();
         return view('foodie.chefselect')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'chefs'=>$chefs
         ]);
@@ -33,6 +40,7 @@ class FoodieMealPlanController extends Controller
         $chefPlans=Plan::where('chef_id', $id)->get();
         $chefsPlanCount= $chefPlans->count();
         return view('foodie.planSelect')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
             'planCount'=>$chefsPlanCount
@@ -56,7 +64,12 @@ class FoodieMealPlanController extends Controller
                 ->join('meal_plans','meal_plans.meal_id','=','meals.id')
                 ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
+
+
+
         return view('foodie.mealCustomize', compact('plan'))->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
@@ -107,20 +120,19 @@ class FoodieMealPlanController extends Controller
 
     public function customizeChefsMeals(Meal $meal, Request $request){
         $ingredId=[];
-        $meal->main_ingredient = $request['main_ingredient'];
+        $user=Auth::guard('foodie')->user()->id;
+        $main_ingredient = $request['main_ingredient'];
         $ingredientCountUpdate=count($request['ingredients']);
         $updateCalories = 0;
         $updateCarbohydrates = 0;
         $updateProtein = 0;
         $updateFat = 0;
-        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
-//        dd($prevIngreds);
+//        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
+//        dd($meal);
         for($i=0;$i<$ingredientCountUpdate;$i++){
             $ingredient = $request['ingredients'][$i];
 
             $ingredId[$i]=DB::table('ingredients')->select('NDB_No')->where('Long_Desc','=',$ingredient)->first();
-//                dd($ingredId[$i]->NDB_No);
-//                $val = DB::table('ingredients')->select('calories','protein','carbohydrates','fat')->where('description','=',$ingredient)->first();
             $ingredCal=DB::table('ingredients_nutrient_data')->select('Nutr_Val')
                 ->where('NDB_No','=',$ingredId[$i]->NDB_No)
                 ->where('Nutr_No','=','~208~')->first();
@@ -143,20 +155,36 @@ class FoodieMealPlanController extends Controller
             $updateProtein += $pro;
             $updateFat += $fat;
         }
-//            dd($updateFat);
+//            dd($meal->id);
 
-        $meal->calories = $updateCalories;
-        $meal->carbohydrates = $updateCarbohydrates;
-        $meal->protein = $updateProtein;
-        $meal->fat = $updateFat;
-//        dd($meal->calories);
-        $meal->save();
+        $caloriesUpdate = $updateCalories;
+        $carbohydratesUpdate = $updateCarbohydrates;
+        $proteinUpdate = $updateProtein;
+        $fatUpdate = $updateFat;
+
+        $customize = new CustomizedMeal();
+        $customize->meal_id=$meal->id;
+        $customize->foodie_id = $user;
+        $customize->description = $meal->description;
+        $customize->main_ingredient = $main_ingredient;
+        $customize->calories = $caloriesUpdate;
+        $customize->carbohydrates = $carbohydratesUpdate;
+        $customize->protein = $proteinUpdate;
+        $customize->fat = $fatUpdate;
+        $customize->save();
+
 
         for($i=0;$i<$ingredientCountUpdate;$i++){
-            DB::table('ingredient_meal')->where('meal_id','=',$meal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
-                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$i]]
-            );
+            $customizeIngredient = new CustomizedIngredientMeal();
+            $customizeIngredient->meal_id = $meal->id;
+            $customizeIngredient->ingredient_id = $ingredId[$i]->NDB_No;
+            $customizeIngredient->grams= $request['grams'][$i];
+            $customizeIngredient->save();
         }
+
+
+
+
 
         return back();
     }

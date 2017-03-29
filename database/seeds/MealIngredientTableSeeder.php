@@ -13,7 +13,7 @@ class MealIngredientTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         for ($i = 0; $i < 30; $i++){
-            \Illuminate\Support\Facades\DB::table('meal_ingredient')->insert([
+            \Illuminate\Support\Facades\DB::table('ingredient_meal')->insert([
                 'meal_id' => rand(1,30),
                 'ingredient_id' => rand(1,30),
                 'grams' => rand(10.00, 50.00),

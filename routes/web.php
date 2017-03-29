@@ -12,16 +12,6 @@
 */
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::get('meal/planner', function (){
-    $plan = \App\Plan::where('chef_id',1)->first();
-    $mealPlans=$plan->mealplans()->get();
-    return view('chef.meal_planner', compact('mealPlans'));
-});
-
-Route::get('compute', function (\Illuminate\Http\Request $request){
-    $grams = $request['grams'] * 0.01;
-    dd($grams);
-});
 
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
@@ -94,7 +84,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('plan/create','Chef\MealPlanController@createPlan')->name('chef.plan.create');
     Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
     Route::get('{type}/getIngredJson','Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
-    Route::get('{meal}/getIngredCount','Chef\MealPlanController@getIngredCount')->name('chef.plan.number');
+//    Route::get('{meal}/getIngredCount','Chef\MealPlanController@getIngredCount')->name('chef.plan.number');
     Route::post('plan/{plan}/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
     Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');

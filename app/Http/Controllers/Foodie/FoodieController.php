@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Foodie;
 
 
+use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -38,9 +40,18 @@ class FoodieController extends Controller
      */
     public function index()
     {
+        $orders='';
+        $ordersCount=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get()->count();
+
+        if($ordersCount >0){
+            $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get();
+        }
+
         return view('foodie.dashboard')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
+            'orders' => $orders,
+            'ordersCount' => $ordersCount
         ]);
     }
 
@@ -177,13 +188,13 @@ class FoodieController extends Controller
                 /*~~~ eloquent model method for checking existence ~~~*/
                 if(Allergy::where([
                     ['foodie_id','=',Auth::guard('foodie')->user()->id],
-                    ['ingredient_id','=',$key]
+                    ['allergy','=',$key]
                 ])->count()==0) {
 
                    /*~~~ eloquent model method for getting allergies ~~~*/
                     $allergy=new Allergy;
                     $allergy->foodie_id = Auth::guard('foodie')->user()->id ;
-                    $allergy->ingredient_id = $key;
+                    $allergy->allergy = $key;
                     $allergy->save();
 
                    //print_r($allergy);die('set the allergy model');
@@ -201,13 +212,13 @@ class FoodieController extends Controller
                /*~~~ eloquent model method for checking existence ~~~*/
                if (Allergy::where([
                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
-                       ['ingredient_id','=',$value]
+                       ['allergy','=',$value]
                    ])->count()==0) {
 
                    /*~~~ eloquent model method for getting allergies ~~~*/
                    $allergy = new Allergy;
                    $allergy->foodie_id = Auth::guard('foodie')->user()->id;
-                   $allergy->ingredient_id = $value;
+                   $allergy->allergy = $value;
                    $allergy->save();
                }
            }

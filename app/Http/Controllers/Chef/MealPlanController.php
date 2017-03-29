@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chef;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Ingredient;
 use App\Meal;
 use App\MealPlan;
@@ -15,6 +16,8 @@ use phpDocumentor\Reflection\Types\Integer;
 
 class MealPlanController extends Controller
 {
+    use VerifiesSms;
+
     /**
      * Check for chef authentication
      *
@@ -32,6 +35,7 @@ class MealPlanController extends Controller
         $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
         $planCount= $plans->count();
         return view('chef.mealplan')->with([
+            'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
@@ -71,6 +75,7 @@ class MealPlanController extends Controller
             ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
         return view('chef.meal_planner', compact('plan'))->with([
+            'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
@@ -184,7 +189,7 @@ class MealPlanController extends Controller
             );
         }
         DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
+            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
         );
 
         return back();

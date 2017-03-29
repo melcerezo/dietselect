@@ -21,8 +21,6 @@
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="/css/vendor/materialize.css" media="screen,projection">
 
-    {{--<link rel="stylesheet" href="/css/bootstrap-select.min.css">--}}
-
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/main.css">
 

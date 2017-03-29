@@ -17,9 +17,12 @@ class MealPlan extends Model
         return $this->belongsTo('App\Plan');
     }
 
+
+
     protected $fillable=[
         'plan_id',
         'meal_id',
+        'customized_meal_id',
         'day',
         'meal_type',
     ];

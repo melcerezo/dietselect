@@ -32,4 +32,7 @@ class Plan extends Model
     public function chef(){
         return $this->belongsTo(Chef::class);
     }
+    public function customizedMeals(){
+        return $this->hasMany(CustomizedMeal::class, 'id');
+    }
 }
