@@ -58,6 +58,10 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
 
+    Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+    Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
+    Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+
 });
 
 Route::group(['prefix' => 'chef'], function () {
@@ -97,4 +101,6 @@ Route::group(['prefix' => 'chef'], function () {
     // Get MESSAGING view
     Route::get('message/index', 'Chef\ChefMessageController@index')->name('chef.message.index');
     Route::post('message/send', 'Chef\ChefMessageController@send')->name('chef.message.send');
+    Route::post('message/reply/{id}', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
+    Route::post('message/readMessage/{message}', 'Chef\ChefMessageController@readMessage')->name('chef.message.read');
 });

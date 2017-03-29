@@ -30,7 +30,7 @@ class FoodieMessageController extends Controller
         $chefs = Chef::all();
         $messages='';
 //        retrieving messages
-        $messageCount= Message::where('receiver_id','=',$foodie->id)->get()->count();
+        $messageCount= Message::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get()->count();
 
         if($messageCount>0){
             $messages= Message::where('receiver_id','=',$foodie->id);

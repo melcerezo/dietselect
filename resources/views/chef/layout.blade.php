@@ -87,7 +87,7 @@
         <ul id="slide-out" class="side-nav fixed papaya-whip">
             <li><a id="foodieProfile" href="#!">Profile</a></li>
             <li><a id="viewChefs" href="#!">View Chefs</a></li>
-            <li><a href="{{url('chef/message/index')}}">Messaging</a></li>
+            <li><a href="{{url('chef/message/index')}}">Messaging({{$messageCount}})</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 
