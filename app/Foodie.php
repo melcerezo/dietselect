@@ -70,6 +70,10 @@ class Foodie extends Authenticatable
         return $this->hasOne(Order::class);
     }
 
+    public function deposits()
+    {
+        return $this->hasMany(Deposit::class);
+    }
 }
 
 

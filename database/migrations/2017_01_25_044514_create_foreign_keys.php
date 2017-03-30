@@ -49,6 +49,11 @@ class CreateForeignKeys extends Migration
             $table->foreign('foodie_id')->references('id')->on('foodies');
             $table->foreign('plan_id')->references('id')->on('plans');
         });
+
+        Schema::table('deposits', function ($table){
+           $table->foreign('order_id')->references('id')->on('orders')
+               ->onDelete('cascade');
+        });
     }
 
     /**

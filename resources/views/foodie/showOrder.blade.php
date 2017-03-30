@@ -13,10 +13,24 @@
                     {{$plan[0]->plan_name}} <br>
                     {{$plan[0]->price}}<br>
                     <h1>Is Paid ? {{!empty($order->is_paid) ? 'Paid' : 'Not Paid!'}}</h1>
-                    <h4>Pay online</h4>
+                    <a href="#bankPay" class="modal-trigger"><h4>Pay online</h4></a>
                     <h4>Bank Deposit</h4>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="bankPay" class="modal">
+        <div class="modal-content">
+            <form action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
+                <input type="text" name="name" id=""><br>
+                <input type="text" name="receipt_number"><br>
+
+                <input type="file" name="image" id="">
+
+                <button type="submit">Submit</button>
+            </form>
         </div>
     </div>
 @endsection

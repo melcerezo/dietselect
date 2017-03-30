@@ -54,6 +54,9 @@ Route::group(['prefix' => 'foodie'], function () {
     // Route after ordering
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
+    // Bank Deposit
+    Route::post('bank/deposit/order/{order}', 'DepositController@deposit')->name('deposit.order');
+
 });
 
 Route::group(['prefix' => 'chef'], function () {
