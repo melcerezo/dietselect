@@ -6,6 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Message extends Model
 {
+    protected $fillable=[
+        'sender_id',
+        'receiver_id',
+        'receiver_type',
+        'message',
+        'is_read',
+    ];
+
     public function foodie(){
         return $this->belongsTo(Foodie::class);
     }
@@ -14,12 +22,9 @@ class Message extends Model
         return $this->belongsTo(Chef::class);
     }
 
+    public function deposit()
+    {
+        return $this->hasOne(Deposit::class);
+    }
 
-    protected $fillable=[
-        'sender_id',
-        'receiver_id',
-        'receiver_type',
-        'message',
-        'is_read',
-    ];
 }

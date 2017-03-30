@@ -10,8 +10,7 @@
         "doctrine/dbal": "^2.5",
         "laravel/tinker": "^1.0",
         "guzzlehttp/guzzle": "~5.2",
-        "paypal/rest-api-sdk-php": "*"
-        "laravel/tinker": "^1.0",
+        "paypal/rest-api-sdk-php": "*",
         "intervention/image": "^2.3"
     },
     "require-dev": {

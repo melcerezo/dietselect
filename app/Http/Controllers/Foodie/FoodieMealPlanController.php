@@ -9,6 +9,7 @@ use App\Chef;
 use App\Meal;
 use App\MealPlan;
 use App\Plan;
+use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

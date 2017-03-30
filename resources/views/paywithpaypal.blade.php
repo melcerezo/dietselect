@@ -20,12 +20,13 @@
                     @endif
                     <div class="panel-heading">Paywith Paypal</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal') !!}" >
+                        <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal', compact('order')) !!}" >
                             {{ csrf_field() }}
                             <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
                                 <label for="amount" class="col-md-4 control-label">Amount</label>
                                 <div class="col-md-6">
-                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>
+                                    {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
+                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $order->plan->price}}" autofocus>
                                     @if ($errors->has('amount'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('amount') }}</strong>

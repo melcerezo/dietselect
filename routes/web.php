@@ -58,9 +58,9 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
 
-    Route::get('paywithpaypal', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
-    Route::post('paypal', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
-    Route::get('paypal', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+    Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
+    Route::post('paypal/{order}', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
+    Route::get('paypal/{order}', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
 
     // Bank Deposit
     Route::post('bank/deposit/order/{order}', 'DepositController@deposit')->name('deposit.order');

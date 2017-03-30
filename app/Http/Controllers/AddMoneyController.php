@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests;
+use App\Order;
+use App\Message;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
 use Validator;
 use URL;
 use Session;
 use Redirect;
-use Input;
 /** All Paypal Details class **/
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -47,9 +50,9 @@ class AddMoneyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function payWithPaypal()
+    public function payWithPaypal(Order $order)
     {
-        return view('paywithpaypal');
+        return view('paywithpaypal', compact('order'));
     }
 
     /**
@@ -58,28 +61,28 @@ class AddMoneyController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request)
+    public function postPaymentWithpaypal(Request $request, Order $order)
     {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();
         $item_1->setName('Item 1')/** item name **/
-        ->setCurrency('USD')
+        ->setCurrency('PHP')
             ->setQuantity(1)
             ->setPrice($request->get('amount'));
         /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
-        $amount->setCurrency('USD')
+        $amount->setCurrency('PHP')
             ->setTotal($request->get('amount'));
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('payment.status'))/** Specify return URL **/
-        ->setCancelUrl(URL::route('payment.status'));
+        $redirect_urls->setReturnUrl(URL::route('payment.status', compact('order')))/** Specify return URL **/
+        ->setCancelUrl(URL::route('payment.status', compact('order')));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
@@ -91,13 +94,13 @@ class AddMoneyController extends Controller
         } catch (\PayPal\Exception\PPConnectionException $ex) {
             if (\Config::get('app.debug')) {
                 \Session::put('error', 'Connection timeout');
-                return Redirect::route('addmoney.paywithpaypal');
+                return Redirect::route('addmoney.paywithpaypal', compact('order'));
                 /** echo "Exception: " . $ex->getMessage() . PHP_EOL; **/
                 /** $err_data = json_decode($ex->getData(), true); **/
                 /** exit; **/
             } else {
                 \Session::put('error', 'Some error occur, sorry for inconvenient');
-                return Redirect::route('addmoney.paywithpaypal');
+                return Redirect::route('addmoney.paywithpaypal', compact('order'));
                 /** die('Some error occur, sorry for inconvenient'); **/
             }
         }
@@ -114,18 +117,20 @@ class AddMoneyController extends Controller
             return Redirect::away($redirect_url);
         }
         \Session::put('error', 'Unknown error occurred');
-        return Redirect::route('addmoney.paywithpaypal');
+        return Redirect::route('addmoney.paywithpaypal', compact('order'));
     }
 
-    public function getPaymentStatus()
+    public function getPaymentStatus(Order $order)
     {
+
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
-        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+//        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
+        if (empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id) || empty(Input::get('token'))) {
             \Session::put('error', 'Payment failed');
-            return Redirect::route('addmoney.paywithpaypal');
+            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         $payment = Payment::get($payment_id, $this->_api_context);
         /** PaymentExecution object includes information necessary **/
@@ -134,6 +139,7 @@ class AddMoneyController extends Controller
         /** when the user is redirected from paypal back to your site **/
         $execution = new PaymentExecution();
         $execution->setPayerId(Input::get('PayerID'));
+//        $execution->setPayerId(empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id));
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
         /** dd($result);exit; /** DEBUG RESULT, remove it later **/
@@ -141,10 +147,21 @@ class AddMoneyController extends Controller
 
             /** it's all right **/
             /** Here Write your database logic like that insert record or value in database if you want **/
+            $order->is_paid = 1;
+            $order->save();
+
+            $notification =  new Message();
+            $notification->sender_id = Auth::guard('foodie')->user()->id;
+            $notification->receiver_id = $order->chef->id;
+            $notification->receiver_type = 'c';
+            $notification->message = 'Hello! I just paid it through paypal.';
+            $notification->save();
+
+
             \Session::put('success', 'Payment success');
-            return Redirect::route('addmoney.paywithpaypal');
+            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         \Session::put('error', 'Payment failed');
-        return Redirect::route('addmoney.paywithpaypal');
+        return Redirect::route('addmoney.paywithpaypal', compact('order'));
     }
 }

@@ -13,13 +13,6 @@ class CreateForeignKeys extends Migration
      */
     public function up()
     {
-        Schema::table('messages', function ($table){
-            $table->foreign('foodie_id')->references('id')->on('foodies')
-                ->onDelete('cascade');
-            $table->foreign('chef_id')->references('id')->on('chefs')
-                ->onDelete('cascade');;
-        });
-
         Schema::table('foodie_address', function ($table){
             $table->foreign('foodie_id')->references('id')->on('foodies')
             ->onDelete('cascade');

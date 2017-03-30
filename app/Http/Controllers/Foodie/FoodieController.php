@@ -47,9 +47,8 @@ class FoodieController extends Controller
         if($ordersCount >0){
             $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get();
         }
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
-
-
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)
+            ->where('receiver_type','=','f')->get()->count();
 
         return view('foodie.dashboard')->with([
 

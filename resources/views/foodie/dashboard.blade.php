@@ -5,11 +5,12 @@
 @endsection
 
 @section('page_content')
-<div class="container">
-    <div class="row">
-        <div class="col m8 offset-m2">
-            <h1 class="center white-text">Dashboard</h1>
-                <h3 class="center full-width white-text" style="font-size: 1.5em">You are logged in! Welcome back, {{ $foodie->first_name }}!</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col m8 offset-m2">
+                <h1 class="center white-text">Dashboard</h1>
+                <h3 class="center full-width white-text" style="font-size: 1.5em">You are logged in! Welcome
+                    back, {{ $foodie->first_name }}!</h3>
                 <div class="card papaya-whip">
                     <div class="card-content">
                         <h4 class="mustard-text">Pending Orders:</h4>
@@ -22,7 +23,7 @@
                                         <div>Plan Price: {{$order->plan->price}}</div>
                                     </div>
                                 @endforeach
-                                @else
+                            @else
                                 <div>
                                     <h5>No Pending Orders!</h5>
                                 </div>
@@ -37,19 +38,19 @@
                     </div>
                 </div>
                 {{--<div class="card papaya-whip">--}}
-                    {{--<div class="card-content">--}}
-                        {{--<h4 class="mustard-text">Meal Plans:</h4>--}}
-                    {{--</div>--}}
+                {{--<div class="card-content">--}}
+                {{--<h4 class="mustard-text">Meal Plans:</h4>--}}
+                {{--</div>--}}
                 {{--</div>--}}
 
-            {{--<form id="logout" method="post" action="{{ route('foodie.logout') }}">--}}
+                {{--<form id="logout" method="post" action="{{ route('foodie.logout') }}">--}}
                 {{--{{ csrf_field() }}--}}
                 {{--<a id="logout-link" href="#">--}}
-                    {{--Logout--}}
+                {{--Logout--}}
                 {{--</a>--}}
-            {{--</form>--}}
+                {{--</form>--}}
             </div>
         </div>
     </div>
-</div>
+    </div>
 @endsection

@@ -37,15 +37,15 @@ class ChefController extends Controller
         if($ordersCount >0){
             $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get();
         }
-        $messageCount= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get()->count();
-
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
+//        dd($messageCount);
 
         return view('chef.dashboard')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'ordersCount' => $ordersCount,
             'orders' => $orders,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 }

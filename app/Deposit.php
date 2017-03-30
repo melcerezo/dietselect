@@ -15,4 +15,9 @@ class Deposit extends Model
     {
         return $this->belongsTo(Order::class);
     }
+
+    public function message()
+    {
+        return $this->belongsTo(Message::class);
+    }
 }

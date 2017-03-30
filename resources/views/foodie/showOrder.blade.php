@@ -13,8 +13,9 @@
                     {{$plan[0]->plan_name}} <br>
                     {{$plan[0]->price}}<br>
                     <h1>Is Paid ? {{!empty($order->is_paid) ? 'Paid' : 'Not Paid!'}}</h1>
-                    <a href="#bankPay" class="modal-trigger"><h4>Pay online</h4></a>
-                    <h4>Bank Deposit</h4>
+                    {{--<a href="{!! URL::route('addmoney.paypal', $order->id) !!}"><h4>Pay online</h4></a>--}}
+                    <a href="{{route('addmoney.paypal', $order->id)}}"><h4>Pay online</h4></a>
+                    <a href="#bankPay" class="modal-trigger"><h4>Bank Deposit</h4></a>
                 </div>
             </div>
         </div>
