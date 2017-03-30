@@ -8,6 +8,7 @@ use App\Ingredient;
 use App\Meal;
 use App\MealPlan;
 use App\Plan;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -34,12 +35,14 @@ class MealPlanController extends Controller
     {
         $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
         $planCount= $plans->count();
+        $messageCount= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get()->count();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
             'plan' => $plan,
+            'messageCount'=>$messageCount
         ]);
     }
 
@@ -74,6 +77,10 @@ class MealPlanController extends Controller
             ->join('meal_plans','meal_plans.meal_id','=','meals.id')
             ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
+
+        $messageCount= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get()->count();
+
+
         return view('chef.meal_planner', compact('plan'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
@@ -81,6 +88,7 @@ class MealPlanController extends Controller
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
+            'messageCount'=>$messageCount
         ]);
     }
 

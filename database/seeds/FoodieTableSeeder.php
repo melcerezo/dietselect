@@ -27,7 +27,7 @@ class FoodieTableSeeder extends Seeder
                 'mobile_number' => $faker->numberBetween(1234567),
                 'username' => $faker->text(20),
                 'joined_newsletter' => rand(0,1),
-                'password' => $password,
+                'password' => bcrypt('foodie'),
             ]);
         }
     }

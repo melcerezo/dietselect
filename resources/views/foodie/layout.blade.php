@@ -4,6 +4,7 @@
     <script>
         var profileRoute="{{route('foodie.profile')}}";
         var chefRoute="{{route('foodie.chef.show')}}";
+        var messageRoute="{{route('foodie.message.index')}}";
     </script>
     <script src="/js/foodie/app.js" defer></script>
 
@@ -87,6 +88,7 @@
         <ul id="slide-out" class="side-nav fixed papaya-whip">
             <li><a id="foodieProfile" href="#!">Profile</a></li>
             <li><a id="viewChefs" href="#!">View Chefs</a></li>
+            <li><a id="viewMessages" href="#!">Messages({{$messageCount}})</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 

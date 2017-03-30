@@ -7,6 +7,7 @@ use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Order;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -46,12 +47,17 @@ class FoodieController extends Controller
         if($ordersCount >0){
             $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get();
         }
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+
+
 
         return view('foodie.dashboard')->with([
+
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'orders' => $orders,
-            'ordersCount' => $ordersCount
+            'ordersCount' => $ordersCount,
+            'messageCount'=> $messageCount
         ]);
     }
 
@@ -66,7 +72,7 @@ class FoodieController extends Controller
         $addresses = DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
         $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
         $preference = FoodiePreference::where('foodie_id',Auth::guard('foodie')->user()->id)->first();
-
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
         //print_r($preference); die();
 
         return view('foodie.profile')->with([
@@ -74,7 +80,8 @@ class FoodieController extends Controller
             'foodie' => Auth::guard('foodie')->user(),
             'addresses' => $addresses,
             'allergies' => $allergies,
-            'preference' => $preference
+            'preference' => $preference,
+            'messageCount'=>$messageCount
         ]);
     }
 
@@ -100,6 +107,7 @@ class FoodieController extends Controller
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
+            'username' =>'max:20'
         ])->validate();
 
 

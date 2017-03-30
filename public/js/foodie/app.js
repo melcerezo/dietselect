@@ -16,4 +16,8 @@ $(document).ready(function() {
     $(document).on('click', '#viewChefs', function () {
         document.location.href=chefRoute;
     });
+
+    $(document).on('click', '#viewMessages', function () {
+        document.location.href=messageRoute;
+    });
 });

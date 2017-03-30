@@ -28,22 +28,26 @@ class FoodieMealPlanController extends Controller
     }
 
     public function viewChefs(){
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
         $chefs=Chef::all();
         return view('foodie.chefselect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
-            'chefs'=>$chefs
+            'chefs'=>$chefs,
+            'messageCount'=>$messageCount
         ]);
     }
 
     public function viewChefsPlans($id){
         $chefPlans=Plan::where('chef_id', $id)->get();
         $chefsPlanCount= $chefPlans->count();
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
-            'planCount'=>$chefsPlanCount
+            'planCount'=>$chefsPlanCount,
+            'messageCount'=>$messageCount
         ]);
     }
 
@@ -65,6 +69,7 @@ class FoodieMealPlanController extends Controller
                 ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
 
+        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
 
 
         return view('foodie.mealCustomize', compact('plan'))->with([
@@ -74,6 +79,7 @@ class FoodieMealPlanController extends Controller
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
+            'messageCount'=>$messageCount
         ]);
     }
 
