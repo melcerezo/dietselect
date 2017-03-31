@@ -69,9 +69,14 @@ trait VerifiesSms
         ]);
     }
 
+    /*
+     * code for sending sms
+     *
+     * */
+
     public function sendsTheSms()
     {
-        //
+        //code for sms sending ges here
     }
 
     /**

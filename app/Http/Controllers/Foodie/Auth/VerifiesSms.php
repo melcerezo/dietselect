@@ -81,9 +81,16 @@ trait   VerifiesSms
         ]);
     }
 
+
+    /*
+     * function for sending sms(where api will go)
+     *
+     *
+     * */
+
     public function sendSms()
     {
-        //
+        //code for SMS sending goes here
     }
 
     /**
