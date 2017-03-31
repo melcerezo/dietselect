@@ -24,18 +24,25 @@
                                                     <img class="img-responsive activator" src="/img/diet-meal-1.jpg">
                                                 </div>
                                                 <div class="card-content">
-                                                    <span class="card-title activator grey-text text-darken-4 no-pad-bot center">The Holiday Belly Buster Plan</span>
+                                                    <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
                                                 </div>
                                                 <div class="card-reveal center lime lighten-4">
-                                                    <span class="card-title"><i class="material-icons right">close</i></span>
+                                                    <div>
+                                                        <span class="card-title"><i class="material-icons right">close</i></span>
+                                                        <div style="clear:both;"></div>
+                                                    </div>
                                                     {{--route will go to the meals table page with id of plan passed--}}
 {{--                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal',['plan'=>$plan->id]) }}">--}}
-                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal', $plan->id) }}">
-                                                        <span class="fa fa-pencil"></span>Customize
-                                                    </a>
-                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.order.review', $plan->id) }}">
-                                                        <span class="fa fa-pencil"></span>Standard
-                                                    </a>
+                                                    <div>
+                                                        <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal', $plan->id) }}">
+                                                            <span class="fa fa-pencil"></span><span style="font-size: 10px;">Customize</span>
+                                                        </a>
+                                                    </div>
+                                                    <div>
+                                                        <a class="customize-plan-option-btn" href="{{ route('foodie.order.review', $plan->id) }}">
+                                                            <span class="fa fa-pencil"></span><span style="font-size: 10px;">Standard</span>
+                                                        </a>
+                                                    </div>
                                                     {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
                                                 </div>
                                             </div>

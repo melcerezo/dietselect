@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Ingredient;
@@ -35,14 +36,14 @@ class MealPlanController extends Controller
     {
         $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
         $planCount= $plans->count();
-        $messageCount= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get()->count();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
             'plan' => $plan,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
@@ -78,8 +79,7 @@ class MealPlanController extends Controller
             ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
 
-        $messageCount= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get()->count();
-
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
 
         return view('chef.meal_planner', compact('plan'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -88,7 +88,7 @@ class MealPlanController extends Controller
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
@@ -191,6 +191,7 @@ class MealPlanController extends Controller
             }
 //loop ends
         $meal->save();
+
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
                 ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$i]]

@@ -127,8 +127,8 @@ class AddMoneyController extends Controller
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
-//        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-        if (empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id) || empty(Input::get('token'))) {
+//        if (empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id) || empty(Input::get('token'))) {
+        if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             \Session::put('error', 'Payment failed');
             return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
@@ -159,7 +159,8 @@ class AddMoneyController extends Controller
 
 
             \Session::put('success', 'Payment success');
-            return Redirect::route('addmoney.paywithpaypal', compact('order'));
+            return Redirect::route('foodie.dashboard');
+//            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         \Session::put('error', 'Payment failed');
         return Redirect::route('addmoney.paywithpaypal', compact('order'));

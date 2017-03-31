@@ -29,32 +29,50 @@ class FoodieMealPlanController extends Controller
     }
 
     public function viewChefs(){
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
         $chefs=Chef::all();
+
         return view('foodie.chefselect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'chefs'=>$chefs,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
     public function viewChefsPlans($id){
         $chefPlans=Plan::where('chef_id', $id)->get();
         $chefsPlanCount= $chefPlans->count();
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+        $messages= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
             'planCount'=>$chefsPlanCount,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
     public function viewChefsMeals(Plan $plan){
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
         $mealPlansCount=$mealPlans->count();
+//        foreach($mealPlans as $mealCust){
+//                $customMeal= new CustomizedMeal();
+//                $customMeal->meal_id = $mealCust->meal->id;
+//                $customMeal->foodie_id = Auth::guard('foodie')->user()->id;
+//                $customMeal->description = $mealCust->meal->description;
+//                $customMeal->main_ingredient = $mealCust->meal->main_ingredient;
+//                $customMeal->calories = $mealCust->meal->calories;
+//                $customMeal->carbohydrates = $mealCust->meal->carbohydrates;
+//                $customMeal->protein = $mealCust->meal->protein;
+//                $customMeal->fat = $mealCust->meal->fat;
+//                $customMeal->save();
+//
+//                $mealCust->customized_meal_id= $customMeal->id;
+//                $mealCust->save();
+//        }
+
+
         $ingredientsMeal= '';
         $ingredientCount=DB::table('ingredient_meal')
             ->join('meals','ingredient_meal.meal_id','=','meals.id')
@@ -70,7 +88,7 @@ class FoodieMealPlanController extends Controller
                 ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
 
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
 
 
         return view('foodie.mealCustomize', compact('plan'))->with([
@@ -80,7 +98,7 @@ class FoodieMealPlanController extends Controller
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
@@ -125,7 +143,7 @@ class FoodieMealPlanController extends Controller
         return $response;
     }
 
-    public function customizeChefsMeals(Meal $meal, Request $request){
+    public function customizeChefsMeals(MealPlan $mealplan, Meal $meal, Request $request){
         $ingredId=[];
         $user=Auth::guard('foodie')->user()->id;
         $main_ingredient = $request['main_ingredient'];
@@ -136,6 +154,7 @@ class FoodieMealPlanController extends Controller
         $updateFat = 0;
 //        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
 //        dd($meal);
+//            dd($ingredientCountUpdate);
         for($i=0;$i<$ingredientCountUpdate;$i++){
             $ingredient = $request['ingredients'][$i];
 
@@ -169,7 +188,8 @@ class FoodieMealPlanController extends Controller
         $proteinUpdate = $updateProtein;
         $fatUpdate = $updateFat;
 
-        $customize = new CustomizedMeal();
+        $customize= new CustomizedMeal();
+//        $customize = CustomizedMeal::where('id','=', $mealplan->customized_meal_id)->first();
         $customize->meal_id=$meal->id;
         $customize->foodie_id = $user;
         $customize->description = $meal->description;
@@ -178,6 +198,7 @@ class FoodieMealPlanController extends Controller
         $customize->carbohydrates = $carbohydratesUpdate;
         $customize->protein = $proteinUpdate;
         $customize->fat = $fatUpdate;
+//        dd($customize->calories);
         $customize->save();
 
 
@@ -196,21 +217,6 @@ class FoodieMealPlanController extends Controller
         return back();
     }
 
-    //modal that pops up to delete meal in meal plan
-
-    public function deleteMeal(Meal $meal)
-    {
-        $mealPlan= $meal->mealplan->first();
-        $ingredient_mealDeletes= $meal->ingredient_meal()->get();
-
-//        dd($mealPlan);
-        $mealPlan->delete();
-        foreach ($ingredient_mealDeletes as $mealDelete){
-            $mealDelete->where('meal_id','=',$meal->id)->delete();
-        }
-        $meal->delete();
-        return back();
-    }
 
 
 

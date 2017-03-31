@@ -14,12 +14,6 @@ $(document).ready(function(){
 
 
 function RevealMessage(mId){
-    $("#mCon"+mId).slideToggle(function () {
-        if($('#mCon'+mId).is(':hidden')){
-            $.ajax({
-
-            });
-        }
-    });
+    $("#mCon"+mId).slideToggle();
     console.log(mId);
 }

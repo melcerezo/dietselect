@@ -71,22 +71,22 @@
                 </a>
             </li>
             <li class="divider"></li>
-            {{--<li>--}}
-            {{--<form id="logout" method="post" action="{{ route('foodie.logout') }}">--}}
-            {{--{{ csrf_field() }}--}}
-            {{--<a id="logout-link" class="foodie-link" href="#">--}}
-            {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
-            {{--<span class="hide-on-med-and-down">Logout</span>--}}
-            {{--</a>--}}
-            {{--</form>--}}
-            {{--</li>--}}
+            <li>
+            <form id="logout" method="post" action="{{ route('chef.logout') }}">
+            {{ csrf_field() }}
+            <a id="logout-link" class="foodie-link" href="#">
+            <i class="fa fa-sign-out" aria-hidden="true"></i>
+            <span class="hide-on-med-and-down">Logout</span>
+            </a>
+            </form>
+            </li>
         </ul>
     </header>
     <main>
         <!-- Start of Side-nav -->
         <ul id="slide-out" class="side-nav fixed papaya-whip">
             <li><a id="foodieProfile" href="#!">Profile</a></li>
-            <li><a id="viewChefs" href="#!">View Chefs</a></li>
+            <li><a href="{{route('chef.plan')}}">View Plans</a></li>
             <li><a href="{{url('chef/message/index')}}">Messaging({{$messages->count()}})</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>

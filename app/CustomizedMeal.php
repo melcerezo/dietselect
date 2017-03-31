@@ -11,7 +11,9 @@ class CustomizedMeal extends Model
         return $this->hasMany(CustomizedIngredientMeal::class);
     }
 
-
+    public function mealplan(){
+        return $this->hasMany(MealPlan::class);
+    }
 
 
     protected $fillable=[

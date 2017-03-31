@@ -6,14 +6,13 @@
 @endsection
 
 @section('page_content')
+            <div class="container">
+                <div class="row">
+                    <h2 class="center white-text">Customize Meal Plan</h2>
+                    <span class="center full-width white-text" style="font-size: 1.5em">Customize your Meals to suit you!</span>
+                    <div class="card papaya-whip">
+                        <div class="card-content">
                 @if($mealPlansCount==0)
-
-                    <div class="container">
-                        <div class="row">
-                            <h2 class="center white-text">Customize Meal Plan</h2>
-                            <span class="center full-width white-text" style="font-size: 1.5em">Customize your Meals to suit you!</span>
-                            <div class="card papaya-whip">
-                                <div class="card-content">
                         <table class="highlight">
                             <thead>
                             <tr>
@@ -45,18 +44,8 @@
                                     <th>Saturday</th>
                                 </tr>
                             </tbody>
-                            </table>
-                        </div>
-                                </div>
-                            </div>
-                        </div>
+                        </table>
                 @else
-                    <div class="container">
-                            <div class="row">
-                                <h2 class="center white-text">Create Meal Plan</h2>
-                                <span class="center full-width white-text" style="font-size: 1.5em">Make meals to nourish your customers!</span>
-                                <div class="card papaya-whip">
-                                    <div class="card-content">
                             <table class="highlight">
                                 <thead>
                                 <tr>
@@ -138,6 +127,9 @@
                 <button data-target="createMeal" class="btn modal-trigger">Create Meal</button>
             </div>
         </div>
+    </div>
+    <div>
+        <a href="{{route('chef.dashboard')}}" class="btn" style="color: #ffffff">Finish</a>
     </div>
 </div>
 </div>

@@ -45,7 +45,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('chefs', 'Foodie\FoodieMealPlanController@viewChefs')->name('foodie.chef.show');
     Route::get('chefs/plan/{id}', 'Foodie\FoodieMealPlanController@viewChefsPlans')->name('foodie.chef.plan');
     Route::get('chefs/meal/{plan}','Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
-    Route::post('chefs/customize/{meal}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
+    Route::post('chefs/customize/{mealplan}/{meal}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
     Route::get('{type}/getIngredJson','Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
@@ -57,6 +57,8 @@ Route::group(['prefix' => 'foodie'], function () {
     // Get MESSAGING view
     Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
+    Route::post('message/reply/{id}', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
+
 
     Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
     Route::post('paypal/{order}', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));

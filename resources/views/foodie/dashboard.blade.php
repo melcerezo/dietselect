@@ -17,11 +17,13 @@
                         <div>
                             @if($ordersCount>0)
                                 @foreach($orders as $order)
-                                    <div>
-                                        <div>Chef: {{$order->chef->name}}</div>
-                                        <div>Plan Name: {{$order->plan->plan_name}}</div>
-                                        <div>Plan Price: {{$order->plan->price}}</div>
-                                    </div>
+                                    <a href="{{route('order.show',$order->id)}}">
+                                        <div>
+                                            <div>Chef: {{$order->chef->name}}</div>
+                                            <div>Plan Name: {{$order->plan->plan_name}}</div>
+                                            <div>Plan Price: {{$order->plan->price}}</div>
+                                        </div>
+                                    </a>
                                 @endforeach
                             @else
                                 <div>
@@ -32,11 +34,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="card papaya-whip">
-                    <div class="card-content">
-                        <h4 class="mustard-text">Suggested Meal Plans:</h4>
-                    </div>
-                </div>
+                {{--<div class="card papaya-whip">--}}
+                    {{--<div class="card-content">--}}
+                        {{--<h4 class="mustard-text">Suggested Meal Plans:</h4>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
                 {{--<div class="card papaya-whip">--}}
                 {{--<div class="card-content">--}}
                 {{--<h4 class="mustard-text">Meal Plans:</h4>--}}

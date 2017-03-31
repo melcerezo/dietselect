@@ -24,12 +24,12 @@ class FoodieOrderPlanController extends Controller
     // Shows the order plan
     public function index(Plan $plan)
     {
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
 
         return view('foodie.orders', compact('plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 
@@ -47,13 +47,13 @@ class FoodieOrderPlanController extends Controller
     public function show(Order $order){
         $foodie = Auth::guard('foodie')->user();
         $plan = Plan::where('id', '=', $order->plan_id)->get();
-        $messageCount= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get()->count();
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
         $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', null)->get();
 
         return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
-            'messageCount'=>$messageCount
+            'messages'=>$messages
         ]);
     }
 }

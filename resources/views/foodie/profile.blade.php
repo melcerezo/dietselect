@@ -91,7 +91,7 @@
                         <li>
                             <h4>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</h4>
                             <button data-target="update-address-modal" class="btn modal-trigger">Edit Address</button>
-                            <button data-target="delete-address-modal" class="btn modal-trigger">Delete Address</button>
+                            {{--<button data-target="delete-address-modal" class="btn modal-trigger">Delete Address</button>--}}
                         </li>
                     @endforeach
                 </ul>

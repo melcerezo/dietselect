@@ -95,6 +95,13 @@
                             </tbody>
                         </table>
                         @endif
+                        <div>
+                            <form action="{{route('foodie.order.review', $plan->id)}}">
+                                {{csrf_field()}}
+                                <input type="submit" class="btn" value="Order">
+                            </form>
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,7 +111,7 @@
             @for($i=0;$i<$mealPlansCount;$i++)
                 <div id="editMeal-{{$i}}" class="modal">
                     <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
-                    <form id="editMeal{{$i}}" action="{{route('foodie.meal.custom', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
+                    <form id="editMeal{{$i}}" action="{{route('foodie.meal.custom',array($mealPlans[$i]->id, $mealPlans[$i]->meal->id))}}" method="post" autocomplete="off">
                         {{csrf_field()}}
                         {{$mealPlans[$i]->meal->id}}
                         <div class="modal-content">
@@ -144,7 +151,7 @@
                                                     <option value="vegetables">Vegetables</option>
                                                 </select>
                                                 <div class="ingredSelectAdd input-field" >
-                                                    <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" n class="autocomplete inputBehind">
+                                                    <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredients[]" class="autocomplete inputBehind">
                                                 </div>
                                                 <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div><input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[]" id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" class="inputBehind"></div>
                                             </div>

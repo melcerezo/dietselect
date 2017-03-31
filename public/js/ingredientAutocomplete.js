@@ -51,11 +51,11 @@ $(document).ready(function () {
                         url:'/chef/'+$type+'/getIngredJson',
                         success: function(response) {
                            var $ingredsData = response;
+                            // console.log($ingredsData);
 
                             $(function(){
                                 $('#'+$ingredsAddID+'.autocomplete').autocomplete(JSON.parse($ingredsData));
                             })
-                            // console.log($ingredsData);
                         }
                     });
 

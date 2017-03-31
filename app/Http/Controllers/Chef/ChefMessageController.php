@@ -26,17 +26,16 @@ class ChefMessageController extends Controller
 
     public function index(){
         $foodies = Foodie::all();
-        $messages= '';
         $chef= Auth::guard('chef')->user();
+        $messages= Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->get();
+;
 
 
-        $messageCount= Message::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->where('is_read','=',0)->get()->count();
-        $messages= Message::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
+
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'foodies'=>$foodies,
             'chef'=>$chef,
-            'messageCount'=>$messageCount,
             'messages'=>$messages,
         ]);
 
