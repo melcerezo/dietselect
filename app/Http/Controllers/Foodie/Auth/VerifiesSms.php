@@ -90,7 +90,17 @@ trait   VerifiesSms
 
     public function sendSms()
     {
-        //code for SMS sending goes here
+        //code for sms sending ges here
+        $itexmo = array('1' => '09266578810', '2' => 'hello', '3' => 'ST-MARKK578810_4MXKV');
+        $param = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmo),
+            ),
+        );
+        $context = stream_context_create($param);
+        file_get_contents($url, false, $context);
     }
 
     /**
