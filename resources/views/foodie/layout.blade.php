@@ -48,7 +48,7 @@
                     <ul id="foodie-menu-btn" class="right">
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">
-                                <img class="circle" src="/img/user.jpg">
+                                <img class="circle" src="/img/{{ $foodie->avatar }}">
                                 <span class="white-text hide-on-med-and-down">{{ $foodie->username ? : $foodie->first_name . ' ' . $foodie->last_name }} <i class="fa fa-caret-down" aria-hidden="true"></i>
                                 </span>
                             </a>

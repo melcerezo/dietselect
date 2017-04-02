@@ -20,6 +20,7 @@ class CreateChefsTable extends Migration
             $table->string('mobile_number')->unique();
             $table->string('website')->nullable()->unique();
             $table->string('url_name')->unique();
+            $table->string('avatar')->default('user.jpg');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

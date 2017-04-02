@@ -11,6 +11,7 @@ use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Facades\Image;
 use Validator;
 use DateTime;
 use App\Allergy;
@@ -114,7 +115,13 @@ class FoodieController extends Controller
         $foodie->last_name = $request['last_name'];
         $foodie->gender = $request['gender'];
 
-
+        if ($request->hasFile('avatar')) {
+            $avatar = $request->file('avatar');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // Change Directory HERE
+            Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
+            $foodie->avatar = $filename;
+        }
         // You should place meaningful end messages, so you could easily
         // know when which part you have reached.
         // die("We just finished setting the gender of the foodie.");

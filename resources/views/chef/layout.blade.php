@@ -46,7 +46,7 @@
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true"
                                data-constrainwidth="true">
-                                <img class="circle" src="/img/user.jpg">
+                                <img class="circle" src="/img/{{ $chef->avatar }}">
                                 <span class="white-text hide-on-med-and-down">{{ $chef->name }} <i
                                             class="fa fa-caret-down" aria-hidden="true"></i>
                                 </span>
@@ -65,7 +65,7 @@
             {{--</a>--}}
             {{--</li>--}}
             <li>
-                <a href="#!" class="foodie-link">
+                <a href="{{route('user.profile')}}" class="foodie-link">
                     <i class="fa fa-cogs" aria-hidden="true"></i>
                     <span class="hide-on-med-and-down">Settings</span>
                 </a>

@@ -35,17 +35,26 @@
 
             <!-- Basic Profile Form Modal -->
             <div id="basic-profile-modal" class="modal">
-                <form id="basic-profile" method="post" action="{{ route('foodie.profile.basic') }}">
+                <form id="basic-profile" method="post" action="{{ route('foodie.profile.basic') }}" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="modal-content">
                         <h3 class="mustard-text">Foodie Profile</h3>
                         <p>We want to get to know you more! Please enter the following personal details:</p>
+
                         <div class="row">
-                            <div class="input-field col s6">
+                            <div class="col s4">
+                                <img src="/img/{{ $foodie->avatar }}"
+                                     style="width:200px; height:200px; float:left; margin-right: 25px;"
+                                     class="img img-thumbnail">
+                                <br>
+                                {{--<label for="profile" style="margin-left: 30px;">Update Profile Image</label>--}}
+                                <input type="file" name="avatar">
+                            </div>
+                            <div class="input-field col s4">
                                 <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
                                 <label for="firstname">First Name</label>
                             </div>
-                            <div class="input-field col s6">
+                            <div class="input-field col s4">
                                 <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
                                 <label for="lastname">Last Name</label>
                             </div>
