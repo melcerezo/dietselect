@@ -1,8 +1,8 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+        <div class="row" style="margin-top: 50px;">
+            <div class="col s4 offset-s4">
                 <div class="panel panel-default">
                     @if ($message = Session::get('success'))
                         <div class="custom-alerts alert alert-success fade in">
@@ -18,7 +18,7 @@
                         </div>
                         <?php Session::forget('error');?>
                     @endif
-                    <div class="panel-heading">Paywith Paypal</div>
+                    <div class="panel-heading">Paywith Paypal</div><br>
                     <div class="panel-body">
                         <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal', compact('order')) !!}" >
                             {{ csrf_field() }}
@@ -26,7 +26,7 @@
                                 <label for="amount" class="col-md-4 control-label">Amount</label>
                                 <div class="col-md-6">
                                     {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
-                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $order->plan->price}}" autofocus>
+                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $order->plan->price}}" autofocus readonly>
                                     @if ($errors->has('amount'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('amount') }}</strong>
