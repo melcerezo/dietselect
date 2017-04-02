@@ -33,7 +33,7 @@ trait VerifiesSms
             $this->insertsMobileNumberIntoVerification($code);
         }
 
-        $this->sendsTheSms();
+        $this->sendsTheSms($code);
     }
 
     /**
@@ -74,9 +74,21 @@ trait VerifiesSms
      *
      * */
 
-    public function sendsTheSms()
+    public function sendsTheSms($code)
     {
         //code for sms sending ges here
+        $url = 'https://www.itexmo.com/php_api/api.php';
+        $itexmo = array('1' => '09266578810', '2' => $code, '3' => 'ST-MARKK578810_4MXKV');
+        $param = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmo),
+            ),
+        );
+        $context = stream_context_create($param);
+        file_get_contents($url, false, $context);
+
     }
 
     /**
