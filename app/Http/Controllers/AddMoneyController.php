@@ -26,8 +26,7 @@ use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 use PayPal\Api\Transaction;
 
-class AddMoneyController extends Controller
-{
+class AddMoneyController extends Controller{
     private $_api_context;
 
     /**
@@ -35,13 +34,13 @@ class AddMoneyController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(){
 //        parent::__construct();
 
         /** setup PayPal api context **/
         $paypal_conf = \Config::get('paypal');
-        $this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'], $paypal_conf['secret']));
+        $this->_api_context = new ApiContext(new OAuthTokenCredential($paypal_conf['client_id'],
+            $paypal_conf['secret']));
         $this->_api_context->setConfig($paypal_conf['settings']);
     }
 
@@ -50,8 +49,7 @@ class AddMoneyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function payWithPaypal(Order $order)
-    {
+    public function payWithPaypal(Order $order){
         return view('paywithpaypal', compact('order'));
     }
 
@@ -61,8 +59,7 @@ class AddMoneyController extends Controller
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request, Order $order)
-    {
+    public function postPaymentWithpaypal(Request $request, Order $order){
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
         $item_1 = new Item();
@@ -120,9 +117,7 @@ class AddMoneyController extends Controller
         return Redirect::route('addmoney.paywithpaypal', compact('order'));
     }
 
-    public function getPaymentStatus(Order $order)
-    {
-
+    public function getPaymentStatus(Order $order){
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
@@ -150,7 +145,7 @@ class AddMoneyController extends Controller
             $order->is_paid = 1;
             $order->save();
 
-            $notification =  new Message();
+            $notification = new Message();
             $notification->sender_id = Auth::guard('foodie')->user()->id;
             $notification->receiver_id = $order->chef->id;
             $notification->receiver_type = 'c';
