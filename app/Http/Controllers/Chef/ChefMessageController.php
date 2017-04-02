@@ -9,8 +9,7 @@ use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class ChefMessageController extends Controller
-{
+class ChefMessageController extends Controller{
     use VerifiesSms;
 
     /**
@@ -18,25 +17,20 @@ class ChefMessageController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-            $this->middleware('chef.auth');
+    public function __construct(){
+        $this->middleware('chef.auth');
     }
-
 
     public function index(){
         $foodies = Foodie::all();
-        $chef= Auth::guard('chef')->user();
-        $messages= Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->get();
-;
-
-
+        $chef = Auth::guard('chef')->user();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->get();;
 
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
-            'foodies'=>$foodies,
-            'chef'=>$chef,
-            'messages'=>$messages,
+            'foodies' => $foodies,
+            'chef' => $chef,
+            'messages' => $messages,
         ]);
 
     }
@@ -54,10 +48,10 @@ class ChefMessageController extends Controller
         ]);
 
         $message = new Message();
-        $message->message =$request['chefMessage'];
-        $message->sender_id= Auth::guard('chef')->user()->id;
-        $message->receiver_id= $request['chefMessageSelect'];
-        $message->receiver_type='f';
+        $message->message = $request['chefMessage'];
+        $message->sender_id = Auth::guard('chef')->user()->id;
+        $message->receiver_id = $request['chefMessageSelect'];
+        $message->receiver_type = 'f';
         $message->save();
 
         return back();
@@ -69,10 +63,10 @@ class ChefMessageController extends Controller
         ]);
 
         $message = new Message();
-        $message->message =$request['replyMessage'];
-        $message->sender_id= Auth::guard('chef')->user()->id;
-        $message->receiver_id= $id;
-        $message->receiver_type='f';
+        $message->message = $request['replyMessage'];
+        $message->sender_id = Auth::guard('chef')->user()->id;
+        $message->receiver_id = $id;
+        $message->receiver_type = 'f';
         $message->save();
 
         return back();

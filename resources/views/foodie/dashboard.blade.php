@@ -24,6 +24,7 @@
                                             <div>Plan Price: {{$order->plan->price}}</div>
                                         </div>
                                     </a>
+                                    <hr>
                                 @endforeach
                             @else
                                 <div>

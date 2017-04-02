@@ -28,19 +28,24 @@
                                                 </div>
                                                 <div class="card-reveal center lime lighten-4">
                                                     <div>
-                                                        <span class="card-title"><i class="material-icons right">close</i></span>
+                                                        <span class="card-title"><i
+                                                                    class="material-icons right">close</i></span>
                                                         <div style="clear:both;"></div>
                                                     </div>
                                                     {{--route will go to the meals table page with id of plan passed--}}
-{{--                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal',['plan'=>$plan->id]) }}">--}}
+                                                    {{--                                                    <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal',['plan'=>$plan->id]) }}">--}}
                                                     <div>
-                                                        <a class="customize-plan-option-btn" href="{{ route('foodie.chef.meal', $plan->id) }}">
-                                                            <span class="fa fa-pencil"></span><span style="font-size: 10px;">Customize</span>
+                                                        <a class="customize-plan-option-btn"
+                                                           href="{{ route('foodie.chef.meal', $plan->id) }}">
+                                                            <span class="fa fa-pencil"></span><span
+                                                                    style="font-size: 10px;">Customize</span>
                                                         </a>
                                                     </div>
                                                     <div>
-                                                        <a class="customize-plan-option-btn" href="{{ route('foodie.order.review', $plan->id) }}">
-                                                            <span class="fa fa-pencil"></span><span style="font-size: 10px;">Standard</span>
+                                                        <a class="customize-plan-option-btn"
+                                                           href="{{ route('foodie.order.review', $plan->id) }}">
+                                                            <span class="fa fa-pencil"></span><span
+                                                                    style="font-size: 10px;">Standard</span>
                                                         </a>
                                                     </div>
                                                     {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
@@ -55,5 +60,4 @@
                 </div>
             </div>
         </div>
-
 @endsection
