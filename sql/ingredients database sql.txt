@@ -1,0 +1,19 @@
+CREATE TABLE `dsdb`.`ingredients` ( `NDB_No` VARCHAR(255) NOT NULL ,`FdGrp_Cd` VARCHAR(255) NOT NULL , `Long_Desc` TEXT NOT NULL ,`Shrt_Desc` TEXT NOT NULL , `ComName` TEXT NULL , `ManufacName` TEXTNULL , `Survey` TEXT NULL , `Ref_desc` TEXT NULL , `Refuse` TEXT NULL ,`SciName` TEXT NULL , `N_Factor` DOUBLE NULL , `Pro_Factor` DOUBLE NULL, `Fat_Factor` DOUBLE NULL , `CHO_Factor` DOUBLE NULL , PRIMARY KEY(`NDB_No`)) ENGINE = InnoDB;
+
+
+CREATE TABLE `dsdb`.`ingredients_nutrient_data` (`id` int(11)NOT NULL AUTO_INCREMENT, `NDB_No` VARCHAR(255)NOT NULL , `Nutr_No` VARCHAR(255) NOT NULL , `Nutr_Val` DOUBLE NOT NULL ,`Num_Data_Pts` DOUBLE NOT NULL , `Std_Error` DOUBLE  , `Src_Cd`TEXT NOT NULL , `Deriv_Cd` TEXT  , `Ref_NDB_No` TEXT  ,`Add_Nutr_Mark` TEXT  , `Num_Studies` DOUBLE , `Min`DOUBLE  , `Max` DOUBLE  , `DF` DOUBLE  ,`Low_EB` DOUBLE  , `Up_EB` DOUBLE  , `Stat_cmt` TEXT  , `AddMod_Date` TEXT  , `CC` TEXT ,
+PRIMARY KEY(`id`))
+ENGINE = InnoDB;
+
+
+CREATE TABLE `dsdb`.`ingredients_nutrient_data_description` ( `Nutr_No` VARCHAR(5) NOT NULL , `Units` TEXT NOT NULL , `Tagname` TEXT NOT NULL ,`NutrDesc` TEXT NOT NULL , `Num_Dec` TEXT NOT NULL , `SR_Order` DOUBLE NOT NULL,
+PRIMARY KEY(`Nutr_No`) ) ENGINE = InnoDB;
+
+
+CREATE TABLE `dsdb`.`ingredients_weight` ( `NDB_No` VARCHAR(255) NOT NULL , `Seq` TEXT NOT NULL , `Amount` DOUBLE NOT NULL , `Msre_Desc` TEXTNOT NULL , `Gm_Wgt` DOUBLE NOT NULL , `Num_Data_Pts` DOUBLE NOT NULL ,`Std_Dev` DOUBLE NOT NULL ) ENGINE = InnoDB;
+
+
+CREATE TABLE `dsdb`.`ingredients_footnote` ( `NDB_No` VARCHAR(255) NOTNULL , `Footnt_No` TEXT NOT NULL , `Footnt_Typ` TEXT NOT NULL ,`Nutr_No` TEXT NOT NULL , `Footnt_Txt` TEXT NOT NULL ) ENGINE = InnoDB;
+
+CREATE TABLE `dsdb`.`ingredients_group_description` (`FdGrp_Cd` VARCHAR(6) NOT NULL, `FdGrp_Desc` TEXT NOT NULL,
+PRIMARY KEY(`FdGrp_Cd`)) ENGINE = InnoDB;
