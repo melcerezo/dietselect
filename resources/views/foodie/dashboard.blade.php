@@ -2,6 +2,15 @@
 @section('page_head')
     <title>App - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
+
+
+    <script>
+        var successPay = "{{$successPayment}}";
+
+        if(successPay == "true"){
+            Materialize.toast("Payment Successful");
+        }
+    </script>
 @endsection
 
 @section('page_content')

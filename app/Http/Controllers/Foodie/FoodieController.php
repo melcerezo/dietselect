@@ -57,7 +57,8 @@ class FoodieController extends Controller
             'foodie' => Auth::guard('foodie')->user(),
             'orders' => $orders,
             'ordersCount' => $ordersCount,
-            'messages'=> $messages
+            'messages'=> $messages,
+            'successPayment'=> 'false'
         ]);
     }
 

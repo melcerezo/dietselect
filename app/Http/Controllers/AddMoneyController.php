@@ -154,7 +154,7 @@ class AddMoneyController extends Controller{
 
 
             \Session::put('success', 'Payment success');
-            return Redirect::route('foodie.dashboard');
+            return Redirect::route('foodie.dashboard')->with('successPayment','true');
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         \Session::put('error', 'Payment failed');
