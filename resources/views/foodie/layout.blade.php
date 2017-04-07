@@ -44,7 +44,7 @@
             <nav class="asparagus">
                 <div class="nav-wrapper">
                     <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
-                    <a href="#" class="brand-logo">Diet Select</a>
+                    <a href="{{route('foodie.dashboard')}}" class="brand-logo">Diet Select</a>
                     <ul id="foodie-menu-btn" class="right">
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">

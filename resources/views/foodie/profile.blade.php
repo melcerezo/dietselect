@@ -3,7 +3,11 @@
     <title>Foodie Profile - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="/css/foodie/profile.css">
+    <script>
+        {{--var allergies = '{{$allergies}}';--}}
+    </script>
     <script src="/js/foodie/profile.js" defer></script>
+    <script src="/js/foodie/allergies.js"></script>
 @endsection
 
 @section('page_content')

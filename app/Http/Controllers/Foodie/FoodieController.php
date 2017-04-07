@@ -189,6 +189,7 @@ class FoodieController extends Controller
         //
     }
 
+
     public function saveProfileAllergies(Request $request)
     {
 
