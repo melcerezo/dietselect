@@ -4,10 +4,9 @@
     <meta name="description" content="">
     <link rel="stylesheet" href="/css/foodie/profile.css">
     <script>
-        {{--var allergies = '{{$allergies}}';--}}
+        var allergies = "{{$allergyJson}}";
     </script>
     <script src="/js/foodie/profile.js" defer></script>
-    <script src="/js/foodie/allergies.js"></script>
 @endsection
 
 @section('page_content')
@@ -334,35 +333,35 @@
                         <div class="row">
                             <div class="input-field col l4 s12">
                                 <input type="hidden" name="seafood" value="0"/>
-                                <input type="checkbox" name="seafood" value="1" class="filled-in" id="allrg-sea"/>
+                                <input type="checkbox" name="seafood" value="1" class="filled-in  allergyCheckbox" id="allrg-sea"/>
                                 <label for="allrg-sea">Seafood</label><br/>
                                 <input type="hidden" name="squid" value="0"/>
-                                <input type="checkbox" name="squid" value="1" class="filled-in" id="allrg-squid"/>
+                                <input type="checkbox" name="squid" value="1" class="filled-in allergyCheckbox" id="allrg-squid"/>
                                 <label for="allrg-squid">Squid, Shrimp, and Crab</label><br/>
                                 <input type="hidden" name="fish" value="0"/>
-                                <input type="checkbox" name="fish" value="1" class="filled-in" id="allrg-fish"/>
+                                <input type="checkbox" name="fish" value="1" class="filled-in allergyCheckbox" id="allrg-fish"/>
                                 <label for="allrg-fish">Fish</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
                                 <input type="hidden" name="nuts" value="0"/>
-                                <input type="checkbox" name="nuts" value="1" class="filled-in" id="allrg-nuts"/>
+                                <input type="checkbox" name="nuts" value="1" class="filled-in allergyCheckbox" id="allrg-nuts"/>
                                 <label for="allrg-nuts">Nuts</label><br/>
                                 <input type="hidden" name="pork" value="0"/>
-                                <input type="checkbox" name="pork" value="1" class="filled-in" id="allrg-pork"/>
+                                <input type="checkbox" name="pork" value="1" class="filled-in allergyCheckbox" id="allrg-pork"/>
                                 <label for="allrg-pork">Pork</label><br/>
                                 <input type="hidden" name="beef" value="0"/>
-                                <input type="checkbox" name="beef" value="1" class="filled-in" id="allrg-beef"/>
+                                <input type="checkbox" name="beef" value="1" class="filled-in allergyCheckbox" id="allrg-beef"/>
                                 <label for="allrg-beef">Beef</label><br/>
                             </div>
                             <div class="input-field col l4 s12">
                                 <input type="hidden" name="dairy" value="0"/>
-                                <input type="checkbox" name="dairy" value="1" class="filled-in" id="allrg-dairy"/>
+                                <input type="checkbox" name="dairy" value="1" class="filled-in allergyCheckbox" id="allrg-dairy"/>
                                 <label for="allrg-dairy">Dairy</label><br/>
                                 <input type="hidden" name="chicken" value="0"/>
-                                <input type="checkbox" name="chicken" value="1" class="filled-in" id="allrg-chick"/>
+                                <input type="checkbox" name="chicken" value="1" class="filled-in allergyCheckbox" id="allrg-chick"/>
                                 <label for="allrg-chick">Chicken</label><br/>
                                 <input type="hidden" name="egg" value="0"/>
-                                <input type="checkbox" name="egg" value="1" class="filled-in" id="allrg-egg"/>
+                                <input type="checkbox" name="egg" value="1" class="filled-in allergyCheckbox" id="allrg-egg"/>
                                 <label for="allrg-egg">Egg</label><br/><br/>
                             </div>
                             <div class="input-field col s12">

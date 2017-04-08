@@ -71,15 +71,26 @@ class FoodieController extends Controller
     public function profile()
     {
         $addresses = DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-        $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
+        $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->select('allergy')->get();
         $preference = FoodiePreference::where('foodie_id',Auth::guard('foodie')->user()->id)->first();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
-
+        $allergyJson = '[';
+        $i=0;
+        foreach($allergies as $allergy){
+            if(++$i<$allergies->count()){
+                $allergyJson .= '{"allergy": "'.$allergy->allergy.'"},';
+            }else{
+                $allergyJson .= '{"allergy": "'.$allergy->allergy.'"}';
+            }
+        }
+        $allergyJson .=']';
+//        dd($allergyJson);
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'addresses' => $addresses,
             'allergies' => $allergies,
+            'allergyJson'=>$allergyJson,
             'preference' => $preference,
             'messages'=>$messages
         ]);
@@ -189,6 +200,10 @@ class FoodieController extends Controller
         //
     }
 
+    public function postAjax(){
+
+    }
+
 
     public function saveProfileAllergies(Request $request)
     {
@@ -214,6 +229,18 @@ class FoodieController extends Controller
 
                    //print_r($allergy);die('set the allergy model');
                 }
+            }else{
+                if(Allergy::where([
+                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                        ['allergy','=',$key]
+                    ])->count()>0){
+                    $allergy= Allergy::where([
+                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                        ['allergy','=',$key]
+                    ])->first();
+                    $allergy->delete();
+
+                }
             }
        }
 
@@ -221,6 +248,8 @@ class FoodieController extends Controller
        if($otherAllergiesInput!="") {
 
            $otherAllergiesArray = explode(',', $otherAllergiesInput);
+
+
 
            foreach ($otherAllergiesArray as $key => $value) {
 

@@ -77,4 +77,35 @@ $(document).ready(function() {
         }
     });
 
+    var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
+
+    $('input.allergyCheckbox:checkbox').each(function () {
+        var $this=$(this);
+        $.each(allergiesList,function () {
+            if($this.attr('name')==$(this).attr('allergy')){
+                console.log($(this).attr('allergy'));
+                $this.prop('checked',true);
+            }
+        });
+    });
+
+    // $('#allergies').submit(function (event) {
+    //     event.preventDefault();
+    //     var checkAllergies = [];
+    //     $('.allergyCheckbox').each(function () {
+    //         if($(this).is(':checked')){
+    //             checkAllergies.push($(this).attr('name'));
+    //         }
+    //     });
+    //
+    //     if(($.trim($('#allrg-others').val)) != ""){
+    //         var otherAllergies= $('#allrg-others').val().split(',');
+    //         checkAllergies.push(otherAllergies);
+    //     }
+    //     // $.each(otherAllergies,function () {
+    //     //     checkAllergies.push($(this));
+    //     // });
+    //
+    // });
+
 });
