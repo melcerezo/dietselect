@@ -98,16 +98,131 @@
 
             <div id="addresses-container" class="card-panel">
                 <h2 id="address-section" class="mustard-text">Delivery Addresses</h2>
-                <ul>
+                @if($addresses->count()<1)
+                    <h4>{{'No Addresses Added'}}</h4>
+                @else
                     @foreach($addresses as $address)
-                        <li>
-                            <h4>{{ $address->unit . ' ' . $address->bldg . ', ' . $address->street . ', ' . $address->brgy . ', ' . $address->city }}</h4>
-                            <button data-target="update-address-modal" class="btn modal-trigger">Edit Address</button>
-                            {{--<button data-target="delete-address-modal" class="btn modal-trigger">Delete Address</button>--}}
-                        </li>
+                        <div>
+                            <h4>{{ $address->unit.' ' }}
+                                @unless($address->bldg == '')
+                                    {{$address->bldg . ', '}}
+                                @endunless
+                                 {{ $address->street . ', '}}
+                                 {{ $address->brgy . ', '}}
+                                 {{ $address->city }}
+                            </h4>
+                            <button data-target="update-address-modal{{$address->id}}" class="btn modal-trigger">Edit Address</button>
+                            <button data-target="delete-address-modal{{$address->id}}" class="btn modal-trigger">Delete Address</button>
+                        </div>
+                        <div id="update-address-modal{{$address->id}}" class="modal">
+                            <form id="address" method="post" action="{{ route('foodie.address.update', $address->id) }}">
+                                {{csrf_field()}}
+                                <div class="modal-content">
+                                    <h4 id="address-section">Address</h4>
+                                    <p>This should be the address where your food will be primarily delivered to.</p>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('select#address-city{{$address->id}}').val('{{ $address->city ? $address->city : 0 }}');
+                                                    console.log($('select#address-city{{$address->id}}').val());
+                                                });
+                                            </script>
+                                            <select id="address-city{{$address->id}}" name="city">
+                                                <option value="0" disabled selected>Please choose</option>
+                                                <option value="Caloocan">Caloocan</option>
+                                                <option value="Las Piñas">Las Piñas</option>
+                                                <option value="Makati">Makati</option>
+                                                <option value="Malabon">Malabon</option>
+                                                <option value="Mandaluyong">Mandaluyong</option>
+                                                <option value="Manila">Manila</option>
+                                                <option value="Marikina">Marikina</option>
+                                                <option value="Muntinlupa">Muntinlupa</option>
+                                                <option value="Navotas">Navotas</option>
+                                                <option value="Parañaque">Parañaque</option>
+                                                <option value="Pasay">Pasay</option>
+                                                <option value="Pasig">Pasig</option>
+                                                <option value="Pateros">Pateros</option>
+                                                <option value="Quezon">Quezon</option>
+                                                <option value="San Juan">San Juan</option>
+                                                <option value="Taguig">Taguig</option>
+                                                <option value="Valenzuela">Valenzuela</option>
+                                            </select>
+                                            <label for="address-city{{$address->id}}">City</label>
+                                            <small class="notes"><span class="flame-text">*</span> Please take note that we only cover Metro Manila as of the moment.</small>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="address-unit{{$address->id}}" name="unit" type="text" class="validate" value="{{$address->unit}}">
+                                            <label for="address-unit{{$address->id}}">Unit No.<span class="flame-text">*</span></label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="address-street{{$address->id}}" name="street" type="text" class="validate" value="{{$address->street}}">
+                                            <label for="address-street{{$address->id}}">Street<span class="flame-text">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <input id="address-bldg{{$address->id}}" name="bldg" type="text" class="validate" value="{{$address->bldg}}">
+                                            <label for="address-bldg{{$address->id}}">Building</label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="address-brgy{{$address->id}}" name="brgy" type="text" class="validate" value="{{$address->brgy}}">
+                                            <label for="address-brgy{{$address->id}}">Barangay/Village<span class="flame-text">*</span></label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s6">
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('select#address-type{{$address->id}}').val('{{ $address->type ? $address->type : 0 }}');
+                                                });
+                                            </script>
+                                            <select id="address-type{{$address->id}}" name="type">
+                                                <option value="0" disabled selected>Please choose</option>
+                                                <option value="R">Residential</option>
+                                                <option value="O">Office</option>
+                                            </select>
+                                            <label for="address-type{{$address->id}}">Address Type<span class="flame-text">*</span></label>
+                                        </div>
+                                        <div class="input-field col s6">
+                                            <input id="address-company{{$address->id}}" name="company" type="text" class="validate" value="{{$address->company}}">
+                                            <label for="address-company{{$address->id}}">Company</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <input id="address-landmark{{$address->id}}" name="landmark" type="text" class="validate" value="{{$address->landmark}}">
+                                            <label for="address-landmark{{$address->id}}">Landmark</label>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <textarea id="address-remarks{{$address->id}}" name="remarks" class="materialize-textarea" length="255">{{$address->remarks}}</textarea>
+                                            <label for="address-remarks{{$address->id}}">Address Remarks</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <input type="submit" class="hidden"/>
+                                    <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                                </div>
+                            </form> <!-- End of update address form -->
+                        </div>
+                        <div id="delete-address-modal{{$address->id}}" class="modal">
+                            <div class="modal-content">
+                                <h4>Are you sure you want to delete?</h4>
+                                {{-- delete button --}}
+                                <form action="{{route('foodie.address.delete', $address->id)}}" method="post">
+                                    {{csrf_field()}}
+                                    <input type="submit" class="btn" value="delete">
+                                </form>
+                            </div>
+                        </div>
                     @endforeach
-                </ul>
-                <div>
+                @endif
+                <div style="margin:10px 0;">
                     <button data-target="address-modal" class="btn modal-trigger">Add Delivery Address</button>
                 </div>
             </div>
@@ -166,7 +281,7 @@
                             </div>
                             <div class="input-field col s6">
                                 <input id="address-brgy" name="brgy" type="text" class="validate" value="">
-                                <label for="address-brgy">Barangay/Village</label>
+                                <label for="address-brgy">Barangay/Village<span class="flame-text">*</span></label>
                             </div>
                         </div>
                         <div class="row">
@@ -181,7 +296,7 @@
                                     <option value="R">Residential</option>
                                     <option value="O">Office</option>
                                 </select>
-                                <label for="address-type">Address Type</label>
+                                <label for="address-type">Address Type<span class="flame-text">*</span></label>
                             </div>
                             <div class="input-field col s6">
                                 <input id="address-company" name="company" type="text" class="validate" value="">
@@ -207,111 +322,6 @@
                     </div>
                 </form> <!-- End of address form -->
             </div>
-            <div id="update-address-modal" class="modal">
-                <form id="address" method="post" action="{{ route('foodie.profile.address') }}">
-                    {{ csrf_field() }}
-                    <div class="modal-content">
-                        <h4 id="address-section">Address</h4>
-                        <p>This should be the address where your food will be primarily delivered to.</p>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <script>
-                                    $(document).ready(function () {
-                                        $('select#address-city').val('');
-                                    });
-                                </script>
-                                <select id="address-city" name="city">
-                                    <option value="0" disabled selected>Please choose</option>
-                                    <option value="Caloocan">Caloocan</option>
-                                    <option value="Las Piñas">Las Piñas</option>
-                                    <option value="Makati">Makati</option>
-                                    <option value="Malabon">Malabon</option>
-                                    <option value="Mandaluyong">Mandaluyong</option>
-                                    <option value="Manila">Manila</option>
-                                    <option value="Marikina">Marikina</option>
-                                    <option value="Muntinlupa">Muntinlupa</option>
-                                    <option value="Navotas">Navotas</option>
-                                    <option value="Parañaque">Parañaque</option>
-                                    <option value="Pasay">Pasay</option>
-                                    <option value="Pasig">Pasig</option>
-                                    <option value="Pateros">Pateros</option>
-                                    <option value="Quezon">Quezon</option>
-                                    <option value="San Juan">San Juan</option>
-                                    <option value="Taguig">Taguig</option>
-                                    <option value="Valenzuela">Valenzuela</option>
-                                </select>
-                                <label for="address-city">City</label>
-                                <small class="notes"><span class="flame-text">*</span> Please take note that we only cover Metro Manila as of the moment.</small>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="address-unit" name="unit" type="text" class="validate" value="">
-                                <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="address-street" name="street" type="text" class="validate" value="">
-                                <label for="address-street">Street<span class="flame-text">*</span></label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <input id="address-bldg" name="bldg" type="text" class="validate" value="">
-                                <label for="address-bldg">Building</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="address-brgy" name="brgy" type="text" class="validate" value="">
-                                <label for="address-brgy">Barangay/Village</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s6">
-                                <script>
-                                    $(document).ready(function () {
-                                        $('select#address-type').val('');
-                                    });
-                                </script>
-                                <select id="address-type" name="type">
-                                    <option value="0" disabled selected>Please choose</option>
-                                    <option value="R">Residential</option>
-                                    <option value="O">Office</option>
-                                </select>
-                                <label for="address-type">Address Type</label>
-                            </div>
-                            <div class="input-field col s6">
-                                <input id="address-company" name="company" type="text" class="validate" value="">
-                                <label for="address-company">Company</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <input id="address-landmark" name="landmark" type="text" class="validate" value="">
-                                <label for="address-landmark">Landmark</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12">
-                                <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value=""></textarea>
-                                <label for="address-remarks">Address Remarks</label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="hidden"/>
-                        <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
-                    </div>
-                </form> <!-- End of address form -->
-            </div>
-
-            <div id="delete-address-modal" class="modal">
-                <div class="modal-content">
-                    <h4>Are you sure you want to delete?</h4>
-                    {{-- delete button --}}
-                    <a href="#!" class="btn">Delete</a>
-                    <a></a>
-                </div>
-            </div>
-
             <div id="allergies-container" class="card-panel">
                 <h2 id="allergies-section" class="mustard-text">Allergies :</h2>
                 <ul>

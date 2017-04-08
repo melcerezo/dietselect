@@ -152,9 +152,9 @@ class FoodieController extends Controller
 
         Validator::make($request->all(), [
             'city'=> 'required|max:100',
-           // 'unit' => 'required|max:100',
+            'unit' => 'required|max:100',
             'street' => 'required|max:100',
-           // 'bldg' => 'required|max:100',
+//            'bldg' => 'required|max:100',
             'brgy' => 'required|max:100',
             'type' => 'required|max:100',
            // 'company' => 'required|max:100',
@@ -182,10 +182,10 @@ class FoodieController extends Controller
             return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
 
-    public function updateAddress(Request $request){
+    public function updateProfileAddress(Request $request,$id){
         Validator::make($request->all(), [
             'city'=> 'required|max:100',
-            // 'unit' => 'required|max:100',
+            'unit' => 'required|max:100',
             'street' => 'required|max:100',
             // 'bldg' => 'required|max:100',
             'brgy' => 'required|max:100',
@@ -194,10 +194,34 @@ class FoodieController extends Controller
             // 'landmark' => 'required|max:100',
             //'remarks' => 'required|max:100',
         ])->validate();
+
+        DB::table('foodie_address')
+            ->where('id','=',$id)
+            ->update(
+                [
+                    'city'=>$request['city'],
+                    'unit'=> $request['unit'],
+                    'street'=>$request['street'],
+                    'bldg'=>$request['bldg'],
+                    'brgy'=>$request['brgy'],
+                    'type'=>$request['type'],
+                    'company'=>$request['company'],
+                    'landmark'=>$request['landmark'],
+                    'remarks'=>$request['remarks'],
+                ]
+            );
+
+        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+
+
     }
 
-    public function deleteAddress(){
-        //
+    public function deleteProfileAddress($id){
+        DB::table('foodie_address')
+            ->where('id','=',$id)
+            ->delete();
+        return redirect($this->redirectTo)->with(['status' => 'Successfully deleted the address!']);
+
     }
 
     public function postAjax(){
@@ -210,6 +234,38 @@ class FoodieController extends Controller
 
        // print_r($request['others']);die();
        // print_r($otherAllergiesArray);die();
+
+        $otherAllergiesInput = $request->input('others');
+        if($otherAllergiesInput!="") {
+
+            $otherAllergiesArray = explode(',', $otherAllergiesInput);
+            $prevAllergies= Allergy::where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+
+            foreach($prevAllergies as $prevAllergy){
+//               dd($otherAllergiesArray);
+                if(!in_array($prevAllergy->allergy,$otherAllergiesArray)){
+                    $allergyDelete= $prevAllergy;
+                    $allergyDelete->delete();
+                }
+
+            }
+
+            foreach ($otherAllergiesArray as $key => $value) {
+
+                /*~~~ eloquent model method for checking existence ~~~*/
+                if (Allergy::where([
+                        ['foodie_id','=',Auth::guard('foodie')->user()->id],
+                        ['allergy','=',$value]
+                    ])->count()==0) {
+
+                    /*~~~ eloquent model method for getting allergies ~~~*/
+                    $allergy = new Allergy;
+                    $allergy->foodie_id = Auth::guard('foodie')->user()->id;
+                    $allergy->allergy = $value;
+                    $allergy->save();
+                }
+            }
+        }
 
        foreach ($request->except('others') as $key => $value) {
 
@@ -244,29 +300,7 @@ class FoodieController extends Controller
             }
        }
 
-       $otherAllergiesInput = $request->input('others');
-       if($otherAllergiesInput!="") {
 
-           $otherAllergiesArray = explode(',', $otherAllergiesInput);
-
-
-
-           foreach ($otherAllergiesArray as $key => $value) {
-
-               /*~~~ eloquent model method for checking existence ~~~*/
-               if (Allergy::where([
-                       ['foodie_id','=',Auth::guard('foodie')->user()->id],
-                       ['allergy','=',$value]
-                   ])->count()==0) {
-
-                   /*~~~ eloquent model method for getting allergies ~~~*/
-                   $allergy = new Allergy;
-                   $allergy->foodie_id = Auth::guard('foodie')->user()->id;
-                   $allergy->allergy = $value;
-                   $allergy->save();
-               }
-           }
-       }
 
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
