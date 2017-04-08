@@ -77,4 +77,9 @@ $(document).ready(function() {
         }
     });
 
+    console.log(allergies);
+    // $('input.allergyCheckbox:checkbox').each(,function () {
+    //
+    // });
+
 });
