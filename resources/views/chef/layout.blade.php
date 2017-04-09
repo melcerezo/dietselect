@@ -64,12 +64,12 @@
             {{--<span class="hide-on-med-and-down">Profile</span>--}}
             {{--</a>--}}
             {{--</li>--}}
-            <li>
-                <a href="{{route('user.profile')}}" class="foodie-link">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    <span class="hide-on-med-and-down">Settings</span>
-                </a>
-            </li>
+            {{--<li>--}}
+                {{--<a href="{{route('user.profile')}}" class="foodie-link">--}}
+                    {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
+                    {{--<span class="hide-on-med-and-down">Settings</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li class="divider"></li>
             <li>
             <form id="logout" method="post" action="{{ route('chef.logout') }}">
@@ -85,7 +85,7 @@
     <main>
         <!-- Start of Side-nav -->
         <ul id="slide-out" class="side-nav fixed papaya-whip">
-            <li><a id="foodieProfile" href="#!">Profile</a></li>
+            <li><a id="foodieProfile" href="{{route('chef.profile')}}">Profile</a></li>
             <li><a href="{{route('chef.plan')}}">View Plans</a></li>
             <li><a href="{{url('chef/message/index')}}">Messaging({{$messages->count()}})</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}

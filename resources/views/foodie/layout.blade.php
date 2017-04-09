@@ -65,12 +65,12 @@
                     <span class="hide-on-med-and-down">Profile</span>
                 </a>
             </li>
-            <li>
-                <a href="#!" class="foodie-link">
-                    <i class="fa fa-cogs" aria-hidden="true"></i>
-                    <span class="hide-on-med-and-down">Settings</span>
-                </a>
-            </li>
+            {{--<li>--}}
+                {{--<a href="#!" class="foodie-link">--}}
+                    {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
+                    {{--<span class="hide-on-med-and-down">Settings</span>--}}
+                {{--</a>--}}
+            {{--</li>--}}
             <li class="divider"></li>
             <li>
                 <form id="logout" method="post" action="{{ route('foodie.logout') }}">

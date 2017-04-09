@@ -87,6 +87,10 @@ Route::group(['prefix' => 'chef'], function () {
     Route::get('register', 'Chef\Auth\RegisterController@showRegistrationForm')->name('chef.register.show');
     Route::post('register', 'Chef\Auth\RegisterController@register')->name('chef.register');
 
+
+    Route::get('profile', 'Chef\ChefController@profile')->name('chef.profile');
+    Route::post('profile/save', 'Chef\ChefController@saveProfileBasic')->name('chef.profile.basic');
+
     Route::get('verify', 'Chef\Auth\VerificationController@verifyEmail')->name('chef.verify');
     Route::get('verify/{token}', 'Chef\Auth\VerificationController@verifyEmail')->name('chef.verify.email');
     Route::post('verify/email', 'Chef\Auth\VerificationController@sendNewVerificationToken')->name('chef.verify.email.send');

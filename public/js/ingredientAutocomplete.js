@@ -29,7 +29,7 @@ $(document).ready(function () {
                                 'Ingredients' +
                             '</label>' +
                         '</div>' +
-                        '<div class="ingredSelectAdd input-field" >' +
+                        '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
                             '<input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind">' +
                         '</div>'+
                         '<div class="ingredGramsAdd">' +
@@ -44,15 +44,17 @@ $(document).ready(function () {
                     '<a href="#" class="removeField">X</a>' +
                     '</div>');
                 $('select').material_select();
-                $('.addSelectIngred').one('change','select',function (){
+                $('.addSelectIngred').on('change','select',function (){
                     var $type=$(this).val();
                     var $ingredsAddID=$(this).parents().eq(3).find('.ingredients').find('.input-field').find('.autocomplete').attr("id");
+                    var prevAutoComplete=$(this).parents().eq(3).find('.ingredients').find('.input-field').attr('id');
                     $.ajax({
                         url:'/chef/'+$type+'/getIngredJson',
                         success: function(response) {
-                           var $ingredsData = response;
+                            // console.log($('#'+prevAutoComplete).find('.autocomplete-content').attr('class'));
+                            $('#'+prevAutoComplete).find('.autocomplete-content').remove();
+                            var $ingredsData = response;
                             // console.log($ingredsData);
-
                             $(function(){
                                 $('#'+$ingredsAddID+'.autocomplete').autocomplete(JSON.parse($ingredsData));
                             })
@@ -77,19 +79,21 @@ $(document).ready(function () {
                 meal_id.push($(this).attr("data-meal-id"));
             });
 
-            $('.updateIngredSelect').one('change',function (){
+            $('.updateIngredSelect').on('change',function (){
                 var $type=$(this).val();
                 var $ingredsID=$(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
-                console.log($ingredsID);
+                var prevUpdateComplete=$(this).parents().eq(1).find('.input-field').attr('id');
+                // console.log($ingredsID);
                 $.ajax({
                     url:'/chef/'+$type+'/getIngredJson',
                     success: function(response) {
+                        $('#'+prevUpdateComplete).find('.autocomplete-content').remove();
                         var $ingredsData = response;
 
                         $(function(){
                             $('#'+$ingredsID+'.autocomplete').autocomplete(JSON.parse($ingredsData));
                         })
-                        console.log(JSON.parse($ingredsData));
+                        // console.log(JSON.parse($ingredsData));
                     }
                 });
             });

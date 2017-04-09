@@ -45,7 +45,7 @@ class Chef extends Authenticatable
 
     public function setMobileNumberAttribute($value)
     {
-        $this->attributes['mobile_number'] = '0' . $value;
+        $this->attributes['mobile_number'] =  $value;
     }
 
     /**
