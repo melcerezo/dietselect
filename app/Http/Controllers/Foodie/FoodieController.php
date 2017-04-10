@@ -70,7 +70,7 @@ class FoodieController extends Controller
     public function profile()
     {
         $addresses = DB::table('foodie_address')->where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
-        $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get();
+        $allergies = Allergy::where('foodie_id',Auth::guard('foodie')->user()->id)->get()->toJson();
         $preference = FoodiePreference::where('foodie_id',Auth::guard('foodie')->user()->id)->first();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
 
