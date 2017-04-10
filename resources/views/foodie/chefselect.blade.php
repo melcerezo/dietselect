@@ -23,14 +23,19 @@
                                         </a>
                                     </div>
                                     <div class="card-content">
-                                        <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$chef->name}}</span>
+                                        <a href="{{ route('foodie.chef.plan',['id'=>$chef->id]) }}">
+                                            <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$chef->name}}</span>
+                                        </a>
                                     </div>
-                                    <div class="card-reveal center lime lighten-4">
-                                        <span class="card-title"><i class="material-icons right">close</i></span>
+                                    {{--<div class="card-reveal center lime lighten-4">--}}
+                                        {{--<span class="card-title"><i class="material-icons right">close</i></span>--}}
+                                        {{--<p>Website: {{$chef->website}}</p>--}}
+                                        {{--<p></p>--}}
+                                        {{--<p></p>--}}
                                         {{--route will go to the meals table page with id of plan passed--}}
                                         {{--<a class="meal-plan-option-btn" href="{{ route('foodie.chef.plan',['id'=>$chef->id]) }}"><span class="fa fa-pencil"></span></a>--}}
                                         {{--<a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>--}}
-                                    </div>
+                                    {{--</div>--}}
                                 </div>
                             </div>
                         @endforeach

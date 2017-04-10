@@ -43,10 +43,10 @@ class Chef extends Authenticatable
         $this->attributes['email'] = strtolower($value);
     }
 
-    public function setMobileNumberAttribute($value)
-    {
-        $this->attributes['mobile_number'] =  $value;
-    }
+//    public function setMobileNumberAttribute($value)
+//    {
+//        $this->attributes['mobile_number'] =  $value;
+//    }
 
     /**
      * Send the password reset notification.

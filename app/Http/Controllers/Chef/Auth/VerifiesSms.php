@@ -87,7 +87,7 @@ trait VerifiesSms
             ),
         );
         $context = stream_context_create($param);
-        file_get_contents($url, false, $context);
+//        file_get_contents($url, false, $context);
 
     }
 
