@@ -1,4 +1,16 @@
 $(document).ready(function(){
+    $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
+        var url = $('#n-reg-mobile-num').val();
+        if (url == '') {
+            $('#n-reg-mobile-num').val('0');
+        }
+    }).on('blur', '#n-reg-mobile-num', function(){
+        var url = $('#n-reg-mobile-num').val();
+        if (url == '0' || url.length < 7) {
+            $('#n-reg-mobile-num').val('');
+        }
+    });
+
     $('form#registration').validate({
         rules: {
             first_name: {
