@@ -32,7 +32,7 @@ trait   VerifiesSms
         if (!$this->smsIsUnverified()) {
             $this->insertMobileNumberIntoVerification($code);
         }
-        $this->sendSms();
+        $this->sendSms($code);
     }
 
     /**
@@ -88,19 +88,24 @@ trait   VerifiesSms
      *
      * */
 
-    public function sendSms()
+    public function sendSms($code)
     {
         //code for sms sending ges here
-        $itexmo = array('1' => '09266578810', '2' => 'hello', '3' => 'ST-MARKK578810_4MXKV');
+        $url = 'https://www.itexmo.com/php_api/api.php';
+        $itexmo = array('1' => $this->mobile_number(), '2' => $code, '3' => 'ST-MARKK578810_4MXKV');
         $param = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
                 'method' => 'POST',
                 'content' => http_build_query($itexmo),
             ),
+            'ssl' => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
         );
         $context = stream_context_create($param);
-//        file_get_contents($url, false, $context);
+        file_get_contents($url, false, $context);
     }
 
     /**
