@@ -50,10 +50,10 @@ class Foodie extends Authenticatable
         $this->attributes['email'] = strtolower($value);
     }
 
-    public function setMobileNumberAttribute($value)
-    {
-        $this->attributes['mobile_number'] = '63' . $value;
-    }
+//    public function setMobileNumberAttribute($value)
+//    {
+//        $this->attributes['mobile_number'] = '63' . $value;
+//    }
 
     /**
      * Send the password reset notification.

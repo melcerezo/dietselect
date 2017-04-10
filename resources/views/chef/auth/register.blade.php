@@ -55,7 +55,7 @@
             <div class="row tooltipped" data-position="bottom" data-delay="50" data-tooltip="We'll be sending you important notifications via SMS. You will also receive a text message with a verification code after the registration to verify your account.">
                 <div class="input-field col s12">
                     <input id="n-reg-mobile-num" name="mobile_number" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ old('mobile_number') }}"/>
-                    <label for="n-reg-mobile-num">Mobile Number (+63)</label>
+                    <label for="n-reg-mobile-num">Mobile Number</label>
                     <div class="error-msg-mobile-num">
                         @if ($errors->has('mobile_number'))
                             {{ $errors->first('mobile_number') }}

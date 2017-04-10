@@ -51,7 +51,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $data['mobile_number'] = '0' . $data['mobile_number'];
+//        $data['mobile_number'] = '0' . $data['mobile_number'];
         return Validator::make($data, [
             'name' => 'required|min:5|max:255|unique:chefs',
             'email' => 'required|email|max:255|unique:chefs',

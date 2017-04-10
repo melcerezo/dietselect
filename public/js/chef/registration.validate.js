@@ -10,6 +10,17 @@ $(document).ready(function(){
             $('#n-reg-website').val('');
         }
     });
+    $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
+        var url = $('#n-reg-mobile-num').val();
+        if (url == '') {
+            $('#n-reg-mobile-num').val('0');
+        }
+    }).on('blur', '#n-reg-mobile-num', function(){
+        var url = $('#n-reg-mobile-num').val();
+        if (url == '0' || url.length < 7) {
+            $('#n-reg-mobile-num').val('');
+        }
+    });
 
     $.validator.addMethod("alphanumeric", function(value, element) {
         return this.optional(element) || /^[A-Za-z0-9]+$/i.test(value);
