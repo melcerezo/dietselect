@@ -11,17 +11,24 @@ class MyOrderMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $plan;
+    public $planName;
+
+    public $chef;
+
+    public $price;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($plan)
+    public function __construct($planName, $chef, $price)
     {
         //
-        $this->plan = $plan;
+        $this->planName = $planName;
+        $this->chef = $chef;
+        $this->price = $price;
+
     }
 
     /**

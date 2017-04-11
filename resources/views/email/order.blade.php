@@ -9,6 +9,8 @@
 </head>
 <body>
     <h1>You got Mail</h1>
-    <p> hello there </p>
+    <p> Plan: {{$planName}} </p>
+    <p>Chef: {{$chef}}</p>
+    <p>Price of the plan: {{$price}}</p>
 </body>
 </html>

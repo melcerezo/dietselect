@@ -43,8 +43,16 @@ class FoodieOrderPlanController extends Controller
         $order->foodie_id = $foodie->id;
         $plan->orders()->save($order);
 
+        // Message Template
+        $planName = $plan->plan_name;
+        $chef = $plan->chef->name;
+        $price = $plan->price;
+
             $mailer->to($foodie->email)
-            ->send(new MyOrderMail($plan->plan_name));
+            ->send(new MyOrderMail(
+                $planName,
+                $chef,
+                $price));
     //        $message = new MailMessage();
     //        $message->subject('Order')
     //            ->line($foodie.' placed an order created by:'. $plan->chef->name)
