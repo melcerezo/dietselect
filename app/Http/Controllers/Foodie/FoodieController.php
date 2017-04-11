@@ -224,11 +224,6 @@ class FoodieController extends Controller
 
     }
 
-    public function postAjax(){
-
-    }
-
-
     public function saveProfileAllergies(Request $request)
     {
 
@@ -263,6 +258,8 @@ class FoodieController extends Controller
                     $allergy->foodie_id = Auth::guard('foodie')->user()->id;
                     $allergy->allergy = $value;
                     $allergy->save();
+
+                   //print_r($allergy);die('set the allergy model');
                 }
             }
         }

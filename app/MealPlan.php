@@ -17,15 +17,15 @@ class MealPlan extends Model
         return $this->belongsTo('App\Plan');
     }
 
-    public function customized_meal(){
-        return $this->belongsTo('App\CustomizedMeal','customized_meal_id');
+    public function customize(){
+        return $this->belongsTo('App\CustomizedMeal','customized_meals');
     }
 
 
     protected $fillable=[
         'plan_id',
         'meal_id',
-        'customized_meal_id',
+        'customized_meals',
         'day',
         'meal_type',
     ];

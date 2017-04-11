@@ -57,6 +57,10 @@ class DepositController extends Controller{
                     'method' => 'POST',
                     'content' => http_build_query($itexmo),
                 ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
             );
             $context = stream_context_create($param);
             file_get_contents($url, false, $context);
