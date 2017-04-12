@@ -2,6 +2,7 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
     <script src="/js/ingredientAutocomplete.js"></script>
+    <script src="/js/chef/mealPlannerValidate.js"></script>
 
 @endsection
 
@@ -346,7 +347,7 @@
         @for($i=0;$i<$mealPlansCount;$i++)
             <div id="editMeal-{{$i}}" class="modal">
                 <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
-                <form id="editMeal{{$i}}" action="{{route('chef.meal.update', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
+                <form id="editMeal{{$i}}" class="editMeal" action="{{route('chef.meal.update', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
                     {{csrf_field()}}
                     <div class="modal-content">
                         {{$mealPlans[$i]->meal->description}}
