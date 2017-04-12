@@ -102,13 +102,6 @@
                                 @endif
                             @endforeach
                         </td>
-                        {{--@foreach($mealPlans as $id =>$mealPlan)--}}
-                            {{--@if($mealPlan->day == 'MO')--}}
-                                    {{--<td><a href="#editMeal-{{$id}}"--}}
-                                           {{--class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                                    {{--</td>--}}
-                            {{--@endif--}}
-                        {{--@endforeach--}}
                 </tr>
                 <tr id="Tuesday">
                     <th>Tuesday</th>
@@ -154,14 +147,6 @@
                             @endif
                         @endforeach
                     </td>
-                    {{--@foreach($mealPlans as $id=>$mealPlan)--}}
-                        {{--@if($mealPlan->day == 'TU')--}}
-                                {{--<td><a href="#editMeal-{{$id}}"--}}
-                                       {{--class=" waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                                {{--</td>--}}
-
-                        {{--@endif--}}
-                    {{--@endforeach--}}
                 </tr>
                 <tr id="Wednesday">
                     <th>Wednesday</th>
@@ -207,13 +192,6 @@
                             @endif
                         @endforeach
                     </td>
-                    {{--@foreach($mealPlans as $id=>$mealPlan)--}}
-                        {{--@if($mealPlan->day == 'WE')--}}
-                                {{--<td><a href="#editMeal-{{$id}}"--}}
-                                       {{--class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                                {{--</td>--}}
-                        {{--@endif--}}
-                    {{--@endforeach--}}
                 </tr>
                 <tr id="Thursday">
                     <th>Thursday</th>
@@ -259,13 +237,6 @@
                             @endif
                         @endforeach
                     </td>
-                    {{--@foreach($mealPlans as $id=>$mealPlan)--}}
-                        {{--@if($mealPlan->day == 'TH')--}}
-                                {{--<td><a href="#editMeal-{{$id}}"--}}
-                                       {{--class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                                {{--</td>--}}
-                        {{--@endif--}}
-                    {{--@endforeach--}}
                 </tr>
                 <tr id="Friday">
                     <th>Friday</th>
@@ -311,14 +282,6 @@
                             @endif
                         @endforeach
                     </td>
-                    {{--@foreach($mealPlans as $id=>$mealPlan)--}}
-                        {{--@if($mealPlan->day == 'FR')--}}
-                                {{--<td><a href="#editMeal-{{$id}}"--}}
-                                       {{--class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                                {{--</td>--}}
-
-                        {{--@endif--}}
-                    {{--@endforeach--}}
                 </tr>
                 <tr id="Saturday">
                     <th>Saturday</th>
@@ -364,13 +327,6 @@
                             @endif
                         @endforeach
                     </td>
-                    {{--@foreach($mealPlans as $id=>$mealPlan)--}}
-                        {{--@if($mealPlan->day == 'SA')--}}
-                            {{--<td><a href="#editMeal-{{$id}}"--}}
-                                   {{--class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>--}}
-                            {{--</td>--}}
-                        {{--@endif--}}
-                    {{--@endforeach--}}
                 </tr>
                 </tbody>
             </table>
