@@ -18,7 +18,7 @@ class CreateRatingsTable extends Migration
             $table->integer('chef_id')->unsigned();
             $table->integer('foodie_id')->unsigned();
             $table->string('feedback')->nullable();
-            $table->integer('rating')->unsigned();
+            $table->integer('rating')->unsigned()->nullable();
             $table->integer('order_id')->unsigned();
             $table->foreign('order_id')->references('id')
                 ->on('orders')
