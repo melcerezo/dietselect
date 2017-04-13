@@ -32,11 +32,17 @@ class RatingsController extends Controller
     public function rateChef(Order $order, Request $request)
     {
         $foodie = Auth::guard('foodie')->user();
-        $rating = Rating::where('order_id', '=', $order->id)->where('foodie_id', '=', $foodie->id)->get();
-        $rating->feedback = $request['feedback'];
-        $rating->rating = $request['rate'];
-        $rating->is_rated = true;
-        $order->rating()->save($rating);
+        Rating::where('order_id', '=', $order->id)->where('foodie_id', '=', $foodie->id)
+            ->update([
+               'feedback' => $request['feedback'],
+                'rating' => $request['rate'],
+                'is_rated' => true,
+            ]);
+//        $rating = Rating::where('order_id', '=', $order->id)->where('foodie_id', '=', $foodie->id)->get();
+//        $rating->feedback = $request['feedback'];
+//        $rating->rating = $request['rate'];
+//        $rating->is_rated = true;
+//        $order->rating()->save($rating);
         return back();
     }
 }
