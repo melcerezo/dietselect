@@ -187,7 +187,6 @@ class FoodieMealPlanController extends Controller
             }
         }
 
-
         return redirect()->route('foodie.meal', compact('plan', 'customize'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -242,8 +241,6 @@ class FoodieMealPlanController extends Controller
 //        $customMeals = MealPlan::where('customized_meal_id', '=', $customize->meal_id)->get();
 //        dd($customMeals);
 
-
-
         return view('foodie.mealCustomize', compact('plan', 'customize'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -257,7 +254,6 @@ class FoodieMealPlanController extends Controller
 
     public function getIngredJson($type)
     {
-
         $categ = $type;
         $data = '';
         if ($categ == 'chicken') {
@@ -373,10 +369,6 @@ class FoodieMealPlanController extends Controller
                 'grams' => $request['grams'][$i],
             ]);
         }
-
-
         return back();
     }
-
-
 }
