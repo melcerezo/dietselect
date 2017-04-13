@@ -69,10 +69,10 @@ class CreateForeignKeys extends Migration
      * @return void
      */
     public function down(){
-        Schema::table('messages', function (Blueprint $table){
-            $table->dropForeign('message_chef_id_foreign');
-            $table->dropForeign('message_foodie_id_foreign');
-        });
+//        Schema::table('messages', function (Blueprint $table){
+//            $table->dropForeign('message_chef_id_foreign');
+//            $table->dropForeign('message_foodie_id_foreign');
+//        });
 
         Schema::table('foodie_address', function (Blueprint $table){
             $table->dropForeign('foodie_address_foodie_id_foreign');
