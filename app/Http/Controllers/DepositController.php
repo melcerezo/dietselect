@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Deposit;
 use App\Order;
+use App\Rating;
 use Illuminate\Http\Request;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,6 @@ class DepositController extends Controller
         $this->middleware('foodie.auth');
     }
 
-
     public function deposit(Request $request, Order $order)
     {
         $this->validate($request, [
@@ -24,14 +24,11 @@ class DepositController extends Controller
         ]);
 
         $image = $request['image'];
-
-
         if ($request->hasFile('image')) {
 
             $filename = time() . '.' . $image->getClientOriginalExtension();
             $originalName = $image->getClientOriginalName();
             Image::make($image)->resize(500, 500)->save(public_path('img/' . $filename));
-
 
             $deposit = new Deposit();
             $deposit->receipt_name = $filename;
@@ -51,8 +48,11 @@ class DepositController extends Controller
             $order->is_paid = 1;
             $order->save();
 
-            return 'saved!';
-
+            $rating = new Rating();
+            $rating->chef_id = $order->chef->id;
+            $rating->foodie_id = Auth::guard('foodie')->user()->id;
+            $order->rating()->save($rating);
         }
+        return 'saved!';
     }
 }

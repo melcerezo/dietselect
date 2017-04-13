@@ -67,6 +67,9 @@ Route::group(['prefix' => 'foodie'], function () {
     // Bank Deposit
     Route::post('bank/deposit/order/{order}', 'DepositController@deposit')->name('deposit.order');
 
+    // Rating
+    Route::get('foodie/rating', 'RatingsController@getRatingPage')->name('chef.rating');
+    Route::post('rate/chef/{order}', 'RatingsController@rateChef')->name('rate.chef');
 });
 
 Route::group(['prefix' => 'chef'], function () {
@@ -108,4 +111,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('message/send', 'Chef\ChefMessageController@send')->name('chef.message.send');
     Route::post('message/reply/{id}', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
     Route::post('message/readMessage/{message}', 'Chef\ChefMessageController@readMessage')->name('chef.message.read');
+
+    // Chef Rating
+    Route::get('chef/rating', 'ChefRatingsController@viewRatings')->name('ratings');
 });
