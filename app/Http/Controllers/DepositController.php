@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Deposit;
 use App\Order;
+use App\Rating;
 use Illuminate\Http\Request;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
-class DepositController extends Controller{
-    public function __construct(){
+class DepositController extends Controller
+{
+    public function __construct()
+    {
         $this->middleware('foodie.auth');
     }
 
@@ -65,7 +68,13 @@ class DepositController extends Controller{
             $context = stream_context_create($param);
             file_get_contents($url, false, $context);
 
+            $rating = new Rating();
+            $rating->chef_id = $order->chef->id;
+            $rating->foodie_id = Auth::guard('foodie')->user()->id;
+            $order->rating()->save($rating);
+
             return back();
         }
+
     }
 }
