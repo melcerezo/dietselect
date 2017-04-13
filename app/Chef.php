@@ -70,4 +70,9 @@ class Chef extends Authenticatable
     public function messages(){
         return $this->hasMany(Message::class);
     }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
 }

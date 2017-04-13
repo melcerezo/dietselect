@@ -88,6 +88,7 @@
             <li><a id="foodieProfile" href="{{route('chef.profile')}}">Profile</a></li>
             <li><a href="{{route('chef.plan')}}">View Plans</a></li>
             <li><a href="{{url('chef/message/index')}}">Messaging({{$messages->count()}})</a></li>
+            <li><a href="{{route('ratings')}}">Ratings</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 
