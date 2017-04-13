@@ -22,6 +22,11 @@ class Order extends Model
         return $this->hasOne(Deposit::class);
     }
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
     public function rating()
     {
         return $this->hasOne(Rating::class);
