@@ -87,8 +87,7 @@ trait VerifiesSms
             ),
         );
         $context = stream_context_create($param);
-//        file_get_contents($url, false, $context);
-
+        file_get_contents($url, false, $context);
     }
 
     /**
@@ -192,7 +191,6 @@ trait VerifiesSms
                 'verification_code' => 'The code did not match our records.',
             ]);
     }
-
 
     /**
      * Returns the currently authenticated user
