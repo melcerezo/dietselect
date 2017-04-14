@@ -3,7 +3,7 @@ $(document).ready(function () {
         var $type = $(this).val();
         var $ingredsID = $(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
         var prevUpdateComplete=$(this).parents().eq(1).find('.input-field').attr('id');
-        console.log($type);
+        console.log(prevUpdateComplete);
         $.ajax({
             url: '/foodie/' + $type + '/getIngredJson',
             success: function (response) {
@@ -12,7 +12,7 @@ $(document).ready(function () {
                 $(function () {
                     $('#' + $ingredsID + '.autocomplete').autocomplete(JSON.parse($ingredsData));
                 })
-                console.log(JSON.parse($ingredsData));
+                // console.log(JSON.parse($ingredsData));
             }
         });
     });

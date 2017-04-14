@@ -445,7 +445,7 @@
                         <div class="modal-content">
                         <form id="editMeal{{$i}}"
     {{--                          action="{{route('foodie.meal.custom',array($mealPlans[$i]->meal->id, $mealPlans[$i]->customized_meal))}}"--}}
-                              action="{{route('foodie.meal.custom',$mealPlans[$i]->meal->id)}}"
+                              action="{{route('foodie.meal.custom',$cust->id)}}"
                               method="post" autocomplete="off" class="editMeal">
                             {{csrf_field()}}
                                 <h6>Customize Meal</h6>
@@ -482,17 +482,18 @@
                                     $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
                                 });
                             </script>
+
+                                {{--{{$cust->id}}--}}
                                 <div id="ingredSelect" class="ingredSelect">
                                     @for($j=0;$j<$ingredientCount;$j++)
-                                            {{$ingredientCount}}
                                         @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
-                                            @if($ingredientsMeal[$j]->meal_id==$cust->id && $c<1)
+                                            @if($ingredientsMeal[$j]['meal']==$cust->id && $c<1)
                                                 <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"
                                                      class="ingredSelectContainer">
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
                                                             name="ingredient_select[]" class="updateIngredSelect">
                                                         <option disabled
-                                                                selected>{{$ingredientsMeal[$j]->FdGrp_Desc}}</option>
+                                                                selected>{{$ingredientsMeal[$j]['ingredient_group']}}</option>
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
                                                         <option value="pork">Pork</option>
@@ -504,16 +505,16 @@
                                                         </option>
                                                         <option value="vegetables">Vegetables</option>
                                                     </select>
-                                                    <div class="ingredSelectAdd input-field">
+                                                    <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
                                                         <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
-                                                        <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}"
+                                                        <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
                                                                id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"
                                                                name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind">
                                                     </div>
                                                     <div class="error-foodieIngred{{$j}} err"></div>
                                                     <div class="ingredGramsAdd">
                                                         <div class="gramLabel"><label for="grams[]">Grams</label></div>
-                                                        <input type="number" value="{{$ingredientsMeal[$j]->grams}}"
+                                                        <input type="number" value="{{$ingredientsMeal[$j]['grams']}}"
                                                                name="grams[{{$j}}]"
                                                                id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
                                                                class="required inputBehind">

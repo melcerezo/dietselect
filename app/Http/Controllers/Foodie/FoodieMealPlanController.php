@@ -187,8 +187,9 @@ class FoodieMealPlanController extends Controller
             }
         }
 
+        $customIdString=json_encode($customId);
 
-        return redirect()->route('foodie.meal', compact('plan','customId'))->with([//I need the $customId array to be passed into this route.
+        return redirect()->route('foodie.meal', compact('plan','customIdString'))->with([//I need the $customId array to be passed into this route.
             'plan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -204,38 +205,65 @@ class FoodieMealPlanController extends Controller
     public function viewMeal(Plan $plan, $customId)//I need to access the $customId array here
     {
 //        dd($id);
+        $customList=json_decode($customId);
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 
         $customize=[];
-//        $counter=0;
-        foreach($mealPlans as $mealPlan){
-//          $customize[]=CustomizedMeal::where('id','=',$customId[$counter])->first();
-            $customize[]=CustomizedMeal::where('meal_id','=',$mealPlan->meal_id)->first();
-//          $counter+=1;
+        $ingredientsMeal = [];
+        $ingredientDesc="";
+        $ingredientMealData=[];
+        $ingredientCount = DB::table('ingredient_meal')
+            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
+            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+            ->count();
+        for($i=0;$i<count($customList);$i++){
+          $customize[]=CustomizedMeal::where('id','=',$customList[$i])->first();
+          for($j=0;$j<$customize[$i]->customized_ingredient_meal->count();$j++){
+              $ingredientsMeal[]=$customize[$i]->customized_ingredient_meal[$j];
+          }
+//            $customize[]=CustomizedMeal::where('meal_id','=',$mealPlan->meal_id)->first();
         }
+        for($i=0;$i<count($ingredientsMeal);$i++){
+          $ingredientDesc=DB::table('ingredients')
+              ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+              ->where('NDB_No','=',$ingredientsMeal[$i]->ingredient_id)
+              ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+              ->first();
+          $ingredientMealData[]=array(
+              "meal"=>$ingredientsMeal[$i]->meal_id,
+              "ingredient"=>$ingredientDesc->Long_Desc,
+              "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
+              "grams"=>$ingredientsMeal[$i]->grams
+          );
+        }
+
+//        dd($ingredientMealData[0]['grams']);
+
+//        dd($customize);
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
         $mealPlansCount = $mealPlans->count();
 
-        $ingredientsMeal = '';
-        $ingredientCount = DB::table('ingredient_meal')
-            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-            ->count();
+
+//        dd($ingredientCount);
         if ($ingredientCount > 0) {
-            $ingredientsMeal = DB::table('ingredients')
-                ->join('customized_ingredient_meals', 'ingredients.NDB_No', '=', 'customized_ingredient_meals.ingredient_id')
-                ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=',
-                    'ingredients_group_description.FdGrp_Cd')
-                ->join('customized_meals', 'customized_ingredient_meals.meal_id', '=', 'customized_meals.id')
-                ->join('meal_plans', 'meal_plans.meal_id', '=', 'customized_meals.meal_id')
-                ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'customized_ingredient_meals.meal_id',
-                    'customized_ingredient_meals.grams')->get();
+
+
+
+//                    $ingredientsMeal[] = DB::table('ingredients')
+//                        ->join('customized_ingredient_meals', 'ingredients.NDB_No', '=', 'customized_ingredient_meals.ingredient_id')
+//                        ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=', 'ingredients_group_description.FdGrp_Cd')
+//                        ->join('customized_meals', 'customized_ingredient_meals.meal_id', '=', 'customized_meals.id')
+//                        ->join('meal_plans', 'meal_plans.meal_id', '=', 'customized_meals.meal_id')
+//                        ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'customized_ingredient_meals.meal_id',
+//                            'customized_ingredient_meals.grams')->where('customized_meals.id','=',$customList[$i])
+//                        ->first();
+
         }
-//        dd($ingredientsMeal);
+
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -253,7 +281,7 @@ class FoodieMealPlanController extends Controller
             'foodie' => Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount' => $mealPlansCount,
-            'ingredientsMeal' => $ingredientsMeal,
+            'ingredientsMeal' => $ingredientMealData,
             'ingredientCount' => $ingredientCount,
             'messages' => $messages
         ]);
@@ -311,9 +339,10 @@ class FoodieMealPlanController extends Controller
         return $response;
     }
 
-    public function customizeChefsMeals(Meal $meal, Request $request)
+    public function customizeChefsMeals(CustomizedMeal $customize, Request $request)
     {
 
+//        dd($request['ingredients']);
         $ingredId = [];
         $user = Auth::guard('foodie')->user()->id;
         $main_ingredient = $request['main_ingredient'];
@@ -322,11 +351,10 @@ class FoodieMealPlanController extends Controller
         $updateCarbohydrates = 0;
         $updateProtein = 0;
         $updateFat = 0;
-
-
+        $arrayKeys=array_keys($request['ingredients']);
         for ($i = 0; $i < $ingredientCountUpdate; $i++) {
-            $ingredient = $request['ingredients'][$i];
-
+            $ingredient = $request['ingredients'][$arrayKeys[$i]];
+//            dd($ingredient);
             $ingredId[$i] = DB::table('ingredients')->select('NDB_No')->where('Long_Desc', '=', $ingredient)->first();
             $ingredCal = DB::table('ingredients_nutrient_data')->select('Nutr_Val')
                 ->where('NDB_No', '=', $ingredId[$i]->NDB_No)
@@ -340,7 +368,7 @@ class FoodieMealPlanController extends Controller
             $ingredCarb = DB::table('ingredients_nutrient_data')->select('Nutr_Val')
                 ->where('NDB_No', '=', $ingredId[$i]->NDB_No)
                 ->where('Nutr_No', '=', '~205~')->first();
-            $grams = $request['grams'][$i];
+            $grams = $request['grams'][$arrayKeys[$i]];
             $cal = $ingredCal->Nutr_Val * .01 * $grams;
             $pro = $ingredPro->Nutr_Val * .01 * $grams;
             $fat = $ingredFat->Nutr_Val * .01 * $grams;
@@ -356,28 +384,40 @@ class FoodieMealPlanController extends Controller
         $proteinUpdate = $updateProtein;
         $fatUpdate = $updateFat;
 
-        $cust_id= CustomizedMeal::where('meal_id', '=', $meal->id)->pluck('id')->first();
-        $prevIngreds = DB::table('customized_ingredient_meals')->select('ingredient_id')->where('meal_id','=',$cust_id)->get();
-
-        CustomizedMeal::where('meal_id', '=', $meal->id)->update([
-            'meal_id' => $meal->id,
+//        $cust_id= CustomizedMeal::where('meal_id', '=', $meal->id)->pluck('id')->first();
+        $prevIngreds = DB::table('customized_ingredient_meals')->select('ingredient_id')->where('meal_id','=',$customize->id)->get();
+        $customize->update([
             'foodie_id' => $user,
-            'description' => $meal->description,
             'main_ingredient' => $main_ingredient,
             'calories' => $caloriesUpdate,
             'carbohydrates' => $carbohydratesUpdate,
             'protein' => $proteinUpdate,
             'fat' => $fatUpdate
         ]);
-
-        for ($i = 0; $i < $ingredientCountUpdate; $i++) {
-            DB::table('customized_ingredient_meals')->where('meal_id', '=', $cust_id)
-                ->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update([
-                'ingredient_id' => $ingredId[$i]->NDB_No,
-                'grams' => $request['grams'][$i],
-            ]);
+        $customIngred=$customize->customized_ingredient_meal;
+//        dd($customIngred);
+//        dd($customIngred[1]->id);
+//        for($i = 0; $i < $customize->customized_ingredient_meal->count(); $i++){
+//            echo $customIngred[$i];
+////            echo $ingredId[$i]->NDB_No;
+////            echo $request['grams'][$arrayKeys[$i]];
+//        }
+//        die();
+//        $customz = $customIngred[0];
+        for ($i = 0; $i < $customize->customized_ingredient_meal->count(); $i++) {
+            DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
+                ['meal_id' => $customize->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
+            );
+//            update([
+//                'ingredient_id'=>$ingredId[$i]->NDB_No,
+//                'grams' => $request['grams'][$arrayKeys[$i]]
+//            ]);
+//            echo $customIngred[$i]->id . "<br />";
+//            echo $customIngred[$i]->ingredient_id . "<br />";
+//            echo $customIngred[$i]->grams . "<br />";
         }
 
+//        die();
 
         return back();
     }
