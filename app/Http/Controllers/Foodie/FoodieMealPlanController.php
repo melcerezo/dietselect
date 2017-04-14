@@ -22,7 +22,7 @@ use phpDocumentor\Reflection\Types\Integer;
 class FoodieMealPlanController extends Controller
 {
     use VerifiesSms;
-
+//    line 159 start
 
     public function __construct()
     {
@@ -156,7 +156,7 @@ class FoodieMealPlanController extends Controller
 //        dd($mealId);
 
 //    dd($mealIngreds[3]);
-        $customId = [];
+        $customId = [];// this array will hold the created customized meal ids
 
         foreach ($mealPlans as $mealPlan) {
             $customize = new CustomizedMeal();
@@ -169,7 +169,7 @@ class FoodieMealPlanController extends Controller
             $customize->protein = $mealPlan->meal->protein;
             $customize->fat = $mealPlan->meal->fat;
             $customize->save();
-            $customId[] = $customize->id;
+            $customId[] = $customize->id;//saves the created meal id into $customId
         }
 
         $mealIngreds = [];
@@ -188,7 +188,8 @@ class FoodieMealPlanController extends Controller
         }
 
 
-        return redirect()->route('foodie.meal', compact('plan', 'customize'))->with([
+        return redirect()->route('foodie.meal', compact('plan','customId'))->with([//I need the $customId array to be passed into this route.
+            'plan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
@@ -196,20 +197,24 @@ class FoodieMealPlanController extends Controller
             'ingredientsMeal' => $ingredientsMeal,
             'ingredientCount' => $ingredientCount,
             'messages' => $messages,
+            'customId'=>array($customId)
         ]);
     }
 
-    public function viewMeal(Plan $plan, CustomizedMeal $customize)
+    public function viewMeal(Plan $plan, $customId)//I need to access the $customId array here
     {
+//        dd($id);
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 
         $customize=[];
+//        $counter=0;
         foreach($mealPlans as $mealPlan){
+//          $customize[]=CustomizedMeal::where('id','=',$customId[$counter])->first();
             $customize[]=CustomizedMeal::where('meal_id','=',$mealPlan->meal_id)->first();
+//          $counter+=1;
         }
-//        dd($customize);
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
@@ -220,7 +225,6 @@ class FoodieMealPlanController extends Controller
             ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
             ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
             ->count();
-
         if ($ingredientCount > 0) {
             $ingredientsMeal = DB::table('ingredients')
                 ->join('customized_ingredient_meals', 'ingredients.NDB_No', '=', 'customized_ingredient_meals.ingredient_id')

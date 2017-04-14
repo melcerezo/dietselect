@@ -2,6 +2,7 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/foodieMealCustomize.css">
     <script src="/js/foodie/foodieIngredientAutocomplete.js"></script>
+    <script src="/js/foodie/mealPlanValidate.js"></script>
 
 @endsection
 
@@ -441,12 +442,12 @@
                         {{--<i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>--}}
 
                         {{--Hello: {{$custom}} World--}}
+                        <div class="modal-content">
                         <form id="editMeal{{$i}}"
     {{--                          action="{{route('foodie.meal.custom',array($mealPlans[$i]->meal->id, $mealPlans[$i]->customized_meal))}}"--}}
-                              action="{{route('foodie.meal.custom',array($mealPlans[$i]->meal->id))}}"
-                              method="post" autocomplete="off">
+                              action="{{route('foodie.meal.custom',$mealPlans[$i]->meal->id)}}"
+                              method="post" autocomplete="off" class="editMeal">
                             {{csrf_field()}}
-                            <div class="modal-content">
                                 <h6>Customize Meal</h6>
                                 <h4>{{$cust->description}}</h4>
                                 <h5>Meal Stats:</h5>
@@ -463,14 +464,27 @@
                                     Fat: {{$cust->fat}}g
                                 </div>
 
-                                <p><label for="description">Main Ingredient</label></p>
-                                <input type="text" name="main_ingredient" class="form-control"
-                                       value="{{$cust->main_ingredient}}">
-
-                                <div class="ingredLabel"><label for="ingredient">Ingredients</label></div>
-                                <div class="gramLabel"><label for="grams">Grams</label></div>
+                            <p><label for="main_ingredient">Main Ingredient</label></p>
+                            <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
+                                <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient">
+                                    {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
+                                    <option value="chicken">Chicken</option>
+                                    <option value="beef">Beef</option>
+                                    <option value="pork">Pork</option>
+                                    <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
+                                    <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
+                                    <option value="vegetables">Vegetables</option>
+                                </select>
+                            </div>
+                            <script>
+                                $(document).ready(function () {
+                                    var mainIngred='{{ $mealPlans[$i]->meal->main_ingredient}}';
+                                    $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
+                                });
+                            </script>
                                 <div id="ingredSelect" class="ingredSelect">
                                     @for($j=0;$j<$ingredientCount;$j++)
+                                            {{$ingredientCount}}
                                         @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
                                             @if($ingredientsMeal[$j]->meal_id==$cust->id && $c<1)
                                                 <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"
@@ -491,26 +505,29 @@
                                                         <option value="vegetables">Vegetables</option>
                                                     </select>
                                                     <div class="ingredSelectAdd input-field">
+                                                        <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
                                                         <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}"
                                                                id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"
-                                                               name="ingredients[]" class="autocomplete inputBehind">
+                                                               name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind">
                                                     </div>
+                                                    <div class="error-foodieIngred{{$j}} err"></div>
                                                     <div class="ingredGramsAdd">
                                                         <div class="gramLabel"><label for="grams[]">Grams</label></div>
                                                         <input type="number" value="{{$ingredientsMeal[$j]->grams}}"
-                                                               name="grams[]"
-                                                               id="grams{{$mealPlans[$i]->meal->id}}{{$j}}"
-                                                               class="inputBehind"></div>
+                                                               name="grams[{{$j}}]"
+                                                               id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
+                                                               class="required inputBehind">
+                                                    </div>
+                                                    <div class="error-foodieGram{{$j}} err"></div>
                                                 </div>
                                             @endif
                                         @endfor
                                     @endfor
+                                <div><button type="submit" form="editMeal{{$i}}">Update</button></div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="submit" form="editMeal{{$i}}">Update</button>
-                            </div>
+                            <div style="clear: both"></div>
                         </form>
+                    </div>
                     </div>
                     @endif
                 @endforeach

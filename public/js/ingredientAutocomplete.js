@@ -12,7 +12,7 @@ $(document).ready(function () {
                             '<label for="ingredient_select[]">Ingredients</label>' +
                         '</div>' +
                         '<div id="ingredSelectContent'+count+'" class="addSelectIngred">' +
-                            '<select id="ingredSelectOption'+count+'" name="ingredient_select[]" >' +
+                            '<select id="ingredSelectOption'+count+'" name="ingredient_select['+count+']">' +
                                 '<option disabled selected>Select Type of Ingredient</option>' +
                                 '<option value="chicken">Chicken</option>' +
                                 '<option value="beef">Beef</option>' +
@@ -29,17 +29,19 @@ $(document).ready(function () {
                                 'Ingredients' +
                             '</label>' +
                         '</div>' +
-                        '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
-                            '<input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind">' +
-                        '</div>'+
+                    '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
+                            '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="required autocomplete inputBehind">' +
+                    '</div>'+
+                    '<div class="error-ingredient'+count+' err"></div>' +
                         '<div class="ingredGramsAdd">' +
                             '<div class="gramLabel">' +
                                 '<label for="grams[]">' +
                                     'Grams' +
                                 '</label>' +
                             '</div>' +
-                            '<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind">' +
+                            '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="required inputBehind">' +
                         '</div>'+
+                    '<div class="error-gram'+count+' err"></div>' +
                     '</div>'+
                     '<a href="#" class="removeField">X</a>' +
                     '</div>');

@@ -1,54 +1,228 @@
 $(document).ready(function () {
 
-    $(window).load(function () {
-        $('form.editMeal').each(function () {
-            console.log($(this).attr('id'));
-            $(this).validate({
-                rules: {
-                    description: {
-                        required: true
-                    },
-                    main_ingredient: {
-                        required: true
-                    }
-                },
-                //For custom messages
-                messages: {
-                    description: {
-                        required: "Enter your first name, please!",
-                        minlength: "You sure you're named with one letter?"
-                    },
-                    main_ingredient: {
-                        required: "Enter your last name, please!"
-                    }
-                },
-                errorElement : 'div',
-                errorPlacement: function(error, element) {
-                    var placement = $(element).data('error');
-                    if (placement) {
-                        $(placement).append(error);
-                    } else {
-                        error.insertAfter(element);
-                    }
-                }
+    $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
-            });
-        });
-        $('select.updateIngredSelect').each(function () {
-            $(this).rules('add', {
-                required: true
-            });
-        });
-        $('input.ingredAuto').each(function () {
-            $(this).rules('add', {
-                required: true
-            });
-        });
+    $errorsDesc="";
+    $errorsDay="";
+    $errorsMealType="";
+    $errorsMainIngredient="";
 
+    $('form#createMealForm').validate({
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+    console.log($('#description').val());
+    console.log($('#day').val());
+    console.log($('#meal_type').val());
+    console.log($('#main_ingredient').val());
+
+    $('#description').on('blur',function (){
+        if($('#description').val()==""){
+            $('#errorDescription').empty();
+            $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
+            $('#errorDescription').append($errorsDesc);
+        }else{
+            $('#errorDescription').empty();
+        }
+    });
+    $('#day').on('blur',function (){
+        if($('#day').val()==""){
+            $('#errorDay').empty();
+            $errorsDay="<span style='font-size:12px;color:#ff0000;'>Please choose a day!</span>";
+            $('#errorDay').append($errorsDay);
+        }else{
+            $('#errorDay').empty();
+        }
+    });
+    $('#meal_type').on('blur',function (){
+        if($('#meal_type').val()==""){
+            $('#errorMealType').empty();
+            $errorsMealType="<span style='font-size:12px;color:#ff0000;'>Please choose a meal type!</span>";
+            $('#errorMealType').append($errorsMealType);
+        }else{
+            $('#errorMealType').empty();
+        }
+    });
+    $('#main_ingredient').on('blur',function (){
+        if($('#main_ingredient').val()==""){
+            $('#errorMainIngredient').empty();
+            $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
+            $('#errorMainIngredient').append($errorsMainIngredient);
+        }else{
+            $('#errorMainIngredient').empty();
+        }
     });
 
-        $('#ingredientContainer').on("click","#ingredAdd",function (){
+    $('#description').on('change',function () {
+        $('#errorDescription').empty();
+    });
 
+    $(document).on('change','#day',function(){
+        $('#errorDay').empty();
+    });
+    $(document).on('change','#meal_type',function () {
+        $('#errorMealType').empty();
+    })
+    var dayType='';
+
+    $('#main_ingredient').on('change',function () {
+        $('#errorMainIngredient').empty();
+    });
+
+
+    var counter = 0;
+    $('#ingredientContainer').on("click","#ingredAdd",function () {
+        counter+=1;
+        $('#ingredError').empty();
+
+    });
+    $errorCounter="";
+    $(document).on('change','#day, #meal_type', function () {
+        dayType=$('#day').val()+$('#meal_type').val();
+        $('.mealTd').each(function () {
+            if($(this).text().trim()!="" && $(this).attr('id')==dayType){
+                $('#tdTaken').empty();
+                $errorTaken="<span style='font-size:20px;color:#ff0000;'>Meal is already taken!</span>";
+                $('#tdTaken').append($errorTaken);
+            }else if($(this).text().trim()=="" && $(this).attr('id')==dayType){
+                $('#tdTaken').empty();
+            }
+        });
+    });
+    $('form#createMealForm').submit(function (event) {
+        $('#ingredError').empty();
+        $('#formError').empty();
+
+        $('.mealTd').each(function () {
+            if($(this).text().trim()!="" && $(this).attr('id')==dayType){
+                event.preventDefault();
+            }
         });
 
+
+        if(counter<1){
+            event.preventDefault();
+            $('#ingredError').empty();
+            $errorCounter="<span style='font-size:12px;color:#ff0000;'>Please add at least one ingredient!</span>";
+            $('#ingredError').append($errorCounter);
+        }
+        if($('#description').val()==""){
+            event.preventDefault();
+            $('#errorDescription').empty();
+            $('#formError').empty();
+            $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorDescription').append($errorsDesc);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorDescription').empty();
+            $('#formError').empty();
+        }
+        if($('#day').val()==""){
+            event.preventDefault();
+            $('#errorDay').empty();
+            $('#formError').empty();
+            $errorsDay="<span style='font-size:12px;color:#ff0000;'>Please choose a day!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorDay').append($errorsDay);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorDay').empty();
+            $('#formError').empty();
+        }
+        if($('#meal_type').val()==""){
+            event.preventDefault();
+            $('#errorMealType').empty();
+            $('#formError').empty();
+            $errorsMealType="<span style='font-size:12px;color:#ff0000;'>Please choose a meal type!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorMealType').append($errorsMealType);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorMealType').empty();
+            $('#formError').empty();
+        }
+        if($('#main_ingredient').val()==""){
+            event.preventDefault();
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+            $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorMainIngredient').append($errorsMainIngredient);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+        }
+        if(!$('form#createMealForm').valid()){
+            $('#formError').empty();
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#formError').append($errorForm);
+        }else{
+            $('#formError').empty();
+        }
+    });
+
+
+
+    $('form.editMeal').each(function () {
+        console.log($(this).attr('id'));
+        $(this).validate({
+            rules: {
+                description: {
+                    required: true
+                },
+                main_ingredient: {
+                    required: true
+                }
+            },
+            //For custom messages
+            messages: {
+                description: {
+                    required: "Please enter a description!"
+                },
+                main_ingredient: {
+                    required: "Please enter a main ingredient!"
+                }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+
+        });
+    });
+    $('select.updateIngredSelect').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please pick an ingredient type."
+        });
+    });
+    $('input.ingredAuto').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please pick an ingredient."
+        });
+    });
+    $('input.gramsAuto').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please specify number of grams."
+        });
+    });
 });
