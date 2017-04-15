@@ -2,14 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Deposit;
 use App\Order;
 use App\Rating;
 use Illuminate\Http\Request;
+use App\Mail\PaymentSuccess;
+use App\Mail\PaymentSuccessChef;
 use App\Message;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 use Redirect;
+use Illuminate\Mail as mailer;
+
+
 
 
 class DepositController extends Controller
@@ -19,7 +26,7 @@ class DepositController extends Controller
         $this->middleware('foodie.auth');
     }
 
-    public function deposit(Request $request, Order $order){
+    public function deposit(Request $request, Order $order, mailer\Mailer $mailer){
         $user = Auth::guard('foodie')->user();
 
         $this->validate($request, [
@@ -52,7 +59,25 @@ class DepositController extends Controller
             $order->is_paid = 1;
             $order->save();
 
-            $message = $user->first_name.' '.$user->last_name.' placed an order.';
+            $chefName = $order->chef->name;
+            $amount = $order->plan->price;
+
+            $mailer->to($user->email)
+                ->send(new PaymentSuccess(
+                    $chefName,
+                    $amount));
+
+            $foodieName = $user->first_name.' '.$user->last_name;
+            $amount = $order->plan->price;
+            $planName = $order->plan->plan_name;
+
+            $mailer->to($order->chef->email)
+                ->send(new PaymentSuccessChef(
+                    $foodieName,
+                    $amount,
+                    $planName));
+
+            $message = $foodieName.' paid for the order of '.$planName.'.';
             $chefPhoneNumber = $order->chef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
             $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
@@ -69,6 +94,24 @@ class DepositController extends Controller
             );
             $context = stream_context_create($param);
             file_get_contents($url, false, $context);
+
+            $messageFoodie = 'You have paid '.$chefName.' for your order of '.$planName.'.';
+            $foodiePhoneNumber = $user->mobile_number;
+            $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
+            $paramFoodie = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmoFoodie),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $contextFoodie = stream_context_create($paramFoodie);
+            file_get_contents($urlFoodie, false, $contextFoodie);
 
             $rating = new Rating();
             $rating->chef_id = $order->chef->id;

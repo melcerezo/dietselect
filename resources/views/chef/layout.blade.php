@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
-    {{--<link rel="stylesheet" href="/css/chef/app.css">    --}}
-    <link rel="stylesheet" href="/css/foodie/app.css">
+    <link rel="stylesheet" href="/css/chef/app.css">
+    {{--<link rel="stylesheet" href="/css/foodie/app.css">--}}
 
     <script src="/js/chef/app.js" defer></script>
 
@@ -41,10 +41,10 @@
                 <div class="nav-wrapper">
                     <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i
                                 class="material-icons">menu</i></a>
-                    <a href="#" class="brand-logo">Diet Select</a>
-                    <ul id="foodie-menu-btn" class="right">
+                    <a href="{{route('chef.dashboard')}}" class="brand-logo">Diet Select</a>
+                    <ul id="chef-menu-btn" class="right">
                         <li>
-                            <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true"
+                            <a class="dropdown-button" href="#" data-activates='chef-dropdown' data-beloworigin="true"
                                data-constrainwidth="true">
                                 <img class="circle" src="/img/{{ $chef->avatar }}">
                                 <span class="white-text hide-on-med-and-down">{{ $chef->name }} <i
@@ -57,7 +57,7 @@
             </nav>
         </div>
         <!-- Foodie Dropdown Menu -->
-        <ul id='foodie-dropdown' class='dropdown-content'>
+        <ul id='chef-dropdown' class='dropdown-content'>
             <li>
                 <a href="{{ route("chef.profile") }}" class="chef-link">
                     <i class="fa fa-user" aria-hidden="true"></i>
@@ -74,7 +74,7 @@
             <li>
             <form id="logout" method="post" action="{{ route('chef.logout') }}">
             {{ csrf_field() }}
-            <a id="logout-link" class="foodie-link" href="#">
+            <a id="logout-link" class="chef-link" href="#">
             <i class="fa fa-sign-out" aria-hidden="true"></i>
             <span class="hide-on-med-and-down">Logout</span>
             </a>
@@ -85,7 +85,7 @@
     <main>
         <!-- Start of Side-nav -->
         <ul id="slide-out" class="side-nav fixed papaya-whip">
-            <li><a id="foodieProfile" href="{{route('chef.profile')}}">Profile</a></li>
+            <li><a id="chefProfile" href="{{route('chef.profile')}}">Profile</a></li>
             <li><a href="{{route('chef.plan')}}">View Plans</a></li>
             <li><a href="{{url('chef/message/index')}}">Messaging({{$messages->count()}})</a></li>
             <li><a href="{{route('ratings')}}">Ratings</a></li>

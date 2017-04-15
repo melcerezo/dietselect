@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class FoodieMessageController extends Controller
 {
     use VerifiesSms;
+    protected $redirectTo = '/foodie/message/index';
 
     /**
      * foodie authentication
@@ -51,7 +52,8 @@ class FoodieMessageController extends Controller
         $message->receiver_type='c';
         $message->save();
 
-        return back();
+        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+
     }
 
     public function reply(Request $request, $id){
@@ -66,7 +68,13 @@ class FoodieMessageController extends Controller
         $message->receiver_type='c';
         $message->save();
 
-        return back();
+        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+
+    }
+    public function delete(Message $message){
+        $message->delete();
+
+        return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the message!']);
     }
 
 }

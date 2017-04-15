@@ -7,6 +7,7 @@ use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Order;
+use App\Rating;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,6 +52,12 @@ class FoodieController extends Controller
         $messages= Message::where('receiver_id','=',Auth::guard('foodie')->user()->id)
             ->where('receiver_type','=','f')->get();
 
+//      Ratings Stuff
+        $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('is_paid','=',1)
+            ->orderBy('created_at', 'desc')->first();
+        $ratings= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get();
+
         return view('foodie.dashboard')->with([
 
             'sms_unverified' => $this->smsIsUnverified(),
@@ -58,7 +65,9 @@ class FoodieController extends Controller
             'orders' => $orders,
             'ordersCount' => $ordersCount,
             'messages'=> $messages,
-            'successPayment'=> 'false'
+            'successPayment'=> 'false',
+            'ordersRating'=>$ordersRating,
+            'ratings'=>$ratings
         ]);
     }
 

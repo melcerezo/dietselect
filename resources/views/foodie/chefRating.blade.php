@@ -10,7 +10,7 @@
                                 {{$orders->chef->name}}
                                 <form action="{{route('rate.chef', $orders->id)}}" method="post">
                                     {{csrf_field()}}
-                                    <input name="rate" type="radio" id="test1" value="1"/>
+                                    <input name="rate" type="radio" id="test1" value="1" checked/>
                                     <label for="test1">1</label>
 
                                     <input name="rate" type="radio" id="test2" value="2"/>

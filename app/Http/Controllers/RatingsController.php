@@ -21,8 +21,8 @@ class RatingsController extends Controller
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
 
         $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
-        $ratings = Rating::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
-
+        $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->first();
+//        dd($ratings);
 //        dd($orders);
 //        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([

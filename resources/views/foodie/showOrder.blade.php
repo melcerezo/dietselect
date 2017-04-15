@@ -60,7 +60,6 @@
 
     <div id="paypalPay" class="modal">
         <div class="modal-content">
-            <div class="panel panel-default">
                 @if ($message = Session::get('success'))
                     <div class="custom-alerts alert alert-success fade in">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
@@ -75,9 +74,9 @@
                     </div>
                     <?php Session::forget('error');?>
                 @endif
-                <div class="panel-heading">Pay with PayPal</div><br>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal', compact('order')) !!}" >
+                <div>Pay with PayPal</div><br>
+                <div>
+                    <form method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal', compact('order')) !!}" >
                         {{ csrf_field() }}
                         <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
                             <label for="amount" class="col-md-4 control-label">Amount</label>
@@ -95,15 +94,12 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Pay with Paypal
-                                </button>
-                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Pay with Paypal
+                            </button>
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
 @endsection

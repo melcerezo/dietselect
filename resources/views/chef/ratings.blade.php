@@ -1,5 +1,7 @@
 @extends('chef.layout')
+@section('page_head')
 
+@endsection
 @section('page_content')
     <div class="container">
         <div class="row">
