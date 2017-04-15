@@ -20,7 +20,7 @@ class ChefRatingsController extends Controller
         $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
 
         return view('chef.ratings', compact('ratings', 'messages', 'chef'))->with([
-            'sms_unverified' => $this->sendsTheSms(),
+            'sms_unverified' => $this->mobileNumberExists(),
             'messages'=>$messages,
         ]);
     }

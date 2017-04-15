@@ -58,12 +58,12 @@
         </div>
         <!-- Foodie Dropdown Menu -->
         <ul id='foodie-dropdown' class='dropdown-content'>
-            {{--<li>--}}
-            {{--<a href="{{ route("foodie.profile") }}" class="foodie-link">--}}
-            {{--<i class="fa fa-user" aria-hidden="true"></i>--}}
-            {{--<span class="hide-on-med-and-down">Profile</span>--}}
-            {{--</a>--}}
-            {{--</li>--}}
+            <li>
+                <a href="{{ route("chef.profile") }}" class="chef-link">
+                    <i class="fa fa-user" aria-hidden="true"></i>
+                    <span class="hide-on-med-and-down">Profile</span>
+                </a>
+            </li>
             {{--<li>--}}
                 {{--<a href="{{route('user.profile')}}" class="foodie-link">--}}
                     {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}

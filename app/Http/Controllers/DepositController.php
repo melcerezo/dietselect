@@ -75,7 +75,7 @@ class DepositController extends Controller
             $rating->foodie_id = Auth::guard('foodie')->user()->id;
             $order->rating()->save($rating);
 
-            return Redirect::route('foodie.dashboard')->with('successPayment','true');
+            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!','status2'=>'Please Rate '.$order->chef->name.'!']);
 
         }
 
