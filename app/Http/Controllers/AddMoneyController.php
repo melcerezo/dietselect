@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Order;
 use App\Message;
+use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -66,13 +67,13 @@ class AddMoneyController extends Controller{
         $item_1->setName('Item 1')/** item name **/
         ->setCurrency('PHP')
             ->setQuantity(1)
-            ->setPrice($request->get('amount'));
+            ->setPrice($order->plan->price);
         /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('PHP')
-            ->setTotal($request->get('amount'));
+            ->setTotal($order->plan->price);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
@@ -152,9 +153,14 @@ class AddMoneyController extends Controller{
             $notification->message = 'Hello! I just paid it through paypal.';
             $notification->save();
 
+            $rating = new Rating();
+            $rating->chef_id = $order->chef->id;
+            $rating->foodie_id = Auth::guard('foodie')->user()->id;
+            $order->rating()->save($rating);
+
 
             \Session::put('success', 'Payment success');
-            return Redirect::route('foodie.dashboard')->with('successPayment','true');
+            return Redirect::route('foodie.dashboard')->with(['successPayment'=>'true']);
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         \Session::put('error', 'Payment failed');

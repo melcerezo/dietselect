@@ -20,10 +20,10 @@ class RatingsController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
 
-        $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
-        $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('is_rated', '=', 0)->orderBy('created_at', 'desc')->first();
+        $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->get();
+        $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('is_rated', '=', 0)->orderBy('created_at', 'desc')->get();
 
-//        dd($orders);
+//        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'messages'=>$messages,
@@ -32,12 +32,14 @@ class RatingsController extends Controller
 
     public function rateChef(Order $order, Request $request)
     {
+
         $foodie = Auth::guard('foodie')->user();
         $rating = Rating::where('order_id', '=', $order->id)->where('foodie_id', '=', $foodie->id)->first();
         $rating->feedback = $request['feedback'];
         $rating->rating = $request['rate'];
         $rating->is_rated = true;
         $order->rating()->save($rating);
+//        dd($rating);
         return back();
     }
 }

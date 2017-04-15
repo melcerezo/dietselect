@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Message;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
+use Redirect;
+
 
 class DepositController extends Controller
 {
@@ -73,7 +75,8 @@ class DepositController extends Controller
             $rating->foodie_id = Auth::guard('foodie')->user()->id;
             $order->rating()->save($rating);
 
-            return back();
+            return Redirect::route('foodie.dashboard')->with('successPayment','true');
+
         }
 
     }

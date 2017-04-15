@@ -64,14 +64,24 @@ class FoodieOrderPlanController extends Controller
 
     public function show(Order $order){
         $foodie = Auth::guard('foodie')->user();
-        $plan = Plan::where('id', '=', $order->plan_id)->get();
+        $plan = Plan::where('id', '=', $order->plan_id)->first();
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
-        $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', null)->get();
+        $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
 
         return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'messages'=>$messages
         ]);
+    }
+    public function showAll(){
+        $foodie = Auth::guard('foodie')->user();
+        $order = Order::where('foodie_id','=',$foodie->id)->get();
+
+        return view()->with([
+
+        ]);
+
+
     }
 }
