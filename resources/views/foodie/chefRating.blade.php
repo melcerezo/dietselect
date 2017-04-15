@@ -6,11 +6,11 @@
         <div class="row">
             <div class="card">
                 <div class="card-panel">
-                    @foreach($orders as $order)
-                        @forelse($ratings as $rating)
-                            @if($rating->is_rated == 0)
-                                {{$order->chef->name}}
-                                <form action="{{route('rate.chef', $order->id)}}" method="post">
+                        {{--@forelse($ratings as $rating)--}}
+
+                            @if($ratings->is_rated == 0)
+                                {{$orders->chef->name}}
+                                <form action="{{route('rate.chef', $orders->id)}}" method="post">
                                     {{csrf_field()}}
                                     <p>
                                         <input name="rate" type="radio" id="test1" value="1"/>
@@ -43,11 +43,12 @@
 
                                     <input type="submit" value="Submit">
                                 </form>
+                                @else
+                                <p>Nothing to review!</p>
                             @endif
-                        @empty
-                            <p>No Orders Yet</p>
-                        @endforelse
-                    @endforeach
+                        {{--@empty--}}
+                            {{--<p>No Orders Yet</p>--}}
+                        {{--@endforelse--}}
                 </div>
             </div>
         </div>
