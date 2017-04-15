@@ -1,11 +1,14 @@
 @extends('chef.layout')
+@section('page_head')
 
+@endsection
 @section('page_content')
     <div class="container">
         <div class="row">
-            <div class="card">
-                <div class="card-panel">
-                    @forelse($ratings as $rating)
+            @forelse($ratings as $rating)
+                @if($rating->is_rated==1)
+                <div class="card">
+                    <div class="card-panel green lighten-3">
                         <h4>Rated By: {{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h4>
                         @if($rating->rating == 5)
                             @for($i=0; $i<5; $i++)
@@ -29,9 +32,12 @@
                             @endfor
                         @endif
                         <p>Comment: {{$rating->feedback}}</p>
-                    @empty
-                        <p>No ratings yet!</p>
-                    @endforelse
+                    </div>
+                </div>
+                @endif
+            @empty
+                <p>No ratings yet!</p>
+            @endforelse
                 </div>
             </div>
         </div>

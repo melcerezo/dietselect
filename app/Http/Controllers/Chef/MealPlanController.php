@@ -158,11 +158,12 @@ class MealPlanController extends Controller
         $meal->fat = 0;
         $ingredientCount=count($request['ingredients']);
         $ingredId=[];
+        $arrayKeys=array_keys($request['ingredients']);
 //loop starts
             for($i=0;$i<$ingredientCount;$i++){
+//                dd($request['ingredients']);
 
-
-                $ingredient = $request['ingredients'][$i];
+                $ingredient = $request['ingredients'][$arrayKeys[$i]];
 
                 $ingredId[$i]=DB::table('ingredients')->select('NDB_No')->where('Long_Desc','=',$ingredient)->first();
 //                dd($ingredId[$i]->NDB_No);
@@ -179,7 +180,7 @@ class MealPlanController extends Controller
                 $ingredCarb=DB::table('ingredients_nutrient_data')->select('Nutr_Val')
                     ->where('NDB_No','=',$ingredId[$i]->NDB_No)
                     ->where('Nutr_No','=','~205~')->first();
-                $grams = $request['grams'][$i];
+                $grams = $request['grams'][$arrayKeys[$i]];
                 $cal = $ingredCal->Nutr_Val * .01 * $grams;
                 $pro = $ingredPro->Nutr_Val * .01 * $grams;
                 $fat = $ingredFat->Nutr_Val * .01 * $grams;
@@ -194,7 +195,7 @@ class MealPlanController extends Controller
 
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
-                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$i]]
+                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
             );
         }
         DB::table('meal_plans')->insert(
@@ -219,9 +220,11 @@ class MealPlanController extends Controller
         $updateProtein = 0;
         $updateFat = 0;
         $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
-//        dd($prevIngreds);
+        $arrayKeys=array_keys($request['ingredients']);
+//        dd($arrayKeys);
         for($i=0;$i<$ingredientCountUpdate;$i++){
-            $ingredient = $request['ingredients'][$i];
+            $ingredient = $request['ingredients'][$arrayKeys[$i]];
+//            dd($ingredient);
 
             $ingredId[$i]=DB::table('ingredients')->select('NDB_No')->where('Long_Desc','=',$ingredient)->first();
 //                dd($ingredId[$i]->NDB_No);
@@ -238,7 +241,7 @@ class MealPlanController extends Controller
             $ingredCarb=DB::table('ingredients_nutrient_data')->select('Nutr_Val')
                 ->where('NDB_No','=',$ingredId[$i]->NDB_No)
                 ->where('Nutr_No','=','~205~')->first();
-            $grams = $request['grams'][$i];
+            $grams = $request['grams'][$arrayKeys[$i]];
             $cal = $ingredCal->Nutr_Val * .01 * $grams;
             $pro = $ingredPro->Nutr_Val * .01 * $grams;
             $fat = $ingredFat->Nutr_Val * .01 * $grams;
@@ -248,6 +251,7 @@ class MealPlanController extends Controller
             $updateProtein += $pro;
             $updateFat += $fat;
         }
+//        dd($request[]);
 //            dd($updateFat);
 
         $meal->calories = $updateCalories;
@@ -259,7 +263,7 @@ class MealPlanController extends Controller
 
         for($i=0;$i<$ingredientCountUpdate;$i++){
             DB::table('ingredient_meal')->where('meal_id','=',$meal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
-                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$i]]
+                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
             );
         }
 

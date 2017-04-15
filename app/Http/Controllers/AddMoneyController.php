@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Order;
 use App\Message;
+use App\Rating;
+use App\Mail\PaymentSuccess;
+use App\Mail\PaymentSuccessChef;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -12,6 +15,8 @@ use Validator;
 use URL;
 use Session;
 use Redirect;
+use Illuminate\Mail as mailer;
+
 /** All Paypal Details class **/
 use PayPal\Rest\ApiContext;
 use PayPal\Auth\OAuthTokenCredential;
@@ -66,13 +71,13 @@ class AddMoneyController extends Controller{
         $item_1->setName('Item 1')/** item name **/
         ->setCurrency('PHP')
             ->setQuantity(1)
-            ->setPrice($request->get('amount'));
+            ->setPrice($order->plan->price);
         /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('PHP')
-            ->setTotal($request->get('amount'));
+            ->setTotal($order->plan->price);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
@@ -117,7 +122,7 @@ class AddMoneyController extends Controller{
         return Redirect::route('addmoney.paywithpaypal', compact('order'));
     }
 
-    public function getPaymentStatus(Order $order){
+    public function getPaymentStatus(Order $order,mailer\Mailer $mailer){
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
@@ -145,16 +150,77 @@ class AddMoneyController extends Controller{
             $order->is_paid = 1;
             $order->save();
 
+            $user=Auth::guard('foodie')->user();
+
+            $chefName = $order->chef->name;
+            $amount = $order->plan->price;
+
+            $mailer->to($user->email)
+                ->send(new PaymentSuccess(
+                    $chefName,
+                    $amount));
+
+            $foodieName = $user->first_name.' '.$user->last_name;
+            $amount = $order->plan->price;
+            $planName = $order->plan->plan_name;
+
+            $mailer->to($order->chef->email)
+                ->send(new PaymentSuccessChef(
+                    $foodieName,
+                    $amount,
+                    $planName));
+
+            $message = $foodieName.' paid for the order of '.$planName.'.';
+            $chefPhoneNumber = $order->chef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
+
+            $messageFoodie = 'You have paid '.$chefName.' for your order of '.$planName.'.';
+            $foodiePhoneNumber = $user->mobile_number;
+            $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
+            $paramFoodie = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmoFoodie),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $contextFoodie = stream_context_create($paramFoodie);
+            file_get_contents($urlFoodie, false, $contextFoodie);
+
             $notification = new Message();
-            $notification->sender_id = Auth::guard('foodie')->user()->id;
+            $notification->sender_id = $user->id;
             $notification->receiver_id = $order->chef->id;
             $notification->receiver_type = 'c';
             $notification->message = 'Hello! I just paid it through paypal.';
             $notification->save();
 
+            $rating = new Rating();
+            $rating->chef_id = $order->chef->id;
+            $rating->foodie_id = $user->id;
+            $order->rating()->save($rating);
+
 
             \Session::put('success', 'Payment success');
-            return Redirect::route('foodie.dashboard')->with('successPayment','true');
+            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
         \Session::put('error', 'Payment failed');

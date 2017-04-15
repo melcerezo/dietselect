@@ -8,7 +8,7 @@ class CustomizedMeal extends Model
 {
     public function customized_ingredient_meal()
     {
-        return $this->hasMany(CustomizedIngredientMeal::class);
+        return $this->hasMany(CustomizedIngredientMeal::class, 'meal_id');
     }
 
     public function mealplan(){

@@ -8,9 +8,8 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>You got Mail</h1>
-    <p> Plan: {{$planName}} </p>
-    <p>Chef: {{$chefName}}</p>
-    <p>Price of the plan: {{$price}}</p>
+<h1>An order for {{$planName}} has been placed</h1>
+<p>Foodie: {{$foodieName}}</p>
+<p>Price of the plan: {{$price}}</p>
 </body>
 </html>

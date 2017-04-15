@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use App\Order;
+use App\Rating;
 use Validator;
 use App\Message;
 //use GuzzleHttp\Message\Request;
@@ -43,24 +44,27 @@ class ChefController extends Controller
         $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
 
         if($ordersCount >0){
-            $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get();
+            $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->where('is_paid','=',0)
+                ->orderBy('created_at', 'desc')->get();
         }
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
 //        dd($messageCount);
+
 
         return view('chef.dashboard')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'ordersCount' => $ordersCount,
             'orders' => $orders,
-            'messages'=>$messages
+            'messages'=>$messages,
         ]);
     }
 
     public function profile()
     {
         $chef= Chef::where('id','=',Auth::guard('chef')->user()->id)->first();
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'c')->get();
         return view('chef.profile')->with([
             'chef'=>$chef,
             'sms_unverified' => $this->mobileNumberExists(),

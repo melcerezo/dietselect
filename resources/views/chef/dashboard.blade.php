@@ -24,21 +24,21 @@
                                     <div>Plan Price: {{$order->plan->price}}</div>
                                 </div>
                             @endforeach
-                        @else
-                            <div>
-                                <h5>No Pending Orders!</h5>
-                            </div>
-
                         @endif
                     </div>
                 </div>
+            </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col m8 offset-m2">
             <form id="logout" method="post" action="{{ route('chef.logout') }}">
                 {{ csrf_field() }}
                 <a id="logout-link" href="#">
                     Logout
                 </a>
             </form>
+        </div>
     </div>
 </div>
 

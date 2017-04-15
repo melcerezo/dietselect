@@ -2,18 +2,10 @@
 @section('page_head')
     <title>App - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
-
-
-    <script>
-        var successPay = "{{$successPayment}}";
-
-        if(successPay == "true"){
-            Materialize.toast("Payment Successful");
-        }
-    </script>
 @endsection
 
 @section('page_content')
+
     <div class="container">
         <div class="row">
             <div class="col m8 offset-m2">
@@ -44,6 +36,32 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col m8 offset-m2">
+                    <div class="card papaya-whip">
+                        <div class="card-content">
+                            <h4 class="mustard-text">Pending Ratings:</h4>
+                            <div>
+                                @if($ratings->count()>0)
+                                    <div>
+                                        <div><a href="{{route('chef.rating')}}">Chef Name: {{$ordersRating->chef->name}}</a></div>
+                                    </div>
+                                @else
+                                    <div>
+                                        <h5>No Pending Ratings!</h5>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
                 {{--<div class="card papaya-whip">--}}
                     {{--<div class="card-content">--}}
                         {{--<h4 class="mustard-text">Suggested Meal Plans:</h4>--}}
@@ -61,7 +79,3 @@
                 {{--Logout--}}
                 {{--</a>--}}
                 {{--</form>--}}
-            </div>
-        </div>
-    </div>
-@endsection

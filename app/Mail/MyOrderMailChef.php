@@ -7,13 +7,12 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class MyOrderMail extends Mailable
+class MyOrderMailChef extends Mailable
 {
     use Queueable, SerializesModels;
-
     public $planName;
 
-    public $chefName;
+    public $foodieName;
 
     public $price;
 
@@ -22,11 +21,11 @@ class MyOrderMail extends Mailable
      *
      * @return void
      */
-    public function __construct($planName, $chefName, $price)
+    public function __construct($planName, $foodieName, $price)
     {
         //
         $this->planName = $planName;
-        $this->chefName = $chefName;
+        $this->foodieName = $foodieName;
         $this->price = $price;
 
     }
@@ -39,6 +38,6 @@ class MyOrderMail extends Mailable
     public function build()
     {
         return $this->from('diet@dietselect.com')
-            ->view('email.order');
+            ->view('email.orderChef');
     }
 }

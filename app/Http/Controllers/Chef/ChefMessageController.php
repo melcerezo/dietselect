@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class ChefMessageController extends Controller{
     use VerifiesSms;
-
+    protected $redirectTo = '/chef/message/index';
     /**
      * Check for chef authentication
      *
@@ -54,7 +54,7 @@ class ChefMessageController extends Controller{
         $message->receiver_type = 'f';
         $message->save();
 
-        return back();
+        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
     }
 
     public function reply(Request $request, $id){
@@ -69,6 +69,12 @@ class ChefMessageController extends Controller{
         $message->receiver_type = 'f';
         $message->save();
 
-        return back();
+        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+    }
+
+    public function delete(Message $message){
+        $message->delete();
+
+        return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the message!']);
     }
 }

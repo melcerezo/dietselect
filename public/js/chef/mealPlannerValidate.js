@@ -1,74 +1,228 @@
-$('form#registration').validate({
-    rules: {
-        first_name: {
-            required: true,
-            minlength: 2
-        },
-        last_name: {
-            required: true,
-            minlength: 2
-        },
-        mobile_number: {
-            required: true,
-            min: 9000000000,
-            max: 9999999999,
-            digits: true
-        },
-        registration_email: {
-            required: true,
-            email: true
-        },
-        password: {
-            required: true,
-            minlength: 6
-        },
-        password_confirmation: {
-            required: true,
-            minlength: 6,
-            equalTo: "#n-reg-pass"
-        },
-        user_agreement: "required"
-    },
-    //For custom messages
-    messages: {
-        first_name: {
-            required: "Enter your first name, please!",
-            minlength: "You sure you're named with one letter?"
-        },
-        last_name: {
-            required: "Enter your last name, please!",
-            minlength: "You sure you're named with one letter?"
-        },
-        mobile_number: {
-            required: "Enter your mobile number, please!",
-            min: "Enter a valid PH mobile number, please.",
-            max: "Enter a valid PH mobile number, please.",
-            digits: "Enter a valid PH mobile number, please."
-        },
-        registration_email: {
-            required: "Enter your email address, please!",
-            email: "Enter a valid email address, please."
-        },
-        password: {
-            required: "Enter your desired password, please!",
-            minlength: "Sorry, password must be at least 6 characters."
-        },
-        password_confirmation: {
-            required: "Confirm your password, please!",
-            minlength: "Sorry, password must be at least 6 characters.",
-            equalTo: "Sorry, passwords do not match."
-        },
-        user_agreement: {
-            required: "Read and accept the User Agreement first, please."
+$(document).ready(function () {
+
+    $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+
+    $errorsDesc="";
+    $errorsDay="";
+    $errorsMealType="";
+    $errorsMainIngredient="";
+
+    $('form#createMealForm').validate({
+        errorElement: 'div',
+        errorPlacement: function (error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
         }
-    },
-    errorElement : 'div',
-    errorPlacement: function(error, element) {
-        var placement = $(element).data('error');
-        if (placement) {
-            $(placement).append(error);
-        } else {
-            error.insertAfter(element);
+    });
+    console.log($('#description').val());
+    console.log($('#day').val());
+    console.log($('#meal_type').val());
+    console.log($('#main_ingredient').val());
+
+    $('#description').on('blur',function (){
+        if($('#description').val()==""){
+            $('#errorDescription').empty();
+            $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
+            $('#errorDescription').append($errorsDesc);
+        }else{
+            $('#errorDescription').empty();
         }
-    }
+    });
+    $('#day').on('blur',function (){
+        if($('#day').val()==""){
+            $('#errorDay').empty();
+            $errorsDay="<span style='font-size:12px;color:#ff0000;'>Please choose a day!</span>";
+            $('#errorDay').append($errorsDay);
+        }else{
+            $('#errorDay').empty();
+        }
+    });
+    $('#meal_type').on('blur',function (){
+        if($('#meal_type').val()==""){
+            $('#errorMealType').empty();
+            $errorsMealType="<span style='font-size:12px;color:#ff0000;'>Please choose a meal type!</span>";
+            $('#errorMealType').append($errorsMealType);
+        }else{
+            $('#errorMealType').empty();
+        }
+    });
+    $('#main_ingredient').on('blur',function (){
+        if($('#main_ingredient').val()==""){
+            $('#errorMainIngredient').empty();
+            $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
+            $('#errorMainIngredient').append($errorsMainIngredient);
+        }else{
+            $('#errorMainIngredient').empty();
+        }
+    });
+
+    $('#description').on('change',function () {
+        $('#errorDescription').empty();
+    });
+
+    $(document).on('change','#day',function(){
+        $('#errorDay').empty();
+    });
+    $(document).on('change','#meal_type',function () {
+        $('#errorMealType').empty();
+    })
+    var dayType='';
+
+    $('#main_ingredient').on('change',function () {
+        $('#errorMainIngredient').empty();
+    });
+
+
+    var counter = 0;
+    $('#ingredientContainer').on("click","#ingredAdd",function () {
+        counter+=1;
+        $('#ingredError').empty();
+
+    });
+    $errorCounter="";
+    $(document).on('change','#day, #meal_type', function () {
+        dayType=$('#day').val()+$('#meal_type').val();
+        $('.mealTd').each(function () {
+            if($(this).text().trim()!="" && $(this).attr('id')==dayType){
+                $('#tdTaken').empty();
+                $errorTaken="<span style='font-size:20px;color:#ff0000;'>Meal is already taken!</span>";
+                $('#tdTaken').append($errorTaken);
+            }else if($(this).text().trim()=="" && $(this).attr('id')==dayType){
+                $('#tdTaken').empty();
+            }
+        });
+    });
+    $('form#createMealForm').submit(function (event) {
+        $('#ingredError').empty();
+        $('#formError').empty();
+
+        $('.mealTd').each(function () {
+            if($(this).text().trim()!="" && $(this).attr('id')==dayType){
+                event.preventDefault();
+            }
+        });
+
+
+        if(counter<1){
+            event.preventDefault();
+            $('#ingredError').empty();
+            $errorCounter="<span style='font-size:12px;color:#ff0000;'>Please add at least one ingredient!</span>";
+            $('#ingredError').append($errorCounter);
+        }
+        if($('#description').val()==""){
+            event.preventDefault();
+            $('#errorDescription').empty();
+            $('#formError').empty();
+            $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorDescription').append($errorsDesc);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorDescription').empty();
+            $('#formError').empty();
+        }
+        if($('#day').val()==""){
+            event.preventDefault();
+            $('#errorDay').empty();
+            $('#formError').empty();
+            $errorsDay="<span style='font-size:12px;color:#ff0000;'>Please choose a day!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorDay').append($errorsDay);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorDay').empty();
+            $('#formError').empty();
+        }
+        if($('#meal_type').val()==""){
+            event.preventDefault();
+            $('#errorMealType').empty();
+            $('#formError').empty();
+            $errorsMealType="<span style='font-size:12px;color:#ff0000;'>Please choose a meal type!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorMealType').append($errorsMealType);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorMealType').empty();
+            $('#formError').empty();
+        }
+        if($('#main_ingredient').val()==""){
+            event.preventDefault();
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+            $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorMainIngredient').append($errorsMainIngredient);
+            $('#formError').append($errorForm);
+        }else{
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+        }
+        if(!$('form#createMealForm').valid()){
+            $('#formError').empty();
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#formError').append($errorForm);
+        }else{
+            $('#formError').empty();
+        }
+    });
+
+
+
+    $('form.editMeal').each(function () {
+        console.log($(this).attr('id'));
+        $(this).validate({
+            rules: {
+                description: {
+                    required: true
+                },
+                main_ingredient: {
+                    required: true
+                }
+            },
+            //For custom messages
+            messages: {
+                description: {
+                    required: "Please enter a description!"
+                },
+                main_ingredient: {
+                    required: "Please enter a main ingredient!"
+                }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+
+        });
+    });
+    $('select.updateIngredSelect').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please pick an ingredient type."
+        });
+    });
+    $('input.ingredAuto').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please pick an ingredient."
+        });
+    });
+    $('input.gramsAuto').each(function () {
+        console.log($(this).attr('id'));
+        $(this).rules('add', {
+            required: true,
+            messages: "Please specify number of grams."
+        });
+    });
 });

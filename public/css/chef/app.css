@@ -1,22 +1,61 @@
 
 /* ==========================================================================
-   N's custom styles
+   custom styles
    ========================================================================== */
-
 body {
     font-size: 1em;
-    background-color: #fafafa;
-    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod=scale);
-    -ms-filter: "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod='scale')";
-    background: url(/img/bg-1.jpg) no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
+    background: green;
 }
 
 h1, h2, h3 {
     text-align: left;
+}
+
+main, footer {
+    padding-left: 0;
+}
+
+a.brand-logo {
+    color: #fafafa !important;
+    font-family: 'Josefin Slab', serif;
+    font-weight: 300;
+    font-size: 1.5em;
+    padding: 0 15px;
+}
+
+ul#chef-menu-btn img {
+    position: relative;
+    height: 40px;
+    width: 40px;
+}
+
+ul#chef-menu-btn span {
+    padding-left: 10px;
+}
+
+a.chef-link {
+    text-align: center;
+}
+
+a.chef-link i {
+    font-size: 1.5em;
+}
+
+nav .nav-wrapper i {
+    line-height: 56px;
+}
+
+.dropdown-content li:hover {
+    background-color: transparent;
+}
+
+ul.side-nav {
+    top: 56px;
+    z-index: 997;
+}
+
+#sidenav-overlay {
+    z-index: 996;
 }
 
 #n-menu {
@@ -50,7 +89,6 @@ h1, h2, h3 {
 .modal.modal-fixed-footer {
     height: 75%;
 }
-
 .meal-plan-option-btn {
     display:block;
     font-size: 3em;
@@ -62,9 +100,20 @@ h1, h2, h3 {
    ========================================================================== */
 
 @media only screen and (min-width: 993px) {
-    button {
-        font-size: 1.25em;
-        width: 50px;
-        height: 50px;
+    main, footer {
+        padding-left: 300px;
     }
+
+    nav .nav-wrapper i {
+        line-height: 64px;
+    }
+
+    a.foodie-link {
+        text-align: left;
+    }
+
+    ul.side-nav {
+        top: 64px;
+    }
+
 }

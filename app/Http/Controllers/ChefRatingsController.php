@@ -17,11 +17,13 @@ class ChefRatingsController extends Controller
     {
         $chef = Auth::guard('chef')->user();
         $ratings = Rating::where('chef_id', '=', $chef->id)->get();
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'c')->get();
 
         return view('chef.ratings', compact('ratings', 'messages', 'chef'))->with([
             'sms_unverified' => $this->sendsTheSms($this->createsNewCode()),
             'messages'=> $messages,
+            'sms_unverified' => $this->mobileNumberExists(),
+            'messages'=>$messages,
         ]);
     }
 }
