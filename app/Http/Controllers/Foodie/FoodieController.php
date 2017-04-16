@@ -46,6 +46,7 @@ class FoodieController extends Controller
         $orders='';
         $ordersRating='';
         $ratingsCount='';
+        $ratings='';
         $ordersCount=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get()->count();
 
         if($ordersCount >0){
