@@ -115,6 +115,18 @@ class MealPlanController extends Controller
             $data = DB::table('ingredients')->select('Long_Desc')
                 ->where('FdGrp_Cd','~2000~')
                 ->get();
+        }else if($categ=='dairy,eggs') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0100~')
+                ->get();
+        }else if($categ=='soups,sauces,gravy') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0600~')
+                ->get();
+        }else if($categ=='fruits') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0900~')
+                ->get();
         }
 
 

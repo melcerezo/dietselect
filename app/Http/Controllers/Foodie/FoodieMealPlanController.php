@@ -218,6 +218,8 @@ class FoodieMealPlanController extends Controller
             ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
             ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
             ->count();
+
+//        dd($ingredientCount);
         for($i=0;$i<count($customList);$i++){
           $customize[]=CustomizedMeal::where('id','=',$customList[$i])->first();
           for($j=0;$j<$customize[$i]->customized_ingredient_meal->count();$j++){
@@ -239,7 +241,7 @@ class FoodieMealPlanController extends Controller
           );
         }
 
-//        dd($ingredientMealData[0]['grams']);
+//        dd(count($ingredientMealData));
 
 //        dd($customize);
         $mealPlans = $plan->mealplans()
@@ -249,20 +251,7 @@ class FoodieMealPlanController extends Controller
 
 
 //        dd($ingredientCount);
-        if ($ingredientCount > 0) {
 
-
-
-//                    $ingredientsMeal[] = DB::table('ingredients')
-//                        ->join('customized_ingredient_meals', 'ingredients.NDB_No', '=', 'customized_ingredient_meals.ingredient_id')
-//                        ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=', 'ingredients_group_description.FdGrp_Cd')
-//                        ->join('customized_meals', 'customized_ingredient_meals.meal_id', '=', 'customized_meals.id')
-//                        ->join('meal_plans', 'meal_plans.meal_id', '=', 'customized_meals.meal_id')
-//                        ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'customized_ingredient_meals.meal_id',
-//                            'customized_ingredient_meals.grams')->where('customized_meals.id','=',$customList[$i])
-//                        ->first();
-
-        }
 
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
@@ -316,6 +305,24 @@ class FoodieMealPlanController extends Controller
                                     $data = DB::table('ingredients')->select('Long_Desc')
                                         ->where('FdGrp_Cd', '~2000~')
                                         ->get();
+                                }else{
+                                    if($categ=='dairy,eggs') {
+                                        $data = DB::table('ingredients')->select('Long_Desc')
+                                            ->where('FdGrp_Cd', '~0100~')
+                                            ->get();
+                                    }else{
+                                        if($categ=='soups,sauces,gravy') {
+                                            $data = DB::table('ingredients')->select('Long_Desc')
+                                                ->where('FdGrp_Cd', '~0600~')
+                                                ->get();
+                                        }else{
+                                            if($categ=='fruits') {
+                                                $data = DB::table('ingredients')->select('Long_Desc')
+                                                    ->where('FdGrp_Cd', '~0900~')
+                                                    ->get();
+                                            }
+                                        }
+                                    }
                                 }
                             }
                         }

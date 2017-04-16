@@ -1,7 +1,7 @@
 $(document).ready(function(){
     $(document).on('click','.revealMessageContent',function () {
         var id = $(this).attr('id');
-        console.log(id);
+        // console.log(id);
         RevealMessage(id);
     });
 

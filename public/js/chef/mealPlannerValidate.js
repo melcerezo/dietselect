@@ -165,8 +165,6 @@ $(document).ready(function () {
             $('#formError').empty();
             $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
             $('#formError').append($errorForm);
-        }else{
-            $('#formError').empty();
         }
     });
 

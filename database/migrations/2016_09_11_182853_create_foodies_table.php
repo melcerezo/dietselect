@@ -23,7 +23,7 @@ class CreateFoodiesTable extends Migration
             $table->char('gender', 1)->nullable(); //Values: M, F, N
             $table->date('birthday')->nullable();
             $table->string('email')->unique();
-            $table->string('mobile_number', 12);
+            $table->string('mobile_number', 12)->unique();
             $table->string('username', 20)->unique()->nullable()->default(null);
             $table->string('avatar')->default('user.jpg');
             $table->boolean('joined_newsletter');

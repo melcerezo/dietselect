@@ -57,7 +57,7 @@ class FoodieOrderPlanController extends Controller
 
         $foodieName = $foodie->first_name.' '.$foodie->last_name;
 //        dd($foodieName);
-        $mailer->to($foodie->email)
+        $mailer->to($order->chef->email)
             ->send(new MyOrderMailChef(
                 $planName,
                 $foodieName,

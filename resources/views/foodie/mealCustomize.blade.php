@@ -40,7 +40,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                    <a href="#editMeal-{{$id}}"
-                                                           class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                           class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -52,7 +53,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -64,7 +66,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -76,7 +79,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -88,7 +92,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -103,7 +108,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -115,7 +121,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -127,7 +134,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -139,7 +147,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -151,7 +160,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -166,7 +176,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -178,7 +189,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -190,7 +202,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -202,7 +215,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -214,7 +228,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -229,7 +244,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -241,7 +257,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -253,7 +270,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -265,7 +283,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -277,7 +296,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -292,7 +312,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -304,7 +325,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -316,7 +338,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -328,7 +351,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -340,7 +364,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -355,7 +380,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -367,7 +393,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -379,7 +406,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -391,7 +419,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -403,7 +432,8 @@
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->meal_id)
                                                     <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a><br>
+                                                       class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
+                                                    <br /><span id="cu{{$id}}"></span>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -471,21 +501,21 @@
                                     <option value="chicken">Chicken</option>
                                     <option value="beef">Beef</option>
                                     <option value="pork">Pork</option>
-                                    <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
-                                    <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
+                                    <option value="carbohydrates">Carbohydrates</option>
                                     <option value="vegetables">Vegetables</option>
+                                    <option value="fruits">Fruits</option>
                                 </select>
                             </div>
                             <script>
                                 $(document).ready(function () {
-                                    var mainIngred='{{ $mealPlans[$i]->meal->main_ingredient}}';
+                                    var mainIngred='{{ $cust->main_ingredient}}';
                                     $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
                                 });
                             </script>
 
                                 {{--{{$cust->id}}--}}
                                 <div id="ingredSelect" class="ingredSelect">
-                                    @for($j=0;$j<$ingredientCount;$j++)
+                                    @for($j=0;$j<count($ingredientsMeal);$j++)
                                         @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
                                             @if($ingredientsMeal[$j]['meal']==$cust->id && $c<1)
                                                 <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"
@@ -497,12 +527,14 @@
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
                                                         <option value="pork">Pork</option>
-                                                        <option value="carbohydrates(baked)">Carbohydrates(Baked)
-                                                        </option>
+                                                        <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
                                                         <option value="carbohydrates(grains,pasta)">
                                                             Carbohydrates(Grains,
                                                             Pasta)
                                                         </option>
+                                                        <option value="dairy,eggs">Dairy, Eggs</option>
+                                                        <option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>
+                                                        <option value="fruits">Fruits, Fruit Juices</option>
                                                         <option value="vegetables">Vegetables</option>
                                                     </select>
                                                     <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
@@ -524,7 +556,7 @@
                                             @endif
                                         @endfor
                                     @endfor
-                                <div><button type="submit" form="editMeal{{$i}}">Update</button></div>
+                                <div><button id="u{{$i}}" data-form-id="editMeal{{$i}}" class="updateB" type="submit" form="editMeal{{$i}}">Update</button></div>
                                 </div>
                             <div style="clear: both"></div>
                         </form>
