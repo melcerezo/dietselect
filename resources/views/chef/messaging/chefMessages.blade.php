@@ -27,7 +27,7 @@
                                 <select id="chefMessageSelect" name="chefMessageSelect">
                                     <option value="" disabled selected>Choose Receiver</option>
                                     @foreach($foodies as $foodie)
-                                        <option value="{{$foodie->id}}">{{$foodie->username}}</option>
+                                        <option value="{{$foodie->id}}">{{$foodie->first_name.' '.$foodie->last_name}}</option>
                                     @endforeach
                                 </select>
                             </div>
