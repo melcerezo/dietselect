@@ -39,8 +39,8 @@
         <div class="navbar-fixed">
             <nav class="asparagus">
                 <div class="nav-wrapper">
-                    <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i
-                                class="material-icons">menu</i></a>
+                    <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only">
+                        <i class="material-icons">menu</i></a>
                     <a href="{{route('chef.dashboard')}}" class="brand-logo">Diet Select</a>
                     <ul id="chef-menu-btn" class="right">
                         <li>
