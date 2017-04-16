@@ -85,7 +85,7 @@
     </header>
     <main>
         <!-- Start of Side-nav -->
-        <ul id="slide-out" class="side-nav papaya-whip">
+        <ul id="slide-out" class="side-nav fixed papaya-whip">
             <li><a id="foodieProfile" href="#!">Profile</a></li>
             <li><a id="viewChefs" href="#!">View Chefs</a></li>
             <li><a href="{{url('foodie/message/index')}}">Messaging({{$messages->count()}})</a></li>
