@@ -44,6 +44,8 @@ class FoodieController extends Controller
     public function index()
     {
         $orders='';
+        $ordersRating='';
+        $ratingsCount='';
         $ordersCount=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get()->count();
 
         if($ordersCount >0){
@@ -53,10 +55,15 @@ class FoodieController extends Controller
             ->where('receiver_type','=','f')->get();
 
 //      Ratings Stuff
-        $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+        $ordersRatingCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
             ->where('is_paid','=',1)
-            ->orderBy('created_at', 'desc')->first();
-            $ratingsCount= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get()->count();
+            ->orderBy('created_at', 'desc')->get()->count();
+        if($ordersRatingCount){
+            $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->where('is_paid','=',1)
+                ->orderBy('created_at', 'desc')->first();
+                $ratingsCount= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get()->count();
+        }
         if($ratingsCount>0){
             $ratings= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get();
         }
