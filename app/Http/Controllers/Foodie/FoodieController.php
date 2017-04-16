@@ -43,8 +43,8 @@ class FoodieController extends Controller
      */
     public function index()
     {
-        $orders='';
-        $ordersRating='';
+        $orders=0;
+        $ordersRating=0;
         $ratingsCount=0;
         $ratings=0;
         $ordersCount=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->get()->count();
@@ -78,7 +78,8 @@ class FoodieController extends Controller
             'messages'=> $messages,
             'successPayment'=> 'false',
             'ordersRating'=>$ordersRating,
-            'ratings'=>$ratings
+            'ratings'=>$ratings,
+            'ratingsCount'=>$ratingsCount
         ]);
     }
 

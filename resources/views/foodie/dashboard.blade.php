@@ -44,7 +44,7 @@
                         <div class="card-content">
                             <h4 class="mustard-text">Pending Ratings:</h4>
                             <div>
-                                @if($ratings->count()>0)
+                                @if($ratingsCount>0)
                                     <div>
                                         <div><a href="{{route('chef.rating')}}">Chef Name: {{$ordersRating->chef->name}}</a></div>
                                     </div>
