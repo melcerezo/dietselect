@@ -56,7 +56,7 @@ return [
     */
 
     'from' => [
-        'address' => 'hello@dietselect.com.ph',
+        'address' => 'diet@dietselect.org',
         'name' => 'Diet Select PH',
     ],
 
