@@ -17,7 +17,7 @@ class CreateChefsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('mobile_number')->unique();
+            $table->string('mobile_number');
             $table->string('website')->nullable()->unique();
             $table->string('url_name')->unique();
             $table->string('avatar')->default('user.jpg');
