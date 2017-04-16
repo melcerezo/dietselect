@@ -32,7 +32,7 @@ trait   VerifiesSms
         if (!$this->smsIsUnverified()) {
             $this->insertMobileNumberIntoVerification($code);
         }
-        $this->sendSms();
+        $this->sendSms($code);
     }
 
     /**

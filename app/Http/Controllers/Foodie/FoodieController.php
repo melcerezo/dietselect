@@ -56,7 +56,10 @@ class FoodieController extends Controller
         $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
             ->where('is_paid','=',1)
             ->orderBy('created_at', 'desc')->first();
-        $ratings= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get();
+            $ratingsCount= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get()->count();
+        if($ratingsCount>0){
+            $ratings= Rating::where('order_id','=',$ordersRating->id)->where('is_rated','=',0)->get();
+        }
 
         return view('foodie.dashboard')->with([
 
