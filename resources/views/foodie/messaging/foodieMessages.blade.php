@@ -3,6 +3,7 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/messaging.css">
     <script src="/js/messaging.js"></script>
+    <script src="/js/foodie/foodieMessageValidate.js"></script>
 @endsection
 
 @section('page_content')
@@ -16,22 +17,25 @@
             <div class="row">
                 <div class="card">
                     <div class="card-panel">
-                        <form action="{{route('foodie.message.send')}}" method="post" autocomplete="off">
+                        <form id="foodieMessageSend" action="{{route('foodie.message.send')}}" method="post" autocomplete="off">
                             {{csrf_field()}}
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <select id="foodieMessageSelect" name="foodieMessageSelect">
-                                        <option value="" disabled selected>Choose Receiver</option>
+                                    <label for="foodieMessageSelect" class="active">Receiver</label>
+                                    <select id="foodieMessageSelect" name="foodieMessageSelect" class="selectRequired" data-error=".error-select-message">
+                                        <option value="" selected>Choose Receiver</option>
                                         @foreach($chefs as $chef)
                                             <option value="{{$chef->id}}">{{$chef->name}}</option>
                                         @endforeach
                                     </select>
+                                    <div class="error-select-message err"></div>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input placeholder="message" id="foodieMessage" name="foodieMessage" type="text" class="validate">
+                                    <label for="foodieMessage" class="active">Message</label>
+                                    <input placeholder="message" id="foodieMessage" name="foodieMessage" type="text" data-error=".error-message" class="validate">
+                                    <div class="error-message err"></div>
                                 </div>
                             </div>
-                            <label for="foodieMessageSelect">Receiver</label>
                             <div>
                                 <div><input type="submit" value="Submit" class="btn btn-primary"></div>
                             </div>
@@ -56,7 +60,7 @@
                                                 <h4>{{$chef->name}}</h4>
                                                     <button id="m{{$message->id}}" class="revealMessageContent btn" type="button">Read</button>
                                                 <div style="display: inline; float: right;">
-                                                    <button data-target="delete-message-modal{{$message->id}}" class="btn modal-trigger">Delete Address</button>
+                                                    <button data-target="delete-message-modal{{$message->id}}" class="btn modal-trigger">Delete Message</button>
                                                 </div>
                                             @endif
                                         @endforeach
@@ -85,7 +89,7 @@
                                         <div id="delete-message-modal{{$message->id}}" class="modal">
                                             <div class="modal-content">
                                                 <div><h4>Are you sure you want to delete this message?</h4></div>
-                                                <form method="post" action="{{route('foodie.message.delete', $message->id)}}">
+                                                <form method="post" action="{{route('foodie.message.delete',['message'=> $message->id] )}}">
                                                     {{csrf_field()}}
                                                     <div>
                                                         <input type="submit" class="btn" value="delete">
@@ -110,12 +114,13 @@
                             <h4>Receiver: {{$chef->name}}</h4>
                         @endif
                     @endforeach
-                    <form id="replyForm{{$message->id}}" action="{{route('foodie.message.reply', $message->sender_id)}}"
+                    <form id="replyForm{{$message->id}}" class="replyForm" action="{{route('foodie.message.reply', $message->sender_id)}}"
                           method="post" autocomplete="off">
                         {{csrf_field()}}
                         <div class="input-field">
-                            <textarea id="replyMessage" name="replyMessage" class="materialize-textarea"></textarea>
+                            <textarea id="replyMessage" name="replyMessage" data-error=".error-reply" class="materialize-textarea required"></textarea>
                             <label for="replyMessage">Message</label>
+                            <div class="error-reply err"></div>
                         </div>
                         <div>
                             <input type="submit" value="Submit" class="btn btn-primary">

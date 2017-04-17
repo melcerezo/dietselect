@@ -72,6 +72,7 @@ class FoodieMessageController extends Controller
 
     }
     public function delete(Message $message){
+//        dd($message->id);
         $message->delete();
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the message!']);
