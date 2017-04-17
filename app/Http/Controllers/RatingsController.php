@@ -19,15 +19,25 @@ class RatingsController extends Controller
         $foodie = Auth::guard('foodie')->user();
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $ordersCount= Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->get()->count();
+        $ratingsCount=0;
+        $orders='';
+        $ratings='';
+        if($ordersCount>0){
+            $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
+            $ratingsCount = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->get()->count();
 
-        $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
-        $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->first();
+        }
+        if($ratingsCount>0){
+            $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->first();
+        }
 //        dd($ratings);
 //        dd($orders);
 //        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'messages'=>$messages,
+            'ratingsCount'=>$ratingsCount
         ]);
     }
 

@@ -6,6 +6,7 @@
         <div class="row">
             <div class="card">
                 <div class="card-panel">
+                    @if($ratingsCount>0)
                             @if($ratings->is_rated == 0)
                                 {{$orders->chef->name}}
                                 <form action="{{route('rate.chef', $orders->id)}}" method="post">
@@ -39,7 +40,9 @@
                                 @else
                                     <div><h3>Thank you for Rating!</h3></div>
                             @endif
-
+                    @else
+                        <p>No ratings yet!</p>
+                    @endif
 
                 </div>
             </div>

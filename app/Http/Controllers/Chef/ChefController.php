@@ -78,7 +78,7 @@ class ChefController extends Controller
             'company_name' => 'required|max:100',
             'mobile_number' => 'required|max:100',
             'email' =>'required|email|max:50',
-            'website' =>'required|url|max:50'
+            'website' =>'url|max:50'
         ])->validate();
 
         $chef= Auth::guard('chef')->user();
