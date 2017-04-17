@@ -266,13 +266,15 @@ class FoodieMealPlanController extends Controller
 
 
         return view('foodie.mealCustomize', compact('plan', 'customize'))->with([
+            'viewPlan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientMealData,
             'ingredientCount' => $ingredientCount,
-            'messages' => $messages
+            'messages' => $messages,
+            'customId' => $customId
         ]);
     }
 
@@ -390,11 +392,12 @@ class FoodieMealPlanController extends Controller
         $carbohydratesUpdate = $updateCarbohydrates;
         $proteinUpdate = $updateProtein;
         $fatUpdate = $updateFat;
-
+        $cust_type=1;
 //        $cust_id= CustomizedMeal::where('meal_id', '=', $meal->id)->pluck('id')->first();
         $prevIngreds = DB::table('customized_ingredient_meals')->select('ingredient_id')->where('meal_id','=',$customize->id)->get();
         $customize->update([
             'foodie_id' => $user,
+            'custom_type' => $cust_type,
             'main_ingredient' => $main_ingredient,
             'calories' => $caloriesUpdate,
             'carbohydrates' => $carbohydratesUpdate,
@@ -426,7 +429,7 @@ class FoodieMealPlanController extends Controller
 
 //        die();
 
-        return back();
+        return back()->with(['status','Successfully customized the meal!']);
     }
 
 

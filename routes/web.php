@@ -51,6 +51,7 @@ Route::group(['prefix' => 'foodie'], function () {
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
+    Route::post('order/custPlan/{plan}/{id}', 'Foodie\FoodieOrderPlanController@custStore')->name('foodie.custOrder.create');
 
     // Route after ordering
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
@@ -118,6 +119,10 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('message/reply/{id}', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
     Route::post('message/delete/{message}', 'Chef\ChefMessageController@delete')->name('chef.message.delete');
     Route::post('message/readMessage/{message}', 'Chef\ChefMessageController@readMessage')->name('chef.message.read');
+
+    //ordering
+    Route::get('order/view', 'Chef\ChefOrderController@getAllOrdersView')->name('chef.order.view');
+    Route::get('order/viewSingle/{order}', 'Chef\ChefOrderController@getOneOrderDetails')->name('chef.order.single');
 
     // Chef Rating
     Route::get('chef/rating', 'ChefRatingsController@viewRatings')->name('ratings');

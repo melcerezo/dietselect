@@ -20,6 +20,8 @@ class CustomizedMeal extends Model
         'id',
         'foodie_id',
         'description',
+        'custom_type',
+        'order_id',
         'main_ingredient',
         'calories',
         'carbohydrates',

@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->integer('chef_id')->unsigned();
             $table->integer('foodie_id')->unsigned();
             $table->integer('plan_id')->unsigned();
+            $table->string('order_type')->default('s');
             $table->tinyInteger('is_paid')->default(0);
             $table->timestamps();
         });
