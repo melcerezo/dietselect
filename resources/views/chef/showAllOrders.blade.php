@@ -21,6 +21,7 @@
                                     <th>Foodie Name</th>
                                     <th>Amount</th>
                                     <th>Type</th>
+                                    <th>Payment Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,6 +35,13 @@
                                             <p>Customized</p>
                                         @else
                                             <p>Standard</p>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($order->is_paid==0)
+                                            <p>Pending</p>
+                                        @else
+                                            <p>Paid</p>
                                         @endif
                                     </td>
                                 </tr>

@@ -38,7 +38,7 @@ class ChefOrderController extends Controller
             $orders=Order::where('chef_id','=',$chef->id)->get();
         }
 
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'c')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
 
 
         return view('chef.showAllOrders')->with([
@@ -52,7 +52,7 @@ class ChefOrderController extends Controller
 
     public function getOneOrderDetails(Order $order){
         $chef = Auth::guard('chef')->user();
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'c')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
         $orderPlan=$order->plan->first();
         $orderMealPlans=$orderPlan->mealplans()->get();
         $orderMealPlansCount = $orderMealPlans->count();

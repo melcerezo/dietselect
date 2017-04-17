@@ -12,6 +12,7 @@ use App\Message;
 use App\CustomizedMeal;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Mail as mailer;
 
 class FoodieOrderPlanController extends Controller
@@ -28,12 +29,82 @@ class FoodieOrderPlanController extends Controller
     // Shows the order plan
     public function index(Plan $plan)
     {
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'c')->get();
 
         return view('foodie.orders', compact('plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'messages'=>$messages
+        ]);
+    }
+
+    public function getAllOrdersView(){
+
+        $foodie = Auth::guard('foodie')->user();
+        $orders='';
+        $ordersCount=Order::where('foodie_id','=',$foodie->id)->get()->count();
+
+        if($ordersCount>0){
+            $orders=Order::where('foodie_id','=',$foodie->id)->get();
+        }
+
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'c')->get();
+
+
+        return view('foodie.viewAllOrders')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>$foodie,
+            'orders'=>$orders,
+            'ordersCount'=>$ordersCount,
+            'messages'=>$messages
+        ]);
+    }
+
+    public function getOneOrderDetails(Order $order){
+        $foodie = Auth::guard('foodie')->user();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $orderPlan=$order->plan->first();
+        $orderMealPlans=$orderPlan->mealplans()->get();
+        $orderMealPlansCount = $orderMealPlans->count();
+//        dd($orderMealPlans);
+        $orderCustomizedMeals=[];
+        $ingredientMeals=[];
+        $ingredientMealData=[];
+        $ingredientCount = DB::table('ingredient_meal')
+            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
+            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+            ->count();
+
+        for($i=0;$i<count($orderMealPlans);$i++){
+            $orderCustomizedMeals[]=CustomizedMeal::where('meal_id','=',$orderMealPlans[$i]->meal_id)->where('order_id','=',$order->id)->first();
+            for($j=0;$j<$orderCustomizedMeals[$i]->customized_ingredient_meal->count();$j++){
+                $ingredientMeals[]=$orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
+            }
+        }
+        for($i=0;$i<count($ingredientMeals);$i++){
+            $ingredientDesc=DB::table('ingredients')
+                ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+                ->where('NDB_No','=',$ingredientMeals[$i]->ingredient_id)
+                ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+                ->first();
+            $ingredientMealData[]=array(
+                "meal"=>$ingredientMeals[$i]->meal_id,
+                "ingredient"=>$ingredientDesc->Long_Desc,
+                "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
+                "grams"=>$ingredientMeals[$i]->grams
+            );
+        }
+//        dd($ingredientMealData);
+
+        return view('foodie.viewSingleOrder')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>$foodie,
+            'messages'=>$messages,
+            'mealPlans'=>$orderMealPlans,
+            'mealPlansCount'=>$orderMealPlansCount,
+            'customize'=>$orderCustomizedMeals,
+            'ingredientsMeal'=>$ingredientMealData,
+            'ingredientCount'=>$ingredientCount
         ]);
     }
 

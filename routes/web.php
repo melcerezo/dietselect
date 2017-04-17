@@ -52,6 +52,8 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
     Route::post('order/custPlan/{plan}/{id}', 'Foodie\FoodieOrderPlanController@custStore')->name('foodie.custOrder.create');
+    Route::get('order/view', 'Foodie\FoodieOrderPlanController@getAllOrdersView')->name('foodie.order.view');
+    Route::get('order/viewSingle/{order}', 'Foodie\FoodieOrderPlanController@getOneOrderDetails')->name('foodie.order.single');
 
     // Route after ordering
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
