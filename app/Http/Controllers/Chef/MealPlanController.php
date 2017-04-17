@@ -10,6 +10,7 @@ use App\Meal;
 use App\MealPlan;
 use App\Plan;
 use App\Message;
+use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +20,7 @@ use phpDocumentor\Reflection\Types\Integer;
 class MealPlanController extends Controller
 {
     use VerifiesSms;
-
+    protected $redirectTo = '/chef/plan';
     /**
      * Check for chef authentication
      *
@@ -49,13 +50,19 @@ class MealPlanController extends Controller
 
     public function createPlan(Request $request)
     {
+        Validator::make($request->all(), [
+            'plan_name' => 'required|max:100',
+            'calories' =>'required',
+            'price' =>'required'
+        ])->validate();
+
         $plan= new Plan();
         $plan->chef_id = Auth::guard('chef')->user()->id;
         $plan->plan_name = $request['plan_name'];
         $plan->calories= (int)$request['calories'];
         $plan->price= (float)$request['price'];
         $plan->save();
-        return back();
+        return redirect($this->redirectTo)->with(['status'=>'Successfully created plan: '.$plan->plan_name.'']);
 
         // DONE!
     }
@@ -214,7 +221,7 @@ class MealPlanController extends Controller
             ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
         );
 
-        return back();
+        return back()->with(['status'=>'Successfully created meal: '.$meal->description.'']);
 
 
     }
@@ -279,22 +286,26 @@ class MealPlanController extends Controller
             );
         }
 
-        return back();
+        return back()->with(['status'=>'Successfully updated meal '.$meal->description.'!']);
     }
 
-    //modal that pops up to delete meal in meal plan
+    public function deletePlan(Plan $plan){
+        $plan->delete();
+
+        return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the plan!']);
+    }
 
     public function deleteMeal(Meal $meal)
     {
+
         $mealPlan= $meal->mealplan->first();
         $ingredient_mealDeletes= $meal->ingredient_meal()->get();
 
-//        dd($mealPlan);
-        $mealPlan->delete();
         foreach ($ingredient_mealDeletes as $mealDelete){
             $mealDelete->where('meal_id','=',$meal->id)->delete();
         }
         $meal->delete();
-        return back();
+        $mealPlan->delete();
+        return back()->with(['status'=>'Successfully deleted the meal!']);
     }
 }

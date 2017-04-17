@@ -24,6 +24,9 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
+    <!-- Error CSS -->
+    <link rel="stylesheet" href="/css/error.css">
+
     <!-- Modernizr JS Script -->
     <script src="/js/vendor/modernizr-2.8.3.min.js" defer></script>
 

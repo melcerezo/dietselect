@@ -418,15 +418,20 @@
                                 @endif
                             @endfor
                         @endfor
-                        <button onclick="{{route('chef.meal.delete', $mealPlans[$i]->meal->id)}}">Update</button>
                         {{--<label for="grams">Grams:</label>--}}
-                        <button type="submit" >Delete</button>
+                        <button type="submit">Update</button>
+                        <button type="button" data-target="deleteMeal{{$i}}" class="modal-trigger">Delete</button>
                         </div>
-
                 </form>
-
-
-
+                </div>
+            </div>
+            <div id="deleteMeal{{$i}}" class="modal">
+                <div class="modal-content">
+                    <form action="{{route('chef.meal.delete', ['meal'=>$mealPlans[$i]->meal->id])}}" method="post">
+                        {{csrf_field()}}
+                        <h4>Are you sure you want to delete?</h4>
+                        <button type="submit">Delete</button>
+                    </form>
                 </div>
             </div>
         @endfor

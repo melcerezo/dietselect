@@ -2,8 +2,7 @@
 @section('page_head')
     <title>Meal Planning - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
-    <link rel="stylesheet" href="/css/chef/app.css">
-    <script src="/js/chef/app.js" defer></script>
+    <script src="/js/chef/planValidate.js" defer></script>
 @endsection
 @section('page_content')
 <div class="container">
@@ -45,7 +44,18 @@
                                                 <span class="card-title"><i class="material-icons right">close</i></span>
                                                  {{--route will go to the meals table page with id of plan passed--}}
                                                 <a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}"><span class="fa fa-pencil"></span></a>
-                                                <a class="meal-plan-option-btn" href="#"><span class="fa fa-trash"></span></a>
+                                                <a class="meal-plan-option-btn modal-trigger" href="#deletePlan"><span class="fa fa-trash"></span></a>
+                                            </div>
+                                        </div>
+                                        <div id="deletePlan" class="modal">
+                                            <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
+                                            <div class="modal-content">
+                                                <form id="deletePlanForm" action="{{route('chef.plan.delete',['plan'=>$plan->id])}}" method="post">
+                                                    {{csrf_field()}}
+                                                    <div>
+                                                        <input type="submit" value="Submit" class="btn btn-primary">
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -73,20 +83,37 @@
     </div>
 
     <div id="createPlan" class="modal">
-        <form action="{{route('chef.plan.create')}}" method="post">
+        <form id="createPlanForm" action="{{route('chef.plan.create')}}" method="post">
             {{csrf_field()}}
             <div class="modal-content">
-                <label for="plan_name">Plan Name:</label>
-                <input type="text" name="plan_name" id="plan_name" class="form-control">
-                <label for="calories">Total Calories:</label>
-                <input type="text" name="calories" id="calories" class="form-control">
-                <label for="price">Price:</label>
-                <input type="text" name="price" id="price" class="form-control">
+
+                <div class="row">
+                    <div class="input-field">
+                        <label for="plan_name">Plan Name:</label>
+                        <input type="text" name="plan_name" id="plan_name" data-error=".error-plan-name" class="form-control">
+                        <div class="error-plan-name err"></div>
+                    </div>
+                </div>
+               <div class="row">
+                   <div class="input-field">
+                        <label for="calories">Total Calories:</label>
+                        <input type="text" name="calories" id="calories" data-error=".error-calories" class="form-control">
+                        <div class="error-calories err"></div>
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="input-field">
+                        <label for="price">Price:</label>
+                        <input type="text" name="price" id="price" data-error=".error-price" class="form-control">
+                        <div class="error-price err"></div>
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
                 <input type="submit" value="Submit" class="btn btn-primary">
             </div>
         </form>
     </div>
+
 </div>
 @endsection

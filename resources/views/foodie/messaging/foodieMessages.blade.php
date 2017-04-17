@@ -85,7 +85,7 @@
                                         <div id="delete-message-modal{{$message->id}}" class="modal">
                                             <div class="modal-content">
                                                 <div><h4>Are you sure you want to delete this message?</h4></div>
-                                                <form action="{{route('chef.message.delete', $message->id)}}">
+                                                <form method="post" action="{{route('foodie.message.delete', $message->id)}}">
                                                     {{csrf_field()}}
                                                     <div>
                                                         <input type="submit" class="btn" value="delete">

@@ -1,4 +1,15 @@
 $(document).ready(function() {
+    $('div.input-field').on('focus', '#website', function(){
+        var url = $('#website').val();
+        if (url == '') {
+            $('#website').val('http://');
+        }
+    }).on('blur', '#website', function(){
+        var url = $('#website').val();
+        if (url == 'http://' || url.length < 7) {
+            $('#website').val('');
+        }
+    });
     $('#birthday').pickadate({
         // Buttons
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',

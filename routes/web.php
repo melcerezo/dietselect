@@ -105,12 +105,12 @@ Route::group(['prefix' => 'chef'], function () {
 
     Route::get('plan','Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
     Route::post('plan/create','Chef\MealPlanController@createPlan')->name('chef.plan.create');
+    Route::post('plan/delete/{plan}','Chef\MealPlanController@deletePlan')->name('chef.plan.delete');
     Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
     Route::get('{type}/getIngredJson','Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
-//    Route::get('{meal}/getIngredCount','Chef\MealPlanController@getIngredCount')->name('chef.plan.number');
     Route::post('plan/{plan}/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
-    Route::post('plan/delete/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');
+    Route::post('plan/deleteMeal/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');
 
     // Get MESSAGING view
     Route::get('message/index', 'Chef\ChefMessageController@index')->name('chef.message.index');
