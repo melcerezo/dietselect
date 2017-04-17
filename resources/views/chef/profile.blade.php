@@ -1,6 +1,6 @@
 @extends('chef.layout')
 @section('page_head')
-    <title>Foodie Profile - Diet Select PH | Treating yourself the right way!</title>
+    <title>Chef Profile - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
     <link rel="stylesheet" href="/css/chef/profile.css">
     <script src="/js/chef/profile.js" defer></script>
