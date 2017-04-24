@@ -1,9 +1,26 @@
 $(document).ready(function () {
+    $('.ingredSelectContainer').each(function () {
+        var $type = $(this).attr("data-ing-type").toLowerCase();
+        var $ingredField = $(this).find('.input-field');
+        var $ingredID = $ingredField.find('.autocomplete').attr('id');
+        $.ajax({
+            url: '/foodie/' + $type + '/getIngredJson',
+            success: function (response) {
+                var $jsonData=JSON.parse(response);
+                $(function () {
+                    $('#' + $ingredID + '.autocomplete').autocomplete($jsonData);
+                });
+            }
+        });
+    });
+
+
+
+
     $('.updateIngredSelect').on('change', function () {
         var $type = $(this).val();
         var $ingredsID = $(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
         var prevUpdateComplete=$(this).parents().eq(1).find('.input-field').attr('id');
-        console.log(prevUpdateComplete);
         $.ajax({
             url: '/foodie/' + $type + '/getIngredJson',
             success: function (response) {

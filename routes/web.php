@@ -10,6 +10,17 @@
 | to using a Closure or controller method. Build something great!
 |
 */
+Route::get('carbon', function (){
+    $dt = \Carbon\Carbon::now()->addDays(5);
+
+    if ($dt->isWeekday()) {
+        return 'Monday';
+    } else {
+        return 'Weekend';
+    }
+
+});
+
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 
@@ -48,6 +59,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('chef/meal/{plan}/{id}', 'Foodie\FoodieMealPlanController@viewMeal')->name('foodie.meal');
     Route::post('chefs/customize/{customize}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
     Route::get('{type}/getIngredJson','Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
+    Route::get('{type}/validateIngredJson','Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
@@ -111,6 +123,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('plan/delete/{plan}','Chef\MealPlanController@deletePlan')->name('chef.plan.delete');
     Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
     Route::get('{type}/getIngredJson','Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
+    Route::get('{type}/validateIngredJson','Chef\MealPlanController@validateIngredJson')->name('chef.plan.validate');
     Route::post('plan/{plan}/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
     Route::post('plan/deleteMeal/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');

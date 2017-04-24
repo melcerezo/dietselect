@@ -155,6 +155,60 @@ class MealPlanController extends Controller
         return $response;
     }
 
+    public function validateIngredJson($type){
+
+        $categ=$type;
+        $data='';
+
+        if($categ=='chicken'){
+            $data = DB::table('ingredients')->select('Long_Desc')->where('FdGrp_Cd','~0500~')->get();
+        }else if($categ=='pork'){
+            $data = DB::table('ingredients')->select('Long_Desc')->where('FdGrp_Cd','~1000~')->get();
+        }else if($categ=='beef'){
+            $data = DB::table('ingredients')->select('Long_Desc')->where('FdGrp_Cd','~1300~')->get();
+        }else if($categ=='fish'){
+            $data = DB::table('ingredients')->select('Long_Desc')->where('FdGrp_Cd','~1500~')->get();
+        }else if($categ=='vegetables'){
+            $data = DB::table('ingredients')->select('Long_Desc')->where('FdGrp_Cd','~1100~')->get();
+        }else if($categ=='carbohydrates(baked)'){
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd','~1800~')
+                ->get();
+        }else if($categ=='carbohydrates(grains,pasta)'){
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd','~2000~')
+                ->get();
+        }else if($categ=='dairy,eggs') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0100~')
+                ->get();
+        }else if($categ=='soups,sauces,gravy') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0600~')
+                ->get();
+        }else if($categ=='fruits') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0900~')
+                ->get();
+        }
+
+
+        $ingredCount=$data->count();
+        $i=0;
+        $jsonData='[';
+        foreach($data as $datum){
+            if(++$i<$ingredCount) {
+                $jsonData .= '{ "name":"' . $datum->Long_Desc . '"}, ';
+            }
+            else{
+                $jsonData .= '{ "name":"' . $datum->Long_Desc . '"}';
+            }
+        }
+        $jsonData.=']';
+        $response=$jsonData;
+        return $response;
+    }
+
     public function getIngredCount(Meal $meal){
         $meal_ingredientCount=$meal->ingredient_meal()->count();
 

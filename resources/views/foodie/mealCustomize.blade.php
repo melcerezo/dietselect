@@ -3,6 +3,26 @@
     <link rel="stylesheet" href="/css/foodie/foodieMealCustomize.css">
     <script src="/js/foodie/foodieIngredientAutocomplete.js"></script>
     <script src="/js/foodie/mealPlanValidate.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.updateIngredSelect').on('change', function () {
+                var $type = $(this).val();
+                var $ingredsID = $(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
+                var prevUpdateComplete=$(this).parents().eq(1).find('.input-field').attr('id');
+                $.ajax({
+                    url: '/foodie/' + $type + '/getIngredJson',
+                    success: function (response) {
+                        $('#'+prevUpdateComplete).find('.autocomplete-content').remove();
+                        var $ingredsData = response;
+                        $(function () {
+                            $('#' + $ingredsID + '.autocomplete').autocomplete(JSON.parse($ingredsData));
+                        })
+                        // console.log(JSON.parse($ingredsData));
+                    }
+                });
+            });
+        });
+    </script>
 
 @endsection
 
@@ -537,11 +557,13 @@
                                         @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
                                             @if($ingredientsMeal[$j]['meal']==$cust->id && $c<1)
                                                 <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"
+                                                     data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                      class="ingredSelectContainer">
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
-                                                            name="ingredient_select[]" class="updateIngredSelect">
+                                                            name="ingredient_select[]" class="updateIngredSelect"
+                                                            data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}">
                                                         <option disabled
-                                                                selected>{{$ingredientsMeal[$j]['ingredient_group']}}</option>
+                                                                selected value="{{$ingredientsMeal[$j]['ingredient_group']}}">{{$ingredientsMeal[$j]['ingredient_group']}}</option>
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
                                                         <option value="pork">Pork</option>
@@ -559,6 +581,7 @@
                                                         <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
                                                         <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
                                                                id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"
+                                                               data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                                name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind">
                                                     </div>
                                                     <div class="error-foodieIngred{{$j}} err"></div>

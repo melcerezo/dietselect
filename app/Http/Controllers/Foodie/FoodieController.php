@@ -344,5 +344,13 @@ class FoodieController extends Controller
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
 
+    public function countPreferences()
+    {
+        # Meals
+        
+
+        $chicken = FoodiePreference::where('ingredient', '=', 'chicken')->count();
+        $beef = FoodiePreference::where('ingredient', '=', 'beef')->count();
+    }
 
 }
