@@ -1,8 +1,17 @@
 $(document).ready(function () {
+    function ingredAjax($type){
+        return $.ajax({
+            url: '/foodie/' + $type + '/getIngredJson',
+            dataType: 'json'
+        });
+    }
+
     $('.ingredSelectContainer').each(function () {
         var $type = $(this).attr("data-ing-type").toLowerCase();
         var $ingredField = $(this).find('.input-field');
         var $ingredID = $ingredField.find('.autocomplete').attr('id');
+
+
         $.ajax({
             url: '/foodie/' + $type + '/getIngredJson',
             success: function (response) {

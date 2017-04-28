@@ -8,12 +8,14 @@ $(document).ready(function () {
     //     // var subId=$(this).attr('data-form-id');
     // });
 
-    // for($i=0;){
-    //
-    // }
+    function ingredAjax($valType){
+        return $.ajax({
+            url: '/foodie/' + $valType + '/validateIngredJson',
+            dataType:'json'
+        });
+    }
 
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-
     $('form.editMeal').submit(function (e) {
         e.preventDefault();
         var form=$(this);
@@ -30,38 +32,25 @@ $(document).ready(function () {
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
-                $.ajax({
-                    url: '/foodie/' + $valType + '/validateIngredJson',
-                    success: function (response) {
-                        var valData=JSON.parse(response);
-                        for(var i = 0,l=valData.length;i<l;i++){
-                            var ingred= valData[i].name;
-                            if($thisVal==ingred){
-                                matchData+=1;
-                            }
+                var $ingredientAuto=ingredAjax($valType);
+                $ingredientAuto.done(function(response){
+                    var valData=response;
+                    for(var i = 0,l=valData.length;i<l;i++){
+                        var ingred= valData[i].name;
+                        if($thisVal==ingred){
+                            matchData+=1;
+                            $errorContainer.empty();
                         }
-                        pushToMatchArray(matchData);
-
-                        if(!matchData){
-                            $errorContainer.append("The listed ingredient is not found");
-                        }
-
-
-
+                    }
+                    if(!matchData){
+                        $errorContainer.empty();
+                        $errorContainer.append("The listed ingredient is not found");
+                    }
+                    if(matchData==ingredCountz){
+                        form.unbind('submit').submit();
                     }
                 });
-            }else{
-                e.preventDefault();
             }
-            function pushToMatchArray(match){
-                console.log(match);
-                return match;
-            }
-            // console.log(pushToMatchArray());
-            function submitForm() {
-
-            }
-            // console.log(pushToMatchArray());
         });
     });
 
