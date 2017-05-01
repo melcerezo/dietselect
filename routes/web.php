@@ -12,7 +12,7 @@
 */
 Route::get('foodie/preferences', 'Foodie\FoodieController@countPreferences');
 
-Route::get('/testDash', 'TestController@loadInfo')->name('testDash');
+Route::get('/testDash', 'DashController@loadInfo')->name('testDash');
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 

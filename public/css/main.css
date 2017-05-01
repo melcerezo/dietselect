@@ -135,7 +135,7 @@ h3 {
 
 a {
     transition: all 0.3s ease;
-    color: #e4572e !important;
+    /*color: #e4572e !important;*/
     font-size: 1em;
     font-weight: 600;
 }
