@@ -141,7 +141,7 @@ a {
 }
 
 a:hover {
-    color: #ff9980 !important;
+    /*color: #ff9980 !important;*/
 }
 
 a.n-btn-link {

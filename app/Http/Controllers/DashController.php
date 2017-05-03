@@ -10,4 +10,11 @@ class DashController extends Controller
     {
         return view('testMaterializeTemplates.testDashboard');
     }
+    public function loadMessage()
+    {
+        return view('testMaterializeTemplates.testMessage');
+    }
+    public function loadMealPlanner(){
+        return view('testMaterializeTemplates.testMealPlanner');
+    }
 }

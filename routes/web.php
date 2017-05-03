@@ -14,6 +14,10 @@ Route::get('foodie/preferences', 'Foodie\FoodieController@countPreferences');
 
 Route::get('/testDash', 'DashController@loadInfo')->name('testDash');
 
+Route::get('/testMessage', 'DashController@loadMessage')->name('testMessage');
+
+Route::get('/testMealPlanner', 'DashController@loadMealPlanner')->name('testMealPlanner');
+
 Route::get('/', 'PagesController@welcome')->name('welcome');
 
 Route::group(['prefix' => 'foodie'], function () {
