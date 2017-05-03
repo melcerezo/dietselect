@@ -356,7 +356,7 @@ class FoodieController extends Controller
         // MAIN_INGREDIENT -> COUNT EACH (beef, chicken, pork, vegetables, fruits)
 
         // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
-
+        $foodie = Auth::guard('foodie')->user()->id;
         $plans = Plan::all();
 
         $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
@@ -414,10 +414,5 @@ class FoodieController extends Controller
         } else {
             return 'Weekend';
         }
-    }
-
-    public function suggested($plans)
-    {
-
     }
 }
