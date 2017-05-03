@@ -6,7 +6,9 @@ namespace App\Http\Controllers\Foodie;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\MealPlan;
 use App\Order;
+use App\Plan;
 use App\Rating;
 use App\Message;
 use Illuminate\Http\Request;
@@ -121,6 +123,7 @@ class FoodieController extends Controller
     {
         return Auth::guard($this->guard)->user()->id;
     }
+
     /**
      * Handle a registration request for the application.
      *
@@ -285,7 +288,7 @@ class FoodieController extends Controller
             }
         }
 
-       foreach ($request->except('others') as $key => $value) {
+        foreach ($request->except('others') as $key => $value) {
 
             if($value=="1") {
 
@@ -319,7 +322,6 @@ class FoodieController extends Controller
        }
 
 
-
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
 
@@ -347,10 +349,75 @@ class FoodieController extends Controller
     public function countPreferences()
     {
         # Meals
-        
+        // GET ALL THE PLANS
 
-        $chicken = FoodiePreference::where('ingredient', '=', 'chicken')->count();
-        $beef = FoodiePreference::where('ingredient', '=', 'beef')->count();
+        // GET THE MEAL PLAN OF THE PLANS AND GET THE MEAL -> MAIN_INGREDIENT
+
+        // MAIN_INGREDIENT -> COUNT EACH (beef, chicken, pork, vegetables, fruits)
+
+        // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
+
+        $plans = Plan::all();
+
+        $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+//        dd($foodiePreference);
+        foreach ($plans as $plan) {
+
+            $mealPlan = MealPlan::where('plan_id', '=', $plan->id)->get();
+
+            $chicken = $mealPlan[0]->meal->where('main_ingredient', 'chicken')->count();
+            $beef = $mealPlan[0]->meal->where('main_ingredient', 'beef')->count();
+            $pork = $mealPlan[0]->meal->where('main_ingredient', 'pork')->count();
+            $seafood = $mealPlan[0]->meal->where('main_ingredient', 'seafood')->count();
+
+//            dd($foodiePreference->ingredient);
+            if ($chicken >= $beef && $chicken >= $pork && $chicken >= $seafood) {
+                if ($foodiePreference == 'chicken') {
+                    dd('Suggested ingredient: Chicken');
+//                    break;
+                } else {
+                    dd('this is chicken');
+                }
+            } elseif ($beef >= $chicken && $beef >= $pork && $beef >= $seafood) {
+                if ($foodiePreference == 'beef') {
+                    dd('Suggested ingredient: Beef');
+//                    break;
+                } else {
+                    dd('this is beef');
+                }
+            } elseif ($pork >= $chicken && $pork >= $beef && $pork >= $seafood) {
+                if ($foodiePreference == 'pork') {
+                    dd('Suggested ingredient: Pork');
+//                    break;
+                }else {
+                    dd('this is pork');
+                }
+            } elseif ($seafood >= $chicken && $seafood >= $pork && $seafood >= $beef) {
+                if ($foodiePreference == 'seafood') {
+                    dd('Suggested ingredient: Seafood');
+//                    break;
+                } else {
+                    dd('this is seafood');
+                }
+            }
+        }
+
+//            elseif ($mealPlan[0]->meal->where('main_ingredient', 'vegetables')->count() == $foodiePreference->where('ingredient', 'vegetables')->count()) {
+//            } elseif ($mealPlan[0]->meal->where('main_ingredient', 'fruits')->count() == $foodiePreference->where('ingredient', 'fruits')->count());
+
+        die('here');
+
+        $dt = \Carbon\Carbon::now()->addDays(5);
+
+        if ($dt->isWeekday()) {
+            return 'Monday';
+        } else {
+            return 'Weekend';
+        }
     }
 
+    public function suggested($plans)
+    {
+
+    }
 }
