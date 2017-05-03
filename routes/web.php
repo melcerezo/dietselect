@@ -10,17 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('carbon', function (){
-    $dt = \Carbon\Carbon::now()->addDays(5);
-
-    if ($dt->isWeekday()) {
-        return 'Monday';
-    } else {
-        return 'Weekend';
-    }
-
-});
-
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 
@@ -45,6 +34,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('profile/address/delete/{id}', 'Foodie\FoodieController@deleteProfileAddress')->name('foodie.address.delete');
     Route::post('profile/allergies', 'Foodie\FoodieController@saveProfileAllergies')->name('foodie.profile.allergies');
     Route::post('profile/preferences', 'Foodie\FoodieController@saveProfilePreferences')->name('foodie.profile.preferences');
+    Route::get('/countPreferences', 'Foodie\FoodieController@countPreferences');
 
 
     Route::get('register', 'Foodie\Auth\RegisterController@showRegistrationForm')->name('foodie.register.show');
@@ -55,11 +45,11 @@ Route::group(['prefix' => 'foodie'], function () {
 
     Route::get('chefs', 'Foodie\FoodieMealPlanController@viewChefs')->name('foodie.chef.show');
     Route::get('chefs/plan/{id}', 'Foodie\FoodieMealPlanController@viewChefsPlans')->name('foodie.chef.plan');
-    Route::get('chefs/meal/{plan}','Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
+    Route::get('chefs/meal/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
     Route::get('chef/meal/{plan}/{id}', 'Foodie\FoodieMealPlanController@viewMeal')->name('foodie.meal');
-    Route::post('chefs/customize/{customize}','Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
-    Route::get('{type}/getIngredJson','Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
-    Route::get('{type}/validateIngredJson','Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
+    Route::post('chefs/customize/{customize}', 'Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
+    Route::get('{type}/getIngredJson', 'Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
+    Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
@@ -77,9 +67,9 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('message/delete/{message}', 'Foodie\FoodieMessageController@delete')->name('foodie.message.delete');
 
 
-    Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal','uses' => 'AddMoneyController@payWithPaypal',));
-    Route::post('paypal/{order}', array('as' => 'addmoney.paypal','uses' => 'AddMoneyController@postPaymentWithpaypal',));
-    Route::get('paypal/{order}', array('as' => 'payment.status','uses' => 'AddMoneyController@getPaymentStatus',));
+    Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
+    Route::post('paypal/{order}', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+    Route::get('paypal/{order}', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
     // Bank Deposit
     Route::post('bank/deposit/order/{order}', 'DepositController@deposit')->name('deposit.order');
@@ -118,12 +108,12 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('verify/sms', 'Chef\Auth\VerificationController@verifySms')->name('chef.verify.sms');
     Route::post('verify/sms/send', 'Chef\Auth\VerificationController@sendNewVerificationCode')->name('chef.verify.sms.send');
 
-    Route::get('plan','Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
-    Route::post('plan/create','Chef\MealPlanController@createPlan')->name('chef.plan.create');
-    Route::post('plan/delete/{plan}','Chef\MealPlanController@deletePlan')->name('chef.plan.delete');
-    Route::get('plan/{plan}/mealsTable','Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
-    Route::get('{type}/getIngredJson','Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
-    Route::get('{type}/validateIngredJson','Chef\MealPlanController@validateIngredJson')->name('chef.plan.validate');
+    Route::get('plan', 'Chef\MealPlanController@getMealPlanPage')->name('chef.plan');
+    Route::post('plan/create', 'Chef\MealPlanController@createPlan')->name('chef.plan.create');
+    Route::post('plan/delete/{plan}', 'Chef\MealPlanController@deletePlan')->name('chef.plan.delete');
+    Route::get('plan/{plan}/mealsTable', 'Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
+    Route::get('{type}/getIngredJson', 'Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
+    Route::get('{type}/validateIngredJson', 'Chef\MealPlanController@validateIngredJson')->name('chef.plan.validate');
     Route::post('plan/{plan}/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
     Route::post('plan/deleteMeal/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');

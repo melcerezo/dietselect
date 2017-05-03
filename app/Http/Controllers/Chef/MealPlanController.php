@@ -32,8 +32,6 @@ class MealPlanController extends Controller
     }
 
     public function getMealPlanPage(Plan $plan)
-
-
     {
         $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
         $planCount= $plans->count();
@@ -135,7 +133,6 @@ class MealPlanController extends Controller
                 ->where('FdGrp_Cd', '~0900~')
                 ->get();
         }
-
 
         $ingredCount=$data->count();
         $i=0;
