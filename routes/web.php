@@ -10,7 +10,6 @@
 | to using a Closure or controller method. Build something great!
 |
 */
-Route::get('foodie/preferences', 'Foodie\FoodieController@countPreferences');
 
 Route::get('/testDash', 'DashController@loadInfo')->name('testDash');
 
@@ -41,6 +40,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('profile/address/delete/{id}', 'Foodie\FoodieController@deleteProfileAddress')->name('foodie.address.delete');
     Route::post('profile/allergies', 'Foodie\FoodieController@saveProfileAllergies')->name('foodie.profile.allergies');
     Route::post('profile/preferences', 'Foodie\FoodieController@saveProfilePreferences')->name('foodie.profile.preferences');
+    Route::get('/countPreferences', 'Foodie\FoodieController@countPreferences');
 
 
     Route::get('register', 'Foodie\Auth\RegisterController@showRegistrationForm')->name('foodie.register.show');

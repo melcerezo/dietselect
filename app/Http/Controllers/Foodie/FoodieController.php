@@ -17,6 +17,8 @@ use Validator;
 use DateTime;
 use App\Allergy;
 use App\FoodiePreference;
+use App\Plan;
+use App\MealPlan;
 
 class FoodieController extends Controller
 {
@@ -350,6 +352,9 @@ class FoodieController extends Controller
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
     }
 
+    /**
+     * @return string
+     */
     public function countPreferences()
     {
         $foodie = Auth::guard('foodie')->user()->id;
@@ -362,67 +367,48 @@ class FoodieController extends Controller
 
         // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
 
-        $plans = \App\Plan::all();
+        $plans = Plan::all();
 
-        $foodiePreferences = \App\FoodiePreference::where('foodie_id', '=', 1)->select('ingredient')->get();
+        $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
-        $suggestion = "";
-        foreach ($foodiePreferences as $foodiePreference) {
-//            dd($foodiePreference);
-            if ($foodiePreference == 'chicken' ) {
-//                dd('chicken');
-                continue;
-            } elseif ($foodiePreference == 'beef' ) {
-                continue;
-            } elseif ($foodiePreference == 'pork' ) {
-                continue;
-            } elseif ($foodiePreference == 'seafood') {
-//                dd('seafood');
-                continue;
-            }
+        foreach ($plans as $plan) {
+            $mealPlan = MealPlan::where('plan_id', '=', $plan->id)->get();
 
+            $chicken = $mealPlan[0]->meal->where('main_ingredient', 'chicken')->count();
+            $beef = $mealPlan[0]->meal->where('main_ingredient', 'beef')->count();
+            $pork = $mealPlan[0]->meal->where('main_ingredient', 'pork')->count();
+            $seafood = $mealPlan[0]->meal->where('main_ingredient', 'seafood')->count();
 
-            foreach ($plans as $plan) {
-                $mealPlan = \App\MealPlan::where('plan_id', '=', $plan->id)->get();
-
-
-
-                    if ($mealPlan[0]->meal->where('main_ingredient', '=', 'chicken')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'beef')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'chicken')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'pork')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'chicken')->count()>= $mealPlan[0]->meal->where('main_ingredient', 'seafood')->count()
-                    ) {
-                        dd('Suggested ingredient: Chicken');
-                        continue;
-                    } elseif ($mealPlan[0]->meal->where('main_ingredient', '=', 'beef')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'chicken')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'beef')->count()>=$mealPlan[0]->meal->where('main_ingredient', 'pork')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'beef')->count()>=$mealPlan[0]->meal->where('main_ingredient', 'seafood')->count()
-                    ) {
-                        dd('Suggested ingredient: Beef');
-                        continue;
-                    } elseif ($mealPlan[0]->meal->where('main_ingredient', '=', 'pork')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'chicken')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'pork')->count()>=$mealPlan[0]->meal->where('main_ingredient', 'beef')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'pork')->count()>=$mealPlan[0]->meal->where('main_ingredient', 'seafood')->count()
-                    ) {
-                        dd('Suggested ingredient: Pork');
-                        continue;
-                    } elseif ($mealPlan[0]->meal->where('main_ingredient', '=', 'seafood')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'chicken')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'seafood')->count() >= $mealPlan[0]->meal->where('main_ingredient', 'pork')->count() &&
-                        $mealPlan[0]->meal->where('main_ingredient', '=', 'seafood')->count() >=$mealPlan[0]->meal->where('main_ingredient', 'beef')->count()
-                    ) {
-                        dd('Suggested ingredient: Seafood');
-                        continue;
-                    }
+            if ($chicken >= $beef && $chicken >= $pork && $chicken >= $seafood) {
+                if ($foodiePreference == 'chicken') {
+                    dd('Suggested ingredient: Chicken');
+                } else {
+                    dd('this is chicken');
                 }
-
+            } elseif ($beef >= $chicken && $beef >= $pork && $beef >= $seafood) {
+                if ($foodiePreference == 'beef') {
+                    dd('Suggested ingredient: Beef');
+                } else {
+                    dd('this is beef');
+                }
+            } elseif ($pork >= $chicken && $pork >= $beef && $pork >= $seafood) {
+                if ($foodiePreference == 'pork') {
+                    dd('Suggested ingredient: pork');
+                } else {
+                    dd('this is Pork');
+                }
+            } elseif ($seafood >= $chicken && $seafood >= $pork && $seafood >= $beef) {
+                if ($foodiePreference == 'seafood') {
+                    dd('Suggested ingredient: Seafood');
+                } else {
+                    dd('this is seafood');
+                }
             }
+        }
 //            elseif ($mealPlan[0]->meal->where('main_ingredient', 'vegetables')->count() == $foodiePreference->where('ingredient', 'vegetables')->count()) {
 //            } elseif ($mealPlan[0]->meal->where('main_ingredient', 'fruits')->count() == $foodiePreference->where('ingredient', 'fruits')->count());
+        die('here');
 
-
-        die();
-
-//    dd($plan);
-//    $plan = \App\MealPlan::where('')
         dd($plans);
         $dt = \Carbon\Carbon::now()->addDays(5);
 
