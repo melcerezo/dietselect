@@ -17,12 +17,87 @@
     </style>
     <script>
         $(document).ready(function () {
+//            $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
             $('.tdCell').each(function () {
                 var day=$(this).attr('data-day');
                 var mealType=$(this).attr('data-meal-type');
                 if($(this).text().trim()==""){
-                    $(this).append('<a href="#testCreateModal" data-day="'+day+'" data-meal-type="'+mealType+'" class="modal-trigger">+Add Meal</a>');
+                    $(this).append('<a href="#testCreateModal" data-day="'+day+'" data-meal-type="'+mealType+'" class="createMealLink modal-trigger">+Add Meal</a>');
+                }
+            });
+            $('.createMealLink').on('click',function () {
+                var mealDay = $(this).attr('data-day');
+                var mealType=$(this).attr('data-meal-type');
+//                $('option:selected','select[name="day"]').removeAttr('selected');
+                switch(mealDay){
+                    case 'MO':
+                        $('#day').val("MO");
+                        $('#dayName').empty();
+                        $('#dayName').append("Monday");
+                        break;
+                    case 'TU':
+                        $('#day').val("TU");
+                        $('#dayName').empty();
+                        $('#dayName').append("Tuesday");
+                        console.log($('#day').val());
+                        break;
+                    case 'WE':
+                        $('#day').val("WE");
+                        $('#dayName').empty();
+                        $('#dayName').append("Wednesday");
+                            console.log($('#day').val());
+                        break;
+                    case 'TH':
+                        $('#day').val("TH");
+                        $('#dayName').empty();
+                        $('#dayName').append("Thursday");
+                            console.log($('#day').val());
+                        break;
+                    case 'FR':
+                        $('#day').val("FR");
+                        $('#dayName').empty();
+                        $('#dayName').append("Friday");
+                            console.log($('#day').val());
+                        break;
+                    case 'SA':
+                        $('#day').val("SA");
+                        $('#dayName').empty();
+                        $('#dayName').append("Saturday");
+                            console.log($('#day').val());
+                        break;
+                }
+
+                switch(mealType){
+                    case 'Breakfast':
+                        $('#meal_type').val("Breakfast");
+                        $('#mealType').empty();
+                        $('#dayName').append("Breakfast");
+                        break;
+                    case 'MorningSnack':
+                        $('#meal_type').val("MorningSnack");
+                        $('#mealType').empty();
+                        $('#mealType').append("Morning Snack");
+                        console.log($('#meal_type').val());
+                        break;
+                    case 'Lunch':
+                        $('#meal_type').val("Lunch");
+                        $('#mealType').empty();
+                        $('#mealType').append("Lunch");
+                            console.log($('#meal_type').val());
+                        break;
+                    case 'AfternoonSnack':
+                        $('#meal_type').val("AfternoonSnack");
+                        $('#mealType').empty();
+                        $('#mealType').append("Afternoon Snack");
+                            console.log($('#meal_type').val());
+                        break;
+                    case 'Dinner':
+                        $('#meal_type').val("Dinner");
+                        $('#mealType').empty();
+                        $('#mealType').append("Dinner");
+                            console.log($('#meal_type').val());
+                        break;
                 }
             });
 
@@ -69,21 +144,21 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <div class="row">
-            <div class="col s12 card-panel light-green" style="margin-top: 1rem; padding:5px 10px; position: relative;">
-                <div class="col s12 m6 l4">
-                    <span class="white-text small">New Meal Name</span>
-                    <input id="mealName" type="text" style="border-bottom: 1px solid #ffffff">
-                    <button id="addMealButton" data-target="testCreateModal" class="modal-trigger btn orange waves-effect waves-light" style="position: absolute; top:37px; left:415px;">Add Meal</button>
-                </div>
-                <div class="col s12 m6 l6 white-text right right-align" style="margin-top:24px;">
-                    <h5>Plan 1</h5>
-                </div>
-                <div style="clear: both;"></div>
-            </div>
+        {{--<div class="row">--}}
+            {{--<div class="col s12 card-panel light-green" style="margin-top: 1rem; padding:5px 10px; position: relative;">--}}
+                {{--<div class="col s12 m6 l4">--}}
+                    {{--<span class="white-text small">New Meal Name</span>--}}
+                    {{--<input id="mealName" type="text" style="border-bottom: 1px solid #ffffff">--}}
+                    {{--<button id="addMealButton" data-target="testCreateModal" class="modal-trigger btn orange waves-effect waves-light" style="position: absolute; top:37px; left:415px;">Add Meal</button>--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m6 l6 white-text right right-align" style="margin-top:24px;">--}}
+                    {{--<h5>Plan 1</h5>--}}
+                {{--</div>--}}
+                {{--<div style="clear: both;"></div>--}}
+            {{--</div>--}}
 
-        </div>
+        {{--</div>--}}
+    <div class="container">
         <div class="row">
             <div class="card-panel" style="padding: 0;">
                 <table class="striped centered">
@@ -364,32 +439,20 @@
         <div class="modal-header light-green valign-wrapper">
             <span class="white-text" style="font-size: 40px; margin-left: 15px;">Create Meal</span>
         </div>
+            <div>
+                <span id="dayName"></span>
+            </div>
+            <div>
+                <span id="mealType"></span>
+            </div>
             <form id="createMealForm" action="" method="post" autocomplete="off">
                 {{csrf_field()}}
                 <div class="modal-content" style="position: relative;">
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
                 <div id="errorDescription"></div>
-                <select id="day" name="day" class="selectRequired">
-                    <option selected value="">Choose day</option>
-                    <option value="MO">MO</option>
-                    <option value="TU">TU</option>
-                    <option value="WE">WE</option>
-                    <option value="TH">TH</option>
-                    <option value="FR">FR</option>
-                    <option value="SA">SA</option>
-                </select>
-                <div id="errorDay"></div>
-                <select id="meal_type" name="meal_type" class="selectRequired">
-                    <option selected value="">Choose Meal Type</option>
-                    <option value="Breakfast">Breakfast</option>
-                    <option value="MorningSnack">Morning Snack</option>
-                    <option value="Lunch">Lunch</option>
-                    <option value="AfternoonSnack">Afternoon Snack</option>
-                    <option value="Dinner">Dinner</option>
-                </select>
-                <div id="errorMealType"></div>
-                <div id="tdTaken"></div>
+                <input type="hidden" id="day" name="day" value="">
+                <input type="hidden" id="meal_type" name="meal_type" value="">
                 <select id="main_ingredient" name="main_ingredient" class="selectRequired">
                     <option selected value="">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>
