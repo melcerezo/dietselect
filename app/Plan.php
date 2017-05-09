@@ -6,13 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Plan extends Model
 {
-
-
-    public function mealplans(){
-        return $this->hasMany('App\MealPlan');
-    }
-
-    protected $fillable=[
+    protected $fillable = [
         'calories',
         'carbohydrates',
         'protein',
@@ -20,19 +14,28 @@ class Plan extends Model
         'price'
     ];
 
+    public function mealplans()
+    {
+        return $this->hasMany(MealPlan::class);
+    }
+
     public function meals()
     {
         return $this->hasMany(Meal::class);
     }
 
-    public function orders(){
+    public function orders()
+    {
         return $this->hasMany(Order::class);
     }
 
-    public function chef(){
+    public function chef()
+    {
         return $this->belongsTo(Chef::class);
     }
-    public function customizedMeals(){
+
+    public function customizedMeals()
+    {
         return $this->hasMany(CustomizedMeal::class, 'id');
     }
 }

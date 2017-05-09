@@ -7,26 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Meal extends Model
 {
 
-
-//    public function ingredients(){
-//        return $this->hasMany('App\Ingredient');
-//    }
-
-    public function ingredient_meal()
-    {
-        return $this->hasMany(IngredientMeal::class);
-    }
-
-    public function mealplan(){
-        return $this->hasMany(MealPlan::class);
-    }
-
-    public function plan()
-    {
-        return $this->belongsTo(Plan::class);
-    }
-
-    protected $fillable=[
+    protected $fillable = [
         'chef_id',
         'description',
         'main_ingredient',
@@ -38,4 +19,22 @@ class Meal extends Model
     ];
 
 
+//    public function ingredients(){
+//        return $this->hasMany('App\Ingredient');
+//    }
+
+    public function mealplans()
+    {
+        return $this->hasMany(MealPlan::class);
+    }
+
+    public function ingredient_meal()
+    {
+        return $this->hasMany(IngredientMeal::class);
+    }
+
+    public function plan()
+    {
+        return $this->belongsTo(Plan::class);
+    }
 }
