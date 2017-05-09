@@ -9,6 +9,7 @@ use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Order;
 use App\Rating;
 use App\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -369,6 +370,13 @@ class FoodieController extends Controller
         // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
 
         //only plans for the week, not all the plans
+        # Get DATE
+        $dt = Carbon::now();
+        $date = Carbon::now();
+        $formattedDate = $date->format('Y-m-d');
+        $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
+        $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
+
         $plans = Plan::all();
         $suggested = [];
         $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
@@ -377,10 +385,13 @@ class FoodieController extends Controller
 
         foreach ($plans as $plan) {
 
-            $chicken = 0;
-            $beef = 0;
-            $pork = 0;
-            $seafood = 0;
+            if ($plan->created_at <= $startOfTheWeek && $plan->created_at >= $endOfTheWeek) {
+                return 'End';
+            } else {
+                $chicken = 0;
+                $beef = 0;
+                $pork = 0;
+                $seafood = 0;
 
             $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
             foreach($mealPlans as $mealPlan){
@@ -421,6 +432,8 @@ class FoodieController extends Controller
                     $suggested[]= $plan->plan_name;
                 }
             }
+            }
+
         }
 
         dd($suggested);
