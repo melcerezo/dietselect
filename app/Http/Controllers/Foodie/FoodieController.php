@@ -381,57 +381,58 @@ class FoodieController extends Controller
         $suggested = [];
         $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
-        echo 'Foodie Preference: '. $foodiePreference .'<br />';
+        echo 'Foodie Preference: ' . $foodiePreference . '<br />';
 
         foreach ($plans as $plan) {
-
-            if ($plan->created_at <= $startOfTheWeek && $plan->created_at >= $endOfTheWeek) {
-                return 'End';
-            } else {
+            if ($plan->created_at >= $startOfTheWeek && $plan->created_at <= $endOfTheWeek) {
+                dd('this is the scope of the week ' . $plan->created_at);
                 $chicken = 0;
                 $beef = 0;
                 $pork = 0;
                 $seafood = 0;
 
-            $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
-            foreach($mealPlans as $mealPlan){
-                $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
+                $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
+                foreach ($mealPlans as $mealPlan) {
+                    $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
 
 //                echo $mainIngredient . ' ';
 
-                switch ($mainIngredient){
-                    case 'chicken':
-                        $chicken+=1;
-                        break;
-                    case 'beef':
-                        $beef+=1;
-                        break;
-                    case 'pork':
-                        $pork+=1;
-                        break;
-                    case 'seafood':
-                        $seafood+=1;
-                        break;
+                    switch ($mainIngredient) {
+                        case 'chicken':
+                            $chicken += 1;
+                            break;
+                        case 'beef':
+                            $beef += 1;
+                            break;
+                        case 'pork':
+                            $pork += 1;
+                            break;
+                        case 'seafood':
+                            $seafood += 1;
+                            break;
+                    }
                 }
-            }
 
-            if($chicken > $beef && $chicken > $pork && $chicken > $seafood){
-                if($foodiePreference=='chicken'){
-                    $suggested[]= $plan->plan_name;
+                if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
+                    if ($foodiePreference == 'chicken') {
+                        $suggested[] = $plan->plan_name;
+                    }
+                } else if ($beef > $chicken && $beef > $pork && $beef > $seafood) {
+                    if ($foodiePreference == 'beef') {
+                        $suggested[] = $plan->plan_name;
+                    }
+                } else if ($pork > $beef && $pork > $chicken && $pork > $seafood) {
+                    if ($foodiePreference == '$pork') {
+                        $suggested[] = $plan->plan_name;
+                    }
+                } else if ($seafood > $beef && $seafood > $pork && $seafood > $chicken) {
+                    if ($foodiePreference == '$seafood') {
+                        $suggested[] = $plan->plan_name;
+                    }
                 }
-            }else if($beef > $chicken && $beef > $pork && $beef > $seafood){
-                if($foodiePreference=='beef'){
-                    $suggested[]= $plan->plan_name;
-                }
-            }else if($pork > $beef && $pork > $chicken && $pork > $seafood){
-                if($foodiePreference=='$pork'){
-                    $suggested[]= $plan->plan_name;
-                }
-            }else if($seafood > $beef && $seafood > $pork && $seafood > $chicken){
-                if($foodiePreference=='$seafood'){
-                    $suggested[]= $plan->plan_name;
-                }
-            }
+            } else {
+                dd('this is not in the scope of the week');
+                return 'End';
             }
 
         }
