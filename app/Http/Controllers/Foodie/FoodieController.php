@@ -371,84 +371,85 @@ class FoodieController extends Controller
 
         //only plans for the week, not all the plans
         # Get DATE
-        $dt = Carbon::now();
-        $date = Carbon::now();
-        $formattedDate = $date->format('Y-m-d');
+        $dt = Carbon::now(); # You can use Carbon::now()->addHour(int); to adjust current TIME for testing
+        $currentTime = $dt->format('H:i:A');
+        $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
+
+        # For Testing
+//        dd($currentTime.'|'.$endTime);
+//        if ($currentTime <= $endTime){
+//            // If $currentTime (15:00 PM) <= $endTime(15:00 PM)
+//            return 'True';
+//        } else {
+//            return 'False';
+//        }
+
+        $formattedDate = $dt->format('Y-m-d');
         $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
         $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
 
         $plans = Plan::all();
         $suggested = [];
-        $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+        $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
         echo 'Foodie Preference: ' . $foodiePreference . '<br />';
 
         foreach ($plans as $plan) {
             if ($plan->created_at >= $startOfTheWeek && $plan->created_at <= $endOfTheWeek) {
-                dd('this is the scope of the week ' . $plan->created_at);
-                $chicken = 0;
-                $beef = 0;
-                $pork = 0;
-                $seafood = 0;
+                if ($dt->isSaturday() && $currentTime <= $endTime) {
+                    dd('this is the scope of the week ' . $plan->created_at);
+                    $chicken = 0;
+                    $beef = 0;
+                    $pork = 0;
+                    $seafood = 0;
 
-                $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
-                foreach ($mealPlans as $mealPlan) {
-                    $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
+                    $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
+                    foreach ($mealPlans as $mealPlan) {
+                        $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
 
 //                echo $mainIngredient . ' ';
+                        switch ($mainIngredient) {
+                            case 'chicken':
+                                $chicken += 1;
+                                break;
+                            case 'beef':
+                                $beef += 1;
+                                break;
+                            case 'pork':
+                                $pork += 1;
+                                break;
+                            case 'seafood':
+                                $seafood += 1;
+                                break;
+                        }
+                    }
 
-                    switch ($mainIngredient) {
-                        case 'chicken':
-                            $chicken += 1;
-                            break;
-                        case 'beef':
-                            $beef += 1;
-                            break;
-                        case 'pork':
-                            $pork += 1;
-                            break;
-                        case 'seafood':
-                            $seafood += 1;
-                            break;
+                    if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
+                        if ($foodiePreference == 'chicken') {
+                            $suggested[] = $plan->plan_name;
+                        }
+                    } else if ($beef > $chicken && $beef > $pork && $beef > $seafood) {
+                        if ($foodiePreference == 'beef') {
+                            $suggested[] = $plan->plan_name;
+                        }
+                    } else if ($pork > $beef && $pork > $chicken && $pork > $seafood) {
+                        if ($foodiePreference == '$pork') {
+                            $suggested[] = $plan->plan_name;
+                        }
+                    } else if ($seafood > $beef && $seafood > $pork && $seafood > $chicken) {
+                        if ($foodiePreference == '$seafood') {
+                            $suggested[] = $plan->plan_name;
+                        }
                     }
-                }
-
-                if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
-                    if ($foodiePreference == 'chicken') {
-                        $suggested[] = $plan->plan_name;
-                    }
-                } else if ($beef > $chicken && $beef > $pork && $beef > $seafood) {
-                    if ($foodiePreference == 'beef') {
-                        $suggested[] = $plan->plan_name;
-                    }
-                } else if ($pork > $beef && $pork > $chicken && $pork > $seafood) {
-                    if ($foodiePreference == '$pork') {
-                        $suggested[] = $plan->plan_name;
-                    }
-                } else if ($seafood > $beef && $seafood > $pork && $seafood > $chicken) {
-                    if ($foodiePreference == '$seafood') {
-                        $suggested[] = $plan->plan_name;
-                    }
+                } else {
+                    dd('Already Sunday!');
                 }
             } else {
                 dd('this is not in the scope of the week');
                 return 'End';
             }
-
         }
-
         dd($suggested);
         die();
-
-
-        $dt = \Carbon\Carbon::now()->addDays(5);
-
-        if ($dt->isWeekday()) {
-            return 'Monday';
-        } else {
-            return 'Weekend';
-        }
-
     }
-
 }
