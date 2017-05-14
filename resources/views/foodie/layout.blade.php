@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-    <link rel="stylesheet" href="/css/foodie/app.css">
+    <link rel="stylesheet" href="/css/foodie/foodieMain.css">
     <script>
         var profileRoute="{{route('foodie.profile')}}";
         var chefRoute="{{route('foodie.chef.show')}}";
@@ -39,61 +39,136 @@
 @endsection
 
 @section('content')
-    <header>
-        <div class="navbar-fixed">
-            <nav class="asparagus">
-                <div class="nav-wrapper">
+
+    <main>
+
+        {{-- new navigation bar --}}
+        <header>
+            <nav>
+                <div class="nav-wrapper light-green lighten-1">
                     <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
-                    <a href="{{route('foodie.dashboard')}}" class="brand-logo">Diet Select</a>
-                    <ul id="foodie-menu-btn" class="right">
+                    <div class="dsBrLo">
+                        <a href="{{route('foodie.dashboard')}}" class="brand-logo">Diet Select</a>
+                    </div>
+                    <ul id="nav-mobile" class="right">
+                        <li class="hide-on-med-and-down">
+                            <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="true">
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">email</i>
+                                <span class="nvItTx">
+                                    Messages
+                                    @if($messages->count()>0)
+                                        <span class="new badge red">{{$messages->count()}}</span>
+                                    @endif
+                                </span>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="hide-on-med-and-down">
+                            <a>
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">announcement</i>
+                                <span class="nvItTx">
+                                    Notifications
+                                    {{--<span class="new badge red">2</span>--}}
+                                </span>
+                            </span>
+                            </a>
+                        </li>
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">
-                                <img class="circle" src="/img/{{ $foodie->avatar }}">
-                                <span class="white-text hide-on-med-and-down">{{ $foodie->username ? : $foodie->first_name . ' ' . $foodie->last_name }} <i class="fa fa-caret-down" aria-hidden="true"></i>
-                                </span>
+                                <img class="circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
+                                <span class="nvItTx hide-on-med-and-down">Profile</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </nav>
-        </div>
-        <!-- Foodie Dropdown Menu -->
-        <ul id='foodie-dropdown' class='dropdown-content'>
-            <li>
-                <a href="{{ route("foodie.profile") }}" class="foodie-link">
-                    <i class="fa fa-user" aria-hidden="true"></i>
-                    <span class="hide-on-med-and-down">Profile</span>
-                </a>
-            </li>
-            {{--<li>--}}
-                {{--<a href="#!" class="foodie-link">--}}
-                    {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
-                    {{--<span class="hide-on-med-and-down">Settings</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
-            <li class="divider"></li>
-            <li>
-                <form id="logout" method="post" action="{{ route('foodie.logout') }}">
-                    {{ csrf_field() }}
-                    <a id="logout-link" class="foodie-link" href="#">
-                        <i class="fa fa-sign-out" aria-hidden="true"></i>
-                        <span class="hide-on-med-and-down">Logout</span>
+            {{-- Foodie Message Dropdown --}}
+            <ul id="foodieMessageDropdown" class="dropdown-content collection">
+                @if($messages->count()>0)
+                @foreach($messages->take(3) as $message)
+                    <li class="collection-item">
+                            @foreach($chefs as $chef)
+                                @if($chef->id == $message->sender_id)
+                                    <a class="msgLink" href="#!">
+                                        <div class="row msCntr">
+                                            <div class="col s4 m4 l4">
+                                                <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
+                                             </div>
+                                            <div class="msMsCnt col s8 m8 l8">
+                                                <span>{{$chef->name}}</span>
+                                                <span class="truncate">{{$message->message}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
+                    </li>
+                @endforeach
+                @else
+                    <li class="collection-item">
+                        <span>No Messages</span>
+                    </li>
+                @endif
+            </ul>
+            {{--<!-- Foodie Dropdown Menu -->--}}
+            <ul id='foodie-dropdown' class='dropdown-content collection'>
+                <li class="collection-item">
+                    <a href="{{ route("foodie.profile") }}" class="nvItLnk">
+                        {{--<i class="fa fa-user" aria-hidden="true"></i>--}}
+                        <span class="hide-on-med-and-down">Profile</span>
                     </a>
-                </form>
-            </li>
-        </ul>
-    </header>
-    <main>
-        <!-- Start of Side-nav -->
-        <ul id="slide-out" class="side-nav fixed papaya-whip">
-            <li><a id="foodieProfile" href="#!">Profile</a></li>
-            <li><a id="viewChefs" href="#!">View Chefs</a></li>
-            <li><a href="{{url('foodie/message/index')}}">Messaging({{$messages->count()}})</a></li>
-            <li><a href="{{url('foodie/order/view')}}">Order History</a></li>
-            <li><a href="{{route('chef.rating')}}">Rating</a></li>
-            {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
+                </li>
+                <li class="collection-item">
+                    <a href="#!" class="nvItLnk">
+                        {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
+                        <span class="hide-on-med-and-down">Settings</span>
+                    </a>
+                </li>
+                <li class="divider"></li>
+                <li class="collection-item">
+                    <form id="logout" method="post" action="{{ route('foodie.logout') }}">
+                    {{ csrf_field() }}
+                        <a id="logout-link" class="nvItLnk" href="#">
+                            {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+                            <span class="hide-on-med-and-down">Logout</span>
+                        </a>
+                    </form>
+                </li>
+            </ul>
+        </header>
+
+        {{-- side nav --}}
+        <ul id="slide-out" class="side-nav collection">
+        <li class="collection-item light-green lighten-3 sdNvPr">
+            <div class="row">
+                <div class="col s4 m4 l4">
+                    <img class="circle sdNvPrPc" src="/img/{{ $foodie->avatar }}">
+                </div>
+                <div class="col s8 m8 l8">
+                    <p>{{$foodie->first_name.' '.$foodie->last_name}}</p>
+                    <p>Foodie</p>
+                </div>
+            </div>
+            {{--<a id="foodieProfile" href="#!">Profile</a>--}}
+        </li>
+        <li class="collection-item"><a id="foodieDashboard" href="#!">Dashboard</a></li>
+        <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
+        <li class="collection-item">
+            <a href="{{url('foodie/message/index')}}">
+                Messages @if($messages->count()>0)
+                    <span class="new badge red">{{$messages->count()}}</span>
+                @endif
+            </a>
+        </li>
+        <li class="collection-item"><a href="{{url('foodie/order/view')}}">Order History</a></li>
+        <li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>
+        <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
         </ul>
 
+
+        {{-- begin page content --}}
         @yield('page_content')
 
         @if($sms_unverified)
@@ -137,3 +212,60 @@
 
     </footer>
 @endsection
+
+
+{{--<header>--}}
+{{--<div class="navbar-fixed">--}}
+{{--<nav class="asparagus">--}}
+{{--<div class="nav-wrapper">--}}
+{{--<a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>--}}
+{{--<a href="{{route('foodie.dashboard')}}" class="brand-logo">Diet Select</a>--}}
+{{--<ul id="foodie-menu-btn" class="right">--}}
+{{--<li>--}}
+{{--<a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">--}}
+{{--<img class="circle" src="/img/{{ $foodie->avatar }}">--}}
+{{--<span class="white-text hide-on-med-and-down">{{ $foodie->username ? : $foodie->first_name . ' ' . $foodie->last_name }} <i class="fa fa-caret-down" aria-hidden="true"></i>--}}
+{{--</span>--}}
+{{--</a>--}}
+{{--</li>--}}
+{{--</ul>--}}
+{{--</div>--}}
+{{--</nav>--}}
+{{--</div>--}}
+{{--<!-- Foodie Dropdown Menu -->--}}
+{{--<ul id='foodie-dropdown' class='dropdown-content'>--}}
+{{--<li>--}}
+{{--<a href="{{ route("foodie.profile") }}" class="foodie-link">--}}
+{{--<i class="fa fa-user" aria-hidden="true"></i>--}}
+{{--<span class="hide-on-med-and-down">Profile</span>--}}
+{{--</a>--}}
+{{--</li>--}}
+{{--<li>--}}
+{{--<a href="#!" class="foodie-link">--}}
+{{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
+{{--<span class="hide-on-med-and-down">Settings</span>--}}
+{{--</a>--}}
+{{--</li>--}}
+{{--<li class="divider"></li>--}}
+{{--<li>--}}
+{{--<form id="logout" method="post" action="{{ route('foodie.logout') }}">--}}
+{{--{{ csrf_field() }}--}}
+{{--<a id="logout-link" class="foodie-link" href="#">--}}
+{{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+{{--<span class="hide-on-med-and-down">Logout</span>--}}
+{{--</a>--}}
+{{--</form>--}}
+{{--</li>--}}
+{{--</ul>--}}
+{{--</header>--}}
+
+
+{{--<!-- Start of Side-nav -->--}}
+{{--<ul id="slide-out" class="side-nav">--}}
+{{--<li><a id="foodieProfile" href="#!">Profile</a></li>--}}
+{{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
+{{--<li><a href="{{url('foodie/message/index')}}">Messaging({{$messages->count()}})</a></li>--}}
+{{--<li><a href="{{url('foodie/order/view')}}">Order History</a></li>--}}
+{{--<li><a href="{{route('chef.rating')}}">Rating</a></li>--}}
+{{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
+{{--</ul>--}}

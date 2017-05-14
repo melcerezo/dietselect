@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Foodie;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\Chef;
 use App\Order;
 use App\Rating;
 use App\Message;
@@ -46,15 +47,89 @@ class FoodieController extends Controller
      */
     public function index()
     {
+//        suggested meal plans
+
+        $foodie = Auth::guard('foodie')->user()->id;
+        # Meals
+        // GET ALL THE PLANS
+
+        // GET THE MEAL PLAN OF THE PLANS AND GET THE MEAL -> MAIN_INGREDIENT
+
+        // MAIN_INGREDIENT -> COUNT EACH (beef, chicken, pork, vegetables, fruits)
+
+        // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
+
+        //only plans for the week, not all the plans
+        $plans = Plan::all();
+        $suggested = [];
+        $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+
+        echo 'Foodie Preference: '. $foodiePreference .'<br />';
+
+        foreach ($plans as $plan) {
+
+            $chicken = 0;
+            $beef = 0;
+            $pork = 0;
+            $seafood = 0;
+
+            $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
+            foreach($mealPlans as $mealPlan){
+                $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
+
+//                echo $mainIngredient . ' ';
+
+                switch ($mainIngredient){
+                    case 'chicken':
+                        $chicken+=1;
+                        break;
+                    case 'beef':
+                        $beef+=1;
+                        break;
+                    case 'pork':
+                        $pork+=1;
+                        break;
+                    case 'seafood':
+                        $seafood+=1;
+                        break;
+                }
+            }
+
+            if($chicken > $beef && $chicken > $pork && $chicken > $seafood){
+                if($foodiePreference=='chicken'){
+                    $suggested[]= $plan->plan_name;
+                }
+            }else if($beef > $chicken && $beef > $pork && $beef > $seafood){
+                if($foodiePreference=='beef'){
+                    $suggested[]= $plan->plan_name;
+                }
+            }else if($pork > $beef && $pork > $chicken && $pork > $seafood){
+                if($foodiePreference=='$pork'){
+                    $suggested[]= $plan->plan_name;
+                }
+            }else if($seafood > $beef && $seafood > $pork && $seafood > $chicken){
+                if($foodiePreference=='$seafood'){
+                    $suggested[]= $plan->plan_name;
+                }
+            }
+        }
+
+//        dd($suggested);
+//        die();
+
+//        end suggested meal plans
         $orders = 0;
         $ordersRating = 0;
         $ratingsCount = 0;
         $ratings = 0;
+        $foodieAddress='';
         $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
-
+        $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
         if ($ordersCount > 0) {
             $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get();
         }
+//      for message dropdown
+        $chefs = Chef::all();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')->get();
 
@@ -72,17 +147,25 @@ class FoodieController extends Controller
             $ratings = Rating::where('order_id', '=', $ordersRating->id)->where('is_rated', '=', 0)->get();
         }
 
+        if($addressCount>0){
+            $foodieAddress=  DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+//            dd($foodieAddress[0]);
+        }
         return view('foodie.dashboard')->with([
 
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
+            'chefs'=>$chefs,
             'orders' => $orders,
             'ordersCount' => $ordersCount,
             'messages' => $messages,
             'successPayment' => 'false',
             'ordersRating' => $ordersRating,
             'ratings' => $ratings,
-            'ratingsCount' => $ratingsCount
+            'ratingsCount' => $ratingsCount,
+            'addressCount' => $addressCount,
+            'foodieAddress' => $foodieAddress,
+            'suggested' => $suggested
         ]);
     }
 

@@ -72,7 +72,7 @@
                     case 'Breakfast':
                         $('#meal_type').val("Breakfast");
                         $('#mealType').empty();
-                        $('#dayName').append("Breakfast");
+                        $('#mealType').append("Breakfast");
                         break;
                     case 'MorningSnack':
                         $('#meal_type').val("MorningSnack");

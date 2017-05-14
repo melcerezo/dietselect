@@ -9,7 +9,7 @@
 @endsection
 @section('content')
     <nav>
-        <div class="nav-wrapper green lighten-1">
+        <div class="nav-wrapper light-green lighten-1">
             <a href="#" class="brand-logo">Diet Select</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
@@ -48,7 +48,7 @@
             padding-bottom: 1rem;">
             <div class="row">
                 <div class="col s12">
-                    <nav class="green lighten-1">
+                    <nav class="light-green lighten-1">
                         <div class="nav-wrapper">
                             <div class="left col s12 m5 l5">
                                 <ul>

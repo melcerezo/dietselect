@@ -1,0 +1,38 @@
+/*brand logo*/
+.dsBrLo{
+    margin-left: 10px;
+}
+/*navbar icons*/
+.nvIc{
+    display: inline;
+}
+/*navbar item text*/
+.nvItTx{
+    margin-left: 2px;
+}
+.nvUsPrPc{
+    width: 40px;
+    height: 40px;
+    position: relative;
+}
+
+/*.sdNvPr{*/
+
+/*}*/
+.sdNvPrPc{
+    width: 60px;
+    height: 60px;
+    margin-top: 17px;
+}
+div.row.msCntr{
+    margin: 0;
+    position: relative;
+}
+img.msImg{
+    position: absolute;
+    top:0;
+    left:0;
+}
+.dropdown-content li > a.msgLink{
+    padding: 0;
+}
