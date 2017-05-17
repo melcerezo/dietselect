@@ -23,20 +23,19 @@
                             <p>Phone Number: {{$foodie->mobile_number}}</p>
                         </div>
                         <div>
-                            <a href="#!">Edit Profile</a>
+                            <a href="{{route('foodie.profile')}}">Edit Profile</a>
                         </div>
                         {{--<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>--}}
                     </div>
                 </div>
                 <div class="card">
-                    <div class="light-green lighten-1 white-text activator" style="line-height: 1.5rem;
-                                padding: 10px 20px;
-                                margin: 0;">
+                    @if($anyOrderCount>0)
+                    <div class="light-green lighten-1 white-text activator dshMnClTtl">
                             <span>
-                                Plan for Week of: April 1-7
+                                Ordered Plan for Week of: April 1-7
                             </span>
                     </div>
-                    <table style="table-layout: fixed;">
+                    <table class="dshMlTbl">
                         <tr>
                             <th></th>
                             <th>Bre</th>
@@ -116,6 +115,14 @@
                             </li>
                         </ul>
                     </div>
+                    @else
+                        <div class="light-green lighten-1 white-text activator dshMnClTtl">
+                            <span>Nothing Ordered for this week</span>
+                        </div>
+                        <div class="dshNoOrd">
+                            <a href="{{route('foodie.chef.show')}}"> Take a Look at our chefs and plans!</a>
+                        </div>
+                    @endif
                 </div>
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
@@ -173,6 +180,9 @@
                         @else
                             <li class="collection-item">
                                 <span>No Pending Orders</span>
+                                <div>
+                                    <a href="{{route('foodie.chef.show')}}"> Take a Look at our chefs and plans!</a>
+                                </div>
                             </li>
                         @endif
                     </ul>
@@ -197,6 +207,8 @@
             </div>
         </div>
     </div>
+
+
 
 @endsection
     {{--<div class="container">--}}

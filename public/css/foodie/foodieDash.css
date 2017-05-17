@@ -19,3 +19,14 @@ div.dshPrfCrdDvd{
 div.dshPrfCrdInf{
     margin: 10px 0;
 }
+div.dshMnClTtl{
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+}
+table.dshMlTbl{
+    table-layout: fixed;
+}
+div.dshNoOrd{
+    padding:10px 20px;
+}

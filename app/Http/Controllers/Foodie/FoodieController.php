@@ -62,9 +62,7 @@ class FoodieController extends Controller
         //only plans for the week, not all the plans
         $plans = Plan::all();
         $suggested = [];
-        $foodiePreference = \App\FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
-
-        echo 'Foodie Preference: '. $foodiePreference .'<br />';
+        $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
         foreach ($plans as $plan) {
 
@@ -123,6 +121,8 @@ class FoodieController extends Controller
         $ratingsCount = 0;
         $ratings = 0;
         $foodieAddress='';
+        $anyOrderCount= Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->latest()->get()->count();
+//        dd($anyOrderCount);
         $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
         if ($ordersCount > 0) {
@@ -165,7 +165,8 @@ class FoodieController extends Controller
             'ratingsCount' => $ratingsCount,
             'addressCount' => $addressCount,
             'foodieAddress' => $foodieAddress,
-            'suggested' => $suggested
+            'suggested' => $suggested,
+            'anyOrderCount' =>$anyOrderCount
         ]);
     }
 
@@ -180,6 +181,7 @@ class FoodieController extends Controller
         $addresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
         $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
         $preference = FoodiePreference::where('foodie_id', Auth::guard('foodie')->user()->id)->first();
+        $chefs = Chef::all();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
         $allergyJson = '[';
         $i = 0;
@@ -199,7 +201,8 @@ class FoodieController extends Controller
             'allergies' => $allergies,
             'allergyJson' => $allergyJson,
             'preference' => $preference,
-            'messages' => $messages
+            'messages' => $messages,
+            'chefs' => $chefs
         ]);
     }
 

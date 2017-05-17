@@ -52,6 +52,16 @@
                     </div>
                     <ul id="nav-mobile" class="right">
                         <li class="hide-on-med-and-down">
+                            <a href="{{route('foodie.plan.show')}}">
+                                <span class="valign-wrapper">
+                                <i class="nvIc material-icons">dashboard</i>
+                                <span class="nvItTx">
+                                    View Plans
+                                </span>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="hide-on-med-and-down">
                             <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="true">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">email</i>
@@ -78,7 +88,7 @@
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">
                                 <img class="circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
-                                <span class="nvItTx hide-on-med-and-down">Profile</span>
+                                <span class="nvItTx hide-on-med-and-down">{{$foodie->username}}</span>
                             </a>
                         </li>
                     </ul>

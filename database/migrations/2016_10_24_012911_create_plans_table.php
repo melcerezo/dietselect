@@ -17,6 +17,7 @@ class CreatePlansTable extends Migration
             $table->increments('id');
             $table->integer('chef_id')->unsigned();
             $table->string('plan_name');
+            $table->string('description');
             $table->double('calories');
             $table->decimal('price');
             $table->timestamps();

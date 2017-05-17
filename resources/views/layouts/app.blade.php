@@ -20,6 +20,8 @@
 
     <!-- Materialize CSS -->
     <link rel="stylesheet" href="/css/vendor/materialize.css" media="screen,projection">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+          rel="stylesheet">
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/main.css">
