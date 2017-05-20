@@ -6,25 +6,48 @@
 @endsection
 @section('page_content')
 
-    <div class="container">
+    <div class="container shOrdCntr">
         <div class="row">
-            <h2 class="center white-text">Order Confirmation</h2>
-            <div><span class="center full-width white-text" style="font-size: 1.5em">You have placed your order!</span>
+            <div class="col s12 light-green lighten-1 white-text shOrdMnTtl valign-wrapper">
+                <span>Order Payment</span>
             </div>
-            <div><span class="center full-width white-text" style="font-size: 1.5em">Please settle your order before Saturday!</span>
-            </div>
-            <div class="card papaya-whip">
-                <div class="card-content">
-                    <h4 class="mustard-text">Meal Plans:</h4>
-                    <div>{{$plan->chef->name}}</div>
-                    <div>{{$plan->plan_name}}</div>
-                    <div>{{$plan->price}}</div>
-                    <div><a href="#bankPay" class="modal-trigger"><h4>Bank Deposit</h4></a></div>
-                    <div><a href="#paypalPay" class="modal-trigger"><h4>Pay online</h4></a></div>
-                    {{--<div><h1>Payment:</h1></div>--}}
-                    {{--{{$order->is_paid == 1 ? 'Paid' : 'Not Paid!'}}--}}
-                    {{--<a href="{!! URL::route('addmoney.paypal', $order->id) !!}"><h4>Pay online</h4></a>--}}
+        </div>
+        <div class="row">
+            <div class="col s12" style="padding: 0;">
+                <div class="card-panel shOrdMlTbl">
+                <table class="centered">
+                    <thead class="light-green lighten-1 white-text" style="border: none;">
+                        <th>Plan</th>
+                        <th>Chef</th>
+                        <th>Price</th>
+                        <th>Payment Status</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{$plan->plan_name}}</td>
+                            <td>{{$plan->chef->name}}</td>
+                            <td>{{$plan->price}}</td>
+                            <td>{{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <div><button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button></div>
+                <div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Pay online</button></div>
+            </div>
+            <div class="col s12 m6">
+                <ul class="collection">
+                    <li class="collection-item light-green lighten-1 white-text">
+                        <span class="collection-header">Total Order:</span>
+                    </li>
+                    <li class="collection-item">
+                        <span>Total: {{$plan->price}}</span>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
@@ -102,4 +125,22 @@
                 </div>
         </div>
     </div>
+            {{--<h2 class="center white-text">Order Confirmation</h2>--}}
+            {{--<div><span class="center full-width white-text" style="font-size: 1.5em">You have placed your order!</span>--}}
+            {{--</div>--}}
+            {{--<div><span class="center full-width white-text" style="font-size: 1.5em">Please settle your order before Saturday!</span>--}}
+            {{--</div>--}}
+            {{--<div class="card papaya-whip">--}}
+                {{--<div class="card-content">--}}
+                    {{--<h4 class="mustard-text">Meal Plans:</h4>--}}
+                    {{--<div>{{$plan->chef->name}}</div>--}}
+                    {{--<div>{{$plan->plan_name}}</div>--}}
+                    {{--<div>{{$plan->price}}</div>--}}
+                    {{--<div><a href="#bankPay" class="modal-trigger"><h4>Bank Deposit</h4></a></div>--}}
+                    {{--<div><a href="#paypalPay" class="modal-trigger"><h4>Pay online</h4></a></div>--}}
+                    {{--<div><h1>Payment:</h1></div>--}}
+                    {{--{{$order->is_paid == 1 ? 'Paid' : 'Not Paid!'}}--}}
+                    {{--<a href="{!! URL::route('addmoney.paypal', $order->id) !!}"><h4>Pay online</h4></a>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 @endsection

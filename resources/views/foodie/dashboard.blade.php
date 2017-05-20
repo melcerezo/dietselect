@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    @if($anyOrderCount>0)
+                    @if($paidOrderCount>0)
                     <div class="light-green lighten-1 white-text activator dshMnClTtl">
                             <span>
                                 Ordered Plan for Week of: April 1-7
@@ -46,51 +46,291 @@
                         </tr>
                         <tr>
                             <th>Mo</th>
-                            <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
-                            <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
-                            <td><div class="truncate">Meal 3</div><i class="material-icons">done</i></td>
-                            <td><div class="truncate">Meal 4</div></td>
-                            <td><div class="truncate">Meal 5</div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Tu</th>
-                            <td><div class="truncate">Meal 6</div></td>
-                            <td><div class="truncate">Meal 7</div></td>
-                            <td><div class="truncate">Meal 8</div></td>
-                            <td><div class="truncate">Meal 9</div></td>
-                            <td><div class="truncate">Meal 10</div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>We</th>
-                            <td><div class="truncate">Meal 11</div></td>
-                            <td><div class="truncate">Meal 12</div></td>
-                            <td><div class="truncate">Meal 13</div></td>
-                            <td><div class="truncate">Meal 14</div></td>
-                            <td><div class="truncate">Meal 15</div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Th</th>
-                            <td><div class="truncate">Meal 16</div></td>
-                            <td><div class="truncate">Meal 17</div></td>
-                            <td><div class="truncate">Meal 18</div></td>
-                            <td><div class="truncate">Meal 19</div></td>
-                            <td><div class="truncate">Meal 20</div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Fr</th>
-                            <td><div class="truncate">Meal 21</div></td>
-                            <td><div class="truncate">Meal 22</div></td>
-                            <td><div class="truncate">Meal 23</div></td>
-                            <td><div class="truncate">Meal 24</div></td>
-                            <td><div class="truncate">Meal 25</div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <th>Sa</th>
-                            <td><div class="truncate"></div></td>
-                            <td><div class="truncate"></div></td>
-                            <td><div class="truncate"></div></td>
-                            <td><div class="truncate"></div></td>
-                            <td><div class="truncate"></div></td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
+                            <td>
+                                <div class="truncate">
+                                    @foreach($mealPlans as $id =>$mealPlan)
+                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
+                                            <span>{{$mealPlan->meal->description}}</span>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            </td>
                         </tr>
                     </table>
                     <p style="margin-left: 10px;">*Please click calendar title to see meal legend</p>
@@ -135,9 +375,10 @@
                                     @if($chef->id == $message->sender_id)
                                             <i class="material-icons">message</i>
                                             Message From: {{$chef->name}}<br>
-                                            
-                                            <a href="#!"><h6>Message:</h6>
-                                            <p class="truncate">{{$message->message}}</p></a>
+                                            <a href="{{route('foodie.message.index', $message->id)}}">
+                                                <h6>Message:</h6>
+                                                <p class="truncate">{{$message->message}}</p>
+                                            </a>
                                     @endif
                                 @endforeach
                             </li>
@@ -155,7 +396,7 @@
                     @if(count($suggested)>0)
                         @foreach($suggested as $sug)
                             <li class="collection-item">
-                                <a>{{$sug}}</a>
+                                <a href="{{route('foodie.plan.standard', $sug['id'])}}">{{$sug['name']}}</a>
                             </li>
                         @endforeach
                     @endif
@@ -170,11 +411,13 @@
                         @if($ordersCount>0)
                             @foreach($orders as $order)
                                 <li class="collection-item">
-                                    <p>Plan Name: {{$order->plan->plan_name}}</p>
-                                    <div class="divider"></div>
-                                    <p>Chef: {{$order->chef->name}}</p>
-                                    <div class="divider"></div>
-                                    <p>Price: {{$order->plan->price}}</p>
+                                    <a href="{{route('order.show',$order->id)}}">
+                                        <p>Plan Name: {{$order->plan->plan_name}}</p>
+                                        <div class="divider"></div>
+                                        <p>Chef: {{$order->chef->name}}</p>
+                                        <div class="divider"></div>
+                                        <p>Price: {{$order->plan->price}}</p>
+                                    </a>
                                 </li>
                             @endforeach
                         @else

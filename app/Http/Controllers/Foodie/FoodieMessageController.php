@@ -26,15 +26,19 @@ class FoodieMessageController extends Controller
     }
 
 
-    public function index(){
+    public function index($id){
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        dd($id);
         return view('foodie.messaging.foodieMessages')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'chefs'=>$chefs,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'aMessages'=> $aMessages,
+            'messageId'=>$id
         ]);
     }
 

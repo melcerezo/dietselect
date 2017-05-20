@@ -32,6 +32,7 @@ class FoodieMealPlanController extends Controller
     public function viewPlans(){
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
         $plans = Plan::all();
@@ -49,6 +50,7 @@ class FoodieMealPlanController extends Controller
     {
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
 
@@ -66,6 +68,7 @@ class FoodieMealPlanController extends Controller
         $chefsPlanCount = $chefPlans->count();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
@@ -102,6 +105,7 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
 
@@ -297,6 +301,7 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
 //        dd($customize);

@@ -70,7 +70,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
     // Get MESSAGING view
-    Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
+    Route::get('message/index/{id}', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
     Route::post('message/reply/{id}', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
     Route::post('message/delete/{message}', 'Foodie\FoodieMessageController@delete')->name('foodie.message.delete');

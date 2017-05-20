@@ -61,7 +61,7 @@ class FoodieController extends Controller
 
         //only plans for the week, not all the plans
         $plans = Plan::all();
-        $suggested = [];
+        $suggested = array();
         $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
         foreach ($plans as $plan) {
@@ -95,43 +95,51 @@ class FoodieController extends Controller
 
             if($chicken > $beef && $chicken > $pork && $chicken > $seafood){
                 if($foodiePreference=='chicken'){
-                    $suggested[]= $plan->plan_name;
+                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
                 }
             }else if($beef > $chicken && $beef > $pork && $beef > $seafood){
                 if($foodiePreference=='beef'){
-                    $suggested[]= $plan->plan_name;
+                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
                 }
             }else if($pork > $beef && $pork > $chicken && $pork > $seafood){
                 if($foodiePreference=='$pork'){
-                    $suggested[]= $plan->plan_name;
+                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
                 }
             }else if($seafood > $beef && $seafood > $pork && $seafood > $chicken){
                 if($foodiePreference=='$seafood'){
-                    $suggested[]= $plan->plan_name;
+                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
                 }
             }
         }
 
-//        dd($suggested);
+//        dd($suggested[1]['id']);
 //        die();
 
 //        end suggested meal plans
         $orders = 0;
+        $paidOrder=0;
+        $mealPlans=0;
         $ordersRating = 0;
         $ratingsCount = 0;
         $ratings = 0;
         $foodieAddress='';
-        $anyOrderCount= Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->latest()->get()->count();
+        $paidOrderCount= Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',1)->latest()->get()->count();
 //        dd($anyOrderCount);
         $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
         if ($ordersCount > 0) {
             $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get();
         }
+        if ($paidOrderCount > 0){
+            $paidOrder=Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',1)->latest()->first();
+            $mealPlans =$paidOrder->plan->mealplans;
+//            dd($mealPlans);
+        }
+//        dd($paidOrderCount);
 //      for message dropdown
         $chefs = Chef::all();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-            ->where('receiver_type', '=', 'f')->get();
+            ->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
 //      Ratings Stuff
         $ordersRatingCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
@@ -157,6 +165,7 @@ class FoodieController extends Controller
             'foodie' => Auth::guard('foodie')->user(),
             'chefs'=>$chefs,
             'orders' => $orders,
+            'mealPlans' => $mealPlans,
             'ordersCount' => $ordersCount,
             'messages' => $messages,
             'successPayment' => 'false',
@@ -166,7 +175,8 @@ class FoodieController extends Controller
             'addressCount' => $addressCount,
             'foodieAddress' => $foodieAddress,
             'suggested' => $suggested,
-            'anyOrderCount' =>$anyOrderCount
+            'paidOrderCount'=>$paidOrderCount,
+            'paidOrder'=>$paidOrder
         ]);
     }
 
@@ -182,7 +192,7 @@ class FoodieController extends Controller
         $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
         $preference = FoodiePreference::where('foodie_id', Auth::guard('foodie')->user()->id)->first();
         $chefs = Chef::all();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $allergyJson = '[';
         $i = 0;
         foreach ($allergies as $allergy) {

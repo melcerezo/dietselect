@@ -4,7 +4,7 @@
     <script>
         var profileRoute="{{route('foodie.profile')}}";
         var chefRoute="{{route('foodie.chef.show')}}";
-        var messageRoute="{{route('foodie.message.index')}}";
+
     </script>
     <script src="/js/foodie/app.js" defer></script>
 
@@ -101,7 +101,7 @@
                     <li class="collection-item">
                             @foreach($chefs as $chef)
                                 @if($chef->id == $message->sender_id)
-                                    <a class="msgLink" href="#!">
+                                    <a class="msgLink" href="{{route('foodie.message.index', $message->id)}}">
                                         <div class="row msCntr">
                                             <div class="col s4 m4 l4">
                                                 <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
