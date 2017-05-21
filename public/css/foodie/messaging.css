@@ -8,6 +8,8 @@
 .row .col.msgList{
     margin: 0;
     padding: 0;
+    min-height: 500px;
+    max-height: 500px;
 }
 
 .collection.msgListItem{
@@ -23,8 +25,10 @@
 .msgImg{
     width: 50px;
 }
-.msgDtl{
+.row .col.msgDtl{
     margin: 0;
+    min-height: 500px;
+    max-height: 500px;
 }
 .msgActive{
     background: #e1f5fe;

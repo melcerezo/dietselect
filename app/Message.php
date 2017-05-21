@@ -19,7 +19,7 @@ class Message extends Model
     public function foodie(){
         return $this->belongsTo(Foodie::class);
     }
-    public function message(){
+    public function chat(){
         return $this->belongsTo(Chat::class);
     }
 

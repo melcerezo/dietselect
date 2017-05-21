@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\Chat;
 use App\Foodie;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
@@ -24,13 +25,16 @@ class ChefMessageController extends Controller{
     public function index(){
         $foodies = Foodie::all();
         $chef = Auth::guard('chef')->user();
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->get();;
+        $chats = Chat::where('chef_id', '=', $chef->id)->get();
+
+//        $messages = Message::where('receiver_id', '=', $chef->id)->get();
 
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'foodies' => $foodies,
             'chef' => $chef,
-            'messages' => $messages,
+            'chats' => $chats,
+//            'messages' => $messages
         ]);
 
     }
@@ -44,10 +48,18 @@ class ChefMessageController extends Controller{
     public function send(Request $request){
 
         $this->validate($request, [
+            'chefSubject' => 'required|max:255',
             'chefMessage' => 'required|max:255',
         ]);
 
+        $chat = new Chat();
+        $chat->foodie_id = $request['chefMessageSelect'];
+        $chat->chef_id = Auth::guard('chef')->user()->id;
+        $chat->save();
+
         $message = new Message();
+        $message->chat_id = $chat->id;
+        $message->subject = $request['chefSubject'];
         $message->message = $request['chefMessage'];
         $message->sender_id = Auth::guard('chef')->user()->id;
         $message->receiver_id = $request['chefMessageSelect'];

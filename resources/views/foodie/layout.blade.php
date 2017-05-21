@@ -67,8 +67,8 @@
                                 <i class="nvIc material-icons">email</i>
                                 <span class="nvItTx">
                                     Messages
-                                    @if($messages->count()>0)
-                                        <span class="new badge red">{{$messages->count()}}</span>
+                                    @if($chats->count()>0)
+                                        <span class="new badge red">{{$chats->count()}}</span>
                                     @endif
                                 </span>
                             </span>
@@ -96,19 +96,19 @@
             </nav>
             {{-- Foodie Message Dropdown --}}
             <ul id="foodieMessageDropdown" class="dropdown-content collection">
-                @if($messages->count()>0)
-                @foreach($messages->take(3) as $message)
+                @if($chats->count()>0)
+                @foreach($chats->take(3) as $chat)
                     <li class="collection-item">
                             @foreach($chefs as $chef)
-                                @if($chef->id == $message->sender_id)
-                                    <a class="msgLink" href="{{route('foodie.message.index', $message->id)}}">
+                                @if($chef->id == $chat->chef_id)
+                                    <a class="msgLink" href="{{route('foodie.message.index', $chat->id)}}">
                                         <div class="row msCntr">
                                             <div class="col s4 m4 l4">
                                                 <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
                                              </div>
                                             <div class="msMsCnt col s8 m8 l8">
                                                 <span>{{$chef->name}}</span>
-                                                <span class="truncate">{{$message->message}}</span>
+                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
                                             </div>
                                         </div>
                                     </a>
@@ -167,8 +167,8 @@
         <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
         <li class="collection-item">
             <a href="{{url('foodie/message/index')}}">
-                Messages @if($messages->count()>0)
-                    <span class="new badge red">{{$messages->count()}}</span>
+                Messages @if($chats->count()>0)
+                    <span class="new badge red">{{$chats->count()}}</span>
                 @endif
             </a>
         </li>

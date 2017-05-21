@@ -3,7 +3,7 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/messaging.css">
     <script>
-        messageId='{{$messageId}}';
+        chatId='{{$chatId}}';
     </script>
     <script src="/js/messaging.js"></script>
     <script src="/js/foodie/foodieMessageValidate.js"></script>
@@ -38,53 +38,66 @@
                     </nav>
                     <div class="col s12 m3 l3 card-panel msgList">
                         <ul class="collection msgListItem">
-                            @foreach($aMessages as $aMessage)
-                                    <li id="msgItem-{{$aMessage->id}}" class="collection-item msgItem">
-                                        <a href="{{route('foodie.message.index', $aMessage->id)}}">
-                                            @foreach($chefs as $chef)
-                                                @if($chef->id == $aMessage->sender_id)
-                                                    <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                    <span class="msgUserName">{{$chef->name}}</span>
-                                                @endif
-                                            @endforeach
-                                            <p class="truncate grey-text">{{$aMessage->message}}</p>
-                                            <a href="#!" class="secondary-content msgListTime">
-                                                <span class="blue-text">12:15am</span>
-                                            </a>
+                            @foreach($chats as $chat)
+                                    <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
+                                        <a href="{{route('foodie.message.index', $chat->id)}}">
+                                            <div>
+                                                @foreach($chefs as $chef)
+                                                    @if($chef->id == $chat->chef_id)
+                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                        <span class="msgUserName">{{$chef->name}}</span>
+                                                    @endif
+                                                @endforeach
+                                                @foreach($chat->message as $message)
+                                                    <p class="truncate grey-text">{{$message->message}}</p>
+                                                    <a href="#!" class="secondary-content msgListTime">
+                                                        <span class="blue-text">{{$message->created_at->format('g:ia')}}</span>
+                                                    </a>
+                                                @endforeach
+                                            </div>
                                         </a>
                                     </li>
                             @endforeach
                         </ul>
                     </div>
                     <div class="col s12 m9 l9 card-panel msgDtl">
-                        @foreach($aMessages as $aMessage)
-                            <div id="msg-{{$aMessage->id}}" class="msgMsg">
-                            <p class="email-subject truncate">{{$aMessage->subject}}</p>
-                            <hr class="grey-text text-lighten-2">
-                            <div class="email-content-wrap">
-                                <div class="row">
-                                    <div class="col s10 m10 l10">
-                                        <ul class="collection msgMta">
-                                            <li class="collection-item">
-                                                @foreach($chefs as $chef)
-                                                    @if($chef->id == $aMessage->sender_id)
-                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                        <span class="email-title">{{$chef->name}}</span>
-                                                    @endif
-                                                @endforeach
-                                                <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
-                                                <p class="grey-text">Yesterday</p>
-                                            </li>
-                                        </ul>
+                        @foreach($chats as $chat)
+                            <div id="chat-{{$chat->id}}" class="msgMsg">
+                            @foreach($chat->message as $message)
+                                <p class="email-subject truncate">{{$message->subject}}</p>
+                                <hr class="grey-text text-lighten-2">
+                                <div class="email-content-wrap">
+                                    <div class="row">
+                                        <div class="col s10 m10 l10">
+                                            <ul class="collection msgMta">
+                                                <li class="collection-item">
+                                                    @foreach($chefs as $chef)
+                                                        @if($message->receiver_type=='f')
+                                                            @if($chef->id == $chat->chef_id)
+                                                                <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                <span class="email-title"> From {{$chef->name}}</span>
+                                                            @endif
+                                                            <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
+                                                        @else
+                                                            <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
+                                                            <span class="email-title">From Me, {{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                            <p class="grey-text ">To {{$chef->name}}</p>
+                                                        @endif
+                                                    @endforeach
+                                                    <p class="grey-text">{{$message->created_at->format('g:ia')}}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col s2 m2 l2 email-actions msgRply">
+                                            <a href="#!"><span><i class="material-icons">reply</i></span></a>
+                                        </div>
                                     </div>
-                                    <div class="col s2 m2 l2 email-actions msgRply">
-                                        <a href="#!"><span><i class="material-icons">reply</i></span></a>
+                                    <div class="msgCnt">
+                                        <p>{{$message->message}}</p>
                                     </div>
+                                <div class="divider"></div>
                                 </div>
-                                <div class="msgCnt">
-                                    <p>{{$aMessage->message}}</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         @endforeach
                     </div>

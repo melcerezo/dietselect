@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 
+use App\Chat;
 use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -29,16 +30,16 @@ class FoodieMessageController extends Controller
     public function index($id){
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
-        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->get();
+//        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
         return view('foodie.messaging.foodieMessages')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'chefs'=>$chefs,
-            'messages'=>$messages,
-            'aMessages'=> $aMessages,
-            'messageId'=>$id
+            'chats' => $chats,
+            'chatId' => $id
         ]);
     }
 

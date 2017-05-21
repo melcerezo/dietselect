@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 
+use App\Chat;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -138,8 +139,9 @@ class FoodieController extends Controller
 //        dd($paidOrderCount);
 //      for message dropdown
         $chefs = Chef::all();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-            ->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $chats = Chat::where('foodie_id','=', Auth::guard('foodie')->user()->id)->get();
+//        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+//            ->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
 //      Ratings Stuff
         $ordersRatingCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
@@ -167,7 +169,7 @@ class FoodieController extends Controller
             'orders' => $orders,
             'mealPlans' => $mealPlans,
             'ordersCount' => $ordersCount,
-            'messages' => $messages,
+            'chats' => $chats,
             'successPayment' => 'false',
             'ordersRating' => $ordersRating,
             'ratings' => $ratings,

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-    $('#msg-'+messageId).show();
-    $('#msgItem-'+messageId).addClass('msgActive');
+    $('#chat-'+chatId).show();
+    $('#chtItem-'+chatId).addClass('msgActive');
 
 
 
