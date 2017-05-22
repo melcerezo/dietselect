@@ -1,3 +1,16 @@
+.shOrdCntr{
+    width:85%;
+    margin-top: 0.5rem;
+}
+.row .col.shOrdMnTtl{
+    min-height: 40px;
+    font-size: 20px;
+}
+
+.card-panel.shOrdMlTbl{
+    padding:0;
+}
+
 .err{
     color: #ff0000;
     font-size: 12px;

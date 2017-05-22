@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePlansTable extends Migration
+class CreateChatTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,12 @@ class CreatePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::create('chats', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('foodie_id')->unsigned();
             $table->integer('chef_id')->unsigned();
-            $table->string('plan_name');
-            $table->string('description');
-            $table->double('calories');
-            $table->decimal('price');
             $table->timestamps();
         });
-
-
     }
 
     /**
@@ -33,6 +28,6 @@ class CreatePlansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('plans');
+        //
     }
 }

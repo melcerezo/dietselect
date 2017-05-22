@@ -1,3 +1,26 @@
+.plSlCstCnt{
+    width:85%;
+    margin-top: 0.5rem;
+}
+
+.row .col.plSlCstPlnNm{
+    min-height: 40px;
+    font-size: 20px;
+}
+
+.row .col.plSlCstMlBtn{
+    padding-left: 0;
+}
+.row .col.plSlCstMlInfCnt{
+    padding-right: 0;
+}
+.plSlCstMlInf{
+    min-height: 150px;
+}
+
+
+
+
 .ingredSelect{
     display:inline-block;
     width:75%;

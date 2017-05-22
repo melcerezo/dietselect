@@ -1,4 +1,33 @@
 $(document).ready(function() {
+    $('#basicProfileLinkContainer').addClass('activePrfLink');
+    $('#basic-profile-container').show();
+
+    $(document).on('click','#basicProfileLink', function () {
+        $('#addressLinkContainer,#allergiesLinkContainer,#preferenceLinkContainer').removeClass('activePrfLink');
+        $('#basicProfileLinkContainer').addClass('activePrfLink');
+        $('#basic-profile-container').show();
+        $('#allergies-container,#addresses-container,#food-preferences-container').hide();
+    });
+    $(document).on('click','#addressLink', function () {
+        $('#basicProfileLinkContainer,#allergiesLinkContainer,#preferenceLinkContainer').removeClass('activePrfLink');
+        $('#addressLinkContainer').addClass('activePrfLink');
+        $('#addresses-container').show();
+        $('#basic-profile-container,#allergies-container,#food-preferences-container').hide();
+    });
+    $(document).on('click','#allergiesLink', function () {
+        $('#basicProfileLinkContainer,#addressLinkContainer,#preferenceLinkContainer').removeClass('activePrfLink');
+        $('#allergiesLinkContainer').addClass('activePrfLink');
+        $('#allergies-container').show();
+        $('#basic-profile-container,#addresses-container,#food-preferences-container').hide();
+    });
+    $(document).on('click','#preferenceLink', function () {
+        $('#basicProfileLinkContainer,#addressLinkContainer,#allergiesLinkContainer').removeClass('activePrfLink');
+        $('#preferenceLinkContainer').addClass('activePrfLink');
+        $('#food-preferences-container').show();
+        $('#basic-profile-container,#addresses-container,#allergies-container').hide();
+    });
+
+
     $('#birthday').pickadate({
         // Buttons
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',

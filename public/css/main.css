@@ -124,10 +124,10 @@ main {
     flex: 1 0 auto;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    font-family: 'Josefin Slab', serif;
-    font-weight: 700;
-}
+/*h1, h2, h3, h4, h5, h6 {*/
+    /*font-family: 'Josefin Slab', serif;*/
+    /*font-weight: 700;*/
+/*}*/
 
 h3 {
     font-size: 2.25rem;
@@ -196,13 +196,6 @@ a.n-btn-link {
     display: block;
 }
 
-#n-trademark {
-    margin-top: 10px;
-    color: #80a855;
-    font-size: 25px;
-    cursor: pointer;
-}
-
 /*======================================
  Form Styling Rules
 ======================================*/
@@ -260,8 +253,8 @@ input[type="checkbox"] + label {
     background-color: #6c8c48;
 }
 
-.dropdown-content li > a, .dropdown-content li > span {
-    color: #80a855;
+.dropdown-content li > a, .dropdown-content li > span, .dropdown-content li > form > a {
+    color: #006400;
 }
 
 .picker__day--selected, .picker__day--selected:hover, .picker--focused .picker__day--selected {

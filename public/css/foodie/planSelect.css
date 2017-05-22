@@ -1,0 +1,34 @@
+.plSlCntr{
+    width: 85%;
+    border: 1px solid #e0e0e0;
+    margin-top: 0.5rem;
+}
+.plSlTtl{
+    padding: 0;
+    font-size: 30px;
+}
+.container .row{
+    margin-left:0;
+    margin-right:0;
+}
+.plSlImg{
+    width:100%;
+}
+.plSlCntTtl{
+    font-size: 20px;
+    font-weight: bold;
+}
+.plSlCnt{
+    padding: 12px 0 0 0;
+}
+div.plSlCnt{
+    color: #000;
+    font-weight: initial;
+}
+
+.plSlCntChf{
+    font-size: 16px;
+}
+.plSlCntDes{
+    font-size: 16px;
+}

@@ -29,10 +29,28 @@ class FoodieMealPlanController extends Controller
         $this->middleware('foodie.auth');
     }
 
+    public function viewPlans(){
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
+            ->get();
+        $chefs = Chef::all();
+        $plans = Plan::all();
+
+        return view('foodie.planSelect')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'chefs' => $chefs,
+            'foodie' => Auth::guard('foodie')->user(),
+            'messages' => $messages,
+            'plans' => $plans
+        ]);
+    }
+
     public function viewChefs()
     {
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
 
@@ -50,6 +68,7 @@ class FoodieMealPlanController extends Controller
         $chefsPlanCount = $chefPlans->count();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
@@ -60,6 +79,46 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
+    public function viewPlanStandard(Plan $plan)
+    {
+        $mealPlans = $plan->mealplans()
+            ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
+            ->get();
+        $mealPlansCount = $mealPlans->count();
+
+//        $ingredientsMeal = '';
+//        $ingredientCount = DB::table('ingredient_meal')
+//            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
+//            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+//            ->count();
+//
+//        if ($ingredientCount > 0) {
+//            $ingredientsMeal = DB::table('ingredients')
+//                ->join('ingredient_meal', 'ingredients.NDB_No', '=', 'ingredient_meal.ingredient_id')
+//                ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=',
+//                    'ingredients_group_description.FdGrp_Cd')
+//                ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
+//                ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+//                ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'ingredient_meal.meal_id',
+//                    'ingredient_meal.grams')->get();
+//        }
+
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
+            ->get();
+        $chefs = Chef::all();
+
+        return view('foodie.MealView')->with([
+            'foodie'=> Auth::guard('foodie')->user(),
+            'messages' => $messages,
+            'chefs' => $chefs,
+            'mealPlans' => $mealPlans,
+            'plan' => $plan,
+            'sms_unverified' => $this->smsIsUnverified()
+        ]);
+    }
+
     public function viewChefsMeals(Plan $plan, Request $request)
     {
 
@@ -67,21 +126,6 @@ class FoodieMealPlanController extends Controller
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
         $mealPlansCount = $mealPlans->count();
-//        foreach($mealPlans as $mealCust){
-//                $customMeal= new CustomizedMeal();
-//                $customMeal->meal_id = $mealCust->meal->id;
-//                $customMeal->foodie_id = Auth::guard('foodie')->user()->id;
-//                $customMeal->description = $mealCust->meal->description;
-//                $customMeal->main_ingredient = $mealCust->meal->main_ingredient;
-//                $customMeal->calories = $mealCust->meal->calories;
-//                $customMeal->carbohydrates = $mealCust->meal->carbohydrates;
-//                $customMeal->protein = $mealCust->meal->protein;
-//                $customMeal->fat = $mealCust->meal->fat;
-//                $customMeal->save();
-//
-//                $mealCust->customized_meal_id= $customMeal->id;
-//                $mealCust->save();
-//        }
 
         $ingredientsMeal = '';
         $ingredientCount = DB::table('ingredient_meal')
@@ -103,7 +147,7 @@ class FoodieMealPlanController extends Controller
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->get();
-
+        $chefs = Chef::all();
         $ingredId = [];
         $user = Auth::guard('foodie')->user()->id;
         $main_ingredient = $request['main_ingredient'];
@@ -189,7 +233,7 @@ class FoodieMealPlanController extends Controller
 
         $customIdString=json_encode($customId);
 
-        return redirect()->route('foodie.meal', compact('plan','customIdString'))->with([//I need the $customId array to be passed into this route.
+        return redirect()->route('foodie.meal', compact('plan','customIdString'))->with([
             'plan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -198,11 +242,12 @@ class FoodieMealPlanController extends Controller
             'ingredientsMeal' => $ingredientsMeal,
             'ingredientCount' => $ingredientCount,
             'messages' => $messages,
-            'customId'=>array($customId)
+            'customId'=>array($customId),
+            'chefs'=>$chefs
         ]);
     }
 
-    public function viewMeal(Plan $plan, $customId)//I need to access the $customId array here
+    public function viewMeal(Plan $plan, $customId)
     {
 //        dd($id);
         $customList=json_decode($customId);
@@ -256,8 +301,9 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
             ->get();
-
+        $chefs = Chef::all();
 //        dd($customize);
 
 //        $customMeals = MealPlan::where('customized_meal_id', '=', $customize->meal_id)->get();
@@ -274,7 +320,8 @@ class FoodieMealPlanController extends Controller
             'ingredientsMeal' => $ingredientMealData,
             'ingredientCount' => $ingredientCount,
             'messages' => $messages,
-            'customId' => $customId
+            'customId' => $customId,
+            'chefs' => $chefs
         ]);
     }
 

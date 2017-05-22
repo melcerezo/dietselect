@@ -49,6 +49,9 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('verify', 'Foodie\Auth\VerificationController@verifySms')->name('foodie.verify');
     Route::post('verify/send', 'Foodie\Auth\VerificationController@sendNewVerificationCode')->name('foodie.verify.send');
 
+    Route::get('plans','Foodie\FoodieMealPlanController@viewPlans')->name('foodie.plan.show');
+    Route::get('plans/standard/{plan}', 'Foodie\FoodieMealPlanController@viewPlanStandard')->name('foodie.plan.standard');
+    Route::get('plans/custom/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.plan.custom');
     Route::get('chefs', 'Foodie\FoodieMealPlanController@viewChefs')->name('foodie.chef.show');
     Route::get('chefs/plan/{id}', 'Foodie\FoodieMealPlanController@viewChefsPlans')->name('foodie.chef.plan');
     Route::get('chefs/meal/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
@@ -67,7 +70,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
     // Get MESSAGING view
-    Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
+    Route::get('message/index/{id}', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
     Route::post('message/reply/{id}', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
     Route::post('message/delete/{message}', 'Foodie\FoodieMessageController@delete')->name('foodie.message.delete');

@@ -87,7 +87,7 @@
         <ul id="slide-out" class="side-nav fixed papaya-whip">
             <li><a id="chefProfile" href="{{route('chef.profile')}}">Profile</a></li>
             <li><a href="{{route('chef.plan')}}">View Plans</a></li>
-            <li><a href="{{url('chef/message/index')}}">Messaging({{$messages->count()}})</a></li>
+            <li><a href="{{url('chef/message/index')}}">Messaging({{$chats->count()}})</a></li>
             <li><a href="{{url('chef/order/view')}}">View Orders</a></li>
             <li><a href="{{route('ratings')}}">Ratings</a></li>
             {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
