@@ -11,6 +11,7 @@ use App\Meal;
 use App\MealPlan;
 use App\Plan;
 use App\Message;
+use Carbon\Carbon;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,14 +40,39 @@ class MealPlanController extends Controller
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
 
         $dt = Carbon::now();
+        $currentPlans = $dt->isLastWeek();
+
+        // 2 Weeks ago
+        $pastWeekPlans = $dt->diffInWeeks(2);
+
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
 
         $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
         $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
 
+        # QUERY FOR THE UPCOMING PLANS
+        /**
+         *  PLANS CREATED THIS WEEK
+         */
 
-        $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
+        $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)
+            ->where('created_at', '>=', $startOfTheWeek )
+            ->where('created_at', '<=', $endOfTheWeek)
+            ->get();
+
+        # QUERY FOR THE PRESENT PLANS
+        /**
+         *  PLANS CREATED LAST WEEK
+         */
+
+        # QUERY FOR THE PAST PLANS
+        /**
+         *  PLANS CREATED BEFORE LAST WEEK
+         *  LIMIT TO (5) FIVE
+         */
+
+
         $planCount= $plans->count();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
         return view('chef.mealplan')->with([
