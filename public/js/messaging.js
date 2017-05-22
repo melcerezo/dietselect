@@ -11,6 +11,9 @@ $(document).ready(function(){
         RevealMessage(id);
     });
 
+    $(document).on('click','#msgCmpsCls',function () {
+        $('#crtMsg').closeModal();
+    })
 
 
 });

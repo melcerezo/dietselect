@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Foodie;
 
+use App\Chat;
 use App\CustomizedIngredientMeal;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
@@ -30,19 +31,22 @@ class FoodieMealPlanController extends Controller
     }
 
     public function viewPlans(){
+        $foodie = Auth::guard('foodie')->user()->id;
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
         $plans = Plan::all();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'chefs' => $chefs,
             'foodie' => Auth::guard('foodie')->user(),
             'messages' => $messages,
-            'plans' => $plans
+            'plans' => $plans,
+            'chats' => $chats
         ]);
     }
 
@@ -70,17 +74,20 @@ class FoodieMealPlanController extends Controller
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
             ->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
             'planCount' => $chefsPlanCount,
-            'messages' => $messages
+            'messages' => $messages,
+            'chats' => $chats
         ]);
     }
 
     public function viewPlanStandard(Plan $plan)
     {
+        $foodie = Auth::guard('foodie')->user()->id;
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
@@ -108,10 +115,11 @@ class FoodieMealPlanController extends Controller
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         return view('foodie.MealView')->with([
             'foodie'=> Auth::guard('foodie')->user(),
             'messages' => $messages,
+            'chats' => $chats,
             'chefs' => $chefs,
             'mealPlans' => $mealPlans,
             'plan' => $plan,

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Foodie;
 
+use App\Chat;
 use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -31,11 +32,14 @@ class FoodieOrderPlanController extends Controller
     public function index(Plan $plan)
     {
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'c')->get();
+        $foodie = Auth::guard('foodie')->user()->id;
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
         return view('foodie.orders', compact('plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
-            'messages'=>$messages
+            'messages'=>$messages,
+            'chats' => $chats
         ]);
     }
 
@@ -199,6 +203,7 @@ class FoodieOrderPlanController extends Controller
         $order->foodie_id = $foodie->id;
         $plan->orders()->save($order);
 
+
         // Message Template
         $planName = $plan->plan_name;
         $chefName = $plan->chef->name;
@@ -269,11 +274,13 @@ class FoodieOrderPlanController extends Controller
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
         $chefs=Chef::all();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
         return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'messages'=>$messages,
-            'chefs'=>$chefs
+            'chefs'=>$chefs,
+            'chats' => $chats
         ]);
     }
     public function showAll(){

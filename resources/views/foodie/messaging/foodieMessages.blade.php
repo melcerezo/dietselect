@@ -20,14 +20,14 @@
                             <div class="left col s12 m5 l5">
                                 <ul>
                                     <li>
-                                        <span>Inbox</span>
+                                        <span>Messages</span>
                                     </li>
                                 </ul>
                             </div>
                             <div class="left col s12 m7 l7 hide-on-med-and-down">
                                 <ul class="right">
                                     <li>
-                                        <a href="#!"><i class="material-icons">edit</i></a>
+                                        <a href="#crtMsg" class="modal-trigger"><i class="material-icons">edit</i></a>
                                     </li>
                                     <li>
                                         <a href="#!"><i class="material-icons">delete</i></a>
@@ -103,6 +103,58 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <div id="crtMsg" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <a id="msgCmpsCls" href="#!">
+                            <i class="material-icons">close</i>
+                        </a>
+                    </li>
+                    <li>
+                        <span>Compose</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <form id="foodieMessageSend" action="{{route('foodie.message.send')}}" method="post" autocomplete="off">
+                {{csrf_field()}}
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="foodieMessageSelect" class="active">Receiver</label>
+                            <select id="foodieMessageSelect" name="foodieMessageSelect" class="selectRequired" data-error=".error-select-message">
+                                <option value="" selected>Choose Receiver</option>
+                                @foreach($chefs as $chef)
+                                    <option value="{{$chef->id}}">{{$chef->name}}</option>
+                                @endforeach
+                            </select>
+                            <div class="error-select-message err"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="chefSubject" class="active">Subject</label>
+                            <input placeholder="subject" id="foodieSubject" name="foodieSubject" data-error=".error-message" type="text" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="foodieMessage" class="active">Message</label>
+                            <input placeholder="message" id="foodieMessage" name="foodieMessage" type="text" data-error=".error-message" class="validate">
+                            <div class="error-message err"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                </div>
+            </form>
         </div>
     </div>
 

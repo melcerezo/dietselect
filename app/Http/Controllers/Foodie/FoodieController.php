@@ -139,7 +139,7 @@ class FoodieController extends Controller
 //        dd($paidOrderCount);
 //      for message dropdown
         $chefs = Chef::all();
-        $chats = Chat::where('foodie_id','=', Auth::guard('foodie')->user()->id)->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 //        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
 //            ->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
