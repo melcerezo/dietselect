@@ -188,7 +188,6 @@ class FoodieController extends Controller
             //'remarks' => 'required|max:100',
         ])->validate();
 
-
         $result = DB::table('foodie_address')->insert([
             'city' => $request['city'],
             'unit' => $request['unit'],
@@ -395,6 +394,7 @@ class FoodieController extends Controller
         echo 'Foodie Preference: ' . $foodiePreference . '<br />';
 
         foreach ($plans as $plan) {
+            
             if ($plan->created_at >= $startOfTheWeek && $plan->created_at <= $endOfTheWeek) {
                 if ($dt->isSaturday() && $currentTime <= $endTime) {
                     dd('this is the scope of the week ' . $plan->created_at);
@@ -406,7 +406,6 @@ class FoodieController extends Controller
                     $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
                     foreach ($mealPlans as $mealPlan) {
                         $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
-
 //                echo $mainIngredient . ' ';
                         switch ($mainIngredient) {
                             case 'chicken':
@@ -422,6 +421,7 @@ class FoodieController extends Controller
                                 $seafood += 1;
                                 break;
                         }
+                        dd($mealPlan);
                     }
 
                     if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
