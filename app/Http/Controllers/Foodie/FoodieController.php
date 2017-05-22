@@ -62,55 +62,66 @@ class FoodieController extends Controller
         // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
 
         //only plans for the week, not all the plans
+        $dt = Carbon::now();
+        $currentTime = $dt->format('H:i:A');
+        $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
+
+        $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
+        $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
+
         $plans = Plan::all();
         $suggested = array();
         $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
 
         foreach ($plans as $plan) {
 
-            $chicken = 0;
-            $beef = 0;
-            $pork = 0;
-            $seafood = 0;
+            if ($plan->created_at >= $startOfTheWeek && $plan->created_at <= $endOfTheWeek) {
+                if ($dt->isSaturday() && $currentTime <= $endTime) {
+                    $chicken = 0;
+                    $beef = 0;
+                    $pork = 0;
+                    $seafood = 0;
 
-            $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
-            foreach($mealPlans as $mealPlan){
-                $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
+                    $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
+                    foreach($mealPlans as $mealPlan){
+                        $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
 
 //                echo $mainIngredient . ' ';
 
-                switch ($mainIngredient){
-                    case 'chicken':
-                        $chicken+=1;
-                        break;
-                    case 'beef':
-                        $beef+=1;
-                        break;
-                    case 'pork':
-                        $pork+=1;
-                        break;
-                    case 'seafood':
-                        $seafood+=1;
-                        break;
-                }
-            }
+                        switch ($mainIngredient){
+                            case 'chicken':
+                                $chicken+=1;
+                                break;
+                            case 'beef':
+                                $beef+=1;
+                                break;
+                            case 'pork':
+                                $pork+=1;
+                                break;
+                            case 'seafood':
+                                $seafood+=1;
+                                break;
+                        }
+                    }
 
-            if($chicken > $beef && $chicken > $pork && $chicken > $seafood){
-                if($foodiePreference=='chicken'){
-                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
-                }
-            }else if($beef > $chicken && $beef > $pork && $beef > $seafood){
-                if($foodiePreference=='beef'){
-                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
-                }
-            }else if($pork > $beef && $pork > $chicken && $pork > $seafood){
-                if($foodiePreference=='$pork'){
-                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
-                }
-            }else if($seafood > $beef && $seafood > $pork && $seafood > $chicken){
-                if($foodiePreference=='$seafood'){
-                    $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
-                }
+                    if($chicken > $beef && $chicken > $pork && $chicken > $seafood){
+                        if($foodiePreference=='chicken'){
+                            $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
+                        }
+                    }else if($beef > $chicken && $beef > $pork && $beef > $seafood){
+                        if($foodiePreference=='beef'){
+                            $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
+                        }
+                    }else if($pork > $beef && $pork > $chicken && $pork > $seafood){
+                        if($foodiePreference=='$pork'){
+                            $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
+                        }
+                    }else if($seafood > $beef && $seafood > $pork && $seafood > $chicken){
+                        if($foodiePreference=='$seafood'){
+                            $suggested[]= array('id'=>$plan->id, 'name'=>$plan->plan_name);
+                        }
+                    }
+                } // END OF DEADLINE SATURDAY @ 3 PM
             }
         }
 
@@ -492,7 +503,7 @@ class FoodieController extends Controller
         echo 'Foodie Preference: ' . $foodiePreference . '<br />';
 
         foreach ($plans as $plan) {
-            
+
             if ($plan->created_at >= $startOfTheWeek && $plan->created_at <= $endOfTheWeek) {
                 if ($dt->isSaturday() && $currentTime <= $endTime) {
                     dd('this is the scope of the week ' . $plan->created_at);
