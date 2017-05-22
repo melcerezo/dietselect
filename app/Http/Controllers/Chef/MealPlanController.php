@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\Chat;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
@@ -33,6 +34,18 @@ class MealPlanController extends Controller
 
     public function getMealPlanPage(Plan $plan)
     {
+        $chef= Auth::guard('chef')->user()->id;
+
+        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
+
+        $dt = Carbon::now();
+        $currentTime = $dt->format('H:i:A');
+        $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
+
+        $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
+        $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
+
+
         $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)->get();
         $planCount= $plans->count();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
@@ -42,7 +55,12 @@ class MealPlanController extends Controller
             'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
             'plan' => $plan,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'chats' => $chats,
+            'currentTime' => $currentTime,
+            'endTime' => $endTime,
+            'startOfTheWeek' => $startOfTheWeek,
+            'endOfTheWeek' => $endOfTheWeek,
         ]);
     }
 

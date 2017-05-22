@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\Chat;
 use App\Chef;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
@@ -40,6 +41,9 @@ class ChefController extends Controller
     public function index()
     {
 
+        $chef= Auth::guard('chef')->user()->id;
+
+        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
         $orders='';
         $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
 
@@ -58,6 +62,7 @@ class ChefController extends Controller
             'ordersCount' => $ordersCount,
             'orders' => $orders,
             'messages'=>$messages,
+            'chats'=>$chats
         ]);
     }
 

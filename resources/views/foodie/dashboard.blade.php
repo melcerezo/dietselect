@@ -399,6 +399,10 @@
                                 <a href="{{route('foodie.plan.standard', $sug['id'])}}">{{$sug['name']}}</a>
                             </li>
                         @endforeach
+                    @else
+                        <li class="collection-item">
+                            <span>No Plans!</span>
+                        </li>
                     @endif
                 </ul>
             </div>
