@@ -2,9 +2,11 @@
 
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/messaging.css">
+    @if($chatId!=null)
     <script>
         chatId='{{$chatId}}';
     </script>
+    @endif
     <script src="/js/messaging.js"></script>
     <script src="/js/foodie/foodieMessageValidate.js"></script>
 @endsection
@@ -30,7 +32,11 @@
                                         <a href="#crtMsg" class="modal-trigger"><i class="material-icons">edit</i></a>
                                     </li>
                                     <li>
-                                        <a href="#!"><i class="material-icons">delete</i></a>
+                                        @if($chatId!=null)
+                                            <a href="#dltCht" class="modal-trigger"><i class="material-icons">delete</i></a>
+                                        @else
+                                            <a href="#!"><i class="material-icons grey-text">delete</i></a>
+                                        @endif
                                     </li>
                                 </ul>
                             </div>
@@ -40,7 +46,7 @@
                         <ul class="collection msgListItem">
                             @foreach($chats as $chat)
                                     <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
-                                        <a href="{{route('foodie.message.index', $chat->id)}}">
+                                        <a href="{{route('foodie.message.message', $chat->id)}}">
                                             <div>
                                                 @foreach($chefs as $chef)
                                                     @if($chef->id == $chat->chef_id)
@@ -48,12 +54,12 @@
                                                         <span class="msgUserName">{{$chef->name}}</span>
                                                     @endif
                                                 @endforeach
-                                                @foreach($chat->message as $message)
-                                                    <p class="truncate grey-text">{{$message->message}}</p>
+                                                {{--@foreach($chat->message as $message)--}}
+                                                    <p class="truncate grey-text">{{$chat->message()->latest()->first()->message}}</p>
                                                     <a href="#!" class="secondary-content msgListTime">
-                                                        <span class="blue-text">{{$message->created_at->format('g:ia')}}</span>
+                                                        <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
                                                     </a>
-                                                @endforeach
+                                                {{--@endforeach--}}
                                             </div>
                                         </a>
                                     </li>
@@ -63,7 +69,8 @@
                     <div class="col s12 m9 l9 card-panel msgDtl">
                         @foreach($chats as $chat)
                             <div id="chat-{{$chat->id}}" class="msgMsg">
-                            @foreach($chat->message as $message)
+                            @foreach($chat->message()->latest()->get() as $message)
+                                <div class="msgBody">
                                 <p class="email-subject truncate">{{$message->subject}}</p>
                                 <hr class="grey-text text-lighten-2">
                                 <div class="email-content-wrap">
@@ -84,18 +91,19 @@
                                                             <p class="grey-text ">To {{$chef->name}}</p>
                                                         @endif
                                                     @endforeach
-                                                    <p class="grey-text">{{$message->created_at->format('g:ia')}}</p>
+                                                    <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
                                                 </li>
                                             </ul>
                                         </div>
                                         <div class="col s2 m2 l2 email-actions msgRply">
-                                            <a href="#!"><span><i class="material-icons">reply</i></span></a>
+                                            <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
                                         </div>
                                     </div>
                                     <div class="msgCnt">
                                         <p>{{$message->message}}</p>
                                     </div>
                                 <div class="divider"></div>
+                                </div>
                                 </div>
                             @endforeach
                         </div>
@@ -139,7 +147,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <label for="chefSubject" class="active">Subject</label>
+                            <label for="foodieSubject" class="active">Subject</label>
                             <input placeholder="subject" id="foodieSubject" name="foodieSubject" data-error=".error-message" type="text" class="validate">
                         </div>
                     </div>
@@ -155,6 +163,52 @@
                     <div><input type="submit" value="Submit" class="btn btn-primary"></div>
                 </div>
             </form>
+        </div>
+    </div>
+    <div id="rplMsg" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <a id="msgRplCls" href="#!">
+                            <i class="material-icons">close</i>
+                        </a>
+                    </li>
+                    <li>
+                        <span>Reply to <span id="replyRecName"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <form id="foodieMessageReply" action="{{route('foodie.message.reply')}}" method="post" autocomplete="off">
+                {{csrf_field()}}
+                <input name="replyRec" id="replyRec" type="hidden" value="">
+                <input name="chtId" id="chtId" type="hidden" value="">
+                <div class="row">
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <label for="replySubject" class="active">Subject</label>
+                            <input placeholder="subject" id="replySubject" name="replySubject" data-error=".error-message" type="text" class="validate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <label for="replyMessage" class="active">Message</label>
+                            <input placeholder="message" id="replyMessage" name="replyMessage" type="text" data-error=".error-message" class="validate">
+                            <div class="error-message err"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="dltCht" class="modal">
+        <div class="modal-content">
+            Hello
         </div>
     </div>
 

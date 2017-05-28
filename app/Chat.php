@@ -23,4 +23,8 @@ class Chat extends Model
         return $this->belongsTo(Chef::class);
     }
 
+    public function notRead()
+    {
+        return $this->message()->where('is_read', 0)->count();
+    }
 }

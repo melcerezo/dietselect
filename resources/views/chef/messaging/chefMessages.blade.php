@@ -10,6 +10,9 @@
 @section('page_content')
 
 
+
+@endsection
+        {{--<div class="row">--}}
     <div class="container">
         <div class="row">
             <h2 class="center white-text">Messages</h2>
@@ -55,7 +58,9 @@
                 </div>
             </div>
 {{--message inbox--}}
-        {{--<div class="row">--}}
+
+        </div>
+    </div>
             {{--<div class="card">--}}
                 {{--<div class="card-panel green lighten-3">--}}
                     {{--<h3>Inbox({{$chats->count()}})</h3>--}}
@@ -142,7 +147,3 @@
                     {{--</div>--}}
                 {{--@endforeach--}}
             {{--@endunless--}}
-
-        </div>
-    </div>
-@endsection

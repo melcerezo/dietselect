@@ -375,7 +375,7 @@
                                     @if($chef->id == $chat->chef_id)
                                             <i class="material-icons">message</i>
                                             Message From: {{$chef->name}}<br>
-                                            <a href="{{route('foodie.message.index', $chat->id)}}">
+                                            <a href="{{route('foodie.message.message', $chat->id)}}">
                                                 <h6>Message:</h6>
                                                 <p class="truncate">{{$chat->message()->latest()->first()->subject}}</p>
                                             </a>
@@ -440,6 +440,7 @@
                             <div class="collection-header">Pending Ratings</div>
                         </li>
                         @if($ratingsCount>0)
+
                             <li class="collection-item">
                                 <i class="material-icons">stars</i>
                                 {{$ordersRating->chef->name}}<br>

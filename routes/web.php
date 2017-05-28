@@ -70,9 +70,10 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('get/order/{order}', 'Foodie\FoodieOrderPlanController@show')->name('order.show');
 
     // Get MESSAGING view
-    Route::get('message/index/{id}', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
+    Route::get('message/index', 'Foodie\FoodieMessageController@index')->name('foodie.message.index');
+    Route::get('message/index/{id}', 'Foodie\FoodieMessageController@message')->name('foodie.message.message');
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
-    Route::post('message/reply/{id}', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
+    Route::post('message/reply', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
     Route::post('message/delete/{message}', 'Foodie\FoodieMessageController@delete')->name('foodie.message.delete');
 
 
@@ -129,6 +130,7 @@ Route::group(['prefix' => 'chef'], function () {
 
     // Get MESSAGING view
     Route::get('message/index', 'Chef\ChefMessageController@index')->name('chef.message.index');
+    Route::get('message/index/{id}', 'Chef\ChefMessageController@message')->name('chef.message.message');
     Route::post('message/send', 'Chef\ChefMessageController@send')->name('chef.message.send');
     Route::post('message/reply/{id}', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
     Route::post('message/delete/{message}', 'Chef\ChefMessageController@delete')->name('chef.message.delete');

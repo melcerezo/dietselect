@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Chat;
 use App\Chef;
+use App\Foodie;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Http\Controllers\Controller;
@@ -42,7 +43,7 @@ class ChefController extends Controller
     {
 
         $chef= Auth::guard('chef')->user()->id;
-
+        $foodies=Foodie::all();
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
         $orders='';
         $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
@@ -59,6 +60,7 @@ class ChefController extends Controller
         return view('chef.dashboard')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
+            'foodies' => $foodies,
             'ordersCount' => $ordersCount,
             'orders' => $orders,
             'messages'=>$messages,

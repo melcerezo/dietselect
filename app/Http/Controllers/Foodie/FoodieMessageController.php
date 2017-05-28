@@ -8,6 +8,7 @@ use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,7 +28,8 @@ class FoodieMessageController extends Controller
     }
 
 
-    public function index($id){
+    public function index(){
+
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
@@ -39,8 +41,37 @@ class FoodieMessageController extends Controller
             'foodie'=>$foodie,
             'chefs'=>$chefs,
             'chats' => $chats,
+            'chatId' => ''
+        ]);
+    }
+
+    public function message($id){
+
+        $foodie=Auth::guard('foodie')->user();
+        $chefs = Chef::all();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $selectedChat= $chats->where('id', $id)->first();
+
+
+            foreach($selectedChat->message()->latest()->get() as $message){
+                if($message->is_read==0){
+                    $message->is_read=1;
+                    $message->save();
+                }
+            }
+
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        dd($id);
+        return view('foodie.messaging.foodieMessages')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>$foodie,
+            'chefs'=>$chefs,
+            'chats' => $chats,
+            'messages'=>$messages,
             'chatId' => $id
         ]);
+
     }
 
     public function send(Request $request){
@@ -49,31 +80,52 @@ class FoodieMessageController extends Controller
             'foodieMessage' => 'required|max:255',
         ]);
 //        dd('Hello');
+        $chat = new Chat();
+        $chat->foodie_id = Auth::guard('foodie')->user()->id;
+        $chat->chef_id = $request['foodieMessageSelect'];
+        $chat->save();
+
+        $chtId=$chat->id;
 
         $message = new Message();
+        $message->subject =$request['foodieSubject'];
         $message->message =$request['foodieMessage'];
         $message->sender_id= Auth::guard('foodie')->user()->id;
         $message->receiver_id= $request['foodieMessageSelect'];
+        $message->chat_id = $chtId;
         $message->receiver_type='c';
         $message->save();
 
-        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+        return redirect()->route('foodie.message.message', compact('chtId'))->with([
+            'status'=>'Successfully sent the message!'
+        ]);
 
     }
 
-    public function reply(Request $request, $id){
+    public function reply(Request $request){
         $this->validate($request, [
+            'replySubject' => 'required|max:255',
             'replyMessage' => 'required|max:255',
         ]);
+//        dd($request['replyMessage']);
+        $chtId = $request['chtId'];
+
+        $replyChat = Chat::where('id','=',$chtId)->first();
+        $replyChat->updated_at= Carbon::now();
+        $replyChat->save();
 
         $message = new Message();
+        $message->subject=$request['replySubject'];
         $message->message =$request['replyMessage'];
         $message->sender_id= Auth::guard('foodie')->user()->id;
-        $message->receiver_id= $id;
+        $message->receiver_id=$request['replyRec'];
+        $message->chat_id=$chtId;
         $message->receiver_type='c';
         $message->save();
 
-        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+        return redirect()->route('foodie.message.message', compact('chtId'))->with(['status'=>'Successfully sent the message!']);
+
+
 
     }
     public function delete(Message $message){

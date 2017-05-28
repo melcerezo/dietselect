@@ -39,6 +39,35 @@ class ChefMessageController extends Controller{
 
     }
 
+    public function message($id){
+
+        $chef=Auth::guard('chef')->user();
+        $foodies = Foodie::all();
+        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $selectedChat= $chats->where('id', $id)->first();
+
+
+        foreach($selectedChat->message()->latest()->get() as $message){
+            if($message->is_read==0){
+                $message->is_read=1;
+                $message->save();
+            }
+        }
+
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+//        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        dd($id);
+        return view('chef.messaging.chefMessages')->with([
+            'sms_unverified' => $this->mobileNumberExists(),
+            'chef'=>$chef,
+            'foodies'=>$foodies,
+            'chats' => $chats,
+            'messages'=>$messages,
+            'chatId' => $id
+        ]);
+
+    }
+
     public function readMessage(Message $message){
         $message->is_read = 1;
         $message->save();

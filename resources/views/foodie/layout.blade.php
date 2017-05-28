@@ -67,8 +67,8 @@
                                 <i class="nvIc material-icons">email</i>
                                 <span class="nvItTx">
                                     Messages
-                                    @if($chats->count()>0)
-                                        <span class="new badge red">{{$chats->count()}}</span>
+                                    @if($messages->count()>0)
+                                        <span class="new badge red">{{$messages->count()}}</span>
                                     @endif
                                 </span>
                             </span>
@@ -98,23 +98,43 @@
             <ul id="foodieMessageDropdown" class="dropdown-content collection">
                 @if($chats->count()>0)
                 @foreach($chats->take(3) as $chat)
-                    <li class="collection-item">
+                    @if($chat->notRead()==0)
+                        <li class="collection-item">
                             @foreach($chefs as $chef)
-                                @if($chef->id == $chat->chef_id)
-                                    <a class="msgLink" href="{{route('foodie.message.index', $chat->id)}}">
-                                        <div class="row msCntr">
-                                            <div class="col s4 m4 l4">
-                                                <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
-                                             </div>
-                                            <div class="msMsCnt col s8 m8 l8">
-                                                <span>{{$chef->name}}</span>
-                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                    @if($chef->id == $chat->chef_id)
+                                        <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">
+                                            <div class="row msCntr">
+                                                <div class="col s4 m4 l4">
+                                                    <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
+                                                 </div>
+                                                <div class="msMsCnt col s8 m8 l8">
+                                                    <span>{{$chef->name}}</span>
+                                                    <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                @endif
+                                        </a>
+                                    @endif
                             @endforeach
-                    </li>
+                        </li>
+                    @else
+                            <li class="collection-item" style="background-color: #00e5ff">
+                                @foreach($chefs as $chef)
+                                    @if($chef->id == $chat->chef_id)
+                                        <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">
+                                            <div class="row msCntr">
+                                                <div class="col s4 m4 l4">
+                                                    <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
+                                                </div>
+                                                <div class="msMsCnt col s8 m8 l8">
+                                                    <span>{{$chef->name}}</span>
+                                                    <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    @endif
+                                @endforeach
+                            </li>
+                    @endif
                 @endforeach
                 @else
                     <li class="collection-item">

@@ -1,9 +1,16 @@
 $(document).ready(function(){
 
-    $('#chat-'+chatId).show();
-    $('#chtItem-'+chatId).addClass('msgActive');
+    if(chatId!=null){
+        $('#chat-'+chatId).show();
+        $('#chtItem-'+chatId).addClass('msgActive');
+    }
 
-
+    $(document).on('click','.rplBtn', function(){
+        var $this=$(this);
+        $('#replyRecName').append($this.attr('data-rec-name'));
+        $('#replyRec').val($this.attr('data-rec'));
+        $('#chtId').val($this.attr('data-chat-id'));
+    });
 
     $(document).on('click','.revealMessageContent',function () {
         var id = $(this).attr('id');
@@ -13,7 +20,10 @@ $(document).ready(function(){
 
     $(document).on('click','#msgCmpsCls',function () {
         $('#crtMsg').closeModal();
-    })
+    });
+    $(document).on('click','#msgRplCls',function () {
+        $('#rplMsg').closeModal();
+    });
 
 
 });

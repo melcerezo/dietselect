@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-    <link rel="stylesheet" href="/css/chef/app.css">
+    <link rel="stylesheet" href="/css/chef/chefMain.css">
     {{--<link rel="stylesheet" href="/css/foodie/app.css">--}}
 
     <script src="/js/chef/app.js" defer></script>
@@ -35,62 +35,159 @@
 @endsection
 
 @section('content')
+    {{-- new navigation bar --}}
     <header>
-        <div class="navbar-fixed">
-            <nav class="asparagus">
-                <div class="nav-wrapper">
-                    <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only">
-                        <i class="material-icons">menu</i></a>
+        <nav>
+            <div class="nav-wrapper light-green lighten-1">
+                <a href="#" data-activates="slide-out" class="button-collapse hide-on-large-only"><i class="material-icons">menu</i></a>
+                <div class="dsBrLo">
                     <a href="{{route('chef.dashboard')}}" class="brand-logo">Diet Select</a>
-                    <ul id="chef-menu-btn" class="right">
-                        <li>
-                            <a class="dropdown-button" href="#" data-activates='chef-dropdown' data-beloworigin="true"
-                               data-constrainwidth="true">
-                                <img class="circle" src="/img/{{ $chef->avatar }}">
-                                <span class="white-text hide-on-med-and-down">{{ $chef->name }} <i
-                                            class="fa fa-caret-down" aria-hidden="true"></i>
-                                </span>
-                            </a>
-                        </li>
-                    </ul>
                 </div>
-            </nav>
-        </div>
-        <!-- Foodie Dropdown Menu -->
-        <ul id='chef-dropdown' class='dropdown-content'>
-            <li>
-                <a href="{{ route("chef.profile") }}" class="chef-link">
-                    <i class="fa fa-user" aria-hidden="true"></i>
+                <ul id="nav-mobile" class="right">
+                    <li class="hide-on-med-and-down">
+                        <a href="{{route('foodie.plan.show')}}">
+                                <span class="valign-wrapper">
+                                <i class="nvIc material-icons">dashboard</i>
+                                <span class="nvItTx">
+                                    View Plans
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="hide-on-med-and-down">
+                        <a class="dropdown-button" href="#" data-activates='chefMessageDropdown' data-beloworigin="true" data-constrainwidth="true">
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">email</i>
+                                <span class="nvItTx">
+                                    Messages
+                                    @if($messages->count()>0)
+                                        <span class="new badge red">{{$messages->count()}}</span>
+                                    @endif
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="hide-on-med-and-down">
+                        <a>
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">announcement</i>
+                                <span class="nvItTx">
+                                    Notifications
+                                    {{--<span class="new badge red">2</span>--}}
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-button" href="#" data-activates='chef-dropdown' data-beloworigin="true" data-constrainwidth="true">
+                            <img class="circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
+                            <span class="nvItTx hide-on-med-and-down">{{$chef->name}}</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {{-- Chef Message Dropdown --}}
+        <ul id="chefMessageDropdown" class="dropdown-content collection">
+            @if($chats->count()>0)
+                @foreach($chats->take(3) as $chat)
+                    @if($chat->notRead()==0)
+                        <li class="collection-item">
+                            @foreach($foodies as $foodie)
+                                @if($foodie->id == $chat->foodie_id)
+                                    <a class="msgLink" href="{{route('chef.message.message', $chat->id)}}">
+                                        <div class="row msCntr">
+                                            <div class="col s4 m4 l4">
+                                                <img class="msImg circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
+                                            </div>
+                                            <div class="msMsCnt col s8 m8 l8">
+                                                <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </li>
+                    @else
+                        <li class="collection-item" style="background-color: #00e5ff">
+                            @foreach($foodies as $foodie)
+                                @if($foodie->id == $chat->foodie_id)
+                                    <a class="msgLink" href="{{route('chef.message.message', $chat->id)}}">
+                                        <div class="row msCntr">
+                                            <div class="col s4 m4 l4">
+                                                <img class="msImg circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
+                                            </div>
+                                            <div class="msMsCnt col s8 m8 l8">
+                                                <span class="truncate">{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </li>
+                    @endif
+                @endforeach
+            @else
+                <li class="collection-item">
+                    <span>No Messages</span>
+                </li>
+            @endif
+        </ul>
+        {{--<!-- Chef Dropdown Menu -->--}}
+        <ul id='chef-dropdown' class='dropdown-content collection'>
+            <li class="collection-item">
+                <a href="{{ route("chef.profile") }}" class="nvItLnk">
+                    {{--<i class="fa fa-user" aria-hidden="true"></i>--}}
                     <span class="hide-on-med-and-down">Profile</span>
                 </a>
             </li>
-            {{--<li>--}}
-                {{--<a href="{{route('user.profile')}}" class="foodie-link">--}}
+            <li class="collection-item">
+                <a href="#!" class="nvItLnk">
                     {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
-                    {{--<span class="hide-on-med-and-down">Settings</span>--}}
-                {{--</a>--}}
-            {{--</li>--}}
+                    <span class="hide-on-med-and-down">Settings</span>
+                </a>
+            </li>
             <li class="divider"></li>
-            <li>
-            <form id="logout" method="post" action="{{ route('chef.logout') }}">
-            {{ csrf_field() }}
-            <a id="logout-link" class="chef-link" href="#">
-            <i class="fa fa-sign-out" aria-hidden="true"></i>
-            <span class="hide-on-med-and-down">Logout</span>
-            </a>
-            </form>
+            <li class="collection-item">
+                <form id="logout" method="post" action="{{ route('chef.logout') }}">
+                    {{ csrf_field() }}
+                    <a id="logout-link" class="nvItLnk" href="#">
+                        {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+                        <span class="hide-on-med-and-down">Logout</span>
+                    </a>
+                </form>
             </li>
         </ul>
     </header>
     <main>
         <!-- Start of Side-nav -->
-        <ul id="slide-out" class="side-nav fixed papaya-whip">
-            <li><a id="chefProfile" href="{{route('chef.profile')}}">Profile</a></li>
-            <li><a href="{{route('chef.plan')}}">View Plans</a></li>
-            <li><a href="{{url('chef/message/index')}}">Messaging({{$chats->count()}})</a></li>
-            <li><a href="{{url('chef/order/view')}}">View Orders</a></li>
-            <li><a href="{{route('ratings')}}">Ratings</a></li>
-            {{--<li><a id="viewChefs" href="#!">View Chefs</a></li>--}}
+        <ul id="slide-out" class="side-nav collection">
+            <li class="collection-item light-green lighten-3 sdNvPr">
+                <div class="row">
+                    <div class="col s4 m4 l4">
+                        <img class="circle sdNvPrPc" src="/img/{{ $foodie->avatar }}">
+                    </div>
+                    <div class="col s8 m8 l8">
+                        <p>{{$foodie->first_name.' '.$foodie->last_name}}</p>
+                        <p>Foodie</p>
+                    </div>
+                </div>
+                {{--<a id="foodieProfile" href="#!">Profile</a>--}}
+            </li>
+            <li class="collection-item"><a id="foodieDashboard" href="#!">Dashboard</a></li>
+            {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
+            <li class="collection-item">
+                <a href="{{url('chef/message/index')}}">
+                    Messages @if($chats->count()>0)
+                        <span class="new badge red">{{$chats->count()}}</span>
+                    @endif
+                </a>
+            </li>
+            <li class="collection-item"><a href="{{url('foodie/order/view')}}">Order History</a></li>
+            <li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>
+            <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
         </ul>
 
     @yield('page_content')
@@ -122,7 +219,7 @@
                             <p></p>Didn't receive your code? <span id="n-timer-msg">Please wait <span id="n-timer"
                                                                                                       class="asparagus-text">60 secs.</span> before requesting to resend a new SMS code.</span></p>
                             <form id="send-code" method="post" action="{{ route('chef.verify.sms.send') }}">
-                                {{ csrf_field() }}
+                                {{ csrf_field()}}
                                 <a id="n-request-code" class="n-submit-btn" href="#"></a>
                             </form>
                         </div>
