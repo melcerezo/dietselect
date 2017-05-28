@@ -27,14 +27,15 @@ class ChefMessageController extends Controller{
         $chef = Auth::guard('chef')->user();
         $chats = Chat::where('chef_id', '=', $chef->id)->get();
 
-//        $messages = Message::where('receiver_id', '=', $chef->id)->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
-            'foodies' => $foodies,
-            'chef' => $chef,
+            'chef'=>$chef,
+            'foodies'=>$foodies,
             'chats' => $chats,
-//            'messages' => $messages
+            'messages'=>$messages,
+            'chatId' => ''
         ]);
 
     }
@@ -55,8 +56,6 @@ class ChefMessageController extends Controller{
         }
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
-//        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
-//        dd($id);
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,

@@ -1,3 +1,77 @@
+.msgCntr{
+    width:85%;
+}
+.msgApp{
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.row .col.msgList{
+    margin: 0;
+    padding: 0;
+    min-height: 500px;
+    max-height: 500px;
+    overflow: scroll;
+}
+
+.collection.msgListItem{
+    margin: 0;
+    padding: 0;
+}
+
+.collection .collection-item.msgItem{
+    position: relative;
+    height: auto;
+    padding: 10px;
+}
+.msgImg{
+    width: 50px;
+}
+.row .col.msgDtl{
+    margin: 0;
+    min-height: 500px;
+    max-height: 500px;
+    overflow: scroll;
+
+}
+.msgActive{
+    background: #e1f5fe;
+    border-left: 4px solid #29b6f6;
+}
+.msgMta{
+    border: none;
+}
+.msgRply{
+    padding-top: 32px;
+}
+
+.msgListTime{
+    position: absolute;
+    bottom: 80px;
+    right: 18px;
+}
+
 .messageContent{
     display: none;
+}
+
+.msgList .collection .collection-item:hover{
+    background: #e1f5fe;
+    cursor: pointer;
+}
+
+.msgUserName{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.msgMsg{
+    display: none;
+}
+
+.msgBody{
+    margin-bottom: 30px;
+}
+
+.collection .collection-item{
+    padding: 5px 10px;
 }

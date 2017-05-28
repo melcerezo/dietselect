@@ -16,6 +16,15 @@
     position: relative;
 }
 
+.msImg.nvUsPrPc{
+    width: 30px;
+    height: 30px;
+}
+
+.msgCol .msCntr .msMsCnt.col{
+    padding: 0;
+}
+
 /*.sdNvPr{*/
 
 /*}*/
@@ -35,4 +44,8 @@ img.msImg{
 }
 .dropdown-content li > a.msgLink{
     padding: 0;
+}
+
+.collection .collection-item.msgCol{
+    padding: 5px 10px;
 }

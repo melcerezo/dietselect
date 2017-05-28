@@ -8,6 +8,7 @@ use App\Foodie;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Http\Controllers\Controller;
+use App\Plan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -42,9 +43,10 @@ class ChefController extends Controller
     public function index()
     {
 
-        $chef= Auth::guard('chef')->user()->id;
+        $chef= Auth::guard('chef')->user();
         $foodies=Foodie::all();
-        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
+        $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $orders='';
         $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
 
@@ -53,7 +55,7 @@ class ChefController extends Controller
                 ->where('is_paid','=',0)
                 ->orderBy('created_at', 'desc')->get();
         }
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
 
 
@@ -61,6 +63,7 @@ class ChefController extends Controller
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
+            'plans' =>$plans,
             'ordersCount' => $ordersCount,
             'orders' => $orders,
             'messages'=>$messages,
@@ -71,7 +74,7 @@ class ChefController extends Controller
     public function profile()
     {
         $chef= Chef::where('id','=',Auth::guard('chef')->user()->id)->first();
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'c')->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         return view('chef.profile')->with([
             'chef'=>$chef,
             'sms_unverified' => $this->mobileNumberExists(),

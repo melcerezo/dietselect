@@ -90,9 +90,9 @@
         {{-- Chef Message Dropdown --}}
         <ul id="chefMessageDropdown" class="dropdown-content collection">
             @if($chats->count()>0)
-                @foreach($chats->take(3) as $chat)
+                @foreach($chats->take(5) as $chat)
                     @if($chat->notRead()==0)
-                        <li class="collection-item">
+                        <li class="collection-item msgCol">
                             @foreach($foodies as $foodie)
                                 @if($foodie->id == $chat->foodie_id)
                                     <a class="msgLink" href="{{route('chef.message.message', $chat->id)}}">
@@ -101,7 +101,7 @@
                                                 <img class="msImg circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
                                             </div>
                                             <div class="msMsCnt col s8 m8 l8">
-                                                <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                <span class="truncate">{{$foodie->first_name.' '.$foodie->last_name}}</span>
                                                 <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
                                             </div>
                                         </div>
@@ -129,10 +129,6 @@
                         </li>
                     @endif
                 @endforeach
-            @else
-                <li class="collection-item">
-                    <span>No Messages</span>
-                </li>
             @endif
         </ul>
         {{--<!-- Chef Dropdown Menu -->--}}
@@ -167,11 +163,11 @@
             <li class="collection-item light-green lighten-3 sdNvPr">
                 <div class="row">
                     <div class="col s4 m4 l4">
-                        <img class="circle sdNvPrPc" src="/img/{{ $foodie->avatar }}">
+                        <img class="circle sdNvPrPc" src="/img/{{ $chef->avatar }}">
                     </div>
                     <div class="col s8 m8 l8">
-                        <p>{{$foodie->first_name.' '.$foodie->last_name}}</p>
-                        <p>Foodie</p>
+                        <p>{{$chef->name}}</p>
+                        <p>Chef</p>
                     </div>
                 </div>
                 {{--<a id="foodieProfile" href="#!">Profile</a>--}}

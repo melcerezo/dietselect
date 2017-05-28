@@ -1,0 +1,35 @@
+div.dshMnCnt{
+    width: 85%;
+}
+div.dshPrfCrdCnt{
+    height: 200px;
+}
+.dshPrfCrdImgBan{
+    height:100%;
+}
+.dshPrfCrdImgUs{
+    width: 70px;
+    position: absolute;
+    right:20px;
+    bottom:140px;
+}
+div.dshPrfCrdDvd{
+    margin-bottom:10px;
+}
+div.dshPrfCrdInf{
+    margin: 10px 0;
+}
+div.dshMnClTtl{
+    line-height: 1.5rem;
+    padding: 10px 20px;
+    margin: 0;
+}
+table.dshMlTbl{
+    table-layout: fixed;
+}
+div.dshNoOrd{
+    padding:10px 20px;
+}
+span.dshMsgName{
+    display: inline;
+}

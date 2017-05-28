@@ -132,7 +132,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::get('message/index', 'Chef\ChefMessageController@index')->name('chef.message.index');
     Route::get('message/index/{id}', 'Chef\ChefMessageController@message')->name('chef.message.message');
     Route::post('message/send', 'Chef\ChefMessageController@send')->name('chef.message.send');
-    Route::post('message/reply/{id}', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
+    Route::post('message/reply', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
     Route::post('message/delete/{message}', 'Chef\ChefMessageController@delete')->name('chef.message.delete');
     Route::post('message/readMessage/{message}', 'Chef\ChefMessageController@readMessage')->name('chef.message.read');
 
