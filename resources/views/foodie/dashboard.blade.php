@@ -368,16 +368,16 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Messages From Chef</span>
                     </li>
-                    @if($chats->count()>0)
-                        @foreach($chats->take(3) as $chat)
+                    @if($messages->count()>0)
+                        @foreach($messages->take(3) as $message)
                             <li class="collection-item">
                                 @foreach($chefs as $chef)
-                                    @if($chef->id == $chat->chef_id)
+                                    @if($chef->id == $message->sender_id)
                                             <i class="material-icons">message</i>
                                             Message From: {{$chef->name}}<br>
-                                            <a href="{{route('foodie.message.message', $chat->id)}}">
+                                            <a href="{{route('foodie.message.message', $message->chat_id)}}">
                                                 <h6>Message:</h6>
-                                                <p class="truncate">{{$chat->message()->latest()->first()->subject}}</p>
+                                                <p class="truncate">{{$message->subject}}</p>
                                             </a>
                                     @endif
                                 @endforeach

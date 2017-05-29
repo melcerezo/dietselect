@@ -1,0 +1,64 @@
+.prfMnCnt{
+    width: 85%;
+    border: 1px solid #e0e0e0;
+    margin-top: 0.5rem;
+}
+.container .row{
+    margin-left:0;
+    margin-right:0;
+}
+.prfMnTtl{
+    padding: 0;
+    font-size: 30px;
+}
+.prfMnCntDv{
+}
+
+.row .col.prfLfBrd{
+    min-height: 320px;
+    border-left: 1px solid #e0e0e0;
+}
+
+.prfMnLink{
+    padding:17px 25px;
+}
+
+.prfMnLinkTxt{
+    font-size: 20px;
+    cursor: pointer;
+}
+.prfCntTtl{
+    font-size:20px;
+}
+
+.prfCntInf{
+    font-size: 20px;
+    padding: 12px 0;
+}
+.prfCntBtn{
+    margin-top: 10px;
+}
+.row.prfCntRw{
+    margin-bottom: 0;
+}
+.prfFrmImg{
+    width:100%;
+    height:auto;
+    float:left;
+    margin-right: 25px;
+}
+
+.activePrfLink{
+    background: #e1f5fe;
+    border-left: 4px solid #29b6f6;
+}
+.col.addressEdit{
+    padding-right:0;
+}
+a.prfSvBtn{
+    font-size: 2em;
+}
+#basic-profile-container{
+    display: none;
+}
+

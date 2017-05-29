@@ -49,3 +49,7 @@ img.msImg{
 .collection .collection-item.msgCol{
     padding: 5px 10px;
 }
+
+#logout-link.nvItLnk{
+    padding: 14px;
+}

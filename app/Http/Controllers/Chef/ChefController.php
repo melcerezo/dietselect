@@ -73,12 +73,16 @@ class ChefController extends Controller
 
     public function profile()
     {
+        $foodies=Foodie::all();
         $chef= Chef::where('id','=',Auth::guard('chef')->user()->id)->first();
+        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         return view('chef.profile')->with([
             'chef'=>$chef,
             'sms_unverified' => $this->mobileNumberExists(),
-            'messages'=>$messages
+            'messages'=>$messages,
+            'chats'=>$chats,
+            'foodies' => $foodies,
         ]);
     }
 

@@ -1,4 +1,13 @@
 $(document).ready(function() {
+    $('#basicProfileLinkContainer').addClass('activePrfLink');
+    $('#basic-profile-container').show();
+
+    $(document).on('click','#basicProfileLink', function () {
+        $('#addressLinkContainer,#allergiesLinkContainer,#preferenceLinkContainer').removeClass('activePrfLink');
+        $('#basicProfileLinkContainer').addClass('activePrfLink');
+        $('#basic-profile-container').show();
+        $('#allergies-container,#addresses-container,#food-preferences-container').hide();
+    });
     $('div.input-field').on('focus', '#website', function(){
         var url = $('#website').val();
         if (url == '') {
@@ -10,23 +19,6 @@ $(document).ready(function() {
             $('#website').val('');
         }
     });
-    $('#birthday').pickadate({
-        // Buttons
-        today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
-        clear: 'Clear',
-        close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
-
-        //Formats
-        format: 'yyyy-mm-dd',
-
-        //Date limits
-        max: Date.now(),
-
-        //Dropdown selectors
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15 // Creates a dropdown of 15 years to control year
-    });
-
     $('form#basic-profile').validate({
         rules: {
             company_name: {

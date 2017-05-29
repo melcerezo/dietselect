@@ -53,7 +53,7 @@ class FoodieMessageController extends Controller
         $selectedChat= $chats->where('id', $id)->first();
 
 
-            foreach($selectedChat->message()->latest()->get() as $message){
+            foreach($selectedChat->message()->where('receiver_type','f')->latest()->get() as $message){
                 if($message->is_read==0){
                     $message->is_read=1;
                     $message->save();

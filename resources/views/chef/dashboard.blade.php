@@ -46,16 +46,16 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Messages From Foodie</span>
                     </li>
-                    @if($chats->count()>0)
-                        @foreach($chats->take(3) as $chat)
+                    @if($messages->count()>0)
+                        @foreach($messages as $message)
                             <li class="collection-item">
                                 @foreach($foodies as $foodie)
-                                    @if($foodie->id == $chat->foodie_id)
+                                    @if($foodie->id == $message->sender_id)
                                         <i class="material-icons">message</i>
                                         <span class="truncate dshMsgName">Message From: {{$foodie->first_name.' '.$foodie->last_name}}</span><br>
-                                        <a href="{{route('chef.message.message', $chat->id)}}">
+                                        <a href="{{route('chef.message.message', $message->chat_id)}}">
                                             <h6>Message:</h6>
-                                            <p class="truncate">{{$chat->message()->latest()->first()->subject}}</p>
+                                            <p class="truncate">{{$message->subject}}</p>
                                         </a>
                                     @endif
                                 @endforeach

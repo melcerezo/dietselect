@@ -7,6 +7,8 @@ use App\Foodie;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Message;
+use Carbon\Carbon;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -48,7 +50,7 @@ class ChefMessageController extends Controller{
         $selectedChat= $chats->where('id', $id)->first();
 
 
-        foreach($selectedChat->message()->latest()->get() as $message){
+        foreach($selectedChat->message()->where('receiver_type','c')->latest()->get() as $message){
             if($message->is_read==0){
                 $message->is_read=1;
                 $message->save();
@@ -94,22 +96,33 @@ class ChefMessageController extends Controller{
         $message->receiver_type = 'f';
         $message->save();
 
-        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+        return redirect()->route('chef.message.message', compact('chtId'))->with([
+            'status'=>'Successfully sent the message!'
+        ]);
+
     }
 
-    public function reply(Request $request, $id){
+    public function reply(Request $request){
         $this->validate($request, [
             'replyMessage' => 'required|max:255',
         ]);
 
+        $chtId = $request['chtId'];
+
+        $replyChat = Chat::where('id','=',$chtId)->first();
+        $replyChat->updated_at= Carbon::now();
+        $replyChat->save();
+
         $message = new Message();
+        $message->subject = $request['replySubject'];
         $message->message = $request['replyMessage'];
         $message->sender_id = Auth::guard('chef')->user()->id;
-        $message->receiver_id = $id;
+        $message->receiver_id=$request['replyRec'];
+        $message->chat_id=$chtId;
         $message->receiver_type = 'f';
         $message->save();
 
-        return redirect($this->redirectTo)->with(['status'=>'Successfully sent the message!']);
+        return redirect()->route('chef.message.message', compact('chtId'))->with(['status'=>'Successfully sent the message!']);
     }
 
     public function delete(Message $message){
