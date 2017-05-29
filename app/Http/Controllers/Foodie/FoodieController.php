@@ -203,6 +203,8 @@ class FoodieController extends Controller
      */
     public function profile()
     {
+        $foodie = Auth::guard('foodie')->user()->id;
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         $addresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
         $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
         $preference = FoodiePreference::where('foodie_id', Auth::guard('foodie')->user()->id)->first();
@@ -226,6 +228,7 @@ class FoodieController extends Controller
             'allergies' => $allergies,
             'allergyJson' => $allergyJson,
             'preference' => $preference,
+            'chats' => $chats,
             'messages' => $messages,
             'chefs' => $chefs
         ]);

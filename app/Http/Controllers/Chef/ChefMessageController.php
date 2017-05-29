@@ -87,8 +87,10 @@ class ChefMessageController extends Controller{
         $chat->chef_id = Auth::guard('chef')->user()->id;
         $chat->save();
 
+        $chtId=$chat->id;
+
         $message = new Message();
-        $message->chat_id = $chat->id;
+        $message->chat_id = $chtId;
         $message->subject = $request['chefSubject'];
         $message->message = $request['chefMessage'];
         $message->sender_id = Auth::guard('chef')->user()->id;

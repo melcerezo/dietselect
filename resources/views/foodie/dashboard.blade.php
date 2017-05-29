@@ -369,19 +369,21 @@
                         <span class="collection-header">Messages From Chef</span>
                     </li>
                     @if($messages->count()>0)
-                        @foreach($messages->take(3) as $message)
-                            <li class="collection-item">
-                                @foreach($chefs as $chef)
-                                    @if($chef->id == $message->sender_id)
-                                            <i class="material-icons">message</i>
-                                            Message From: {{$chef->name}}<br>
-                                            <a href="{{route('foodie.message.message', $message->chat_id)}}">
-                                                <h6>Message:</h6>
-                                                <p class="truncate">{{$message->subject}}</p>
-                                            </a>
-                                    @endif
-                                @endforeach
-                            </li>
+                        @foreach($chats->take(3) as $chat)
+                            @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()>0)
+                                <li class="collection-item">
+                                    @foreach($chefs as $chef)
+                                        @if($chef->id == $chat->chef_id)
+                                                <i class="material-icons">message</i>
+                                                Message From: {{$chef->name}}<br>
+                                                <a href="{{route('foodie.message.message', $chat->id)}}">
+                                                    <h6>Message:</h6>
+                                                    <p class="truncate">{{$chat->message()->latest()->first()->subject}}</p>
+                                                </a>
+                                        @endif
+                                    @endforeach
+                                </li>
+                            @endif
                         @endforeach
                     @else
                         <li class="collection-item">

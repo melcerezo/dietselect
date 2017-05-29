@@ -97,8 +97,8 @@
             {{-- Foodie Message Dropdown --}}
             <ul id="foodieMessageDropdown" class="dropdown-content collection">
                 @if($chats->count()>0)
-                @foreach($chats->take(3) as $chat)
-                    @if($chat->notRead()==0)
+                @foreach($chats->take(5) as $chat)
+                    @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
                         <li class="collection-item">
                             @foreach($chefs as $chef)
                                     @if($chef->id == $chat->chef_id)
