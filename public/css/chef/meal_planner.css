@@ -102,5 +102,17 @@
 .edtMlSts{
     margin-bottom: 10px;
 }
+.chseMdlBtnCnt{
+    text-align: left;
+    margin:10px;
+}
+.mealLinkCell{
+    color:black;
+    font-weight: 100;
+}
+.chosen{
+    background-color: lightskyblue ;
+}
+
 
 

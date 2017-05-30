@@ -1,6 +1,9 @@
 @extends('chef.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
+    <script>
+
+    </script>
     <script src="/js/chef/meal_planner.js"></script>
     <script src="/js/ingredientAutocomplete.js"></script>
     <script src="/js/chef/mealPlannerValidate.js"></script>
@@ -12,12 +15,14 @@
             <div class="card-panel" style="padding: 0;">
                 <table class="striped centered">
                     <thead class="light-green white-text" style="border: none;">
-                        <th></th>
-                        <th>Breakfast</th>
-                        <th>Morning Snack</th>
-                        <th>Lunch</th>
-                        <th>Afternoon Snack</th>
-                        <th>Dinner</th>
+                        <tr>
+                            <th></th>
+                            <th>Breakfast</th>
+                            <th>Morning Snack</th>
+                            <th>Lunch</th>
+                            <th>Afternoon Snack</th>
+                            <th>Dinner</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <tr>
@@ -439,6 +444,45 @@
             </div>
         @endfor
     @endunless
+
+
+    <div id="chooseMeal" class="modal">
+        <div class="modal-content">
+            <h4>Choose Meal</h4>
+            <div>
+                <span id="dayName"></span>
+            </div>
+            <div>
+                <span id="mealType"></span>
+            </div>
+            <div>
+                <table id="mealsContainer" class="centered">
+                    <thead class="light-green lighten-1 white-text">
+                        <tr>
+                            <th>Description</th>
+                            <th>Main Ingredient</th>
+                            <th>Calories</th>
+                            <th>Carbohydrates</th>
+                            <th>Protein</th>
+                            <th>Fat</th>
+                        </tr>
+                    </thead>
+                    <tbody id="mealsTableBody"></tbody>
+                </table>
+            </div>
+            <form id="chooseMealForm" action="{{route('chef.meal.choose', $plan->id)}}" method="post" autocomplete="off">
+                {{csrf_field()}}
+                <input type="hidden" id="day" name="day" value="">
+                <input type="hidden" id="meal_type" name="meal_type" value="">
+                <input type="hidden" id="meal_id" name="meal_id" value="">
+                <button type="submit" class="btn waves-effect waves-light">Choose</button>
+                {{--<label for="mealChoiceSelect">Select Meal</label>--}}
+                {{--<select id="mealChoiceSelect" name="mealChoiceSelect" class="selectRequired">--}}
+                    {{--<option selected value="">Choose Meal</option>--}}
+                {{--</select>--}}
+            </form>
+        </div>
+    </div>
 
     <div id="createMeal" class="modal">
         <div class="modal-content">

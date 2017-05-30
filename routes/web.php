@@ -122,9 +122,11 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('plan/create', 'Chef\MealPlanController@createPlan')->name('chef.plan.create');
     Route::post('plan/delete/{plan}', 'Chef\MealPlanController@deletePlan')->name('chef.plan.delete');
     Route::get('plan/{plan}/mealsTable', 'Chef\MealPlanController@prepareMealsPage')->name('chef.plan.table');
+    Route::get('plan/getMealJson','Chef\MealPlanController@getMeals')->name('chef.plan.jsonMeal');
     Route::get('{type}/getIngredJson', 'Chef\MealPlanController@getIngredJson')->name('chef.plan.autocomplete');
     Route::get('{type}/validateIngredJson', 'Chef\MealPlanController@validateIngredJson')->name('chef.plan.validate');
     Route::post('plan/{plan}/createMeal', 'Chef\MealPlanController@setMeal')->name('chef.meal.create');
+    Route::post('plan/{plan}/chooseMeal', 'Chef\MealPlanController@chooseMeal')->name('chef.meal.choose');
     Route::post('plan/update/{meal}', 'Chef\MealPlanController@updateMeal')->name('chef.meal.update');
     Route::post('plan/deleteMeal/{meal}', 'Chef\MealPlanController@deleteMeal')->name('chef.meal.delete');
 

@@ -121,6 +121,7 @@ class MealPlanController extends Controller
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
         $mealPlansCount=$mealPlans->count();
+        $meals= Meal::where('chef_id','=', $chef->id);
         $ingredientsMeal= '';
         $ingredientCount=DB::table('ingredient_meal')
         ->join('meals','ingredient_meal.meal_id','=','meals.id')
@@ -143,11 +144,35 @@ class MealPlanController extends Controller
             'foodies' => $foodies,
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
+            'meals' => $meals,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
             'chats' => $chats,
             'messages'=>$messages
         ]);
+    }
+
+    public function getMeals(){
+        $chef=Auth::guard('chef')->user()->id;
+        $meals = Meal::where('chef_id','=', $chef)->get();
+        $i=0;
+        $jsonMeal ='[';
+
+        foreach ($meals as $meal){
+            if(++$i<$meals->count()) {
+                $jsonMeal .= '{ "id":"'.$meal->id.'", "description":"' . $meal->description . '", "main_ingredient":"'.$meal->main_ingredient.'"';
+                $jsonMeal .= ', "calories":"'.$meal->calories.'", "carbohydrates":"' . $meal->carbohydrates . '", "protein":"'.$meal->protein.'"';
+                $jsonMeal .= ', "fat":"'.$meal->fat.'"}, ';
+            }
+            else{
+                $jsonMeal .= '{ "id":"'.$meal->id.'", "description":"' . $meal->description . '", "main_ingredient":"'.$meal->main_ingredient.'" ';
+                $jsonMeal .= ', "calories":"'.$meal->calories.'", "carbohydrates":"' . $meal->carbohydrates . '", "protein":"'.$meal->protein.'" ';
+                $jsonMeal .= ', "fat":"'.$meal->fat.'"}';
+            }
+        }
+        $jsonMeal.=']';
+
+        return $jsonMeal;
     }
 
     public function getIngredJson($type){
@@ -194,7 +219,7 @@ class MealPlanController extends Controller
         $jsonData='{"data": {';
             foreach($data as $datum){
                 if(++$i<$ingredCount) {
-                    $jsonData .= '"' . $datum->Long_Desc . '" : null, ';
+                    $jsonData .= '{"' . $datum->Long_Desc . '" : null, ';
                 }
                 else{
                     $jsonData .= '"' . $datum->Long_Desc . '" : null';
@@ -318,16 +343,33 @@ class MealPlanController extends Controller
 
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
-                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
+                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]], 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
             );
         }
         DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'], 'meal_type' => $request['meal_type']]
+            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'],
+                'meal_type' => $request['meal_type'],'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()
+            ]
         );
 
         return back()->with(['status'=>'Successfully created meal: '.$meal->description.'']);
 
 
+    }
+
+    public function chooseMeal(Request $request, Plan $plan)
+    {
+        $day=$request['day'];
+        $meal_type=$request['meal_type'];
+        $meal_id=$request['meal_id'];
+        $meal_description=Meal::where('id','=',$meal_id)->select('description')->first();
+
+        DB::table('meal_plans')->insert(
+            ['plan_id' => $plan->id, 'meal_id' => $meal_id, 'customized_meal_id' =>$meal_id, 'day' => $day, 'meal_type' => $meal_type, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+        );
+
+
+        return back()->with(['status'=>'Successfully created meal: '.$meal_description->description.'']);
     }
 
     //modal that pops up to update meal in meal plan
