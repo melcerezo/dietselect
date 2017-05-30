@@ -71,7 +71,11 @@ class FoodieController extends Controller
 
         $plans = Plan::all();
         $suggested = array();
-        $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+        $foodiePreferenceCount=FoodiePreference::where('foodie_id', '=', $foodie)->count();
+        $foodiePreference='';
+        if($foodiePreferenceCount>0){
+            $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+        }
 
         foreach ($plans as $plan) {
 
