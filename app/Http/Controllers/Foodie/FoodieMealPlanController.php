@@ -305,6 +305,7 @@ class FoodieMealPlanController extends Controller
 
 //        dd($ingredientCount);
 
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
@@ -327,6 +328,7 @@ class FoodieMealPlanController extends Controller
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientMealData,
             'ingredientCount' => $ingredientCount,
+            'chats' => $chats,
             'messages' => $messages,
             'customId' => $customId,
             'chefs' => $chefs
