@@ -1,3 +1,61 @@
+.vwMlCntr{
+    width:85%;
+    margin-top: 0.5rem;
+}
+
+.row .col.plSlPlnNm{
+    min-height: 40px;
+    font-size: 20px;
+}
+
+.card-panel.plSlMlInf{
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+.collection.plSlMlInfCtnt{
+    margin: 0;
+}
+.plSlMlCstBtn{
+    margin-left: 10px;
+}
+.plSlMlInfDef{
+    display: block;
+    margin: 0;
+}
+.plSlMlInfDef{
+    min-height:150px;
+}
+.row .col.m6.plSlMlInfCnt{
+    padding-right:0;
+}
+.row .col.m6.plSlMlBtn{
+    padding-left:0;
+}
+.plSlMlBtnCntrBtm{
+    margin-top:20px;
+}
+.modal-header{
+    width:100%;
+    height:100%;
+    min-height:80px;
+}
+
+
+.container{
+    width:85%;
+}
+#testCreateModal.modal{
+    width: 50% !important;
+    max-height: 100% !important;
+    border-radius: 5px;
+}
+.modal-header{
+    width:100%;
+    height:100%;
+    min-height:80px;
+}
+
 .ingredSelect{
     display:inline-block;
     width:75%;
@@ -30,6 +88,19 @@
 .err{
     color:#ff0000;
     font-size: 12px;
+}
+.editButton{
+    padding: 10px;
+}
+.editFormModal{
+    padding-bottom: 20px;
+}
+.edtMlTtl{
+    padding: 0 15px;
+    font-size: 20px;
+}
+.edtMlSts{
+    margin-bottom: 10px;
 }
 
 

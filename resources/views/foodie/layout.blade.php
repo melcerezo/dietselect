@@ -117,23 +117,23 @@
                             @endforeach
                         </li>
                     @else
-                            <li class="collection-item" style="background-color: #00e5ff">
-                                @foreach($chefs as $chef)
-                                    @if($chef->id == $chat->chef_id)
-                                        <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">
-                                            <div class="row msCntr">
-                                                <div class="col s4 m4 l4">
-                                                    <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
-                                                </div>
-                                                <div class="msMsCnt col s8 m8 l8">
-                                                    <span>{{$chef->name}}</span>
-                                                    <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
-                                                </div>
+                        <li class="collection-item" style="background-color: #00e5ff">
+                            @foreach($chefs as $chef)
+                                @if($chef->id == $chat->chef_id)
+                                    <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">
+                                        <div class="row msCntr">
+                                            <div class="col s4 m4 l4">
+                                                <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
                                             </div>
-                                        </a>
-                                    @endif
-                                @endforeach
-                            </li>
+                                            <div class="msMsCnt col s8 m8 l8">
+                                                <span>{{$chef->name}}</span>
+                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                @endif
+                            @endforeach
+                        </li>
                     @endif
                 @endforeach
                 @else

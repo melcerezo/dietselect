@@ -45,7 +45,7 @@
                 </div>
                 <ul id="nav-mobile" class="right">
                     <li class="hide-on-med-and-down">
-                        <a href="{{route('foodie.plan.show')}}">
+                        <a href="{{route('chef.plan')}}">
                                 <span class="valign-wrapper">
                                 <i class="nvIc material-icons">dashboard</i>
                                 <span class="nvItTx">

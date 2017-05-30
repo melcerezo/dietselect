@@ -1,373 +1,377 @@
 @extends('chef.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
+    <script src="/js/chef/meal_planner.js"></script>
     <script src="/js/ingredientAutocomplete.js"></script>
     <script src="/js/chef/mealPlannerValidate.js"></script>
-
 @endsection
 
 @section('page_content')
-            <div class="container">
-                <div class="row">
-                    <h2 class="center white-text">Set Meal Planner</h2>
-                    <span class="center full-width white-text" style="font-size: 1.5em">Make your meals for your clients!</span>
-                    <div class="card papaya-whip">
-                        <div class="card-content">
-                @if($mealPlansCount==0)
-                        <table class="highlight">
-                            <thead>
-                            <tr>
-                                <th></th>
-                                <th id="Breakfast">Breakfast</th>
-                                <th id="MorningSnack">Snack</th>
-                                <th id="Lunch">Lunch</th>
-                                <th id="AfternoonSnack">Snack</th>
-                                <th id="Dinner">Dinner</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                <tr id="Monday">
-                                    <th>Monday</th>
-                                </tr>
-                                <tr id="Tuesday">
-                                    <th>Tuesday</th>
-                                </tr>
-                                <tr id="Wednesday">
-                                    <th>Wednesday</th>
-                                </tr>
-                                <tr id="Thursday">
-                                    <th>Thursday</th>
-                                </tr>
-                                <tr id="Friday">
-                                    <th>Friday</th>
-                                </tr>
-                                <tr id="Saturday">
-                                    <th>Saturday</th>
-                                </tr>
-                            </tbody>
-                        </table>
-                @else
-                <table class="highlight">
-                    <thead>
-                    <tr>
+    <div class="container">
+        <div class="row">
+            <div class="card-panel" style="padding: 0;">
+                <table class="striped centered">
+                    <thead class="light-green white-text" style="border: none;">
                         <th></th>
-                        <th id="Breakfast">Breakfast</th>
-                        <th id="MorningSnack">Snack</th>
-                        <th id="Lunch">Lunch</th>
-                        <th id="AfternoonSnack">Snack</th>
-                        <th id="Dinner">Dinner</th>
-                    </tr>
+                        <th>Breakfast</th>
+                        <th>Morning Snack</th>
+                        <th>Lunch</th>
+                        <th>Afternoon Snack</th>
+                        <th>Dinner</th>
                     </thead>
                     <tbody>
-                        <tr id="Monday">
-                        <th>Monday</th>
-                        <td id="MOBreakfast" class="mealTd">
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Monday</td>
+                        <td id="MOBreakfast" data-day="MO" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
-                                    <a href="#editMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
-                        <td id="MOMorningSnack" class="mealTd">
+                        <td id="MOMorningSnack" data-day="MO" data-meal-type="MorningSnack" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
-                                    <a href="#editMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
-                        <td id="MOLunch" class="mealTd">
+                        <td id="MOLunch" data-day="MO" data-meal-type="Lunch" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
-                                    <a href="#editMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
-                        <td id="MOAfternoonSnack" class="mealTd">
+                        <td id="MOAfternoonSnack" data-day="MO" data-meal-type="AfternoonSnack" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
-                                    <a href="#editMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
-                        <td id="MODinner" class="mealTd">
+                        <td id="MODinner" data-day="MO" data-meal-type="Dinner" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
-                                    <a href="#editMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
-                </tr>
-                <tr id="Tuesday">
-                    <th>Tuesday</th>
-                    <td id="TUBreakfast" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="TUMorningSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="TULunch" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="TUAfternoonSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="TUDinner" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                </tr>
-                <tr id="Wednesday">
-                    <th>Wednesday</th>
-                    <td id="WEBreakfast" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="WEMorningSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="WELunch" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="WEAfternoonSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="WEDinner" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                </tr>
-                <tr id="Thursday">
-                    <th>Thursday</th>
-                    <td id="THBreakfast" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="THMorningSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="THLunch" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="THAfternoonSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="THDinner" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                </tr>
-                <tr id="Friday">
-                    <th>Friday</th>
-                    <td id="FRBreakfast" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="FRMorningSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="FRLunch" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="FRAfternoonSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="FRDinner" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                </tr>
-                <tr id="Saturday">
-                    <th>Saturday</th>
-                    <td id="SABreakfast" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="SAMorningSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="SALunch" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="SAAfternoonSnack" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                    <td id="SADinner" class="mealTd">
-                        @foreach($mealPlans as $id =>$mealPlan)
-                            @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
-                                <a href="#editMeal-{{$id}}"
-                                   class="waves-effect waves-light modal-trigger">{{$mealPlan->meal->description}}</a><br>
-                            @endif
-                        @endforeach
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            @endif
-            <div>
-                <button data-target="createMeal" class="btn modal-trigger">Create Meal</button>
+                    </tr>
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Tuesday</td>
+                        <td id="TUBreakfast" data-day="TU" data-meal-type="Breakfast" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="TUMorningSnack" data-day="TU" data-meal-type="MorningSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="TULunch" data-day="TU" data-meal-type="Lunch" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="TUAfternoonSnack" data-day="TU" data-meal-type="AfternoonSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="TUDinner" data-day="TU" data-meal-type="Dinner" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Wednesday</td>
+                        <td id="WEBreakfast" data-day="WE" data-meal-type="Breakfast" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="WEMorningSnack" data-day="WE" data-meal-type="MorningSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="WELunch" data-day="WE" data-meal-type="Lunch" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="WEAfternoonSnack" data-day="WE" data-meal-type="AfternoonSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="WEDinner" data-day="WE" data-meal-type="Dinner" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Thursday</td>
+                        <td id="THBreakfast" data-day="TH" data-meal-type="Breakfast" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="THMorningSnack" data-day="TH" data-meal-type="MorningSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="THLunch" data-day="TH" data-meal-type="Lunch" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="THAfternoonSnack" data-day="TH" data-meal-type="AfternoonSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="THDinner" data-day="TH" data-meal-type="Dinner" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Friday</td>
+                        <td id="FRBreakfast" data-day="FR" data-meal-type="Breakfast" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="FRMorningSnack" data-day="FR" data-meal-type="MorningSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="FRLunch" data-day="FR" data-meal-type="Lunch" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="FRAfternoonSnack" data-day="FR" data-meal-type="AfternoonSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="FRDinner" data-day="FR" data-meal-type="Dinner" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="light-green white-text" style="font-weight: bold;">Saturday</td>
+                        <td id="SABreakfast" data-day="SA" data-meal-type="Breakfast" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="SAMorningSnack" data-day="SA" data-meal-type="MorningSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="SALunch" data-day="SA" data-meal-type="Lunch" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="SAAfternoonSnack" data-day="SA" data-meal-type="AfternoonSnack" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                        <td id="SADinner" data-day="SA" data-meal-type="Dinner" class="tdCell">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
+                                    <a data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6 left plSlMlBtn">
+                <button id="#fnshEdt" class="btn waves-effect waves-light modal-trigger">Finish</button>
+            </div>
+            <div class="col s12 m6 right plSlMlInfCnt">
+                <div class="plSlMlInfDef card-panel">
+                    <span>Please click on a Meal for more info!</span>
+                </div>
+                @foreach($mealPlans as $id => $mealPlan)
+                    <div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">
+                        <ul class="collection plSlMlInfCtnt">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <span class="collection-header">{{$mealPlan->meal->description}}</span>
+                            </li>
+                            <li class="collection-item">
+                                <span>Day: </span>
+                                @if($mealPlan->day=='MO')
+                                    <span>Monday</span>
+                                @elseif($mealPlan->day=='TU')
+                                    <span>Tuesday</span>
+                                @elseif($mealPlan->day=='WE')
+                                    <span>Wednesday</span>
+                                @elseif($mealPlan->day=='TH')
+                                    <span>Thursday</span>
+                                @elseif($mealPlan->day=='FR')
+                                    <span>Friday</span>
+                                @elseif($mealPlan->day=='SA')
+                                    <span>Saturday</span>
+                                @endif
+                            </li>
+                            <li class="collection-item">
+                                <span>Meal: </span><span>{{$mealPlan->meal_type}}</span>
+                            </li>
+                            <li class="collection-item">
+                                <span>Main Ingredient: </span><span>{{ucwords($mealPlan->meal->main_ingredient)}}</span>
+                            </li>
+                            <li class="collection-item">
+                                <span>Calories: </span><span>{{$mealPlan->meal->calories}}</span>
+                            </li>
+                        </ul>
+                        <div class="editButton">
+                            <span>
+                                <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
-    <div>
-        <a href="{{route('chef.dashboard')}}" class="btn" style="color: #ffffff">Finish</a>
-    </div>
-</div>
-</div>
 
     @unless($mealPlansCount==0)
         @for($i=0;$i<$mealPlansCount;$i++)
-            <div id="editMeal-{{$i}}" class="modal">
+            <div id="editMeal-{{$i}}" class="modal editFormModal">
                 <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
+                <nav class="light-green lighten-1 white-text">
+                    <div class="left col s12 m5 l5">
+                        <ul>
+                            <li>
+                                <span class="edtMlTtl">Update Meal: {{$mealPlans[$i]->meal->description}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
                 <div class="modal-content">
+                    <div class="row">
+                        <div class="col s4">
+                            <div class="edtMlSts">
+                                <span>Meal Stats:</span>
+                            </div>
+
+                            <div>
+                                <span>Calories: {{$mealPlans[$i]->meal->calories}}</span>
+                            </div>
+
+                            <div>
+                                <span>Carbohydrates: {{$mealPlans[$i]->meal->carbohydrates}}g</span>
+                            </div>
+
+                            <div>
+                                <span>Protein: {{$mealPlans[$i]->meal->protein}}g</span>
+                            </div>
+
+                            <div>
+                                <span>Fat: {{$mealPlans[$i]->meal->fat}}g</span>
+                            </div>
+                        </div>
+                    </div>
                 <form id="editMeal{{$i}}" class="editMeal" action="{{route('chef.meal.update', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
                     {{csrf_field()}}
-                        {{$mealPlans[$i]->meal->description}}
-                        <h4>Update Meal</h4>
-                        <h5>Meal Stats:</h5>
-                        <div>
-                            Calories: {{$mealPlans[$i]->meal->calories}}
-                        </div>
-                        <div>
-                            Carbohydrates: {{$mealPlans[$i]->meal->carbohydrates}}g
-                        </div>
-                        <div>
-                            Protein: {{$mealPlans[$i]->meal->protein}}g
-                        </div>
-                        <div>
-                            Fat: {{$mealPlans[$i]->meal->fat}}g
-                        </div>
-                        <div>
-                            {{$mealPlans[$i]->meal->ingredient_meal->count()}}
-                        </div>
                         <p><label for="description">Description</label></p>
                         <input type="text" name="description" class="form-control" data-error=".error-desc" value="{{$mealPlans[$i]->meal->description}}">
                         <div class="error-desc err"></div>
@@ -419,8 +423,7 @@
                             @endfor
                         @endfor
                         {{--<label for="grams">Grams:</label>--}}
-                        <button type="submit">Update</button>
-                        <button type="button" data-target="deleteMeal{{$i}}" class="modal-trigger">Delete</button>
+                        <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
                         </div>
                 </form>
                 </div>
@@ -440,31 +443,19 @@
     <div id="createMeal" class="modal">
         <div class="modal-content">
             <h4>Create Meal</h4>
+            <div>
+                <span id="dayName"></span>
+            </div>
+            <div>
+                <span id="mealType"></span>
+            </div>
             <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
                 <div id="errorDescription"></div>
-                <select id="day" name="day" class="selectRequired">
-                    <option selected value="">Choose day</option>
-                    <option value="MO">MO</option>
-                    <option value="TU">TU</option>
-                    <option value="WE">WE</option>
-                    <option value="TH">TH</option>
-                    <option value="FR">FR</option>
-                    <option value="SA">SA</option>
-                </select>
-                <div id="errorDay"></div>
-                <select id="meal_type" name="meal_type" class="selectRequired">
-                    <option selected value="">Choose Meal Type</option>
-                    <option value="Breakfast">Breakfast</option>
-                    <option value="MorningSnack">Morning Snack</option>
-                    <option value="Lunch">Lunch</option>
-                    <option value="AfternoonSnack">Afternoon Snack</option>
-                    <option value="Dinner">Dinner</option>
-                </select>
-                <div id="errorMealType"></div>
-                <div id="tdTaken"></div>
+                <input type="hidden" id="day" name="day" value="">
+                <input type="hidden" id="meal_type" name="meal_type" value="">
                 <select id="main_ingredient" name="main_ingredient" class="selectRequired">
                     <option selected value="">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>

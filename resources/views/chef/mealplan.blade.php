@@ -102,6 +102,13 @@
                    </div>
                 </div>
                 <div class="row">
+                   <div class="input-field">
+                        <label for="calories">Description:</label>
+                        <textarea id="description" name="description" class="materialize-textarea" length="255" value=""></textarea>
+                        <div class="error-calories err"></div>
+                   </div>
+                </div>
+                <div class="row">
                     <div class="input-field">
                         <label for="price">Price:</label>
                         <input type="text" name="price" id="price" data-error=".error-price" class="form-control">

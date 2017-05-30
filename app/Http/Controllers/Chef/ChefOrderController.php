@@ -38,21 +38,23 @@ class ChefOrderController extends Controller
             $orders=Order::where('chef_id','=',$chef->id)->get();
         }
 
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
-
+        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
 
         return view('chef.showAllOrders')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
             'orders'=>$orders,
             'ordersCount'=>$ordersCount,
+            'chats' => $chats,
             'messages'=>$messages
         ]);
     }
 
     public function getOneOrderDetails(Order $order){
         $chef = Auth::guard('chef')->user();
-        $messages = Message::where('receiver_id', '=', Auth::guard('chef')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderPlan=$order->plan->first();
         $orderMealPlans=$orderPlan->mealplans()->get();
         $orderMealPlansCount = $orderMealPlans->count();
@@ -89,6 +91,7 @@ class ChefOrderController extends Controller
         return view('chef.showSingleOrder')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
+            'chats'=>$chats,
             'messages'=>$messages,
             'mealPlans'=>$orderMealPlans,
             'mealPlansCount'=>$orderMealPlansCount,

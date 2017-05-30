@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Chat;
 use App\CustomizedMeal;
+use App\Foodie;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Ingredient;
@@ -36,14 +37,14 @@ class MealPlanController extends Controller
     public function getMealPlanPage(Plan $plan)
     {
         $chef= Auth::guard('chef')->user()->id;
-
+        $foodies=Foodie::all();
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
 
         $dt = Carbon::now();
         $currentPlans = $dt->isLastWeek();
 
         // 2 Weeks ago
-        $pastWeekPlans = $dt->diffInWeeks(2);
+//        $pastWeekPlans = $dt->diffInWeeks(2);
 
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
@@ -74,10 +75,11 @@ class MealPlanController extends Controller
 
 
         $planCount= $plans->count();
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
+            'foodies' => $foodies,
             'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
             'plan' => $plan,
@@ -95,13 +97,15 @@ class MealPlanController extends Controller
         Validator::make($request->all(), [
             'plan_name' => 'required|max:100',
             'calories' =>'required',
-            'price' =>'required'
+            'price' =>'required',
+            'description' => 'required|max:255'
         ])->validate();
 
         $plan= new Plan();
         $plan->chef_id = Auth::guard('chef')->user()->id;
         $plan->plan_name = $request['plan_name'];
         $plan->calories= (int)$request['calories'];
+        $plan->description=$request['description'];
         $plan->price= (float)$request['price'];
         $plan->save();
         return redirect($this->redirectTo)->with(['status'=>'Successfully created plan: '.$plan->plan_name.'']);
@@ -111,6 +115,10 @@ class MealPlanController extends Controller
 
     public function prepareMealsPage(Plan $plan)
     {
+        $foodies= Foodie::all();
+        $chef=Auth::guard('chef')->user();
+        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
         $mealPlansCount=$mealPlans->count();
         $ingredientsMeal= '';
@@ -128,15 +136,16 @@ class MealPlanController extends Controller
             ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
 
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->get();
 
         return view('chef.meal_planner', compact('plan'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
-            'chef' => Auth::guard('chef')->user(),
+            'chef' => $chef,
+            'foodies' => $foodies,
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
+            'chats' => $chats,
             'messages'=>$messages
         ]);
     }
