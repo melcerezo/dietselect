@@ -138,7 +138,9 @@
                 @endforeach
                 @else
                     <li class="collection-item">
+                        <a href="{{route('foodie.message.index')}}">
                         <span>No Messages</span>
+                        </a>
                     </li>
                 @endif
             </ul>
