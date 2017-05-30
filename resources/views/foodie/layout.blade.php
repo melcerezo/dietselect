@@ -88,7 +88,9 @@
                         <li>
                             <a class="dropdown-button" href="#" data-activates='foodie-dropdown' data-beloworigin="true" data-constrainwidth="true">
                                 <img class="circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
-                                <span class="nvItTx hide-on-med-and-down">{{$foodie->username}}</span>
+                                @unless($foodie->username==null)
+                                    <span class="nvItTx hide-on-med-and-down">{{$foodie->username}}</span>
+                                @endunless
                             </a>
                         </li>
                     </ul>
