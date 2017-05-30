@@ -44,7 +44,7 @@
                     </nav>
                     <div class="col s12 m3 l3 card-panel msgList">
                         <ul class="collection msgListItem">
-                            @if($chats->count > 0)
+                            @if($chats->count() > 0)
                             @foreach($chats as $chat)
                                 @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
                                     <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
