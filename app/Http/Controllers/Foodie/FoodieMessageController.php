@@ -33,7 +33,7 @@ class FoodieMessageController extends Controller
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
-//        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
         return view('foodie.messaging.foodieMessages')->with([
@@ -41,6 +41,7 @@ class FoodieMessageController extends Controller
             'foodie'=>$foodie,
             'chefs'=>$chefs,
             'chats' => $chats,
+            'messages' => $messages,
             'chatId' => ''
         ]);
     }
