@@ -13,6 +13,7 @@ use App\MealPlan;
 use App\Plan;
 use App\Message;
 use Carbon\Carbon;
+use Carbon\CarbonInterval;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -40,41 +41,61 @@ class MealPlanController extends Controller
         $foodies=Foodie::all();
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
 
-        $dt = Carbon::now();
-        $currentPlans = $dt->isLastWeek();
+        $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
 
-        // 2 Weeks ago
-//        $pastWeekPlans = $dt->diffInWeeks(2);
+        # DO NOT REMOVE THIS
+        $isSaturday = Carbon::parse("saturday this week 15:00:00")->format('Y-m-d H:i:s');
 
-        $currentTime = $dt->format('H:i:A');
-        $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
+        $lastTwoWeeks = Carbon::parse("previous week Saturday 15:00:00")->subDays(7)->format('Y-m-d H:i:s');
 
-        $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
-        $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
-
-        # QUERY FOR THE UPCOMING PLANS
-        /**
-         *  PLANS CREATED THIS WEEK
+        /* PAST PLANS
+         * Get ALL the plans WHERE updated_at is LESS THAN twoWeeksAGO
          */
 
-        $plans=Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->where('created_at', '>=', $startOfTheWeek )
-            ->where('created_at', '<=', $endOfTheWeek)
+        $pastPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
+            ->whereDate('updated_at', '<=', $lastTwoWeeks)
+            ->limit(5)
             ->get();
 
-        # QUERY FOR THE PRESENT PLANS
-        /**
-         *  PLANS CREATED LAST WEEK
+        /* CURRENT PLANS
+         *  Get ALL the plans WHERE updated_at is GREATER THAN 2 WEEKS AGO AND
+         *  WHERE updated_at is LESS THAN lastSaturday
          */
 
-        # QUERY FOR THE PAST PLANS
+        $plans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
+            ->whereDate('updated_at', '>=', $lastTwoWeeks)
+            ->whereDate('updated_at', '<=', $lastSaturday)
+            ->get();
+
+        /* FUTURE PLANS
+         * Get ALL the plans WHERE updated_at is GREATER THAN lastWeek
+         */
+        $futurePlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
+            ->whereDate('updated_at', '>=', $lastSaturday)
+            ->get();
+
+
         /**
-         *  PLANS CREATED BEFORE LAST WEEK
-         *  LIMIT TO (5) FIVE
+         *  REMOVE THE COMMENT FOR THE LOOP && DD IF YOU
+         *  WANT TO SEE THE OUTPUT
          */
 
+//        foreach ($pastPlans as $pastPlan) {
+//            echo 'Past Plan:'. $pastPlan->plan_name .'<br><br>';
+//        }
+//
+//        foreach ($plans as $plan) {
+//            echo 'Current Plan:'. $plan->plan_name .'<br><br>';
+//        }
+//
+//        foreach ($futurePlans as $futurePlan) {
+//            echo 'Future Plan:'. $futurePlan->plan_name .'<br><br>';
+//        }
 
-        $planCount= $plans->count();
+//        dd('here');
+
+        $planCount = Plan::count();
+
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -85,10 +106,9 @@ class MealPlanController extends Controller
             'plan' => $plan,
             'messages'=>$messages,
             'chats' => $chats,
-            'currentTime' => $currentTime,
-            'endTime' => $endTime,
-            'startOfTheWeek' => $startOfTheWeek,
-            'endOfTheWeek' => $endOfTheWeek,
+            'pastPlans' => $pastPlans, // PAST PLANS
+            'plans' => $plans, //get data of meal plan
+            'futurePlans' => $futurePlans, // FUTURE PLANS
         ]);
     }
 
@@ -101,7 +121,7 @@ class MealPlanController extends Controller
             'description' => 'required|max:255'
         ])->validate();
 
-        $plan= new Plan();
+        $plan = new Plan();
         $plan->chef_id = Auth::guard('chef')->user()->id;
         $plan->plan_name = $request['plan_name'];
         $plan->calories= (int)$request['calories'];
@@ -216,17 +236,16 @@ class MealPlanController extends Controller
         $i=0;
 //        dd($ingredCount);
 //        dd($ingreds);
-        $jsonData='{"data": {';
-            foreach($data as $datum){
-                if(++$i<$ingredCount) {
-                    $jsonData .= '{"' . $datum->Long_Desc . '" : null, ';
-                }
-                else{
-                    $jsonData .= '"' . $datum->Long_Desc . '" : null';
-                }
+        $jsonData = '{"data": {';
+        foreach ($data as $datum) {
+            if (++$i < $ingredCount) {
+                $jsonData .= '"' . $datum->Long_Desc . '" : null, ';
+            } else {
+                $jsonData .= '"' . $datum->Long_Desc . '" : null';
             }
-        $jsonData.='}, "limit": 3 }';
-        $response=$jsonData;
+        }
+        $jsonData .= '}, "limit": 3 }';
+        $response = $jsonData;
         return $response;
     }
 
