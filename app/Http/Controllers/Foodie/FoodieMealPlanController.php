@@ -257,6 +257,7 @@ class FoodieMealPlanController extends Controller
 
     public function viewMeal(Plan $plan, $customId)
     {
+        $foodie = Auth::guard('foodie')->user()->id;
 //        dd($id);
         $customList=json_decode($customId);
         $mealPlans = $plan->mealplans()
