@@ -116,7 +116,7 @@ class FoodieMealPlanController extends Controller
             ->get();
         $chefs = Chef::all();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
-        return view('foodie.MealView')->with([
+        return view('foodie.mealView')->with([
             'foodie'=> Auth::guard('foodie')->user(),
             'messages' => $messages,
             'chats' => $chats,
