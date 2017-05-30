@@ -108,8 +108,8 @@
                                                                     @if($foodie->id == $chat->foodie_id)
                                                                         <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
                                                                         <span class="email-title"> From {{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                                        <p class="grey-text ">To me, {{$chef->name}}</p>
                                                                     @endif
-                                                                    <p class="grey-text ">To me, {{$chef->name}}</p>
                                                                 @else
                                                                     <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
                                                                     <span class="email-title">From Me, {{$chef->name}}</span>
