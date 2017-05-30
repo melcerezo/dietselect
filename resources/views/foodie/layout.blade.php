@@ -101,7 +101,7 @@
                 @if($chats->count()>0)
                 @foreach($chats->take(5) as $chat)
                     @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
-                        <li class="collection-item">
+                        <li class="collection-item msgCol">
                             @foreach($chefs as $chef)
                                     @if($chef->id == $chat->chef_id)
                                         <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">

@@ -36,3 +36,6 @@ img.msImg{
 .dropdown-content li > a.msgLink{
     padding: 0;
 }
+.collection .collection-item.msgCol{
+    padding: 5px 10px;
+}
