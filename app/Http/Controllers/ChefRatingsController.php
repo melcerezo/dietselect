@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Message;
 use App\Rating;
