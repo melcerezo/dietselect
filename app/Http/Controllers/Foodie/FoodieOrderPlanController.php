@@ -31,7 +31,7 @@ class FoodieOrderPlanController extends Controller
     // Shows the order plan
     public function index(Plan $plan)
     {
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'c')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $foodie = Auth::guard('foodie')->user()->id;
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
@@ -48,26 +48,28 @@ class FoodieOrderPlanController extends Controller
         $foodie = Auth::guard('foodie')->user();
         $orders='';
         $ordersCount=Order::where('foodie_id','=',$foodie->id)->get()->count();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
         if($ordersCount>0){
             $orders=Order::where('foodie_id','=',$foodie->id)->get();
         }
 
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'c')->get();
-
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
         return view('foodie.viewAllOrders')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'orders'=>$orders,
             'ordersCount'=>$ordersCount,
+            'chats' => $chats,
             'messages'=>$messages
         ]);
     }
 
     public function getOneOrderDetails(Order $order){
         $foodie = Auth::guard('foodie')->user();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         $orderPlan=$order->plan->first();
         $orderMealPlans=$orderPlan->mealplans()->get();
         $orderMealPlansCount = $orderMealPlans->count();
@@ -104,6 +106,7 @@ class FoodieOrderPlanController extends Controller
         return view('foodie.viewSingleOrder')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
+            'chats'=>$chats,
             'messages'=>$messages,
             'mealPlans'=>$orderMealPlans,
             'mealPlansCount'=>$orderMealPlansCount,

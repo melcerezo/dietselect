@@ -187,7 +187,7 @@
             </div>
             {{--<a id="foodieProfile" href="#!">Profile</a>--}}
         </li>
-        <li class="collection-item"><a id="foodieDashboard" href="#!">Dashboard</a></li>
+        <li class="collection-item"><a id="foodieDashboard" href="{{route('foodie.dashboard')}}">Dashboard</a></li>
         {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         <li class="collection-item">
             <a href="{{url('foodie/message/index')}}">

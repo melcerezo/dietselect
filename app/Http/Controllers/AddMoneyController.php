@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use App\Http\Requests;
 use App\Order;
 use App\Message;
@@ -206,7 +207,13 @@ class AddMoneyController extends Controller{
             $contextFoodie = stream_context_create($paramFoodie);
             file_get_contents($urlFoodie, false, $contextFoodie);
 
+            $chatPayment=new Chat();
+            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
+            $chatPayment->chef_id= $order->chef->id;
+            $chatPayment->save();
+
             $notification = new Message();
+            $notification->chat_id= $chatPayment->id;
             $notification->sender_id = $user->id;
             $notification->receiver_id = $order->chef->id;
             $notification->receiver_type = 'c';

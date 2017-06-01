@@ -45,56 +45,56 @@
                     <div class="col s12 m3 l3 card-panel msgList">
                         <ul class="collection msgListItem">
                             @if($chats->count() > 0)
-                            @foreach($chats as $chat)
-                                @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
-                                    <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
-                                        <a href="{{route('foodie.message.message', $chat->id)}}">
-                                            <div>
-                                                @foreach($chefs as $chef)
-                                                    @if($chef->id == $chat->chef_id)
-                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                        <span class="msgUserName">{{$chef->name}}</span>
-                                                        <p class="truncate grey-text">
-                                                            @if($chat->message()->latest()->first()->receiver_type=='f')
-                                                                <span>{{$chef->name.': '}}</span>
-                                                            @else
-                                                                <span>Me: </span>
-                                                            @endif
-                                                            {{$chat->message()->latest()->first()->message}}
-                                                        </p>
-                                                    @endif
-                                                @endforeach
-                                                {{--@foreach($chat->message as $message)--}}
+                                @foreach($chats as $chat)
+                                    @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
+                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
+                                            <a href="{{route('foodie.message.message', $chat->id)}}">
+                                                <div>
+                                                    @foreach($chefs as $chef)
+                                                        @if($chef->id == $chat->chef_id)
+                                                            <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                            <span class="msgUserName">{{$chef->name}}</span>
+                                                            <p class="truncate grey-text">
+                                                                @if($chat->message()->latest()->first()->receiver_type=='f')
+                                                                    <span>{{$chef->name.': '}}</span>
+                                                                @else
+                                                                    <span>Me: </span>
+                                                                @endif
+                                                                {{$chat->message()->latest()->first()->message}}
+                                                            </p>
+                                                        @endif
+                                                    @endforeach
+                                                    {{--@foreach($chat->message as $message)--}}
+                                                        <a href="#!" class="secondary-content msgListTime">
+                                                            <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
+                                                        </a>
+                                                    {{--@endforeach--}}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" style="background-color: #00e5ff;">
+                                            <a href="{{route('foodie.message.message', $chat->id)}}">
+                                                <div>
+                                                    @foreach($chefs as $chef)
+                                                        @if($chef->id == $chat->chef_id)
+                                                            <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                            <span class="msgUserName">{{$chef->name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                    {{--@foreach($chat->message as $message)--}}
+                                                    <p class="truncate grey-text">
+                                                        {{$chat->message()->latest()->first()->message}}
+                                                    </p>
                                                     <a href="#!" class="secondary-content msgListTime">
                                                         <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
                                                     </a>
-                                                {{--@endforeach--}}
-                                            </div>
-                                        </a>
-                                    </li>
-                                @else
-                                    <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" style="background-color: #00e5ff;">
-                                        <a href="{{route('foodie.message.message', $chat->id)}}">
-                                            <div>
-                                                @foreach($chefs as $chef)
-                                                    @if($chef->id == $chat->chef_id)
-                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                        <span class="msgUserName">{{$chef->name}}</span>
-                                                    @endif
-                                                @endforeach
-                                                {{--@foreach($chat->message as $message)--}}
-                                                <p class="truncate grey-text">
-                                                    {{$chat->message()->latest()->first()->message}}
-                                                </p>
-                                                <a href="#!" class="secondary-content msgListTime">
-                                                    <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
-                                                </a>
-                                                {{--@endforeach--}}
-                                            </div>
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
+                                                    {{--@endforeach--}}
+                                                </div>
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
                             @else
                                 <li>
                                     <span>No Messages Yet!</span>

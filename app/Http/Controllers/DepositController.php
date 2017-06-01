@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use App\Http\Controllers\Controller;
 use App\Deposit;
 use App\Order;
@@ -47,12 +48,20 @@ class DepositController extends Controller
             $deposit->foodie_id = Auth::guard('foodie')->user()->id;
             $order->deposit()->save($deposit);
 
+            $chatPayment=new Chat();
+            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
+            $chatPayment->chef_id= $order->chef->id;
+            $chatPayment->save();
+
+
             $notification = new Message();
+            $notification->chat_id= $chatPayment->id;
             $notification->sender_id = Auth::guard('foodie')->user()->id;
             $notification->receiver_id = $order->chef->id;
             $notification->receiver_type = 'c';
             $notification->receipt_name = $filename;
             $notification->deposit_id = $deposit->id;
+            $notification->subject = 'Bank Deposit Payment';
             $notification->message = 'Hello! I just paid it through bank deposit.';
             $notification->save();
 
