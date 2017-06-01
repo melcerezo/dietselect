@@ -293,6 +293,7 @@
             <div class="col s12 m6 left plSlMlBtn">
                     <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger">Order</button>
                     <button id="plSlMlCst" class="plSlMlCstBtn btn waves-effect waves-light">Customize</button>
+                    <a href="{{route('foodie.plan.show')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back to Plans</a>
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">

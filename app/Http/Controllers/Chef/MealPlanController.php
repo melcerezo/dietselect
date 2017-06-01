@@ -53,7 +53,7 @@ class MealPlanController extends Controller
          */
 
         $pastPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('updated_at', '<=', $lastTwoWeeks)
+            ->whereDate('created_at', '<=', $lastTwoWeeks)
             ->limit(5)
             ->get();
 
@@ -63,15 +63,15 @@ class MealPlanController extends Controller
          */
 
         $plans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('updated_at', '>=', $lastTwoWeeks)
-            ->whereDate('updated_at', '<=', $lastSaturday)
+            ->whereDate('created_at', '>=', $lastTwoWeeks)
+            ->whereDate('created_at', '<=', $lastSaturday)
             ->get();
 
         /* FUTURE PLANS
          * Get ALL the plans WHERE updated_at is GREATER THAN lastWeek
          */
         $futurePlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('updated_at', '>=', $lastSaturday)
+            ->whereDate('created_at', '>=', $lastSaturday)
             ->get();
 
 
@@ -91,11 +91,12 @@ class MealPlanController extends Controller
 //        foreach ($futurePlans as $futurePlan) {
 //            echo 'Future Plan:'. $futurePlan->plan_name .'<br><br>';
 //        }
-
+//
 //        dd('here');
 
         $planCount = Plan::count();
 
+//        dd($plans);
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -160,6 +161,7 @@ class MealPlanController extends Controller
 
         return view('chef.meal_planner', compact('plan'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
+            'plan'=>$plan,
             'chef' => $chef,
             'foodies' => $foodies,
             'mealPlans' => $mealPlans,
@@ -366,8 +368,8 @@ class MealPlanController extends Controller
             );
         }
         DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['day'],
-                'meal_type' => $request['meal_type'],'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()
+            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['dayCreate'],
+                'meal_type' => $request['meal_typeCreate'],'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()
             ]
         );
 
@@ -378,11 +380,11 @@ class MealPlanController extends Controller
 
     public function chooseMeal(Request $request, Plan $plan)
     {
-        $day=$request['day'];
-        $meal_type=$request['meal_type'];
-        $meal_id=$request['meal_id'];
+        $day=$request['dayChoose'];
+        $meal_type=$request['meal_typeChoose'];
+        $meal_id=$request['meal_idChoose'];
         $meal_description=Meal::where('id','=',$meal_id)->select('description')->first();
-
+//        dd($meal_id);
         DB::table('meal_plans')->insert(
             ['plan_id' => $plan->id, 'meal_id' => $meal_id, 'customized_meal_id' =>$meal_id, 'day' => $day, 'meal_type' => $meal_type, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
         );
@@ -460,6 +462,57 @@ class MealPlanController extends Controller
         return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the plan!']);
     }
 
+    public function deleteMealPlan(Request $request)
+    {
+        $id=$request['deleteMealPlanId'];
+        $mealPlan=MealPlan::where('id','=',$id)->first();
+        $mealType = $mealPlan->meal_type;
+        $mealTypeDisplay ='';
+        switch ($mealType){
+            case 'Breakfast':
+                $mealTypeDisplay='Breakfast';
+                break;
+            case 'MorningSnack':
+                $mealTypeDisplay='Morning Snack';
+                break;
+            case 'Lunch':
+                $mealTypeDisplay='Lunch';
+                break;
+            case 'AfternoonSnack':
+                $mealTypeDisplay='Afternoon Snack';
+                break;
+            case 'Dinner':
+                $mealTypeDisplay='Dinner';
+                break;
+        }
+
+        $mealDay=$mealPlan->day;
+        $day='';
+        switch ($mealDay){
+            case 'MO':
+                $day='Monday';
+                break;
+            case 'TU':
+                $day='Tuesday';
+                break;
+            case 'WE':
+                $day='Wednesday';
+                break;
+            case 'TH':
+                $day='Thursday';
+                break;
+            case 'FR':
+                $day='Friday';
+                break;
+            case 'SA':
+                $day='Saturday';
+                break;
+        }
+
+        $mealPlan->delete();
+        return back()->with(['status'=>'Successfully deleted '.$mealTypeDisplay.' for '.$day.'!']);
+    }
+
     public function deleteMeal(Meal $meal)
     {
 
@@ -471,6 +524,6 @@ class MealPlanController extends Controller
         }
         $meal->delete();
         $mealPlan->delete();
-        return back()->with(['status'=>'Successfully deleted the meal!']);
+        return back()->with(['status'=>'Successfully deleted the whole meal!']);
     }
 }

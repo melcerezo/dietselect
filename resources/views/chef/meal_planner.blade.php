@@ -289,11 +289,11 @@
         </div>
         <div class="row">
             <div class="col s12 m6 left plSlMlBtn">
-                <button id="#fnshEdt" class="btn waves-effect waves-light modal-trigger">Finish</button>
+                <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">
-                    <span>Please click on a Meal for more info!</span>
+                    <span>Please click on a meal for more info or add a meal by clicking on "+Add Meal"!</span>
                 </div>
                 @foreach($mealPlans as $id => $mealPlan)
                     <div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">
@@ -318,7 +318,16 @@
                                 @endif
                             </li>
                             <li class="collection-item">
-                                <span>Meal: </span><span>{{$mealPlan->meal_type}}</span>
+                                <span>Meal: </span>
+                                <span>
+                                    @if($mealPlan->meal_type=='MorningSnack')
+                                        Morning Snack
+                                    @elseif($mealPlan->meal_type=='AfternoonSnack')
+                                        Afternoon Snack
+                                    @else
+                                        {{$mealPlan->meal_type}}
+                                    @endif
+                                </span>
                             </li>
                             <li class="collection-item">
                                 <span>Main Ingredient: </span><span>{{ucwords($mealPlan->meal->main_ingredient)}}</span>
@@ -331,10 +340,50 @@
                             <span>
                                 <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
                             </span>
+                            <span>
+                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlan->id}}" data-day="{{$mealPlan->day}}" data-meal-type="{{$mealPlan->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
+                            </span>
                         </div>
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
+    <div id="finishEdit" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl">Finished editing {{$plan->plan_name}}?</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Finish</a>
+        </div>
+    </div>
+
+    <div id="deleteMealPlan" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl">Deleting Meal for: <span id="mealTypeDelete"></span> <span id="dayDelete"></span></span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <span>Are you sure you want to delete <span id="formMealType"></span> for <span id="formDay"></span>?</span>
+            <form id="deleteMealPlanForm" action="{{route('chef.mealPlan.delete')}}" method="post" autocomplete="off">
+                {{csrf_field()}}
+                <input id="deleteMealPlanId" name="deleteMealPlanId" type="hidden" value="">
+
+                <button type="submit" class="btn waves-effect waves-light">Delete Planned Meal</button>
+            </form>
+
         </div>
     </div>
 
@@ -450,10 +499,10 @@
         <div class="modal-content">
             <h4>Choose Meal</h4>
             <div>
-                <span id="dayName"></span>
+                <span id="dayNameChoose"></span>
             </div>
             <div>
-                <span id="mealType"></span>
+                <span id="mealTypeChoose"></span>
             </div>
             <div>
                 <table id="mealsContainer" class="centered">
@@ -472,9 +521,9 @@
             </div>
             <form id="chooseMealForm" action="{{route('chef.meal.choose', $plan->id)}}" method="post" autocomplete="off">
                 {{csrf_field()}}
-                <input type="hidden" id="day" name="day" value="">
-                <input type="hidden" id="meal_type" name="meal_type" value="">
-                <input type="hidden" id="meal_id" name="meal_id" value="">
+                <input type="hidden" id="dayChoose" name="dayChoose" value="">
+                <input type="hidden" id="meal_typeChoose" name="meal_typeChoose" value="">
+                <input type="hidden" id="meal_idChoose" name="meal_idChoose" value="">
                 <button type="submit" class="btn waves-effect waves-light">Choose</button>
                 {{--<label for="mealChoiceSelect">Select Meal</label>--}}
                 {{--<select id="mealChoiceSelect" name="mealChoiceSelect" class="selectRequired">--}}
@@ -486,20 +535,15 @@
 
     <div id="createMeal" class="modal">
         <div class="modal-content">
-            <h4>Create Meal</h4>
-            <div>
-                <span id="dayName"></span>
-            </div>
-            <div>
-                <span id="mealType"></span>
-            </div>
+            <h4>Create <span id="createMealTypeName"></span> for <span id="dayName"></span></h4>
+
             <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">
                 <div id="errorDescription"></div>
-                <input type="hidden" id="day" name="day" value="">
-                <input type="hidden" id="meal_type" name="meal_type" value="">
+                <input type="hidden" id="dayCreate" name="dayCreate" value="">
+                <input type="hidden" id="meal_typeCreate" name="meal_typeCreate" value="">
                 <select id="main_ingredient" name="main_ingredient" class="selectRequired">
                     <option selected value="">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>

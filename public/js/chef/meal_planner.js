@@ -39,36 +39,36 @@ $(document).ready(function () {
 //                $('option:selected','select[name="day"]').removeAttr('selected');
         switch(mealDay){
             case 'MO':
-                $('#day').val("MO");
+                $('#dayCreate').val("MO");
                 $('#dayName').empty();
                 $('#dayName').append("Monday");
                 break;
             case 'TU':
-                $('#day').val("TU");
+                $('#dayCreate').val("TU");
                 $('#dayName').empty();
                 $('#dayName').append("Tuesday");
                 console.log($('#day').val());
                 break;
             case 'WE':
-                $('#day').val("WE");
+                $('#dayCreate').val("WE");
                 $('#dayName').empty();
                 $('#dayName').append("Wednesday");
                 console.log($('#day').val());
                 break;
             case 'TH':
-                $('#day').val("TH");
+                $('#dayCreate').val("TH");
                 $('#dayName').empty();
                 $('#dayName').append("Thursday");
                 console.log($('#day').val());
                 break;
             case 'FR':
-                $('#day').val("FR");
+                $('#dayCreate').val("FR");
                 $('#dayName').empty();
                 $('#dayName').append("Friday");
                 console.log($('#day').val());
                 break;
             case 'SA':
-                $('#day').val("SA");
+                $('#dayCreate').val("SA");
                 $('#dayName').empty();
                 $('#dayName').append("Saturday");
                 console.log($('#day').val());
@@ -77,32 +77,32 @@ $(document).ready(function () {
 
         switch(mealType){
             case 'Breakfast':
-                $('#meal_type').val("Breakfast");
-                $('#mealType').empty();
-                $('#mealType').append("Breakfast");
+                $('#meal_typeCreate').val("Breakfast");
+                $('#createMealTypeName').empty();
+                $('#createMealTypeName').append("Breakfast");
                 break;
             case 'MorningSnack':
-                $('#meal_type').val("MorningSnack");
-                $('#mealType').empty();
-                $('#mealType').append("Morning Snack");
+                $('#meal_typeCreate').val("MorningSnack");
+                $('#createMealTypeName').empty();
+                $('#createMealTypeName').append("Morning Snack");
                 console.log($('#meal_type').val());
                 break;
             case 'Lunch':
-                $('#meal_type').val("Lunch");
-                $('#mealType').empty();
-                $('#mealType').append("Lunch");
+                $('#meal_typeCreate').val("Lunch");
+                $('#createMealTypeName').empty();
+                $('#createMealTypeName').append("Lunch");
                 console.log($('#meal_type').val());
                 break;
             case 'AfternoonSnack':
-                $('#meal_type').val("AfternoonSnack");
-                $('#mealType').empty();
-                $('#mealType').append("Afternoon Snack");
+                $('#meal_typeCreate').val("AfternoonSnack");
+                $('#createMealTypeName').empty();
+                $('#createMealTypeName').append("Afternoon Snack");
                 console.log($('#meal_type').val());
                 break;
             case 'Dinner':
-                $('#meal_type').val("Dinner");
-                $('#mealType').empty();
-                $('#mealType').append("Dinner");
+                $('#meal_typeCreate').val("Dinner");
+                $('#createMealTypeName').empty();
+                $('#createMealTypeName').append("Dinner");
                 console.log($('#meal_type').val());
                 break;
         }
@@ -129,70 +129,70 @@ $(document).ready(function () {
 //                $('option:selected','select[name="day"]').removeAttr('selected');
         switch(mealDay){
             case 'MO':
-                $('#day').val("MO");
-                $('#dayName').empty();
-                $('#dayName').append("Monday");
+                $('#dayChoose').val("MO");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Monday");
                 break;
             case 'TU':
-                $('#day').val("TU");
-                $('#dayName').empty();
-                $('#dayName').append("Tuesday");
+                $('#dayChoose').val("TU");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Tuesday");
                 console.log($('#day').val());
                 break;
             case 'WE':
-                $('#day').val("WE");
-                $('#dayName').empty();
-                $('#dayName').append("Wednesday");
+                $('#dayChoose').val("WE");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Wednesday");
                 console.log($('#day').val());
                 break;
             case 'TH':
-                $('#day').val("TH");
-                $('#dayName').empty();
-                $('#dayName').append("Thursday");
+                $('#dayChoose').val("TH");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Thursday");
                 console.log($('#day').val());
                 break;
             case 'FR':
-                $('#day').val("FR");
-                $('#dayName').empty();
-                $('#dayName').append("Friday");
+                $('#dayChoose').val("FR");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Friday");
                 console.log($('#day').val());
                 break;
             case 'SA':
-                $('#day').val("SA");
-                $('#dayName').empty();
-                $('#dayName').append("Saturday");
+                $('#dayChoose').val("SA");
+                $('#dayNameChoose').empty();
+                $('#dayNameChoose').append("Saturday");
                 console.log($('#day').val());
                 break;
         }
 
         switch(mealType){
             case 'Breakfast':
-                $('#meal_type').val("Breakfast");
-                $('#mealType').empty();
-                $('#mealType').append("Breakfast");
+                $('#meal_typeChoose').val("Breakfast");
+                $('#mealTypeChoose').empty();
+                $('#mealTypeChoose').append("Breakfast");
                 break;
             case 'MorningSnack':
-                $('#meal_type').val("MorningSnack");
-                $('#mealType').empty();
-                $('#mealType').append("Morning Snack");
+                $('#meal_typeChoose').val("MorningSnack");
+                $('#mealTypeChoose').empty();
+                $('#mealTypeChoose').append("Morning Snack");
                 console.log($('#meal_type').val());
                 break;
             case 'Lunch':
-                $('#meal_type').val("Lunch");
-                $('#mealType').empty();
-                $('#mealType').append("Lunch");
+                $('#meal_typeChoose').val("Lunch");
+                $('#mealTypeChoose').empty();
+                $('#mealTypeChoose').append("Lunch");
                 console.log($('#meal_type').val());
                 break;
             case 'AfternoonSnack':
-                $('#meal_type').val("AfternoonSnack");
-                $('#mealType').empty();
-                $('#mealType').append("Afternoon Snack");
+                $('#meal_typeChoose').val("AfternoonSnack");
+                $('#mealTypeChoose').empty();
+                $('#mealTypeChoose').append("Afternoon Snack");
                 console.log($('#meal_type').val());
                 break;
             case 'Dinner':
-                $('#meal_type').val("Dinner");
-                $('#mealType').empty();
-                $('#mealType').append("Dinner");
+                $('#meal_typeChoose').val("Dinner");
+                $('#mealTypeChoose').empty();
+                $('#mealTypeChoose').append("Dinner");
                 console.log($('#meal_type').val());
                 break;
         }
@@ -201,9 +201,14 @@ $(document).ready(function () {
             var mealData = response;
             console.log(select);
             $.each(mealData,function (index) {
+                var str = mealData[index].main_ingredient;
+                str= str.toLowerCase().replace(/\b[a-z]/g, function (letter) {
+                   return letter.toUpperCase();
+                });
+
                 var tableRow = '<tr class="mealLink" data-meal-id="'+mealData[index].id+'">' +
                         '<td>'+mealData[index].description+'</td>' +
-                        '<td>'+mealData[index].main_ingredient+'</td>' +
+                        '<td>'+str+'</td>' +
                         '<td>'+mealData[index].calories+'</td>' +
                         '<td>'+mealData[index].carbohydrates+'</td>' +
                         '<td>'+mealData[index].protein+'</td>' +
@@ -221,7 +226,87 @@ $(document).ready(function () {
         $('.mealLink').removeClass('chosen');
         $(this).addClass('chosen');
         var meal_id = $(this).attr('data-meal-id');
-        $('#meal_id').val(meal_id);
+        $('#meal_idChoose').val(meal_id);
+    });
+
+    $(document).on('click','.deleteMealPlanButton',function () {
+        var mealDay = $(this).attr('data-day');
+        var mealType=$(this).attr('data-meal-type');
+        var mealPlanId=$(this).attr('data-mealplan-id');
+
+        $('#deleteMealPlanId').val(mealPlanId);
+
+        switch(mealDay){
+            case 'MO':
+                $('#formDay').empty();
+                $('#formDay').append("Monday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Monday");
+                break;
+            case 'TU':
+                $('#formDay').empty();
+                $('#formDay').append("Tuesday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Tuesday");
+                break;
+            case 'WE':
+                $('#formDay').empty();
+                $('#formDay').append("Wednesday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Wednesday");
+                break;
+            case 'TH':
+                $('#formDay').empty();
+                $('#formDay').append("Thursday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Thursday");
+                break;
+            case 'FR':
+                $('#formDay').empty();
+                $('#formDay').append("Friday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Friday");
+                break;
+            case 'SA':
+                $('#formDay').empty();
+                $('#formDay').append("Saturday");
+                $('#dayDelete').empty();
+                $('#dayDelete').append("Saturday");
+                break;
+        }
+
+        switch(mealType){
+            case 'Breakfast':
+                $('#formMealType').empty();
+                $('#formMealType').append("Breakfast");
+                $('#mealTypeDelete').empty();
+                $('#mealTypeDelete').append("Breakfast");
+                break;
+            case 'MorningSnack':
+                $('#formMealType').empty();
+                $('#formMealType').append("Morning Snack");
+                $('#mealTypeDelete').empty();
+                $('#mealTypeDelete').append("Morning Snack");
+                break;
+            case 'Lunch':
+                $('#formMealType').empty();
+                $('#formMealType').append("Lunch");
+                $('#mealTypeDelete').empty();
+                $('#mealTypeDelete').append("Lunch");
+                break;
+            case 'AfternoonSnack':
+                $('#formMealType').empty();
+                $('#formMealType').append("Afternoon Snack");
+                $('#mealTypeDelete').empty();
+                $('#mealTypeDelete').append("Afternoon Snack");
+                break;
+            case 'Dinner':
+                $('#formMealType').empty();
+                $('#formMealType').append("Dinner");
+                $('#mealTypeDelete').empty();
+                $('#mealTypeDelete').append("Dinner");
+                break;
+        }
     });
 
 });
