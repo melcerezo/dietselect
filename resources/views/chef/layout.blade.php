@@ -129,6 +129,12 @@
                         </li>
                     @endif
                 @endforeach
+            @else
+                <li class="collection-item">
+                    <a href="{{route('chef.message.index')}}">
+                        <span>No Messages</span>
+                    </a>
+                </li>
             @endif
         </ul>
         {{--<!-- Chef Dropdown Menu -->--}}

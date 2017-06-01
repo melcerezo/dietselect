@@ -259,7 +259,11 @@
                                     <div class="prfCntInf">
                                         <div class="row prfCntRw">
                                             <div class="col s12">
-                                                <span>{{ ucfirst($allergy->allergy) }}</span>
+                                                @if($allergy->allergy=='shrimp')
+                                                    <span>Squid, Shrimp and Crab</span>
+                                                @else
+                                                    <span>{{ ucfirst($allergy->allergy) }}</span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>

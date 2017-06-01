@@ -118,9 +118,11 @@
                                                                         <p class="grey-text ">To me, {{$chef->name}}</p>
                                                                     @endif
                                                                 @else
-                                                                    <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                                    <span class="email-title">From Me, {{$chef->name}}</span>
-                                                                    <p class="grey-text ">To {{$foodie->first_name.' '.$foodie->last_name}}</p>
+                                                                    @if($foodie->id == $chat->foodie_id)
+                                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                        <span class="email-title">From Me, {{$chef->name}}</span>
+                                                                        <p class="grey-text ">To {{$foodie->first_name.' '.$foodie->last_name}}</p>
+                                                                    @endif
                                                                 @endif
                                                             @endforeach
                                                             <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
