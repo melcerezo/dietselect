@@ -9,15 +9,15 @@ $(document).ready(function() {
     });
 
 
-    $(document).on('click', '#foodieProfile', function () {
-        document.location.href=profileRoute;
-    });
-
-    $(document).on('click', '#viewChefs', function () {
-        document.location.href=chefRoute;
-    });
-
-    $(document).on('click', '#viewMessages', function () {
-        document.location.href=messageRoute;
-    });
+    // $(document).on('click', '#foodieProfile', function () {
+    //     document.location.href=profileRoute;
+    // });
+    //
+    // $(document).on('click', '#viewChefs', function () {
+    //     document.location.href=chefRoute;
+    // });
+    //
+    // $(document).on('click', '#viewMessages', function () {
+    //     document.location.href=messageRoute;
+    // });
 });

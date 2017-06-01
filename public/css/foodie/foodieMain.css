@@ -39,3 +39,6 @@ img.msImg{
 .collection .collection-item.msgCol{
     padding: 5px 10px;
 }
+.dshMnTtl{
+    cursor: pointer;
+}

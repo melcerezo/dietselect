@@ -30,8 +30,8 @@
                 </div>
                 <div class="card">
                     @if($paidOrderCount>0)
-                    <div class="light-green lighten-1 white-text activator dshMnClTtl">
-                            <span>
+                    <div class="light-green lighten-1 white-text dshMnClTtl">
+                            <span class="activator dshMnTtl">
                                 Ordered Plan for Week of: April 1-7
                             </span>
                     </div>

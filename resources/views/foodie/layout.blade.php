@@ -2,8 +2,8 @@
 @section('head')
     <link rel="stylesheet" href="/css/foodie/foodieMain.css">
     <script>
-        var profileRoute="{{route('foodie.profile')}}";
-        var chefRoute="{{route('foodie.chef.show')}}";
+        {{--var profileRoute="{{route('foodie.profile')}}";--}}
+        {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
 
     </script>
     <script src="/js/foodie/app.js" defer></script>
@@ -188,7 +188,7 @@
             {{--<a id="foodieProfile" href="#!">Profile</a>--}}
         </li>
         <li class="collection-item"><a id="foodieDashboard" href="#!">Dashboard</a></li>
-        <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
+        {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         <li class="collection-item">
             <a href="{{url('foodie/message/index')}}">
                 Messages @if($chats->count()>0)
@@ -198,7 +198,7 @@
         </li>
         <li class="collection-item"><a href="{{url('foodie/order/view')}}">Order History</a></li>
         <li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>
-        <li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>
+        {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 
 
