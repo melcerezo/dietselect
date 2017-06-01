@@ -53,11 +53,18 @@
                                                     @if($foodie->id == $chat->foodie_id)
                                                         <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
                                                         <span class="msgUserName">{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        <p class="truncate grey-text">
+                                                            @if($chat->message()->latest()->first()->receiver_type=='c')
+                                                                <span>{{$foodie->first_name.': '}}</span>
+                                                            @else
+                                                                <span>Me: </span>
+                                                            @endif
+                                                            {{$chat->message()->latest()->first()->message}}
+                                                        </p>
                                                     @endif
                                                 @endforeach
                                                 {{--@foreach($chat->message as $message)--}}
                                                 {{--@if($chat->message()->latest()->first()->receiver_type=='')--}}
-                                                    <p class="truncate grey-text">{{$chat->message()->latest()->first()->message}}</p>
                                                 {{--@endif--}}
                                                 <a href="#!" class="secondary-content msgListTime">
                                                     <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>

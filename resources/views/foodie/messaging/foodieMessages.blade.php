@@ -73,10 +73,17 @@
                                                     @if($chef->id == $chat->chef_id)
                                                         <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
                                                         <span class="msgUserName">{{$chef->name}}</span>
+                                                        <p class="truncate grey-text">
+                                                            @if($chef->id==$chat->message()->latest()->first()->sender_id)
+                                                                <span>{{$chef->name.': '}}</span>
+                                                            @else
+                                                                <span>Me: </span>
+                                                            @endif
+                                                            {{$chat->message()->latest()->first()->message}}
+                                                        </p>
                                                     @endif
                                                 @endforeach
                                                 {{--@foreach($chat->message as $message)--}}
-                                                <p class="truncate grey-text">{{$chat->message()->latest()->first()->message}}</p>
                                                 <a href="#!" class="secondary-content msgListTime">
                                                     <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
                                                 </a>
