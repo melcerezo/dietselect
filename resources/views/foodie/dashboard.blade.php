@@ -429,9 +429,9 @@
                         @else
                             <li class="collection-item">
                                 <span>No Pending Orders</span>
-                                <div>
-                                    <a href="{{route('foodie.chef.show')}}"> Take a Look at our chefs and plans!</a>
-                                </div>
+                                {{--<div>--}}
+                                    {{--<a href="{{route('foodie.chef.show')}}"> Take a Look at our chefs and plans!</a>--}}
+                                {{--</div>--}}
                             </li>
                         @endif
                     </ul>

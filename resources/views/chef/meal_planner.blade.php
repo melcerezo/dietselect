@@ -10,7 +10,18 @@
 @endsection
 
 @section('page_content')
-    <div class="container">
+    <div class="container" style="margin-top: 0.5rem;">
+        <div class="row">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px;">{{$plan->plan_name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <div class="row">
             <div class="card-panel" style="padding: 0;">
                 <table class="striped centered">

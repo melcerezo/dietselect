@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Http\Controllers\Controller;
 
+use App\Chat;
 use App\CustomizedMeal;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Order;
@@ -67,10 +68,12 @@ class ChefOrderController extends Controller
             ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
             ->count();
 
-        for($i=0;$i<count($orderMealPlans);$i++){
-            $orderCustomizedMeals[]=CustomizedMeal::where('meal_id','=',$orderMealPlans[$i]->meal_id)->where('order_id','=',$order->id)->first();
-            for($j=0;$j<$orderCustomizedMeals[$i]->customized_ingredient_meal->count();$j++){
-                $ingredientMeals[]=$orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
+        if($order->order_type== 'c') {
+            for ($i = 0; $i < count($orderMealPlans); $i++) {
+                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->meal_id)->where('order_id', '=', $order->id)->first();
+                for ($j = 0; $j < $orderCustomizedMeals[$i]->customized_ingredient_meal->count(); $j++) {
+                    $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
+                }
             }
         }
         for($i=0;$i<count($ingredientMeals);$i++){
@@ -97,7 +100,8 @@ class ChefOrderController extends Controller
             'mealPlansCount'=>$orderMealPlansCount,
             'customize'=>$orderCustomizedMeals,
             'ingredientsMeal'=>$ingredientMealData,
-            'ingredientCount'=>$ingredientCount
+            'ingredientCount'=>$ingredientCount,
+            'order'=>$order
         ]);
     }
 }

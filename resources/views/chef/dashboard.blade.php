@@ -95,7 +95,7 @@
                         @if($ordersCount>0)
                             @foreach($orders as $order)
                                 <li class="collection-item">
-                                    <a href="{{route('order.show',$order->id)}}">
+                                    <a href="{{route('chef.order.single',$order->id)}}">
                                         <p>Plan Name: {{$order->plan->plan_name}}</p>
                                         <div class="divider"></div>
                                         <p>Foodie: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</p>
