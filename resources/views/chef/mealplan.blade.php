@@ -30,6 +30,9 @@
                         </div>
                     @else
                         <div class="row">
+                            <div>
+                                <h4>Upcomming: </h4>
+                            </div>
                             @foreach($futurePlans->chunk(3) as $chunk)
                                 @foreach($chunk as $plan)
                                     <div class="col s12 m6 l4">
@@ -79,6 +82,10 @@
                             {{--</div>--}}
                         </div>
                         <div class="row">
+                        <div>
+                            <h4>Current Plans: </h4>
+                        </div>
+
                         @foreach($plans->chunk(3) as $chunk)
                                @foreach($chunk as $plan)
                                     <div class="col s12 m6 l4">
