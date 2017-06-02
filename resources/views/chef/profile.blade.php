@@ -14,7 +14,6 @@
             </div>
         </div>
         <div class="row prfMnCntDv">
-
             <div class="col s12 m4 l4">
                 <ul>
                     <li id="basicProfileLinkContainer" class="prfMnLink">
