@@ -1,15 +1,17 @@
 $(document).ready(function(){
-    $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
-        var url = $('#n-reg-mobile-num').val();
-        if (url == '') {
-            $('#n-reg-mobile-num').val('0');
-        }
-    }).on('blur', '#n-reg-mobile-num', function(){
-        var url = $('#n-reg-mobile-num').val();
-        if (url == '0' || url.length < 7) {
-            $('#n-reg-mobile-num').val('');
-        }
-    });
+    // $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
+    //     var url = $('#n-reg-mobile-num').val();
+    //     if (url == '') {
+    //         $('#n-reg-mobile-num').val('0');
+    //     }
+    // }).on('blur', '#n-reg-mobile-num', function(){
+    //     var url = $('#n-reg-mobile-num').val();
+    //     if (url == '0' || url.length < 7) {
+    //         $('#n-reg-mobile-num').val('');
+    //     }
+    // });
+
+
 
     $('form#registration').validate({
         rules: {
@@ -25,6 +27,7 @@ $(document).ready(function(){
                 required: true,
                 min: 9000000000,
                 max: 9999999999,
+                pattern: /^(9)\d{9}$/,
                 digits: true
             },
             registration_email: {
@@ -56,7 +59,8 @@ $(document).ready(function(){
                 required: "Enter your mobile number, please!",
                 min: "Enter a valid PH mobile number, please.",
                 max: "Enter a valid PH mobile number, please.",
-                digits: "Enter a valid PH mobile number, please."
+                digits: "Invalid mobile number length.",
+                pattern: "Please follow the prescribed phone number format."
             },
             registration_email: {
                 required: "Enter your email address, please!",
@@ -85,4 +89,7 @@ $(document).ready(function(){
             }
         }
     });
+
+
+    // ^(9)\d{9}$
 });

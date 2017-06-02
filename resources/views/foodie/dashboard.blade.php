@@ -10,8 +10,11 @@
         <div class="row">
             <div class="col s12 m6 l4">
                 <div class="card">
-                    <div class="card-image dshPrfCrdCnt">
-                        <img class="dshPrfCrdImgBan" src="/img/diet-meal-1.jpg">
+                    <div class="card-image grey lighten-1 dshPrfCrdCnt" style="position: relative">
+                        <span class="fa fa-camera grey-text lighten-3" style="position: absolute; top:12px; left: 0; display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
+                        <div style="position: absolute; left:10px; bottom:9px;">
+                            <a href="#!">+Add Photo</a>
+                        </div>
                     </div>
                     <div class="card-content">
                         <img src="/img/{{ $foodie->avatar }}" class="circle dshPrfCrdImgUs">
