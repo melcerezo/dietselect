@@ -107,45 +107,55 @@
                             <div id="chat-{{$chat->id}}" class="msgMsg">
                             @foreach($chat->message()->latest()->get() as $message)
                                 <div class="msgBody">
-                                <p class="email-subject truncate">{{$message->subject}}</p>
-                                <hr class="grey-text text-lighten-2">
-                                <div class="email-content-wrap">
-                                    <div class="row">
-                                        <div class="col s10 m10 l10">
-                                            <ul class="collection msgMta">
-                                                <li class="collection-item">
-                                                    @foreach($chefs as $chef)
-                                                        @if($message->receiver_type=='f')
-                                                            @if($chef->id == $chat->chef_id)
-                                                                <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                                <span class="email-title"> From {{$chef->name}}</span>
+                                    <p class="email-subject truncate">{{$message->subject}}</p>
+                                    <hr class="grey-text text-lighten-2">
+                                    <div class="email-content-wrap">
+                                        <div class="row">
+                                            <div class="col s10 m10 l10">
+                                                <ul class="collection msgMta">
+                                                    <li class="collection-item">
+                                                        @foreach($chefs as $chef)
+                                                            @if($message->receiver_type=='f')
+                                                                @if($chef->id == $chat->chef_id)
+                                                                    <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                    <span class="email-title"> From {{$chef->name}}</span>
+                                                                @endif
+                                                                <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
+                                                            @else
+                                                                @if($chef->id == $chat->chef_id)
+                                                                    <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
+                                                                    <span class="email-title">From Me, {{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                                    <p class="grey-text ">To {{$chef->name}}</p>
+                                                                @endif
                                                             @endif
-                                                            <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
-                                                        @else
-                                                            @if($chef->id == $chat->chef_id)
-                                                                <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
-                                                                <span class="email-title">From Me, {{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                                <p class="grey-text ">To {{$chef->name}}</p>
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                    <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
-                                                </li>
-                                            </ul>
+                                                        @endforeach
+                                                        <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            @foreach($chefs as $chef)
+                                                @if($chef->id == $chat->chef_id)
+                                                    <div class="col s2 m2 l2 email-actions msgRply">
+                                                        <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                                    </div>
+                                                @endif
+                                            @endforeach
                                         </div>
-                                        @foreach($chefs as $chef)
-                                            @if($chef->id == $chat->chef_id)
-                                                <div class="col s2 m2 l2 email-actions msgRply">
-                                                    <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                        <div class="msgCnt">
+                                            <p>{{$message->message}}</p>
+                                            <div>
+                                                @unless($message->deposit_id=='')
+                                                    {{$message->deposit_id}}
+                                                @endunless
+                                                @unless($message->receipt_name=='')
+                                                <div>
+                                                    <img src="/img/{{$message->receipt_name}}" alt="User Image">
                                                 </div>
-                                            @endif
-                                        @endforeach
+                                                @endunless
+                                            </div>
+                                        </div>
+                                    <div class="divider"></div>
                                     </div>
-                                    <div class="msgCnt">
-                                        <p>{{$message->message}}</p>
-                                    </div>
-                                <div class="divider"></div>
-                                </div>
                                 </div>
                             @endforeach
                         </div>
