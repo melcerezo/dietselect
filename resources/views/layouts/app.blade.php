@@ -44,7 +44,6 @@
     <!-- jQuery Validation Script -->
     <script src="/js/vendor/jquery.validate.js" defer></script>
     <script src="/js/vendor/additional-methods.min.js" defer></script>
-
     <script src="/js/plugins.js" defer></script>
     <script src="/js/main.js" defer></script>
     @if (session('status'))

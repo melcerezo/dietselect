@@ -26,6 +26,7 @@ class CreateFoodiesTable extends Migration
             $table->string('mobile_number', 12)->unique();
             $table->string('username', 20)->unique()->nullable()->default(null);
             $table->string('avatar')->default('user.jpg');
+            $table->string('cover')->default(null); 
             $table->boolean('joined_newsletter');
             $table->string('password');
             $table->rememberToken();

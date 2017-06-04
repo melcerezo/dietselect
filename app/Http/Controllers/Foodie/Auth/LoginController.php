@@ -112,6 +112,12 @@ class LoginController extends Controller
         return redirect('/')->with(['status' => $successMsg]);
     }
 
+    public function logoutAuto()
+    {
+        $autoMsg = "Your session has ended.";
+        return view('welcome')->with(['status' => $autoMsg]);
+    }
+
     /**
      * The user has been authenticated.
      *

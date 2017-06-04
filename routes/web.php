@@ -26,6 +26,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('login', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
     Route::post('login', 'Foodie\Auth\LoginController@login')->name('foodie.login');
     Route::post('logout', 'Foodie\Auth\LoginController@logout')->name('foodie.logout');
+    Route::get('logoutAuto', 'Foodie\Auth\LoginController@logoutAuto')->name('foodie.logoutAuto');
 
     Route::post('password/email', 'Foodie\Auth\ForgotPasswordController@sendResetLinkEmail')->name('foodie.reset.send');
     Route::get('password/reset', 'Foodie\Auth\ForgotPasswordController@showLinkRequestForm')->name('foodie.reset.show');
@@ -34,6 +35,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('password/reset/{token}', 'Foodie\Auth\ResetPasswordController@showResetForm')->name('foodie.reset.password');
 
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
+    Route::post('profile/coverPhoto', 'Foodie\FoodieController@saveProfileCoverPhoto')->name('foodie.profile.coverPhoto');
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasic')->name('foodie.profile.basic');
     Route::post('profile/address', 'Foodie\FoodieController@saveProfileAddress')->name('foodie.profile.address');
     Route::post('profile/address/update/{id}', 'Foodie\FoodieController@updateProfileAddress')->name('foodie.address.update');

@@ -4,6 +4,7 @@ jQuery(window).load(function() {
     jQuery("#n-site-preloader").delay(700).fadeOut("slow");
 });
 
+
 $(document).ready(function(){
 
     $('.modal-trigger').leanModal();
@@ -26,7 +27,3 @@ $(document).ready(function(){
         form.submit();
     });
 });
-
-function saysN (){
-    Materialize.toast('This website was made with love. -N ❤', 4000);
-}

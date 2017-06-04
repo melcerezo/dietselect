@@ -4,7 +4,7 @@
     <script>
         {{--var profileRoute="{{route('foodie.profile')}}";--}}
         {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
-
+        logoutRoute='{{route('foodie.logoutAuto')}}';
     </script>
     <script src="/js/foodie/app.js" defer></script>
 
@@ -243,7 +243,6 @@
         @endif
     </main>
     <footer>
-        <div>Icons made by <a href="http://www.flaticon.com/authors/madebyoliver" title="Madebyoliver">Madebyoliver</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
     </footer>
 @endsection
 

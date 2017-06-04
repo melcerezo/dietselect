@@ -1,3 +1,13 @@
+var idleTime = 0;
+
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 120) { // 20 minutes
+        console.log('timeout');
+        window.location.href= logoutRoute;
+    }
+}
+
 $(document).ready(function() {
     $('select').material_select();
     $('.button-collapse').sideNav({
@@ -6,6 +16,20 @@ $(document).ready(function() {
 
     $(document).on('click', '#logout-link', function () {
         $('form#logout').submit();
+    });
+
+
+    //Increment the idle time counter every minute.
+    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+        console.log(idleTime);
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        console.log('press');
+        idleTime = 0;
     });
 
 
@@ -21,3 +45,6 @@ $(document).ready(function() {
     //     document.location.href=messageRoute;
     // });
 });
+
+
+

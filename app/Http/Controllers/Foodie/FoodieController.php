@@ -243,6 +243,25 @@ class FoodieController extends Controller
         return Auth::guard($this->guard)->user()->id;
     }
 
+    public function saveProfileCoverPhoto(Request $request)
+    {
+        Validator::make($request->all(), [
+            'cover' => 'required|max:100',
+        ])->validate();
+
+        $foodie=Auth::guard('foodie')->user();
+        if($request->hasFile('cover')){
+            $avatar = $request->file('cover');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // Change Directory HERE
+            Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
+            $foodie->cover=$filename;
+            $foodie->save;
+
+            return back()->with(['status'=>'Successfully updated the cover photo']);
+        }
+    }
+
     /**
      * Handle a registration request for the application.
      *

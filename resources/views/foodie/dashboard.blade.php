@@ -13,7 +13,7 @@
                     <div class="card-image grey lighten-1 dshPrfCrdCnt" style="position: relative">
                         <span class="fa fa-camera grey-text lighten-3" style="position: absolute; top:12px; left: 0; display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
                         <div style="position: absolute; left:10px; bottom:9px;">
-                            <a href="#!">+Add Photo</a>
+                            <a href="#addCover" class="modal-trigger">+Add Photo</a>
                         </div>
                     </div>
                     <div class="card-content">
@@ -461,6 +461,30 @@
         </div>
     </div>
 
+    <div id="addCover" class="modal">
+        <div class="modal-content">
+            <form id="coverPhoto" method="post" action="{{route('foodie.profile.coverPhoto')}}" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="file-field input-field">
+                        <label for="planPic" class="active">Picture Upload:</label>
+                        <div style="padding-top: 10px;">
+                            <div class="btn">
+                                <span>File</span>
+                                <input type="file" data-error=".error-pic" id="coverPic" name="coverPic">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" >
+                            </div>
+                            <div class="error-pic err"></div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <input type="submit" value="Submit" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 @endsection

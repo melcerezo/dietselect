@@ -14,6 +14,7 @@ use App\Plan;
 use App\Message;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
+use Intervention\Image\Facades\Image;
 use Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -118,18 +119,27 @@ class MealPlanController extends Controller
         Validator::make($request->all(), [
             'plan_name' => 'required|max:100',
             'calories' =>'required',
-            'price' =>'required',
-            'description' => 'required|max:255'
+            'description'=>'required|max:255',
+            'planPic'=>'required',
+            'price' =>'required'
         ])->validate();
 
-        $plan = new Plan();
-        $plan->chef_id = Auth::guard('chef')->user()->id;
-        $plan->plan_name = $request['plan_name'];
-        $plan->calories= (int)$request['calories'];
-        $plan->description=$request['description'];
-        $plan->price= (float)$request['price'];
-        $plan->save();
-        return redirect($this->redirectTo)->with(['status'=>'Successfully created plan: '.$plan->plan_name.'']);
+        $image = $request['planPic'];
+        if ($request->hasFile('planPic')) {
+//            dd($request['planPic']);
+            $filename = time() . '.' . $image->getClientOriginalExtension();
+            $originalName = $image->getClientOriginalName();
+            Image::make($image)->resize(500, 500)->save(public_path('img/' . $filename));
+            $plan = new Plan();
+            $plan->chef_id = Auth::guard('chef')->user()->id;
+            $plan->plan_name = $request['plan_name'];
+            $plan->calories = (int)$request['calories'];
+            $plan->description = $request['description'];
+            $plan->picture=$filename;
+            $plan->price = (float)$request['price'];
+            $plan->save();
+            return redirect($this->redirectTo)->with(['status' => 'Successfully created plan: ' . $plan->plan_name . '']);
+        }
 
         // DONE!
     }
