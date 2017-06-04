@@ -245,8 +245,10 @@ class FoodieController extends Controller
 
     public function saveProfileCoverPhoto(Request $request)
     {
+//        dd($request->file('cover'));
+//        dd($request->hasFile('cover'));
         Validator::make($request->all(), [
-            'cover' => 'required|max:100',
+            'cover' => 'required|mimes:jpeg,jpg,png,bmp',
         ])->validate();
 
         $foodie=Auth::guard('foodie')->user();
@@ -256,7 +258,8 @@ class FoodieController extends Controller
             // Change Directory HERE
             Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
             $foodie->cover=$filename;
-            $foodie->save;
+//            dd($foodie->cover);
+            $foodie->save();
 
             return back()->with(['status'=>'Successfully updated the cover photo']);
         }
