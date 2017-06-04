@@ -111,6 +111,7 @@ Route::group(['prefix' => 'chef'], function () {
 
 
     Route::get('profile', 'Chef\ChefController@profile')->name('chef.profile');
+    Route::post('profile/coverPhoto', 'Chef\ChefController@saveProfileCoverPhoto')->name('chef.profile.coverPhoto');
     Route::post('profile/save', 'Chef\ChefController@saveProfileBasic')->name('chef.profile.basic');
 
     Route::get('verify', 'Chef\Auth\VerificationController@verifyEmail')->name('chef.verify');

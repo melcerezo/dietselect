@@ -86,6 +86,28 @@ class ChefController extends Controller
         ]);
     }
 
+    public function saveProfileCoverPhoto(Request $request)
+    {
+//        dd($request->file('cover'));
+//        dd($request->hasFile('cover'));
+        Validator::make($request->all(), [
+            'cover' => 'required|mimes:jpeg,jpg,png,bmp',
+        ])->validate();
+
+        $chef=Auth::guard('chef')->user();
+        if($request->hasFile('cover')){
+            $avatar = $request->file('cover');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // Change Directory HERE
+            Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
+            $chef->cover=$filename;
+//            dd($foodie->cover);
+            $chef->save();
+
+            return back()->with(['status'=>'Successfully updated the cover photo']);
+        }
+    }
+
     public function saveProfileBasic(Request $request)
     {
         Validator::make($request->all(), [
