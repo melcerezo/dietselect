@@ -253,15 +253,20 @@ class FoodieController extends Controller
 
         $foodie=Auth::guard('foodie')->user();
         if($request->hasFile('cover')){
-            $avatar = $request->file('cover');
-            $filename = time() . '.' . $avatar->getClientOriginalExtension();
-            // Change Directory HERE
-            Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
-            $foodie->cover=$filename;
-//            dd($foodie->cover);
-            $foodie->save();
+            if($request->file('cover')->isValid()){
+                $avatar = $request->file('cover');
+                $filename = time() . '.' . $avatar->getClientOriginalExtension();
+                // Change Directory HERE
+                Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
+                $foodie->cover=$filename;
+    //            dd($foodie->cover);
+                $foodie->save();
 
-            return back()->with(['status'=>'Successfully updated the cover photo']);
+                return back()->with(['status'=>'Successfully updated the cover photo']);
+            }else{
+                return back()->with(['status'=>'File format is not valid! Please try another photo!']);
+            }
+
         }
     }
 

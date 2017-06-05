@@ -91,7 +91,7 @@ class ChefController extends Controller
 //        dd($request->file('cover'));
 //        dd($request->hasFile('cover'));
         Validator::make($request->all(), [
-            'cover' => 'required|mimes:jpeg,jpg,png,bmp',
+            'cover' => 'required'
         ])->validate();
 
         $chef=Auth::guard('chef')->user();
@@ -106,6 +106,7 @@ class ChefController extends Controller
 
             return back()->with(['status'=>'Successfully updated the cover photo']);
         }
+            return back()->with(['status'=>'File Format is not supported! Please try another photo!']);
     }
 
     public function saveProfileBasic(Request $request)
