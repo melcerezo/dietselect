@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Chat;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Message;
 use App\Order;
@@ -9,6 +10,8 @@ use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
 
 class RatingsController extends Controller
 {
@@ -17,27 +20,21 @@ class RatingsController extends Controller
     public function getRatingPage()
     {
         $foodie = Auth::guard('foodie')->user();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $orders = Order::where('foodie_id', '=', $foodie->id)->where('created_at','<',$lastSaturday)->where('is_paid','=',1)->get();
 
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->get();
-        $ordersCount= Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->get()->count();
-        $ratingsCount=0;
-        $orders='';
-        $ratings='';
-        if($ordersCount>0){
-            $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('created_at', 'desc')->first();
-            $ratingsCount = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->get()->count();
+//        dd($orders->count());
 
-        }
-        if($ratingsCount>0){
-            $ratings = Rating::where('foodie_id', '=', $foodie->id)->where('order_id','=',$orders->id)->orderBy('created_at', 'desc')->first();
-        }
 //        dd($ratings);
 //        dd($orders);
 //        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
+            'chats'=>$chats,
             'messages'=>$messages,
-            'ratingsCount'=>$ratingsCount
+            'orders'=>$orders
         ]);
     }
 

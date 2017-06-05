@@ -457,8 +457,10 @@
                         @if($ratingsCount>0)
 
                             <li class="collection-item">
+                                <a href="{{route('chef.rating')}}">
                                 <i class="material-icons">stars</i>
                                 {{$ordersRating->chef->name}}<br>
+                                </a>
                             </li>
                             @else
                             <li class="collection-item">
