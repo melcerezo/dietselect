@@ -15,20 +15,22 @@ $(document).ready(function () {
 
 
     $('.tdCell').each(function () {
-        var day=$(this).attr('data-day');
-        var mealType=$(this).attr('data-meal-type');
-        if($(this).text().trim()==""){
-            $(this).append('<a href="#chooseModal'+day+mealType+'" class="chooseModalLink modal-trigger">+Add Meal</a>');
-            $(this).append('<div id="chooseModal'+day+mealType+'" class="modal">'+
-                                '<div class="modal-content">'+
-                                   '<div class="chseMdlBtnCnt">'+
-                                        '<button data-day="'+day+'" data-meal-type="'+mealType+'" data-target="createMeal" class="createMealLink modal-trigger btn waves-effect waves-light">Create New Meal</button>'+
-                                   '</div>'+
-                                   '<div class="chseMdlBtnCnt">'+
-                                        '<button data-day="'+day+'" data-meal-type="'+mealType+'" data-target="chooseMeal" class="chooseMealLink modal-trigger btn waves-effect waves-light">Pick From Existing Meals</button>'+
-                                   '</div>'+
-                                '</div>'+
-                            '</div>');
+        if(lockPlan==0){
+            var day = $(this).attr('data-day');
+            var mealType = $(this).attr('data-meal-type');
+            if ($(this).text().trim() == "") {
+                $(this).append('<a href="#chooseModal' + day + mealType + '" class="chooseModalLink modal-trigger">+Add Meal</a>');
+                $(this).append('<div id="chooseModal' + day + mealType + '" class="modal">' +
+                    '<div class="modal-content">' +
+                    '<div class="chseMdlBtnCnt">' +
+                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="createMealLink modal-trigger btn waves-effect waves-light">Create New Meal</button>' +
+                    '</div>' +
+                    '<div class="chseMdlBtnCnt">' +
+                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="chooseMeal" class="chooseMealLink modal-trigger btn waves-effect waves-light">Pick From Existing Meals</button>' +
+                    '</div>' +
+                    '</div>' +
+                    '</div>');
+            }
         }
     });
 

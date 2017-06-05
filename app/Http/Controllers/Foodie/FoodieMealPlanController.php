@@ -13,6 +13,7 @@ use App\MealPlan;
 use App\Plan;
 use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -31,14 +32,18 @@ class FoodieMealPlanController extends Controller
     }
 
     public function viewPlans(){
+        $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+
         $foodie = Auth::guard('foodie')->user()->id;
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-        $plans = Plan::all();
+        $plans = Plan::where('created_at','>',$lastSaturday)->where('lockPlan','=',1)->get();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+
+//        dd($plans);
 
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
@@ -68,6 +73,7 @@ class FoodieMealPlanController extends Controller
 
     public function viewChefsPlans($id)
     {
+        $foodie=Auth::guard('foodie')->user->id;
         $chefPlans = Plan::where('chef_id', $id)->get();
         $chefsPlanCount = $chefPlans->count();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)

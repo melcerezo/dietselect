@@ -2,23 +2,37 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/meal_planner.css">
     <script>
-
+        lockPlan='{{$plan->lockPlan}}';
     </script>
     <script src="/js/chef/meal_planner.js"></script>
     <script src="/js/ingredientAutocomplete.js"></script>
     <script src="/js/chef/mealPlannerValidate.js"></script>
 @endsection
 
+
 @section('page_content')
     <div class="container" style="margin-top: 0.5rem;">
         <div class="row">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px;">{{$plan->plan_name}}</span>
-                        </li>
-                    </ul>
+            <nav class="light-green lighten-1">
+                <div class="nav-wrapper">
+                    <div class="left col s12 m5 l5">
+                        <ul>
+                            <li>
+                                <span style="font-size: 20px;">{{$plan->plan_name}}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="left col s12 m7 l7 hide-on-med-and-down">
+                        <ul class="right">
+                            <li>
+                                @if($plan->lockPlan==1)
+                                    <span><i class="material-icons" style="display: inline;">lock_outline</i></span>
+                                @else
+                                    <span><i class="material-icons" style="display: inline;">lock_open</i></span>
+                                @endif
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
         </div>
@@ -300,7 +314,12 @@
         </div>
         <div class="row">
             <div class="col s12 m6 left plSlMlBtn">
-                <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
+                @if($plan->lockPlan==0)
+                    <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
+                @else
+                    <button id="unlckPln" data-target="unlckPlnMdl" class="btn waves-effect waves-light modal-trigger">Unlock</button>
+                    <button id="backPln" data-target="bckPlnMdl" class="btn waves-effect waves-light modal-trigger">Back to Plans</button>
+                @endif
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">
@@ -347,17 +366,49 @@
                                 <span>Calories: </span><span>{{$mealPlan->meal->calories}}</span>
                             </li>
                         </ul>
-                        <div class="editButton">
-                            <span>
-                                <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
-                            </span>
-                            <span>
-                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlan->id}}" data-day="{{$mealPlan->day}}" data-meal-type="{{$mealPlan->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
-                            </span>
-                        </div>
+                        @if($plan->lockPlan==0)
+                            <div class="editButton">
+                                <span>
+                                    <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
+                                </span>
+                                <span>
+                                    <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlan->id}}" data-day="{{$mealPlan->day}}" data-meal-type="{{$mealPlan->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
+                                </span>
+                            </div>
+                        @endif
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
+    <div id="unlckPlnMdl" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl">Finished editing {{$plan->plan_name}}?</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+            <div class="modal-content">
+                <a href="{{route('chef.plan.unlock',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Unlock</a>
+            </div>
+    </div>
+
+    <div id="bckPlnMdl" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl">Back to Plans?</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back</a>
         </div>
     </div>
 
@@ -372,7 +423,7 @@
             </div>
         </nav>
         <div class="modal-content">
-            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Finish</a>
+            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Finish</a>
         </div>
     </div>
 

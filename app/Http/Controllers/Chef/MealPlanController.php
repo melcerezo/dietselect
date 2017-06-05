@@ -54,7 +54,7 @@ class MealPlanController extends Controller
          */
 
         $pastPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('created_at', '<=', $lastTwoWeeks)
+            ->where('created_at', '<=', $lastTwoWeeks)
             ->limit(5)
             ->get();
 
@@ -64,18 +64,18 @@ class MealPlanController extends Controller
          */
 
         $plans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('created_at', '>=', $lastTwoWeeks)
-            ->whereDate('created_at', '<=', $lastSaturday)
+            ->where('created_at', '>=', $lastTwoWeeks)
+            ->where('created_at', '<=', $lastSaturday)
             ->get();
 
         /* FUTURE PLANS
          * Get ALL the plans WHERE updated_at is GREATER THAN lastWeek
          */
         $futurePlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->whereDate('created_at', '>=', $lastSaturday)
+            ->where('created_at', '>=', $lastSaturday)
             ->get();
 
-
+//        dd($futurePlans);
         /**
          *  REMOVE THE COMMENT FOR THE LOOP && DD IF YOU
          *  WANT TO SEE THE OUTPUT
@@ -472,6 +472,21 @@ class MealPlanController extends Controller
         return redirect($this->redirectTo)->with(['status'=>'Successfully deleted the plan!']);
     }
 
+    public function finalPlan(Plan $plan)
+    {
+        $plan->lockPlan=1;
+        $plan->save();
+
+        return redirect($this->redirectTo)->with(['status'=>'Plan ready to order!']);
+    }
+    public function unlockPlan(Plan $plan)
+    {
+        $plan->lockPlan=0;
+        $plan->save();
+
+        return back()->with(['status'=>'Plan unlocked!']);
+    }
+
     public function deleteMealPlan(Request $request)
     {
         $id=$request['deleteMealPlanId'];
@@ -537,3 +552,4 @@ class MealPlanController extends Controller
         return back()->with(['status'=>'Successfully deleted the whole meal!']);
     }
 }
+

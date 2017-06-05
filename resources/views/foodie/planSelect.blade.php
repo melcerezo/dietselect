@@ -7,10 +7,16 @@
 @endsection
 @section('page_content')
     <div class="container plSlCntr">
-        <div class="row plSlTtl">
-            <div class="col s12 light-green lighten-1 white-text">
-                <span>Plans</span>
-            </div>
+        <div class="row">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px;">Plans</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
         <div class="row">
             @foreach($plans->chunk(3) as $chunk)
@@ -19,7 +25,7 @@
                         <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
                             <div class="col s12 m4">
                                 <div>
-                                   <img src="/img/diet-meal-1.jpg" class="plSlImg"/>
+                                   <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
                                 </div>
                                 <div class="plSlCnt">
                                     <div class="plSlCntTtl">

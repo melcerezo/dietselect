@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="card">
-                    @if($paidOrderCount>0)
+                    @if($paidOrder->count()>0)
                     <div class="light-green lighten-1 white-text dshMnClTtl">
                             <span class="activator dshMnTtl">
                                 Ordered Plan for Week of: April 1-7
@@ -373,7 +373,7 @@
                             <span>Nothing Ordered for this week</span>
                         </div>
                         <div class="dshNoOrd">
-                            <a href="{{route('foodie.chef.show')}}"> Take a Look at our chefs and plans!</a>
+                            <a href="{{route('foodie.plan.show')}}"> Take a Look at our available plans!</a>
                         </div>
                     @endif
                 </div>
@@ -427,7 +427,7 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
                         </li>
-                        @if($ordersCount>0)
+                        @if($orders->count()>0)
                             @foreach($orders as $order)
                                 <li class="collection-item">
                                     <a href="{{route('order.show',$order->id)}}">
@@ -454,14 +454,15 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Ratings</div>
                         </li>
-                        @if($ratingsCount>0)
-
-                            <li class="collection-item">
-                                <a href="{{route('chef.rating')}}">
-                                <i class="material-icons">stars</i>
-                                {{$ordersRating->chef->name}}<br>
-                                </a>
-                            </li>
+                        @if($ordersRating->count()>0)
+                                @foreach($ordersRating as $rating)
+                                    <li class="collection-item">
+                                        <a href="{{route('chef.rating')}}">
+                                            <i class="material-icons">stars</i>
+                                            {{$rating->chef->name}}<br>
+                                        </a>
+                                    </li>
+                                @endforeach
                             @else
                             <li class="collection-item">
                                 <span>No Pending Ratings!</span>

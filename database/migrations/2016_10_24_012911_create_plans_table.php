@@ -21,6 +21,7 @@ class CreatePlansTable extends Migration
             $table->string('picture');
             $table->double('calories');
             $table->decimal('price');
+            $table->integer('lockPlan')->unsigned();
             $table->timestamps();
         });
 
