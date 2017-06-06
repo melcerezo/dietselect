@@ -42,10 +42,10 @@
                     </div>
                 </div>
                 <div class="card">
-                    @if($paidOrder->count()>0)
+                    @if($paidOrder!=null)
                     <div class="light-green lighten-1 white-text dshMnClTtl">
                             <span class="activator dshMnTtl">
-                                Ordered Plan for Week of: April 1-7
+                                Ordered Plan for Week of: {{$thisWeek}}
                             </span>
                     </div>
                     <table class="dshMlTbl">

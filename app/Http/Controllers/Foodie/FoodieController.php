@@ -63,7 +63,6 @@ class FoodieController extends Controller
 
         //only plans for the week, not all the plans
         $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
-
         $dt = Carbon::now();
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
@@ -137,18 +136,28 @@ class FoodieController extends Controller
 //        $ordersRating = 0;
 //        $ratingsCount = 0;
 //        $ratings = 0;
+        //time
+
+        $lastTwoWeeks = Carbon::parse("previous week Saturday 15:00:00")->subDays(7)->format('Y-m-d H:i:s');
+        $thisWeek = Carbon::parse("this monday")->format('F d');
+
         $foodieAddress = '';
 //        $paidOrderCount= Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',1)->latest()->get()->count();
 //        dd($anyOrderCount);
 //        $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
         $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)
-            ->where('created_at', '>', $lastSaturday)->get();
+            ->where('created_at','>',$lastSaturday)->get();
 
 //        if ($paidOrderCount > 0){
-        $paidOrder = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)->latest()->first();
-        $mealPlans = $paidOrder->plan->mealplans;
-//            dd($mealPlans);
+        $paidOrder = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
+            ->where('created_at', '>=', $lastTwoWeeks)
+            ->where('created_at', '<=', $lastSaturday)
+            ->latest()->first();
+//            dd($paidOrder);
+        if($paidOrder!=null){
+            $mealPlans = $paidOrder->plan->mealplans;
+        }
 //        }
 //        dd($paidOrderCount);
 //      for message dropdown
@@ -184,6 +193,7 @@ class FoodieController extends Controller
                 'ordersRating' => $ordersRating,
 //            'ratings' => $ratings,
 //            'ratingsCount' => $ratingsCount,
+                'thisWeek'=>$thisWeek,
                 'addressCount' => $addressCount,
                 'foodieAddress' => $foodieAddress,
                 'suggested' => $suggested,
