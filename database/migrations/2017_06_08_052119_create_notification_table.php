@@ -18,7 +18,7 @@ class CreateNotificationTable extends Migration
             $table->integer('sender_id')->unsigned();
             $table->integer('receiver_id')->unsigned();
             $table->char('receiver_type');
-            $table->string('message');
+            $table->string('notification');
             $table->tinyInteger('is_read')->default(0);
             $table->timestamps();
         });

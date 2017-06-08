@@ -190,6 +190,12 @@ class FoodieController extends Controller
                 $foodieAddress = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
 //            dd($foodieAddress[0]);
             }
+
+//           Notifications
+
+
+
+
             return view('foodie.dashboard')->with([
 
                 'sms_unverified' => $this->smsIsUnverified(),
