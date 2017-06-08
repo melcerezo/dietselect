@@ -115,7 +115,7 @@ class LoginController extends Controller
     public function logoutAuto()
     {
         $autoMsg = "Your session has ended.";
-        return view('welcome')->with(['status' => $autoMsg]);
+        return view('welcome', ['from' => 'welcome'])->with(['status' => $autoMsg]);
     }
 
     /**

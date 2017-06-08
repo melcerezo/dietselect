@@ -67,7 +67,8 @@ class FoodieController extends Controller
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
 
-        $startOfTheWeek = $dt->startOfWeek()->format('Y-m-d');
+        $startOfTheWeek = $dt->startOfWeek()->format('F d');
+//        dd($startOfTheWeek);
         $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
 
         $plans = Plan::where('created_at', '>=', $lastSaturday)
@@ -132,15 +133,17 @@ class FoodieController extends Controller
 //        end suggested meal plans
 //        $orders = 0;
 //        $paidOrder=0;
-//        $mealPlans=0;
+        $mealPlans=0;
+        $mealPlansUpcoming=0;
 //        $ordersRating = 0;
 //        $ratingsCount = 0;
 //        $ratings = 0;
         //time
 
         $lastTwoWeeks = Carbon::parse("previous week Saturday 15:00:00")->subDays(7)->format('Y-m-d H:i:s');
-        $thisWeek = Carbon::parse("this monday")->format('F d');
-
+//        $thisWeek = Carbon::parse("last monday")->format('F d');
+        $nextWeek = Carbon::parse("this monday")->format('F d');
+//        dd($thisWeek);
         $foodieAddress = '';
 //        $paidOrderCount= Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid','=',1)->latest()->get()->count();
 //        dd($anyOrderCount);
@@ -158,7 +161,14 @@ class FoodieController extends Controller
         if($paidOrder!=null){
             $mealPlans = $paidOrder->plan->mealplans;
         }
+        $paidOrderUpcoming = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
+            ->where('created_at', '>', $lastSaturday)
+            ->latest()->first();
 //        }
+
+        if($paidOrderUpcoming!=null){
+            $mealPlansUpcoming = $paidOrderUpcoming->plan->mealplans;
+        }
 //        dd($paidOrderCount);
 //      for message dropdown
         $chefs = Chef::all();
@@ -187,17 +197,20 @@ class FoodieController extends Controller
                 'chefs' => $chefs,
                 'orders' => $orders,
                 'mealPlans' => $mealPlans,
+                'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
                 'messages' => $messages,
                 'successPayment' => 'false',
                 'ordersRating' => $ordersRating,
 //            'ratings' => $ratings,
 //            'ratingsCount' => $ratingsCount,
-                'thisWeek'=>$thisWeek,
+                'thisWeek'=>$startOfTheWeek,
+                'nextWeek'=>$nextWeek,
                 'addressCount' => $addressCount,
                 'foodieAddress' => $foodieAddress,
                 'suggested' => $suggested,
-                'paidOrder' => $paidOrder
+                'paidOrder' => $paidOrder,
+                'paidOrderUpcoming' => $paidOrderUpcoming
             ]);
 
     }
