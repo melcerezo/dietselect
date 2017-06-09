@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
+use App\Notification;
 use App\CustomizedIngredientMeal;
 use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
@@ -45,31 +46,36 @@ class FoodieMealPlanController extends Controller
 
 //        dd($plans);
 
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'chefs' => $chefs,
             'foodie' => Auth::guard('foodie')->user(),
             'messages' => $messages,
             'plans' => $plans,
-            'chats' => $chats
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
         ]);
     }
 
-    public function viewChefs()
-    {
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-            ->where('receiver_type', '=', 'f')
-            ->where('is_read','=',0)
-            ->get();
-        $chefs = Chef::all();
-
-        return view('foodie.chefselect')->with([
-            'sms_unverified' => $this->smsIsUnverified(),
-            'foodie' => Auth::guard('foodie')->user(),
-            'chefs' => $chefs,
-            'messages' => $messages
-        ]);
-    }
+//    public function viewChefs()
+//    {
+//        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+//            ->where('receiver_type', '=', 'f')
+//            ->where('is_read','=',0)
+//            ->get();
+//        $chefs = Chef::all();
+//
+//        return view('foodie.chefselect')->with([
+//            'sms_unverified' => $this->smsIsUnverified(),
+//            'foodie' => Auth::guard('foodie')->user(),
+//            'chefs' => $chefs,
+//            'messages' => $messages
+//        ]);
+//    }
 
     public function viewChefsPlans($id)
     {
@@ -81,13 +87,17 @@ class FoodieMealPlanController extends Controller
             ->where('is_read','=',0)
             ->get();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.planSelect')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'plans' => $chefPlans,
             'planCount' => $chefsPlanCount,
             'messages' => $messages,
-            'chats' => $chats
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
         ]);
     }
 
@@ -122,10 +132,14 @@ class FoodieMealPlanController extends Controller
             ->get();
         $chefs = Chef::all();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.mealView')->with([
             'foodie'=> Auth::guard('foodie')->user(),
             'messages' => $messages,
             'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'chefs' => $chefs,
             'mealPlans' => $mealPlans,
             'plan' => $plan,
@@ -325,6 +339,8 @@ class FoodieMealPlanController extends Controller
 //        $customMeals = MealPlan::where('customized_meal_id', '=', $customize->meal_id)->get();
 //        dd($customMeals);
 
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
 
         return view('foodie.mealCustomize', compact('plan', 'customize'))->with([
@@ -336,6 +352,8 @@ class FoodieMealPlanController extends Controller
             'ingredientsMeal' => $ingredientMealData,
             'ingredientCount' => $ingredientCount,
             'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'messages' => $messages,
             'customId' => $customId,
             'chefs' => $chefs

@@ -8,6 +8,7 @@ use App\CustomizedMeal;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Chef;
+use App\Notification;
 use App\Order;
 use App\Rating;
 use App\Message;
@@ -193,6 +194,8 @@ class FoodieController extends Controller
 
 //           Notifications
 
+            $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+            $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
 
 
@@ -206,10 +209,10 @@ class FoodieController extends Controller
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
                 'messages' => $messages,
+                'notifications'=> $notifications,
+                'unreadNotifications'=> $unreadNotifications,
                 'successPayment' => 'false',
                 'ordersRating' => $ordersRating,
-//            'ratings' => $ratings,
-//            'ratingsCount' => $ratingsCount,
                 'thisWeek'=>$startOfTheWeek,
                 'nextWeek'=>$nextWeek,
                 'addressCount' => $addressCount,
@@ -247,6 +250,11 @@ class FoodieController extends Controller
         }
         $allergyJson .= ']';
 //        dd($allergyJson);
+
+        //           Notifications
+
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.profile')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -255,6 +263,8 @@ class FoodieController extends Controller
             'allergyJson' => $allergyJson,
             'preference' => $preference,
             'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'messages' => $messages,
             'chefs' => $chefs
         ]);
@@ -618,4 +628,17 @@ class FoodieController extends Controller
         dd($suggested);
         die();
     }
+
+    public function clearNotif()
+    {
+        $foodie = Auth::guard('foodie')->user()->id;
+        $notification = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->get();
+        foreach($notification as $note){
+            $note->is_read=1;
+            $note->save();
+        }
+
+        return "1";
+    }
 }
+

@@ -59,7 +59,7 @@
                 <div class="card-panel">
                     <p>No ratings yet!</p>
                 </div>
-            </div>x
+            </div>
         @endif
     </div>
 @endsection

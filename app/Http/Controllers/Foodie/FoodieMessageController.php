@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Foodie;
 
 
 use App\Chat;
+use App\Notification;
 use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -36,11 +37,15 @@ class FoodieMessageController extends Controller
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.messaging.foodieMessages')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'chefs'=>$chefs,
             'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'messages' => $messages,
             'chatId' => ''
         ]);
@@ -64,12 +69,16 @@ class FoodieMessageController extends Controller
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.messaging.foodieMessages')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'chefs'=>$chefs,
             'chats' => $chats,
             'messages'=>$messages,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'chatId' => $id
         ]);
 

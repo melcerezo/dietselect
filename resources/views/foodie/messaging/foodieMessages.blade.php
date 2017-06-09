@@ -144,9 +144,6 @@
                                         <div class="msgCnt">
                                             <p>{{$message->message}}</p>
                                             <div>
-                                                @unless($message->deposit_id=='')
-                                                    {{$message->deposit_id}}
-                                                @endunless
                                                 @unless($message->receipt_name=='')
                                                 <div>
                                                     <img src="/img/{{$message->receipt_name}}" alt="User Image">

@@ -62,7 +62,7 @@
                             </a>
                         </li>
                         <li class="hide-on-med-and-down">
-                            <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="true">
+                            <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">email</i>
                                 <span class="nvItTx">
@@ -75,14 +75,16 @@
                             </a>
                         </li>
                         <li class="hide-on-med-and-down">
-                            <a>
-                            <span class="valign-wrapper">
-                                <i class="nvIc material-icons">announcement</i>
-                                <span class="nvItTx">
-                                    Notifications
-                                    {{--<span class="new badge red">2</span>--}}
+                            <a id="notifLink" class="dropdown-button" href="#" data-activates='foodieNotificationDropdown' data-beloworigin="true" data-constrainwidth="false">
+                                <span class="valign-wrapper">
+                                    <i class="nvIc material-icons">announcement</i>
+                                    <span class="nvItTx">
+                                        Notifications
+                                        @if($unreadNotifications>0)
+                                            <span id="notifBadge"><span class="new badge red">{{$unreadNotifications}}</span></span>
+                                        @endif
+                                    </span>
                                 </span>
-                            </span>
                             </a>
                         </li>
                         <li>
@@ -96,8 +98,41 @@
                     </ul>
                 </div>
             </nav>
+
+            {{-- Foodie Notification Dropdown --}}
+            <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+                @if($notifications->count()>0)
+                    @foreach($notifications->take(5) as $notification)
+                        <li class="collection-item">
+                            @if($notification->notification_type==1)
+                                <a class="msgLink" href="{{route('foodie.order.view')}}">
+                                    <div class="row msCntr">
+                                        <div class="msMsCnt col s12">
+                                            <span>{{$notification->notification}}</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endif
+                            @if($notification->notification_type==2)
+                                <a class="msgLink" href="{{route('foodie.order.view')}}">
+                                <div class="row msCntr">
+                                    <div class="msMsCnt col s12">
+                                        <span class="truncate">{{$notification->notification}}</span>
+                                    </div>
+                                </div>
+                                </a>
+                            @endif
+                        </li>
+                    @endforeach
+                @else
+                    <li class="collection-item">
+                        <span>No notifications</span>
+                    </li>
+                @endif
+            </ul>
+
             {{-- Foodie Message Dropdown --}}
-            <ul id="foodieMessageDropdown" class="dropdown-content collection">
+            <ul id="foodieMessageDropdown" class="msgCollct dropdown-content collection">
                 @if($chats->count()>0)
                 @foreach($chats->take(5) as $chat)
                     @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
@@ -106,12 +141,12 @@
                                     @if($chef->id == $chat->chef_id)
                                         <a class="msgLink" href="{{route('foodie.message.message', $chat->id)}}">
                                             <div class="row msCntr">
-                                                <div class="col s4 m4 l4">
+                                                <div class="col s2">
                                                     <img class="msImg circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
                                                  </div>
-                                                <div class="msMsCnt col s8 m8 l8">
-                                                    <span>{{$chef->name}}</span>
-                                                    <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                                <div class="msMsCnt col s10">
+                                                    <div><span>{{$chef->name}}</span></div>
+                                                    <span>{{$chat->message()->latest()->first()->subject}}</span>
                                                 </div>
                                             </div>
                                         </a>

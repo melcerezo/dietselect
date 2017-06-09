@@ -15,6 +15,7 @@ class CreateDepositsTable extends Migration
     {
         Schema::create('deposits', function (Blueprint $table) {
             $table->increments('id');
+            $table->bigInteger('reference_number');
             $table->string('receipt_name');
             $table->string('previous_file_name');
             $table->integer('foodie_id')->unsigned();

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use App\Notification;
 use App\Http\Controllers\Controller;
 use App\Deposit;
 use App\Order;
@@ -36,6 +37,7 @@ class DepositController extends Controller
         ]);
 
         $image = $request['image'];
+        $receiptNumber=$request['receipt_number'];
         if ($request->hasFile('image')) {
 
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -43,6 +45,7 @@ class DepositController extends Controller
             Image::make($image)->resize(500, 500)->save(public_path('img/' . $filename));
 
             $deposit = new Deposit();
+            $deposit->reference_number = $receiptNumber;
             $deposit->receipt_name = $filename;
             $deposit->previous_file_name = $originalName;
             $deposit->foodie_id = Auth::guard('foodie')->user()->id;
@@ -62,8 +65,26 @@ class DepositController extends Controller
             $notification->receipt_name = $filename;
             $notification->deposit_id = $deposit->id;
             $notification->subject = 'Bank Deposit Payment';
-            $notification->message = 'Hello! I just paid it through bank deposit.';
+            $notification->message = 'Hello! I just paid it through bank deposit. Receipt Number: '.$receiptNumber;
             $notification->save();
+
+            $foodnotif= new Notification();
+            $foodnotif->sender_id=0;
+            $foodnotif->receiver_id=$user->id;
+            $foodnotif->receiver_type='f';
+            $foodnotif->notification='You have just paid your order for: '.$order->plan->plan_name. '.';
+            $foodnotif->notification_type=2;
+//        dd($foodnotif);
+            $foodnotif->save();
+
+            $chefnotif= new Notification();
+            $chefnotif->sender_id=0;
+            $chefnotif->receiver_id=$order->chef->id;
+            $chefnotif->receiver_type='c';
+            $chefnotif->notification=$user->first_name.' '.$user->last_name.' has paid for their order of: '.$order->plan->plan_name. '.';
+            $chefnotif->notification_type=2;
+//        dd(chefdnotif);
+            $chefnotif->save();
 
             $order->is_paid = 1;
             $order->save();

@@ -18,6 +18,20 @@ $(document).ready(function() {
         $('form#logout').submit();
     });
 
+    function notifAjax(){
+        return $.ajax({
+            url: '/foodie/notifClear'
+        });
+    }
+
+    // notifBadge
+    $(document).on('click','#notifLink', function(){
+        var notif = notifAjax();
+        notif.done(function(){
+            $('#notifBadge').empty();
+        });
+    });
+
 
     //Increment the idle time counter every minute.
     var idleInterval = setInterval(timerIncrement, 60000); // 1 minute

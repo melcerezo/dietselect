@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
+use App\Notification;
 use App\Chef;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -16,6 +17,8 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Mail as mailer;
+use Mockery\Matcher\Not;
+use Carbon\Carbon;
 
 class FoodieOrderPlanController extends Controller
 {
@@ -34,35 +37,51 @@ class FoodieOrderPlanController extends Controller
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $foodie = Auth::guard('foodie')->user()->id;
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chefs = Chef::all();
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
         return view('foodie.orders', compact('plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'messages'=>$messages,
-            'chats' => $chats
+            'chats' => $chats,
+            'chefs'=>$chefs,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
         ]);
     }
 
     public function getAllOrdersView(){
 
+
         $foodie = Auth::guard('foodie')->user();
         $orders='';
         $ordersCount=Order::where('foodie_id','=',$foodie->id)->get()->count();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
-
+        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $chefs= Chef::all();
         if($ordersCount>0){
             $orders=Order::where('foodie_id','=',$foodie->id)->get();
+//            dd($orders);
         }
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+
+        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+//        dd($unreadNotifications);
+
 
         return view('foodie.viewAllOrders')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'orders'=>$orders,
             'ordersCount'=>$ordersCount,
+            'chefs'=>$chefs,
             'chats' => $chats,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
         ]);
     }
 
@@ -103,11 +122,17 @@ class FoodieOrderPlanController extends Controller
         }
 //        dd($ingredientMealData);
 
+        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+        $chefs=Chef::all();
         return view('foodie.viewSingleOrder')->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'chats'=>$chats,
+            'chefs'=>$chefs,
             'messages'=>$messages,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
             'mealPlans'=>$orderMealPlans,
             'mealPlansCount'=>$orderMealPlansCount,
             'customize'=>$orderCustomizedMeals,
@@ -118,15 +143,14 @@ class FoodieOrderPlanController extends Controller
 
     public function custStore(Plan $plan,$customId,mailer\Mailer $mailer){
         $foodie = Auth::guard('foodie')->user();
-
+        $thisSaturday=Carbon::parse('this saturday')->format('F d');
         $customList=json_decode($customId);
-
         $order = new Order();
         $order->chef_id = $plan->chef_id;
         $order->foodie_id = $foodie->id;
         $order->order_type = 'c';
         $plan->orders()->save($order);
-
+        $chefs=Chef::all();
         $customize=[];
 
         for($i=0;$i<count($customList);$i++) {
@@ -135,6 +159,27 @@ class FoodieOrderPlanController extends Controller
             $customize[$i]->save();
         }
 
+        //Notification
+
+        $foodnotif=new Notification();
+        $foodnotif->sender_id=0;
+        $foodnotif->receiver_id=$foodie->id;
+        $foodnotif->receiver_type='f';
+        $foodnotif->notification='You have just ordered the plan: '.$plan->plan_name. ' from ';
+        $foodnotif->notification.=$plan->chef->name;
+        $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
+        $foodnotif->notification_type=1;
+//        dd($foodnotif);
+        $foodnotif->save();
+
+        $chefnotif=new Notification();
+        $chefnotif->sender_id=0;
+        $chefnotif->receiver_id=$plan->chef_id;
+        $chefnotif->receiver_type='c';
+        $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has just ordered the plan: '.$plan->plan_name.'.';
+        $chefnotif->notification_type=1;
+        dd($chefnotif);
+        $chefnotif->save();
         // Message Template
         $planName = $plan->plan_name;
         $chefName = $plan->chef->name;
@@ -201,11 +246,33 @@ class FoodieOrderPlanController extends Controller
 
     public function store(Plan $plan, mailer\Mailer $mailer){
         $foodie = Auth::guard('foodie')->user();
+        $chefs=Chef::all();
+        $thisSaturday=Carbon::parse('this saturday')->format('F d');
         $order = new Order();
         $order->chef_id = $plan->chef_id;
         $order->foodie_id = $foodie->id;
         $plan->orders()->save($order);
 
+
+        $foodnotif=new Notification();
+        $foodnotif->sender_id=0;
+        $foodnotif->receiver_id=$foodie->id;
+        $foodnotif->receiver_type='f';
+        $foodnotif->notification='You have a pending order. ';
+        $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
+        $foodnotif->notification_type=1;
+//        dd($foodnotif);
+        $foodnotif->save();
+
+
+        $chefnotif=new Notification();
+        $chefnotif->sender_id=0;
+        $chefnotif->receiver_id=$plan->chef_id;
+        $chefnotif->receiver_type='c';
+        $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has just ordered the plan: '.$plan->plan_name.'.';
+        $chefnotif->notification_type=1;
+//        dd($chefnotif);
+        $chefnotif->save();
 
         // Message Template
         $planName = $plan->plan_name;
@@ -225,6 +292,8 @@ class FoodieOrderPlanController extends Controller
                 $planName,
                 $foodieName,
                 $price));
+
+
 
 
         $message = $foodieName.' has ordered '.$planName.'.';
@@ -278,12 +347,16 @@ class FoodieOrderPlanController extends Controller
         $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
         $chefs=Chef::all();
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'messages'=>$messages,
             'chefs'=>$chefs,
-            'chats' => $chats
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
         ]);
     }
     public function showAll(){
