@@ -166,7 +166,7 @@
                         </div>
                     </div>
                     <div class="row tooltipped" data-position="bottom" data-delay="50" data-tooltip="Keep your account secured! Set a password that can't be easily guessed. Try using a combination of letters, numbers, and symbols.">
-                        <div class="input-field col s12">
+                        <div class="input-field col s9">
                             <input id="n-reg-pass" name="password" type="password" data-error=".error-msg-pass"/>
                             <label for="n-reg-pass">Password</label>
                             <div class="error-msg-pass">
@@ -174,6 +174,9 @@
                                     {{ $errors->first('password') }}
                                 @endif
                             </div>
+                        </div>
+                        <div class="col s3 valign-wrapper">
+                            <span id="result" style="margin-top:43px;"></span>
                         </div>
                     </div>
                     <div class="row">

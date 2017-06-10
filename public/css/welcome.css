@@ -176,6 +176,24 @@ button.email:focus {
     color: #ffefd3;
 }
 
+/*Password Strength Classes*/
+
+.short{
+    color:#FF0000;
+}
+
+.weak{
+    color:#E66C2C;
+}
+
+.good{
+    color:#2D98F3;
+}
+
+.strong{
+    color:#006400;
+}
+
 /* ==========================================================================
    Media Queries
    ========================================================================== */
