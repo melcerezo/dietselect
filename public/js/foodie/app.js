@@ -31,6 +31,9 @@ $(document).ready(function() {
                         '<div class="row msCntr">'+
                             '<div class="msMsCnt col s12">'+
                                 '<span>'+notifs[index].notification+'</span>'+
+                                '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                                    '<span>'+notifs[index].created_at+'</span>' +
+        '                       </div>'+
                             '</div>'+
                         '</div>'+
                     '</a>'+

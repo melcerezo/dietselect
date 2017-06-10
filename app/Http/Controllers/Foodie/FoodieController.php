@@ -74,7 +74,7 @@ class FoodieController extends Controller
 
         $plans = Plan::where('created_at', '>=', $lastSaturday)
             ->get();
-        dd($plans[0]->created_at);
+//        dd($plans[0]->created_at);
         $suggested = array();
         $foodiePreferenceCount = FoodiePreference::where('foodie_id', '=', $foodie)->count();
         $foodiePreference = '';
@@ -640,9 +640,9 @@ class FoodieController extends Controller
         $notifJson = '[';
         foreach($notification as $note){
             if(++$i<$notification->count()){
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'"},';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
             }else{
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'"} ';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
             }
         }
         $notifJson .= ']';

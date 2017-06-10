@@ -100,6 +100,11 @@
 
             {{-- Foodie Notification Dropdown --}}
             <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+                @unless($notifications->count()>0)
+                    <li class="collection-item">
+                        <span>No notifications</span>
+                    </li>
+                @endunless
                 {{--@if($notifications->count()>0)--}}
                     {{--@foreach($notifications->take(5) as $notification)--}}
                         {{--<li class="collection-item">--}}
@@ -145,7 +150,10 @@
                                                  </div>
                                                 <div class="msMsCnt col s10">
                                                     <div><span>{{$chef->name}}</span></div>
-                                                    <span>{{$chat->message()->latest()->first()->subject}}</span>
+                                                    <div><span>{{$chat->message()->latest()->first()->subject}}</span></div>
+                                                    <div style="margin-top: 5px; color:cornflowerblue;">
+                                                        <span>{{$chat->message()->latest()->first()->created_at->format('d F, H:ia')}}</span>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </a>
@@ -175,7 +183,7 @@
                 @else
                     <li class="collection-item">
                         <a href="{{route('foodie.message.index')}}">
-                        <span>No Messages</span>
+                            <span>No Messages</span>
                         </a>
                     </li>
                 @endif
