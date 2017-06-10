@@ -67,7 +67,7 @@ class FoodieController extends Controller
         $dt = Carbon::now();
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
-
+//        dd($lastSaturday);
         $startOfTheWeek = $dt->startOfWeek()->format('F d');
 //        dd($startOfTheWeek);
         $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');

@@ -37,7 +37,8 @@
         <div class="row">
             <div class="col s12 m6">
                 <div><button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button></div>
-                <div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Pay online</button></div>
+                <div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>
+                <div style="margin-top: 20px;"><button data-target="gcashPay" class="modal-trigger btn">G-Cash</button></div>
             </div>
             <div class="col s12 m6">
                 <ul class="collection">

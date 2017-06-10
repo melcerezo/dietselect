@@ -18,7 +18,9 @@ $(document).ready(function () {
     $('form#bankPayForm').validate({
         rules: {
             receipt_number: {
-                required: true
+                required: true,
+                minlength:16,
+                maxlength: 16
             },
             datePay:{
                 required:true
@@ -29,7 +31,9 @@ $(document).ready(function () {
         },
         messages: {
             receipt_number:{
-                required: 'Please enter receipt number!'
+                required: 'Please enter receipt number!',
+                minlength: 'Reference Number format is incorrect!',
+                maxlength: 'Reference Number is too big!'
             },
             datePay:{
                 required: 'Please enter the date you paid!'
