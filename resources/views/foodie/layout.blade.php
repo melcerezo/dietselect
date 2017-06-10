@@ -4,6 +4,7 @@
     <script>
         {{--var profileRoute="{{route('foodie.profile')}}";--}}
         {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
+        orderAllRoute ='{{route('foodie.order.view')}}';
         logoutRoute='{{route('foodie.logoutAuto')}}';
     </script>
     <script src="/js/foodie/app.js" defer></script>
@@ -80,9 +81,7 @@
                                     <i class="nvIc material-icons">announcement</i>
                                     <span class="nvItTx">
                                         Notifications
-                                        @if($unreadNotifications>0)
-                                            <span id="notifBadge"><span class="new badge red">{{$unreadNotifications}}</span></span>
-                                        @endif
+                                        <span id="notifBadge"></span>
                                     </span>
                                 </span>
                             </a>
@@ -101,34 +100,34 @@
 
             {{-- Foodie Notification Dropdown --}}
             <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
-                @if($notifications->count()>0)
-                    @foreach($notifications->take(5) as $notification)
-                        <li class="collection-item">
-                            @if($notification->notification_type==1)
-                                <a class="msgLink" href="{{route('foodie.order.view')}}">
-                                    <div class="row msCntr">
-                                        <div class="msMsCnt col s12">
-                                            <span>{{$notification->notification}}</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            @endif
-                            @if($notification->notification_type==2)
-                                <a class="msgLink" href="{{route('foodie.order.view')}}">
-                                <div class="row msCntr">
-                                    <div class="msMsCnt col s12">
-                                        <span class="truncate">{{$notification->notification}}</span>
-                                    </div>
-                                </div>
-                                </a>
-                            @endif
-                        </li>
-                    @endforeach
-                @else
-                    <li class="collection-item">
-                        <span>No notifications</span>
-                    </li>
-                @endif
+                {{--@if($notifications->count()>0)--}}
+                    {{--@foreach($notifications->take(5) as $notification)--}}
+                        {{--<li class="collection-item">--}}
+                            {{--@if($notification->notification_type==1)--}}
+                                {{--<a class="msgLink" href="{{route('foodie.order.view')}}">--}}
+                                    {{--<div class="row msCntr">--}}
+                                        {{--<div class="msMsCnt col s12">--}}
+                                            {{--<span>{{$notification->notification}}</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--@endif--}}
+                            {{--@if($notification->notification_type==2)--}}
+                                {{--<a class="msgLink" href="{{route('foodie.order.view')}}">--}}
+                                {{--<div class="row msCntr">--}}
+                                    {{--<div class="msMsCnt col s12">--}}
+                                        {{--<span class="truncate">{{$notification->notification}}</span>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--</a>--}}
+                            {{--@endif--}}
+                        {{--</li>--}}
+                    {{--@endforeach--}}
+                {{--@else--}}
+                    {{--<li class="collection-item">--}}
+                        {{--<span>No notifications</span>--}}
+                    {{--</li>--}}
+                {{--@endif--}}
             </ul>
 
             {{-- Foodie Message Dropdown --}}

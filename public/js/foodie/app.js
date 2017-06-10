@@ -18,19 +18,78 @@ $(document).ready(function() {
         $('form#logout').submit();
     });
 
-    function notifAjax(){
-        return $.ajax({
-            url: '/foodie/notifClear'
+
+    var notifications = notifAjax();
+    // '+orderAllRoute+'
+    notifications.done(function (response) {
+        var notifUnreadCount = 0;
+        var notifs=response;
+        $.each(notifs,function(index){
+            var notifCntnt=
+                '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="#" data-id="'+notifs[index].id+'">'+
+                        '<div class="row msCntr">'+
+                            '<div class="msMsCnt col s12">'+
+                                '<span>'+notifs[index].notification+'</span>'+
+                            '</div>'+
+                        '</div>'+
+                    '</a>'+
+                '</li>';
+
+            $('#foodieNotificationDropdown').append(notifCntnt);
+            if(notifs[index].is_read==0){
+                notifUnreadCount+=1;
+                $('#notif'+notifs[index].id).addClass('activeNotif');
+            }
         });
-    }
+        // console.log(notifUnreadCount);
+        var notifBdge= '<span class="new badge red">'+notifUnreadCount+'</span>';
+        if(notifUnreadCount>0){
+            $('#notifBadge').append(notifBdge);
+        }
+
+        $('.notifLink').on('click', function(){
+            var notifId=$(this).attr("data-id");
+            console.log(notifId);
+            var notifClear = clearNotif(notifId);
+
+            notifClear.done(function(){
+                var notifCount = 0;
+                $('#notif'+notifId).removeClass('activeNotif');
+                $('#notifBadge').remove();
+                $.each(notifs,function(index) {
+                    if(notifs[index].is_read==0){
+                        notifCount+=1;
+                    }
+                });
+                var notifBdge= '<span class="new badge red">'+notifCount+'</span>';
+                if(notifCount>0){
+                    $('#notifBadge').append(notifBdge);
+                }
+            });
+            // notif.done(function(response){
+            //
+            //
+            //     $('#notifBadge').empty();
+            //
+            // });
+        });
+
+    });
+
+
+    // <li class="collection-item">
+    //     <a class="msgLink" href="{{route('foodie.order.view')}}">
+    //     <div class="row msCntr">
+    //     <div class="msMsCnt col s12">
+    //     <span>{{$notification->notification}}</span>
+    // </div>
+    // </div>
+    // </a>
+
 
     // notifBadge
-    $(document).on('click','#notifLink', function(){
-        var notif = notifAjax();
-        notif.done(function(){
-            $('#notifBadge').empty();
-        });
-    });
+
 
 
     //Increment the idle time counter every minute.
@@ -38,7 +97,7 @@ $(document).ready(function() {
 
     //Zero the idle timer on mouse movement.
     $(this).mousemove(function (e) {
-        console.log(idleTime);
+        // console.log(idleTime);
         idleTime = 0;
     });
     $(this).keypress(function (e) {
@@ -61,4 +120,18 @@ $(document).ready(function() {
 });
 
 
+function notifAjax(){
+    return $.ajax({
+        url: '/foodie/notifGet',
+        dataType:'json'
+    });
+}
 
+function clearNotif(id){
+    return $.ajax({
+        url: '/foodie/notifClear',
+        type:'GET',
+        data: {id:id}
+    });
+
+}

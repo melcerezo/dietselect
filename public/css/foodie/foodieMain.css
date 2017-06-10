@@ -46,6 +46,9 @@ ul.notifCol,ul.msgCollct{
     max-width: 250px !important;
     white-space: normal !important;
 }
+.activeNotif{
+    background-color: #00b0ff !important;
+}
 /*.dropdown-content:after{*/
     /*content: "";*/
     /*position: absolute;*/

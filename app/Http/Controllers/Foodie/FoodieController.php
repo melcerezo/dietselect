@@ -74,6 +74,7 @@ class FoodieController extends Controller
 
         $plans = Plan::where('created_at', '>=', $lastSaturday)
             ->get();
+        dd($plans[0]->created_at);
         $suggested = array();
         $foodiePreferenceCount = FoodiePreference::where('foodie_id', '=', $foodie)->count();
         $foodiePreference = '';
@@ -166,7 +167,7 @@ class FoodieController extends Controller
             ->where('created_at', '>', $lastSaturday)
             ->latest()->first();
 //        }
-
+//        dd($lastSaturday);
         if($paidOrderUpcoming!=null){
             $mealPlansUpcoming = $paidOrderUpcoming->plan->mealplans;
         }
@@ -181,7 +182,9 @@ class FoodieController extends Controller
 
             $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->where('is_paid', '=', 1)
-                ->orderBy('created_at', 'desc')->get();
+                ->where('created_at','<',$lastSaturday)
+                ->latest($column= 'created_at')
+                ->get();
 
 //        if ($ratingsCount > 0) {
 //            $ratings = Rating::where('order_id', '=', $ordersRating->id)->where('is_rated', '=', 0)->get();
@@ -629,16 +632,32 @@ class FoodieController extends Controller
         die();
     }
 
+    public function getNotif()
+    {
+        $i=0;
+        $foodie = Auth::guard('foodie')->user()->id;
+        $notification = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        $notifJson = '[';
+        foreach($notification as $note){
+            if(++$i<$notification->count()){
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'"},';
+            }else{
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'"} ';
+            }
+        }
+        $notifJson .= ']';
+
+        return $notifJson;
+    }
+
     public function clearNotif()
     {
-        $foodie = Auth::guard('foodie')->user()->id;
-        $notification = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->get();
-        foreach($notification as $note){
-            $note->is_read=1;
-            $note->save();
-        }
+        $clearId = $_GET['id'];
+        $clearNotif= Notification::where('id','=',$clearId)->first();
+        $clearNotif->is_read=1;
+        $clearNotif->save();
 
-        return "1";
+        return null;
     }
 }
 

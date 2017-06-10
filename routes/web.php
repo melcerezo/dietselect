@@ -23,7 +23,8 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
 
-    Route::get('notifClear', 'Foodie\FoodieController@clearNotif')->name('foodie.notifClear');
+    Route::get('notifClear','Foodie\FoodieController@clearNotif')->name('foodie.clearNotif');
+    Route::get('notifGet', 'Foodie\FoodieController@getNotif')->name('foodie.getNotif');
     Route::get('login', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
     Route::post('login', 'Foodie\Auth\LoginController@login')->name('foodie.login');
     Route::post('logout', 'Foodie\Auth\LoginController@logout')->name('foodie.logout');
