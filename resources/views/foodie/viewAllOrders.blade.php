@@ -53,11 +53,11 @@
                                             </tr>
                                             </tbody>
                                         </table>
-                                        @if($order->order_type=='c')
-                                            <div>
-                                                <button onclick="window.location.href='{{route('foodie.order.single',['order'=>$order->id])}}'" class="btn">See Customization</button>
-                                            </div>
-                                        @endif
+                                        {{--@if($order->order_type=='c')--}}
+                                            {{--<div>--}}
+                                                {{--<button onclick="window.location.href='{{route('foodie.cust.single',['order'=>$order->id])}}'" class="btn">See Customization</button>--}}
+                                            {{--</div>--}}
+                                        {{--@endif--}}
                                     </div>
                                 </div>
                             </div>

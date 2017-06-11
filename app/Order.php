@@ -21,6 +21,10 @@ class Order extends Model
     {
         return $this->hasOne(Deposit::class);
     }
+    public function gcash()
+    {
+        return $this->hasOne(Gcash::class);
+    }
 
     public function rating()
     {

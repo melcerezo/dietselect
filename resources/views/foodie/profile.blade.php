@@ -516,16 +516,17 @@
                 <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
                 <div class="row">
                     <div class="input-field col l4 s12">
-                        <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef"/>
+                        <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
                         <label for="pref-beef">Beef-based</label><br/>
-                        <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork"/>
+                        <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork" data-error=".error-pref"/>
                         <label for="pref-pork">Pork-based</label><br/>
-                        <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick"/>
+                        <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick" data-error=".error-pref"/>
                         <label for="pref-chick">Chicken-based</label><br/>
-                        <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea"/>
+                        <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea" data-error=".error-pref"/>
                         <label for="pref-sea">Seafood-based</label><br/>
                     </div>
                 </div>
+                <div class="error-pref err"></div>
             </div>
             <div class="modal-footer">
                 <input type="submit" class="hidden"/>

@@ -86,6 +86,29 @@ $(document).ready(function() {
         }
     });
 
+
+    $('form#food-preferences').validate({
+        rules: {
+            foodPref: {
+                required: true
+            }
+        },
+        messages: {
+            foodPref: {
+                required: "Please pick a preference."
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
     var checkboxValues = [];
 

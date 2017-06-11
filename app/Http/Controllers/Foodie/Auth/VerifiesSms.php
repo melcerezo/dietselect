@@ -91,8 +91,9 @@ trait   VerifiesSms
     public function sendSms($code)
     {
         //code for sms sending ges here
+        $mobile='0'.$this->mobile_number();
         $url = 'https://www.itexmo.com/php_api/api.php';
-        $itexmo = array('1' => $this->mobile_number(), '2' => $code, '3' => 'ST-MARKK578810_4MXKV');
+        $itexmo = array('1' => $mobile, '2' => $code, '3' => 'ST-MARKK578810_4MXKV');
         $param = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",

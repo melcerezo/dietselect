@@ -135,4 +135,32 @@ class ChefController extends Controller
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
     }
+
+    public function getNotif()
+    {
+        $i=0;
+        $chef = Auth::guard('chef')->user()->id;
+        $notification = Notification::where('receiver_id','=', $chef)->where('receiver_type','=','c')->latest($column='created_at')->take(5)->get();
+        $notifJson = '[';
+        foreach($notification as $note){
+            if(++$i<$notification->count()){
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
+            }else{
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
+            }
+        }
+        $notifJson .= ']';
+
+        return $notifJson;
+    }
+
+    public function clearNotif()
+    {
+        $clearId = $_GET['id'];
+        $clearNotif= Notification::where('id','=',$clearId)->first();
+        $clearNotif->is_read=1;
+        $clearNotif->save();
+
+        return null;
+    }
 }

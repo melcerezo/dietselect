@@ -196,12 +196,12 @@
                         <span class="hide-on-med-and-down">Profile</span>
                     </a>
                 </li>
-                <li class="collection-item">
-                    <a href="#!" class="nvItLnk">
+                {{--<li class="collection-item">--}}
+                    {{--<a href="#!" class="nvItLnk">--}}
                         {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}
-                        <span class="hide-on-med-and-down">Settings</span>
-                    </a>
-                </li>
+                        {{--<span class="hide-on-med-and-down">Settings</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
                 <li class="divider"></li>
                 <li class="collection-item">
                     <form id="logout" method="post" action="{{ route('foodie.logout') }}">

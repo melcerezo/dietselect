@@ -524,6 +524,11 @@ class FoodieController extends Controller
 
     public function saveProfilePreferences(Request $request)
     {
+
+        Validator::make($request->all(), [
+            'foodPref' => 'required',
+        ])->validate();
+
         $ingredient = $request['foodPref'];
 
         if (!FoodiePreference::where([

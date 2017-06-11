@@ -87,6 +87,7 @@ Route::group(['prefix' => 'foodie'], function () {
 
     // Bank Deposit
     Route::post('bank/deposit/order/{order}', 'DepositController@deposit')->name('deposit.order');
+    Route::post('gcash/pay/{order}', 'DepositController@gcash')->name('deposit.gcash');
 
     // Rating
     Route::get('foodie/rating', 'RatingsController@getRatingPage')->name('chef.rating');

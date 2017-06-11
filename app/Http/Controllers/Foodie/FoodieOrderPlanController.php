@@ -61,8 +61,7 @@ class FoodieOrderPlanController extends Controller
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
         $chefs= Chef::all();
         if($ordersCount>0){
-            $orders=Order::where('foodie_id','=',$foodie->id)->get();
-//            dd($orders);
+            $orders=Order::where('foodie_id','=',$foodie->id)->latest($column = 'created_at')->get();
         }
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
@@ -373,14 +372,10 @@ class FoodieOrderPlanController extends Controller
             'unreadNotifications'=>$unreadNotifications
         ]);
     }
-    public function showAll(){
-        $foodie = Auth::guard('foodie')->user();
-        $order = Order::where('foodie_id','=',$foodie->id)->get();
 
-        return view()->with([
 
-        ]);
-
+    public function showCustSingle(Order $order)
+    {
 
     }
 }

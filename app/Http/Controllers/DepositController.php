@@ -153,4 +153,9 @@ class DepositController extends Controller
         }
 
     }
+
+    public function gcash(Order $order)
+    {
+
+    }
 }

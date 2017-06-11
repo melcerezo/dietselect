@@ -27,7 +27,7 @@ $(document).ready(function() {
         $.each(notifs,function(index){
             var notifCntnt=
                 '<li id="notif'+notifs[index].id+'" class="collection-item">'+
-                    '<a class="msgLink notifLink" href="#" data-id="'+notifs[index].id+'">'+
+                    '<a class="msgLink notifLink" href="'+orderAllRoute+'" data-id="'+notifs[index].id+'">'+
                         '<div class="row msCntr">'+
                             '<div class="msMsCnt col s12">'+
                                 '<span>'+notifs[index].notification+'</span>'+
