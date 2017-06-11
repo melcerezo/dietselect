@@ -156,6 +156,7 @@ class FoodieOrderPlanController extends Controller
         for($i=0;$i<count($customList);$i++) {
             $customize[] = CustomizedMeal::where('id', '=', $customList[$i])->first();
             $customize[$i]->order_id=$order->id;
+//            dd($order->id);
             $customize[$i]->save();
         }
 
@@ -178,7 +179,7 @@ class FoodieOrderPlanController extends Controller
         $chefnotif->receiver_type='c';
         $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has just ordered the plan: '.$plan->plan_name.'.';
         $chefnotif->notification_type=1;
-        dd($chefnotif);
+//        dd($chefnotif);
         $chefnotif->save();
         // Message Template
         $planName = $plan->plan_name;
@@ -248,95 +249,108 @@ class FoodieOrderPlanController extends Controller
         $foodie = Auth::guard('foodie')->user();
         $chefs=Chef::all();
         $thisSaturday=Carbon::parse('this saturday')->format('F d');
-        $order = new Order();
-        $order->chef_id = $plan->chef_id;
-        $order->foodie_id = $foodie->id;
-        $plan->orders()->save($order);
+
+        $dt =  new Carbon();
+
+//        dd($dt->format('Y-m-d H:i:s'));
+        $isSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        $thisSunday = Carbon::parse("this sunday 23:59:00")->format('Y-m-d H:i:s');
+
+        if ($dt->format('Y-m-d H:i:s') >= $isSaturday && $dt->format('Y-m-d H:i:s')<= $thisSunday) {
+            return back()->with([ 'status' => 'You can\'t order']);
+
+        }else {
+            $order = new Order();
+            $order->chef_id = $plan->chef_id;
+            $order->foodie_id = $foodie->id;
+            $plan->orders()->save($order);
 
 
-        $foodnotif=new Notification();
-        $foodnotif->sender_id=0;
-        $foodnotif->receiver_id=$foodie->id;
-        $foodnotif->receiver_type='f';
-        $foodnotif->notification='You have a pending order. ';
-        $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
-        $foodnotif->notification_type=1;
+            $foodnotif=new Notification();
+            $foodnotif->sender_id=0;
+            $foodnotif->receiver_id=$foodie->id;
+            $foodnotif->receiver_type='f';
+            $foodnotif->notification='You have a pending order. ';
+            $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
+            $foodnotif->notification_type=1;
 //        dd($foodnotif);
-        $foodnotif->save();
+            $foodnotif->save();
 
 
-        $chefnotif=new Notification();
-        $chefnotif->sender_id=0;
-        $chefnotif->receiver_id=$plan->chef_id;
-        $chefnotif->receiver_type='c';
-        $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has just ordered the plan: '.$plan->plan_name.'.';
-        $chefnotif->notification_type=1;
+            $chefnotif=new Notification();
+            $chefnotif->sender_id=0;
+            $chefnotif->receiver_id=$plan->chef_id;
+            $chefnotif->receiver_type='c';
+            $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has just ordered the plan: '.$plan->plan_name.'.';
+            $chefnotif->notification_type=1;
 //        dd($chefnotif);
-        $chefnotif->save();
+            $chefnotif->save();
 
-        // Message Template
-        $planName = $plan->plan_name;
-        $chefName = $plan->chef->name;
-        $price = $plan->price;
+            // Message Template
+            $planName = $plan->plan_name;
+            $chefName = $plan->chef->name;
+            $price = $plan->price;
 
             $mailer->to($foodie->email)
-            ->send(new MyOrderMail(
-                $planName,
-                $chefName,
-                $price));
+                ->send(new MyOrderMail(
+                    $planName,
+                    $chefName,
+                    $price));
 
-        $foodieName = $foodie->first_name.' '.$foodie->last_name;
+            $foodieName = $foodie->first_name.' '.$foodie->last_name;
 //        dd($foodieName);
-        $mailer->to($order->chef->email)
-            ->send(new MyOrderMailChef(
-                $planName,
-                $foodieName,
-                $price));
+            $mailer->to($order->chef->email)
+                ->send(new MyOrderMailChef(
+                    $planName,
+                    $foodieName,
+                    $price));
 
 
 
 
-        $message = $foodieName.' has ordered '.$planName.'.';
-        $chefPhoneNumber = $order->chef->mobile_number;
-        $url = 'https://www.itexmo.com/php_api/api.php';
-        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
-        $param = array(
-            'http' => array(
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($itexmo),
-            ),
-            "ssl" => array(
-                "verify_peer"      => false,
-                "verify_peer_name" => false,
-            ),
-        );
-        $context = stream_context_create($param);
-        file_get_contents($url, false, $context);
+            $message = $foodieName.' has ordered '.$planName.'.';
+            $chefPhoneNumber = $order->chef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
 
-        $messageFoodie = 'You have ordered the plan, '.$planName.', from the chef, '.$chefName.'.';
-        $foodiePhoneNumber = $foodie->mobile_number;
-        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
-        $paramFoodie = array(
-            'http' => array(
-                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method' => 'POST',
-                'content' => http_build_query($itexmoFoodie),
-            ),
-            "ssl" => array(
-                "verify_peer"      => false,
-                "verify_peer_name" => false,
-            ),
-        );
-        $contextFoodie = stream_context_create($paramFoodie);
-        file_get_contents($urlFoodie, false, $contextFoodie);
-    //        $message = new MailMessage();
-    //        $message->subject('Order')
-    //            ->line($foodie.' placed an order created by:'. $plan->chef->name)
-    //            ->success();
+            $messageFoodie = 'You have ordered the plan, '.$planName.', from the chef, '.$chefName.'.';
+            $foodiePhoneNumber = $foodie->mobile_number;
+            $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
+            $paramFoodie = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmoFoodie),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $contextFoodie = stream_context_create($paramFoodie);
+            file_get_contents($urlFoodie, false, $contextFoodie);
+            //        $message = new MailMessage();
+            //        $message->subject('Order')
+            //            ->line($foodie.' placed an order created by:'. $plan->chef->name)
+            //            ->success();
 
-        return redirect()->route('order.show', $order->id);
+            return redirect()->route('order.show', $order->id);
+        }
+
     }
 
 

@@ -84,46 +84,78 @@
 
     <div id="paypalPay" class="modal">
         <div class="modal-content">
-                @if ($message = Session::get('success'))
-                    <div class="custom-alerts alert alert-success fade in">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                        {!! $message !!}
-                    </div>
-                    <?php Session::forget('success');?>
-                @endif
-                @if ($message = Session::get('error'))
-                    <div class="custom-alerts alert alert-danger fade in">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                        {!! $message !!}
-                    </div>
-                    <?php Session::forget('error');?>
-                @endif
-                <div>Pay with PayPal</div><br>
-                <div>
-                    <form method="POST" id="payment-form" role="form" action="{!! URL::route('addmoney.paypal', compact('order')) !!}" >
-                        {{ csrf_field() }}
-                        <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                            <label for="amount" class="col-md-4 control-label">Amount</label>
-                            <div class="col-md-6">
-                                {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
-                                <div>
-                                    {{$order->plan->price}}
-                                </div>
-                                @if ($errors->has('amount'))
-                                    <span class="help-block">
-                                            <strong>{{ $errors->first('amount') }}</strong>
-                                        </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-primary">
-                                Pay with Paypal
-                            </button>
-                        </div>
-                    </form>
+            @if ($message = Session::get('success'))
+                <div class="custom-alerts alert alert-success fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                    {!! $message !!}
                 </div>
+                <?php Session::forget('success');?>
+            @endif
+            @if ($message = Session::get('error'))
+                <div class="custom-alerts alert alert-danger fade in">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                    {!! $message !!}
+                </div>
+                <?php Session::forget('error');?>
+            @endif
+            <div>Pay with PayPal</div><br>
+            <div>
+                <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
+                    {{ csrf_field() }}
+                    <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
+                        <label for="amount" class="col-md-4 control-label">Amount</label>
+                        <div class="col-md-6">
+                            {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
+                            <div>
+                                {{$order->plan->price}}
+                            </div>
+                            @if ($errors->has('amount'))
+                                <span class="help-block">
+                                        <strong>{{ $errors->first('amount') }}</strong>
+                                    </span>
+                            @endif
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                            Pay with Paypal
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="gcashModal" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span>GCash Payment</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <div>
+                <span>Please send your Gcash payment to: 09950893073. Fill out this form with a
+                    screenshot of the confirmation text and the reference number</span>
+            </div>
+            <form action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
+                {{csrf_field()}}
+                <div>
+                    <div class="form-group">
+                        <label for="gcRefNmbr"></label>
+                        <input type="text" id="gcRefNmbr" name="gcRefNmbr" data-error=".error-gRef" />
+                        <div class="error-gRef err"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="gcPic"></label>
+                        <input type="text" id="gcPic" name="gcPic" data-error=".error-gPic" />
+                        <div class="error-gPic err"></div>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
             {{--<h2 class="center white-text">Order Confirmation</h2>--}}

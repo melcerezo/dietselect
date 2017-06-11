@@ -63,14 +63,26 @@ class FoodieController extends Controller
         // MAIN_INGREDIENT COMPARE TO FOODIE_PREFERENCES
 
         //only plans for the week, not all the plans
-        $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        $lastSaturday = Carbon::parse("last saturday 15:01:00")->format('Y-m-d H:i:s');
         $dt = Carbon::now();
         $currentTime = $dt->format('H:i:A');
         $endTime = Carbon::create($dt->year, $dt->month, $dt->day, 15, 0, 0)->format('H:i:A');
 //        dd($lastSaturday);
         $startOfTheWeek = $dt->startOfWeek()->format('F d');
-//        dd($startOfTheWeek);
         $endOfTheWeek = $dt->endOfWeek()->format('Y-m-d');
+
+        // THIS SATURDAY
+        $endOfWeek = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
+//        $thisMonday = Carbon::parse("monday this week")->addDays(7);
+
+//        dd($thisMonday);
+
+//        echo 'Monday: ' .$thisMonday .'<br>';
+//        echo 'Start of the week: '. $lastSaturday .'<br>'; // Start of the week
+//        echo 'End of the week: '. $endOfWeek .'<br>';
+//        dd('here');
+
+
 
         $plans = Plan::where('created_at', '>=', $lastSaturday)
             ->get();

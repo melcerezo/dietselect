@@ -56,10 +56,10 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
-        $orderPlan=$order->plan->first();
+        $orderPlan=$order->plan;
         $orderMealPlans=$orderPlan->mealplans()->get();
         $orderMealPlansCount = $orderMealPlans->count();
-//        dd($orderMealPlans);
+//        dd($orderPlan);
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
         $ingredientMealData=[];
@@ -71,6 +71,7 @@ class ChefOrderController extends Controller
         if($order->order_type== 'c') {
             for ($i = 0; $i < count($orderMealPlans); $i++) {
                 $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->meal_id)->where('order_id', '=', $order->id)->first();
+//                dd($order);
                 for ($j = 0; $j < $orderCustomizedMeals[$i]->customized_ingredient_meal->count(); $j++) {
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
                 }

@@ -293,7 +293,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -311,7 +311,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -329,7 +329,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -347,7 +347,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -365,7 +365,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -386,7 +386,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -404,7 +404,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -422,7 +422,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -440,7 +440,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -458,7 +458,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -479,7 +479,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -497,7 +497,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -515,7 +515,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -533,7 +533,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -551,7 +551,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -572,7 +572,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -590,7 +590,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -608,7 +608,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -626,7 +626,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -644,7 +644,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -665,7 +665,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -683,7 +683,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -701,7 +701,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -719,7 +719,7 @@
                                                    class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -737,7 +737,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($cust->custom_type=='c')
+                                                    @if($cust->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -758,7 +758,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                @if($cust->custom_type=='c')
+                                                @if($cust->custom_type==1)
                                                     <p>Customized</p>
                                                 @endif
                                                 </div>
@@ -776,7 +776,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                @if($cust->custom_type=='c')
+                                                @if($cust->custom_type==1)
                                                     <p>Customized</p>
                                                 @endif
                                                 </div>
@@ -794,7 +794,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                @if($cust->custom_type=='c')
+                                                @if($cust->custom_type==1)
                                                     <p>Customized</p>
                                                 @endif
                                                 </div>
@@ -812,7 +812,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                @if($cust->custom_type=='c')
+                                                @if($cust->custom_type==1)
                                                     <p>Customized</p>
                                                 @endif
                                                 </div>
@@ -830,7 +830,7 @@
                                                    class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                @if($cust->custom_type=='c')
+                                                @if($cust->custom_type==1)
                                                     <p>Customized</p>
                                                 @endif
                                                 </div>
