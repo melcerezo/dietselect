@@ -73,7 +73,7 @@
                                 <i class="nvIc material-icons">announcement</i>
                                 <span class="nvItTx">
                                     Notifications
-                                    {{--<span class="new badge red">2</span>--}}
+                                    <span id="notifBadge"></span>
                                 </span>
                             </span>
                         </a>
@@ -87,6 +87,16 @@
                 </ul>
             </div>
         </nav>
+
+        {{-- Foodie Notification Dropdown --}}
+        <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+            @unless($notifications->count()>0)
+                <li class="collection-item">
+                    <span>No notifications</span>
+                </li>
+            @endunless
+        </ul>
+
         {{-- Chef Message Dropdown --}}
         <ul id="chefMessageDropdown" class="dropdown-content collection">
             @if($chats->count()>0)
