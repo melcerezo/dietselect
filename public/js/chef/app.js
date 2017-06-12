@@ -73,6 +73,14 @@ $(document).ready(function() {
 
 });
 
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 120) { // 20 minutes
+        console.log('timeout');
+        window.location.href= logoutRoute;
+    }
+}
+
 function notifAjax(){
     return $.ajax({
         url: '/chef/notifGet',
