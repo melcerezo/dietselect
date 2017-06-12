@@ -82,12 +82,14 @@
         <!-- Basic Profile Form Modal -->
         <div id="basic-profile-modal" class="modal">
             <nav class="light-green lighten-1 white-text">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px;">Chef Profile</span>
-                        </li>
-                    </ul>
+                <div class="nav-wrapper">
+                    <div class="left col s12">
+                        <ul>
+                            <li>
+                                <span style="font-size: 20px;">Chef Profile</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </nav>
             <form id="basic-profile" method="post" action="{{ route('chef.profile.basic') }}" enctype="multipart/form-data">
