@@ -2,7 +2,7 @@
 @section('page_head')
     <title>Chef Profile - Diet Select PH | Treating yourself the right way!</title>
     <meta name="description" content="">
-    <link rel="stylesheet" href="/css/chef/profile.css">
+    <link rel="stylesheet" href="/css/chef/chefProfile.css">
     <script src="/js/chef/profile.js" defer></script>
 @endsection
 
