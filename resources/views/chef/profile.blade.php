@@ -101,12 +101,12 @@
                             <label for="company_name" class="active">Company Name</label>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="mobile_number" name="mobile_number" type="text" class="validate" value="{{ $chef->mobile_number }}">
-                            <label for="mobile_number" class="active">Company Number</label>
-                        </div>
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--<div class="input-field col s12">--}}
+                            {{--<input id="mobile_number" name="mobile_number" type="text" class="validate" value="{{ $chef->mobile_number }}">--}}
+                            {{--<label for="mobile_number" class="active">Company Number</label>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="email" name="email" type="text" class="validate" value="{{ $chef->email }}">
