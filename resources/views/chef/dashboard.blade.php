@@ -43,17 +43,25 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Current Plans</span>
                     </li>
-                    @foreach($plans->take(3) as $plan)
+                    @if($plans->count()>0)
+                        @foreach($plans->take(3) as $plan)
+                            <li class="collection-item">
+                                <a href="#!">
+                                    <p>Plan Name: {{$plan->plan_name}}</p>
+                                    <div class="divider"></div>
+                                    <p>Calories: {{$plan->calories}}</p>
+                                    <div class="divider"></div>
+                                    <p>Price: {{$plan->price}}</p>
+                                </a>
+                            </li>
+                        @endforeach
+                    @else
                         <li class="collection-item">
                             <a href="#!">
-                                <p>Plan Name: {{$plan->plan_name}}</p>
-                                <div class="divider"></div>
-                                <p>Calories: {{$plan->calories}}</p>
-                                <div class="divider"></div>
-                                <p>Price: {{$plan->price}}</p>
+                                <span>No Plans Yet!</span>
                             </a>
                         </li>
-                    @endforeach
+                    @endif
                 </ul>
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
