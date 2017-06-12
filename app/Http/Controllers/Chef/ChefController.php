@@ -120,7 +120,7 @@ class ChefController extends Controller
     {
         Validator::make($request->all(), [
             'company_name' => 'required|max:100',
-            'mobile_number' => 'required|max:100',
+//            'mobile_number' => 'required|max:100',
             'email' =>'required|email|max:50',
             'website' =>'url|max:50'
         ])->validate();
@@ -135,7 +135,7 @@ class ChefController extends Controller
             Image::make($avatar)->resize(500, 500)->save(public_path('img/' . $filename));
             $chef->avatar = $filename;
         }
-        $chef->mobile_number=$request['mobile_number'];
+//        $chef->mobile_number=$request['mobile_number'];
         $chef->website=$request['website'];
         $chef->save();
 

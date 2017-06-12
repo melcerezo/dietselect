@@ -52,17 +52,17 @@
                         </div>
                     </div>
                     <div class="divider"></div>
-                    <div class="prfCntInf">
-                        <div class="row prfCntRw">
-                            <div class="col s4 m4 l4">
-                                <span>Number:</span>
-                            </div>
-                            <div class="col s8 m8 l8">
-                                <span>{{ $chef->mobile_number}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
+                    {{--<div class="prfCntInf">--}}
+                        {{--<div class="row prfCntRw">--}}
+                            {{--<div class="col s4 m4 l4">--}}
+                                {{--<span>Number:</span>--}}
+                            {{--</div>--}}
+                            {{--<div class="col s8 m8 l8">--}}
+                                {{--<span>{{ $chef->mobile_number}}</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                    {{--<div class="divider"></div>--}}
                         <div class="prfCntInf">
                             <div class="row prfCntRw">
                                 <div class="col s4 m4 l4">
