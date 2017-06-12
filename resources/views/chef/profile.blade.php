@@ -81,10 +81,19 @@
         </div>
         <!-- Basic Profile Form Modal -->
         <div id="basic-profile-modal" class="modal">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px;">Chef Profile</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <form id="basic-profile" method="post" action="{{ route('chef.profile.basic') }}" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-content">
-                <h3 class="mustard-text">Chef Profile</h3>
+                {{--<h3 class="mustard-text">Chef Profile</h3>--}}
                 <p>Edit your Company Profile to let your foodies get to know you!</p>
 
                     <div class="row">
