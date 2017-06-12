@@ -1,8 +1,3 @@
-
-/* ==========================================================================
-   N's custom styles
-   ========================================================================== */
-
 body {
     font-size: 1em;
     filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='/img/bg-1.jpg', sizingMethod='scale');
@@ -47,4 +42,19 @@ div#registration {
 .error-msg-read-partner-agrmnt {
     margin-top: 15px;
     margin-left: 45px;
+}
+.short{
+    color:#FF0000;
+}
+
+.weak{
+    color:#E66C2C;
+}
+
+.good{
+    color:#2D98F3;
+}
+
+.strong{
+    color:#006400;
 }

@@ -21,9 +21,9 @@
     height: 30px;
 }
 
-.msgCol .msCntr .msMsCnt.col{
-    padding: 0;
-}
+/*.msgCol .msCntr .msMsCnt.col{*/
+    /*padding: 0;*/
+/*}*/
 
 /*.sdNvPr{*/
 
@@ -52,4 +52,13 @@ img.msImg{
 
 #logout-link.nvItLnk{
     padding: 14px;
+}
+
+ul.notifCol,ul.msgCollct{
+    max-width: 250px !important;
+    white-space: normal !important;
+}
+
+.activeNotif{
+    background-color: #00b0ff !important;
 }

@@ -2,6 +2,12 @@
 @section('head')
     <link rel="stylesheet" href="/css/chef/chefMain.css">
     {{--<link rel="stylesheet" href="/css/foodie/app.css">--}}
+    <script>
+        {{--var profileRoute="{{route('foodie.profile')}}";--}}
+                {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
+        orderAllRoute ='{{route('chef.order.view')}}';
+        logoutRoute='{{route('chef.logoutAuto')}}';
+    </script>
 
     <script src="/js/chef/app.js" defer></script>
 
@@ -55,7 +61,7 @@
                         </a>
                     </li>
                     <li class="hide-on-med-and-down">
-                        <a class="dropdown-button" href="#" data-activates='chefMessageDropdown' data-beloworigin="true" data-constrainwidth="true">
+                        <a class="dropdown-button" href="#" data-activates='chefMessageDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">email</i>
                                 <span class="nvItTx">
@@ -68,7 +74,7 @@
                         </a>
                     </li>
                     <li class="hide-on-med-and-down">
-                        <a>
+                        <a id="notifLink" class="dropdown-button" href="#" data-activates='chefNotificationDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">announcement</i>
                                 <span class="nvItTx">
@@ -89,7 +95,7 @@
         </nav>
 
         {{-- Foodie Notification Dropdown --}}
-        <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+        <ul id="chefNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
             @unless($notifications->count()>0)
                 <li class="collection-item">
                     <span>No notifications</span>
@@ -98,7 +104,7 @@
         </ul>
 
         {{-- Chef Message Dropdown --}}
-        <ul id="chefMessageDropdown" class="dropdown-content collection">
+        <ul id="chefMessageDropdown" class="dropdown-content collection msgCollct">
             @if($chats->count()>0)
                 @foreach($chats->take(5) as $chat)
                     @if($chat->message->where('is_read',0)->where('receiver_type','c')->count()==0)
@@ -107,12 +113,15 @@
                                 @if($foodie->id == $chat->foodie_id)
                                     <a class="msgLink" href="{{route('chef.message.message', $chat->id)}}">
                                         <div class="row msCntr">
-                                            <div class="col s4 m4 l4">
+                                            <div class="col s2">
                                                 <img class="msImg circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
                                             </div>
-                                            <div class="msMsCnt col s8 m8 l8">
-                                                <span class="truncate">{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                            <div class="msMsCnt col s10">
+                                                <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                <div><span>{{$chat->message()->latest()->first()->subject}}</span></div>
+                                                <div style="margin-top: 5px; color:cornflowerblue;">
+                                                    <span>{{$chat->message()->latest()->first()->created_at->format('d F, H:ia')}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>
@@ -125,12 +134,17 @@
                                 @if($foodie->id == $chat->foodie_id)
                                     <a class="msgLink" href="{{route('chef.message.message', $chat->id)}}">
                                         <div class="row msCntr">
-                                            <div class="col s4 m4 l4">
+                                            <div class="col s2">
                                                 <img class="msImg circle nvUsPrPc" src="/img/{{ $foodie->avatar }}">
                                             </div>
-                                            <div class="msMsCnt col s8 m8 l8">
-                                                <span class="truncate">{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                <span class="truncate">{{$chat->message()->latest()->first()->subject}}</span>
+                                            <div class="msMsCnt col s10">
+                                                <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                <div>
+                                                    <span>{{$chat->message()->latest()->first()->subject}}</span>
+                                                </div>
+                                                <div style="margin-top: 5px; color:cornflowerblue;">
+                                                    <span>{{$chat->message()->latest()->first()->created_at->format('d F, H:ia')}}</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </a>

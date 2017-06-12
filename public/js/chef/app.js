@@ -2,4 +2,89 @@ $(document).ready(function() {
     $(document).on("click", "#logout-link", function () {
         $('form#logout').submit();
     });
+
+    var notifications = notifAjax();
+    // '+orderAllRoute+'
+    notifications.done(function (response) {
+        var notifUnreadCount = 0;
+        var notifs=response;
+        $.each(notifs,function(index){
+            var notifCntnt=
+                '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                '<a class="msgLink notifLink" href="'+orderAllRoute+'" data-id="'+notifs[index].id+'">'+
+                '<div class="row msCntr">'+
+                '<div class="msMsCnt col s12">'+
+                '<span>'+notifs[index].notification+'</span>'+
+                '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                '<span>'+notifs[index].created_at+'</span>' +
+                '                       </div>'+
+                '</div>'+
+                '</div>'+
+                '</a>'+
+                '</li>';
+
+            $('#chefNotificationDropdown').append(notifCntnt);
+            if(notifs[index].is_read==0){
+                notifUnreadCount+=1;
+                $('#notif'+notifs[index].id).addClass('activeNotif');
+            }
+        });
+        // console.log(notifUnreadCount);
+        var notifBdge= '<span class="new badge red">'+notifUnreadCount+'</span>';
+        if(notifUnreadCount>0){
+            $('#notifBadge').append(notifBdge);
+        }
+
+        $('.notifLink').on('click', function(){
+            var notifId=$(this).attr("data-id");
+            console.log(notifId);
+            var notifClear = clearNotif(notifId);
+
+            notifClear.done(function(){
+                var notifCount = 0;
+                $('#notif'+notifId).removeClass('activeNotif');
+                $('#notifBadge').remove();
+                $.each(notifs,function(index) {
+                    if(notifs[index].is_read==0){
+                        notifCount+=1;
+                    }
+                });
+                var notifBdge= '<span class="new badge red">'+notifCount+'</span>';
+                if(notifCount>0){
+                    $('#notifBadge').append(notifBdge);
+                }
+            });
+        });
+
+    });
+
+    //Increment the idle time counter every minute.
+    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+    //Zero the idle timer on mouse movement.
+    $(this).mousemove(function (e) {
+        // console.log(idleTime);
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        console.log('press');
+        idleTime = 0;
+    });
+
 });
+
+function notifAjax(){
+    return $.ajax({
+        url: '/chef/notifGet',
+        dataType:'json'
+    });
+}
+
+function clearNotif(id){
+    return $.ajax({
+        url: '/chef/notifClear',
+        type:'GET',
+        data: {id:id}
+    });
+
+}

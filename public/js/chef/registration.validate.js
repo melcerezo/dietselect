@@ -10,17 +10,17 @@ $(document).ready(function(){
             $('#n-reg-website').val('');
         }
     });
-    $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
-        var url = $('#n-reg-mobile-num').val();
-        if (url == '') {
-            $('#n-reg-mobile-num').val('0');
-        }
-    }).on('blur', '#n-reg-mobile-num', function(){
-        var url = $('#n-reg-mobile-num').val();
-        if (url == '0' || url.length < 7) {
-            $('#n-reg-mobile-num').val('');
-        }
-    });
+    // $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
+    //     var url = $('#n-reg-mobile-num').val();
+    //     if (url == '') {
+    //         $('#n-reg-mobile-num').val('0');
+    //     }
+    // }).on('blur', '#n-reg-mobile-num', function(){
+    //     var url = $('#n-reg-mobile-num').val();
+    //     if (url == '0' || url.length < 7) {
+    //         $('#n-reg-mobile-num').val('');
+    //     }
+    // });
 
     $.validator.addMethod("alphanumeric", function(value, element) {
         return this.optional(element) || /^[A-Za-z0-9]+$/i.test(value);
@@ -40,6 +40,7 @@ $(document).ready(function(){
                 required: true,
                 min: 9000000000,
                 max: 9999999999,
+                pattern: /^(9)\d{9}$/,
                 digits: true
             },
             website: {
@@ -76,7 +77,8 @@ $(document).ready(function(){
                 required: "Enter your mobile number, please!",
                 min: "Enter a valid PH mobile number, please.",
                 max: "Enter a valid PH mobile number, please.",
-                digits: "Enter a valid PH mobile number, please."
+                digits: "Enter a valid PH mobile number, please.",
+                pattern: "Please follow the prescribed phone number format."
             },
             website: {
                 url: "Enter a valid website link, please!",
@@ -122,12 +124,12 @@ $(document).ready(function(){
         //initial strength
         var strength = 0;
 
-        //if the password length is less than 6, return message.
-        if (password.length < 6) {
-            $('#result').removeClass();
-            $('#result').addClass('short');
-            return 'Too short'
-        }
+        // //if the password length is less than 6, return message.
+        // if (password.length < 6) {
+        //     $('#result').removeClass();
+        //     $('#result').addClass('short');
+        //     return 'Too short'
+        // }
 
         //length is ok, lets continue.
 
@@ -168,4 +170,6 @@ $(document).ready(function(){
             return 'Strong';
         }
     }
+
+
 });

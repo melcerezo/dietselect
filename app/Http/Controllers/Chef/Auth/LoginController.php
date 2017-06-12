@@ -132,4 +132,10 @@ class LoginController extends Controller
     {
         return Auth::guard('chef');
     }
+
+    public function logoutAuto()
+    {
+        $autoMsg = "Your session has ended.";
+        return view('welcome', ['from' => 'welcome'])->with(['status' => $autoMsg]);
+    }
 }

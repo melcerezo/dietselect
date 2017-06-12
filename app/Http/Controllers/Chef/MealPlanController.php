@@ -10,6 +10,7 @@ use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Ingredient;
 use App\Meal;
 use App\MealPlan;
+use App\Notification;
 use App\Plan;
 use App\Message;
 use Carbon\Carbon;
@@ -96,6 +97,7 @@ class MealPlanController extends Controller
 //        dd('here');
 
         $planCount = Plan::count();
+        $notifications=Notification::where('receiver_id','=',$chef)->where('receiver_type','=','c')->get();
 
 //        dd($plans);
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
@@ -103,7 +105,6 @@ class MealPlanController extends Controller
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
-            'plans' => $plans, //get data of meal plan
             'planCount'=>$planCount,
             'plan' => $plan,
             'messages'=>$messages,
@@ -111,6 +112,7 @@ class MealPlanController extends Controller
             'pastPlans' => $pastPlans, // PAST PLANS
             'plans' => $plans, //get data of meal plan
             'futurePlans' => $futurePlans, // FUTURE PLANS
+            'notifications' => $notifications
         ]);
     }
 
@@ -168,6 +170,8 @@ class MealPlanController extends Controller
             ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
         }
 
+        $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
+
 
         return view('chef.meal_planner', compact('plan'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -180,7 +184,8 @@ class MealPlanController extends Controller
             'ingredientsMeal'=>$ingredientsMeal,
             'ingredientCount'=>$ingredientCount,
             'chats' => $chats,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'notifications' => $notifications
         ]);
     }
 

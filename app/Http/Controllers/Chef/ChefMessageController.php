@@ -7,6 +7,7 @@ use App\Foodie;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Message;
+use App\Notification;
 use Carbon\Carbon;
 
 use Illuminate\Http\Request;
@@ -30,6 +31,7 @@ class ChefMessageController extends Controller{
         $chats = Chat::where('chef_id', '=', $chef->id)->get();
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -37,7 +39,8 @@ class ChefMessageController extends Controller{
             'foodies'=>$foodies,
             'chats' => $chats,
             'messages'=>$messages,
-            'chatId' => ''
+            'chatId' => '',
+            'notifications'=>$notifications
         ]);
 
     }
@@ -58,13 +61,16 @@ class ChefMessageController extends Controller{
         }
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
+//        dd($notifications);
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
             'foodies'=>$foodies,
             'chats' => $chats,
             'messages'=>$messages,
-            'chatId' => $id
+            'chatId' => $id,
+            'notifications' => $notifications
         ]);
 
     }

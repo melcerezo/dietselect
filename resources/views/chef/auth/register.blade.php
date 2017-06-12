@@ -54,12 +54,17 @@
             </div>
             <div class="row tooltipped" data-position="bottom" data-delay="50" data-tooltip="We'll be sending you important notifications via SMS. You will also receive a text message with a verification code after the registration to verify your account.">
                 <div class="input-field col s12">
-                    <input id="n-reg-mobile-num" name="mobile_number" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ old('mobile_number') }}"/>
-                    <label for="n-reg-mobile-num">Mobile Number</label>
-                    <div class="error-msg-mobile-num">
-                        @if ($errors->has('mobile_number'))
-                            {{ $errors->first('mobile_number') }}
-                        @endif
+                    <div class="col s1 light-green lighten-1 valign-wrapper center" style="height: 2rem; margin-top: 10px;">
+                        <span>+63</span>
+                    </div>
+                    <div class="col s11">
+                        <label for="n-reg-mobile-num">Mobile Number</label>
+                        <input id="n-reg-mobile-num" name="mobile_number" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ old('mobile_number') }}"/>
+                        <div class="error-msg-mobile-num">
+                            @if ($errors->has('mobile_number'))
+                                {{ $errors->first('mobile_number') }}
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -86,7 +91,7 @@
                 </div>
             </div>
             <div class="row tooltipped" data-position="bottom" data-delay="50" data-tooltip="Keep your account secured! Set a password that can't be easily guessed. Try using a combination of letters, numbers, and symbols.">
-                <div class="input-field col s12">
+                <div class="input-field col s9">
                     <input id="n-reg-pass" name="password" type="password" data-error=".error-msg-pass"/>
                     <label for="n-reg-pass">Password</label>
                     <div class="error-msg-pass">
@@ -94,6 +99,9 @@
                             {{ $errors->first('password') }}
                         @endif
                     </div>
+                </div>
+                <div class="col s3 valign-wrapper">
+                    <span id="result" style="margin-top:43px;"></span>
                 </div>
             </div>
             <div class="row">

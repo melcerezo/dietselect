@@ -38,7 +38,7 @@
             <div class="col s12 m6">
                 <div><button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button></div>
                 <div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>
-                <div style="margin-top: 20px;"><button data-target="gcashPay" class="modal-trigger btn">G-Cash</button></div>
+                <div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>
             </div>
             <div class="col s12 m6">
                 <ul class="collection">
@@ -131,7 +131,7 @@
             <div class="left col s12 m5 l5">
                 <ul>
                     <li>
-                        <span>GCash Payment</span>
+                        <span style="margin-left: 20px;">GCash Payment</span>
                     </li>
                 </ul>
             </div>
@@ -141,18 +141,36 @@
                 <span>Please send your Gcash payment to: 09950893073. Fill out this form with a
                     screenshot of the confirmation text and the reference number</span>
             </div>
-            <form action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
+            <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
-                    <div class="form-group">
-                        <label for="gcRefNmbr"></label>
+                    <div class="row">
+                        <label for="gcRefNmbr">Reference Number:</label>
                         <input type="text" id="gcRefNmbr" name="gcRefNmbr" data-error=".error-gRef" />
                         <div class="error-gRef err"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="gcPic"></label>
-                        <input type="text" id="gcPic" name="gcPic" data-error=".error-gPic" />
-                        <div class="error-gPic err"></div>
+                    <div class="row">
+                        <div><label for="gcDatePay">Date of Transaction:</label></div>
+                        <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>
+                        <div class="error-gcdate-pay err"></div>
+                    </div>
+                    <div class="row">
+                        <div class="file-field">
+                            <label for="gcPic" class="active">Picture Upload:</label>
+                            <div style="padding-top: 10px;">
+                                <div class="btn">
+                                    <span>File</span>
+                                    <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text" >
+                                </div>
+                                <div class="error-gcpic err"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <button class="btn waves-effect waves-light">Submit</button>
                     </div>
                 </div>
             </form>

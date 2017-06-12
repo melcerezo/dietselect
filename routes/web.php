@@ -99,9 +99,13 @@ Route::group(['prefix' => 'chef'], function () {
     Route::get('/', 'Chef\ChefController@index')->name('chef');
     Route::get('dashboard', 'Chef\ChefController@index')->name('chef.dashboard');
 
+    Route::get('notifClear','Chef\ChefController@clearNotif')->name('chef.clearNotif');
+    Route::get('notifGet', 'Chef\ChefController@getNotif')->name('chef.getNotif');
     Route::get('login', 'Chef\Auth\LoginController@showLoginForm')->name('chef.login.show');
     Route::post('login', 'Chef\Auth\LoginController@login')->name('chef.login');
     Route::post('logout', 'Chef\Auth\LoginController@logout')->name('chef.logout');
+    Route::get('logoutAuto', 'Chef\Auth\LoginController@logoutAuto')->name('chef.logoutAuto');
+
 
     Route::post('password/email', 'Chef\Auth\ForgotPasswordController@sendResetLinkEmail')->name('chef.reset.send');
     Route::get('password/reset', 'Chef\Auth\ForgotPasswordController@showLinkRequestForm')->name('chef.reset.show');
