@@ -131,7 +131,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="hidden"/>
-                    <a href="javascript:void(0)" class="modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                    <a href="javascript:void(0)" class="prfSvBtn modal-action n-btn-link n-submit-btn profile-save-btn right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
                 </div>
             </form> <!-- End of basic-profile form -->
         </div>
