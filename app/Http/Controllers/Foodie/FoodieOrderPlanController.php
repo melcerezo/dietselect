@@ -201,9 +201,9 @@ class FoodieOrderPlanController extends Controller
 
 
         $message = $foodieName.' has ordered '.$planName.'.';
-        $chefPhoneNumber = $order->chef->mobile_number;
+        $chefPhoneNumber = '0'.$order->chef->mobile_number;
         $url = 'https://www.itexmo.com/php_api/api.php';
-        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
+        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'TR-DIETS656642_GAG39');
         $param = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -219,9 +219,9 @@ class FoodieOrderPlanController extends Controller
         file_get_contents($url, false, $context);
 
         $messageFoodie = 'You have ordered the plan, '.$planName.', from the chef, '.$chefName.'.';
-        $foodiePhoneNumber = $foodie->mobile_number;
+        $foodiePhoneNumber = '0'.$foodie->mobile_number;
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'TR-DIETS656642_GAG39');
         $paramFoodie = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -308,9 +308,9 @@ class FoodieOrderPlanController extends Controller
 
 
             $message = $foodieName.' has ordered '.$planName.'.';
-            $chefPhoneNumber = $order->chef->mobile_number;
+            $chefPhoneNumber = '0'.$order->chef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
-            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-MARKK578810_4MXKV');
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'TR-DIETS656642_GAG39');
             $param = array(
                 'http' => array(
                     'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -326,9 +326,9 @@ class FoodieOrderPlanController extends Controller
             file_get_contents($url, false, $context);
 
             $messageFoodie = 'You have ordered the plan, '.$planName.', from the chef, '.$chefName.'.';
-            $foodiePhoneNumber = $foodie->mobile_number;
+            $foodiePhoneNumber = '0'.$foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-MARKK578810_4MXKV');
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'TR-DIETS656642_GAG39');
             $paramFoodie = array(
                 'http' => array(
                     'header' => "Content-type: application/x-www-form-urlencoded\r\n",
