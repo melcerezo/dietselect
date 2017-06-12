@@ -78,7 +78,7 @@ trait VerifiesSms
     {
         //code for sms sending ges here
         $url = 'https://www.itexmo.com/php_api/api.php';
-        $itexmo = array('1' => $this->mobile_number(), '2' => $code, '3' => 'ST-MARKK578810_4MXKV');
+        $itexmo = array('1' => $this->mobile_number(), '2' => $code, '3' => 'TR-DIETS656642_GAG39');
         $param = array(
             'http' => array(
                 'header' => "Content-type: application/x-www-form-urlencoded\r\n",
