@@ -86,7 +86,7 @@
                     <div class="left col s12">
                         <ul>
                             <li>
-                                <span style="font-size: 20px;">Chef Profile</span>
+                                <span style="font-size: 20px; margin-left: 20px;">Chef Profile</span>
                             </li>
                         </ul>
                     </div>
