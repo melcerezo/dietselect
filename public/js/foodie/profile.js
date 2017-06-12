@@ -131,10 +131,10 @@ $(document).ready(function() {
             otherValues.push($(this).attr('allergy'));
         }
     });
-    console.log(otherValues);
+    // console.log(otherValues);
     var lengthOtherValues = otherValues.length;
     $.each(otherValues, function (index,element) {
-        console.log(element);
+        // console.log(element);
         if(index != (lengthOtherValues - 1)){
             $('#allrg-others').val($('#allrg-others').val()+element+ ',');
         }else{

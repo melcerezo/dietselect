@@ -25,12 +25,12 @@ $(document).ready(function() {
                 required: true,
                 minlength: 2
             },
-            mobile_number: {
-                required: true,
-                min: 9000000000,
-                max: 9999999999,
-                digits: true
-            },
+            // mobile_number: {
+            //     required: true,
+            //     min: 9000000000,
+            //     max: 9999999999,
+            //     digits: true
+            // },
             email: {
                 required: true,
                 email: true
@@ -47,12 +47,12 @@ $(document).ready(function() {
                 required: "Enter your company name, please!",
                 minlength: "You sure you're named with one letter?"
             },
-            mobile_number: {
-                required: "Enter your company number, please!",
-                min: "Enter a valid PH mobile number, please.",
-                max: "Enter a valid PH mobile number, please.",
-                digits: "Enter a valid PH mobile number, please."
-            },
+            // mobile_number: {
+            //     required: "Enter your company number, please!",
+            //     min: "Enter a valid PH mobile number, please.",
+            //     max: "Enter a valid PH mobile number, please.",
+            //     digits: "Enter a valid PH mobile number, please."
+            // },
             email: {
                 required: "Enter your email address, please!",
                 email: "Enter a valid email address, please."
@@ -74,36 +74,36 @@ $(document).ready(function() {
         }
     });
 
-    var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
-    var checkboxValues = [];
+    // var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
+    // var checkboxValues = [];
 
 
-    $('input.allergyCheckbox:checkbox').each(function () {
-        var $this=$(this);
-        checkboxValues.push($(this).attr('name'));
-        $.each(allergiesList,function () {
-            if($this.attr('name')==$(this).attr('allergy')){
-                // console.log($(this).attr('allergy'));
-                $this.prop('checked',true);
-            }
-        });
-    });
-    console.log(checkboxValues);
-    var otherValues=[];
-    $.each(allergiesList, function () {
-        // console.log($(this).attr('allergy'));
-        if($.inArray($(this).attr('allergy'), checkboxValues) === -1){
-            otherValues.push($(this).attr('allergy'));
-        }
-    });
-    console.log(otherValues);
-    var lengthOtherValues = otherValues.length;
-    $.each(otherValues, function (index,element) {
-        console.log(element);
-        if(index != (lengthOtherValues - 1)){
-            $('#allrg-others').val($('#allrg-others').val()+element+ ',');
-        }else{
-            $('#allrg-others').val($('#allrg-others').val()+element);
-        }
-    });
+    // $('input.allergyCheckbox:checkbox').each(function () {
+    //     var $this=$(this);
+    //     checkboxValues.push($(this).attr('name'));
+    //     $.each(allergiesList,function () {
+    //         if($this.attr('name')==$(this).attr('allergy')){
+    //             // console.log($(this).attr('allergy'));
+    //             $this.prop('checked',true);
+    //         }
+    //     });
+    // });
+    // console.log(checkboxValues);
+    // var otherValues=[];
+    // $.each(allergiesList, function () {
+    //     // console.log($(this).attr('allergy'));
+    //     if($.inArray($(this).attr('allergy'), checkboxValues) === -1){
+    //         otherValues.push($(this).attr('allergy'));
+    //     }
+    // });
+    // console.log(otherValues);
+    // var lengthOtherValues = otherValues.length;
+    // $.each(otherValues, function (index,element) {
+    //     console.log(element);
+    //     if(index != (lengthOtherValues - 1)){
+    //         $('#allrg-others').val($('#allrg-others').val()+element+ ',');
+    //     }else{
+    //         $('#allrg-others').val($('#allrg-others').val()+element);
+    //     }
+    // });
 });
