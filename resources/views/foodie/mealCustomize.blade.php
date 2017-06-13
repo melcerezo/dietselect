@@ -549,8 +549,8 @@
                 <ul class="collection">
                     {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
                     <li class="collection-item">Chef Name: {{$viewPlan->chef->name}}</li>
-                    <li class="collection-item">Plan Name:{{$viewPlan->plan_name}}</li>
-                    <li class="collection-item">Plan Price:{{$viewPlan->price}}</li>
+                    <li class="collection-item">Plan Name: {{$viewPlan->plan_name}}</li>
+                    <li class="collection-item">Plan Price: {{$viewPlan->price}}</li>
                 </ul>
                 <form action="{{route('foodie.custOrder.create', ['plan'=>$viewPlan->id,'id'=>$customId])}}" method="post">
                     {{csrf_field()}}
