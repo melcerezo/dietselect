@@ -535,26 +535,27 @@
         </div>
     </div>
 
-        <div id="orderReview" class="modal green lighten-3" >
-        <h2 class="center">Order Review</h2>
-        <span class="center full-width" style="font-size: 1.5em">Review your order before confirming!</span>
-            <div class="modal-content">
-            <div class="card papaya-whip">
-                <div class="card-content">
-                    <h4 class="mustard-text">Order:</h4>
-                    <div class="card">
-                        <div class="card-panel">
-                            <h4>Chef Name: {{$viewPlan->chef->name}}</h4>
-                            <h4>Plan Name:{{$viewPlan->plan_name}}</h4>
-                            <h4>Plan Price:{{$viewPlan->price}}</h4>
-                        </div>
-                    </div>
-                    <form action="{{route('foodie.custOrder.create', ['plan'=>$viewPlan->id,'id'=>$customId])}}" method="post">
-                        {{csrf_field()}}
-                        <button type="submit" class="btn btn-danger">Order !!!</button>
-                    </form>
+        <div id="orderReview" class="modal" >
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12 m5 l5">
+                    <ul>
+                        <li>
+                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Review Order of {{$plan->plan_name}}</span>
+                        </li>
+                    </ul>
                 </div>
-            </div>
+            </nav>
+            <div class="modal-content">
+                <ul class="collection">
+                    {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                    <li class="collection-item">Chef Name: {{$viewPlan->chef->name}}</li>
+                    <li class="collection-item">Plan Name:{{$viewPlan->plan_name}}</li>
+                    <li class="collection-item">Plan Price:{{$viewPlan->price}}</li>
+                </ul>
+                <form action="{{route('foodie.custOrder.create', ['plan'=>$viewPlan->id,'id'=>$customId])}}" method="post">
+                    {{csrf_field()}}
+                    <button type="submit" class="btn btn-danger">Order</button>
+                </form>
             </div>
         </div>
         @unless($mealPlansCount==0)
