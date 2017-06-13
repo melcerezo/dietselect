@@ -403,7 +403,7 @@ class MealPlanController extends Controller
 
         $mealPlan=New MealPlan();
         $mealPlan->plan_id=$plan->id;
-        $mealPlan->meal_id=$customMeal->id;
+        $mealPlan->meal_id=$meal->id;
         $mealPlan->customized_meal_id=$customMeal->id;
         $mealPlan->day=$request['dayCreate'];
         $mealPlan->meal_type=$request['meal_typeCreate'];
@@ -451,7 +451,7 @@ class MealPlanController extends Controller
 
         $mealPlan=New MealPlan();
         $mealPlan->plan_id=$plan->id;
-        $mealPlan->meal_id=$customMeal->id;
+        $mealPlan->meal_id=$meal->id;
         $mealPlan->customized_meal_id=$customMeal->id;
         $mealPlan->day=$day;
         $mealPlan->meal_type=$meal_type;
@@ -524,7 +524,7 @@ class MealPlanController extends Controller
         $chefCustomizedMeal->save();
 
         for($i=0;$i<$ingredientCountUpdate;$i++){
-            DB::table('ingredient_meal')->where('meal_id','=',$chefCustomizedMeal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
+            DB::table('chef_customized_ingredient_meals')->where('meal_id','=',$chefCustomizedMeal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
                 ['meal_id' => $chefCustomizedMeal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
             );
         }

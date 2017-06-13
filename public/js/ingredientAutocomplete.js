@@ -9,7 +9,7 @@ $(document).ready(function () {
                     '<div>' +
                     '<div id="ingredientSelection'+count+'">' +
                         '<div>' +
-                            '<label for="ingredient_select[]">Ingredients</label>' +
+                            '<label for="ingredient_select[]">Type of Ingredient</label>' +
                         '</div>' +
                         '<div id="ingredSelectContent'+count+'" class="addSelectIngred">' +
                             '<select id="ingredSelectOption'+count+'" name="ingredient_select['+count+']">' +
@@ -29,7 +29,7 @@ $(document).ready(function () {
                     '<div class="ingredients">' +
                         '<div class="ingredLabel">' +
                             '<label for="ingredients[]">' +
-                                'Ingredients' +
+                                'Ingredient' +
                             '</label>' +
                         '</div>' +
                     '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +

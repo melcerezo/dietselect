@@ -9,26 +9,26 @@ class MealPlan extends Model
 
     protected $table='meal_plans';
 
-//    public function meal(){
-//        return $this->belongsTo('App\Meal','meal_id');
-//    }
+    public function meal(){
+        return $this->belongsTo('App\Meal','meal_id');
+    }
 
     public function plan(){
         return $this->belongsTo('App\Plan');
     }
 
-    public function customize(){
-        return $this->belongsTo('App\CustomizedMeal','customized_meals');
-    }
+//    public function customize(){
+//        return $this->belongsTo('App\CustomizedMeal','customized_meal_id');
+//    }
     public function chefcustomize(){
-        return $this->belongsTo('App\ChefCustomizedMeal','meal_id');
+        return $this->belongsTo('App\ChefCustomizedMeal','customized_meal_id');
     }
 
 
     protected $fillable=[
         'plan_id',
         'meal_id',
-        'customized_meals',
+        'customized_meal_id',
         'day',
         'meal_type',
     ];

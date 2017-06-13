@@ -20,7 +20,7 @@ $(document).ready(function () {
             var mealType = $(this).attr('data-meal-type');
             if ($(this).text().trim() == "") {
                 $(this).append('<a href="#chooseModal' + day + mealType + '" class="chooseModalLink modal-trigger">+Add Meal</a>');
-                $(this).append('<div id="chooseModal' + day + mealType + '" class="modal">' +
+                $(this).append('<div id="chooseModal' + day + mealType + '" class="chooseModalCls modal">' +
                     '<div class="modal-content">' +
                     '<div class="chseMdlBtnCnt">' +
                     '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="createMealLink modal-trigger btn waves-effect waves-light">Create New Meal</button>' +
@@ -123,10 +123,14 @@ $(document).ready(function () {
         });
     }
 
+    $('.createChooseMealLink').on('click', function () {
+        $(".chooseMdlTbl").closeModal();
+    });
+
     $('.createMealLink').on('click',function () {
-        var mealDay = $(this).attr('data-day');
-        var mealType=$(this).attr('data-meal-type');
-        $("#chooseModal"+mealDay+mealType).closeModal();
+        // var mealDay = $(this).attr('data-day');
+        // var mealType=$(this).attr('data-meal-type');
+        $(".chooseModalCls").closeModal();
     });
 
     $('.chooseMealLink').on('click', function () {

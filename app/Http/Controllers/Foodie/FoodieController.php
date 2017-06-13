@@ -121,7 +121,7 @@ class FoodieController extends Controller
 
             $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
             foreach ($mealPlans as $mealPlan) {
-                $mainIngredient = Str::lower($mealPlan->meal->main_ingredient);
+                $mainIngredient = Str::lower($mealPlan->chefcustomize->main_ingredient);
 
 //                echo $mainIngredient . ' ';
 

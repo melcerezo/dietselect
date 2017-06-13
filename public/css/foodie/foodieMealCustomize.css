@@ -3,6 +3,29 @@
     margin-top: 0.5rem;
 }
 
+.card-panel.plSlMlInf{
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collection.plSlMlInfCtnt{
+    margin: 0;
+}
+.plSlMlCstBtn{
+    margin-left: 10px;
+}
+.plSlMlInfDef{
+    display: block;
+    margin: 0;
+}
+.plSlMlInfDef{
+    min-height:150px;
+}
+.row .col.m6.plSlMlInfCnt{
+    padding-right:0;
+}
+
 .row .col.plSlCstPlnNm{
     min-height: 40px;
     font-size: 20px;
@@ -55,3 +78,6 @@
     font-size: 12px;
 }
 
+.editButton{
+    padding: 10px;
+}

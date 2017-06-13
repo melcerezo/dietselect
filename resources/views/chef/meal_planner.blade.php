@@ -558,7 +558,7 @@
     @endunless
 
 
-    <div id="chooseMeal" class="modal">
+    <div id="chooseMeal" class="modal chooseMdlTbl">
         <nav class="light-green lighten-1 white-text">
             <div class="nav-wrapper">
                 <div class="left col s12">
@@ -583,20 +583,29 @@
                             <th>Fat</th>
                         </tr>
                     </thead>
-                    <tbody id="mealsTableBody"></tbody>
+                    <tbody id="mealsTableBody">
+                        @unless($meals->count()>0)
+                            <tr>
+                                <td>No Meals Created Yet</td>
+                                {{--<td><a href="#createMeal" class="createChooseMealLink modal-trigger">Create a Meal Now!</a></td>--}}
+                            </tr>
+                        @endunless
+                    </tbody>
                 </table>
             </div>
-            <form id="chooseMealForm" action="{{route('chef.meal.choose', $plan->id)}}" method="post" autocomplete="off">
-                {{csrf_field()}}
-                <input type="hidden" id="dayChoose" name="dayChoose" value="">
-                <input type="hidden" id="meal_typeChoose" name="meal_typeChoose" value="">
-                <input type="hidden" id="meal_idChoose" name="meal_idChoose" value="">
-                <button type="submit" class="btn waves-effect waves-light">Choose</button>
-                {{--<label for="mealChoiceSelect">Select Meal</label>--}}
-                {{--<select id="mealChoiceSelect" name="mealChoiceSelect" class="selectRequired">--}}
-                    {{--<option selected value="">Choose Meal</option>--}}
-                {{--</select>--}}
-            </form>
+                <form id="chooseMealForm" action="{{route('chef.meal.choose', $plan->id)}}" method="post" autocomplete="off">
+                    {{csrf_field()}}
+                    <input type="hidden" id="dayChoose" name="dayChoose" value="">
+                    <input type="hidden" id="meal_typeChoose" name="meal_typeChoose" value="">
+                    <input type="hidden" id="meal_idChoose" name="meal_idChoose" value="">
+            @if($meals->count()>0)
+                    <button type="submit" class="btn waves-effect waves-light">Choose</button>
+            @endif
+                    {{--<label for="mealChoiceSelect">Select Meal</label>--}}
+                    {{--<select id="mealChoiceSelect" name="mealChoiceSelect" class="selectRequired">--}}
+                        {{--<option selected value="">Choose Meal</option>--}}
+                    {{--</select>--}}
+                </form>
         </div>
     </div>
 

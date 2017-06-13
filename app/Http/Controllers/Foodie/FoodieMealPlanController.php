@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
+use App\ChefCustomizedIngredientMeal;
 use App\Notification;
 use App\CustomizedIngredientMeal;
 use App\CustomizedMeal;
@@ -156,21 +157,21 @@ class FoodieMealPlanController extends Controller
         $mealPlansCount = $mealPlans->count();
 
         $ingredientsMeal = '';
-        $ingredientCount = DB::table('ingredient_meal')
-            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-            ->count();
+//        $ingredientCount = DB::table('chef_customized_ingredient_meals')
+//            ->join('chef_customized_ingredient_meals', 'chef_customized_ingredient_meals.meal_id', '=', 'chef_customized_meals.id')
+////            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+//            ->count();
 
-        if ($ingredientCount > 0) {
-            $ingredientsMeal = DB::table('ingredients')
-                ->join('ingredient_meal', 'ingredients.NDB_No', '=', 'ingredient_meal.ingredient_id')
-                ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=',
-                    'ingredients_group_description.FdGrp_Cd')
-                ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-                ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-                ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'ingredient_meal.meal_id',
-                    'ingredient_meal.grams')->get();
-        }
+
+        $ingredientsMeal = DB::table('ingredients')
+            ->join('chef_customized_ingredient_meals', 'ingredients.NDB_No', '=', 'chef_customized_ingredient_meals.ingredient_id')
+            ->join('ingredients_group_description', 'ingredients.FdGrp_Cd', '=',
+                'ingredients_group_description.FdGrp_Cd')
+            ->join('chef_customized_meals', 'chef_customized_ingredient_meals.meal_id', '=', 'chef_customized_meals.id')
+//                ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+            ->select('ingredients.Long_Desc', 'ingredients_group_description.FdGrp_Desc', 'chef_customized_ingredient_meals.meal_id',
+                'chef_customized_ingredient_meals.grams')->get();
+
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -224,7 +225,7 @@ class FoodieMealPlanController extends Controller
         $fatUpdate = $updateFat;
 
         $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
-        $mealId = $mealPlans->pluck('meal_id');
+        $mealId = $mealPlans->pluck('customized_meal_id');
 //        dd($mealId);
 
 //    dd($mealIngreds[3]);
@@ -232,14 +233,14 @@ class FoodieMealPlanController extends Controller
 
         foreach ($mealPlans as $mealPlan) {
             $customize = new CustomizedMeal();
-            $customize->meal_id = $mealPlan->meal->id;
+            $customize->meal_id = $mealPlan->chefcustomize->id;
             $customize->foodie_id = $user;
-            $customize->description = $mealPlan->meal->description;
-            $customize->main_ingredient = $mealPlan->meal->main_ingredient;
-            $customize->calories = $mealPlan->meal->calories;
-            $customize->carbohydrates = $mealPlan->meal->carbohydrates;
-            $customize->protein = $mealPlan->meal->protein;
-            $customize->fat = $mealPlan->meal->fat;
+            $customize->description = $mealPlan->chefcustomize->description;
+            $customize->main_ingredient = $mealPlan->chefcustomize->main_ingredient;
+            $customize->calories = $mealPlan->chefcustomize->calories;
+            $customize->carbohydrates = $mealPlan->chefcustomize->carbohydrates;
+            $customize->protein = $mealPlan->chefcustomize->protein;
+            $customize->fat = $mealPlan->chefcustomize->fat;
             $customize->save();
             $customId[] = $customize->id;//saves the created meal id into $customId
         }
@@ -247,7 +248,7 @@ class FoodieMealPlanController extends Controller
         $mealIngreds = [];
         //makes array of arrays
         for ($i = 0; $i < $mealId->count(); $i++) {
-            $mealIngreds[$i] = IngredientMeal::where('meal_id', '=', $mealId[$i])->get();
+            $mealIngreds[$i] = ChefCustomizedIngredientMeal::where('meal_id', '=', $mealId[$i])->get();
         }
         for ($i = 0; $i < count($mealIngreds); $i++) {
             foreach ($mealIngreds[$i] as $item) {
@@ -268,7 +269,7 @@ class FoodieMealPlanController extends Controller
             'mealPlans' => $mealPlans,
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientsMeal,
-            'ingredientCount' => $ingredientCount,
+//            'ingredientCount' => $ingredientCount,
             'messages' => $messages,
             'customId'=>array($customId),
             'chefs'=>$chefs
@@ -288,10 +289,10 @@ class FoodieMealPlanController extends Controller
         $ingredientsMeal = [];
         $ingredientDesc="";
         $ingredientMealData=[];
-        $ingredientCount = DB::table('ingredient_meal')
-            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-            ->count();
+//        $ingredientCount = DB::table('ingredient_meal')
+//            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
+//            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
+//            ->count();
 
 //        dd($ingredientCount);
         for($i=0;$i<count($customList);$i++){
@@ -324,7 +325,7 @@ class FoodieMealPlanController extends Controller
         $mealPlansCount = $mealPlans->count();
 
 
-//        dd($ingredientCount);
+//        dd($mealPlans[0]->chefcustomize->id);
 
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
 
@@ -350,7 +351,7 @@ class FoodieMealPlanController extends Controller
             'mealPlans' => $mealPlans,
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientMealData,
-            'ingredientCount' => $ingredientCount,
+//            'ingredientCount' => $ingredientCount,
             'chats' => $chats,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
