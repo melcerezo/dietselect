@@ -56,7 +56,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -64,7 +64,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -72,7 +72,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -80,7 +80,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -88,7 +88,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -99,7 +99,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -107,7 +107,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -115,7 +115,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -123,7 +123,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -131,7 +131,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -142,7 +142,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -150,7 +150,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -158,7 +158,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -166,7 +166,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -174,7 +174,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -185,7 +185,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -193,7 +193,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -201,7 +201,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -209,7 +209,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -217,7 +217,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -228,7 +228,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -236,7 +236,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -244,7 +244,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -252,7 +252,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -260,7 +260,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -271,7 +271,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -279,7 +279,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -287,7 +287,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -295,7 +295,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -303,7 +303,7 @@
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
                                     <a data-meal-active="#viewMeal-{{$id}}"
-                                       class="waves-effect waves-light data-trigger">{{$mealPlan->meal->description}}</a><br>
+                                       class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                 @endif
                             @endforeach
                         </td>
@@ -329,7 +329,7 @@
                     <div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">
                         <ul class="collection plSlMlInfCtnt">
                             <li class="collection-item light-green lighten-1 white-text">
-                                <span class="collection-header">{{$mealPlan->meal->description}}</span>
+                                <span class="collection-header">{{$mealPlan->chefcustomize->description}}</span>
                             </li>
                             <li class="collection-item">
                                 <span>Day: </span>
@@ -360,10 +360,10 @@
                                 </span>
                             </li>
                             <li class="collection-item">
-                                <span>Main Ingredient: </span><span>{{ucwords($mealPlan->meal->main_ingredient)}}</span>
+                                <span>Main Ingredient: </span><span>{{ucwords($mealPlan->chefcustomize->main_ingredient)}}</span>
                             </li>
                             <li class="collection-item">
-                                <span>Calories: </span><span>{{$mealPlan->meal->calories}}</span>
+                                <span>Calories: </span><span>{{$mealPlan->chefcustomize->calories}}</span>
                             </li>
                         </ul>
                         @if($plan->lockPlan==0)
@@ -387,7 +387,7 @@
             <div class="left col s12 m5 l5">
                 <ul>
                     <li>
-                        <span class="edtMlTtl">Finished editing {{$plan->plan_name}}?</span>
+                        <span class="edtMlTtl">Unlock and Edit {{$plan->plan_name}}?</span>
                     </li>
                 </ul>
             </div>
@@ -423,7 +423,8 @@
             </div>
         </nav>
         <div class="modal-content">
-            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Finish</a>
+            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Finish and Lock Plan</a>
+            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Exit without Locking Plan</a>
         </div>
     </div>
 
@@ -452,12 +453,12 @@
     @unless($mealPlansCount==0)
         @for($i=0;$i<$mealPlansCount;$i++)
             <div id="editMeal-{{$i}}" class="modal editFormModal">
-                <i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>
+                <i data-meal-id="{{$mealPlans[$i]->chefcustomize->id}}"></i>
                 <nav class="light-green lighten-1 white-text">
                     <div class="left col s12 m5 l5">
                         <ul>
                             <li>
-                                <span class="edtMlTtl">Update Meal: {{$mealPlans[$i]->meal->description}}</span>
+                                <span class="edtMlTtl">Update Meal: {{$mealPlans[$i]->chefcustomize->description}}</span>
                             </li>
                         </ul>
                     </div>
@@ -470,26 +471,26 @@
                             </div>
 
                             <div>
-                                <span>Calories: {{$mealPlans[$i]->meal->calories}}</span>
+                                <span>Calories: {{$mealPlans[$i]->chefcustomize->calories}}</span>
                             </div>
 
                             <div>
-                                <span>Carbohydrates: {{$mealPlans[$i]->meal->carbohydrates}}g</span>
+                                <span>Carbohydrates: {{$mealPlans[$i]->chefcustomize->carbohydrates}}g</span>
                             </div>
 
                             <div>
-                                <span>Protein: {{$mealPlans[$i]->meal->protein}}g</span>
+                                <span>Protein: {{$mealPlans[$i]->chefcustomize->protein}}g</span>
                             </div>
 
                             <div>
-                                <span>Fat: {{$mealPlans[$i]->meal->fat}}g</span>
+                                <span>Fat: {{$mealPlans[$i]->chefcustomize->fat}}g</span>
                             </div>
                         </div>
                     </div>
-                <form id="editMeal{{$i}}" class="editMeal" action="{{route('chef.meal.update', $mealPlans[$i]->meal->id)}}" method="post" autocomplete="off">
+                <form id="editMeal{{$i}}" class="editMeal" action="{{route('chef.meal.update', $mealPlans[$i]->chefcustomize->id)}}" method="post" autocomplete="off">
                     {{csrf_field()}}
                         <p><label for="description">Description</label></p>
-                        <input type="text" name="description" class="form-control" data-error=".error-desc" value="{{$mealPlans[$i]->meal->description}}">
+                        <input type="text" name="description" class="form-control" data-error=".error-desc" value="{{$mealPlans[$i]->chefcustomize->description}}">
                         <div class="error-desc err"></div>
                         <p><label for="main_ingredient">Main Ingredient</label></p>
                         <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
@@ -505,17 +506,17 @@
                             </div>
                             <script>
                                 $(document).ready(function () {
-                                    var mainIngred='{{ $mealPlans[$i]->meal->main_ingredient}}';
+                                    var mainIngred='{{ $mealPlans[$i]->chefcustomize->main_ingredient}}';
                                     $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
                                 });
                             </script>
                         <div class="ingredLabel"><label for="ingredient">Ingredients</label></div>
                         <div id="ingredSelect" class="ingredSelect">
-                        @for($j=0;$j<$ingredientCount;$j++)
-                            @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
-                                @if($ingredientsMeal[$j]->meal_id==$mealPlans[$i]->meal->id && $c<1)
-                                    <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}" class="ingredSelectContainer">
-                                        <select id="ingredSelectOption{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredient_select[{{$j}}]" class="required updateIngredSelect">
+                        @for($j=0;$j<$ingredientsMeal->count();$j++)
+                            @for($c=0;$c<$mealPlans[$i]->chefcustomize->customized_ingredient_meal->count();$c++)
+                                @if($ingredientsMeal[$j]->meal_id==$mealPlans[$i]->chefcustomize->id && $c<1)
+                                    <div id="ingredSelect{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" class="ingredSelectContainer">
+                                        <select id="ingredSelectOption{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" name="ingredient_select[{{$j}}]" class="required updateIngredSelect">
                                             <option disabled selected>{{$ingredientsMeal[$j]->FdGrp_Desc}}</option>
                                             <option value="chicken">Chicken</option>
                                             <option value="beef">Beef</option>
@@ -527,12 +528,12 @@
                                             <option value="fruits">Fruits, Fruit Juices</option>
                                             <option value="vegetables">Vegetables</option>
                                         </select>
-                                        <div id="updateIngredText{{$mealPlans[$i]->meal->id}}{{$j}}" class="ingredSelectAdd input-field" >
-                                            <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}" name="ingredients[{{$j}}]" data-error=".error-updateIngred" class="required autocomplete ingredAuto inputBehind">
+                                        <div id="updateIngredText{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" class="ingredSelectAdd input-field" >
+                                            <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" name="ingredients[{{$j}}]" data-error=".error-updateIngred" class="required autocomplete ingredAuto inputBehind">
                                         </div>
                                         <div class="error-updateIngred err"></div>
                                         <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div>
-                                            <input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[{{$j}}]" id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-updateGram" class="required gramsAuto inputBehind"></div>
+                                            <input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[{{$j}}]" id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-updateGram" class="required gramsAuto inputBehind"></div>
                                         <div class="error-updateGram err"></div>
                                     </div>
                                 @endif
@@ -546,7 +547,7 @@
             </div>
             <div id="deleteMeal{{$i}}" class="modal">
                 <div class="modal-content">
-                    <form action="{{route('chef.meal.delete', ['meal'=>$mealPlans[$i]->meal->id])}}" method="post">
+                    <form action="{{route('chef.meal.delete', ['meal'=>$mealPlans[$i]->chefcustomize->id])}}" method="post">
                         {{csrf_field()}}
                         <h4>Are you sure you want to delete?</h4>
                         <button type="submit">Delete</button>
@@ -558,14 +559,18 @@
 
 
     <div id="chooseMeal" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="nav-wrapper">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px; margin-left: 20px;">Choose Meal For <span id="dayNameChoose"></span> on <span id="mealTypeChoose"></span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="modal-content">
-            <h4>Choose Meal</h4>
-            <div>
-                <span id="dayNameChoose"></span>
-            </div>
-            <div>
-                <span id="mealTypeChoose"></span>
-            </div>
             <div>
                 <table id="mealsContainer" class="centered">
                     <thead class="light-green lighten-1 white-text">
@@ -596,9 +601,19 @@
     </div>
 
     <div id="createMeal" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="nav-wrapper">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px; margin-left: 20px;">Create <span id="createMealTypeName"></span> for <span id="dayName"></span></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
         <div class="modal-content">
-            <h4>Create <span id="createMealTypeName"></span> for <span id="dayName"></span></h4>
-
+            {{--<h4>Create <span id="createMealTypeName"></span> for <span id="dayName"></span></h4>--}}
             <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>

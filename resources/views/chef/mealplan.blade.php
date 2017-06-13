@@ -48,13 +48,12 @@
                                 </div>
                                 <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
+                                    @if($plan->lockPlan==1)
+                                        <span><i class="material-icons" style="display: inline;">lock_outline</i></span>
+                                    @else
+                                        <span><i class="material-icons" style="display: inline;">lock_open</i></span>
+                                    @endif
                                 </div>
-                                {{--<div class="card-reveal center lime lighten-4">--}}
-                                {{--<span class="card-title"><i class="material-icons right">close</i></span>--}}
-                                {{--route will go to the meals table page with id of plan passed--}}
-                                {{--<a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}"><span class="fa fa-pencil"></span></a>--}}
-                                {{--<a class="meal-plan-option-btn modal-trigger" href="#deletePlan"><span class="fa fa-trash"></span></a>--}}
-                                {{--</div>--}}
                             </div>
                             <div id="deletePlan" class="modal">
                                 <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
@@ -98,12 +97,6 @@
                                 <div class="card-content">
                                     <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
                                 </div>
-                                {{--<div class="card-reveal center lime lighten-4">--}}
-                                    {{--<span class="card-title"><i class="material-icons right">close</i></span>--}}
-                                     {{--route will go to the meals table page with id of plan passed--}}
-                                    {{--<a class="meal-plan-option-btn" href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}"><span class="fa fa-pencil"></span></a>--}}
-                                    {{--<a class="meal-plan-option-btn modal-trigger" href="#deletePlan"><span class="fa fa-trash"></span></a>--}}
-                                {{--</div>--}}
                             </div>
                             <div id="deletePlan" class="modal">
                                 <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
@@ -119,20 +112,6 @@
                         </div>
                    @endforeach
             @endforeach
-        {{--<div class="col s12 m6 l4">--}}
-           {{--<div class="card sticky-action hoverable">--}}
-
-               {{--<div class="card-image waves-effect waves-block waves-asparagus">--}}
-
-                  {{--<a href="#createPlan" class="modal-trigger">--}}
-                      {{--<span class="fa fa-plus-circle light-green-text" style="display: block; font-size: 8em; margin: 0.23em auto; width: 100%; text-align: center;"></span>--}}
-                  {{--</a>--}}
-               {{--</div>--}}
-               {{--<div class="card-content no-pad-top">--}}
-                   {{--<h2 class="card-title activator grey-text center text-darken-4 no-pad-bot" style="margin: 0;">Add New Plan</h2>--}}
-               {{--</div>--}}
-           {{--</div>--}}
-       {{--</div>--}}
         <div class="row">
             <div class="col s12">
                 <button data-target="createPlan" class="modal-trigger btn waves-effect waves-light">Add New Plan</button>

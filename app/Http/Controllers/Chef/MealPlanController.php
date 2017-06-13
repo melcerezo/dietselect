@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chef;
 
 use App\Chat;
+use App\ChefCustomizedMeal;
 use App\CustomizedMeal;
 use App\Foodie;
 use App\Http\Controllers\Controller;
@@ -156,19 +157,30 @@ class MealPlanController extends Controller
         $mealPlansCount=$mealPlans->count();
         $meals= Meal::where('chef_id','=', $chef->id);
         $ingredientsMeal= '';
-        $ingredientCount=DB::table('ingredient_meal')
-        ->join('meals','ingredient_meal.meal_id','=','meals.id')
-        ->join('meal_plans','meal_plans.meal_id','=','meals.id')
-        ->count();
-
-        if($ingredientCount>0){
+//        $ingredientCount=DB::table('ingredient_meal')
+//        ->join('meals','ingredient_meal.meal_id','=','meals.id')
+//        ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+//        ->count();
+//        $ingredientCount=DB::table('ingredient_meal')
+//            ->join('meals','ingredient_meal.meal_id','=','meals.id')
+////            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+//            ->get();
+//        if($ingredientCount>0){
+//            $ingredientsMeal=DB::table('ingredients')
+//            ->join('ingredient_meal','ingredients.NDB_No','=','ingredient_meal.ingredient_id')
+//            ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+//            ->join('meals','ingredient_meal.meal_id','=','meals.id')
+//            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+//            ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
             $ingredientsMeal=DB::table('ingredients')
-            ->join('ingredient_meal','ingredients.NDB_No','=','ingredient_meal.ingredient_id')
+            ->join('chef_customized_ingredient_meals','ingredients.NDB_No','=','chef_customized_ingredient_meals.ingredient_id')
             ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
-            ->join('meals','ingredient_meal.meal_id','=','meals.id')
-            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
-            ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','ingredient_meal.meal_id','ingredient_meal.grams')->get();
-        }
+            ->join('chef_customized_meals','chef_customized_ingredient_meals.meal_id','=','chef_customized_meals.id')
+//            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc','chef_customized_ingredient_meals.meal_id','chef_customized_ingredient_meals.grams')->get();
+//        }
+//        dd($ingredientsMeal->count());
+
 
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
@@ -182,7 +194,7 @@ class MealPlanController extends Controller
             'mealPlansCount'=>$mealPlansCount,
             'meals' => $meals,
             'ingredientsMeal'=>$ingredientsMeal,
-            'ingredientCount'=>$ingredientCount,
+//            'ingredientCount'=>$ingredientCount,
             'chats' => $chats,
             'messages'=>$messages,
             'notifications' => $notifications
@@ -377,50 +389,101 @@ class MealPlanController extends Controller
 //loop ends
         $meal->save();
 
+        $customMeal=new ChefCustomizedMeal();
+        $customMeal->meal_id=$meal->id;
+        $customMeal->chef_id=Auth::guard('chef')->user()->id;
+        $customMeal->plan_id=$plan->id;
+        $customMeal->description=$request['description'];
+        $customMeal->main_ingredient=$request['main_ingredient'];
+        $customMeal->calories=$meal->calories;
+        $customMeal->carbohydrates=$meal->carbohydrates;
+        $customMeal->protein=$meal->protein;
+        $customMeal->fat=$meal->fat;
+        $customMeal->save();
+
+        $mealPlan=New MealPlan();
+        $mealPlan->plan_id=$plan->id;
+        $mealPlan->meal_id=$customMeal->id;
+        $mealPlan->customized_meal_id=$customMeal->id;
+        $mealPlan->day=$request['dayCreate'];
+        $mealPlan->meal_type=$request['meal_typeCreate'];
+        $mealPlan->save();
+
+        $customMeal->mealplan_id=$mealPlan->id;
+        $customMeal->save();
+
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
                 ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]], 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
             );
+            DB::table('chef_customized_ingredient_meals')->insert(
+                ['meal_id' => $customMeal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]], 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+            );
         }
-        DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal->id, 'customized_meal_id' =>$meal->id, 'day' => $request['dayCreate'],
-                'meal_type' => $request['meal_typeCreate'],'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()
-            ]
-        );
 
-        return back()->with(['status'=>'Successfully created meal: '.$meal->description.'']);
-
+        return back()->with(['status'=>'Successfully created meal: '.$customMeal->description.'']);
 
     }
+
+//    public function setUpdatedMeal()
+//    {
+//
+//    }
 
     public function chooseMeal(Request $request, Plan $plan)
     {
         $day=$request['dayChoose'];
         $meal_type=$request['meal_typeChoose'];
         $meal_id=$request['meal_idChoose'];
-        $meal_description=Meal::where('id','=',$meal_id)->select('description')->first();
-//        dd($meal_id);
-        DB::table('meal_plans')->insert(
-            ['plan_id' => $plan->id, 'meal_id' => $meal_id, 'customized_meal_id' =>$meal_id, 'day' => $day, 'meal_type' => $meal_type, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
-        );
+        $meal=Meal::where('id','=',$meal_id)->first();
+//        dd($meal->ingredient_meal->count());
+        $customMeal=new ChefCustomizedMeal();
+        $customMeal->meal_id=$meal->id;
+        $customMeal->chef_id=Auth::guard('chef')->user()->id;
+        $customMeal->plan_id=$plan->id;
+        $customMeal->description=$meal->description;
+        $customMeal->main_ingredient=$meal->main_ingredient;
+        $customMeal->calories=$meal->calories;
+        $customMeal->carbohydrates=$meal->carbohydrates;
+        $customMeal->protein=$meal->protein;
+        $customMeal->fat=$meal->fat;
+        $customMeal->save();
 
+        $mealPlan=New MealPlan();
+        $mealPlan->plan_id=$plan->id;
+        $mealPlan->meal_id=$customMeal->id;
+        $mealPlan->customized_meal_id=$customMeal->id;
+        $mealPlan->day=$day;
+        $mealPlan->meal_type=$meal_type;
+        $mealPlan->save();
+        $customMeal->mealplan_id=$mealPlan->id;
+        $customMeal->save();
 
-        return back()->with(['status'=>'Successfully created meal: '.$meal_description->description.'']);
+        if($meal->ingredient_meal->count()>0){
+            foreach($meal->ingredient_meal as $ingred){
+                DB::table('chef_customized_ingredient_meals')->insert(
+                    ['meal_id' => $customMeal->id, 'ingredient_id' => $ingred->ingredient_id, 'grams' => $ingred->grams, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+                );
+            }
+        }
+
+        return back()->with(['status'=>'Successfully created meal: '.$customMeal->description.'']);
     }
 
     //modal that pops up to update meal in meal plan
 
-    public function updateMeal(Meal $meal, Request $request)
+    public function updateMeal(ChefCustomizedMeal $chefCustomizedMeal, Request $request)
     {
+//        dd($chefCustomizedMeal);
         $ingredId=[];
-        $meal->description = $request['description'];
-        $meal->main_ingredient = $request['main_ingredient'];
+        $chefCustomizedMeal->description = $request['description'];
+        $chefCustomizedMeal->main_ingredient = $request['main_ingredient'];
         $ingredientCountUpdate=count($request['ingredients']);
         $updateCalories = 0;
         $updateCarbohydrates = 0;
         $updateProtein = 0;
         $updateFat = 0;
-        $prevIngreds = DB::table('ingredient_meal')->select('ingredient_id')->where('meal_id','=',$meal->id)->get();
+        $prevIngreds = DB::table('chef_customized_ingredient_meals')->select('ingredient_id')->where('meal_id','=',$chefCustomizedMeal->id)->get();
         $arrayKeys=array_keys($request['ingredients']);
 //        dd($arrayKeys);
         for($i=0;$i<$ingredientCountUpdate;$i++){
@@ -452,23 +515,21 @@ class MealPlanController extends Controller
             $updateProtein += $pro;
             $updateFat += $fat;
         }
-//        dd($request[]);
-//            dd($updateFat);
 
-        $meal->calories = $updateCalories;
-        $meal->carbohydrates = $updateCarbohydrates;
-        $meal->protein = $updateProtein;
-        $meal->fat = $updateFat;
+        $chefCustomizedMeal->calories = $updateCalories;
+        $chefCustomizedMeal->carbohydrates = $updateCarbohydrates;
+        $chefCustomizedMeal->protein = $updateProtein;
+        $chefCustomizedMeal->fat = $updateFat;
 //        dd($meal->calories);
-        $meal->save();
+        $chefCustomizedMeal->save();
 
         for($i=0;$i<$ingredientCountUpdate;$i++){
-            DB::table('ingredient_meal')->where('meal_id','=',$meal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
-                ['meal_id' => $meal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
+            DB::table('ingredient_meal')->where('meal_id','=',$chefCustomizedMeal->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
+                ['meal_id' => $chefCustomizedMeal->id, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
             );
         }
 
-        return back()->with(['status'=>'Successfully updated meal '.$meal->description.'!']);
+        return back()->with(['status'=>'Successfully updated meal '.$chefCustomizedMeal->description.'!']);
     }
 
     public function deletePlan(Plan $plan){
@@ -543,18 +604,18 @@ class MealPlanController extends Controller
         return back()->with(['status'=>'Successfully deleted '.$mealTypeDisplay.' for '.$day.'!']);
     }
 
-    public function deleteMeal(Meal $meal)
+    public function deleteMeal(ChefCustomizedMeal $chefCustomizedMeal)
     {
-
-        $mealPlan= $meal->mealplan->first();
-        $ingredient_mealDeletes= $meal->ingredient_meal()->get();
+        dd($chefCustomizedMeal);
+        $mealPlan= $chefCustomizedMeal->mealplan->first();
+        $ingredient_mealDeletes= $chefCustomizedMeal->customized_ingredient_meal()->get();
 
         foreach ($ingredient_mealDeletes as $mealDelete){
-            $mealDelete->where('meal_id','=',$meal->id)->delete();
+            $mealDelete->where('meal_id','=',$chefCustomizedMeal->id)->delete();
         }
-        $meal->delete();
+        $chefCustomizedMeal->delete();
         $mealPlan->delete();
-        return back()->with(['status'=>'Successfully deleted the whole meal!']);
+        return back()->with(['status'=>'Successfully deleted the meal!']);
     }
 }
 

@@ -51,6 +51,25 @@ class FoodieController extends Controller
     public function index()
     {
 //        suggested meal plans
+        $dt= Carbon::now();
+//        dd($dt);
+        $isSaturday = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
+        $thisSunday = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
+
+        if($dt->format('Y-m-d H:i:s')>=$isSaturday){
+            dd("hi");
+            $isSaturday=Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        }else if($dt->dayOfWeek == Carbon::MONDAY){
+            dd('hey');
+            $isSaturday=Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
+        }
+
+        if ($dt->format('Y-m-d H:i:s') >= $isSaturday && $dt->format('Y-m-d H:i:s')<= $thisSunday) {
+            dd($isSaturday);
+        }
+
+//        dd($dt);
+
 
         $foodie = Auth::guard('foodie')->user()->id;
         # Meals

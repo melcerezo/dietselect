@@ -9,9 +9,9 @@ class MealPlan extends Model
 
     protected $table='meal_plans';
 
-    public function meal(){
-        return $this->belongsTo('App\Meal','meal_id');
-    }
+//    public function meal(){
+//        return $this->belongsTo('App\Meal','meal_id');
+//    }
 
     public function plan(){
         return $this->belongsTo('App\Plan');
@@ -19,6 +19,9 @@ class MealPlan extends Model
 
     public function customize(){
         return $this->belongsTo('App\CustomizedMeal','customized_meals');
+    }
+    public function chefcustomize(){
+        return $this->belongsTo('App\ChefCustomizedMeal','meal_id');
     }
 
 

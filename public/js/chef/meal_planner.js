@@ -123,6 +123,12 @@ $(document).ready(function () {
         });
     }
 
+    $('.createMealLink').on('click',function () {
+        var mealDay = $(this).attr('data-day');
+        var mealType=$(this).attr('data-meal-type');
+        $("#chooseModal"+mealDay+mealType).closeModal();
+    });
+
     $('.chooseMealLink').on('click', function () {
         var select=$('#mealChoiceSelect');
         var mealDay = $(this).attr('data-day');
