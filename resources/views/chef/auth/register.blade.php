@@ -125,9 +125,9 @@
                         @endif
                     </div>
                 </div>
-                <div>
-                    {!! app('captcha')->display(); !!}
-                </div>
+            </div>
+            <div class="row">
+                {!! app('captcha')->display(); !!}
             </div>
         </div>
         <div class="card-action">
