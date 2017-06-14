@@ -203,9 +203,9 @@
                             <input id="n-reg-newsletter" class="filled-in" name="joined_newsletter" type="checkbox" value="1" data-error=".error-msg-newsletter"/>
                             <label for="n-reg-newsletter"><small>I want to join the official newsletter of Diet Select Inc. so that I can be updated with their services and offerings.</small></label>
                         </div>
-                        <div class="row">
-                            {!! app('captcha')->display(); !!}
-                        </div>
+                    </div>
+                    <div class="row">
+                        {!! app('captcha')->display(); !!}
                     </div>
                 </div>
                 <div class="modal-footer">
