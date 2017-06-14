@@ -19,30 +19,36 @@
             </nav>
         </div>
         <div class="row">
-            @foreach($plans->chunk(3) as $chunk)
-                <div class="row">
-                    @foreach($chunk as $plan)
-                        <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
-                            <div class="col s12 m4">
-                                <div>
-                                   <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
+            @if($plans->count()>0))
+                @foreach($plans->chunk(3) as $chunk)
+                    <div class="row">
+                        @foreach($chunk as $plan)
+                            <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
+                                <div class="col s12 m4">
+                                    <div>
+                                       <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
+                                    </div>
+                                    <div class="plSlCnt">
+                                        <div class="plSlCntTtl">
+                                            <span>{{$plan->plan_name}}</span>
+                                        </div>
+                                        <div class="plSlCntChf">
+                                            <span>By: </span><span>{{$plan->chef->name}}</span>
+                                        </div>
+                                        <div class="plSlCntDes">
+                                            <p>{{$plan->description}}</p>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="plSlCnt">
-                                    <div class="plSlCntTtl">
-                                        <span>{{$plan->plan_name}}</span>
-                                    </div>
-                                    <div class="plSlCntChf">
-                                        <span>By: </span><span>{{$plan->chef->name}}</span>
-                                    </div>
-                                    <div class="plSlCntDes">
-                                        <p>{{$plan->description}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    @endforeach
+                            </a>
+                        @endforeach
+                    </div>
+                @endforeach
+            @else
+                <div>
+                    <span>No Plans Yet for the coming Week!</span>
                 </div>
-            @endforeach
+            @endif
         </div>
     </div>
 @endsection
