@@ -119,6 +119,13 @@ $(document).ready(function(){
         console.log('type');
     });
 
+    $('#n-reg-pass').blur(function () {
+        if($('#n-reg-pass').val()==''){
+            $('#result').empty();
+        }
+    });
+
+
     function checkStrength(password)
     {
         //initial strength

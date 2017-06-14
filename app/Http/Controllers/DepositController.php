@@ -163,14 +163,14 @@ class DepositController extends Controller
         $user = Auth::guard('foodie')->user();
 
         $this->validate($request, [
-            'gcRefNmbr' => 'required',
+//            'gcRefNmbr' => 'required',
             'gcDatePay' => 'required',
             'gcPic' => 'required'
         ]);
 
         $image = $request['gcPic'];
         $date_of_pay=$request['gcDatePay'];
-        $receiptNumber = $request['gcRefNmbr'];
+//        $receiptNumber = $request['gcRefNmbr'];
         if ($request->hasFile('gcPic')) {
 
             $filename = time() . '.' . $image->getClientOriginalExtension();
@@ -178,7 +178,7 @@ class DepositController extends Controller
             Image::make($image)->resize(500, 500)->save(public_path('img/' . $filename));
 
             $gcash = New Gcash();
-            $gcash->reference_number = $receiptNumber;
+//            $gcash->reference_number = $receiptNumber;
             $gcash->picture= $filename;
             $gcash->date_of_pay = $date_of_pay;
             $gcash->foodie_id = Auth::guard('foodie')->user()->id;
@@ -198,7 +198,7 @@ class DepositController extends Controller
             $notification->receipt_name = $filename;
             $notification->deposit_id = $gcash->id;
             $notification->subject = 'GCash Payment';
-            $notification->message = 'Hello! I just paid it through Gcash. Reference Number: '.$receiptNumber;
+            $notification->message = 'Hello! I just paid it through Gcash.';
             $notification->save();
 
             $foodnotif= new Notification();

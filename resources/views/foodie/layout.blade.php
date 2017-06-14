@@ -196,6 +196,12 @@
                         <span class="hide-on-med-and-down">Profile</span>
                     </a>
                 </li>
+                <li class="collection-item">
+                    <a href="{{ route("foodie.order.view") }}" class="nvItLnk">
+                        {{--<i class="fa fa-user" aria-hidden="true"></i>--}}
+                        <span class="hide-on-med-and-down">Orders</span>
+                    </a>
+                </li>
                 {{--<li class="collection-item">--}}
                     {{--<a href="#!" class="nvItLnk">--}}
                         {{--<i class="fa fa-cogs" aria-hidden="true"></i>--}}

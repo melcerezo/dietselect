@@ -251,10 +251,10 @@ class FoodieOrderPlanController extends Controller
 
         $dt =  new Carbon();
 //        dd($dt->format('Y-m-d H:i:s'));
-        $isSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        $isSaturday = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
         $thisSunday = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
 
-        if($dt->format('Y-m-d H:i:s')>=$isSaturday){
+        if($dt->dayOfWeek == Carbon::SUNDAY){
 //            dd("hi");
             $isSaturday=Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
         }else if($dt->dayOfWeek == Carbon::MONDAY){
@@ -277,7 +277,7 @@ class FoodieOrderPlanController extends Controller
             $foodnotif->receiver_id=$foodie->id;
             $foodnotif->receiver_type='f';
             $foodnotif->notification='You have a pending order. ';
-            $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
+            $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
             $foodnotif->notification_type=1;
 //        dd($foodnotif);
             $foodnotif->save();
@@ -362,6 +362,9 @@ class FoodieOrderPlanController extends Controller
 
     public function show(Order $order){
         $foodie = Auth::guard('foodie')->user();
+        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('city','unit','street','brgy','bldg','type')->first();
+//        dd($foodieAddress->city);
+
         $plan = Plan::where('id', '=', $order->plan_id)->first();
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
@@ -372,6 +375,7 @@ class FoodieOrderPlanController extends Controller
         return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
+            'foodieAddress' =>$foodieAddress,
             'messages'=>$messages,
             'chefs'=>$chefs,
             'chats' => $chats,

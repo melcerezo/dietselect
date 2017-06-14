@@ -63,7 +63,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -72,7 +72,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -81,7 +81,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -90,7 +90,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -99,7 +99,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -111,7 +111,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -120,7 +120,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -129,7 +129,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -138,7 +138,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -147,7 +147,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -159,7 +159,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -168,7 +168,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -177,7 +177,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -186,7 +186,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -195,7 +195,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -207,7 +207,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -216,7 +216,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -225,7 +225,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -234,7 +234,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -243,7 +243,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -255,7 +255,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -264,7 +264,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -273,7 +273,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -282,7 +282,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -291,7 +291,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -312,7 +312,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -321,7 +321,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -330,7 +330,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>
@@ -339,7 +339,7 @@
                                         <div class="truncate">
                                             @foreach($mealPlansUpcoming as $id =>$mealPlan)
                                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
-                                                    <span>{{$mealPlan->meal->description}}</span>
+                                                    <span>{{$mealPlan->chefcustomize->description}}</span>
                                                 @endif
                                             @endforeach
                                         </div>

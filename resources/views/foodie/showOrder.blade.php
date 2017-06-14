@@ -35,10 +35,52 @@
             </div>
         </div>
         <div class="row">
+            {{--<button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button>--}}
             <div class="col s12 m6">
-                <div><button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button></div>
-                <div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>
-                <div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>
+                <div class="col s12 m4">
+                    <a href="#bankPay" class="modal-trigger">
+                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                <div class="white-text center-block">
+                                    <i class="fa fa-bank" style="font-size: 80px;"></i>
+                                </div>
+                            </div>
+                            <div class="white-text center">
+                                <span>Bank Payment</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col s12 m4">
+                    <a href="#paypalPay" class="modal-trigger">
+                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                <div class="white-text center-block">
+                                    <i class="fa fa-paypal" style="font-size: 80px;"></i>
+                                </div>
+                            </div>
+                            <div class="white-text center">
+                                <span>PayPal Payment</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col s12 m4">
+                    <a href="#gcashModal" class="modal-trigger">
+                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                <div class="white-text center-block">
+                                    <span style="font-size: 50px;">GCash</span>
+                                </div>
+                            </div>
+                            <div class="white-text center">
+                                <span>GCash Payment</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
+                {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             </div>
             <div class="col s12 m6">
                 <ul class="collection">
@@ -47,6 +89,22 @@
                     </li>
                     <li class="collection-item">
                         <span>Total: {{$plan->price}}</span>
+                    </li>
+                    <li class="collection-item">
+                        <div>
+                            <span>Delivery Address:</span>
+                        </div>
+                        <div>
+                            <span>{{$foodieAddress->unit}}</span>
+                            @unless($foodieAddress->bldg=='')
+                            <span> {{$foodieAddress->bldg}}, </span>
+                            @endunless
+                            <span>{{$foodieAddress->brgy}}, </span>
+                            <span>{{$foodieAddress->city}}</span>
+                        </div>
+                    </li>
+                    <li class="collection-item">
+
                     </li>
                 </ul>
             </div>
@@ -83,6 +141,15 @@
     </div>
 
     <div id="paypalPay" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span style="margin-left: 20px;">PayPal Payment</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="modal-content">
             @if ($message = Session::get('success'))
                 <div class="custom-alerts alert alert-success fade in">
@@ -98,24 +165,9 @@
                 </div>
                 <?php Session::forget('error');?>
             @endif
-            <div>Pay with PayPal</div><br>
             <div>
                 <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
                     {{ csrf_field() }}
-                    <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
-                        <label for="amount" class="col-md-4 control-label">Amount</label>
-                        <div class="col-md-6">
-                            {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
-                            <div>
-                                {{$order->plan->price}}
-                            </div>
-                            @if ($errors->has('amount'))
-                                <span class="help-block">
-                                        <strong>{{ $errors->first('amount') }}</strong>
-                                    </span>
-                            @endif
-                        </div>
-                    </div>
 
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">
@@ -144,11 +196,6 @@
             <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
-                    <div class="row">
-                        <label for="gcRefNmbr">Reference Number:</label>
-                        <input type="text" id="gcRefNmbr" name="gcRefNmbr" data-error=".error-gRef" />
-                        <div class="error-gRef err"></div>
-                    </div>
                     <div class="row">
                         <div><label for="gcDatePay">Date of Transaction:</label></div>
                         <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>

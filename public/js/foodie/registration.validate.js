@@ -96,6 +96,9 @@ $(document).ready(function(){
         $('#result').html(checkStrength($('#n-reg-pass').val()));
         console.log('type');
     });
+    $('#n-reg-pass').blur(function () {
+        $('#result').empty();
+    });
 
     function checkStrength(password)
     {
