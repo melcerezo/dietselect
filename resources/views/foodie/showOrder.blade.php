@@ -166,6 +166,12 @@
                 <?php Session::forget('error');?>
             @endif
             <div>
+                <ul class="collection">
+                    {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                    <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
+                    <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
+                    <li class="collection-item">Plan Price: {{$plan->price}}</li>
+                </ul>
                 <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
                     {{ csrf_field() }}
 
