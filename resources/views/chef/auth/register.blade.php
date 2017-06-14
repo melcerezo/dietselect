@@ -124,6 +124,8 @@
                             {{ $errors->first('partner_agreement') }}
                         @endif
                     </div>
+                </div>
+                <div>
                     {!! app('captcha')->display(); !!}
                 </div>
             </div>
