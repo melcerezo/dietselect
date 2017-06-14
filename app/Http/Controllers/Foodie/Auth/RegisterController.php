@@ -58,6 +58,7 @@ class RegisterController extends Controller
             'registration_email' => 'required|email|max:255|unique:foodies,email',
             'password' => 'required|min:6|confirmed',
             'user_agreement' => 'accepted',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
     }
 

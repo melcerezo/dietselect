@@ -60,6 +60,7 @@ class RegisterController extends Controller
             'url_name' => 'required|alpha_num|min:5|max:255|unique:chefs',
             'password' => 'required|min:6|max:255|confirmed',
             'partner_agreement' => 'accepted',
+            'g-recaptcha-response' => 'required|captcha'
         ]);
     }
 
