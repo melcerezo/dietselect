@@ -16,7 +16,9 @@
                             <a id="coverLinkPhoto" href="#addCover" class="modal-trigger">
                                 <span class="fa fa-camera grey-text lighten-3" style="position: absolute; top:12px; left: 0; display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
                                 <div id="addCoverPhotoLink">
-                                    <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                                    <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                                        <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                                    </div>
                                 </div>
                             </a>
                         @else
