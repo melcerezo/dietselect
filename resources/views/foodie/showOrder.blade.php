@@ -103,19 +103,28 @@
                             <span>{{$foodieAddress->city}}</span>
                         </div>
                     </li>
-                    <li class="collection-item">
-
-                    </li>
                 </ul>
             </div>
         </div>
     </div>
 
     <div id="bankPay" class="modal">
-        <div class="modal-content">
-            <div>
-                <h4>Bank Payment Form</h4>
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span style="margin-left: 20px;">Bank Payment</span>
+                    </li>
+                </ul>
             </div>
+        </nav>
+        <div class="modal-content">
+            <ul class="collection">
+                {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
+                <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
+                <li class="collection-item">Plan Price: {{$plan->price}}</li>
+            </ul>
             <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
@@ -129,11 +138,20 @@
                     <div class="error-date-pay err"></div>
 
                 </div>
-                <div>
-                    <label for="image">Image</label>
-                    <input type="file" name="image" data-error=".error-image" id="image">
-                    <div class="error-image err"></div>
-
+                <div class="row">
+                    <div class="file-field">
+                        <label for="image" class="active">Picture Upload:</label>
+                        <div style="padding-top: 10px;">
+                            <div class="btn">
+                                <span>File</span>
+                                <input type="file" data-error=".error-image" id="image" name="image">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" >
+                            </div>
+                            <div class="error-image err"></div>
+                        </div>
+                    </div>
                 </div>
                 <button type="submit">Submit</button>
             </form>
@@ -199,6 +217,12 @@
                 <span>Please send your Gcash payment to: 09950893073. Fill out this form with a
                     screenshot of the confirmation text and the reference number</span>
             </div>
+            <ul class="collection">
+                {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
+                <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
+                <li class="collection-item">Plan Price: {{$plan->price}}</li>
+            </ul>
             <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
