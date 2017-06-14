@@ -30,3 +30,16 @@ table.dshMlTbl{
 div.dshNoOrd{
     padding:10px 20px;
 }
+div.card-image.dshPrfCrdCnt div#addCoverPhotoLink{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}
