@@ -12,7 +12,7 @@ $(document).ready(function(){
     });
 
     $('#n-reg-mobile-num').on('keydown keyup', function(e){
-        if ($(this).val().length > 9
+        if ($(this).val().length > 10
             && e.keyCode != 46 // delete
             && e.keyCode != 8 // backspace
         ) {
