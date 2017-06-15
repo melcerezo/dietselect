@@ -35,68 +35,71 @@
             </div>
         </div>
         <div class="row">
-            {{--<button data-target="bankPay" class="modal-trigger btn">Bank Deposit</button>--}}
-            <div class="col s12 m8">
-                <div class="col s12 m3">
-                    <a href="#bankPay" class="modal-trigger">
-                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
-                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                <div class="white-text center-block">
-                                    <i class="fa fa-bank" style="font-size: 80px;"></i>
+                <div class="col s12 m6">
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <a href="#bankPay" class="modal-trigger">
+                                <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                        <div class="white-text center-block">
+                                            <i class="fa fa-bank" style="font-size: 80px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="white-text center">
+                                        <span>Bank Payment</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="white-text center">
-                                <span>Bank Payment</span>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col s12 m3">
-                    <a href="#paypalPay" class="modal-trigger">
-                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
-                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                <div class="white-text center-block">
-                                    <i class="fa fa-paypal" style="font-size: 80px;"></i>
+                        <div class="col s12 m4">
+                            <a href="#paypalPay" class="modal-trigger">
+                                <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                        <div class="white-text center-block">
+                                            <i class="fa fa-paypal" style="font-size: 80px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="white-text center">
+                                        <span>PayPal Payment</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="white-text center">
-                                <span>PayPal Payment</span>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col s12 m3">
-                    <a href="#gcashModal" class="modal-trigger">
-                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
-                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                <div class="white-text center-block">
-                                    <span style="font-size: 50px;">GCash</span>
+                        <div class="col s12 m4">
+                            <a href="#gcashModal" class="modal-trigger">
+                                <div class="light-green lighten-1" style="border-radius: 15px 50px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                        <div class="white-text center-block">
+                                            <span style="font-size: 50px;">GCash</span>
+                                        </div>
+                                    </div>
+                                    <div class="white-text center">
+                                        <span>GCash Payment</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="white-text center">
-                                <span>GCash Payment</span>
-                            </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-                <div class="col s12 m3">
-                    <a href="#cancelOrderModal" class="modal-trigger">
-                        <div class="light-green lighten-1" style="border-radius: 15px 50px;">
-                            <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                <div class="white-text center-block">
-                                    <i class="fa fa-ban" style="font-size: 80px;"></i>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 m4">
+                            <a href="#cancelOrderModal" class="modal-trigger">
+                                <div class="red" style="border-radius: 15px 50px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                        <div class="white-text center-block">
+                                            <i class="fa fa-ban" style="font-size: 80px;"></i>
+                                        </div>
+                                    </div>
+                                    <div class="white-text center">
+                                        <span>Cancel Order</span>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="white-text center">
-                                <span>Cancel Order</span>
-                            </div>
+                            </a>
                         </div>
-                    </a>
+                    </div>
                 </div>
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-            </div>
-            <div class="col s12 m4">
+            <div class="col s12 m6">
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Total Order:</span>
