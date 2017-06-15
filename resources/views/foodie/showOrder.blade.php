@@ -106,7 +106,11 @@
             @endunless
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-            <div class="col s12 m6">
+            @if($order->is_paid==0)
+                <div class="col s12 m6">
+            @else
+                <div class="col s12 m6 offset-m6">
+            @endif
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Total Order:</span>
