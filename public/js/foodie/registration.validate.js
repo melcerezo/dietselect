@@ -11,6 +11,16 @@ $(document).ready(function(){
     //     }
     // });
 
+    $('#n-reg-mobile-num').on('keydown keyup', function(e){
+        if ($(this).val() > 9
+            && e.keyCode != 46 // delete
+            && e.keyCode != 8 // backspace
+        ) {
+            e.preventDefault();
+            // $(this).val(100);
+        }
+    });
+
 
 
     $('form#registration').validate({
