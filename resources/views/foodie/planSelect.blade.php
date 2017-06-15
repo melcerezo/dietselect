@@ -19,7 +19,7 @@
             </nav>
         </div>
         <div class="row">
-            @if($plans->count()>0))
+            @if($plans->count()>0)
                 @foreach($plans->chunk(3) as $chunk)
                     <div class="row">
                         @foreach($chunk as $plan)

@@ -94,23 +94,46 @@
                         <div>
                             <span>Delivery Address:</span>
                         </div>
-                        @if($foodieAddress!=null)
+                        @if($orderAddress!=null)
                             <div>
-                                <span>{{$foodieAddress->unit}}</span>
-                                @unless($foodieAddress->bldg=='')
-                                <span> {{$foodieAddress->bldg}}, </span>
+                                <span>{{$orderAddress->unit}}</span>
+                                @unless($orderAddress->bldg=='')
+                                    <span> {{$orderAddress->bldg}}, </span>
                                 @endunless
-                                <span>{{$foodieAddress->brgy}}, </span>
-                                <span>{{$foodieAddress->city}}</span>
+                                <span>{{$orderAddress->brgy}}, </span>
+                                <span>{{$orderAddress->city}}</span>
+                            </div>
+                            <div>
+                                <a href="#pickOrderAddressModal" class="modal-trigger"><span></span></a>
                             </div>
                         @else
                             <div>
-                                <a href="{{route('foodie.profile')}}"><span>No address. Please add one so we can deliver to you!</span></a>
+                                <a href="{{route('foodie.profile')}}"><span>No Order Address Picked. Please add one so we can deliver to you!</span></a>
                             </div>
                         @endif
                     </li>
                 </ul>
             </div>
+        </div>
+    </div>
+
+    <div id="pickOrderAddressModal" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span style="margin-left: 20px;">Choose Order Address</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <div class="row">
+                <span>Please choose an address for us to deliver.</span>
+            </div>
+            <form action="{{route('foodie.order.address', $order->id)}}" id="pickAddressForm">
+
+            </form>
         </div>
     </div>
 

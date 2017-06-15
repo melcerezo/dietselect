@@ -362,8 +362,10 @@ class FoodieOrderPlanController extends Controller
 
     public function show(Order $order){
         $foodie = Auth::guard('foodie')->user();
-        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('city','unit','street','brgy','bldg','type')->first();
-//        dd($foodieAddress->city);
+        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('city','unit','street','brgy','bldg','type')->get();
+
+        $orderAddress = DB::table('foodie_address')->where('id','=',$order->id)->select('city','unit','street','brgy','bldg','type')->first();
+//        dd($orderAddress);
 
         $plan = Plan::where('id', '=', $order->plan_id)->first();
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
@@ -376,6 +378,7 @@ class FoodieOrderPlanController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'foodieAddress' =>$foodieAddress,
+            'orderAddress' => $orderAddress,
             'messages'=>$messages,
             'chefs'=>$chefs,
             'chats' => $chats,
@@ -385,8 +388,8 @@ class FoodieOrderPlanController extends Controller
     }
 
 
-    public function showCustSingle(Order $order)
+    public function changeOrderAddress($id)
     {
-
+        
     }
 }
