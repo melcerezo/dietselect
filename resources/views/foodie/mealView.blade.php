@@ -4,6 +4,7 @@
     <script>
         $orderRoute='{{route('foodie.order.review', $plan->id)}}';
         $customizeRoute='{{route('foodie.plan.custom', $plan->id)}}';
+        $backRoute='{{route('foodie.plan.show')}}';
     </script>
     <script src="/js/foodie/foodieMealView.js" defer></script>
 @endsection
@@ -291,9 +292,15 @@
         </div>
         <div class="row">
             <div class="col s12 m6 left plSlMlBtn">
-                    <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger">Order</button>
-                    <button id="plSlMlCst" class="plSlMlCstBtn btn waves-effect waves-light">Customize</button>
-                    <a href="{{route('foodie.plan.show')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back to Plans</a>
+                <div style="margin-bottom: 20px;">
+                    <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger">Order Plan</button>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <button id="plSlMlCst" class="btn waves-effect waves-light">Customize Plan</button>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back to Plans</button>
+                </div>
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">
