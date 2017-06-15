@@ -10,6 +10,17 @@ $(document).ready(function(){
             $('#n-reg-website').val('');
         }
     });
+
+    $('#n-reg-mobile-num').on('keydown keyup', function(e){
+        if ($(this).val() > 9
+            && e.keyCode != 46 // delete
+            && e.keyCode != 8 // backspace
+        ) {
+            e.preventDefault();
+            // $(this).val(100);
+        }
+    });
+
     // $('div.input-field').on('focus', '#n-reg-mobile-num', function(){
     //     var url = $('#n-reg-mobile-num').val();
     //     if (url == '') {
