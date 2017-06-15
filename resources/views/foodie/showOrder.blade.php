@@ -27,13 +27,18 @@
                             <td>{{$plan->plan_name}}</td>
                             <td>{{$plan->chef->name}}</td>
                             <td>{{$plan->price}}</td>
-                            <td>{{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</td>
+                            @if($order->is_cancelled==0)
+                                <td>{{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</td>
+                            @elseif($order->is_cancelled==1)
+                                <td>Cancelled</td>
+                            @endif
                         </tr>
                     </tbody>
                 </table>
                 </div>
             </div>
         </div>
+        @unless($order->is_cancelled==1)
         <div class="row">
                 <div class="col s12 m6">
                     <div class="row">
@@ -132,6 +137,7 @@
                 </ul>
             </div>
         </div>
+        @endunless
     </div>
 
     <div id="pickOrderAddressModal" class="modal">
