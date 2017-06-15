@@ -94,14 +94,20 @@
                         <div>
                             <span>Delivery Address:</span>
                         </div>
-                        <div>
-                            <span>{{$foodieAddress->unit}}</span>
-                            @unless($foodieAddress->bldg=='')
-                            <span> {{$foodieAddress->bldg}}, </span>
-                            @endunless
-                            <span>{{$foodieAddress->brgy}}, </span>
-                            <span>{{$foodieAddress->city}}</span>
-                        </div>
+                        @if($foodieAddress==null)
+                            <div>
+                                <span>{{$foodieAddress->unit}}</span>
+                                @unless($foodieAddress->bldg=='')
+                                <span> {{$foodieAddress->bldg}}, </span>
+                                @endunless
+                                <span>{{$foodieAddress->brgy}}, </span>
+                                <span>{{$foodieAddress->city}}</span>
+                            </div>
+                        @else
+                            <div>
+                                <a href="{{route('foodie.profile')}}"><span>No address. Please add one so we can deliver to you!</span></a>
+                            </div>
+                        @endif
                     </li>
                 </ul>
             </div>
