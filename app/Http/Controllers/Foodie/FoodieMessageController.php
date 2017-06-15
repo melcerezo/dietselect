@@ -37,7 +37,7 @@ class FoodieMessageController extends Controller
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
-        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.messaging.foodieMessages')->with([
             'sms_unverified' => $this->smsIsUnverified(),
