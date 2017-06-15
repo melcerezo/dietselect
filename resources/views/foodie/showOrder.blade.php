@@ -94,7 +94,7 @@
                         <div>
                             <span>Delivery Address:</span>
                         </div>
-                        @if($foodieAddress==null)
+                        @if($foodieAddress=="")
                             <div>
                                 <span>{{$foodieAddress->unit}}</span>
                                 @unless($foodieAddress->bldg=='')
