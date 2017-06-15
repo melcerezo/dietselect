@@ -10,8 +10,11 @@
     padding: 0;
     min-height: 500px;
     max-height: 500px;
-    overflow: auto;
-    -ms-overflow-y: auto;
+    overflow: hidden;
+    -ms-overflow-y: hidden;
+}
+.row .col.msgList:hover{
+    overflow-y: scroll;
 }
 
 .collection.msgListItem{
@@ -31,10 +34,15 @@
     margin: 0;
     min-height: 500px;
     max-height: 500px;
-    overflow-y: auto;
-    -ms-overflow-y: auto;
+    overflow-y: hidden;
+    -ms-overflow-y: hidden;
 
 }
+
+.row .col.msgDtl:hover{
+    overflow-y: scroll;
+}
+
 .msgActive{
     background: #e1f5fe;
     border-left: 4px solid #29b6f6;
