@@ -331,6 +331,7 @@
             </form>
         </div>
     </div>
+</div>
             {{--<h2 class="center white-text">Order Confirmation</h2>--}}
             {{--<div><span class="center full-width white-text" style="font-size: 1.5em">You have placed your order!</span>--}}
             {{--</div>--}}

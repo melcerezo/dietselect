@@ -85,7 +85,7 @@
                     </div>
                 </a>
             @elseif($order->is_paid==1 && $order->is_cancelled==0)
-                <a href="#!">
+                <a href="{{route('order.show', $order->id)}}">
                     <div class="row">
                         <div class="card">
                             <div class="card-panel">
