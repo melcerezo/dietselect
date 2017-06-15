@@ -40,6 +40,7 @@
         </div>
         @unless($order->is_cancelled==1)
         <div class="row">
+            @unless($order->is_paid==1)
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m4">
@@ -102,6 +103,7 @@
                         </div>
                     </div>
                 </div>
+            @endunless
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             <div class="col s12 m6">
