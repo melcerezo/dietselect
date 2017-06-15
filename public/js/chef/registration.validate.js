@@ -15,6 +15,7 @@ $(document).ready(function(){
         if ($(this).val().length >= 10
             && e.keyCode != 46 // delete
             && e.keyCode != 8 // backspace
+            && e.keyCode != 9 // tab
         ) {
             e.preventDefault();
             // $(this).val(100);
