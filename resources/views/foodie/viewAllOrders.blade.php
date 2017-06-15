@@ -1,6 +1,9 @@
 @extends('foodie.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/orderAll.css">
+    <script>
+        from = '{{$from}}'
+    </script>
     <script src="/js/foodie/orderAll.js" defer></script>
 
 
@@ -23,9 +26,11 @@
     @if($ordersCount>0)
     <div class="row">
         <div class="col s6">
-            <div id="allLinkContain" class="col s4 center"><a href="#!" class="allLink">All</a></div>
-            <div id="pendLinkContain" class="col s4 center"><a href="#!" class="pendLink">Pending</a></div>
-            <div id="paidLinkContain" class="col s4 center"><a href="#!" class="paidLink">Paid</a></div>
+            <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
+            <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
+            <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
+            <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
+
         </div>
         {{--<div class="row" >--}}
             {{--<div class="col s12" style="margin-top: 6px;">--}}
@@ -35,7 +40,7 @@
     </div>
     <div id="ordAll">
         @foreach($orders as $order)
-            @if($order->is_paid==0)
+            @if($order->is_paid==0 && $order->is_cancelled==0)
                 <a href="{{route('order.show', $order->id)}}">
                     <div class="row">
                         <div class="card">
@@ -79,7 +84,7 @@
                         </div>
                     </div>
                 </a>
-            @else
+            @elseif($order->is_paid==1 && $order->is_cancelled==0)
                 <a href="#!">
                     <div class="row">
                         <div class="card">
@@ -127,52 +132,57 @@
         @endforeach
     </div>
     <div id="ordPend">
-        @foreach($orders as $order)
-            @if($order->is_paid==0)
-                <a href="{{route('order.show', $order->id)}}">
-                    <div class="row">
-                        <div class="card">
-                            <div class="card-panel">
-                                <table>
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Plan Name</th>
-                                        <th>Chef Name</th>
-                                        <th>Amount</th>
-                                        <th>Type</th>
-                                        <th>Payment Status</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td class="orderID">{{$order->id}}</td>
-                                        <td class="planName">{{$order->plan->plan_name}}</td>
-                                        <td class="chefName">{{$order->chef->name}}</td>
-                                        <td class="amount">{{$order->plan->price}}</td>
-                                        <td class="type">
-                                            @if($order->order_type=='c')
-                                                <p>Customized</p>
-                                            @else
-                                                <p>Standard</p>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <p>Pending</p>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
+        @if($pendOrdCount>0)
+            @foreach($orders as $order)
+                @if($order->is_paid==0 && $order->is_cancelled==0)
+                    <a href="{{route('order.show', $order->id)}}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-panel">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Plan Name</th>
+                                            <th>Chef Name</th>
+                                            <th>Amount</th>
+                                            <th>Type</th>
+                                            <th>Payment Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="orderID">{{$order->id}}</td>
+                                            <td class="planName">{{$order->plan->plan_name}}</td>
+                                            <td class="chefName">{{$order->chef->name}}</td>
+                                            <td class="amount">{{$order->plan->price}}</td>
+                                            <td class="type">
+                                                @if($order->order_type=='c')
+                                                    <p>Customized</p>
+                                                @else
+                                                    <p>Standard</p>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <p>Pending</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            @endif
-        @endforeach
+                    </a>
+                @endif
+            @endforeach
+        @else
+            No Pending Orders
+        @endif
     </div>
     <div id="ordPaid">
+        @if($paidOrdCount>0)
             @foreach($orders as $order)
-                @if($order->is_paid==1)
+                @if($order->is_paid==1 && $order->is_cancelled==0)
                     <a href="{{route('order.show', $order->id)}}">
                         <div class="row">
                             <div class="card">
@@ -213,7 +223,58 @@
                     </a>
                 @endif
             @endforeach
+        @else
+            No Paid Orders
+        @endif
         </div>
+        <div id="ordCancel">
+            @if($cancelOrdCount)
+            @foreach($orders as $order)
+                @if($order->is_cancelled==1)
+                    <a href="{{route('order.show', $order->id)}}">
+                        <div class="row">
+                            <div class="card">
+                                <div class="card-panel">
+                                    <table>
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Plan Name</th>
+                                            <th>Chef Name</th>
+                                            <th>Amount</th>
+                                            <th>Type</th>
+                                            <th>Payment Status</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td class="orderID">{{$order->id}}</td>
+                                            <td class="planName">{{$order->plan->plan_name}}</td>
+                                            <td class="chefName">{{$order->chef->name}}</td>
+                                            <td class="amount">{{$order->plan->price}}</td>
+                                            <td class="type">
+                                                @if($order->order_type=='c')
+                                                    <p>Customized</p>
+                                                @else
+                                                    <p>Standard</p>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <p>Cancelled</p>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                @endif
+            @endforeach
+        @else
+            No Cancelled Orders
+        @endif
+    </div>
 @else
     No Orders Yet!
 @endif

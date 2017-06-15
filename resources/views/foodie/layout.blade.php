@@ -4,7 +4,10 @@
     <script>
         {{--var profileRoute="{{route('foodie.profile')}}";--}}
         {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
-        orderAllRoute ='{{route('foodie.order.view')}}';
+        orderAllRoute ='{{route('foodie.order.view', ['from'=>0])}}';
+        pendRoute ='{{route('foodie.order.view', ['from'=>1])}}';
+        paidRoute ='{{route('foodie.order.view', ['from'=>2])}}';
+        cancelRoute ='{{route('foodie.order.view', ['from'=>3])}}';
         logoutRoute='{{route('foodie.logoutAuto')}}';
     </script>
     <script src="/js/foodie/app.js" defer></script>
@@ -197,7 +200,7 @@
                     </a>
                 </li>
                 <li class="collection-item">
-                    <a href="{{ route("foodie.order.view") }}" class="nvItLnk">
+                    <a href="{{ route("foodie.order.view", ['id'=> 0]) }}" class="nvItLnk">
                         {{--<i class="fa fa-user" aria-hidden="true"></i>--}}
                         <span class="hide-on-med-and-down">Orders</span>
                     </a>
@@ -244,7 +247,7 @@
                 @endif
             </a>
         </li>
-        <li class="collection-item"><a href="{{url('foodie/order/view')}}">Order History</a></li>
+        <li class="collection-item"><a href="{{route('foodie.order.view', ['id'=> 0])}}">Order History</a></li>
         <li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>
         {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>

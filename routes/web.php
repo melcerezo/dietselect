@@ -65,10 +65,11 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
-    Route::post('order/plan/{id}', 'Foodie\FoodieController@changeOrderAddress')->name('foodie.order.address');
+    Route::post('order/plan/{id}', 'Foodie\FoodieOrderPlanController@changeOrderAddress')->name('foodie.order.address');
+    Route::post('order/cancel/{order}', 'Foodie\FoodieOrderPlanController@cancelOrder')->name('foodie.order.cancel');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
     Route::post('order/custPlan/{plan}/{id}', 'Foodie\FoodieOrderPlanController@custStore')->name('foodie.custOrder.create');
-    Route::get('order/view', 'Foodie\FoodieOrderPlanController@getAllOrdersView')->name('foodie.order.view');
+    Route::get('order/view/{from?}', 'Foodie\FoodieOrderPlanController@getAllOrdersView')->name('foodie.order.view');
     Route::get('order/viewSingle/{order}', 'Foodie\FoodieOrderPlanController@getOneOrderDetails')->name('foodie.order.single');
 
     // Route after ordering

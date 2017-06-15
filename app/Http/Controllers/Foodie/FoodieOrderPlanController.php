@@ -52,12 +52,19 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
-    public function getAllOrdersView(){
+    public function getAllOrdersView($from){
 
-
+//        dd($from);
         $foodie = Auth::guard('foodie')->user();
         $orders='';
-        $ordersCount=Order::where('foodie_id','=',$foodie->id)->get()->count();
+        $ordersCount=Order::where('foodie_id','=',$foodie->id)->count();
+
+        $pendOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->count();
+        $paidOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_paid','=',1)->where('is_cancelled','=',0)->count();
+        $cancelOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_cancelled','=',1)->count();
+
+
+
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
         $chefs= Chef::all();
         if($ordersCount>0){
@@ -76,11 +83,15 @@ class FoodieOrderPlanController extends Controller
             'foodie'=>$foodie,
             'orders'=>$orders,
             'ordersCount'=>$ordersCount,
+            'pendOrdCount'=>$pendOrdCount,
+            'paidOrdCount'=>$paidOrdCount,
+            'cancelOrdCount'=>$cancelOrdCount,
             'chefs'=>$chefs,
             'chats' => $chats,
             'messages'=>$messages,
             'notifications'=>$notifications,
-            'unreadNotifications'=>$unreadNotifications
+            'unreadNotifications'=>$unreadNotifications,
+            'from'=>$from
         ]);
     }
 
@@ -387,9 +398,41 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
+    public function cancelOrder(Order $order)
+    {
+        $foodie = Auth::guard('foodie')->user();
+        $chef = $order->chef->id;
+//        dd($chef);
+        $order->is_cancelled = 1;
+        $order->save();
+
+        $foodnotif = new Notification();
+        $foodnotif->sender_id=0;
+        $foodnotif->receiver_id=$foodie->id;
+        $foodnotif->receiver_type='f';
+        $foodnotif->notification='You have cancelled your order of '.$order->plan->plan_name.'.';
+//        $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
+        $foodnotif->notification_type=3;
+//        dd($foodnotif);
+        $foodnotif->save();
+
+        $chefnotif=new Notification();
+        $chefnotif->sender_id=0;
+        $chefnotif->receiver_id=$order->chef_id;
+        $chefnotif->receiver_type='c';
+        $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has cancelled their ordered the plan: '.$order->plan->plan_name.'.';
+        $chefnotif->notification_type=3;
+//        dd($chefnotif);
+        $chefnotif->save();
+
+
+        return redirect() ->route('foodie.plan.show')->with([
+            'status'=>'You have cancelled your order of '.$order->plan->plan_name.'.'
+        ]);
+    }
 
     public function changeOrderAddress($id)
     {
-        
+
     }
 }

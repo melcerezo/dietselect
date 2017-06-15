@@ -2,6 +2,6 @@
     background: #e1f5fe;
     border-bottom: 4px solid #29b6f6;
 }
-div#ordPend,div#ordPaid{
+div#ordAll,div#ordPend,div#ordPaid,div#ordCancel{
     display: none;
 }

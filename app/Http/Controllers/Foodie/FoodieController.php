@@ -182,8 +182,10 @@ class FoodieController extends Controller
 //        dd($anyOrderCount);
 //        $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
-        $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)
+        $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->where('is_cancelled','=',0)
             ->where('created_at','>',$lastSaturday)->get();
+
+//        dd($orders);
 
 //        if ($paidOrderCount > 0){
         $paidOrder = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
@@ -676,9 +678,9 @@ class FoodieController extends Controller
         $notifJson = '[';
         foreach($notification as $note){
             if(++$i<$notification->count()){
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
             }else{
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
             }
         }
         $notifJson .= ']';

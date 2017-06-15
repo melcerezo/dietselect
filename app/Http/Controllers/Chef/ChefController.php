@@ -49,13 +49,15 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $orders='';
-        $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->get()->count();
+        $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->get()->count();
 
         if($ordersCount >0){
             $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)
-                ->where('is_paid','=',0)
+                ->where('is_paid','=',0)->where('is_cancelled','=',0 )
                 ->orderBy('created_at', 'desc')->get();
         }
+
+
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
 
