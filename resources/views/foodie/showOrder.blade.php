@@ -161,7 +161,19 @@
                 <span>Please choose an address for us to deliver.</span>
             </div>
             <form action="{{route('foodie.order.address', $order->id)}}" id="pickAddressForm">
-
+            {{ csrf_field() }}
+                <div class="form-group">
+                    <select class="form-control" name="addressSelect" id="addressSelect">
+                        @foreach($foodieAddress as $address)
+                            <option value="{{$address->id}}">
+                                {{$address->unit}} @unless($address->bldg=='')
+                                     {{$address->bldg}},
+                                @endunless {{$address->brgy}}, {{$address->city}}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+                <input type="submit" class="btn waves-effect waves-light"/>
             </form>
         </div>
     </div>

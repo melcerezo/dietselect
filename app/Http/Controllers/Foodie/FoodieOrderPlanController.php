@@ -256,6 +256,7 @@ class FoodieOrderPlanController extends Controller
 
 
     public function store(Plan $plan, mailer\Mailer $mailer){
+//        dd('hello');
         $foodie = Auth::guard('foodie')->user();
         $chefs=Chef::all();
         $thisSaturday=Carbon::parse('this saturday')->format('F d');
@@ -277,6 +278,8 @@ class FoodieOrderPlanController extends Controller
             return back()->with([ 'status' => 'You can\'t order']);
 
         }else {
+//            dd('hello
+//            ');
             $order = new Order();
             $order->chef_id = $plan->chef_id;
             $order->foodie_id = $foodie->id;
@@ -367,11 +370,11 @@ class FoodieOrderPlanController extends Controller
 
             return redirect()->route('order.show', $order->id);
         }
-
     }
 
 
     public function show(Order $order){
+//        dd('hello');
         $foodie = Auth::guard('foodie')->user();
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('city','unit','street','brgy','bldg','type')->get();
 
