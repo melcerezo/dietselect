@@ -45,7 +45,6 @@ class MealPlanController extends Controller
         $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
 
         $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
-
         # DO NOT REMOVE THIS
         $isSaturday = Carbon::parse("saturday this week 15:00:00")->format('Y-m-d H:i:s');
 
@@ -77,6 +76,7 @@ class MealPlanController extends Controller
             ->where('created_at', '>=', $lastSaturday)
             ->get();
 
+//        dd($futurePlans[0]->created_at);
 //        dd($futurePlans);
         /**
          *  REMOVE THE COMMENT FOR THE LOOP && DD IF YOU

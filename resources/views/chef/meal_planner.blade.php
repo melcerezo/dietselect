@@ -640,7 +640,20 @@
                     <option value="fruits">Fruits</option>
                 </select>
                 <div id="errorMainIngredient"></div>
-                <div id="ingredientContainer" >
+                <div class="file-field input-field">
+                    <label for="mealPic" class="active">Picture Upload:</label>
+                    <div style="padding-top: 10px;">
+                        <div class="btn">
+                            <span>File</span>
+                            <input type="file" data-error=".error-pic" id="mealPic" name="mealPic">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path validate" type="text" >
+                        </div>
+                        <div class="error-pic err"></div>
+                    </div>
+                </div>
+                <div id="ingredientContainer">
                     <div id="addMoreIngred"><a id="ingredAdd" href="#"><span class="addIngred">+Add Ingredients Here</span></a></div>
                     <div class="spacer" style="clear: both;"></div>
                 </div>

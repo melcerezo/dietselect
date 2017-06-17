@@ -126,9 +126,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            {!! app('captcha')->display(); !!}
+            <div class="row">
+                {!! app('captcha')->display(); !!}
+            </div>
         </div>
         <div class="card-action">
             <input type="submit" class="hidden"/>
