@@ -76,7 +76,7 @@ class ChefOrderController extends Controller
 
         if($order->order_type== 'c') {
             for ($i = 0; $i < count($orderMealPlans); $i++) {
-                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->meal_id)->where('order_id', '=', $order->id)->first();
+                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->meal_id)->where('order_id', '=', $order->id);
 //                dd($order);
                 for ($j = 0; $j < $orderCustomizedMeals[$i]->customized_ingredient_meal->count(); $j++) {
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
