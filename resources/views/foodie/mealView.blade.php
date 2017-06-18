@@ -293,13 +293,13 @@
         <div class="row">
             <div class="col s12 m6 left plSlMlBtn">
                 <div style="margin-bottom: 20px;">
-                    <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger">Order Plan</button>
+                    <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Order Plan</button>
                 </div>
                 <div style="margin-bottom: 20px;">
-                    <button id="plSlMlCst" class="btn waves-effect waves-light">Customize Plan</button>
+                    <button id="plSlMlCst" class="btn waves-effect waves-light" style="width: 100%;">Customize Plan</button>
                 </div>
                 <div style="margin-bottom: 20px;">
-                    <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back to Plans</button>
+                    <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100; width: 100%;">Back to Plans</button>
                 </div>
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
