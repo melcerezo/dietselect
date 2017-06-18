@@ -156,7 +156,11 @@ class MealPlanController extends Controller
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
         $mealPlansCount=$mealPlans->count();
         $meals= Meal::where('chef_id','=', $chef->id);
-        $ingredientsMeal= '';
+        $mealPhotos = DB::table('meal_image')
+            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->select('meal_plans.plan_id','meal_plans.meal_id','meal_image.image')->get();
+//        $ingredientsMeal= '';
 //        $ingredientCount=DB::table('ingredient_meal')
 //        ->join('meals','ingredient_meal.meal_id','=','meals.id')
 //        ->join('meal_plans','meal_plans.meal_id','=','meals.id')
@@ -193,8 +197,8 @@ class MealPlanController extends Controller
             'mealPlans' => $mealPlans,
             'mealPlansCount'=>$mealPlansCount,
             'meals' => $meals,
+            'mealPhotos'=>$mealPhotos,
             'ingredientsMeal'=>$ingredientsMeal,
-//            'ingredientCount'=>$ingredientCount,
             'chats' => $chats,
             'messages'=>$messages,
             'notifications' => $notifications
@@ -204,6 +208,7 @@ class MealPlanController extends Controller
     public function getMeals(){
         $chef=Auth::guard('chef')->user()->id;
         $meals = Meal::where('chef_id','=', $chef)->get();
+
         $i=0;
         $jsonMeal ='[';
 
@@ -388,6 +393,25 @@ class MealPlanController extends Controller
             }
 //loop ends
         $meal->save();
+
+
+        $mealPhoto = $request['mealPic'];
+//        dd($mealPhoto);
+         if ($request->hasFile('mealPic')) {
+             $filename = time() . '.' . $mealPhoto->getClientOriginalExtension();
+             $originalName = $mealPhoto->getClientOriginalName();
+             Image::make($mealPhoto)->resize(500, 500)->save(public_path('img/meals/' . $filename));
+
+             DB::table('meal_image')->insert(
+                 ['meal_id' => $meal->id, 'image' => $filename, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
+             );
+//             DB::table('plan_gallery')->insert(
+//                 ['plan_id' => $plan->id, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+//             );
+//             DB::table('plan_images')->insert(
+//                 ['plan_id' => $plan->id, 'image' => $mealPhoto, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
+//             );
+         }
 
         $customMeal=new ChefCustomizedMeal();
         $customMeal->meal_id=$meal->id;

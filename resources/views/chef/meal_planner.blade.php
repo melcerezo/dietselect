@@ -327,53 +327,68 @@
                 </div>
                 @foreach($mealPlans as $id => $mealPlan)
                     <div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">
-                        <ul class="collection plSlMlInfCtnt">
-                            <li class="collection-item light-green lighten-1 white-text">
-                                <span class="collection-header">{{$mealPlan->chefcustomize->description}}</span>
-                            </li>
-                            <li class="collection-item">
-                                <span>Day: </span>
-                                @if($mealPlan->day=='MO')
-                                    <span>Monday</span>
-                                @elseif($mealPlan->day=='TU')
-                                    <span>Tuesday</span>
-                                @elseif($mealPlan->day=='WE')
-                                    <span>Wednesday</span>
-                                @elseif($mealPlan->day=='TH')
-                                    <span>Thursday</span>
-                                @elseif($mealPlan->day=='FR')
-                                    <span>Friday</span>
-                                @elseif($mealPlan->day=='SA')
-                                    <span>Saturday</span>
-                                @endif
-                            </li>
-                            <li class="collection-item">
-                                <span>Meal: </span>
-                                <span>
-                                    @if($mealPlan->meal_type=='MorningSnack')
-                                        Morning Snack
-                                    @elseif($mealPlan->meal_type=='AfternoonSnack')
-                                        Afternoon Snack
-                                    @else
-                                        {{$mealPlan->meal_type}}
+                        <div class="row">
+                            <div class="col s12">
+                                <ul class="collection plSlMlInfCtnt">
+                                    <li class="collection-item light-green lighten-1 white-text">
+                                        <span class="collection-header">{{$mealPlan->chefcustomize->description}}</span>
+                                    </li>
+                                    @if($mealPhotos->count())
+                                        @foreach($mealPhotos as $mealPhoto)
+                                            @if($mealPhoto->meal_id==$mealPlan->meal_id)
+                                                <li class="collection-item" style="border-bottom: none;">
+                                                    <img style="width: 200px; height: auto;" src="/img/meals/{{ $mealPhoto->image }}">
+                                                </li>
+                                            @endif
+                                        @endforeach
                                     @endif
-                                </span>
-                            </li>
-                            <li class="collection-item">
-                                <span>Main Ingredient: </span><span>{{ucwords($mealPlan->chefcustomize->main_ingredient)}}</span>
-                            </li>
-                            <li class="collection-item">
-                                <span>Calories: </span><span>{{$mealPlan->chefcustomize->calories}}</span>
-                            </li>
-                        </ul>
+                                    <li class="collection-item">
+                                        <span>Day: </span>
+                                        @if($mealPlan->day=='MO')
+                                            <span>Monday</span>
+                                        @elseif($mealPlan->day=='TU')
+                                            <span>Tuesday</span>
+                                        @elseif($mealPlan->day=='WE')
+                                            <span>Wednesday</span>
+                                        @elseif($mealPlan->day=='TH')
+                                            <span>Thursday</span>
+                                        @elseif($mealPlan->day=='FR')
+                                            <span>Friday</span>
+                                        @elseif($mealPlan->day=='SA')
+                                            <span>Saturday</span>
+                                        @endif
+                                    </li>
+                                    <li class="collection-item">
+                                        <span>Meal: </span>
+                                        <span>
+                                            @if($mealPlan->meal_type=='MorningSnack')
+                                                Morning Snack
+                                            @elseif($mealPlan->meal_type=='AfternoonSnack')
+                                                Afternoon Snack
+                                            @else
+                                                {{$mealPlan->meal_type}}
+                                            @endif
+                                        </span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span>Main Ingredient: </span><span>{{ucwords($mealPlan->chefcustomize->main_ingredient)}}</span>
+                                    </li>
+                                    <li class="collection-item">
+                                        <span>Calories: </span><span>{{$mealPlan->chefcustomize->calories}}</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                         @if($plan->lockPlan==0)
-                            <div class="editButton">
-                                <span>
-                                    <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
-                                </span>
-                                <span>
-                                    <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlan->id}}" data-day="{{$mealPlan->day}}" data-meal-type="{{$mealPlan->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
-                                </span>
+                            <div class="row">
+                                <div class="editButton">
+                                    <span>
+                                        <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
+                                    </span>
+                                    <span>
+                                        <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlan->id}}" data-day="{{$mealPlan->day}}" data-meal-type="{{$mealPlan->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
+                                    </span>
+                                </div>
                             </div>
                         @endif
                     </div>
@@ -623,7 +638,7 @@
         </nav>
         <div class="modal-content">
             {{--<h4>Create <span id="createMealTypeName"></span> for <span id="dayName"></span></h4>--}}
-            <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off">
+            <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" id="description" class="form-control">

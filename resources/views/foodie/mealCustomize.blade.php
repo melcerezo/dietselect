@@ -487,6 +487,15 @@
                                     <li class="collection-item light-green lighten-1 white-text">
                                         <span class="collection-header">{{$mealPlan->chefcustomize->description}}</span>
                                     </li>
+                                    @if($mealPhotos->count())
+                                        @foreach($mealPhotos as $mealPhoto)
+                                            @if($mealPhoto->meal_id==$mealPlan->meal_id)
+                                                <li class="collection-item" style="border-bottom: none;">
+                                                    <img style="width: 200px; height: auto;" src="/img/meals/{{ $mealPhoto->image }}">
+                                                </li>
+                                            @endif
+                                        @endforeach
+                                    @endif
                                     <li class="collection-item">
                                         <span>Day: </span>
                                         @if($mealPlan->day=='MO')

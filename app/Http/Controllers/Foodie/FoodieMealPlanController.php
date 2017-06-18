@@ -127,6 +127,11 @@ class FoodieMealPlanController extends Controller
 //                    'ingredient_meal.grams')->get();
 //        }
 
+        $mealPhotos = DB::table('meal_image')
+            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->select('meal_plans.plan_id','meal_plans.meal_id','meal_image.image')->get();
+
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
@@ -143,6 +148,7 @@ class FoodieMealPlanController extends Controller
             'unreadNotifications'=>$unreadNotifications,
             'chefs' => $chefs,
             'mealPlans' => $mealPlans,
+            'mealPhotos'=>$mealPhotos,
             'plan' => $plan,
             'sms_unverified' => $this->smsIsUnverified()
         ]);
@@ -343,12 +349,17 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
+        $mealPhotos = DB::table('meal_image')
+            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->select('meal_plans.plan_id','meal_plans.meal_id','meal_image.image')->get();
 
         return view('foodie.mealCustomize', compact('plan', 'customize'))->with([
             'viewPlan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
+            'mealPhotos' => $mealPhotos,
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientMealData,
 //            'ingredientCount' => $ingredientCount,
