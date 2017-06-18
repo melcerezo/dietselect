@@ -56,7 +56,7 @@ class FoodieController extends Controller
         $isSaturday = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
         $thisSunday = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
 
-        if($dt->format('Y-m-d H:i:s')>=$isSaturday){
+        if($dt->format('Y-m-d H:i:s')==Carbon::SUNDAY){
 //            dd("hi");
             $isSaturday=Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
         }else if($dt->dayOfWeek == Carbon::MONDAY){
