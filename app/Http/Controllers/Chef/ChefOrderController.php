@@ -98,7 +98,7 @@ class ChefOrderController extends Controller
         }
 
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
-        dd($orderCustomizedMeals);
+//        dd($orderCustomizedMeals);
 //        dd($ingredientMealData);
 
         return view('chef.showSingleOrder')->with([
