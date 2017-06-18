@@ -287,9 +287,9 @@
                                 <td id="MoBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
-                                            @foreach($customize as $cust)
+                                            @foreach($customize as $id =>$cust)
                                                 @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
-                                                    {{$order->id}}
+                                                    {{$id}}
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
