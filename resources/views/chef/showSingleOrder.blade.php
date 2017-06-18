@@ -289,7 +289,7 @@
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
                                                 @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
-                                                    {{$cust->id}}
+                                                    {{$order->id}}
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
