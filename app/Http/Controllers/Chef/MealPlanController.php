@@ -161,7 +161,6 @@ class MealPlanController extends Controller
             ->join('meal_plans','meal_plans.meal_id','=','meals.id')
             ->select('meal_plans.id','meal_plans.plan_id','meal_plans.meal_id','meal_image.image')->get();
 
-        dd($mealPhotos);
 //        $ingredientsMeal= '';
 //        $ingredientCount=DB::table('ingredient_meal')
 //        ->join('meals','ingredient_meal.meal_id','=','meals.id')
