@@ -489,7 +489,7 @@
                                     </li>
                                     @if($mealPhotos->count())
                                         @foreach($mealPhotos as $mealPhoto)
-                                            @if($mealPhoto->meal_id==$mealPlan->meal_id)
+                                            @if($mealPhoto->id==$mealPlan->id)
                                                 <li class="collection-item" style="border-bottom: none;">
                                                     <img style="width: 200px; height: auto;" src="/img/meals/{{ $mealPhoto->image }}">
                                                 </li>
