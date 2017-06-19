@@ -40,6 +40,9 @@
     height:100%;
     min-height:80px;
 }
+.plIndPht{
+    width:100px;
+}
 .plIndSelCls{
     display: none;
 }
