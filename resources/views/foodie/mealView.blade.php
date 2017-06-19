@@ -361,6 +361,15 @@
     </div>
 
         <div id="photoGallery" class="modal">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12 m5 l5">
+                    <ul>
+                        <li>
+                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Photo Gallery of {{$plan->plan_name}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
             <div class="modal-content">
             @if($mealPhotos->count())
                 <div class="row">
