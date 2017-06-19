@@ -366,7 +366,7 @@
                 <div class="row">
                     @foreach($mealPhotos->chunk(4) as $chunk)
                             @foreach($chunk as $mealPhoto)
-                                <div class="col s12 m3">
+                                <div class="col s12 m3" style="margin-bottom: 10px;">
                                     <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img class="circle" style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>
                                 </div>
                             @endforeach
