@@ -303,6 +303,11 @@
                         <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100; width: 100%;">Back to Plans</button>
                     </div>
                 </div>
+                @if($mealPhotos->count())
+                    <div class="col s12 m6">
+                        <button id="plSlMlPht" data-target="photoGallery" class="modal-trigger btn waves-effect waves-light">View Gallery</button>
+                    </div>
+                @endif
             </div>
             <div class="col s12 m6 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">
@@ -355,6 +360,31 @@
         </div>
     </div>
 
+        <div id="photoGallery" class="modal">
+            @if($mealPhotos->count())
+                <div class="col s12">
+                    @foreach($mealPhotos->chunk(5) as $chunk)
+                        @foreach($chunk as $mealPhoto)
+                            <div class="col s12 m6 l3">
+                                <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img src="/img/meals/{{ $mealPhoto->image }}" style="width: 100%;"></a>
+                            </div>
+                        @endforeach
+                    @endforeach
+                </div>
+                <div class="col s12">
+                    @foreach($mealPhotos as $mealPhoto)
+                        <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
+                            <img src="/img/meals/{{ $mealPhoto->image }}" style="width: 50%; margin: auto;">
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div>
+                    No Photos Added
+                </div>
+            @endif
+        </div>
+    
 
         <div id="orderReview" class="modal" >
             <nav class="light-green lighten-1 white-text">

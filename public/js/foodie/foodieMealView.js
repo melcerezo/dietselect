@@ -16,4 +16,9 @@ $(document).ready(function () {
         window.location.href=$backRoute;
     });
 
+    $(document).on('click','.plIndPht',function () {
+        var phtId = $(this).attr('data-id');
+        $('.plIndSelCls').hide();
+        $(phtId).show();
+    })
 });
