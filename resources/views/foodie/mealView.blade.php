@@ -385,7 +385,7 @@
                     <div class="col s12">
                         @foreach($mealPhotos as $mealPhoto)
                             <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
-                            <div class="light-green lighten-1 white-text"><span style="font-size: 30px;">{{$mealPhoto->description}}</span></div>
+                            <div class="light-green lighten-1 white-text" style="width:500px;"><span style="font-size: 30px;">{{$mealPhoto->description}}</span></div>
                                 <img src="/img/meals/{{ $mealPhoto->image }}">
                             </div>
                         @endforeach
