@@ -17,8 +17,8 @@ $(document).ready(function () {
     });
 
     $(document).on('click','.plIndPht',function () {
-        console.log('hello');
         var phtId = $(this).attr('data-id');
+        console.log(phtId);
         $('.plIndSelCls').hide();
         $(phtId).show();
     })
