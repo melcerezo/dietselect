@@ -374,12 +374,14 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="col s12">
-                    @foreach($mealPhotos as $mealPhoto)
-                        <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
-                            <img src="/img/meals/{{ $mealPhoto->image }}">
-                        </div>
-                    @endforeach
+                <div class="row">
+                    <div class="col s12">
+                        @foreach($mealPhotos as $mealPhoto)
+                            <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
+                                <img src="/img/meals/{{ $mealPhoto->image }}">
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
             @else
                 <div>
