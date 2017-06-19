@@ -365,11 +365,13 @@
             @if($mealPhotos->count())
                 <div class="col s12">
                     @foreach($mealPhotos->chunk(5) as $chunk)
-                        @foreach($chunk as $mealPhoto)
-                            <div class="col s12 m3">
-                                <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img src="/img/meals/{{ $mealPhoto->image }}"></a>
-                            </div>
-                        @endforeach
+                        <div class="row">
+                            @foreach($chunk as $mealPhoto)
+                                <div class="col s12 m3">
+                                    <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img src="/img/meals/{{ $mealPhoto->image }}"></a>
+                                </div>
+                            @endforeach
+                        </div>
                     @endforeach
                 </div>
                 <div class="col s12">
