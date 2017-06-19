@@ -375,8 +375,8 @@
                 <div class="row">
                     <div class="col s12">
                         @foreach($mealPhotos as $mealPhoto)
-                            <div><span style="font-size: 30px;">{{$mealPhoto->description}}</span></div>
                             <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
+                            <div><span style="font-size: 30px;">{{$mealPhoto->description}}</span></div>
                                 <img src="/img/meals/{{ $mealPhoto->image }}">
                             </div>
                         @endforeach
