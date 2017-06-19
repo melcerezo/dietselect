@@ -361,12 +361,13 @@
     </div>
 
         <div id="photoGallery" class="modal">
+            <div class="modal-content">
             @if($mealPhotos->count())
                 <div class="col s12">
                     @foreach($mealPhotos->chunk(5) as $chunk)
                         @foreach($chunk as $mealPhoto)
                             <div class="col s12 m3">
-                                <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img src="/img/meals/{{ $mealPhoto->image }}" style="width: 100%;"></a>
+                                <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img src="/img/meals/{{ $mealPhoto->image }}"></a>
                             </div>
                         @endforeach
                     @endforeach
@@ -374,7 +375,7 @@
                 <div class="col s12">
                     @foreach($mealPhotos as $mealPhoto)
                         <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
-                            <img src="/img/meals/{{ $mealPhoto->image }}" style="width: 50%; margin: auto;">
+                            <img src="/img/meals/{{ $mealPhoto->image }}">
                         </div>
                     @endforeach
                 </div>
@@ -383,6 +384,7 @@
                     No Photos Added
                 </div>
             @endif
+            </div>
         </div>
     
 
