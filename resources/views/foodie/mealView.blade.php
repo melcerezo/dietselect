@@ -363,15 +363,13 @@
         <div id="photoGallery" class="modal">
             <div class="modal-content">
             @if($mealPhotos->count())
-                <div class="col s12">
-                    @foreach($mealPhotos->chunk(5) as $chunk)
-                        <div class="row">
+                <div class="row">
+                    @foreach($mealPhotos->chunk(4) as $chunk)
                             @foreach($chunk as $mealPhoto)
                                 <div class="col s12 m3">
                                     <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img class="circle" style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>
                                 </div>
                             @endforeach
-                        </div>
                     @endforeach
                 </div>
                 <div class="row">
