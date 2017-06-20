@@ -34,7 +34,7 @@
                 </nav>
                 @foreach($futurePlans->chunk(3) as $chunk)
                     @foreach($chunk as $plan)
-
+                        <div class="col s12 m6 l4">
                             <div class="card sticky-action hoverable">
                                 <div class="card-image waves-effect waves-block waves-asparagus">
                                     <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
