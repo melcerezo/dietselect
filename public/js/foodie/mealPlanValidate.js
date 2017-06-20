@@ -32,6 +32,15 @@ $(document).ready(function () {
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
+                if($valType=="fruits/fruit juices"){
+                    $valType='fruits';
+                }else if($valType=='carbohydrates(grain, pasta)'){
+                    $valType='carbohydrates(grain,pasta)';
+                }else if($valType=='fish/shellfish'){
+                    $valType='fish';
+                }else if($valType=='dairy,egg'){
+                    $valType='dairy,eggs';
+                }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
                     var valData=response;
