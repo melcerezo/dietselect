@@ -3,6 +3,10 @@
     margin-top: 0.5rem;
 }
 
+.modal{
+    height:60% !important;
+}
+
 .row .col.plSlPlnNm{
     min-height: 40px;
     font-size: 20px;
