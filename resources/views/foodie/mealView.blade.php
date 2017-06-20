@@ -385,7 +385,7 @@
                     {{--No Photos Added--}}
                 {{--</div>--}}
 
-        <div id="photoGallery" class="modal">
+        <div id="photoGallery" class="modal gallery">
             <nav class="light-green lighten-1 white-text">
                 <div class="left col s12 m5 l5">
                     <ul>

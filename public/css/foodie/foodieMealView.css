@@ -3,8 +3,8 @@
     margin-top: 0.5rem;
 }
 
-.modal{
-    height:80% !important;
+.modal.gallery{
+    min-height:90% !important;
 }
 
 .row .col.plSlPlnNm{
