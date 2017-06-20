@@ -176,11 +176,7 @@
                         <option disabled selected>Please Choose an address</option>;
                         @foreach($foodieAddress as $address)
                             <option value="{{$address->id}}">
-                                {{$address->unit}}
-                                @unless($address->bldg=='')
-                                    {{$address->bldg}},
-                                @endunless{{$address->brgy}},
-                                {{$address->city}}
+                                {{$address->unit}}@unless($address->bldg==''){{$address->bldg}},@endunless{{$address->street}},{{$address->brgy}},{{$address->city}}
                             </option>
                         @endforeach
                     </select>
