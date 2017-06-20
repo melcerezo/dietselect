@@ -379,7 +379,7 @@ class FoodieOrderPlanController extends Controller
         $foodie = Auth::guard('foodie')->user();
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
 //        dd($foodieAddress);
-        $orderAddress = DB::table('foodie_address')->where('id','=',$order->id)->select('id','city','unit','street','brgy','bldg','type')->first();
+        $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
 //        dd($orderAddress);
 
         $plan = Plan::where('id', '=', $order->plan_id)->first();
