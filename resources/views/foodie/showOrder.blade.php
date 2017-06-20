@@ -136,7 +136,15 @@
                             </div>
                         @else
                             <div>
-                                <a href="{{route('foodie.profile')}}"><span>No Order Address Picked. Please add one so we can deliver to you!</span></a>
+                                @if($foodieAddress==null)
+                                    <a href="{{route('foodie.profile')}}">
+                                        <span>No Address Available. Please add one so we can deliver to you!</span>
+                                    </a>
+                                @else
+                                    <a href="#pickOrderAddressModal" class="modal-trigger">
+                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
+                                    </a>
+                                @endif
                             </div>
                         @endif
                     </li>
