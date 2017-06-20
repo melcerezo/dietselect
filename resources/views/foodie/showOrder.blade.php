@@ -133,7 +133,7 @@
                                 <span>{{$orderAddress->city}}</span>
                             </div>
                             <div>
-                                <a href="#pickOrderAddressModal" class="modal-trigger"><span></span></a>
+                                <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
                             </div>
                         @else
                             <div>
