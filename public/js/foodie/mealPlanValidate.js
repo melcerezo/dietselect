@@ -35,7 +35,7 @@ $(document).ready(function () {
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
                 }else if($valType=='carbohydrates(grains, pasta)'){
-                    $valType='carbohydrates(grain,pasta)';
+                    $valType='carbohydrates(grains,pasta)';
                 }else if($valType=='fish/shellfish'){
                     $valType='fish';
                 }else if($valType=='dairy,egg'){
