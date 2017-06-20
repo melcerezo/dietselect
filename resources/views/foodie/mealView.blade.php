@@ -397,15 +397,17 @@
             </nav>
             <div class="modal-content">
             @if($mealPhotos->count())
-                    <div class="carousel carousel-slider center" data-indicators="true">
-                        @foreach($mealPhotos as $mealPhoto)
-                            @if($mealPhoto->plan_id==$plan->id)
-                                <div class="carousel-item">
-                                    <div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>
-                                    <img src="/img/meals/{{ $mealPhoto->image }}">
-                                </div>
-                            @endif
-                        @endforeach
+                    <div class="slider">
+                        <ul class="slides">
+                            @foreach($mealPhotos as $mealPhoto)
+                                @if($mealPhoto->plan_id==$plan->id)
+                                    <li>
+                                        <img src="/img/meals/{{ $mealPhoto->image }}">
+                                        {{--<div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>--}}
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
                     </div>
             @endif
             </div>

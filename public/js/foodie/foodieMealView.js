@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    $('.carousel.carousel-slider').carousel({fullWidth: true});
+    $('.slider').slider();
+
+
+
+    // $('.carousel.carousel-slider').carousel({fullWidth: true});
 
     $(document).on('click','.data-trigger',function () {
         var $this=$(this);
