@@ -537,6 +537,7 @@
                                             <option value="chicken">Chicken</option>
                                             <option value="beef">Beef</option>
                                             <option value="pork">Pork</option>
+                                            <option value="fish">Fish</option>
                                             <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
                                             <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
                                             <option value="dairy,eggs">Dairy, Eggs</option>
