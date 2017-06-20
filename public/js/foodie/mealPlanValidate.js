@@ -32,7 +32,6 @@ $(document).ready(function () {
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
-                console.log();
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
                     var valData=response;

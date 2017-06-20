@@ -445,12 +445,14 @@ class FoodieMealPlanController extends Controller
     public function validateIngredJson($type){
 
         $categ=$type;
-        if($categ=="Fruits/Fruit Juices"){
+        if($categ=="fruits/fruit Juices"){
             $categ='fruits';
-        }else if($categ=='Carbohydrates(grain, pasta)'){
+        }else if($categ=='carbohydrates(grain, pasta)'){
             $categ='carbohydrates(grain,pasta)';
-        }else if($categ=='Fish/Shellfish'){
+        }else if($categ=='fish/shellfish'){
             $categ='fish';
+        }else if($categ=='dairy,egg'){
+            $categ='dairy,eggs';
         }
 
         $data='';
