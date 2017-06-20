@@ -81,7 +81,7 @@ class ChefOrderController extends Controller
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
                 }
             }
-                dd($orderCustomizedMeals);
+//                dd($orderCustomizedMeals);
         }
         for($i=0;$i<count($ingredientMeals);$i++){
             $ingredientDesc=DB::table('ingredients')
