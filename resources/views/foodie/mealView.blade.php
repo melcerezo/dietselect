@@ -305,7 +305,7 @@
                 </div>
                 @if($mealPhotos->count())
                     <div class="col s12 m6">
-                        <button id="plSlMlPht" data-target="photoGallery" class="modal-trigger btn waves-effect waves-light">View Gallery</button>
+                        <button style="width:100%;" id="plSlMlPht" data-target="photoGallery" class="modal-trigger btn waves-effect waves-light">View Gallery</button>
                     </div>
                 @endif
             </div>
