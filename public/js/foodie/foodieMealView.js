@@ -3,6 +3,10 @@ $(document).ready(function () {
         height: 350
     });
 
+    $('.slider').on('mouseover',function () {
+        $('.slider').slider('pause');
+    });
+
 
 
     // $('.carousel.carousel-slider').carousel({fullWidth: true});
