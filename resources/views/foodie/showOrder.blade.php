@@ -89,7 +89,7 @@
                     <div class="row">
                         <div class="col s12 m4">
                             <a href="#cancelOrderModal" class="modal-trigger">
-                                <div class="red" style="border-radius: 4px;">
+                                <div class="red" style="border-radius: 10px;">
                                     <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                         <div class="white-text center-block">
                                             <i class="fa fa-ban" style="font-size: 80px;"></i>
