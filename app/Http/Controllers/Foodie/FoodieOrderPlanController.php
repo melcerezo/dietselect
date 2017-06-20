@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Mail as mailer;
 use Illuminate\Http\Request;
-use Mockery\Matcher\Not;
+use Validator;
 use Carbon\Carbon;
 
 class FoodieOrderPlanController extends Controller
