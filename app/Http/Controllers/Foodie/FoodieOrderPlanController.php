@@ -437,6 +437,9 @@ class FoodieOrderPlanController extends Controller
 
     public function changeOrderAddress(Request $request, $id)
     {
+        Validator::make($request->all(), [
+            'addressSelect' => 'required',
+        ])->validate();
         $addressId = $request['addressSelect'];
         $foodie = Auth::guard('foodie')->user();
         $order= Order::where('id','=',$id)->first();

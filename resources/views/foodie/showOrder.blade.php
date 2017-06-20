@@ -172,6 +172,7 @@
             {{ csrf_field() }}
                 <div class="form-group">
                     <select class="form-control" name="addressSelect" id="addressSelect">
+                        <option disabled selected>Please Choose an address</option>;
                         @foreach($foodieAddress as $address)
                             <option value="{{$address->id}}">
                                 {{$address->unit}}
@@ -182,6 +183,7 @@
                             </option>
                         @endforeach
                     </select>
+                    <div></div>
                 </div>
                 <input type="submit" class="btn waves-effect waves-light"/>
             </form>
