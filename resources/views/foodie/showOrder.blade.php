@@ -174,9 +174,11 @@
                     <select class="form-control" name="addressSelect" id="addressSelect">
                         @foreach($foodieAddress as $address)
                             <option value="{{$address->id}}">
-                                {{$address->unit}} @unless($address->bldg=='')
-                                     {{$address->bldg}},
-                                @endunless {{$address->brgy}}, {{$address->city}}
+                                {{$address->unit}}
+                                @unless($address->bldg=='')
+                                    {{$address->bldg}},
+                                @endunless{{$address->brgy}},
+                                {{$address->city}}
                             </option>
                         @endforeach
                     </select>
