@@ -514,6 +514,7 @@
                                 <option value="chicken">Chicken</option>
                                 <option value="beef">Beef</option>
                                 <option value="pork">Pork</option>
+                                <option value="seafood">Seafood</option>
                                 <option value="carbohydrates">Carbohydrates</option>
                                 <option value="vegetables">Vegetables</option>
                                 <option value="fruits">Fruits</option>
