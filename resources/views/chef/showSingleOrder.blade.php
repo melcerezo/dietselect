@@ -307,7 +307,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -325,7 +325,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -343,7 +343,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -361,7 +361,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -382,7 +382,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -400,7 +400,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -418,7 +418,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -436,7 +436,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -454,7 +454,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -475,7 +475,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -493,7 +493,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -511,7 +511,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -529,7 +529,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -547,7 +547,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -568,7 +568,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -586,7 +586,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -604,7 +604,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -622,7 +622,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -640,7 +640,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -661,7 +661,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -679,7 +679,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -697,7 +697,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -715,7 +715,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
@@ -733,7 +733,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
@@ -754,7 +754,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
@@ -772,7 +772,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
@@ -790,7 +790,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
@@ -808,7 +808,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
@@ -826,7 +826,7 @@
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
                                             @foreach($customize as $cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->meal_id && $cust->order_id == $order->id)
+                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
                                                     <a href="#editMeal-{{$id}}"
                                                        class="waves-effect waves-light modal-trigger">{{$cust->description}}</a>
                                                     <br />
