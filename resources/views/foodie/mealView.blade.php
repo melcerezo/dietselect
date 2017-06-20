@@ -403,7 +403,7 @@
                                 @if($mealPhoto->plan_id==$plan->id)
                                     <li>
                                         <div class="light-green lighten-1 white-text"><span>{{$mealPhoto->description}}</span></div>
-                                        <img src="/img/meals/{{ $mealPhoto->image }}">
+                                        <img style="width:100%;" src="/img/meals/{{ $mealPhoto->image }}">
                                     </li>
                                 @endif
                             @endforeach
