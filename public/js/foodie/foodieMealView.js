@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    $('.carousel.carousel-slider').carousel({fullWidth: true});
+
     $(document).on('click','.data-trigger',function () {
         var $this=$(this);
         var mealDataID= $this.attr('data-meal-active');

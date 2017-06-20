@@ -359,6 +359,31 @@
             </div>
         </div>
     </div>
+                {{--<div class="row">--}}
+                    {{--@foreach($mealPhotos->chunk(4) as $chunk)--}}
+                            {{--@foreach($chunk as $mealPhoto)--}}
+                                {{--@if($mealPhoto->plan_id==$plan->id)--}}
+                                    {{--<div class="col s12 m3" style="margin-bottom: 10px;">--}}
+                                        {{--<a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img  style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>--}}
+                                    {{--</div>--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                    {{--@endforeach--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12">--}}
+                        {{--@foreach($mealPhotos as $mealPhoto)--}}
+                            {{--<div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">--}}
+                            {{--<div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>--}}
+                                {{--<img src="/img/meals/{{ $mealPhoto->image }}">--}}
+                            {{--</div>--}}
+                        {{--@endforeach--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--@else--}}
+                {{--<div>--}}
+                    {{--No Photos Added--}}
+                {{--</div>--}}
 
         <div id="photoGallery" class="modal">
             <nav class="light-green lighten-1 white-text">
@@ -372,31 +397,16 @@
             </nav>
             <div class="modal-content">
             @if($mealPhotos->count())
-                <div class="row">
-                    @foreach($mealPhotos->chunk(4) as $chunk)
-                            @foreach($chunk as $mealPhoto)
-                                @if($mealPhoto->plan_id==$plan->id)
-                                    <div class="col s12 m3" style="margin-bottom: 10px;">
-                                        <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img  style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>
-                                    </div>
-                                @endif
-                            @endforeach
-                    @endforeach
-                </div>
-                <div class="row">
-                    <div class="col s12">
+                    <div class="carousel carousel-slider center" data-indicators="true">
                         @foreach($mealPhotos as $mealPhoto)
-                            <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
-                            <div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>
-                                <img src="/img/meals/{{ $mealPhoto->image }}">
-                            </div>
+                            @if($mealPhoto->plan_id==$plan->id)
+                                <div class="carousel-item">
+                                    <div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>
+                                    <img src="/img/meals/{{ $mealPhoto->image }}">
+                                </div>
+                            @endif
                         @endforeach
                     </div>
-                </div>
-            @else
-                <div>
-                    No Photos Added
-                </div>
             @endif
             </div>
         </div>
