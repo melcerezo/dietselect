@@ -168,7 +168,7 @@
             <div class="row">
                 <span>Please choose an address for us to deliver.</span>
             </div>
-            <form action="{{route('foodie.order.address', $order->id)}}" id="pickAddressForm">
+            <form action="{{route('foodie.order.address', $order->id)}}" method="post" id="pickAddressForm">
             {{ csrf_field() }}
                 <div class="form-group">
                     <select class="form-control" name="addressSelect" id="addressSelect">
