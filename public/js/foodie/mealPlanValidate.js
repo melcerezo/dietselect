@@ -34,7 +34,7 @@ $(document).ready(function () {
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
-                }else if($valType=='carbohydrates(grain, pasta)'){
+                }else if($valType=='carbohydrates(grains, pasta)'){
                     $valType='carbohydrates(grain,pasta)';
                 }else if($valType=='fish/shellfish'){
                     $valType='fish';
