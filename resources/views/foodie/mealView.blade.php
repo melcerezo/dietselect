@@ -375,21 +375,21 @@
                 <div class="row">
                     @foreach($mealPhotos->chunk(4) as $chunk)
                             @foreach($chunk as $mealPhoto)
-                                <div class="col s12 m3" style="margin-bottom: 10px;">
-                                    <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img  style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>
-                                </div>
+                                @if($mealPhoto->plan_id==$plan->id)
+                                    <div class="col s12 m3" style="margin-bottom: 10px;">
+                                        <a class="plIndPht" data-id="#plIndSelPht{{ $mealPhoto->id }}"><img  style="width: 100%;" src="/img/meals/{{ $mealPhoto->image }}"></a>
+                                    </div>
+                                @endif
                             @endforeach
                     @endforeach
                 </div>
                 <div class="row">
                     <div class="col s12">
                         @foreach($mealPhotos as $mealPhoto)
-                            @if($mealPhoto->plan_id==$plan->id)
-                                <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
-                                <div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>
-                                    <img src="/img/meals/{{ $mealPhoto->image }}">
-                                </div>
-                            @endif
+                            <div id="plIndSelPht{{ $mealPhoto->id }}" class="plIndSelCls">
+                            <div class="light-green lighten-1 white-text" style="width:500px;"><span>{{$mealPhoto->description}}</span></div>
+                                <img src="/img/meals/{{ $mealPhoto->image }}">
+                            </div>
                         @endforeach
                     </div>
                 </div>
