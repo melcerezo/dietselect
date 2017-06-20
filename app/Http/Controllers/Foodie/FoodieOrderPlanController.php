@@ -436,6 +436,9 @@ class FoodieOrderPlanController extends Controller
 
     public function changeOrderAddress($id)
     {
-
+        $foodie = Auth::guard('foodie')->user();
+        $address = DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('id','=', $id)->select('id','city','unit','street','brgy','bldg','type')->first();
+        dd($address);
+        return back()->with(['status'=>'Added delivery address!']);
     }
 }
