@@ -17,6 +17,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Mail as mailer;
+use Illuminate\Http\Request;
 use Mockery\Matcher\Not;
 use Carbon\Carbon;
 
@@ -377,7 +378,7 @@ class FoodieOrderPlanController extends Controller
 //        dd('hello');
         $foodie = Auth::guard('foodie')->user();
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
-        dd($foodieAddress);
+//        dd($foodieAddress);
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->id)->select('id','city','unit','street','brgy','bldg','type')->first();
 //        dd($orderAddress);
 
@@ -434,11 +435,12 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
-    public function changeOrderAddress($id)
+    public function changeOrderAddress(Request $request, $id)
     {
+        $addressId = $request['addressSelect'];
         $foodie = Auth::guard('foodie')->user();
+        dd($addressId);
         $address = DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('id','=', $id)->select('id','city','unit','street','brgy','bldg','type')->first();
-        dd($id);
         return back()->with(['status'=>'Added delivery address!']);
     }
 }
