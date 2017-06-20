@@ -45,7 +45,7 @@
                     <div class="row">
                         <div class="col s12 m4">
                             <a href="#bankPay" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 4px;">
+                                <div class="light-green lighten-1" style="border-radius: 10px;">
                                     <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                         <div class="white-text center-block">
                                             <i class="fa fa-bank" style="font-size: 80px;"></i>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="col s12 m4">
                             <a href="#paypalPay" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 4px;">
+                                <div class="light-green lighten-1" style="border-radius: 10px;">
                                     <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                         <div class="white-text center-block">
                                             <i class="fa fa-paypal" style="font-size: 80px;"></i>
@@ -73,7 +73,7 @@
                         </div>
                         <div class="col s12 m4">
                             <a href="#gcashModal" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 4px;">
+                                <div class="light-green lighten-1" style="border-radius: 10px;">
                                     <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                         <div class="white-text center-block">
                                             <span style="font-size: 40px;">GCash</span>
