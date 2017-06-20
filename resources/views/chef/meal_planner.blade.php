@@ -518,7 +518,7 @@
                                 <option value="carbohydrates">Carbohydrates</option>
                                 <option value="vegetables">Vegetables</option>
                                 <option value="fruits">Fruits</option>
-                                </select>
+                            </select>
                             </div>
                             <script>
                                 $(document).ready(function () {
