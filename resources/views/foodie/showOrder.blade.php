@@ -218,6 +218,12 @@
             </div>
         </nav>
         <div class="modal-content">
+            <div>Please pay to the BDO savings account number of:</div>
+            <div>
+                <ul>
+                    <li><span style="font-size: 20px;">{{$order->chef->bank_account}}</span></li>
+                </ul>
+            </div>
             <ul class="collection">
                 {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
                 <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
