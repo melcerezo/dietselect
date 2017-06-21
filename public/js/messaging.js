@@ -7,6 +7,7 @@ $(document).ready(function(){
 
     $(document).on('click','.rplBtn', function(){
         var $this=$(this);
+        $('#replyRecName').empty();
         $('#replyRecName').append($this.attr('data-rec-name'));
         $('#replyRec').val($this.attr('data-rec'));
         $('#chtId').val($this.attr('data-chat-id'));
