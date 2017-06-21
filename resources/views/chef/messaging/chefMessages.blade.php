@@ -135,9 +135,13 @@
                                                         </li>
                                                     </ul>
                                                 </div>
-                                                <div class="col s2 m2 l2 email-actions msgRply">
-                                                    <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$foodie->first_name.' '.$foodie->last_name}}" data-rec="{{$foodie->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
-                                                </div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($foodie->id == $chat->foodie_id)
+                                                        <div class="col s2 m2 l2 email-actions msgRply">
+                                                            <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$foodie->first_name.' '.$foodie->last_name}}" data-rec="{{$foodie->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
                                             </div>
                                             <div class="msgCnt">
                                                 <p>{{$message->message}}</p>
