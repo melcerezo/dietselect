@@ -221,7 +221,7 @@
             <div>Please pay to the BDO savings account number of:</div>
             <div>
                 <ul>
-                    <li><span style="font-size: 20px;">{{$order->chef->bank_account}}</span></li>
+                    <li><span style="font-size: 20px;">{{'00'.$order->chef->bank_account}}</span></li>
                 </ul>
             </div>
             <ul class="collection">
