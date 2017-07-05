@@ -18,6 +18,10 @@ $(document).ready(function () {
         });
     }
 
+    $('#orderFrm').submit(function () {
+        $('#loadWait').show();
+    });
+
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
