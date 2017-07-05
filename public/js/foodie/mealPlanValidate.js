@@ -62,8 +62,7 @@ $(document).ready(function () {
                     }
                     if(matchData==ingredCountz){
                         console.log("success");
-                        form.submit(function () {
-                        });
+                        form.unbind('submit').submit();
                     }
                 });
             }
