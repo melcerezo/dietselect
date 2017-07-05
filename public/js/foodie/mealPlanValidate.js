@@ -20,7 +20,6 @@ $(document).ready(function () {
 
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('button.updateB').click(function () {
-        $('#loadWait').show();
         var form=$(this).closest("form");
         console.log(form);
         var ingredSelect=form.find("#ingredSelect").children();
@@ -47,6 +46,7 @@ $(document).ready(function () {
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
+                    $('#loadWait').show();
                     // console.log('This is in ajax');
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
