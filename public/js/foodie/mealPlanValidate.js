@@ -47,6 +47,7 @@ $(document).ready(function () {
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
                     console.log('This is in ajax');
+                    $('#loadWait').show();
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
                         var ingred= valData[i].name;
@@ -60,8 +61,8 @@ $(document).ready(function () {
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
+                        console.log("success");
                         form.submit(function () {
-                            $('#loadWait').show();
                         });
                     }
                 });
