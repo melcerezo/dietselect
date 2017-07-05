@@ -1,3 +1,6 @@
+$(window).load(function () {
+    $("#loadWait").delay(700).fadeOut("slow");
+});
 $(document).ready(function () {
 
     // $(document).on('click','.modal-trigger',function (e) {
@@ -58,7 +61,7 @@ $(document).ready(function () {
                     }
                     if(matchData==ingredCountz){
                         form.unbind('submit').submit(function () {
-                            $("#loadWait").delay(700).fadeOut("slow");
+                            $('#loadWait').show();
                         });
                     }
                 });

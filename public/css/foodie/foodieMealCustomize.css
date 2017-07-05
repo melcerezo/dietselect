@@ -89,6 +89,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    z-index: 99;
+    z-index: 999999;
     height: 100%;
+}
+#loadStatus {
+    position: relative;
+    margin: 0 auto;
+    height: 90px;
+    width: 90px;
+    display: block;
 }
