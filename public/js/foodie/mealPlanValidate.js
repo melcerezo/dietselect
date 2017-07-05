@@ -25,7 +25,7 @@ $(document).ready(function () {
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
         var ingredCountz=ingredFind.length;
-        console.log(ingredCountz);
+        // console.log(ingredCountz);
         var matchData=0;
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
