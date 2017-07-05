@@ -95,7 +95,7 @@
 }
 #loadStatus {
     position: relative;
-    margin: 0 auto;
+    margin: auto;
     height: 90px;
     width: 90px;
     display: block;
