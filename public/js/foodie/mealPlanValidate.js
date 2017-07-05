@@ -46,7 +46,8 @@ $(document).ready(function () {
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
-                    console.log('This is in ajax');
+                    // console.log('This is in ajax');
+                    $('#loadWait').show();
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
                         var ingred= valData[i].name;
@@ -61,8 +62,6 @@ $(document).ready(function () {
                     }
                     if(matchData==ingredCountz){
                         window.scrollTo(0,0);
-                        $('#loadWait').show();
-                        // $('.editFoodieCustModal').modal('close');
                         form.unbind('submit').submit();
                     }
                 });
