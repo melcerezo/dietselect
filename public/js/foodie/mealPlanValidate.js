@@ -56,7 +56,9 @@ $(document).ready(function () {
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
-                        form.unbind('submit').submit();
+                        form.unbind('submit').submit(function () {
+                            $("#loadWait").delay(700).fadeOut("slow");
+                        });
                     }
                 });
             }
