@@ -60,6 +60,7 @@ $(document).ready(function () {
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
+                        window.scrollTo(0,0);
                         $('#loadWait').show();
                         // $('.editFoodieCustModal').modal('close');
                         form.unbind('submit').submit();
