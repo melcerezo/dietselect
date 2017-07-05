@@ -18,6 +18,7 @@ $(document).ready(function () {
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('form.editMeal').submit(function (e) {
         e.preventDefault();
+        $('#loadWait').show();
         var form=$(this);
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
