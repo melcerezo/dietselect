@@ -61,7 +61,7 @@ $(document).ready(function () {
                     }
                     if(matchData==ingredCountz){
                         $('#loadWait').show();
-                        $('.editFoodieCustModal').modal('close');
+                        // $('.editFoodieCustModal').modal('close');
                         form.unbind('submit').submit();
                     }
                 });
