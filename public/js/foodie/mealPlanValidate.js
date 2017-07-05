@@ -21,11 +21,11 @@ $(document).ready(function () {
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
-        // console.log(form);
+        console.log(form);
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
         var ingredCountz=ingredFind.length;
-        // console.log(ingredCountz);
+        console.log(ingredCountz);
         var matchData=0;
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
