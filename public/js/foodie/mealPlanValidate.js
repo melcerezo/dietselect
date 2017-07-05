@@ -57,6 +57,7 @@ $(document).ready(function () {
                         }
                     }
                     if(!matchData){
+                        $('#loadWait').hide();
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
                     }
