@@ -67,9 +67,9 @@ $(document).ready(function () {
         });
     });
 
-    $('form.editMeal').submit(function (e) {
-        e.preventDefault();
-    });
+    // $('form.editMeal').submit(function (e) {
+    //     e.preventDefault();
+    // });
 
     $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('form.editMeal').each(function () {
