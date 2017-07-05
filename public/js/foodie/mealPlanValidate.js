@@ -21,7 +21,7 @@ $(document).ready(function () {
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
-        console.log(form);
+        // console.log(form);
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
         var ingredCountz=ingredFind.length;
@@ -46,6 +46,7 @@ $(document).ready(function () {
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
+                    console.log('This is in ajax');
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
                         var ingred= valData[i].name;
@@ -59,7 +60,7 @@ $(document).ready(function () {
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
-                        form.unbind('submit').submit(function () {
+                        form.submit(function () {
                             $('#loadWait').show();
                         });
                     }
