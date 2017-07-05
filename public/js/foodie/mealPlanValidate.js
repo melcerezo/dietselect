@@ -1,6 +1,6 @@
-$(window).load(function () {
-    $("#loadWait").delay(700).fadeOut("slow");
-});
+// $(window).load(function () {
+//     $("#loadWait").delay(700).fadeOut("slow");
+// });
 $(document).ready(function () {
 
     // $(document).on('click','.modal-trigger',function (e) {
