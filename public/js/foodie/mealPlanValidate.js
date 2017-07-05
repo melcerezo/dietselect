@@ -46,7 +46,6 @@ $(document).ready(function () {
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
-                    console.log('This is in ajax');
                     $('#loadWait').show();
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
@@ -57,12 +56,13 @@ $(document).ready(function () {
                         }
                     }
                     if(!matchData){
+                        $('#loadWait').hide();
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
-                        form.unbind('submit').submit();
                         $('.editFoodieCustModal').modal('close');
+                        form.unbind('submit').submit();
                     }
                 });
             }
