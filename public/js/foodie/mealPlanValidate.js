@@ -27,6 +27,7 @@ $(document).ready(function () {
         var ingredCountz=ingredFind.length;
         console.log(ingredCountz);
         var matchData=0;
+        $('#loadWait').show();
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
             var $thisVal=ingredIn.val();
@@ -46,7 +47,6 @@ $(document).ready(function () {
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
-                    $('#loadWait').show();
                     // console.log('This is in ajax');
                     var valData=response;
                     for(var i = 0,l=valData.length;i<l;i++){
