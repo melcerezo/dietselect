@@ -571,7 +571,7 @@
             @for($i=0;$i<$mealPlansCount;$i++)
                 @foreach($customize as $cust)
                     @if($cust->meal_id == $mealPlans[$i]->chefcustomize->id)
-                    <div id="editMeal-{{$i}}" class="modal">
+                    <div id="editMeal-{{$i}}" class="editFoodieCustModal modal">
                         <nav class="light-green lighten-1 white-text">
                             <div class="left col s12 m5 l5">
                                 <ul>

@@ -61,8 +61,8 @@ $(document).ready(function () {
                         $errorContainer.append("The listed ingredient is not found");
                     }
                     if(matchData==ingredCountz){
-                        console.log("success");
                         form.unbind('submit').submit();
+                        $('.editFoodieCustModal').modal('close');
                     }
                 });
             }
