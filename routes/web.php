@@ -18,8 +18,6 @@ Route::get('/testMessage', 'DashController@loadMessage')->name('testMessage');
 Route::get('/testMealPlanner', 'DashController@loadMealPlanner')->name('testMealPlanner');
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
-Route::resource('/cart', 'CartController');
-
 
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
@@ -96,6 +94,10 @@ Route::group(['prefix' => 'foodie'], function () {
     // Rating
     Route::get('foodie/rating', 'RatingsController@getRatingPage')->name('chef.rating');
     Route::post('rate/chef/{order}', 'RatingsController@rateChef')->name('rate.chef');
+
+    // Cart
+    Route::get('cart', 'CartController@index')->name('cart.index');
+    Route::get('cart/{plan}/{cust}','CartController@add')->name('cart.add');
 });
 
 Route::group(['prefix' => 'chef'], function () {
