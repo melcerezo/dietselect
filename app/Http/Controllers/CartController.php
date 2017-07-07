@@ -50,7 +50,7 @@ class CartController extends Controller
     public function add(Plan $plan, $cust)
     {
         $dt=Carbon::now();
-        $startOfNextWeek = $dt->startOfWeek()->addDay(7);
+        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
         Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name]);
 
         dd($startOfNextWeek);
