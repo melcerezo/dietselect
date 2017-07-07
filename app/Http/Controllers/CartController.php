@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Plan;
 use App\Chat;
+use App\Chef;
 use App\Message;
 use App\Notification;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -31,7 +32,7 @@ class CartController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
-
+        $chefs = Chef::all();
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
             'messages' => $messages,
@@ -40,6 +41,8 @@ class CartController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
             'chats' => $chats,
+            'chefs' => $chefs,
+
         ]);
     }
 
