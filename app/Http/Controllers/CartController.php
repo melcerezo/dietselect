@@ -34,7 +34,8 @@ class CartController extends Controller
             'cartItems' =>$cartItems,
             'messages' => $messages,
             'notifications' => $notifications,
-            'unreadNotifications'=> $unreadNotifications
+            'unreadNotifications'=> $unreadNotifications,
+            'sms_unverified' => $this->smsIsUnverified(),
         ]);
     }
 
