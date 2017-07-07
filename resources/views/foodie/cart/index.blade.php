@@ -3,5 +3,5 @@
 
 @endsection
 @section('page_content')
-    <span>{{$cartItem}}</span>
+    <span>{{$cartItems}}</span>
 @endsection
