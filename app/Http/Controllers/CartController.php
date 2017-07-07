@@ -51,9 +51,9 @@ class CartController extends Controller
     {
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
-        Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name]);
+        Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name, 'date'=>$startOfNextWeek]);
 
-        dd($startOfNextWeek);
+//        dd($startOfNextWeek);
         return back()->with(['status'=>'Added to cart!']);
     }
 }
