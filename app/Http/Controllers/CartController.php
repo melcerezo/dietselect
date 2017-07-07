@@ -29,7 +29,8 @@ class CartController extends Controller
             ->get();
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
-        
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
             'messages' => $messages,
@@ -37,6 +38,7 @@ class CartController extends Controller
             'unreadNotifications'=> $unreadNotifications,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
+            'chats' => $chats,
         ]);
     }
 
