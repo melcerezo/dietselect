@@ -18,6 +18,8 @@ Route::get('/testMessage', 'DashController@loadMessage')->name('testMessage');
 Route::get('/testMealPlanner', 'DashController@loadMealPlanner')->name('testMealPlanner');
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
+Route::resource('/cart', 'CartController');
+
 
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');

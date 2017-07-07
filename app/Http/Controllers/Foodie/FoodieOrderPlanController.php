@@ -59,7 +59,6 @@ class FoodieOrderPlanController extends Controller
         $foodie = Auth::guard('foodie')->user();
         $orders='';
         $ordersCount=Order::where('foodie_id','=',$foodie->id)->count();
-
         $pendOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->count();
         $paidOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_paid','=',1)->where('is_cancelled','=',0)->count();
         $cancelOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_cancelled','=',1)->count();

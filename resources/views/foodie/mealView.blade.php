@@ -431,10 +431,7 @@
                     <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
                     <li class="collection-item">Plan Price: {{$plan->price}}</li>
                 </ul>
-                <form action="{{route('foodie.order.create', $plan->id)}}" method="post">
-                    {{csrf_field()}}
-                    <button type="submit" class="btn btn-danger">Order</button>
-                </form>
+                <a href="{{route('cart.edit', [$plan->id,0])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
             </div>
         </div>
 
