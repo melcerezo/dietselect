@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Plan;
 use App\Message;
 use App\Notification;
