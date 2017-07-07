@@ -48,7 +48,7 @@ class CartController extends Controller
 
     public function add(Plan $plan, $cust)
     {
-        Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust]);
+        Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name]);
 
         return back()->with(['status'=>'Added to cart!']);
     }
