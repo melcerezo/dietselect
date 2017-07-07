@@ -17,17 +17,19 @@
                 <div class="card-panel shOrdMlTbl">
                     <table class="centered">
                         <thead class="light-green lighten-1 white-text" style="border: none;">
-                        <th>Plan</th>
-                        <th>Chef</th>
-                        <th>Price</th>
-                        <th>Payment Status</th>
+                            <th>Plan</th>
+                            <th>Chef</th>
+                            <th>Price</th>
+                            <th>Week</th>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>{{$plan->plan_name}}</td>
-                            <td>{{$plan->chef->name}}</td>
-                            <td>{{$plan->price}}</td>
-                        </tr>
+                        @foreach($cartItems as $cartItem)
+                            <tr>
+                                <td>{{$cartItem->name}}</td>
+                                <td>{{$cartItem->options->chef}}</td>
+                                <td>{{$cartItem->price}}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>
