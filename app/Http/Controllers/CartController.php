@@ -36,6 +36,7 @@ class CartController extends Controller
             'notifications' => $notifications,
             'unreadNotifications'=> $unreadNotifications,
             'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
         ]);
     }
 
