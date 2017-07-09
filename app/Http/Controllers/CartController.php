@@ -26,15 +26,18 @@ class CartController extends Controller
     {
         $foodie= Auth::guard('foodie')->user()->id;
         $cartItems=Cart::content();
+        $cartTotal=$cartItems::total();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
             ->get();
+
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
-//        dd($cartItems);
+        dd($cartTotal);
+
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
             'messages' => $messages,
