@@ -23,12 +23,19 @@
                             <th>Type</th>
                             <th>Quantity</th>
                             <th>Price</th>
+                            <th></th>
                         </thead>
                         <tbody>
                         @foreach($cartItems as $cartItem)
                             <tr>
                                 <td>{{$cartItem->name}}</td>
-                                <td>{{$cartItem->options->chef}}</td>
+                                <td>
+                                    @foreach($chefs as $chef)
+                                        @if($chef->id == $cartItem->options->chef)
+                                            {{$chef->name}}
+                                        @endif
+                                    @endforeach
+                                </td>
                                 <td>{{$cartItem->options->date}}</td>
                                 <td>
                                     @if($cartItem->options->cust==0)
@@ -39,6 +46,7 @@
                                 </td>
                                 <td>{{$cartItem->qty}}</td>
                                 <td>{{$cartItem->price}}</td>
+                                <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                             </tr>
                         @endforeach
                         </tbody>

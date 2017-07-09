@@ -99,6 +99,7 @@ Route::group(['prefix' => 'foodie'], function () {
     // Cart
     Route::get('cart', 'CartController@index')->name('cart.index');
     Route::get('cart/{plan}/{cust}','CartController@add')->name('cart.add');
+    Route::get('cart/{id}','CartController@remove')->name('cart.remove');
 });
 
 Route::group(['prefix' => 'chef'], function () {

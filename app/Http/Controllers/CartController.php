@@ -69,10 +69,17 @@ class CartController extends Controller
         if($cust == 0){
             Cart::add($id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name, 'date'=>$startOfNextWeek]);
         }elseif($cust == 1){
-            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->name, 'date'=>$startOfNextWeek]);
+            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }
 
 //        dd($startOfNextWeek);
         return back()->with(['status'=>'Added to cart!']);
+    }
+
+    public function remove($id)
+    {
+        Cart::remove($id);
+
+        return back()->with(['status'=>'Removed cart item']);
     }
 }
