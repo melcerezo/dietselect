@@ -175,8 +175,13 @@ class FoodieOrderPlanController extends Controller
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
-//            $orderItem->plan_id =
+            $orderItem->plan_id = $cartItem->id;
+            $orderItem->order_type = $cartItem->cust;
+            $orderItem->save();
         }
+
+        dd($orderItem);
+        return back();
 
     }
 
