@@ -28,6 +28,7 @@
                                 <td>{{$cartItem->name}}</td>
                                 <td>{{$cartItem->options->chef}}</td>
                                 <td>{{$cartItem->price}}</td>
+                                <td>{{$cartItem->options->date}}</td>
                             </tr>
                         @endforeach
                         </tbody>
@@ -35,323 +36,323 @@
                 </div>
             </div>
         </div>
-        @unless($order->is_cancelled==1)
-            <div class="row">
-                @unless($order->is_paid==1)
-                    <div class="col s12 m6">
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <a href="#bankPay" class="modal-trigger">
-                                    <div class="light-green lighten-1" style="border-radius: 10px;">
-                                        <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                            <div class="white-text center-block">
-                                                <i class="fa fa-bank" style="font-size: 80px;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="white-text center">
-                                            <span>Bank Payment</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col s12 m4">
-                                <a href="#paypalPay" class="modal-trigger">
-                                    <div class="light-green lighten-1" style="border-radius: 10px;">
-                                        <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                            <div class="white-text center-block">
-                                                <i class="fa fa-paypal" style="font-size: 80px;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="white-text center">
-                                            <span>PayPal Payment</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="col s12 m4">
-                                <a href="#gcashModal" class="modal-trigger">
-                                    <div class="light-green lighten-1" style="border-radius: 10px;">
-                                        <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                            <div class="white-text center-block">
-                                                <span style="font-size: 40px;">GCash</span>
-                                            </div>
-                                        </div>
-                                        <div class="white-text center">
-                                            <span>GCash Payment</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m4">
-                                <a href="#cancelOrderModal" class="modal-trigger">
-                                    <div class="red" style="border-radius: 10px;">
-                                        <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                            <div class="white-text center-block">
-                                                <i class="fa fa-ban" style="font-size: 80px;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="white-text center">
-                                            <span>Cancel Order</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                @endunless
+        {{--@unless($order->is_cancelled==1)--}}
+            {{--<div class="row">--}}
+                {{--@unless($order->is_paid==1)--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col s12 m4">--}}
+                                {{--<a href="#bankPay" class="modal-trigger">--}}
+                                    {{--<div class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                        {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                            {{--<div class="white-text center-block">--}}
+                                                {{--<i class="fa fa-bank" style="font-size: 80px;"></i>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="white-text center">--}}
+                                            {{--<span>Bank Payment</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col s12 m4">--}}
+                                {{--<a href="#paypalPay" class="modal-trigger">--}}
+                                    {{--<div class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                        {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                            {{--<div class="white-text center-block">--}}
+                                                {{--<i class="fa fa-paypal" style="font-size: 80px;"></i>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="white-text center">--}}
+                                            {{--<span>PayPal Payment</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                            {{--<div class="col s12 m4">--}}
+                                {{--<a href="#gcashModal" class="modal-trigger">--}}
+                                    {{--<div class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                        {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                            {{--<div class="white-text center-block">--}}
+                                                {{--<span style="font-size: 40px;">GCash</span>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="white-text center">--}}
+                                            {{--<span>GCash Payment</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col s12 m4">--}}
+                                {{--<a href="#cancelOrderModal" class="modal-trigger">--}}
+                                    {{--<div class="red" style="border-radius: 10px;">--}}
+                                        {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                            {{--<div class="white-text center-block">--}}
+                                                {{--<i class="fa fa-ban" style="font-size: 80px;"></i>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="white-text center">--}}
+                                            {{--<span>Cancel Order</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</a>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--@endunless--}}
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-                @if($order->is_paid==0)
-                    <div class="col s12 m6">
-                        @else
-                            <div class="col s12 m6 offset-m6">
-                                @endif
-                                <ul class="collection">
-                                    <li class="collection-item light-green lighten-1 white-text">
-                                        <span class="collection-header">Total Order:</span>
-                                    </li>
-                                    <li class="collection-item">
-                                        <span>Total: {{$plan->price}}</span>
-                                    </li>
-                                    <li class="collection-item">
-                                        <div>
-                                            <span>Delivery Address:</span>
-                                        </div>
-                                        @if($orderAddress!=null)
-                                            <div>
-                                                <span>{{$orderAddress->unit}}</span>
-                                                @unless($orderAddress->bldg=='')
-                                                    <span> {{$orderAddress->bldg}}, </span>
-                                                @endunless
-                                                <span>{{$orderAddress->street}}, </span>
-                                                <span>{{$orderAddress->brgy}}, </span>
-                                                <span>{{$orderAddress->city}}</span>
-                                            </div>
-                                            <div>
-                                                <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
-                                            </div>
-                                        @else
-                                            <div>
-                                                @if($foodieAddress==null)
-                                                    <a href="{{route('foodie.profile')}}">
-                                                        <span>No Address Available. Please add one so we can deliver to you!</span>
-                                                    </a>
-                                                @else
-                                                    <a href="#pickOrderAddressModal" class="modal-trigger">
-                                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
-                                                    </a>
-                                                @endif
-                                            </div>
-                                        @endif
-                                    </li>
-                                </ul>
-                            </div>
-                    </div>
-                    @endunless
-            </div>
+                {{--@if($order->is_paid==0)--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--@else--}}
+                            {{--<div class="col s12 m6 offset-m6">--}}
+                                {{--@endif--}}
+                                {{--<ul class="collection">--}}
+                                    {{--<li class="collection-item light-green lighten-1 white-text">--}}
+                                        {{--<span class="collection-header">Total Order:</span>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item">--}}
+                                        {{--<span>Total: {{$plan->price}}</span>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item">--}}
+                                        {{--<div>--}}
+                                            {{--<span>Delivery Address:</span>--}}
+                                        {{--</div>--}}
+                                        {{--@if($orderAddress!=null)--}}
+                                            {{--<div>--}}
+                                                {{--<span>{{$orderAddress->unit}}</span>--}}
+                                                {{--@unless($orderAddress->bldg=='')--}}
+                                                    {{--<span> {{$orderAddress->bldg}}, </span>--}}
+                                                {{--@endunless--}}
+                                                {{--<span>{{$orderAddress->street}}, </span>--}}
+                                                {{--<span>{{$orderAddress->brgy}}, </span>--}}
+                                                {{--<span>{{$orderAddress->city}}</span>--}}
+                                            {{--</div>--}}
+                                            {{--<div>--}}
+                                                {{--<a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>--}}
+                                            {{--</div>--}}
+                                        {{--@else--}}
+                                            {{--<div>--}}
+                                                {{--@if($foodieAddress==null)--}}
+                                                    {{--<a href="{{route('foodie.profile')}}">--}}
+                                                        {{--<span>No Address Available. Please add one so we can deliver to you!</span>--}}
+                                                    {{--</a>--}}
+                                                {{--@else--}}
+                                                    {{--<a href="#pickOrderAddressModal" class="modal-trigger">--}}
+                                                        {{--<span>No Order Address Picked. Please add one so we can deliver to you!</span>--}}
+                                                    {{--</a>--}}
+                                                {{--@endif--}}
+                                            {{--</div>--}}
+                                        {{--@endif--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                    {{--</div>--}}
+                    {{--@endunless--}}
+            {{--</div>--}}
 
-            <div id="pickOrderAddressModal" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span style="margin-left: 20px;">Choose Order Address</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    <div class="row">
-                        <span>Please choose an address for us to deliver.</span>
-                    </div>
-                    <form action="{{route('foodie.order.address', $order->id)}}" method="post" id="pickAddressForm">
-                        {{ csrf_field() }}
-                        <div class="form-group">
-                            <select class="form-control" name="addressSelect" id="addressSelect">
-                                <option disabled selected>Please Choose an address</option>;
-                                @foreach($foodieAddress as $address)
-                                    <option value="{{$address->id}}">
-                                        {{$address->unit}} @unless($address->bldg==''){{$address->bldg}},@endunless{{$address->street}},{{$address->brgy}},{{$address->city}}
-                                    </option>
-                                @endforeach
-                            </select>
-                            <div></div>
-                        </div>
-                        <input type="submit" class="btn waves-effect waves-light"/>
-                    </form>
-                </div>
-            </div>
-            <div id="cancelOrderModal" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span style="margin-left: 20px;">Cancel Order</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    <div class="row">
-                        <span>Do you want to cancel your order?</span>
-                    </div>
-                    <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">
-                        {{ csrf_field() }}
-                        <input type="submit" class="btn waves-effect waves-light" />
-                    </form>
-                </div>
-            </div>
+            {{--<div id="pickOrderAddressModal" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div class="left col s12 m5 l5">--}}
+                        {{--<ul>--}}
+                            {{--<li>--}}
+                                {{--<span style="margin-left: 20px;">Choose Order Address</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div class="row">--}}
+                        {{--<span>Please choose an address for us to deliver.</span>--}}
+                    {{--</div>--}}
+                    {{--<form action="{{route('foodie.order.address', $order->id)}}" method="post" id="pickAddressForm">--}}
+                        {{--{{ csrf_field() }}--}}
+                        {{--<div class="form-group">--}}
+                            {{--<select class="form-control" name="addressSelect" id="addressSelect">--}}
+                                {{--<option disabled selected>Please Choose an address</option>;--}}
+                                {{--@foreach($foodieAddress as $address)--}}
+                                    {{--<option value="{{$address->id}}">--}}
+                                        {{--{{$address->unit}} @unless($address->bldg==''){{$address->bldg}},@endunless{{$address->street}},{{$address->brgy}},{{$address->city}}--}}
+                                    {{--</option>--}}
+                                {{--@endforeach--}}
+                            {{--</select>--}}
+                            {{--<div></div>--}}
+                        {{--</div>--}}
+                        {{--<input type="submit" class="btn waves-effect waves-light"/>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div id="cancelOrderModal" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div class="left col s12 m5 l5">--}}
+                        {{--<ul>--}}
+                            {{--<li>--}}
+                                {{--<span style="margin-left: 20px;">Cancel Order</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div class="row">--}}
+                        {{--<span>Do you want to cancel your order?</span>--}}
+                    {{--</div>--}}
+                    {{--<form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">--}}
+                        {{--{{ csrf_field() }}--}}
+                        {{--<input type="submit" class="btn waves-effect waves-light" />--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-            <div id="bankPay" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span style="margin-left: 20px;">Bank Payment</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    <div>Please pay your balance with this information :</div>
+            {{--<div id="bankPay" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div class="left col s12 m5 l5">--}}
+                        {{--<ul>--}}
+                            {{--<li>--}}
+                                {{--<span style="margin-left: 20px;">Bank Payment</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div>Please pay your balance with this information :</div>--}}
 
-                    <ul class="collection">
+                    {{--<ul class="collection">--}}
                         {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                        <li class="collection-item">BDO Savings Account: {{'00'.$order->chef->bank_account}}</li>
-                        <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                        <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                        <li class="collection-item">Plan Price: {{$plan->price}}</li>
-                    </ul>
-                    <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <div>
-                            <div><label for="receipt">Receipt Number</label></div>
-                            <div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>
-                            <div class="error-recpt err"></div>
-                        </div>
-                        <div>
-                            <div><label for="datePay">Date of Transaction:</label></div>
-                            <div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>
-                            <div class="error-date-pay err"></div>
+                        {{--<li class="collection-item">BDO Savings Account: {{'00'.$order->chef->bank_account}}</li>--}}
+                        {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                        {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                        {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+                    {{--</ul>--}}
+                    {{--<form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<div>--}}
+                            {{--<div><label for="receipt">Receipt Number</label></div>--}}
+                            {{--<div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>--}}
+                            {{--<div class="error-recpt err"></div>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                            {{--<div><label for="datePay">Date of Transaction:</label></div>--}}
+                            {{--<div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>--}}
+                            {{--<div class="error-date-pay err"></div>--}}
 
-                        </div>
-                        <div class="row">
-                            <div class="file-field">
-                                <label for="image" class="active">Picture Upload:</label>
-                                <div style="padding-top: 10px;">
-                                    <div class="btn">
-                                        <span>File</span>
-                                        <input type="file" data-error=".error-image" id="image" name="image">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" >
-                                    </div>
-                                    <div class="error-image err"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="file-field">--}}
+                                {{--<label for="image" class="active">Picture Upload:</label>--}}
+                                {{--<div style="padding-top: 10px;">--}}
+                                    {{--<div class="btn">--}}
+                                        {{--<span>File</span>--}}
+                                        {{--<input type="file" data-error=".error-image" id="image" name="image">--}}
+                                    {{--</div>--}}
+                                    {{--<div class="file-path-wrapper">--}}
+                                        {{--<input class="file-path validate" type="text" >--}}
+                                    {{--</div>--}}
+                                    {{--<div class="error-image err"></div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<button type="submit">Submit</button>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
 
-            <div id="paypalPay" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span style="margin-left: 20px;">PayPal Payment</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    @if ($message = Session::get('success'))
-                        <div class="custom-alerts alert alert-success fade in">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            {!! $message !!}
-                        </div>
-                        <?php Session::forget('success');?>
-                    @endif
-                    @if ($message = Session::get('error'))
-                        <div class="custom-alerts alert alert-danger fade in">
-                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                            {!! $message !!}
-                        </div>
-                        <?php Session::forget('error');?>
-                    @endif
-                    <div>
-                        <ul class="collection">
+            {{--<div id="paypalPay" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div class="left col s12 m5 l5">--}}
+                        {{--<ul>--}}
+                            {{--<li>--}}
+                                {{--<span style="margin-left: 20px;">PayPal Payment</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--@if ($message = Session::get('success'))--}}
+                        {{--<div class="custom-alerts alert alert-success fade in">--}}
+                            {{--<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>--}}
+                            {{--{!! $message !!}--}}
+                        {{--</div>--}}
+                        {{--<?php Session::forget('success');?>--}}
+                    {{--@endif--}}
+                    {{--@if ($message = Session::get('error'))--}}
+                        {{--<div class="custom-alerts alert alert-danger fade in">--}}
+                            {{--<button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>--}}
+                            {{--{!! $message !!}--}}
+                        {{--</div>--}}
+                        {{--<?php Session::forget('error');?>--}}
+                    {{--@endif--}}
+                    {{--<div>--}}
+                        {{--<ul class="collection">--}}
                             {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                            <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                            <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                            <li class="collection-item">Plan Price: {{$plan->price}}</li>
-                        </ul>
-                        <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
-                            {{ csrf_field() }}
+                            {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                            {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                            {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+                        {{--</ul>--}}
+                        {{--<form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >--}}
+                            {{--{{ csrf_field() }}--}}
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary">
-                                    Pay with Paypal
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div id="gcashModal" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span style="margin-left: 20px;">GCash Payment</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    <div>
-                <span>Please send your Gcash payment to: 09950893073. Fill out this form with a
-                    screenshot of the confirmation text and the reference number</span>
-                    </div>
-                    <ul class="collection">
+                            {{--<div class="form-group">--}}
+                                {{--<button type="submit" class="btn btn-primary">--}}
+                                    {{--Pay with Paypal--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</form>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div id="gcashModal" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div class="left col s12 m5 l5">--}}
+                        {{--<ul>--}}
+                            {{--<li>--}}
+                                {{--<span style="margin-left: 20px;">GCash Payment</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--<div>--}}
+                {{--<span>Please send your Gcash payment to: 09950893073. Fill out this form with a--}}
+                    {{--screenshot of the confirmation text and the reference number</span>--}}
+                    {{--</div>--}}
+                    {{--<ul class="collection">--}}
                         {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                        <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                        <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                        <li class="collection-item">Plan Price: {{$plan->price}}</li>
-                    </ul>
-                    <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
-                        {{csrf_field()}}
-                        <div>
-                            <div class="row">
-                                <div><label for="gcDatePay">Date of Transaction:</label></div>
-                                <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>
-                                <div class="error-gcdate-pay err"></div>
-                            </div>
-                            <div class="row">
-                                <div class="file-field">
-                                    <label for="gcPic" class="active">Picture Upload:</label>
-                                    <div style="padding-top: 10px;">
-                                        <div class="btn">
-                                            <span>File</span>
-                                            <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
-                                        </div>
-                                        <div class="file-path-wrapper">
-                                            <input class="file-path validate" type="text" >
-                                        </div>
-                                        <div class="error-gcpic err"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button class="btn waves-effect waves-light">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+                        {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                        {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                        {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+                    {{--</ul>--}}
+                    {{--<form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">--}}
+                        {{--{{csrf_field()}}--}}
+                        {{--<div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div><label for="gcDatePay">Date of Transaction:</label></div>--}}
+                                {{--<div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>--}}
+                                {{--<div class="error-gcdate-pay err"></div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<div class="file-field">--}}
+                                    {{--<label for="gcPic" class="active">Picture Upload:</label>--}}
+                                    {{--<div style="padding-top: 10px;">--}}
+                                        {{--<div class="btn">--}}
+                                            {{--<span>File</span>--}}
+                                            {{--<input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="file-path-wrapper">--}}
+                                            {{--<input class="file-path validate" type="text" >--}}
+                                        {{--</div>--}}
+                                        {{--<div class="error-gcpic err"></div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                            {{--<div class="row">--}}
+                                {{--<button class="btn waves-effect waves-light">Submit</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</form>--}}
+                {{--</div>--}}
+            {{--</div>--}}
     </div>
     {{--<h2 class="center white-text">Order Confirmation</h2>--}}
     {{--<div><span class="center full-width white-text" style="font-size: 1.5em">You have placed your order!</span>--}}
