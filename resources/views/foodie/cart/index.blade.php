@@ -31,9 +31,9 @@
                                 <td>{{$cartItem->options->chef}}</td>
                                 <td>{{$cartItem->options->date}}</td>
                                 <td>
-                                    @if($cartItem->options->type==0)
+                                    @if($cartItem->options->cust==0)
                                         <span>Standard</span>
-                                    @elseif($cartItem->options->type==1)
+                                    @elseif($cartItem->options->cust==1)
                                         <span>Customized</span>
                                     @endif
                                 </td>
