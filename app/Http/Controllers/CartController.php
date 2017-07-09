@@ -40,6 +40,7 @@ class CartController extends Controller
 
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
+            'cartTotal' =>$cartTotal,
             'messages' => $messages,
             'notifications' => $notifications,
             'unreadNotifications'=> $unreadNotifications,
