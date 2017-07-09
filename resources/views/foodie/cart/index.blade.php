@@ -12,7 +12,7 @@
                 <span>Order Payment</span>
             </div>
         </div>
-        @if(Cart::count>0)
+        @if(Cart::count()>0)
         <div class="row">
             <div class="col s12" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
