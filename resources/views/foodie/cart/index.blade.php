@@ -12,6 +12,7 @@
                 <span>Order Payment</span>
             </div>
         </div>
+        @if(Cart::count>0)
         <div class="row">
             <div class="col s12" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
@@ -26,29 +27,29 @@
                             <th></th>
                         </thead>
                         <tbody>
-                        @foreach($cartItems as $cartItem)
-                            <tr>
-                                <td>{{$cartItem->name}}</td>
-                                <td>
-                                    @foreach($chefs as $chef)
-                                        @if($chef->id == $cartItem->options->chef)
-                                            {{$chef->name}}
+                            @foreach($cartItems as $cartItem)
+                                <tr>
+                                    <td>{{$cartItem->name}}</td>
+                                    <td>
+                                        @foreach($chefs as $chef)
+                                            @if($chef->id == $cartItem->options->chef)
+                                                {{$chef->name}}
+                                            @endif
+                                        @endforeach
+                                    </td>
+                                    <td>{{$cartItem->options->date}}</td>
+                                    <td>
+                                        @if($cartItem->options->cust==0)
+                                            <span>Standard</span>
+                                        @elseif($cartItem->options->cust==1)
+                                            <span>Customized</span>
                                         @endif
-                                    @endforeach
-                                </td>
-                                <td>{{$cartItem->options->date}}</td>
-                                <td>
-                                    @if($cartItem->options->cust==0)
-                                        <span>Standard</span>
-                                    @elseif($cartItem->options->cust==1)
-                                        <span>Customized</span>
-                                    @endif
-                                </td>
-                                <td>{{$cartItem->qty}}</td>
-                                <td>{{$cartItem->price}}</td>
-                                <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
-                            </tr>
-                        @endforeach
+                                    </td>
+                                    <td>{{$cartItem->qty}}</td>
+                                    <td>{{$cartItem->price}}</td>
+                                    <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -84,5 +85,15 @@
                 </ul>
             </div>
         </div>
+        @else
+            <div>
+                <div>
+                    <span>Nothing in Cart!</span>
+                </div>
+                <div>
+                    <a href="{{route('foodie.plan.show')}}">Check out our plans to order!</a>
+                </div>
+            </div>
+        @endif
     </div>
 @endsection
