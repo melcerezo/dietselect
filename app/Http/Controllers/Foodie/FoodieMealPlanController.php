@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
 use App\ChefCustomizedIngredientMeal;
+use App\CustomPlan;
 use App\Notification;
 use App\CustomizedIngredientMeal;
 use App\CustomizedMeal;
@@ -230,6 +231,9 @@ class FoodieMealPlanController extends Controller
         $proteinUpdate = $updateProtein;
         $fatUpdate = $updateFat;
 
+        $customPlan = new CustomPlan();
+        $customPlan->plan_id = $plan->id;
+        $customPlan->save();
         $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
         $mealId = $mealPlans->pluck('customized_meal_id');
 //        dd($mealId);
@@ -241,6 +245,7 @@ class FoodieMealPlanController extends Controller
             $customize = new CustomizedMeal();
             $customize->meal_id = $mealPlan->chefcustomize->id;
             $customize->foodie_id = $user;
+            $customize->custom_plan_id = $customPlan->id;
             $customize->description = $mealPlan->chefcustomize->description;
             $customize->main_ingredient = $mealPlan->chefcustomize->main_ingredient;
             $customize->calories = $mealPlan->chefcustomize->calories;
@@ -268,7 +273,7 @@ class FoodieMealPlanController extends Controller
 
         $customIdString=json_encode($customId);
 
-        return redirect()->route('foodie.meal', compact('plan','customIdString'))->with([
+        return redirect()->route('foodie.meal', compact('plan','customIdString','customPlan'))->with([
             'plan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -278,11 +283,11 @@ class FoodieMealPlanController extends Controller
 //            'ingredientCount' => $ingredientCount,
             'messages' => $messages,
             'customId'=>array($customId),
-            'chefs'=>$chefs
+            'chefs'=>$chefs,
         ]);
     }
 
-    public function viewMeal(Plan $plan, $customId)
+    public function viewMeal(Plan $plan, $customId, $customPlan)
     {
         $foodie = Auth::guard('foodie')->user()->id;
 //        dd($id);
@@ -368,7 +373,8 @@ class FoodieMealPlanController extends Controller
             'unreadNotifications'=>$unreadNotifications,
             'messages' => $messages,
             'customId' => $customId,
-            'chefs' => $chefs
+            'chefs' => $chefs,
+            'customPlan' =>$customPlan
         ]);
     }
 

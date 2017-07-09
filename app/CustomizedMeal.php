@@ -15,13 +15,17 @@ class CustomizedMeal extends Model
         return $this->hasMany(MealPlan::class);
     }
 
+    public function custom_plan(){
+        return $this->belongsTo(CustomPlan::class);
+    }
+
 
     protected $fillable=[
         'id',
         'foodie_id',
         'description',
         'custom_type',
-        'order_id',
+        'custom_plan_id',
         'main_ingredient',
         'calories',
         'carbohydrates',
