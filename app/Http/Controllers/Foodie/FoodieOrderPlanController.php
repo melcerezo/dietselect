@@ -10,9 +10,11 @@ use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Mail\MyOrderMail;
 use App\Mail\MyOrderMailChef;
 use App\Order;
+use App\OrderItem;
 use App\Plan;
 use App\Message;
 use App\CustomizedMeal;
+use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -149,6 +151,33 @@ class FoodieOrderPlanController extends Controller
             'ingredientsMeal'=>$ingredientMealData,
             'ingredientCount'=>$ingredientCount
         ]);
+    }
+
+    public function order(mailer\Mailer $mailer)
+    {
+        $foodie = Auth::guard('foodie')->user()->id;
+        $cartItems = Cart::content();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
+            ->get();
+
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chefs = Chef::all();
+
+        $order = new Order();
+        $order->foodie_id = $foodie;
+        $order->total = Cart::total();
+        $order->save();
+
+        foreach($cartItems as $cartItem){
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+            $orderItem->plan_id = 
+        }
+
     }
 
     public function custStore(Plan $plan,$customId,mailer\Mailer $mailer){
