@@ -169,7 +169,7 @@ class FoodieOrderPlanController extends Controller
 
         $order = new Order();
         $order->foodie_id = $foodie;
-        $order->total = Cart::total();
+        $order->total = floatval(str_replace( ',', '', Cart::total() ));
         $order->save();
 
         foreach($cartItems as $cartItem){
