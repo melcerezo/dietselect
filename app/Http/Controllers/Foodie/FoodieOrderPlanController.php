@@ -176,7 +176,7 @@ class FoodieOrderPlanController extends Controller
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
             $orderItem->plan_id = $cartItem->id;
-            $orderItem->order_type = $cartItem->cust;
+            $orderItem->order_type = $cartItem->options->cust;
             $orderItem->save();
         }
 
