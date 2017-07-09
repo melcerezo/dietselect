@@ -68,7 +68,7 @@
                         <li class="hide-on-med-and-down">
                             <a href="{{route('cart.index')}}">
                             <span class="valign-wrapper">
-                                <i class="nvIc material-icons">cart</i>
+                                <i class="nvIc material-icons">shopping_cart</i>
                                 <span class="nvItTx">
                                     Cart
                                     @if(!Cart::count())
