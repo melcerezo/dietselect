@@ -237,7 +237,7 @@ class FoodieMealPlanController extends Controller
         $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
         $mealId = $mealPlans->pluck('customized_meal_id');
 //        dd($mealId);
-
+        dd($customPlan);
 //    dd($mealIngreds[3]);
         $customId = [];// this array will hold the created customized meal ids
 
