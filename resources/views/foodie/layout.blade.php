@@ -66,6 +66,19 @@
                             </a>
                         </li>
                         <li class="hide-on-med-and-down">
+                            <a href="{{route('cart.index')}}">
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">cart</i>
+                                <span class="nvItTx">
+                                    Cart
+                                    @if(!Cart::count())
+                                        <span class="new badge red">{{Cart::count()}}</span>
+                                    @endif
+                                </span>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="hide-on-med-and-down">
                             <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">email</i>
