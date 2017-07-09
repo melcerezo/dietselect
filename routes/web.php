@@ -68,7 +68,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('order/cancel/{order}', 'Foodie\FoodieOrderPlanController@cancelOrder')->name('foodie.order.cancel');
     Route::post('order/address/{id}', 'Foodie\FoodieOrderPlanController@changeOrderAddress')->name('foodie.order.address');
     Route::post('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@store')->name('foodie.order.create');
-    Route::post('order', 'Foodie\FoodieOrderPlanController@order')->name('foodie.order');
+    Route::get('order', 'Foodie\FoodieOrderPlanController@order')->name('foodie.order');
     Route::post('order/custPlan/{plan}/{id}', 'Foodie\FoodieOrderPlanController@custStore')->name('foodie.custOrder.create');
     Route::get('order/view/{from}', 'Foodie\FoodieOrderPlanController@getAllOrdersView')->name('foodie.order.view');
     Route::get('order/viewSingle/{order}', 'Foodie\FoodieOrderPlanController@getOneOrderDetails')->name('foodie.order.single');
