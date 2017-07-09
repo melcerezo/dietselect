@@ -72,7 +72,7 @@
                                 <span class="nvItTx">
                                     Cart
                                     @if(Cart::count()>0)
-                                        <span class="badge red">{{Cart::count()}}</span>
+                                        <span class="badge red white-text">{{Cart::count()}}</span>
                                     @endif
                                 </span>
                             </span>
