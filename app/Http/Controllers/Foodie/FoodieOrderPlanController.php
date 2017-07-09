@@ -175,11 +175,12 @@ class FoodieOrderPlanController extends Controller
         $orderItems = [];
 
         foreach($cartItems as $cartItem){
-            $orderItems[] = new OrderItem();
-            $orderItems[]->order_id = $order->id;
-            $orderItems[]->plan_id = $cartItem->id;
-            $orderItems[]->order_type = $cartItem->options->cust;
-            $orderItems->save();
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+            $orderItem->plan_id = $cartItem->id;
+            $orderItem->order_type = $cartItem->options->cust;
+            $orderItem->save();
+            $orderItems[] = $orderItem;
         }
 
         dd($orderItems);
