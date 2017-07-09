@@ -273,7 +273,7 @@ class FoodieMealPlanController extends Controller
 
         $customIdString=json_encode($customId);
 
-        return redirect()->route('foodie.meal', compact('plan','customIdString','customPlan'))->with([
+        return redirect()->route('foodie.meal', compact('plan','customIdString','customPlanId'))->with([
             'plan'=>$plan,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => Auth::guard('foodie')->user(),
@@ -284,11 +284,11 @@ class FoodieMealPlanController extends Controller
             'messages' => $messages,
             'customId'=>array($customId),
             'chefs'=>$chefs,
-            'customPlan'=>$customPlan
+            'customPlanId'=>$customPlan->id
         ]);
     }
 
-    public function viewMeal(Plan $plan, $customId, $customPlan)
+    public function viewMeal(Plan $plan, $customId, $customPlanId)
     {
         $foodie = Auth::guard('foodie')->user()->id;
 //        dd($id);
@@ -375,7 +375,7 @@ class FoodieMealPlanController extends Controller
             'messages' => $messages,
             'customId' => $customId,
             'chefs' => $chefs,
-            'customPlan' =>$customPlan
+            'customPlan' =>$customPlanId
         ]);
     }
 

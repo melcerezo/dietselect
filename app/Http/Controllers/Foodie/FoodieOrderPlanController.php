@@ -175,7 +175,7 @@ class FoodieOrderPlanController extends Controller
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
-            $orderItem->plan_id = 
+//            $orderItem->plan_id =
         }
 
     }

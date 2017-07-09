@@ -561,7 +561,7 @@
                     <li class="collection-item">Plan Name: {{$viewPlan->plan_name}}</li>
                     <li class="collection-item">Plan Price: {{$viewPlan->price}}</li>
                 </ul>
-                <a href="{{route('cart.add', ['id' => $customPlan->id,'cust' => 1])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
+                <a href="{{route('cart.add', ['id' => $customPlan,'cust' => 1])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
             </div>
         </div>
         @unless($mealPlansCount==0)
