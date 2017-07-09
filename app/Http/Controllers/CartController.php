@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\CustomPlan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Plan;
@@ -36,7 +37,7 @@ class CartController extends Controller
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
-        dd($cartItems.': '.$cartTotal);
+//        dd($cartItems.': '.$cartTotal);
 
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
@@ -52,11 +53,22 @@ class CartController extends Controller
         ]);
     }
 
-    public function add(Plan $plan, $cust)
+    public function add($id, $cust)
     {
+        $plan = '';
+        if($cust==0){
+            $plan = Plan::where('id','=',$id);
+        }elseif($cust==1){
+            $plan = CustomPlan::where('id','=',$id);
+        }
+
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
-        Cart::add($plan->id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name, 'date'=>$startOfNextWeek]);
+        if($cust == 0){
+            Cart::add($id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->name, 'date'=>$startOfNextWeek]);
+        }elseif($cust == 1){
+            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->name, 'date'=>$startOfNextWeek]);
+        }
 
 //        dd($startOfNextWeek);
         return back()->with(['status'=>'Added to cart!']);
