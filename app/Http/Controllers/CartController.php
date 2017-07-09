@@ -57,12 +57,12 @@ class CartController extends Controller
     {
         $plan = '';
         if($cust==0){
-            $plan = Plan::where('id','=',$id);
+            $plan = Plan::where('id','=',$id)->first();
         }elseif($cust==1){
-            $plan = CustomPlan::where('id','=',$id);
+            $plan = CustomPlan::where('id','=',$id)->first();
         }
 
-        dd($plan.''.$id);
+        dd($plan);
 
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
