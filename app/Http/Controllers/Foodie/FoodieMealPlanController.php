@@ -284,6 +284,7 @@ class FoodieMealPlanController extends Controller
             'messages' => $messages,
             'customId'=>array($customId),
             'chefs'=>$chefs,
+            'customPlan'=>$customPlan
         ]);
     }
 
