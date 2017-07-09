@@ -48,7 +48,7 @@
                         <span class="collection-header">Total Order:</span>
                     </li>
                     <li class="collection-item">
-                        <span>Total: {{$cartItems->total}}</span>
+                        <span>Total: {{$cartTotal}}</span>
                     </li>
                 </ul>
             </div>
