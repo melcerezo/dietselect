@@ -26,7 +26,7 @@ class CartController extends Controller
     {
         $foodie= Auth::guard('foodie')->user()->id;
         $cartItems=Cart::content();
-        $cartTotal=$cartItems::total();
+        $cartTotal=Cart::total();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
