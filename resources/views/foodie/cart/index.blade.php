@@ -20,6 +20,7 @@
                             <th>Plan</th>
                             <th>Chef</th>
                             <th>Week</th>
+                            <th>Type</th>
                             <th>Quantity</th>
                             <th>Price</th>
                         </thead>
@@ -29,6 +30,13 @@
                                 <td>{{$cartItem->name}}</td>
                                 <td>{{$cartItem->options->chef}}</td>
                                 <td>{{$cartItem->options->date}}</td>
+                                <td>
+                                    @if($cartItem->options->type==0)
+                                        <span>Standard</span>
+                                    @elseif($cartItem->options->type==1)
+                                        <span>Customized</span>
+                                    @endif
+                                </td>
                                 <td>{{$cartItem->qty}}</td>
                                 <td>{{$cartItem->price}}</td>
                             </tr>
@@ -42,7 +50,7 @@
             <div class="col s12 m6">
                 <div class="row">
                     <div class="col s12 m4">
-                        <a href="#bankPay" class="modal-trigger">
+                        <a href="" class="modal-trigger">
                             <div class="light-green lighten-1" style="border-radius: 10px;">
                                 <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                     <div class="white-text center-block">
