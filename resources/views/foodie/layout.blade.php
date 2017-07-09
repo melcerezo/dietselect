@@ -71,7 +71,7 @@
                                 <i class="nvIc material-icons">shopping_cart</i>
                                 <span class="nvItTx">
                                     Cart
-                                    @if(!Cart::count())
+                                    @if(Cart::count()>0)
                                         <span class="new badge red">{{Cart::count()}}</span>
                                     @endif
                                 </span>
