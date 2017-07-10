@@ -172,7 +172,7 @@ class FoodieOrderPlanController extends Controller
         $order->total = floatval(str_replace( ',', '', Cart::total() ));
         $order->save();
 
-        $orderChefs= [];
+        $orderChefs = [];
 
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
@@ -183,7 +183,7 @@ class FoodieOrderPlanController extends Controller
             $orderChefs[] = $cartItem->options->chef;
         }
 
-        dd($orderChefs);
+        dd(array_unique($orderChefs));
         return back();
 
     }

@@ -24,7 +24,7 @@
                             <th>Type</th>
                             <th>Quantity</th>
                             <th>Price</th>
-                            <th></th>
+                            <th>Remove</th>
                         </thead>
                         <tbody>
                             @foreach($cartItems as $cartItem)
