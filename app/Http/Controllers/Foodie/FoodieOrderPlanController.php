@@ -166,6 +166,26 @@ class FoodieOrderPlanController extends Controller
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
+        $thisSaturday=Carbon::parse('this saturday')->format('F d');
+
+        $foodnotif=new Notification();
+        $foodnotif->sender_id=0;
+        $foodnotif->receiver_id=$foodie->id;
+        $foodnotif->receiver_type='f';
+        $foodnotif->notification='Your order has been placed ';
+        $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
+        $foodnotif->notification_type=1;
+        $foodnotif->save();
+
+        $mailHTML ='<table>';
+        $mailHTML .='<tr>';
+        $mailHTML .='<td>Name</td>';
+        $mailHTML .='<td>Chef</td>';
+        $mailHTML .='<td>Quantity</td>';
+        $mailHTML .='<td>Price</td>';
+        $mailHTML .='<td>Type</td>';
+        $mailHTML .='<td>Week</td>';
+        $mailHTML .='</tr>';
 
         $order = new Order();
         $order->foodie_id = $foodie->id;
@@ -181,8 +201,33 @@ class FoodieOrderPlanController extends Controller
             $orderItem->order_type = $cartItem->options->cust;
             $orderItem->quantity = $cartItem->qty;
             $orderItem->save();
+            $mailHTML.='<tr>';
+            $mailHTML.='<td>'.$cartItem->name.'</td>';
+            foreach($chefs as $chef){
+                if($chef->id==$cartItem->options->chef){
+                    $mailHTML.='<td>'.$chef->name.'</td>';
+                }
+            }
+            $mailHTML.='<td>'.$cartItem->qty.'</td>';
+            $mailHTML.='<td>'.$cartItem->price.'</td>';
+            if($cartItem->options->cust==0){
+                $mailHTML.='<td>Standard</td>';
+            }elseif($cartItem->options->cust==1){
+                $mailHTML.='<td>Customized</td>';
+            }
+            $mailHTML.='<td>'.$cartItem->options->date.'</td>';
+            $mailHTML.='</tr>';
             $cartChefs[] = $cartItem->options->chef;
         }
+
+
+        $price = Cart::total();
+
+        $mailer->to($foodie->email)
+            ->send(new MyOrderMail(
+                $mailHTML,
+                $price
+            ));
 
         $orderChefs = array_unique($cartChefs);
 //        dd($orderChefs);
@@ -199,6 +244,14 @@ class FoodieOrderPlanController extends Controller
                     }
                 }
             }
+            $chefnotif=new Notification();
+            $chefnotif->sender_id=0;
+            $chefnotif->receiver_id=$orderChef;
+            $chefnotif->receiver_type='c';
+            $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has placed an order.';
+            $chefnotif->notification_type=1;
+            $chefnotif->save();
+
             $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
             $foodieName = $foodie->first_name.' '.$foodie->last_name;
             $price = Cart::total();
