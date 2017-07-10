@@ -155,20 +155,20 @@ class FoodieOrderPlanController extends Controller
 
     public function order(mailer\Mailer $mailer)
     {
-        $foodie = Auth::guard('foodie')->user()->id;
+        $foodie = Auth::guard('foodie')->user();
         $cartItems = Cart::content();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
             ->where('is_read','=',0)
             ->get();
 
-        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
-        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
 
         $order = new Order();
-        $order->foodie_id = $foodie;
+        $order->foodie_id = $foodie->id;
         $order->total = floatval(str_replace( ',', '', Cart::total() ));
         $order->save();
 
@@ -194,15 +194,15 @@ class FoodieOrderPlanController extends Controller
                     $planName[]= $cartItem;
                 }
             }
-            dd($planName);
-//            $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
-//            $foodieName = $foodie->first_name.' '.$foodie->last_name;
-////        dd($foodieName);
-//            $mailer->to($emailChef)
-//                ->send(new MyOrderMailChef(
-//                    $planName,
-//                    $foodieName,
-//                    $price));
+            $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
+            $foodieName = $foodie->first_name.' '.$foodie->last_name;
+            $price = Cart::total();
+//        dd($foodieName);
+            $mailer->to($emailChef)
+                ->send(new MyOrderMailChef(
+                    $planName,
+                    $foodieName,
+                    $price));
         }
 
         return back();

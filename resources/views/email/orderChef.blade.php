@@ -12,5 +12,6 @@
 @foreach($planName as $plan)
     <p>-{{$plan}}</p>
 @endforeach
+<p>Total: {{$price}}</p>
 </body>
 </html>
