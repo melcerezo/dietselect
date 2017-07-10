@@ -191,7 +191,7 @@ class FoodieOrderPlanController extends Controller
             $planName = [];
             foreach($cartItems as $cartItem){
                 if($cartItem->options->chef==$orderChef){
-                    $planName[]= $cartItem;
+                    $planName[]= $cartItem->name;
                 }
             }
             $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
