@@ -192,7 +192,6 @@ class FoodieOrderPlanController extends Controller
             foreach($cartItems as $cartItem){
                 if($cartItem->options->chef==$orderChef){
                     $planName[]= $cartItem;
-                    break;
                 }
             }
             dd($planName);
