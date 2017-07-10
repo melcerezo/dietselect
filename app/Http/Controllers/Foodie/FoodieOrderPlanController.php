@@ -192,6 +192,11 @@ class FoodieOrderPlanController extends Controller
             foreach($cartItems as $cartItem){
                 if($cartItem->options->chef==$orderChef){
                     $planName[]= $cartItem->name;
+                    if($cartItem->options->cust==0){
+                        $planName[].='- Standard';
+                    }elseif($cartItem->options->cust==1){
+                        $planName[].='- Custom';
+                    }
                 }
             }
             $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
