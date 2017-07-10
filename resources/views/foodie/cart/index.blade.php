@@ -1,6 +1,8 @@
 @extends('foodie.layout')
 @section('page_head')
     <script src="/js/foodie/orderValidate.js" defer></script>
+    <script src="/js/foodie/cartOrder.js" defer></script>
+    <link rel="stylesheet" href="/css/foodie/cart.css">
     <link rel="stylesheet" href="/css/foodie/order.css">
 
 @endsection
@@ -59,7 +61,7 @@
             <div class="col s12 m6">
                 <div class="row">
                     <div class="col s12 m4">
-                        <a href="{{route('foodie.order')}}">
+                        <a id="orderButton" href="{{route('foodie.order')}}">
                             <div class="light-green lighten-1" style="border-radius: 10px;">
                                 <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                     <div class="white-text center-block">
@@ -95,5 +97,18 @@
                 </div>
             </div>
         @endif
+    </div>
+    <div id="loadWait" class="valign-wrapper">
+        <div id="loadStatus" class="preloader-wrapper active valign">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
