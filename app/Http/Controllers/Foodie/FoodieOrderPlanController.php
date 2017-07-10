@@ -172,7 +172,7 @@ class FoodieOrderPlanController extends Controller
         $order->total = floatval(str_replace( ',', '', Cart::total() ));
         $order->save();
 
-        $orderChefs = [];
+        $cartChefs = [];
 
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
@@ -181,10 +181,31 @@ class FoodieOrderPlanController extends Controller
             $orderItem->order_type = $cartItem->options->cust;
             $orderItem->quantity = $cartItem->qty;
             $orderItem->save();
-            $orderChefs[] = $cartItem->options->chef;
+            $cartChefs[] = $cartItem->options->chef;
         }
 
-        dd(array_unique($orderChefs));
+        $orderChefs = array_unique($cartChefs);
+//        dd($orderChefs);
+
+        foreach($orderChefs as $orderChef){
+            $planName = [];
+            foreach($cartItems as $cartItem){
+                if($cartItem->options->chef==$orderChef){
+                    $planName[]= $cartItem;
+                    break;
+                }
+            }
+            dd($planName);
+//            $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
+//            $foodieName = $foodie->first_name.' '.$foodie->last_name;
+////        dd($foodieName);
+//            $mailer->to($emailChef)
+//                ->send(new MyOrderMailChef(
+//                    $planName,
+//                    $foodieName,
+//                    $price));
+        }
+
         return back();
 
     }

@@ -8,8 +8,9 @@
     <title>Document</title>
 </head>
 <body>
-<h1>An order for {{$planName}} has been placed</h1>
-<p>Foodie: {{$foodieName}}</p>
-<p>Price of the plan: {{$price}}</p>
+<h1>{{$foodieName}} has ordered:</h1>
+@foreach($planName as $plan)
+    <p>-{{$plan}}</p>
+@endforeach
 </body>
 </html>
