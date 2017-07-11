@@ -500,10 +500,10 @@ class FoodieOrderPlanController extends Controller
             if($orderItem->order_type==0){
                 $orderPlans[]=Plan::where('id','=',$orderItem->plan_id)->first();
             }elseif($orderItem->order_type==1){
-                $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first()->plan;
+                $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             }
         }
-//        dd($orderItems);
+        dd($orderItems);
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();

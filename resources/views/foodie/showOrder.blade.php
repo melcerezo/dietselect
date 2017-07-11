@@ -25,14 +25,18 @@
                     <tbody>
                         @foreach($orderItems as $orderItem)
                             <tr>
-                                <td>{{$orderItem->plan_name}}</td>
                                 <td>
                                     @foreach($orderPlans as $orderPlan)
                                         @if($orderPlan->id == $orderItem->plan_id)
-                                            {{$orderPlan->plan_name}}
+                                            @if($orderItem->order_type==0)
+                                                {{$orderPlan->plan_name}}
+                                            @elseif($orderItem->order_type==1)
+                                                {{$orderPlan->plan->plan_name}}
+                                            @endif
                                         @endif
                                     @endforeach
                                 </td>
+                                <td>{{$orderItem->plan_name}}</td>
                                 <td>{{$orderItem->quantity}}</td>
                                 <td>{{$orderItem->price}}</td>
                             </tr>
