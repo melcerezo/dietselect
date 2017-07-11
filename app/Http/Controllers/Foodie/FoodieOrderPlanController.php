@@ -499,7 +499,7 @@ class FoodieOrderPlanController extends Controller
             if($orderItem->order_type==0){
                 $orderPlans[]=Plan::where('id','=',$orderItem->plan_id)->select('plan_name')->first();
             }elseif($orderItem->order_type==1){
-                $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first()->plan->plan_name->first();
+                $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first()->plan->plan_name;
             }
         }
         dd($orderPlans);
