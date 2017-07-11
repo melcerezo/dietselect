@@ -494,6 +494,7 @@ class FoodieOrderPlanController extends Controller
 
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
+        dd($orderItems[0]->plan);
 //        $orderPlans = [];
 //        foreach($orderItems as $orderItem){
 //            if($orderItem->order_type==0){
@@ -502,7 +503,6 @@ class FoodieOrderPlanController extends Controller
 //                $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first()->plan->plan_name;
 //            }
 //        }
-        dd($orderItems[0]->plan->plan_name);
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();
