@@ -19,19 +19,23 @@
                     <thead class="light-green lighten-1 white-text" style="border: none;">
                         <th>Plan</th>
                         <th>Chef</th>
+                        <th>Quantity</th>
                         <th>Price</th>
-                        <th>Payment Status</th>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>{{$plan->plan_name}}</td>
-                            <td>{{$plan->chef->name}}</td>
-                            <td>{{$plan->price}}</td>
-                            @if($order->is_cancelled==0)
-                                <td>{{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</td>
-                            @elseif($order->is_cancelled==1)
-                                <td>Cancelled</td>
-                            @endif
+                            @foreach($orderItems as $orderItem)
+                                <td>{{$orderItem->plan_name}}</td>
+                                <td>
+                                    @foreach($orderPlans as $orderPlan)
+                                        @if($orderPlan->id == $orderItem->plan_id)
+                                            {{$orderPlan->plan_name}}
+                                        @endif
+                                    @endforeach
+                                </td>
+                                <td>{{$orderItem->quantity}}</td>
+                                <td>{{$orderItem->price}}</td>
+                            @endforeach
                         </tr>
                     </tbody>
                 </table>
@@ -116,7 +120,10 @@
                         <span class="collection-header">Total Order:</span>
                     </li>
                     <li class="collection-item">
-                        <span>Total: {{$plan->price}}</span>
+                        <span>Total: {{$order->total}}</span>
+                    </li>
+                    <li class="collection-item">
+                        <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
                     </li>
                     <li class="collection-item">
                         <div>

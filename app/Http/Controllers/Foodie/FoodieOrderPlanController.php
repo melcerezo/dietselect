@@ -201,6 +201,7 @@ class FoodieOrderPlanController extends Controller
             $orderItem->plan_id = $cartItem->id;
             $orderItem->order_type = $cartItem->options->cust;
             $orderItem->quantity = $cartItem->qty;
+            $orderItem->price = $cartItem->price;
             $orderItem->save();
             $mailHTML.='<tr>';
             $mailHTML.='<td>'.$cartItem->name.'</td>';
@@ -502,7 +503,7 @@ class FoodieOrderPlanController extends Controller
                 $orderPlans[]=CustomPlan::where('id','=',$orderItem->plan_id)->first()->plan;
             }
         }
-        dd($orderItems);
+//        dd($orderItems);
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();
@@ -511,7 +512,20 @@ class FoodieOrderPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
-        return view('foodie.showOrder');
+        return view('foodie.showOrder')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie'=>Auth::guard('foodie')->user(),
+            'order'=>$order,
+            'orderItems'=>$orderItems,
+            'orderPlans'=>$orderPlans,
+            'foodieAddress' =>$foodieAddress,
+            'orderAddress' => $orderAddress,
+            'messages'=>$messages,
+            'chefs'=>$chefs,
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications
+        ]);
 
 //        dd('hello');
 ////        dd($foodieAddress);
