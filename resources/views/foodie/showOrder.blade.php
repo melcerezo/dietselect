@@ -25,18 +25,17 @@
                     <tbody>
                         @foreach($orderItems as $orderItem)
                             <tr>
-                                <td>
-                                    @foreach($orderPlans as $orderPlan)
-                                        @if($orderPlan->id == $orderItem->plan_id)
-                                            @if($orderItem->order_type==0)
-                                                {{$orderPlan->plan_name}}
-                                            @elseif($orderItem->order_type==1)
-                                                {{$orderPlan->plan->plan_name}}
-                                            @endif
+                                @foreach($orderPlans as $orderPlan)
+                                    @if($orderPlan->id == $orderItem->plan_id)
+                                        @if($orderItem->order_type==0)
+                                            <td>{{$orderPlan->plan_name}}</td>
+                                            <td>{{$orderPlan->chef->name}}</td>
+                                        @elseif($orderItem->order_type==1)
+                                            <td>{{$orderPlan->plan->plan_name}}</td>
+                                            <td>{{$orderPlan->plan->chef->name}}</td>
                                         @endif
-                                    @endforeach
-                                </td>
-                                <td>{{$orderItem->plan_name}}</td>
+                                    @endif
+                                @endforeach
                                 <td>{{$orderItem->quantity}}</td>
                                 <td>{{$orderItem->price}}</td>
                             </tr>
