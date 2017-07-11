@@ -495,7 +495,7 @@ class FoodieOrderPlanController extends Controller
         dd($order);
         $orderItems = $order->order_item()->get();
 
-
+        return view('foodie.showOrder');
 
 //        dd('hello');
 //        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
