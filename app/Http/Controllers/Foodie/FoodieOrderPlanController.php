@@ -265,6 +265,8 @@ class FoodieOrderPlanController extends Controller
                     $price));
         }
 
+        Cart::destroy();
+
         return redirect()->route('order.show', $order->id);
 
     }
