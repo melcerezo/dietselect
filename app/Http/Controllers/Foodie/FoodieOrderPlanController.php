@@ -492,8 +492,8 @@ class FoodieOrderPlanController extends Controller
     public function show(Order $order){
 
         $foodie = Auth::guard('foodie')->user();
-        dd($order);
         $orderItems = $order->order_item()->get();
+        dd($orderItems);
 
         return view('foodie.showOrder');
 
