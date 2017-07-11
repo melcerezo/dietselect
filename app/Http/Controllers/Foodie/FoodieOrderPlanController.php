@@ -494,7 +494,7 @@ class FoodieOrderPlanController extends Controller
 
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
-        dd($orderItems[0]->plan);
+        dd($orderItems);
 //        $orderPlans = [];
 //        foreach($orderItems as $orderItem){
 //            if($orderItem->order_type==0){
