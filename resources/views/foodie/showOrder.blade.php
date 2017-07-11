@@ -227,13 +227,13 @@
         <div class="modal-content">
             <div>Please pay your balance with this information :</div>
 
-            <ul class="collection">
+            {{--<ul class="collection">--}}
                 {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                <li class="collection-item">BDO Savings Account: {{'00'.$order->chef->bank_account}}</li>
-                <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                <li class="collection-item">Plan Price: {{$plan->price}}</li>
-            </ul>
+                {{--<li class="collection-item">BDO Savings Account: {{'00'.$order->chef->bank_account}}</li>--}}
+                {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+            {{--</ul>--}}
             <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
@@ -293,12 +293,12 @@
                 <?php Session::forget('error');?>
             @endif
             <div>
-                <ul class="collection">
+                {{--<ul class="collection">--}}
                     {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                    <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                    <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                    <li class="collection-item">Plan Price: {{$plan->price}}</li>
-                </ul>
+                    {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                    {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                    {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+                {{--</ul>--}}
                 <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
                     {{ csrf_field() }}
 
@@ -326,12 +326,12 @@
                 <span>Please send your Gcash payment to: 09950893073. Fill out this form with a
                     screenshot of the confirmation text and the reference number</span>
             </div>
-            <ul class="collection">
+            {{--<ul class="collection">--}}
                 {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                <li class="collection-item">Plan Price: {{$plan->price}}</li>
-            </ul>
+                {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+            {{--</ul>--}}
             <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <div>
