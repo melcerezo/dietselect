@@ -23,8 +23,8 @@
                         <th>Price</th>
                     </thead>
                     <tbody>
-                        <tr>
-                            @foreach($orderItems as $orderItem)
+                        @foreach($orderItems as $orderItem)
+                            <tr>
                                 <td>{{$orderItem->plan_name}}</td>
                                 <td>
                                     @foreach($orderPlans as $orderPlan)
@@ -35,8 +35,8 @@
                                 </td>
                                 <td>{{$orderItem->quantity}}</td>
                                 <td>{{$orderItem->price}}</td>
-                            @endforeach
-                        </tr>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
                 </div>
