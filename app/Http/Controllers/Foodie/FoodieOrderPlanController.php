@@ -263,7 +263,7 @@ class FoodieOrderPlanController extends Controller
                     $price));
         }
 
-        return back();
+        return redirect()->route('order.show', $order->id);
 
     }
 
@@ -490,31 +490,41 @@ class FoodieOrderPlanController extends Controller
 
 
     public function show(Order $order){
-//        dd('hello');
-        $foodie = Auth::guard('foodie')->user();
-        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
-//        dd($foodieAddress);
-        $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
-//        dd($orderAddress);
 
-        $plan = Plan::where('id', '=', $order->plan_id)->first();
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
-        $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
-        $chefs=Chef::all();
-        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
-        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
-        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
-        return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
-            'sms_unverified' => $this->smsIsUnverified(),
-            'foodie'=>Auth::guard('foodie')->user(),
-            'foodieAddress' =>$foodieAddress,
-            'orderAddress' => $orderAddress,
-            'messages'=>$messages,
-            'chefs'=>$chefs,
-            'chats' => $chats,
-            'notifications'=>$notifications,
-            'unreadNotifications'=>$unreadNotifications
-        ]);
+        $foodie = Auth::guard('foodie')->user();
+        dd($order);
+        $orderItems = $order->order_item()->get();
+
+
+
+//        dd('hello');
+//        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
+////        dd($foodieAddress);
+//        $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
+////        dd($orderAddress);
+//
+//        $plan = Plan::where('id', '=', $order->plan_id)->first();
+//        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+//        $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
+//        $chefs=Chef::all();
+//        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+//        $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
+//        $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+
+
+
+
+//        return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
+//            'sms_unverified' => $this->smsIsUnverified(),
+//            'foodie'=>Auth::guard('foodie')->user(),
+//            'foodieAddress' =>$foodieAddress,
+//            'orderAddress' => $orderAddress,
+//            'messages'=>$messages,
+//            'chefs'=>$chefs,
+//            'chats' => $chats,
+//            'notifications'=>$notifications,
+//            'unreadNotifications'=>$unreadNotifications
+//        ]);
     }
 
     public function cancelOrder(Order $order)
