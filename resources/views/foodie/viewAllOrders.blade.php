@@ -58,10 +58,10 @@
                                         @foreach($orderArray as $orderItem)
                                             @if($orderItem['id'] == $order->id)
                                                 <tr>
-                                                    <td class="orderID">{{$orderArray['id']}}</td>
-                                                    <td class="orderWeek">{{$orderArray['week']}}</td>
-                                                    <td class="orderAddress">{{$orderArray['address']}}</td>
-                                                    <td class="orderPaid">{{$orderArray['is_paid']}}</td>
+                                                    <td class="orderID">{{$orderItem['id']}}</td>
+                                                    <td class="orderWeek">{{$orderItem['week']}}</td>
+                                                    <td class="orderAddress">{{$orderItem['address']}}</td>
+                                                    <td class="orderPaid">{{$orderItem['is_paid']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
