@@ -763,7 +763,7 @@
                             <div class="collection-header">Pending Orders</div>
                         </li>
                         @if($orders->count()>0)
-                            @foreach($orderArray->take(5) as $order)
+                            @foreach($orderArray as $order)
 
                                 <li class="collection-item">
                                     <a href="{{route('order.show',$order['id'])}}">
