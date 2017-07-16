@@ -259,6 +259,7 @@ class FoodieController extends Controller
                 'foodie' => Auth::guard('foodie')->user(),
                 'chefs' => $chefs,
                 'orders' => $orders,
+                'orderArray' => $orderArray,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
