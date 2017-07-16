@@ -668,7 +668,7 @@ class FoodieOrderPlanController extends Controller
 
 
         return redirect() ->route('foodie.plan.show')->with([
-            'status'=>'You have cancelled your order of '.$order->plan->plan_name.'.'
+            'status'=>'You have cancelled your order.'
         ]);
     }
 
