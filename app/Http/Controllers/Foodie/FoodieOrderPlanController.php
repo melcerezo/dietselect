@@ -78,9 +78,9 @@ class FoodieOrderPlanController extends Controller
         $orderItemArray = [];
 
         foreach($orders as $order){
-            $dt = Carbon::createFromTimeStamp($order->created_at);
+            $dt = Carbon::createFromFormat('Y-m-d', $order->created_at);
             $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d');
-
+            dd($startOfWeek);
             $orderAddress='';
 
             if($order->address_id != null){
