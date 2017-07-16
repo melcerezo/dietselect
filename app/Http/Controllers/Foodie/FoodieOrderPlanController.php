@@ -121,7 +121,7 @@ class FoodieOrderPlanController extends Controller
 
         }
 
-        dd($orderArray);
+        dd($orderItemArray);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
