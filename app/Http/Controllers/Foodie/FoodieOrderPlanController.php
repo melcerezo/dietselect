@@ -352,7 +352,8 @@ class FoodieOrderPlanController extends Controller
             foreach($planName as $pName){
                 $message.= $pName.' ';
             }
-            $chefPhoneNumber = '0'.$phoneChef;
+            $message.='.';
+            $chefPhoneNumber = '0'.$phoneChef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
             $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
             $param = array(
