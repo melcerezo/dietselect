@@ -93,7 +93,7 @@ class FoodieOrderPlanController extends Controller
                         }
                         $orderAddress.= ', '.$fAdd->street;
                         $orderAddress.= ', '.$fAdd->brgy;
-                        $orderAddress.= $fAdd->city;
+                        $orderAddress.= ' '.$fAdd->city;
                     }
                 }
             }
