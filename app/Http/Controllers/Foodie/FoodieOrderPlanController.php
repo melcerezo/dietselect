@@ -233,6 +233,15 @@ class FoodieOrderPlanController extends Controller
         $chefs = Chef::all();
         $thisSaturday=Carbon::parse('this saturday')->format('F d');
 
+//        $dt=Carbon::now();
+//        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
+        $order = new Order();
+        $order->foodie_id = $foodie->id;
+        $order->address_id = $orderAddress;
+        $order->total = floatval(str_replace( ',', '', Cart::total() ));
+//        $order->week = $startOfNextWeek;
+        $order->save();
+
         $foodnotif=new Notification();
         $foodnotif->sender_id=0;
         $foodnotif->receiver_id=$foodie->id;
@@ -241,6 +250,27 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification.='. Please pay before '.$thisSaturday.'.';
         $foodnotif->notification_type=1;
         $foodnotif->save();
+
+        $messageFoodie = 'Your order has been placed. Please pay your balance of: .';
+        $messageFoodie.= $order->total.' before '. $thisSaturday;
+        $foodiePhoneNumber = '0'.$foodie->mobile_number;
+        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
+        $paramFoodie = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmoFoodie),
+            ),
+            "ssl" => array(
+                "verify_peer"      => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $contextFoodie = stream_context_create($paramFoodie);
+        file_get_contents($urlFoodie, false, $contextFoodie);
+
+        $cartChefs = [];
 
         $mailHTML ='<table>';
         $mailHTML .='<tr>';
@@ -251,17 +281,6 @@ class FoodieOrderPlanController extends Controller
         $mailHTML .='<td>Type</td>';
         $mailHTML .='<td>Week</td>';
         $mailHTML .='</tr>';
-
-//        $dt=Carbon::now();
-//        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
-        $order = new Order();
-        $order->foodie_id = $foodie->id;
-        $order->address_id = $orderAddress;
-        $order->total = floatval(str_replace( ',', '', Cart::total() ));
-//        $order->week = $startOfNextWeek;
-        $order->save();
-
-        $cartChefs = [];
 
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
@@ -320,9 +339,35 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->sender_id=0;
             $chefnotif->receiver_id=$orderChef;
             $chefnotif->receiver_type='c';
-            $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has placed an order.';
+            $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has placed an order for: ';
+            foreach($planName as $pName){
+                $chefnotif->notification.=$pName.' ';
+            }
+            $chefnotif->notification.='.';
             $chefnotif->notification_type=1;
             $chefnotif->save();
+
+            $phoneChef = Chef::where('id','=', $orderChef)->select('mobile_number')->first();
+            $message = $foodie->first_name.' '.$foodie->last_name.' has ordered: ';
+            foreach($planName as $pName){
+                $message.= $pName.' ';
+            }
+            $chefPhoneNumber = '0'.$phoneChef;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer"      => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
 
             $emailChef = Chef::where('id','=', $orderChef)->select('email')->first();
             $foodieName = $foodie->first_name.' '.$foodie->last_name;
@@ -605,10 +650,6 @@ class FoodieOrderPlanController extends Controller
 //
 //        $plan = Plan::where('id', '=', $order->plan_id)->first();
 //        $foodieOrder = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 0)->orderBy('created_at', 'desc')->first();
-
-
-
-
 //        return view('foodie.showOrder', compact('order', 'foodieOrder', 'plan'))->with([
 //            'sms_unverified' => $this->smsIsUnverified(),
 //            'foodie'=>Auth::guard('foodie')->user(),
@@ -663,9 +704,6 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type=3;
 //        dd($foodnotif);
         $foodnotif->save();
-
-
-
 
         return redirect() ->route('foodie.plan.show')->with([
             'status'=>'You have cancelled your order.'
