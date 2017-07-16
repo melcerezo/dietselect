@@ -219,6 +219,7 @@ class FoodieOrderPlanController extends Controller
     public function order(mailer\Mailer $mailer)
     {
         $foodie = Auth::guard('foodie')->user();
+        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('type','=',0)->select('id')->first();
         $cartItems = Cart::content();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -254,6 +255,7 @@ class FoodieOrderPlanController extends Controller
 //        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
         $order = new Order();
         $order->foodie_id = $foodie->id;
+        $order->address_id = $foodieAddress;
         $order->total = floatval(str_replace( ',', '', Cart::total() ));
 //        $order->week = $startOfNextWeek;
         $order->save();
