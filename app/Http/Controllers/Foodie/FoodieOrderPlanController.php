@@ -89,7 +89,7 @@ class FoodieOrderPlanController extends Controller
                     if($fAdd->id == $order->address_id){
                         $orderAddress = $fAdd->unit;
                         if($fAdd->bldg!=''){
-                            $orderAddress.=$fAdd->bldg.', ';
+                            $orderAddress.=' '.$fAdd->bldg.', ';
                         }
                         $orderAddress.= ' '.$fAdd->street;
                         $orderAddress.= ', '.$fAdd->brgy;
