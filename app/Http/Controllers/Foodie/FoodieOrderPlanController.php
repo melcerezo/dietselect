@@ -74,6 +74,55 @@ class FoodieOrderPlanController extends Controller
             $orders=Order::where('foodie_id','=',$foodie->id)->latest($column = 'created_at')->get();
         }
 
+        $orderArray = [];
+        $orderItemArray = [];
+
+        foreach($orders as $order){
+            $dt = Carbon::createFromTimeStamp($order->created_at);
+            $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d');
+
+            $orderAddress='';
+
+            if($order->address_id != null){
+                $orderAddress = $order->address_id;
+            }
+            $is_paid = "";
+            if($order->is_paid==0){
+                $is_paid="Pending";
+            }elseif ($order->is_paid==1){
+                $is_paid="Paid";
+            }
+
+
+            $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>$order->total,
+                'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek);
+
+            $orderItems = $order->order_item()->get();
+            foreach($orderItems as $orderItem){
+                $orderPlan = "";
+                $planName = "";
+                $chefName = "";
+                $orderType="";
+                if($orderItem->order_type==0){
+                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan_name;
+                    $chefName = $orderPlan->chef->name;
+                    $orderType = "Standard";
+                }elseif($orderItem->order_type==1){
+                    $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan->plan_name;
+                    $chefName = $orderPlan->plan->chef->name;
+                    $orderType = "Customized";
+                }
+
+                $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
+                    'plan'=>$planName,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+            }
+
+        }
+
+        dd($orderArray);
+
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
@@ -85,6 +134,8 @@ class FoodieOrderPlanController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>$foodie,
             'orders'=>$orders,
+            'orderArray'=>$orderArray,
+            'orderItemArray'=>$orderItemArray,
             'ordersCount'=>$ordersCount,
             'pendOrdCount'=>$pendOrdCount,
             'paidOrdCount'=>$paidOrdCount,
@@ -188,9 +239,12 @@ class FoodieOrderPlanController extends Controller
         $mailHTML .='<td>Week</td>';
         $mailHTML .='</tr>';
 
+//        $dt=Carbon::now();
+//        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
         $order = new Order();
         $order->foodie_id = $foodie->id;
         $order->total = floatval(str_replace( ',', '', Cart::total() ));
+//        $order->week = $startOfNextWeek;
         $order->save();
 
         $cartChefs = [];
@@ -221,6 +275,8 @@ class FoodieOrderPlanController extends Controller
             $mailHTML.='</tr>';
             $cartChefs[] = $cartItem->options->chef;
         }
+
+        $mailHTML.='</table>';
 
 
         $price = Cart::total();

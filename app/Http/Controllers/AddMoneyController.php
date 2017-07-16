@@ -72,13 +72,13 @@ class AddMoneyController extends Controller{
         $item_1->setName('Item 1')/** item name **/
         ->setCurrency('PHP')
             ->setQuantity(1)
-            ->setPrice($order->plan->price);
+            ->setPrice($order->total);
         /** unit price **/
         $item_list = new ItemList();
         $item_list->setItems(array($item_1));
         $amount = new Amount();
         $amount->setCurrency('PHP')
-            ->setTotal($order->plan->price);
+            ->setTotal($order->total);
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
@@ -157,7 +157,7 @@ class AddMoneyController extends Controller{
             $user=Auth::guard('foodie')->user();
 
             $chefName = $order->chef->name;
-            $amount = $order->plan->price;
+            $amount = $order->total;
 
             $mailer->to($user->email)
                 ->send(new PaymentSuccess(
@@ -165,7 +165,7 @@ class AddMoneyController extends Controller{
                     $amount));
 
             $foodieName = $user->first_name.' '.$user->last_name;
-            $amount = $order->plan->price;
+            $amount = $order->total;
             $planName = $order->plan->plan_name;
 
             $mailer->to($order->chef->email)

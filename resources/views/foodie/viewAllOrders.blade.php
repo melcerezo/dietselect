@@ -47,34 +47,64 @@
                             <div class="card-panel">
                                 <table>
                                     <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Week</th>
+                                            <th>Address</th>
+                                            <th>Payment Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($orderArray as $orderItem)
+                                            @if($orderItem->id == $order->id)
+                                                <tr>
+                                                    <td class="orderID">{{$orderArray->id}}</td>
+                                                    <td class="orderWeek">{{$orderArray->week}}</td>
+                                                    <td class="orderAddress">{{$orderArray->address}}</td>
+                                                    <td class="orderPaid">{{$orderArray->is_paid}}</td>
+                                                </tr>
+                                            @endif
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                                <table>
+                                    <thead>
                                     <tr>
-                                        <th>ID</th>
                                         <th>Plan Name</th>
                                         <th>Chef Name</th>
+                                        <th>Quantity</th>
                                         <th>Amount</th>
                                         <th>Type</th>
-                                        <th>Payment Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td class="orderID">{{$order->id}}</td>
-                                        <td class="planName">{{$order->plan->plan_name}}</td>
-                                        <td class="chefName">{{$order->chef->name}}</td>
-                                        <td class="amount">{{$order->plan->price}}</td>
-                                        <td class="type">
-                                            @if($order->order_type=='c')
-                                                <p>Customized</p>
-                                            @else
-                                                <p>Standard</p>
+                                        @foreach($orderItemArray as $orderItemItem)
+                                            @if($orderItemItem->order_id==$order->id)
+                                                <tr>
+                                                    <td>{{$orderItemItem->plan}}</td>
+                                                    <td>{{$orderItemItem->plan}}</td>
+                                                </tr>
                                             @endif
-                                        </td>
-                                        <td>
-                                            <p>Pending</p>
-                                        </td>
-                                    </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
+                                    {{--<tr>--}}
+                                        {{--<td class="orderID">{{$order->id}}</td>--}}
+                                        {{--<td class="planName">{{$order->plan->plan_name}}</td>--}}
+                                        {{--<td class="chefName">{{$order->chef->name}}</td>--}}
+                                        {{--<td class="amount">{{$order->plan->price}}</td>--}}
+                                        {{--<td class="type">--}}
+                                            {{--@if($order->order_type=='c')--}}
+                                                {{--<p>Customized</p>--}}
+                                            {{--@else--}}
+                                                {{--<p>Standard</p>--}}
+                                            {{--@endif--}}
+                                        {{--</td>--}}
+                                        {{--<td>--}}
+                                            {{--<p>Pending</p>--}}
+                                        {{--</td>--}}
+                                    {{--</tr>--}}
                                 {{--@if($order->order_type=='c')--}}
                                     {{--<div>--}}
                                         {{--<button onclick="window.location.href='{{route('foodie.cust.single',['order'=>$order->id])}}'" class="btn">See Customization</button>--}}
