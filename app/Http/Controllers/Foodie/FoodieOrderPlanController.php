@@ -60,6 +60,7 @@ class FoodieOrderPlanController extends Controller
 
 //        dd($from);
         $foodie = Auth::guard('foodie')->user();
+        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orders='';
         $ordersCount=Order::where('foodie_id','=',$foodie->id)->count();
         $pendOrdCount=Order::where('foodie_id','=',$foodie->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->count();
@@ -84,7 +85,17 @@ class FoodieOrderPlanController extends Controller
             $orderAddress='';
 
             if($order->address_id != null){
-                $orderAddress = $order->address_id;
+                foreach($foodieAddress as $fAdd){
+                    if($fAdd->id == $order->address_id){
+                        $orderAddress = $fAdd->unit;
+                        if($fAdd->bldg!=''){
+                            $orderAddress.=$fAdd->bldg;
+                        }
+                        $orderAddress.= ', '.$fAdd->street;
+                        $orderAddress.= ', '.$fAdd->brgy;
+                        $orderAddress.= $fAdd->city;
+                    }
+                }
             }
             $is_paid = "";
             if($order->is_paid==0){
@@ -121,7 +132,7 @@ class FoodieOrderPlanController extends Controller
 
         }
 
-        dd($orderItemArray);
+        dd($orderArray);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 

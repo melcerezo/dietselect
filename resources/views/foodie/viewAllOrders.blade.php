@@ -83,7 +83,10 @@
                                             @if($orderItemItem->order_id==$order->id)
                                                 <tr>
                                                     <td>{{$orderItemItem->plan}}</td>
-                                                    <td>{{$orderItemItem->plan}}</td>
+                                                    <td>{{$orderItemItem->chef}}</td>
+                                                    <td>{{$orderItemItem->quantity}}</td>
+                                                    <td>{{$orderItemItem->price}}</td>
+                                                    <td>{{$orderItemItem->type}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
