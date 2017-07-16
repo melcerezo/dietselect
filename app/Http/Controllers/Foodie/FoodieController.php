@@ -195,7 +195,7 @@ class FoodieController extends Controller
 
             $oAdd = $orderAddress->unit;
             if($orderAddress->bldg!=''){
-                $oAdd.=$orderAddress->bldg.', ';
+                $oAdd.=' '.$orderAddress->bldg.', ';
             }
             $oAdd.= ' '.$orderAddress->street;
             $oAdd.= ', '.$orderAddress->brgy;
