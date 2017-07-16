@@ -186,6 +186,24 @@ class FoodieController extends Controller
             ->where('created_at','>',$lastSaturday)->get();
 
 //        dd($orders);
+        $orderArray = [];
+        foreach($orders as $order){
+            $dt = new Carbon($order->created_at);
+            $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d');
+            $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
+            $orderQuantity =$order->order_item()->count();
+
+            $oAdd = $orderAddress->unit;
+            if($orderAddress->bldg!=''){
+                $oAdd.=$orderAddress->bldg.', ';
+            }
+            $oAdd.= ' '.$orderAddress->street;
+            $oAdd.= ', '.$orderAddress->brgy;
+            $oAdd.= ' '.$orderAddress->city;
+
+            $orderArray[] = array('id'=>$order->id,'address'=>$oAdd,'quantity'=>$orderQuantity,'total'=>$order->total,
+                'week'=>$startOfWeek);
+        }
 
 //        if ($paidOrderCount > 0){
         $paidOrder = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)

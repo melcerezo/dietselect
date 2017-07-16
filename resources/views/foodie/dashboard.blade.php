@@ -760,17 +760,20 @@
                 <div>
                     <ul class="collection">
                         <li class="collection-item light-green lighten-1 white-text">
-                            <div class="collection-header">Pending Order</div>
+                            <div class="collection-header">Pending Orders</div>
                         </li>
                         @if($orders->count()>0)
-                            @foreach($orders as $order)
+                            @foreach($orderArray->take(5) as $order)
+
                                 <li class="collection-item">
-                                    <a href="{{route('order.show',$order->id)}}">
-                                        <p>Plan Name: {{$order->plan->plan_name}}</p>
+                                    <a href="{{route('order.show',$order['id'])}}">
+                                        <p>Order Address: {{$order['address']}}</p>
                                         <div class="divider"></div>
-                                        <p>Chef: {{$order->chef->name}}</p>
+                                        <p>Number of Items: {{$order['quantity']}}</p>
                                         <div class="divider"></div>
-                                        <p>Price: {{$order->plan->price}}</p>
+                                        <p>Week: {{$order['week']}}</p>
+                                        <div class="divider"></div>
+                                        <p>Total: {{$order['total']}}</p>
                                     </a>
                                 </li>
                             @endforeach
