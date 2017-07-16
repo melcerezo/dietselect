@@ -91,7 +91,7 @@ class FoodieOrderPlanController extends Controller
                         if($fAdd->bldg!=''){
                             $orderAddress.=$fAdd->bldg.', ';
                         }
-                        $orderAddress.= $fAdd->street;
+                        $orderAddress.= ' '.$fAdd->street;
                         $orderAddress.= ', '.$fAdd->brgy;
                         $orderAddress.= ' '.$fAdd->city;
                     }
