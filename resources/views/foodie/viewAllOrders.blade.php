@@ -56,12 +56,12 @@
                                     </thead>
                                     <tbody>
                                         @foreach($orderArray as $orderItem)
-                                            @if($orderItem->id == $order->id)
+                                            @if($orderItem['id'] == $order->id)
                                                 <tr>
-                                                    <td class="orderID">{{$orderArray->id}}</td>
-                                                    <td class="orderWeek">{{$orderArray->week}}</td>
-                                                    <td class="orderAddress">{{$orderArray->address}}</td>
-                                                    <td class="orderPaid">{{$orderArray->is_paid}}</td>
+                                                    <td class="orderID">{{$orderArray['id']}}</td>
+                                                    <td class="orderWeek">{{$orderArray['week']}}</td>
+                                                    <td class="orderAddress">{{$orderArray['address']}}</td>
+                                                    <td class="orderPaid">{{$orderArray['is_paid']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -80,13 +80,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach($orderItemArray as $orderItemItem)
-                                            @if($orderItemItem->order_id==$order->id)
+                                            @if($orderItemItem['order_id']==$order->id)
                                                 <tr>
-                                                    <td>{{$orderItemItem->plan}}</td>
-                                                    <td>{{$orderItemItem->chef}}</td>
-                                                    <td>{{$orderItemItem->quantity}}</td>
-                                                    <td>{{$orderItemItem->price}}</td>
-                                                    <td>{{$orderItemItem->type}}</td>
+                                                    <td>{{$orderItemItem['plan']}}</td>
+                                                    <td>{{$orderItemItem['chef']}}</td>
+                                                    <td>{{$orderItemItem['quantity']}}</td>
+                                                    <td>{{$orderItemItem['price']}}</td>
+                                                    <td>{{$orderItemItem['type']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
