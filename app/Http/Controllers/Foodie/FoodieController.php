@@ -183,7 +183,7 @@ class FoodieController extends Controller
 //        $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
         $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->where('is_cancelled','=',0)
-            ->where('created_at','>',$lastSaturday)->get();
+            ->where('created_at','>',$lastSaturday)->latest($column = 'updated_at')->take(5)->get();
 
 //        dd($orders);
         $orderArray = [];
