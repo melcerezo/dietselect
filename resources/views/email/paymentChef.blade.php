@@ -9,7 +9,11 @@
 </head>
 <body>
 <h1>Payment Made</h1>
-<p>{{$foodieName}} has paid {{$planName}} in the amount of:</p>
-<p>{{$amount}}</p>
+<p>{{$foodieName}} has confirmed their order for: </p>
+<ul>
+    @foreach($chefOrderPlans as $chefOrderPlan)
+        <li>{{$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type']}}</li>
+    @endforeach
+</ul>
 </body>
 </html>

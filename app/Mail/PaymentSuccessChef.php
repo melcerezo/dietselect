@@ -14,20 +14,18 @@ class PaymentSuccessChef extends Mailable
 
     public $foodieName;
 
-    public $planName;
+    public $chefOrderPlans;
 
-    public $amount;
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($foodieName,$amount,$planName)
+    public function __construct($foodieName,$chefOrderPlans)
     {
         $this->foodieName = $foodieName;
-        $this->amount = $amount;
-        $this->planName = $planName;
+        $this->chefOrderPlans = $chefOrderPlans;
     }
 
     /**

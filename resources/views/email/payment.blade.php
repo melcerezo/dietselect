@@ -9,7 +9,23 @@
 </head>
 <body>
     <h1>Payment Successful</h1>
-    <p>You have paid: {{$chefName}}</p>
+    <p>You have confirmed order for: </p>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Chef</td>
+            <td>Type</td>
+            <td>Price</td>
+        </tr>
+        @foreach($orderPlanNames as $orderPlanName)
+            <tr>
+                <td>{{$orderPlanName['plan_name']}}</td>
+                <td>{{$orderPlanName['chef_name']}}</td>
+                <td>{{$orderPlanName['type']}}</td>
+                <td>{{$orderPlanName['price']}}</td>
+            </tr>
+        @endforeach
+    </table>
     <p>Amount: {{$amount}}</p>
 </body>
 </html>

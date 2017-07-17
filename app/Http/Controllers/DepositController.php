@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use App\Chef;
 use App\Gcash;
 use App\Notification;
 use App\Http\Controllers\Controller;
 use App\Deposit;
 use App\Order;
+use App\OrderItem;
+use App\Plan;
 use App\Rating;
 use Illuminate\Http\Request;
 use App\Mail\PaymentSuccess;
@@ -31,6 +34,7 @@ class DepositController extends Controller
 
     public function deposit(Request $request, Order $order, mailer\Mailer $mailer){
         $user = Auth::guard('foodie')->user();
+        $foodieName = $user->first_name.' '.$user->last_name;
 
         $this->validate($request, [
             'receipt_number' => 'required',
@@ -55,81 +59,36 @@ class DepositController extends Controller
             $deposit->foodie_id = Auth::guard('foodie')->user()->id;
             $order->deposit()->save($deposit);
 
-            $chatPayment=new Chat();
-            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
-            $chatPayment->chef_id= $order->chef->id;
-            $chatPayment->save();
+//            $chatPayment=new Chat();
+//            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
+//            $chatPayment->chef_id= $order->chef->id;
+//            $chatPayment->save();
+//
+//
+//            $notification = new Message();
+//            $notification->chat_id= $chatPayment->id;
+//            $notification->sender_id = Auth::guard('foodie')->user()->id;
+//            $notification->receiver_id = $order->chef->id;
+//            $notification->receiver_type = 'c';
+//            $notification->receipt_name = $filename;
+//            $notification->deposit_id = $deposit->id;
+//            $notification->subject = 'Bank Deposit Payment';
+//            $notification->message = 'Hello! I just paid it through bank deposit. Receipt Number: '.$receiptNumber;
+//            $notification->save();
 
-
-            $notification = new Message();
-            $notification->chat_id= $chatPayment->id;
-            $notification->sender_id = Auth::guard('foodie')->user()->id;
-            $notification->receiver_id = $order->chef->id;
-            $notification->receiver_type = 'c';
-            $notification->receipt_name = $filename;
-            $notification->deposit_id = $deposit->id;
-            $notification->subject = 'Bank Deposit Payment';
-            $notification->message = 'Hello! I just paid it through bank deposit. Receipt Number: '.$receiptNumber;
-            $notification->save();
+            $order->is_paid = 1;
+            $order->save();
 
             $foodnotif= new Notification();
             $foodnotif->sender_id=0;
             $foodnotif->receiver_id=$user->id;
             $foodnotif->receiver_type='f';
-            $foodnotif->notification='You have just paid your order for: '.$order->plan->plan_name. '.';
+            $foodnotif->notification='You have confirmed your order.';
             $foodnotif->notification_type=2;
 //        dd($foodnotif);
             $foodnotif->save();
 
-            $chefnotif= new Notification();
-            $chefnotif->sender_id=0;
-            $chefnotif->receiver_id=$order->chef->id;
-            $chefnotif->receiver_type='c';
-            $chefnotif->notification=$user->first_name.' '.$user->last_name.' has paid for their order of: '.$order->plan->plan_name. '.';
-            $chefnotif->notification_type=2;
-//        dd(chefdnotif);
-            $chefnotif->save();
-
-            $order->is_paid = 1;
-            $order->save();
-
-            $chefName = $order->chef->name;
-            $amount = $order->plan->price;
-
-            $mailer->to($user->email)
-                ->send(new PaymentSuccess(
-                    $chefName,
-                    $amount));
-
-            $foodieName = $user->first_name.' '.$user->last_name;
-            $amount = $order->plan->price;
-            $planName = $order->plan->plan_name;
-
-            $mailer->to($order->chef->email)
-                ->send(new PaymentSuccessChef(
-                    $foodieName,
-                    $amount,
-                    $planName));
-
-            $message = $foodieName.' paid for the order of '.$planName.'.';
-            $chefPhoneNumber = '0'.$order->chef->mobile_number;
-            $url = 'https://www.itexmo.com/php_api/api.php';
-            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
-            $param = array(
-                'http' => array(
-                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method' => 'POST',
-                    'content' => http_build_query($itexmo),
-                ),
-                "ssl" => array(
-                    "verify_peer"      => false,
-                    "verify_peer_name" => false,
-                ),
-            );
-            $context = stream_context_create($param);
-            file_get_contents($url, false, $context);
-
-            $messageFoodie = 'You have paid '.$chefName.' for your order of '.$planName.'.';
+            $messageFoodie = 'You have confirmed your order through bank deposit. Thank you.';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
@@ -147,12 +106,98 @@ class DepositController extends Controller
             $contextFoodie = stream_context_create($paramFoodie);
             file_get_contents($urlFoodie, false, $contextFoodie);
 
-            $rating = new Rating();
-            $rating->chef_id = $order->chef->id;
-            $rating->foodie_id = Auth::guard('foodie')->user()->id;
-            $order->rating()->save($rating);
+//            $chefnotif= new Notification();
+//            $chefnotif->sender_id=0;
+//            $chefnotif->receiver_id=$order->chef->id;
+//            $chefnotif->receiver_type='c';
+//            $chefnotif->notification=$user->first_name.' '.$user->last_name.' has paid for their order of: '.$order->plan->plan_name. '.';
+//            $chefnotif->notification_type=2;
+////        dd(chefdnotif);
+//            $chefnotif->save();
 
-            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!','status2'=>'Please Rate '.$order->chef->name.'!']);
+
+            $orderItems = $order->order_item()->get();
+            $orderPlanNames = [];
+            $orderChef=[];
+
+            foreach ($orderItems as $orderItem){
+                if($orderItem->order_type==0){
+                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $orderChef[]=$orderPlan->chef->id;
+                    $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
+                        'price'=>$orderPlan->price,'type'=>'Standard');
+                }elseif($orderItem->order_type==1){
+                    $orderPlan= Plan::where('id','=',$orderItem->plan_id)->first();
+                    $orderChef[]=$orderPlan->plan->chef->id;
+                    $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
+                        'price'=>$orderPlan->plan->price,
+                        'type'=>'Customized');
+                }
+            }
+
+            $amount = $order->total;
+
+            $uniqueChefs = array_unique($orderChef);
+
+            foreach($uniqueChefs as $uniqueChef){
+                $chef = Chef::where('id','=',$uniqueChef)->first();
+                $chefOrderPlans = [];
+
+                foreach($orderPlanNames as $orderPlanName){
+                    if($orderPlanName['chef_id']==$uniqueChef){
+                        $chefOrderPlans[]=array('plan_name'=>$orderPlanName['plan_name'],'type'=>$orderPlanName['type'],'price'=>$orderPlanName['price']);
+                    }
+                }
+
+                $chefnotif= new Notification();
+                $chefnotif->sender_id=0;
+                $chefnotif->receiver_id=$uniqueChef;
+                $chefnotif->receiver_type='c';
+                $chefnotif->notification=$user->first_name.' '.$user->last_name.'\'s order has been confirmed.';
+                $chefnotif->notification_type=2;
+                $chefnotif->save();
+
+                $mailer->to($chef->email)
+                    ->send(new PaymentSuccessChef(
+                        $foodieName,
+                        $chefOrderPlans));
+
+                $rating = new Rating();
+                $rating->chef_id = $uniqueChef;
+                $rating->foodie_id = Auth::guard('foodie')->user()->id;
+                $order->rating()->save($rating);
+
+                $message = $foodieName.'has confirmed their order for: ';
+                foreach($chefOrderPlans as $chefOrderPlan){
+                    $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
+                }
+                $message.='.';
+                $chefPhoneNumber = '0'.$chef->mobile_number;
+                $url = 'https://www.itexmo.com/php_api/api.php';
+                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
+                $param = array(
+                    'http' => array(
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($itexmo),
+                    ),
+                    "ssl" => array(
+                        "verify_peer"      => false,
+                        "verify_peer_name" => false,
+                    ),
+                );
+                $context = stream_context_create($param);
+                file_get_contents($url, false, $context);
+            }
+
+
+
+            $mailer->to($user->email)
+                ->send(new PaymentSuccess(
+                    $orderPlanNames,
+                    $amount));
+
+            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!']);
 
         }
 
@@ -161,6 +206,7 @@ class DepositController extends Controller
     public function gcash(Request $request,Order $order,mailer\Mailer $mailer)
     {
         $user = Auth::guard('foodie')->user();
+        $foodieName = $user->first_name.' '.$user->last_name;
 
         $this->validate($request, [
 //            'gcRefNmbr' => 'required',
@@ -183,82 +229,36 @@ class DepositController extends Controller
             $gcash->date_of_pay = $date_of_pay;
             $gcash->foodie_id = Auth::guard('foodie')->user()->id;
             $order->gcash()->save($gcash);
-
-            $chatPayment=new Chat();
-            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
-            $chatPayment->chef_id= $order->chef->id;
-            $chatPayment->save();
-
-
-            $notification = new Message();
-            $notification->chat_id= $chatPayment->id;
-            $notification->sender_id = Auth::guard('foodie')->user()->id;
-            $notification->receiver_id = $order->chef->id;
-            $notification->receiver_type = 'c';
-            $notification->receipt_name = $filename;
-            $notification->deposit_id = $gcash->id;
-            $notification->subject = 'GCash Payment';
-            $notification->message = 'Hello! I just paid it through Gcash.';
-            $notification->save();
+//
+//            $chatPayment=new Chat();
+//            $chatPayment->foodie_id = Auth::guard('foodie')->user()->id;
+//            $chatPayment->chef_id= $order->chef->id;
+//            $chatPayment->save();
+//
+//
+//            $notification = new Message();
+//            $notification->chat_id= $chatPayment->id;
+//            $notification->sender_id = Auth::guard('foodie')->user()->id;
+//            $notification->receiver_id = $order->chef->id;
+//            $notification->receiver_type = 'c';
+//            $notification->receipt_name = $filename;
+//            $notification->deposit_id = $gcash->id;
+//            $notification->subject = 'GCash Payment';
+//            $notification->message = 'Hello! I just paid it through Gcash.';
+//            $notification->save();
+            $order->is_paid = 1;
+            $order->save();
 
             $foodnotif= new Notification();
             $foodnotif->sender_id=0;
             $foodnotif->receiver_id=$user->id;
             $foodnotif->receiver_type='f';
-            $foodnotif->notification='You have just paid your order for: '.$order->plan->plan_name. '.';
+            $foodnotif->notification='You have confirmed your order.';
             $foodnotif->notification_type=2;
 //        dd($foodnotif);
             $foodnotif->save();
 
-            $chefnotif= new Notification();
-            $chefnotif->sender_id=0;
-            $chefnotif->receiver_id=$order->chef->id;
-            $chefnotif->receiver_type='c';
-            $chefnotif->notification=$user->first_name.' '.$user->last_name.' has paid for their order of: '.$order->plan->plan_name. '.';
-            $chefnotif->notification_type=2;
-//        dd(chefdnotif);
-            $chefnotif->save();
-
-            $order->is_paid = 1;
-            $order->save();
-
-            $chefName = $order->chef->name;
-            $amount = $order->plan->price;
-
-            $mailer->to($user->email)
-                ->send(new PaymentSuccess(
-                    $chefName,
-                    $amount));
-
-            $foodieName = $user->first_name.' '.$user->last_name;
-            $amount = $order->plan->price;
-            $planName = $order->plan->plan_name;
-
-            $mailer->to($order->chef->email)
-                ->send(new PaymentSuccessChef(
-                    $foodieName,
-                    $amount,
-                    $planName));
-
-            $message = $foodieName.' paid for the order of '.$planName.'.';
-            $chefPhoneNumber = '0'.$order->chef->mobile_number;
-            $url = 'https://www.itexmo.com/php_api/api.php';
-            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
-            $param = array(
-                'http' => array(
-                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method' => 'POST',
-                    'content' => http_build_query($itexmo),
-                ),
-                "ssl" => array(
-                    "verify_peer"      => false,
-                    "verify_peer_name" => false,
-                ),
-            );
-            $context = stream_context_create($param);
-            file_get_contents($url, false, $context);
-
-            $messageFoodie = 'You have paid '.$chefName.' for your order of '.$planName.'.';
+            $messageFoodie = 'You have confirmed your order through bank deposit. Thank you.';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
@@ -276,10 +276,96 @@ class DepositController extends Controller
             $contextFoodie = stream_context_create($paramFoodie);
             file_get_contents($urlFoodie, false, $contextFoodie);
 
-            $rating = new Rating();
-            $rating->chef_id = $order->chef->id;
-            $rating->foodie_id = Auth::guard('foodie')->user()->id;
-            $order->rating()->save($rating);
+//            $chefnotif= new Notification();
+//            $chefnotif->sender_id=0;
+//            $chefnotif->receiver_id=$order->chef->id;
+//            $chefnotif->receiver_type='c';
+//            $chefnotif->notification=$user->first_name.' '.$user->last_name.' has paid for their order of: '.$order->plan->plan_name. '.';
+//            $chefnotif->notification_type=2;
+////        dd(chefdnotif);
+//            $chefnotif->save();
+
+
+            $orderItems = $order->order_item()->get();
+            $orderPlanNames = [];
+            $orderChef=[];
+
+            foreach ($orderItems as $orderItem){
+                if($orderItem->order_type==0){
+                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $orderChef[]=$orderPlan->chef->id;
+                    $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
+                        'price'=>$orderPlan->price,'type'=>'Standard');
+                }elseif($orderItem->order_type==1){
+                    $orderPlan= Plan::where('id','=',$orderItem->plan_id)->first();
+                    $orderChef[]=$orderPlan->plan->chef->id;
+                    $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
+                        'price'=>$orderPlan->plan->price,
+                        'type'=>'Customized');
+                }
+            }
+
+            $amount = $order->total;
+
+            $uniqueChefs = array_unique($orderChef);
+
+            foreach($uniqueChefs as $uniqueChef){
+                $chef = Chef::where('id','=',$uniqueChef)->first();
+                $chefOrderPlans = [];
+
+                foreach($orderPlanNames as $orderPlanName){
+                    if($orderPlanName['chef_id']==$uniqueChef){
+                        $chefOrderPlans[]=array('plan_name'=>$orderPlanName['plan_name'],'type'=>$orderPlanName['type'],'price'=>$orderPlanName['price']);
+                    }
+                }
+
+                $chefnotif= new Notification();
+                $chefnotif->sender_id=0;
+                $chefnotif->receiver_id=$uniqueChef;
+                $chefnotif->receiver_type='c';
+                $chefnotif->notification=$user->first_name.' '.$user->last_name.'\'s order has been confirmed.';
+                $chefnotif->notification_type=2;
+                $chefnotif->save();
+
+                $mailer->to($chef->email)
+                    ->send(new PaymentSuccessChef(
+                        $foodieName,
+                        $chefOrderPlans));
+
+                $rating = new Rating();
+                $rating->chef_id = $uniqueChef;
+                $rating->foodie_id = Auth::guard('foodie')->user()->id;
+                $order->rating()->save($rating);
+
+                $message = $foodieName.'has confirmed their order for: ';
+                foreach($chefOrderPlans as $chefOrderPlan){
+                    $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
+                }
+                $message.='.';
+                $chefPhoneNumber = '0'.$chef->mobile_number;
+                $url = 'https://www.itexmo.com/php_api/api.php';
+                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
+                $param = array(
+                    'http' => array(
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($itexmo),
+                    ),
+                    "ssl" => array(
+                        "verify_peer"      => false,
+                        "verify_peer_name" => false,
+                    ),
+                );
+                $context = stream_context_create($param);
+                file_get_contents($url, false, $context);
+            }
+
+
+
+            $mailer->to($user->email)
+                ->send(new PaymentSuccess(
+                    $orderPlanNames,
+                    $amount));
 
             return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!','status2'=>'Please Rate '.$order->chef->name.'!']);
         }
