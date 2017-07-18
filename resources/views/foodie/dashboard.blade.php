@@ -65,7 +65,6 @@
                                     <tr>
                                         <td>{{$orderItem['plan']}}</td>
                                         <td>{{$orderItem['chef']}}</td>
-                                        <td>{{$orderItem['quantity']}}</td>
                                         <td>{{$orderItem['price']}}</td>
                                     </tr>
                                 @endforeach
