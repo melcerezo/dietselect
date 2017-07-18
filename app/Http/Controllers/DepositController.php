@@ -136,8 +136,14 @@ class DepositController extends Controller
                         'type'=>'Customized');
                 }
             }
-            dd($orderPlanNames);
+//            dd($orderPlanNames);
             $amount = $order->total;
+
+
+            $mailer->to($user->email)
+                ->send(new PaymentSuccess(
+                    $orderPlanNames,
+                    $amount));
 
             $uniqueChefs = array_unique($orderChef);
 
@@ -192,13 +198,6 @@ class DepositController extends Controller
                 $context = stream_context_create($param);
                 file_get_contents($url, false, $context);
             }
-
-
-
-            $mailer->to($user->email)
-                ->send(new PaymentSuccess(
-                    $orderPlanNames,
-                    $amount));
 
             return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!']);
 
