@@ -10,22 +10,13 @@
 <body>
     <h1>Payment Successful</h1>
     <p>You have confirmed order for: </p>
-    <table>
-        <tr>
-            <td>Name</td>
-            <td>Chef</td>
-            <td>Type</td>
-            <td>Price</td>
-        </tr>
+    <ul>
         @foreach($orderPlanNames as $orderPlanName)
-            <tr>
-                <td>{{$orderPlanName['plan_name']}}</td>
-                <td>{{$orderPlanName['chef_name']}}</td>
-                <td>{{$orderPlanName['type']}}</td>
-                <td>{{$orderPlanName['price']}}</td>
-            </tr>
+            <li>
+                <span>{{$orderPlanName['plan_name']}}-{{$orderPlanName['chef_name']}}-{{$orderPlanName['type']}}-{{$orderPlanName['price']}}</span>
+            </li>
         @endforeach
-    </table>
+    </ul>
     <p>Amount: {{$amount}}</p>
 </body>
 </html>
