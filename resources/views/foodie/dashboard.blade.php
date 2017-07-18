@@ -62,8 +62,8 @@
 
                                 @foreach($orderItemArray as $orderItem)
                                     <tr>
-                                        <td>{{$orderItem['plan_name']}}</td>
-                                        <td>{{$orderItem['chef_name']}}</td>
+                                        <td>{{$orderItem['plan']}}</td>
+                                        <td>{{$orderItem['chef']}}</td>
                                     </tr>
                                 @endforeach
                             </table>
