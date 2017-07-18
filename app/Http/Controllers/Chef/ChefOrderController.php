@@ -11,6 +11,7 @@ use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Notification;
 use App\Order;
 use App\Message;
+use App\OrderItem;
 use App\Plan;
 use App\MealPlan;
 use App\Meal;
@@ -34,12 +35,14 @@ class ChefOrderController extends Controller
     public function getAllOrdersView(){
 
         $chef = Auth::guard('chef')->user();
-        $orders='';
-        $ordersCount=Order::where('chef_id','=',$chef->id)->get()->count();
+//        $orders=OrderItem::->get();
+//        $ordersCount=Order::where('chef_id','=',$chef->id)->get()->count();
 
-        if($ordersCount>0){
-            $orders=Order::where('chef_id','=',$chef->id)->get();
-        }
+//        if($ordersCount>0){
+//            $orders=Order::where('chef_id','=',$chef->id)->get();
+//        }
+
+
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
