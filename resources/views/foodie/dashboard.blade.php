@@ -58,12 +58,16 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Chef</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
                                 </tr>
 
                                 @foreach($orderItemArray as $orderItem)
                                     <tr>
                                         <td>{{$orderItem['plan']}}</td>
                                         <td>{{$orderItem['chef']}}</td>
+                                        <td>{{$orderItem['quantity']}}</td>
+                                        <td>{{$orderItem['price']}}</td>
                                     </tr>
                                 @endforeach
                             </table>
