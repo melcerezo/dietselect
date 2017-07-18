@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
 use App\CustomizedMeal;
+use App\CustomPlan;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Chef;
@@ -218,9 +219,32 @@ class FoodieController extends Controller
             ->where('created_at', '>', $lastSaturday)
             ->latest()->first();
 //        }
+
+        $orderItemsUp =[];
 //        dd($lastSaturday);
+        $orderItemArray= [];
         if($paidOrderUpcoming!=null){
-            $mealPlansUpcoming = $paidOrderUpcoming->plan->mealplans;
+            $orderItemsUpcoming = $paidOrderUpcoming->order_item()->get();
+            foreach($orderItemsUpcoming as $orderItem){
+                $orderPlan = "";
+                $planName = "";
+                $chefName = "";
+                $orderType="";
+                if($orderItem->order_type==0){
+                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan_name;
+                    $chefName = $orderPlan->chef->name;
+                    $orderType = "Standard";
+                }elseif($orderItem->order_type==1){
+                    $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan->plan_name;
+                    $chefName = $orderPlan->plan->chef->name;
+                    $orderType = "Customized";
+                }
+
+                $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,'plan_id'=>$orderItem->plan_id,
+                    'plan'=>$planName,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+            }
         }
 //        dd($paidOrderCount);
 //      for message dropdown
@@ -260,6 +284,7 @@ class FoodieController extends Controller
                 'chefs' => $chefs,
                 'orders' => $orders,
                 'orderArray' => $orderArray,
+                'orderItemArray'=>$orderItemArray,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
