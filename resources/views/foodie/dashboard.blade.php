@@ -358,28 +358,28 @@
                                         {{--</div>--}}
                                     {{--</td>--}}
                                 {{--</tr>--}}
-                            <p style="margin-left: 10px;">*Please click calendar title to see meal legend</p>
+                            {{--<p style="margin-left: 10px;">*Please click calendar title to see meal legend</p>--}}
 
-                            <div class="card-reveal">
-                                <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                                <ul class="collection">
-                                    <li class="collection-item light-green lighten-1 white-text">
-                                        <span class="collection-header">Meal Legend</span>
-                                    </li>
-                                    <li class="collection-item" style="margin-left: 10px;">
-                                        Bre: Breakfast
-                                    </li>
-                                    <li class="collection-item" style="margin-left: 10px;">
-                                        Sna: Snack
-                                    </li>
-                                    <li class="collection-item" style="margin-left: 10px;">
-                                        Lun: Lunch
-                                    </li>
-                                    <li class="collection-item" style="margin-left: 10px;">
-                                        Din: Dinner
-                                    </li>
-                                </ul>
-                            </div>
+                            {{--<div class="card-reveal">--}}
+                                {{--<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>--}}
+                                {{--<ul class="collection">--}}
+                                    {{--<li class="collection-item light-green lighten-1 white-text">--}}
+                                        {{--<span class="collection-header">Meal Legend</span>--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                        {{--Bre: Breakfast--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                        {{--Sna: Snack--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                        {{--Lun: Lunch--}}
+                                    {{--</li>--}}
+                                    {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                        {{--Din: Dinner--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
                     </div>
                 @endif
                 <div class="card">
