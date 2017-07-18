@@ -58,7 +58,6 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Chef</th>
-                                    <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
 
