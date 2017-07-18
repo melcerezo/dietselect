@@ -166,7 +166,8 @@ class DepositController extends Controller
                 $rating = new Rating();
                 $rating->chef_id = $uniqueChef;
                 $rating->foodie_id = Auth::guard('foodie')->user()->id;
-                $order->rating()->save($rating);
+                $rating->order_id = $order->id;
+                $rating->save();
 
                 $message = $foodieName.'has confirmed their order for: ';
                 foreach($chefOrderPlans as $chefOrderPlan){
