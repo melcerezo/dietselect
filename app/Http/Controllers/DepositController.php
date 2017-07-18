@@ -35,6 +35,7 @@ class DepositController extends Controller
 
     public function deposit(Request $request, Order $order, mailer\Mailer $mailer){
         $user = Auth::guard('foodie')->user();
+        dd($user->email);
         $foodieName = $user->first_name.' '.$user->last_name;
 
         $this->validate($request, [
