@@ -9,6 +9,13 @@
 </head>
 <body>
 <p>Your payment was successful.</p>
+<ul>
+    @foreach($orderPlanNames as $orderPlanName)
+        <li>
+            <span>{{$orderPlanName['plan_name'].'-'.$orderPlanName['chef_name'].'-'.$orderPlanName['type']}}</span>
+        </li>
+    @endforeach
+</ul>
 <p>Amount: {{$amount}}</p>
 </body>
 </html>

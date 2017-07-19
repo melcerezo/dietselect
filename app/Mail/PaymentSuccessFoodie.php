@@ -13,14 +13,17 @@ class PaymentSuccessFoodie extends Mailable
 
     public $amount;
 
+    public $orderPlanNames;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($amount)
+    public function __construct($amount,$orderPlanNames)
     {
         $this->amount = $amount;
+        $this->$orderPlanNames = $orderPlanNames;
     }
 
     /**

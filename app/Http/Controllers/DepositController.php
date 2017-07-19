@@ -142,7 +142,7 @@ class DepositController extends Controller
             $amount = $order->total;
 
 
-            $mailer->to($user->email)->send(new PaymentSuccessFoodie($amount));
+            $mailer->to($user->email)->send(new PaymentSuccessFoodie($orderPlanNames,$amount));
 
 
 //            dd(Mail::failures());
