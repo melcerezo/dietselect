@@ -280,7 +280,25 @@ class FoodieController extends Controller
                 ->latest($column = 'created_at')
                 ->get();
 
-        dd($ordersRating);
+            $ordersRatingChef= [];
+            foreach($ordersRating as $order){
+                $orderItems = $order->order_item()->get();
+                foreach($orderItems as $orderItem){
+                    $orderPlan = "";
+                    $chefName = "";
+                    if ($orderItem->order_type == 0) {
+                        $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                        $chefName = $orderPlan->chef->name;
+                    } elseif ($orderItem->order_type == 1) {
+                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                        $chefName = $orderPlan->plan->chef->name;
+                    }
+
+                    $ordersRatingChef[] = array('chef' => $chefName);
+                }
+            }
+
+//        dd($ordersRating);
 //        if ($ratingsCount > 0) {
 //            $ratings = Rating::where('order_id', '=', $ordersRating->id)->where('is_rated', '=', 0)->get();
 //        }
