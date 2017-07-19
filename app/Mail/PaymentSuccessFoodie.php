@@ -23,7 +23,7 @@ class PaymentSuccessFoodie extends Mailable
     public function __construct($amount,$orderPlanNames)
     {
         $this->amount = $amount;
-        $this->$orderPlanNames = $orderPlanNames;
+        $this->orderPlanNames = $orderPlanNames;
     }
 
     /**
