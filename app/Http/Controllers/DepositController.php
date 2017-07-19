@@ -373,7 +373,7 @@ class DepositController extends Controller
                     $orderPlanNames,
                     $amount));
 
-            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!','status2'=>'Please Rate '.$order->chef->name.'!']);
+            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!']);
         }
     }
 }
