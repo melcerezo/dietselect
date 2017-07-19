@@ -8,6 +8,7 @@ use App\Notification;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Message;
 use App\Order;
+use App\OrderItem;
 use App\Plan;
 use App\Rating;
 use Illuminate\Http\Request;
@@ -77,15 +78,15 @@ class RatingsController extends Controller
         ]);
     }
 
-    public function rateChef(Order $order, Request $request)
+    public function rateChef(OrderItem $orderItem, Request $request)
     {
 
         $foodie = Auth::guard('foodie')->user();
-        $rating = Rating::where('order_id', '=', $order->id)->where('foodie_id', '=', $foodie->id)->first();
+        $rating = Rating::where('order_item_id', '=', $orderItem->id)->where('foodie_id', '=', $foodie->id)->first();
         $rating->feedback = $request['feedback'];
         $rating->rating = $request['rate'];
         $rating->is_rated = true;
-        $order->rating()->save($rating);
+        $orderItem->rating()->save($rating);
 //        dd($rating);
         return back();
     }
