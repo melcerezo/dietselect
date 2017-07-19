@@ -35,31 +35,32 @@ class RatingsController extends Controller
         $orders = Order::where('foodie_id', '=', $foodie->id)->where('created_at','<',$lastSaturday)->where('is_paid','=',1)->get();
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
-//        dd($orders->count());
 
         $ordersRatingChef = [];
         foreach($orders as $order){
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $rating = $orderItem->rating;
-                dd($rating);
-                $planName = "";
-                $chefName = "";
-                $orderType = "";
-                if ($orderItem->order_type == 0) {
-                    $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
-                    $planName = $orderPlan->plan_name;
-                    $chefName = $orderPlan->chef->name;
-                    $orderType = "Standard";
-                } elseif ($orderItem->order_type == 1) {
-                    $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
-                    $planName = $orderPlan->plan->plan_name;
-                    $chefName = $orderPlan->plan->chef->name;
-                    $orderType = "Customized";
-                }
+                dd($rating->is_rated);
+                if($rating->is_rated==0){
+                    $planName = "";
+                    $chefName = "";
+                    $orderType = "";
+                    if ($orderItem->order_type == 0) {
+                        $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan_name;
+                        $chefName = $orderPlan->chef->name;
+                        $orderType = "Standard";
+                    } elseif ($orderItem->order_type == 1) {
+                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan->plan_name;
+                        $chefName = $orderPlan->plan->chef->name;
+                        $orderType = "Customized";
+                    }
 
-                $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
-                    'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                    $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                        'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                }
             }
         }
 
