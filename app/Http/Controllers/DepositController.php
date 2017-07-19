@@ -19,6 +19,7 @@ use App\Mail\PaymentSuccessChef;
 use App\Message;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Intervention\Image\Facades\Image;
 use Redirect;
 use Illuminate\Mail as mailer;
@@ -145,7 +146,7 @@ class DepositController extends Controller
                     $orderPlanNames,
                     $amount));
 
-            dd($mailer);
+            dd(Mail::failures());
 
             $uniqueChefs = array_unique($orderChef);
 
