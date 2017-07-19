@@ -41,6 +41,8 @@ class RatingsController extends Controller
         foreach($orders as $order){
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
+                $rating = $orderItem->rating;
+                dd($rating);
                 $planName = "";
                 $chefName = "";
                 $orderType = "";

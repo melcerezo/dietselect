@@ -18,11 +18,6 @@ class Order extends Model
         return $this->hasOne(Gcash::class);
     }
 
-    public function rating()
-    {
-        return $this->hasOne(Rating::class);
-    }
-
     public function order_item(){
         return $this->hasMany(OrderItem::class);
     }

@@ -11,8 +11,8 @@ class Rating extends Model
         return $this->belongsTo(Foodie::class);
     }
 
-    public function order()
+    public function order_item()
     {
-        return $this->belongsTo(Order::class);
+        return $this->belongsTo(OrderItem::class);
     }
 }

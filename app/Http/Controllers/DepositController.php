@@ -125,18 +125,26 @@ class DepositController extends Controller
             $orderChef=[];
 
             foreach ($orderItems as $orderItem){
+                $ratingChef="";
                 if($orderItem->order_type==0){
                     $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->chef->id;
+                    $ratingChef=$orderPlan->chef->id;
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
                         'price'=>$orderPlan->price,'type'=>'Standard');
                 }elseif($orderItem->order_type==1){
                     $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->plan->chef->id;
+                    $ratingChef=$orderPlan->plan->chef->id;
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
                         'price'=>$orderPlan->plan->price,
                         'type'=>'Customized');
                 }
+                $rating = new Rating();
+                $rating->chef_id = $ratingChef;
+                $rating->foodie_id = Auth::guard('foodie')->user()->id;
+                $rating->order_id = $orderItem->id;
+                $rating->save();
             }
 //            dd($orderPlanNames);
             $amount = $order->total;
@@ -173,12 +181,6 @@ class DepositController extends Controller
                         $chefOrderPlans));
 
 //                dd($user->email.' '.$chef->email);
-
-                $rating = new Rating();
-                $rating->chef_id = $uniqueChef;
-                $rating->foodie_id = Auth::guard('foodie')->user()->id;
-                $rating->order_id = $order->id;
-                $rating->save();
 
                 $message = $foodieName.'has confirmed their order for: ';
                 foreach($chefOrderPlans as $chefOrderPlan){
@@ -297,18 +299,27 @@ class DepositController extends Controller
             $orderChef=[];
 
             foreach ($orderItems as $orderItem){
+                $ratingChef="";
                 if($orderItem->order_type==0){
                     $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->chef->id;
+                    $ratingChef=$orderPlan->chef->id;
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
                         'price'=>$orderPlan->price,'type'=>'Standard');
                 }elseif($orderItem->order_type==1){
                     $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->plan->chef->id;
+                    $ratingChef=$orderPlan->plan->chef->id;
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
                         'price'=>$orderPlan->plan->price,
                         'type'=>'Customized');
                 }
+
+                $rating = new Rating();
+                $rating->chef_id = $ratingChef;
+                $rating->foodie_id = Auth::guard('foodie')->user()->id;
+                $rating->order_id = $orderItem->id;
+                $rating->save();
             }
 
             $amount = $order->total;
