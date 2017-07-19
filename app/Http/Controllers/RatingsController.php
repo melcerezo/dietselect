@@ -37,7 +37,8 @@ class RatingsController extends Controller
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 //        dd($orders->count());
 
-        foreach($ordersRating as $order){
+        $ordersRatingChef = [];
+        foreach($orders as $order){
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $planName = "";
