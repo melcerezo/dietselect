@@ -138,7 +138,7 @@ class DepositController extends Controller
                         'type'=>'Customized');
                 }
             }
-//            dd($orderPlanNames);
+            dd($orderPlanNames);
             $amount = $order->total;
 
 
