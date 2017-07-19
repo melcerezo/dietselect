@@ -144,9 +144,10 @@ class DepositController extends Controller
             $mailer->to($user->email)
                 ->send(new PaymentSuccess(
                     $orderPlanNames,
-                    $amount));
+                    $amount
+                ));
 
-            dd(Mail::failures());
+//            dd(Mail::failures());
 
             $uniqueChefs = array_unique($orderChef);
 

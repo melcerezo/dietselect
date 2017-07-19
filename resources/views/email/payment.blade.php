@@ -13,7 +13,7 @@
     <ul>
         @foreach($orderPlanNames as $orderPlanName)
             <li>
-                <span>{{$orderPlanName['plan_name']}}-{{$orderPlanName['chef_name']}}-{{$orderPlanName['type']}}-{{$orderPlanName['price']}}</span>
+                <span>{{$orderPlanName['plan_name'].'-'.$orderPlanName['chef_name'].'-'.$orderPlanName['type'].'-'.$orderPlanName['price']}}</span>
             </li>
         @endforeach
     </ul>
