@@ -810,7 +810,7 @@
                                     <li class="collection-item">
                                         <a href="{{route('chef.rating')}}">
                                             <i class="material-icons">stars</i>
-                                            {{$rating['chef']}}<br>
+                                            {{$rating}}<br>
                                         </a>
                                     </li>
                                 @endforeach
