@@ -52,17 +52,17 @@ class FoodieController extends Controller
     public function index()
     {
 //        suggested meal plans
-        $dt= Carbon::now();
+        $dt = Carbon::now();
 //        dd($dt);
         $isSaturday = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
         $thisSunday = Carbon::now()->endOfWeek()->format('Y-m-d H:i:s');
 
-        if($dt->format('Y-m-d H:i:s')==Carbon::SUNDAY){
+        if ($dt->format('Y-m-d H:i:s') == Carbon::SUNDAY) {
 //            dd("hi");
-            $isSaturday=Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
-        }else if($dt->dayOfWeek == Carbon::MONDAY){
+            $isSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
+        } else if ($dt->dayOfWeek == Carbon::MONDAY) {
 //            dd('hey');
-            $isSaturday=Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
+            $isSaturday = Carbon::parse("this saturday 15:00:00")->format('Y-m-d H:i:s');
         }
 
 //        if ($dt->format('Y-m-d H:i:s') >= $isSaturday && $dt->format('Y-m-d H:i:s')<= $thisSunday) {
@@ -101,7 +101,6 @@ class FoodieController extends Controller
 //        echo 'Start of the week: '. $lastSaturday .'<br>'; // Start of the week
 //        echo 'End of the week: '. $endOfWeek .'<br>';
 //        dd('here');
-
 
 
         $plans = Plan::where('created_at', '>=', $lastSaturday)
@@ -167,8 +166,8 @@ class FoodieController extends Controller
 //        end suggested meal plans
 //        $orders = 0;
 //        $paidOrder=0;
-        $mealPlans=0;
-        $mealPlansUpcoming=0;
+        $mealPlans = 0;
+        $mealPlansUpcoming = 0;
 //        $ordersRating = 0;
 //        $ratingsCount = 0;
 //        $ratings = 0;
@@ -183,27 +182,27 @@ class FoodieController extends Controller
 //        dd($anyOrderCount);
 //        $ordersCount = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->get()->count();
         $addressCount = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get()->count();
-        $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->where('is_cancelled','=',0)
-            ->where('created_at','>',$lastSaturday)->latest($column = 'updated_at')->take(5)->get();
+        $orders = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 0)->where('is_cancelled', '=', 0)
+            ->where('created_at', '>', $lastSaturday)->latest($column = 'updated_at')->take(5)->get();
 
 //        dd($orders);
         $orderArray = [];
-        foreach($orders as $order){
+        foreach ($orders as $order) {
             $dt = new Carbon($order->created_at);
-            $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d');
-            $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
-            $orderQuantity =$order->order_item()->count();
+            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d');
+            $orderAddress = DB::table('foodie_address')->where('id', '=', $order->address_id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->first();
+            $orderQuantity = $order->order_item()->count();
 
             $oAdd = $orderAddress->unit;
-            if($orderAddress->bldg!=''){
-                $oAdd.=' '.$orderAddress->bldg.', ';
+            if ($orderAddress->bldg != '') {
+                $oAdd .= ' ' . $orderAddress->bldg . ', ';
             }
-            $oAdd.= ' '.$orderAddress->street;
-            $oAdd.= ', '.$orderAddress->brgy;
-            $oAdd.= ' '.$orderAddress->city;
+            $oAdd .= ' ' . $orderAddress->street;
+            $oAdd .= ', ' . $orderAddress->brgy;
+            $oAdd .= ' ' . $orderAddress->city;
 
-            $orderArray[] = array('id'=>$order->id,'address'=>$oAdd,'quantity'=>$orderQuantity,'total'=>$order->total,
-                'week'=>$startOfWeek);
+            $orderArray[] = array('id' => $order->id, 'address' => $oAdd, 'quantity' => $orderQuantity, 'total' => $order->total,
+                'week' => $startOfWeek);
         }
 
 //        if ($paidOrderCount > 0){
@@ -212,53 +211,73 @@ class FoodieController extends Controller
             ->where('created_at', '<=', $lastSaturday)
             ->latest()->first();
 //            dd($paidOrder);
-        if($paidOrder!=null){
-            $mealPlans = $paidOrder->plan->mealplans;
-        }
-        $paidOrderUpcoming = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
-            ->where('created_at', '>', $lastSaturday)
-            ->latest()->first();
-//        }
-
-        $orderItemsUp =[];
-//        dd($lastSaturday);
-        $orderItemArray= [];
-        if($paidOrderUpcoming!=null){
-            $orderItemsUpcoming = $paidOrderUpcoming->order_item()->get();
-            foreach($orderItemsUpcoming as $orderItem){
+        $orderItemArray = [];
+        if ($paidOrder != null) {
+            $orderItems = $paidOrder->order_item()->get();
+            foreach ($orderItems as $orderItem) {
                 $orderPlan = "";
                 $planName = "";
                 $chefName = "";
-                $orderType="";
-                if($orderItem->order_type==0){
-                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                $orderType = "";
+                if ($orderItem->order_type == 0) {
+                    $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
                     $planName = $orderPlan->plan_name;
                     $chefName = $orderPlan->chef->name;
                     $orderType = "Standard";
-                }elseif($orderItem->order_type==1){
-                    $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                } elseif ($orderItem->order_type == 1) {
+                    $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
                     $planName = $orderPlan->plan->plan_name;
                     $chefName = $orderPlan->plan->chef->name;
                     $orderType = "Customized";
                 }
-
-                $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,'plan_id'=>$orderItem->plan_id,
-                    'plan'=>$planName,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+                $orderItemArray[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                    'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
             }
         }
+            $paidOrderUpcoming = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
+                ->where('created_at', '>', $lastSaturday)
+                ->latest()->first();
+//        }
+
+            $orderItemsUp = [];
+//        dd($lastSaturday);
+            $orderItemArrayUpcoming = [];
+            if ($paidOrderUpcoming != null) {
+                $orderItemsUpcoming = $paidOrderUpcoming->order_item()->get();
+                foreach ($orderItemsUpcoming as $orderItem) {
+                    $orderPlan = "";
+                    $planName = "";
+                    $chefName = "";
+                    $orderType = "";
+                    if ($orderItem->order_type == 0) {
+                        $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan_name;
+                        $chefName = $orderPlan->chef->name;
+                        $orderType = "Standard";
+                    } elseif ($orderItem->order_type == 1) {
+                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan->plan_name;
+                        $chefName = $orderPlan->plan->chef->name;
+                        $orderType = "Customized";
+                    }
+
+                    $orderItemArrayUpcoming[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                        'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                }
+            }
 //        dd($paidOrderCount);
 //      for message dropdown
-        $chefs = Chef::all();
-        $chats = Chat::where('foodie_id', '=', $foodie)->latest($column = 'updated_at')->get();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-            ->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
+            $chefs = Chef::all();
+            $chats = Chat::where('foodie_id', '=', $foodie)->latest($column = 'updated_at')->get();
+            $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+                ->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
 //        dd($messages);
 //      Ratings Stuff
 
             $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->where('is_paid', '=', 1)
-                ->where('created_at','<',$lastSaturday)
-                ->latest($column= 'created_at')
+                ->where('created_at', '<', $lastSaturday)
+                ->latest($column = 'created_at')
                 ->get();
 
 //        if ($ratingsCount > 0) {
@@ -272,9 +291,8 @@ class FoodieController extends Controller
 
 //           Notifications
 
-            $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
-            $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
-
+            $notifications = Notification::where('receiver_id', '=', $foodie)->where('receiver_type', '=', 'f')->get();
+            $unreadNotifications = Notification::where('receiver_id', '=', $foodie)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
 
 
             return view('foodie.dashboard')->with([
@@ -284,17 +302,18 @@ class FoodieController extends Controller
                 'chefs' => $chefs,
                 'orders' => $orders,
                 'orderArray' => $orderArray,
-                'orderItemArray'=>$orderItemArray,
+                'orderItemArray' => $orderItemArray,
+                'orderItemArrayUpcoming' => $orderItemArrayUpcoming,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
                 'messages' => $messages,
-                'notifications'=> $notifications,
-                'unreadNotifications'=> $unreadNotifications,
+                'notifications' => $notifications,
+                'unreadNotifications' => $unreadNotifications,
                 'successPayment' => 'false',
                 'ordersRating' => $ordersRating,
-                'thisWeek'=>$startOfTheWeek,
-                'nextWeek'=>$nextWeek,
+                'thisWeek' => $startOfTheWeek,
+                'nextWeek' => $nextWeek,
                 'addressCount' => $addressCount,
                 'foodieAddress' => $foodieAddress,
                 'suggested' => $suggested,
@@ -302,7 +321,8 @@ class FoodieController extends Controller
                 'paidOrderUpcoming' => $paidOrderUpcoming
             ]);
 
-    }
+        }
+
 
 
     /**

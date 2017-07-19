@@ -61,7 +61,7 @@
                                     <th>Price</th>
                                 </tr>
 
-                                @foreach($orderItemArray as $orderItem)
+                                @foreach($orderItemArrayUpcoming as $orderItem)
                                     <tr>
                                         <td>{{$orderItem['plan']}}</td>
                                         <td>{{$orderItem['chef']}}</td>
@@ -389,15 +389,21 @@
                                 Order for Week of: {{$thisWeek}}
                             </span>
                     </div>
-                    <table class="dshMlTbl">
-                        <tr>
-                            <th></th>
-                            <th>Bre</th>
-                            <th>Sna</th>
-                            <th>Lun</th>
-                            <th>Sna</th>
-                            <th>Din</th>
-                        </tr>
+                        <table class="dshMlTbl">
+                            <tr>
+                                <th>Name</th>
+                                <th>Chef</th>
+                                <th>Price</th>
+                            </tr>
+
+                            @foreach($orderItemArray as $orderItem)
+                                <tr>
+                                    <td>{{$orderItem['plan']}}</td>
+                                    <td>{{$orderItem['chef']}}</td>
+                                    <td>{{$orderItem['price']}}</td>
+                                </tr>
+                            @endforeach
+                        </table>
 
                         {{--<tr>--}}
                             {{--<th>Mo</th>--}}
@@ -687,29 +693,29 @@
                                 {{--</div>--}}
                             {{--</td>--}}
                         {{--</tr>--}}
-                    </table>
-                    <p style="margin-left: 10px;">*Please click calendar title to see meal legend</p>
 
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>
-                        <ul class="collection">
-                            <li class="collection-item light-green lighten-1 white-text">
-                                <span class="collection-header">Meal Legend</span>
-                            </li>
-                            <li class="collection-item" style="margin-left: 10px;">
-                                Bre: Breakfast
-                            </li>
-                            <li class="collection-item" style="margin-left: 10px;">
-                                Sna: Snack
-                            </li>
-                            <li class="collection-item" style="margin-left: 10px;">
-                                Lun: Lunch
-                            </li>
-                            <li class="collection-item" style="margin-left: 10px;">
-                                Din: Dinner
-                            </li>
-                        </ul>
-                    </div>
+                    {{--<p style="margin-left: 10px;">*Please click calendar title to see meal legend</p>--}}
+
+                    {{--<div class="card-reveal">--}}
+                        {{--<span class="card-title grey-text text-darken-4"><i class="material-icons right">close</i></span>--}}
+                        {{--<ul class="collection">--}}
+                            {{--<li class="collection-item light-green lighten-1 white-text">--}}
+                                {{--<span class="collection-header">Meal Legend</span>--}}
+                            {{--</li>--}}
+                            {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                {{--Bre: Breakfast--}}
+                            {{--</li>--}}
+                            {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                {{--Sna: Snack--}}
+                            {{--</li>--}}
+                            {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                {{--Lun: Lunch--}}
+                            {{--</li>--}}
+                            {{--<li class="collection-item" style="margin-left: 10px;">--}}
+                                {{--Din: Dinner--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
                     @else
                         <div class="light-green lighten-1 white-text activator dshMnClTtl">
                             <span>Nothing Ordered for this week</span>
