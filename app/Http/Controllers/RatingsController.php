@@ -83,6 +83,7 @@ class RatingsController extends Controller
 
         $foodie = Auth::guard('foodie')->user();
         $rating = Rating::where('order_item_id', '=', $orderItem->id)->where('foodie_id', '=', $foodie->id)->first();
+        dd($request['feedback']);
         $rating->feedback = $request['feedback'];
         $rating->rating = $request['rate'];
         $rating->is_rated = true;
