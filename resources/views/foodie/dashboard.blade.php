@@ -55,21 +55,24 @@
                                 </span>
                             </div>
                             <table class="dshMlTbl centered">
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Chef</th>
-                                    <th>Price</th>
-                                    <th>Type</th>
-                                </tr>
-
-                                @foreach($orderItemArrayUpcoming as $orderItem)
+                                <thead>
                                     <tr>
-                                        <td>{{$orderItem['plan']}}</td>
-                                        <td>{{$orderItem['chef']}}</td>
-                                        <td>{{$orderItem['price']}}</td>
-                                        <td>{{$orderItem['type']}}</td>
+                                        <th>Name</th>
+                                        <th>Chef</th>
+                                        <th>Price</th>
+                                        <th>Type</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach($orderItemArrayUpcoming as $orderItem)
+                                        <tr>
+                                            <td>{{$orderItem['plan']}}</td>
+                                            <td>{{$orderItem['chef']}}</td>
+                                            <td>{{$orderItem['price']}}</td>
+                                            <td>{{$orderItem['type']}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                     </div>
                 @else
@@ -89,22 +92,24 @@
                             </span>
                     </div>
                         <table class="dshMlTbl centered">
-                            <tr>
-                                <th>Name</th>
-                                <th>Chef</th>
-                                <th>Price</th>
-                                <th>Type</th>
-
-                            </tr>
-
-                            @foreach($orderItemArray as $orderItem)
+                            <thead>
                                 <tr>
-                                    <td>{{$orderItem['plan']}}</td>
-                                    <td>{{$orderItem['chef']}}</td>
-                                    <td>{{$orderItem['price']}}</td>
-                                    <td>{{$orderItem['type']}}</td>
+                                    <th>Name</th>
+                                    <th>Chef</th>
+                                    <th>Price</th>
+                                    <th>Type</th>
                                 </tr>
-                            @endforeach
+                            </thead>
+                            <tbody>
+                                @foreach($orderItemArray as $orderItem)
+                                    <tr>
+                                        <td>{{$orderItem['plan']}}</td>
+                                        <td>{{$orderItem['chef']}}</td>
+                                        <td>{{$orderItem['price']}}</td>
+                                        <td>{{$orderItem['type']}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
                         </table>
 
                     @else
