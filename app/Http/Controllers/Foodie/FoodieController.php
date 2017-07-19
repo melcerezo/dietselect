@@ -323,6 +323,7 @@ class FoodieController extends Controller
                 'orderArray' => $orderArray,
                 'orderItemArray' => $orderItemArray,
                 'orderItemArrayUpcoming' => $orderItemArrayUpcoming,
+                'ordersRatingChef'=>$ordersRatingChef,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
