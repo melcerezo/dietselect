@@ -805,8 +805,8 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Ratings</div>
                         </li>
-                        @if(count($ordersRatingChef)>0)
-                                @foreach($ordersRatingChef as $rating)
+                        @if(count($ordersChefs)>0)
+                                @foreach($ordersChefs as $rating)
                                     <li class="collection-item">
                                         <a href="{{route('chef.rating')}}">
                                             <i class="material-icons">stars</i>

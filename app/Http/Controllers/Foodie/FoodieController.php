@@ -297,6 +297,7 @@ class FoodieController extends Controller
                     $ordersRatingChef[] = array('chef' => $chefName);
                 }
             }
+            $ordersChefs = array_unique($ordersRatingChef);
 
 //        dd($ordersRating);
 //        if ($ratingsCount > 0) {
@@ -323,7 +324,7 @@ class FoodieController extends Controller
                 'orderArray' => $orderArray,
                 'orderItemArray' => $orderItemArray,
                 'orderItemArrayUpcoming' => $orderItemArrayUpcoming,
-                'ordersRatingChef'=>$ordersRatingChef,
+                'ordersChefs'=>$ordersChefs,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
