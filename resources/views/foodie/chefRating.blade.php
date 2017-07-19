@@ -14,7 +14,7 @@
                 </div>
             </nav>
         </div>
-        @if($orders->count()>0)
+        @if(count($ordersRatingChef)>0)
             @foreach($ordersRatingChef as $order)
                 <div class="row">
                     <div class="card">
