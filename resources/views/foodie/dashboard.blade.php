@@ -59,6 +59,7 @@
                                     <th>Name</th>
                                     <th>Chef</th>
                                     <th>Price</th>
+                                    <th>Type</th>
                                 </tr>
 
                                 @foreach($orderItemArrayUpcoming as $orderItem)
@@ -66,6 +67,7 @@
                                         <td>{{$orderItem['plan']}}</td>
                                         <td>{{$orderItem['chef']}}</td>
                                         <td>{{$orderItem['price']}}</td>
+                                        <td>{{$orderItem['type']}}</td>
                                     </tr>
                                 @endforeach
                             </table>
@@ -91,6 +93,8 @@
                                 <th>Name</th>
                                 <th>Chef</th>
                                 <th>Price</th>
+                                <th>Type</th>
+
                             </tr>
 
                             @foreach($orderItemArray as $orderItem)
@@ -98,6 +102,7 @@
                                     <td>{{$orderItem['plan']}}</td>
                                     <td>{{$orderItem['chef']}}</td>
                                     <td>{{$orderItem['price']}}</td>
+                                    <td>{{$orderItem['type']}}</td>
                                 </tr>
                             @endforeach
                         </table>
