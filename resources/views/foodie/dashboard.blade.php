@@ -55,15 +55,12 @@
                                 </span>
                             </div>
                             <table class="dshMlTbl centered">
-                                <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Chef</th>
-                                        <th>Price</th>
-                                        <th>Type</th>
+                                        <td>Name</td>
+                                        <td>Chef</td>
+                                        <td>Price</td>
+                                        <td>Type</td>
                                     </tr>
-                                </thead>
-                                <tbody>
                                     @foreach($orderItemArrayUpcoming as $orderItem)
                                         <tr>
                                             <td>{{$orderItem['plan']}}</td>
@@ -72,7 +69,6 @@
                                             <td>{{$orderItem['type']}}</td>
                                         </tr>
                                     @endforeach
-                                </tbody>
                             </table>
                     </div>
                 @else
@@ -92,15 +88,12 @@
                             </span>
                     </div>
                         <table class="dshMlTbl centered">
-                            <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Chef</th>
-                                    <th>Price</th>
-                                    <th>Type</th>
+                                    <td>Name</td>
+                                    <td>Chef</td>
+                                    <td>Price</td>
+                                    <td>Type</td>
                                 </tr>
-                            </thead>
-                            <tbody>
                                 @foreach($orderItemArray as $orderItem)
                                     <tr>
                                         <td>{{$orderItem['plan']}}</td>
@@ -109,7 +102,6 @@
                                         <td>{{$orderItem['type']}}</td>
                                     </tr>
                                 @endforeach
-                            </tbody>
                         </table>
 
                     @else
