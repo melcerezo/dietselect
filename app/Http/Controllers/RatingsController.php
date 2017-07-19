@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Chat;
+use App\CustomPlan;
 use App\Notification;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Message;
 use App\Order;
+use App\Plan;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -34,6 +36,29 @@ class RatingsController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 //        dd($orders->count());
+
+        foreach($ordersRating as $order){
+            $orderItems = $order->order_item()->get();
+            foreach($orderItems as $orderItem){
+                $planName = "";
+                $chefName = "";
+                $orderType = "";
+                if ($orderItem->order_type == 0) {
+                    $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan_name;
+                    $chefName = $orderPlan->chef->name;
+                    $orderType = "Standard";
+                } elseif ($orderItem->order_type == 1) {
+                    $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan->plan_name;
+                    $chefName = $orderPlan->plan->chef->name;
+                    $orderType = "Customized";
+                }
+
+                $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                    'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+            }
+        }
 
 //        dd($ratings);
 //        dd($orders);

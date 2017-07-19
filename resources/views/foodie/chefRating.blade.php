@@ -15,21 +15,21 @@
             </nav>
         </div>
         @if($orders->count()>0)
-            @foreach($orders as $order)
+            @foreach($ordersRatingChef as $order)
                 <div class="row">
                     <div class="card">
                         <nav class="light-green lighten-1 white-text">
                             <div class="left col s12">
                                 <ul>
                                     <li>
-                                        <span style="font-size: 20px;">Rating: {{ $order->plan->plan_name }}</span>
+                                        <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                                     </li>
                                 </ul>
                             </div>
                         </nav>
                         <div class="card-content">
                             <span>Please Rate the Chef!</span>
-                            <form action="{{route('rate.chef', $order->id)}}" method="post">
+                            <form action="{{route('rate.chef', $order['order_id'])}}" method="post">
                                 {{csrf_field()}}
                                 <input name="rate" type="radio" id="test1" value="1" checked/>
                                 <label for="test1">1</label>
