@@ -10,13 +10,6 @@
 <body>
     <h1>Payment Successful</h1>
     <p>You have confirmed order for: </p>
-    <ul>
-        @foreach($orderPlanNames as $orderPlanName)
-            <li>
-                <span>{{$orderPlanName['plan_name'].'-'.$orderPlanName['chef_name'].'-'.$orderPlanName['type'].'-'.$orderPlanName['price']}}</span>
-            </li>
-        @endforeach
-    </ul>
     <p>Amount: {{$amount}}</p>
 </body>
 </html>

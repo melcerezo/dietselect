@@ -138,12 +138,11 @@ class DepositController extends Controller
                 }
             }
 //            dd($orderPlanNames);
-            $amount = $order->total;
+            $amount = 1000;
 
 
             $mailer->to($user->email)
                 ->send(new PaymentSuccess(
-                    $orderPlanNames,
                     $amount
                 ));
 

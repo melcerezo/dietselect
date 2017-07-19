@@ -11,7 +11,6 @@ class PaymentSuccess extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $orderPlanNames;
 
     public $amount;
 
@@ -21,9 +20,8 @@ class PaymentSuccess extends Mailable
      *
      * @return void
      */
-    public function __construct($orderPlanNames,$amount)
+    public function __construct($amount)
     {
-        $this->orderPlanNames = $orderPlanNames;
         $this->amount = $amount;
     }
 
