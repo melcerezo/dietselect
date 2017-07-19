@@ -280,6 +280,7 @@ class FoodieController extends Controller
                 ->latest($column = 'created_at')
                 ->get();
 
+        dd($ordersRating);
 //        if ($ratingsCount > 0) {
 //            $ratings = Rating::where('order_id', '=', $ordersRating->id)->where('is_rated', '=', 0)->get();
 //        }
@@ -702,7 +703,7 @@ class FoodieController extends Controller
                                 $seafood += 1;
                                 break;
                         }
-                        dd($mealPlan);
+//                        dd($mealPlan);
                     }
 
                     if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
