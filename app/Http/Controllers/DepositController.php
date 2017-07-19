@@ -303,7 +303,7 @@ class DepositController extends Controller
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
                         'price'=>$orderPlan->price,'type'=>'Standard');
                 }elseif($orderItem->order_type==1){
-                    $orderPlan= Plan::where('id','=',$orderItem->plan_id)->first();
+                    $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->plan->chef->id;
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
                         'price'=>$orderPlan->plan->price,
