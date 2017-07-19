@@ -105,6 +105,8 @@
                         <div class="light-green lighten-1 white-text activator dshMnClTtl">
                             <span>Nothing Ordered for this week</span>
                         </div>
+                        <div class="dshNoOrd">
+                        </div>
                     @endif
                 </div>
                 <ul class="collection">
