@@ -69,6 +69,7 @@ class RatingsController extends Controller
             'chats'=>$chats,
             'messages'=>$messages,
             'orders'=>$orders,
+            'ordersRatingChef'=>$ordersRatingChef,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications
         ]);
