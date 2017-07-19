@@ -145,6 +145,8 @@ class DepositController extends Controller
                     $orderPlanNames,
                     $amount));
 
+            dd($mailer);
+
             $uniqueChefs = array_unique($orderChef);
 
             foreach($uniqueChefs as $uniqueChef){
