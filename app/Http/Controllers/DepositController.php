@@ -143,7 +143,7 @@ class DepositController extends Controller
                 $rating = new Rating();
                 $rating->chef_id = $ratingChef;
                 $rating->foodie_id = Auth::guard('foodie')->user()->id;
-                $rating->order_id = $orderItem->id;
+                $rating->order_item_id = $orderItem->id;
                 $rating->save();
             }
 //            dd($orderPlanNames);
