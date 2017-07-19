@@ -806,11 +806,11 @@
                             <div class="collection-header">Pending Ratings</div>
                         </li>
                         @if(count($ordersChefs)>0)
-                                @foreach($ordersChefs as $rating)
+                                @foreach($ordersRatingPlans as $rating)
                                     <li class="collection-item">
                                         <a href="{{route('chef.rating')}}">
                                             <i class="material-icons">stars</i>
-                                            {{$rating}}<br>
+                                            {{$rating['plan_name'].'-'.$rating['chef'].'-'.$rating['type']}}<br>
                                         </a>
                                     </li>
                                 @endforeach

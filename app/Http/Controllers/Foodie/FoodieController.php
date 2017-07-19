@@ -280,24 +280,30 @@ class FoodieController extends Controller
                 ->latest($column = 'created_at')
                 ->get();
 
-            $ordersRatingChef= [];
+            $ordersRatingPlans= [];
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
                     $orderPlan = "";
+                    $type="";
+                    $planName = "";
                     $chefName = "";
                     if ($orderItem->order_type == 0) {
                         $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan_name;
+                        $type="Standard";
                         $chefName = $orderPlan->chef->name;
                     } elseif ($orderItem->order_type == 1) {
                         $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                        $planName = $orderPlan->plan->plan_name;
+                        $type="Customized";
                         $chefName = $orderPlan->plan->chef->name;
                     }
 
-                    $ordersRatingChef[] = $chefName;
+                    $ordersRatingPlans[] = array('plan_name'=>$planName,'chef'=>$chefName,'type'=>$type);
                 }
             }
-            $ordersChefs = array_unique($ordersRatingChef);
+
 
 //        dd($ordersRating);
 //        if ($ratingsCount > 0) {
@@ -324,7 +330,7 @@ class FoodieController extends Controller
                 'orderArray' => $orderArray,
                 'orderItemArray' => $orderItemArray,
                 'orderItemArrayUpcoming' => $orderItemArrayUpcoming,
-                'ordersChefs'=>$ordersChefs,
+                'ordersRatingPlans'=>$ordersRatingPlans,
                 'mealPlans' => $mealPlans,
                 'mealPlansUpcoming' => $mealPlansUpcoming,
                 'chats' => $chats,
