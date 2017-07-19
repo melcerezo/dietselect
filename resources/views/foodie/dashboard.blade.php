@@ -105,9 +105,6 @@
                         <div class="light-green lighten-1 white-text activator dshMnClTtl">
                             <span>Nothing Ordered for this week</span>
                         </div>
-                        <div class="dshNoOrd">
-                            <a href="{{route('foodie.plan.show')}}"> Take a Look at our available plans!</a>
-                        </div>
                     @endif
                 </div>
                 <ul class="collection">
