@@ -294,7 +294,7 @@ class FoodieController extends Controller
                         $chefName = $orderPlan->plan->chef->name;
                     }
 
-                    $ordersRatingChef[] = array('chef' => $chefName);
+                    $ordersRatingChef[] = $chefName;
                 }
             }
             $ordersChefs = array_unique($ordersRatingChef);
