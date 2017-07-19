@@ -54,7 +54,7 @@
                                     Upcoming Plans: {{$nextWeek}}
                                 </span>
                             </div>
-                            <table class="dshMlTbl">
+                            <table class="dshMlTbl centered">
                                 <tr>
                                     <th>Name</th>
                                     <th>Chef</th>
@@ -88,7 +88,7 @@
                                 Order for Week of: {{$thisWeek}}
                             </span>
                     </div>
-                        <table class="dshMlTbl">
+                        <table class="dshMlTbl centered">
                             <tr>
                                 <th>Name</th>
                                 <th>Chef</th>
