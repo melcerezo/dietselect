@@ -6,6 +6,7 @@ use App\Chat;
 use App\Chef;
 use App\CustomPlan;
 use App\Gcash;
+use App\Mail\PaymentSuccessFoodie;
 use App\Notification;
 use App\Http\Controllers\Controller;
 use App\Deposit;
@@ -138,13 +139,11 @@ class DepositController extends Controller
                 }
             }
 //            dd($orderPlanNames);
-            $amount = 1000;
+            $amount = $order->total;
 
 
-            $mailer->to($user->email)
-                ->send(new PaymentSuccess(
-                    $amount
-                ));
+            $mailer->to($user->email)->send(new PaymentSuccessFoodie($amount));
+
 
 //            dd(Mail::failures());
 
