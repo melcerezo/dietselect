@@ -51,6 +51,7 @@ class ChefController extends Controller
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
         $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
+            ->join('plans','plans.id','=','order_items.plan_id')
             ->get();
 //            ->join('plans', function($join){
 //            $join->on('plans.id','=','order_items.plan_id')
