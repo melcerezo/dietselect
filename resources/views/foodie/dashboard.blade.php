@@ -47,7 +47,6 @@
                         {{--<p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>--}}
                     </div>
                 </div>
-            </div>
                 @if($paidOrderUpcoming!=null)
                     <div class="card">
                             <div class="light-green lighten-1 white-text dshMnClTtl">
@@ -78,7 +77,6 @@
                     </div>
                     <div class="dshNoOrd">
                         <a href="{{route('foodie.plan.show')}}"> Take a Look at our available plans!</a>
-                    </div>
                     </div>
                 @endif
                 <div class="card">
