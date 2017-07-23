@@ -50,7 +50,7 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        $orderItems=DB::table('order_items')->join('orders.id','=','order_items.order_id')
+        $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
             ->get();
 //            ->join('plans', function($join){
 //            $join->on('plans.id','=','order_items.plan_id')
