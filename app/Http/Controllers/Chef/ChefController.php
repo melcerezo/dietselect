@@ -50,12 +50,15 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        $orderItems = OrderItem::all();
+        $orderItems=DB::table('order_items')->join('orders',function ($join){
+            $join->on('orders.id','=','orders_items.order_id')
+                ->where('orders.is_paid','=', 0);
+        })->join('plans', function($join){
+            $join->on('plans.id','=','order_items.plan_id')
+                ->where('plans.chef_id','=',Auth::guard('chef')->user()->id);
+        })->select('plans.plan_name','orders.foodie_id','orders.address_id','order_items.id','order_items.order_type','order_items.quantity')->get();
 
         dd($orderItems);
-
-
-
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
