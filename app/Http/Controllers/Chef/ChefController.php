@@ -50,7 +50,7 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        $orderItems = OrderItem::all()->latest('created_at')->get();
+        $orderItems = OrderItem::all();
 
         dd($orderItems);
 
