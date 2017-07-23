@@ -53,7 +53,7 @@ class ChefController extends Controller
         $orderItems=DB::table('order_items')->join('orders',function ($join){
             $join->on('orders.id','=','order_items.order_id')
                 ->where('orders.is_paid','=', 0);
-            })->select('plans.plan_name','orders.foodie_id','orders.address_id','order_items.id','order_items.order_type','order_items.quantity')->get();
+            })->select('orders.foodie_id','orders.address_id','order_items.id','order_items.order_type','order_items.quantity')->get();
 
         dd($orderItems);
 
