@@ -52,6 +52,8 @@ class ChefController extends Controller
 
         $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
             ->join('plans','plans.id','=','order_items.plan_id')
+            ->where('orders.is_paid','=',0)
+            ->where('plans.chef_id','=',$chef->id)
             ->get();
 //            ->join('plans', function($join){
 //            $join->on('plans.id','=','order_items.plan_id')
