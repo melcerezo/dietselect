@@ -9,6 +9,7 @@ use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Http\Controllers\Controller;
 use App\Notification;
+use App\OrderItem;
 use App\Plan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -48,14 +49,12 @@ class ChefController extends Controller
         $foodies=Foodie::all();
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
-        $orders='';
-        $ordersCount=Order::where('chef_id', '=', Auth::guard('chef')->user()->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->get()->count();
 
-        if($ordersCount >0){
-            $orders = Order::where('chef_id', '=', Auth::guard('chef')->user()->id)
-                ->where('is_paid','=',0)->where('is_cancelled','=',0 )
-                ->orderBy('created_at', 'desc')->get();
-        }
+        $orderItems = OrderItem::all()->latest('created_at')->get();
+
+        dd($orderItems);
+
+
 
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
@@ -69,7 +68,6 @@ class ChefController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'plans' =>$plans,
-            'ordersCount' => $ordersCount,
             'orders' => $orders,
             'messages'=>$messages,
             'chats'=>$chats,
