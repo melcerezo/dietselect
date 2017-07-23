@@ -68,13 +68,13 @@
                                         </tr>
                                     @endforeach
                             </table>
-                    </div>
                 @else
-                    <div class="light-green lighten-1 white-text activator dshMnClTtl">
-                        <span>Nothing Ordered for Next week</span>
-                    </div>
-                    <div class="dshNoOrd">
-                        <a href="{{route('foodie.plan.show')}}"> Take a Look at our available plans!</a>
+                        <div class="light-green lighten-1 white-text activator dshMnClTtl">
+                            <span>Nothing Ordered for Next week</span>
+                        </div>
+                        <div class="dshNoOrd">
+                            <a href="{{route('foodie.plan.show')}}"> Take a Look at our available plans!</a>
+                        </div>
                     </div>
                 @endif
                 <div class="card">
