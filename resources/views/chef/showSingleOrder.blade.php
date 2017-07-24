@@ -269,7 +269,7 @@
                             </tr>
                             </tbody>
                         </table>
-                    @elseif($order->order_type=='c')
+                    @elseif($orderItem->order_type=='c')
                         <table class="striped centered">
                             <thead class="light-green white-text" style="border: none;">
                             <tr>
