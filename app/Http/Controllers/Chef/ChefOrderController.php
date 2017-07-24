@@ -85,16 +85,18 @@ class ChefOrderController extends Controller
             ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
             ->count();
 
-        if($orderItem->order_type== 1) {
-//            for ($i = 0; $i < count($orderMealPlans); $i++) {
-//                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
-               foreac
-
-                for ($i = 0; $i < $orderMealPlans[$i]->customized_ingredient_meal->count(); $j++) {
-                    $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
-                }
-//            }
-        }
+//        if($orderItem->order_type== 1) {
+////            for ($i = 0; $i < count($orderMealPlans); $i++) {
+////                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
+//               foreach(){
+//
+//               }
+//
+//                for ($i = 0; $i < $orderMealPlans[$i]->customized_ingredient_meal->count(); $j++) {
+//                    $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
+//                }
+////            }
+//        }
 //        dd($orderCustomizedMeals);
         for($i=0;$i<count($ingredientMeals);$i++){
             $ingredientDesc=DB::table('ingredients')
