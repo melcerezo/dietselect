@@ -61,7 +61,7 @@ class ChefOrderController extends Controller
     }
 
     public function getOneOrderDetails(OrderItem $orderItem){
-        dd($orderItem);
+//        dd($orderItem);
         $chef = Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
@@ -92,8 +92,8 @@ class ChefOrderController extends Controller
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
                 }
             }
-                dd($orderCustomizedMeals);
         }
+        dd($orderCustomizedMeals);
         for($i=0;$i<count($ingredientMeals);$i++){
             $ingredientDesc=DB::table('ingredients')
                 ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
