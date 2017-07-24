@@ -144,42 +144,6 @@
                         @endif
                     </ul>
                 </div>
-                <div>
-                    <ul class="collection">
-                        <li class="collection-item light-green lighten-1 white-text">
-                            <div class="collection-header">Confirmed Order</div>
-                        </li>
-                        @if(count($orderItems)>0)
-                            @foreach($orderItems as $orderItem)
-                                <li class="collection-item">
-                                    <a href="{{route('chef.order.single',$orderItem->id)}}">
-                                        <p>Plan Name: <span>{{$orderItem->plan_name}}</span></p>
-                                        <div class="divider"></div>
-                                        <p>Foodie:
-                                            @foreach($foodies as $foodie)
-                                                @if($foodie->id == $orderItem->foodie_id)
-                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                @endif
-                                            @endforeach
-                                        </p>
-                                        <div class="divider"></div>
-                                        <p>Type:
-                                            @if($orderItem->order_type==0)
-                                                <span>Standard</span>
-                                            @elseif($orderItem->order_type==1)
-                                                <span>Customized</span>
-                                            @endif
-                                        </p>
-                                    </a>
-                                </li>
-                            @endforeach
-                        @else
-                            <li class="collection-item">
-                                <span>No Confirmed Orders</span>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
             </div>
             {{-- placeholder--}}
         </div>

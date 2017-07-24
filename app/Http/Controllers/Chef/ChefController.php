@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Chat;
 use App\Chef;
+use Carbon\Carbon;
 use App\Foodie;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
@@ -44,6 +45,8 @@ class ChefController extends Controller
      */
     public function index()
     {
+        $lastSaturday = Carbon::parse("last saturday 15:01:00")->format('Y-m-d H:i:s');
+        $dt = Carbon::now();
 
         $chef= Auth::guard('chef')->user();
         $foodies=Foodie::all();
@@ -53,27 +56,12 @@ class ChefController extends Controller
         $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
             ->join('plans','plans.id','=','order_items.plan_id')
             ->where('plans.chef_id','=',$chef->id)
-            ->where('orders.is_paid','=',0)
-            ->where('orders.is_cancelled','=',0)
-            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
-                'order_items.order_type','order_items.created_at','order_items.updated_at')
-            ->get();
-        $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
-            ->join('plans','plans.id','=','order_items.plan_id')
-            ->where('plans.chef_id','=',$chef->id)
             ->where('orders.is_paid','=',1)
             ->where('orders.is_cancelled','=',0)
+            ->where('orders.created_at','>',$lastSaturday)
             ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
                 'order_items.order_type','order_items.created_at','order_items.updated_at')
             ->get();
-//            ->join('plans', function($join){
-//            $join->on('plans.id','=','order_items.plan_id')
-//                ->where('plans.chef_id','=',Auth::guard('chef')->user()->id);
-//        })->select('plans.plan_name','orders.foodie_id','orders.address_id','order_items.id','order_items.order_type','order_items.quantity')->get();
-
-//        dd($orderItems[0]->is_paid);
-
-
 
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
@@ -88,7 +76,6 @@ class ChefController extends Controller
             'foodies' => $foodies,
             'plans' =>$plans,
             'pendingOrderItems' => $pendingOrderItems,
-            'orderItems'=>$orderItems,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications
