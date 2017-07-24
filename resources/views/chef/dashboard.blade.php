@@ -144,8 +144,7 @@
                         @endif
                     </ul>
                 </div>
-            </div>
-            <div>
+                <div>
                     <ul class="collection">
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Confirmed Order</div>

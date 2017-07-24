@@ -61,7 +61,7 @@ class ChefController extends Controller
         $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
             ->join('plans','plans.id','=','order_items.plan_id')
             ->where('plans.chef_id','=',$chef->id)
-            ->where('orders.is_paid','=',0)
+            ->where('orders.is_paid','=',1)
             ->where('orders.is_cancelled','=',0)
             ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
                 'order_items.order_type','order_items.created_at','order_items.updated_at')
