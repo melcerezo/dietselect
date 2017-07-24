@@ -76,7 +76,7 @@ class ChefOrderController extends Controller
             $orderMealPlans=$orderPlan->customized_meal()->get();
             $orderMealPlansCount = $orderMealPlans->count();
         }
-        dd($orderMealPlans);
+        dd($orderMealPlans[0]);
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
         $ingredientMealData=[];
@@ -86,12 +86,14 @@ class ChefOrderController extends Controller
             ->count();
 
         if($orderItem->order_type== 1) {
-            for ($i = 0; $i < count($orderMealPlans); $i++) {
-                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
-                for ($j = 0; $j < $orderCustomizedMeals[$i]->customized_ingredient_meal->count(); $j++) {
+//            for ($i = 0; $i < count($orderMealPlans); $i++) {
+//                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
+               foreac
+
+                for ($i = 0; $i < $orderMealPlans[$i]->customized_ingredient_meal->count(); $j++) {
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
                 }
-            }
+//            }
         }
 //        dd($orderCustomizedMeals);
         for($i=0;$i<count($ingredientMeals);$i++){
