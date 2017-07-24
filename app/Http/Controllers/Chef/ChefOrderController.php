@@ -68,11 +68,11 @@ class ChefOrderController extends Controller
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
 
         if($orderItem->order_type==0){
-            $orderPlan=Plan::where('id','=',$orderItem->plan_id);
+            $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->mealplans()->get();
             $orderMealPlansCount = $orderMealPlans->count();
         }elseif($orderItem->order_type==1){
-            $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id);
+            $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->customized_meal()->get();
             $orderMealPlansCount = $orderMealPlans->count();
         }
