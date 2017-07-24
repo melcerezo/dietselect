@@ -76,7 +76,7 @@ class ChefOrderController extends Controller
             $orderMealPlans=$orderPlan->customized_meal()->get();
             $orderMealPlansCount = $orderMealPlans->count();
         }
-        dd($orderMealPlans[0]);
+        dd($orderMealPlans[0]->customized_ingredient_meal);
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
         $ingredientMealData=[];
