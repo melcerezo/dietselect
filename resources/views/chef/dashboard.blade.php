@@ -115,7 +115,7 @@
                         </li>
                         @if(count($orderItems)>0)
                             @foreach($orderItems as $orderItem)
-                                @unless($orderItem->is_paid==1)
+                                @if($orderItem->is_paid==0)
                                 <li class="collection-item">
                                     <a href="{{route('chef.order.single',$orderItem->id)}}">
                                         <p>Plan Name: <span>{{$orderItem->plan_name}}</span></p>
@@ -137,7 +137,11 @@
                                         </p>
                                     </a>
                                 </li>
-                                @endunless
+                                @elseif($orderItem->is_paid==1)
+                                    <li class="collection-item">
+                                        <span>No Pending Orders</span>
+                                    </li>
+                                @endif
                             @endforeach
                         @else
                             <li class="collection-item">
