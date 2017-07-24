@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="card-panel" style="padding: 0;">
-                    @if($order->order_type=='s')
+                    @if($orderItem->order_type=='s')
                         <table class="striped centered">
                             <thead class="light-green white-text" style="border: none;">
                             <tr>
