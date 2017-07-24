@@ -76,7 +76,7 @@ class ChefOrderController extends Controller
             $orderMealPlans=$orderPlan->customized_meal()->get();
             $orderMealPlansCount = $orderMealPlans->count();
         }
-//        dd($orderPlan);
+        dd($orderMealPlans);
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
         $ingredientMealData=[];
@@ -93,7 +93,7 @@ class ChefOrderController extends Controller
                 }
             }
         }
-        dd($orderCustomizedMeals);
+//        dd($orderCustomizedMeals);
         for($i=0;$i<count($ingredientMeals);$i++){
             $ingredientDesc=DB::table('ingredients')
                 ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
