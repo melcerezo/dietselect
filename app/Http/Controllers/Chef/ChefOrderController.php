@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\CustomPlan;
 use App\Foodie;
 use App\Http\Controllers\Controller;
 
@@ -35,14 +36,14 @@ class ChefOrderController extends Controller
     public function getAllOrdersView(){
 
         $chef = Auth::guard('chef')->user();
-//        $orders=OrderItem::->get();
-//        $ordersCount=Order::where('chef_id','=',$chef->id)->get()->count();
-
-//        if($ordersCount>0){
-//            $orders=Order::where('chef_id','=',$chef->id)->get();
-//        }
-
-
+        $orders=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
+            ->join('plans','plans.id','=','order_items.plan_id')
+            ->where('plans.chef_id','=',$chef->id)
+            ->where('orders.is_paid','=',1)
+            ->where('orders.is_cancelled','=',0)
+            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
+                'order_items.order_type','order_items.created_at','order_items.updated_at')
+            ->get();
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
@@ -53,21 +54,28 @@ class ChefOrderController extends Controller
             'chef'=>$chef,
             'foodies'=>$foodies,
             'orders'=>$orders,
-            'ordersCount'=>$ordersCount,
             'chats' => $chats,
             'messages'=>$messages,
             'notifications' => $notifications
         ]);
     }
 
-    public function getOneOrderDetails(Order $order){
+    public function getOneOrderDetails(OrderItem $orderItem){
+        dd($orderItem);
         $chef = Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
-        $orderPlan=$order->plan;
-        $orderMealPlans=$orderPlan->mealplans()->get();
-        $orderMealPlansCount = $orderMealPlans->count();
+
+        if($orderItem->order_type==0){
+            $orderPlan=Plan::where('id','=',$orderItem->plan_id);
+            $orderMealPlans=$orderPlan->mealplans()->get();
+            $orderMealPlansCount = $orderMealPlans->count();
+        }elseif($orderItem->order_type==1){
+            $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id);
+            $orderMealPlans=$orderPlan->customized_meal()->get();
+            $orderMealPlansCount = $orderMealPlans->count();
+        }
 //        dd($orderPlan);
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
@@ -77,14 +85,14 @@ class ChefOrderController extends Controller
             ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
             ->count();
 
-        if($order->order_type== 'c') {
+        if($orderItem->order_type== 1) {
             for ($i = 0; $i < count($orderMealPlans); $i++) {
-                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('order_id', '=', $order->id)->first();
+                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
                 for ($j = 0; $j < $orderCustomizedMeals[$i]->customized_ingredient_meal->count(); $j++) {
                     $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
                 }
             }
-//                dd($orderCustomizedMeals);
+                dd($orderCustomizedMeals);
         }
         for($i=0;$i<count($ingredientMeals);$i++){
             $ingredientDesc=DB::table('ingredients')
@@ -115,7 +123,7 @@ class ChefOrderController extends Controller
             'customize'=>$orderCustomizedMeals,
             'ingredientsMeal'=>$ingredientMealData,
             'ingredientCount'=>$ingredientCount,
-            'order'=>$order,
+            'orderItem'=>$orderItem,
             'notifications' => $notifications
         ]);
     }
