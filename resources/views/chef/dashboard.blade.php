@@ -113,17 +113,31 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
                         </li>
-                        @if($ordersCount>0)
-                            @foreach($orders as $order)
+                        @if(count($orderItems)>0)
+                            @foreach($orderItems as $orderItem)
+                                @unless($orderItem->is_paid==1)
                                 <li class="collection-item">
-                                    <a href="{{route('chef.order.single',$order->id)}}">
-                                        {{--<p>Plan Name: {{$order->plan->plan_name}}</p>--}}
+                                    <a href="{{route('chef.order.single',$orderItem->id)}}">
+                                        <p>Plan Name: <span>{{$orderItem->plan_name}}</span></p>
                                         <div class="divider"></div>
-                                        <p>Foodie: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</p>
+                                        <p>Foodie:
+                                            @foreach($foodies as $foodie)
+                                                @if($foodie->id == $orderItem->foodie_id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </p>
                                         <div class="divider"></div>
-                                        {{--<p>Price: {{$order->plan->price}}</p>--}}
+                                        <p>Type:
+                                            @if($orderItem->order_type==0)
+                                                <span>Standard</span>
+                                            @elseif($orderItem->order_type==1)
+                                                <span>Customized</span>
+                                            @endif
+                                        </p>
                                     </a>
                                 </li>
+                                @endunless
                             @endforeach
                         @else
                             <li class="collection-item">

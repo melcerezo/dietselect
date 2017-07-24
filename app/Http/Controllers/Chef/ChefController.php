@@ -61,7 +61,7 @@ class ChefController extends Controller
 //                ->where('plans.chef_id','=',Auth::guard('chef')->user()->id);
 //        })->select('plans.plan_name','orders.foodie_id','orders.address_id','order_items.id','order_items.order_type','order_items.quantity')->get();
 
-        dd($orderItems[0]->is_paid);
+//        dd($orderItems[0]->is_paid);
 
 
 
@@ -77,7 +77,7 @@ class ChefController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'plans' =>$plans,
-            'orders' => $orders,
+            'orderItems' => $orderItems,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications
