@@ -50,9 +50,10 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        $orderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
+        $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
             ->join('plans','plans.id','=','order_items.plan_id')
             ->where('plans.chef_id','=',$chef->id)
+            ->where('orders.is_paid','=',0)
             ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id','orders.is_paid',
             'orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
             ->get();
@@ -77,7 +78,7 @@ class ChefController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'plans' =>$plans,
-            'orderItems' => $orderItems,
+            'pendingOrderItems' => $pendingOrderItems,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications

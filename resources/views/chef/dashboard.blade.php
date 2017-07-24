@@ -113,9 +113,8 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
                         </li>
-                        @if(count($orderItems)>0)
-                            @foreach($orderItems as $orderItem)
-                                @if($orderItem->is_paid==0)
+                        @if(count($pendingOrderItems)>0)
+                            @foreach($pendingOrderItems as $pendingOrderItem)
                                 <li class="collection-item">
                                     <a href="{{route('chef.order.single',$orderItem->id)}}">
                                         <p>Plan Name: <span>{{$orderItem->plan_name}}</span></p>
@@ -137,11 +136,6 @@
                                         </p>
                                     </a>
                                 </li>
-                                @elseif($orderItem->is_paid==1)
-                                    <li class="collection-item">
-                                        <span>No Pending Orders</span>
-                                    </li>
-                                @endif
                             @endforeach
                         @else
                             <li class="collection-item">
