@@ -26,7 +26,7 @@
             </div>
             <div class="row">
                 <div class="card-panel" style="padding: 0;">
-                    @if($orderItem->order_type=='s')
+                    @if($orderItem->order_type==0)
                         <table class="striped centered">
                             <thead class="light-green white-text" style="border: none;">
                             <tr>
@@ -269,7 +269,7 @@
                             </tr>
                             </tbody>
                         </table>
-                    @elseif($orderItem->order_type=='c')
+                    @elseif($orderItem->order_type==1)
                         <table class="striped centered">
                             <thead class="light-green white-text" style="border: none;">
                             <tr>
