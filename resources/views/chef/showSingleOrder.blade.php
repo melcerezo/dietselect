@@ -18,7 +18,7 @@
                     <div class="left col s12">
                         <ul>
                             <li>
-                                <span style="font-size: 20px;">{{$order->plan->plan_name}}</span>
+                                <span style="font-size: 20px;">{{$orderItem->plan->plan_name}}</span>
                             </li>
                         </ul>
                     </div>
