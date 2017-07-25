@@ -65,20 +65,23 @@ class ChefController extends Controller
             if($orderItem->order->is_paid == 1){
 
                 $planName="";
+                $type="";
                 if($orderItem->order_type==0){
                     $plan = Plan::where('id','=',$orderItem->plan_id)->first();
                     $planName = $plan->plan_name;
+                    $type = "Standard";
                 }elseif($orderItem->order_type==1){
                     $plan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $planName = $plan->plan->plan_name;
+                    $type = "Customized";
                 }
 
                 $pendingOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
                     'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
-                    'address_id'=>$orderItem->order->address_id,'type'=>$orderItem->order_type);
+                    'address_id'=>$orderItem->order->address_id,'type'=>$type);
             }
         }
-        dd($pendingOrders);
+//        dd($pendingOrders);
 
 
 
@@ -105,7 +108,7 @@ class ChefController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'plans' =>$plans,
-            'pendingOrderItems' => $pendingOrderItems,
+            'pendingOrderItems' => $pendingOrders,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications

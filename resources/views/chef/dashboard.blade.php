@@ -113,27 +113,23 @@
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
                         </li>
-                        @if(count($pendingOrderItems)>0)
-                            @foreach($pendingOrderItems as $orderItem)
+                        @if(count($pendingOrders)>0)
+                            @foreach($pendingOrders as $orderItem)
                                 <li class="collection-item">
-                                    <a href="{{route('chef.order.single',$orderItem->id)}}">
-                                        <p>Plan Name: <span>{{$orderItem->plan_name}}</span></p>
+                                    <a href="{{route('chef.order.single',$orderItem['id'])}}">
+                                        <p>Plan Name: <span>{{$orderItem['name']}}</span></p>
                                         <div class="divider"></div>
                                         <p>Foodie:
                                             @foreach($foodies as $foodie)
-                                                @if($foodie->id == $orderItem->foodie_id)
+                                                @if($foodie->id == $orderItem['foodie_id'])
                                                     <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
                                                 @endif
                                             @endforeach
                                         </p>
                                         <div class="divider"></div>
-                                        <p>Type:
-                                            @if($orderItem->order_type==0)
-                                                <span>Standard</span>
-                                            @elseif($orderItem->order_type==1)
-                                                <span>Customized</span>
-                                            @endif
-                                        </p>
+                                        <p>Quantity: {{$orderItem['quantity']}}</p>
+                                        <div class="divider"></div>
+                                        <p>Type: {{$orderItem['type']}}</p>
                                     </a>
                                 </li>
                             @endforeach
