@@ -66,19 +66,20 @@ class ChefOrderController extends Controller
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
-        $mealPlans = [];
+        $orderMealPlans = [];
         $ingredientMeals=[];
         $orderMealPlans="";
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
-            $orderMealPlans=$orderPlan->mealplans()->get();
-            foreach($orderMealPlans as $item){
-                $mealPlans[]= $item->chefcustomize;
+            $mealPlans=$orderPlan->mealplans()->get();
+            foreach($mealPlans as $item){
+                $orderMealPlans[]= $item->chefcustomize;
             }
-            dd($mealPlans);
+            dd($orderMealPlans);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->customized_meal()->get();
+
             foreach($orderMealPlans as $orderMealPlan){
                 foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
                     $ingredientDesc = DB::table('ingredients')
