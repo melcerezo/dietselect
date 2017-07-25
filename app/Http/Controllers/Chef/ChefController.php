@@ -54,7 +54,7 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        dd($chats->count());
+        dd($chats);
 
 
         $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->get();
