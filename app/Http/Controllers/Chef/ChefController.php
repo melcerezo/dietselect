@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Chat;
 use App\Chef;
+use App\CustomPlan;
 use Carbon\Carbon;
 use App\Foodie;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
@@ -62,10 +63,22 @@ class ChefController extends Controller
 
         foreach($pendingOrderItems as $orderItem){
             if($orderItem->order->is_paid == 1){
-                $pendingOrders[]=array('');
+
+                $planName="";
+                if($orderItem->order_type==0){
+                    $plan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan_name;
+                }elseif($orderItem->order_type==1){
+                    $plan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan->plan_name;
+                }
+
+                $pendingOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
+                    'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
+                    'address_id'=>$orderItem->order->address_id,'type'=>$orderItem->order_type);
             }
         }
-        dd('end loop');
+        dd($pendingOrders);
 
 
 
