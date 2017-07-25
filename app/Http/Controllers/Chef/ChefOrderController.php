@@ -66,16 +66,19 @@ class ChefOrderController extends Controller
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
-
+        $mealPlans = [];
         $ingredientMeals=[];
+        $orderMealPlans="";
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->mealplans()->get();
-            $orderMealPlansCount = $orderMealPlans->count();
+            foreach($orderMealPlans as $item){
+                $mealPlans[]= $item->chefcustomize;
+            }
+            dd($mealPlans);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->customized_meal()->get();
-            $orderMealPlansCount = $orderMealPlans->count();
             foreach($orderMealPlans as $orderMealPlan){
                 foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
                     $ingredientDesc = DB::table('ingredients')
@@ -92,40 +95,7 @@ class ChefOrderController extends Controller
 
                 }
             }
-        dd($ingredientMeals);
         }
-        $orderCustomizedMeals=[];
-        $ingredientMealData=[];
-        $ingredientCount = DB::table('ingredient_meal')
-            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-            ->count();
-
-        if($orderItem->order_type== 1) {
-            for ($i = 0; $i < count($orderMealPlans); $i++) {
-                $orderCustomizedMeals[] = CustomizedMeal::where('meal_id', '=', $orderMealPlans[$i]->chefcustomize->id)->where('customized_plan_id', '=', $orderItem->plan_id)->first();
-           }
-
-                for ($i = 0; $i < $orderMealPlans[$i]->customized_ingredient_meal->count(); $j++) {
-                    $ingredientMeals[] = $orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
-                }
-//            }
-        }
-//        dd($orderCustomizedMeals);
-        for($i=0;$i<count($ingredientMeals);$i++){
-            $ingredientDesc=DB::table('ingredients')
-                ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
-                ->where('NDB_No','=',$ingredientMeals[$i]->ingredient_id)
-                ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
-                ->first();
-            $ingredientMealData[]=array(
-                "meal"=>$ingredientMeals[$i]->meal_id,
-                "ingredient"=>$ingredientDesc->Long_Desc,
-                "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
-                "grams"=>$ingredientMeals[$i]->grams
-            );
-        }
-
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 //        dd($orderCustomizedMeals);
 //        dd($ingredientMealData);
@@ -137,10 +107,7 @@ class ChefOrderController extends Controller
             'chats'=>$chats,
             'messages'=>$messages,
             'mealPlans'=>$orderMealPlans,
-            'mealPlansCount'=>$orderMealPlansCount,
-            'customize'=>$orderCustomizedMeals,
-            'ingredientsMeal'=>$ingredientMealData,
-            'ingredientCount'=>$ingredientCount,
+            'ingredientsMeal'=>$ingredientMeals,
             'orderItem'=>$orderItem,
             'notifications' => $notifications
         ]);
