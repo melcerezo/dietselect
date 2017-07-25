@@ -108,7 +108,7 @@ class ChefController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'plans' =>$plans,
-            'pendingOrderItems' => $pendingOrders,
+            'pendingOrders' => $pendingOrders,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications
