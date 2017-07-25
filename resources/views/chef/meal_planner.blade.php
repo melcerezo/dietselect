@@ -465,8 +465,8 @@
         </div>
     </div>
 
-    @unless($mealPlansCount==0)
-        @for($i=0;$i<$mealPlansCount;$i++)
+    @unless(count($mealPlans)==0)
+        @for($i=0;$i<count($mealPlans);$i++)
             <div id="editMeal-{{$i}}" class="modal editFormModal">
                 <i data-meal-id="{{$mealPlans[$i]->chefcustomize->id}}"></i>
                 <nav class="light-green lighten-1 white-text">
