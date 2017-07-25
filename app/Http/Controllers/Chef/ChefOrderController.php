@@ -75,7 +75,7 @@ class ChefOrderController extends Controller
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
             }
-            dd($orderMealPlans);
+            dd($orderMealPlans[0]->mealplans);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->customized_meal()->get();
