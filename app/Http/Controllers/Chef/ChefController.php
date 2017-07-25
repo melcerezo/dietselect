@@ -58,7 +58,7 @@ class ChefController extends Controller
 
         $pendingOrders = [];
 
-        dd($pendingOrderItems[0]->plan()->plan_name);
+        dd($pendingOrderItems[0]->plan());
 
         foreach($pendingOrderItems as $orderItem){
             if($orderItem->order->is_paid == 1){
