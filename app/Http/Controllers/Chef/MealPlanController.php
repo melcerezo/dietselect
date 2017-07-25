@@ -154,12 +154,11 @@ class MealPlanController extends Controller
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
-        $mealPlansCount=$mealPlans->count();
-        $meals= Meal::where('chef_id','=', $chef->id);
+//        dd($mealPlans);
+//        $meals= Meal::where('chef_id','=', $chef->id);
         $mealPhotos = DB::table('meal_image')
             ->join('meals','meal_image.meal_id','=','meals.id')
-            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
-            ->select('meal_plans.id','meal_plans.plan_id','meal_image.image')->get();
+            ->select('meals.id','meal_image.image')->get();
 
 //        $ingredientsMeal= '';
 //        $ingredientCount=DB::table('ingredient_meal')
@@ -196,8 +195,7 @@ class MealPlanController extends Controller
             'chef' => $chef,
             'foodies' => $foodies,
             'mealPlans' => $mealPlans,
-            'mealPlansCount'=>$mealPlansCount,
-            'meals' => $meals,
+//            'meals' => $meals,
             'mealPhotos'=>$mealPhotos,
             'ingredientsMeal'=>$ingredientsMeal,
             'chats' => $chats,
@@ -350,6 +348,13 @@ class MealPlanController extends Controller
 
     public function setMeal(Request $request, Plan $plan)
     {
+
+        $mealPlan=New MealPlan();
+        $mealPlan->plan_id=$plan->id;
+        $mealPlan->day=$request['dayCreate'];
+        $mealPlan->meal_type=$request['meal_typeCreate'];
+        $mealPlan->save();
+
         $meal = new Meal();
         $meal->chef_id = Auth::guard('chef')->user()->id;
         $meal->description = $request['description'];
@@ -406,18 +411,13 @@ class MealPlanController extends Controller
              DB::table('meal_image')->insert(
                  ['meal_id' => $meal->id, 'image' => $filename, 'created_at'=>Carbon::now(), 'updated_at'=>Carbon::now()]
              );
-//             DB::table('plan_gallery')->insert(
-//                 ['plan_id' => $plan->id, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
-//             );
-//             DB::table('plan_images')->insert(
-//                 ['plan_id' => $plan->id, 'image' => $mealPhoto, 'created_at'=>Carbon::now(),'updated_at'=>Carbon::now()]
-//             );
          }
+
+
 
         $customMeal=new ChefCustomizedMeal();
         $customMeal->meal_id=$meal->id;
-        $customMeal->chef_id=Auth::guard('chef')->user()->id;
-        $customMeal->plan_id=$plan->id;
+        $customMeal->mealplan_id=$mealPlan->id;
         $customMeal->description=$request['description'];
         $customMeal->main_ingredient=$request['main_ingredient'];
         $customMeal->calories=$meal->calories;
@@ -426,16 +426,8 @@ class MealPlanController extends Controller
         $customMeal->fat=$meal->fat;
         $customMeal->save();
 
-        $mealPlan=New MealPlan();
-        $mealPlan->plan_id=$plan->id;
-        $mealPlan->meal_id=$meal->id;
-        $mealPlan->customized_meal_id=$customMeal->id;
-        $mealPlan->day=$request['dayCreate'];
-        $mealPlan->meal_type=$request['meal_typeCreate'];
-        $mealPlan->save();
 
-        $customMeal->mealplan_id=$mealPlan->id;
-        $customMeal->save();
+
 
         for($i=0;$i<$ingredientCount;$i++){
             DB::table('ingredient_meal')->insert(
@@ -461,27 +453,22 @@ class MealPlanController extends Controller
         $meal_type=$request['meal_typeChoose'];
         $meal_id=$request['meal_idChoose'];
         $meal=Meal::where('id','=',$meal_id)->first();
-//        dd($meal->ingredient_meal->count());
+
+        $mealPlan=New MealPlan();
+        $mealPlan->plan_id=$plan->id;
+        $mealPlan->day=$day;
+        $mealPlan->meal_type=$meal_type;
+        $mealPlan->save();
+
         $customMeal=new ChefCustomizedMeal();
-        $customMeal->meal_id=$meal->id;
         $customMeal->chef_id=Auth::guard('chef')->user()->id;
-        $customMeal->plan_id=$plan->id;
+        $customMeal->mealplan_id=$mealPlan->id;
         $customMeal->description=$meal->description;
         $customMeal->main_ingredient=$meal->main_ingredient;
         $customMeal->calories=$meal->calories;
         $customMeal->carbohydrates=$meal->carbohydrates;
         $customMeal->protein=$meal->protein;
         $customMeal->fat=$meal->fat;
-        $customMeal->save();
-
-        $mealPlan=New MealPlan();
-        $mealPlan->plan_id=$plan->id;
-        $mealPlan->meal_id=$meal->id;
-        $mealPlan->customized_meal_id=$customMeal->id;
-        $mealPlan->day=$day;
-        $mealPlan->meal_type=$meal_type;
-        $mealPlan->save();
-        $customMeal->mealplan_id=$mealPlan->id;
         $customMeal->save();
 
         if($meal->ingredient_meal->count()>0){

@@ -21,7 +21,7 @@ class MealPlan extends Model
 //        return $this->belongsTo('App\CustomizedMeal','customized_meal_id');
 //    }
     public function chefcustomize(){
-        return $this->belongsTo('App\ChefCustomizedMeal','customized_meal_id');
+        return $this->hasOne('App\ChefCustomizedMeal','mealplan_id');
     }
 
 

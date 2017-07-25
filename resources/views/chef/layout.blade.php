@@ -105,7 +105,7 @@
 
         {{-- Chef Message Dropdown --}}
         <ul id="chefMessageDropdown" class="dropdown-content collection msgCollct">
-            @if($chats->count()>0)
+            @if($chats->count())
                 @foreach($chats->take(5) as $chat)
                     @if($chat->message->where('is_read',0)->where('receiver_type','c')->count()==0)
                         <li class="collection-item msgCol">

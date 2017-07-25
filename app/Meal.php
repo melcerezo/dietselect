@@ -17,8 +17,8 @@ class Meal extends Model
         return $this->hasMany(IngredientMeal::class);
     }
 
-    public function mealplan(){
-        return $this->hasMany(MealPlan::class);
+    public function chefcustomize(){
+        return $this->hasMany(ChefCustomizedMeal::class);
     }
 
     public function plan()

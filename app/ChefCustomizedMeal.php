@@ -11,8 +11,12 @@ class ChefCustomizedMeal extends Model
         return $this->hasMany(ChefCustomizedIngredientMeal::class, 'meal_id');
     }
 
+    public function meal(){
+        return $this->belongsTo(Meal::class);
+    }
+
     public function mealplans(){
-        return $this->hasMany(MealPlan::class,'customized_meal_id');
+        return $this->belongsTo(MealPlan::class,'mealplan_id');
     }
     public function customized_meal(){
         return $this->hasMany(CustomizedMeal::class, 'meal_id');
