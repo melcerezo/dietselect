@@ -67,6 +67,7 @@ class ChefOrderController extends Controller
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
 
+        $ingredientMeals=[];
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->mealplans()->get();
@@ -75,13 +76,25 @@ class ChefOrderController extends Controller
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $orderMealPlans=$orderPlan->customized_meal()->get();
             $orderMealPlansCount = $orderMealPlans->count();
-//            foreach($orderMealPlans as $orderMealPlan){
-//
-//            }
-        dd($orderMealPlans[0]->customized_ingredient_meal()->get());
+            foreach($orderMealPlans as $orderMealPlan){
+                foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
+                    $ingredientDesc = DB::table('ingredients')
+                        ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+                        ->where('NDB_No','=',$orderMealIngredient->ingredient_id)
+                        ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+                        ->first();
+                    $ingredientMeals[]=array(
+                        "meal"=>$orderMealIngredient->meal_id,
+                        "ingredient"=>$ingredientDesc->Long_Desc,
+                        "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
+                        "grams"=>$orderMealIngredient->grams
+                    );
+
+                }
+            }
+        dd($ingredientMeals);
         }
         $orderCustomizedMeals=[];
-        $ingredientMeals=[];
         $ingredientMealData=[];
         $ingredientCount = DB::table('ingredient_meal')
             ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
