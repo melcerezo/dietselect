@@ -53,17 +53,20 @@ class ChefController extends Controller
         $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
-        $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
-            ->join('plans','plans.id','=','order_items.plan_id')
-            ->where('plans.chef_id','=',$chef->id)
-            ->where('orders.is_paid','=',1)
-            ->where('orders.is_cancelled','=',0)
-            ->where('orders.created_at','>',$lastSaturday)
-            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
-                'order_items.order_type','order_items.created_at','order_items.updated_at')
-            ->get();
 
-        dd($lastSaturday);
+
+
+//        $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
+//            ->join('plans','plans.id','=','order_items.plan_id')
+//            ->where('plans.chef_id','=',$chef->id)
+//            ->where('orders.is_paid','=',1)
+//            ->where('orders.is_cancelled','=',0)
+//            ->where('orders.created_at','>',$lastSaturday)
+//            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
+//                'order_items.order_type','order_items.created_at','order_items.updated_at')
+//            ->get();
+//
+//        dd($lastSaturday);
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
