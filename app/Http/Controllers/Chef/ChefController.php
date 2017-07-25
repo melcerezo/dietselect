@@ -56,10 +56,13 @@ class ChefController extends Controller
 
         $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->get();
 
+        $pendingOrders = [];
+
+        dd($pendingOrderItems[0]->plan()->plan_name);
 
         foreach($pendingOrderItems as $orderItem){
             if($orderItem->order->is_paid == 1){
-                echo "paid ";
+                $pendingOrders[]=array('');
             }
         }
         dd('end loop');
