@@ -56,7 +56,14 @@ class ChefController extends Controller
 
         $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->get();
 
-        dd($pendingOrderItems);
+        dd($pendingOrderItems[0]->order);
+
+        foreach($pendingOrderItems as $orderItem){
+            if($orderItem->order->is_paid == 1){
+
+            }
+        }
+
 
 
 //        $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
