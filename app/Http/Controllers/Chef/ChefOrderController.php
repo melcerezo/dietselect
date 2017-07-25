@@ -78,7 +78,7 @@ class ChefOrderController extends Controller
 //            foreach($orderMealPlans as $orderMealPlan){
 //
 //            }
-        dd($orderMealPlans->customized_ingredient_meal()->get());
+        dd($orderMealPlans->customized_ingredient_meal);
         }
         $orderCustomizedMeals=[];
         $ingredientMeals=[];
