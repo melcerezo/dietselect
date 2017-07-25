@@ -155,7 +155,7 @@ class MealPlanController extends Controller
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
 //        dd($mealPlans);
-//        $meals= Meal::where('chef_id','=', $chef->id);
+        $meals= Meal::where('chef_id','=', $chef->id);
         $mealPhotos = DB::table('meal_image')
             ->join('meals','meal_image.meal_id','=','meals.id')
             ->select('meals.id','meal_image.image')->get();
@@ -195,7 +195,7 @@ class MealPlanController extends Controller
             'chef' => $chef,
             'foodies' => $foodies,
             'mealPlans' => $mealPlans,
-//            'meals' => $meals,
+            'meals' => $meals,
             'mealPhotos'=>$mealPhotos,
             'ingredientsMeal'=>$ingredientsMeal,
             'chats' => $chats,
