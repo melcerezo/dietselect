@@ -54,6 +54,9 @@ class ChefController extends Controller
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
 
 
+        $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at'>$lastSaturday)->get();
+
+        dd($pendingOrderItems);
 
 
 //        $pendingOrderItems=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
