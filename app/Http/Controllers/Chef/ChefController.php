@@ -63,7 +63,7 @@ class ChefController extends Controller
                 'order_items.order_type','order_items.created_at','order_items.updated_at')
             ->get();
 
-        dd($pendingOrderItems);
+        dd($lastSaturday);
 
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
