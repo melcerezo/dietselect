@@ -287,19 +287,14 @@
                                 <td id="MoBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
-                                            @foreach($customize as $id =>$cust)
-                                                @if($cust->meal_id == $mealPlan->chefcustomize->id && $cust->order_id == $order->id)
-                                                    {{--{{$id.' '.$cust->meal_id}}--}}
-                                                    <a href="#editMeal-{{$id}}"
-                                                       class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
-                                                    <br />
-                                                    <div id="cu{{$id}}">
-                                                        @if($cust->custom_type==1)
-                                                            <p>Customized</p>
-                                                        @endif
-                                                    </div>
+                                            <a href="#editMeal-{{$id}}"
+                                               class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
+                                            <br />
+                                            <div id="cu{{$id}}">
+                                                @if($cust->custom_type==1)
+                                                    <p>Customized</p>
                                                 @endif
-                                            @endforeach
+                                            </div>
                                         @endif
                                     @endforeach
                                 </td>

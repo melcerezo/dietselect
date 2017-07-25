@@ -19,6 +19,6 @@ class CustomizedIngredientMeal extends Model
 
     public function customizedMeal()
     {
-        return $this->belongsTo(CustomizedMeal::class);
+        return $this->belongsTo(CustomizedMeal::class, 'meal_id');
     }
 }

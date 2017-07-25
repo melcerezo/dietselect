@@ -13,6 +13,6 @@ class ChefCustomizedIngredientMeal extends Model
 
     public function chefCustomizedMeal()
     {
-        return $this->belongsTo(ChefCustomizedMeal::class);
+        return $this->belongsTo(ChefCustomizedMeal::class,'meal_id');
     }
 }
