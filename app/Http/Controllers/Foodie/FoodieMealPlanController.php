@@ -265,6 +265,7 @@ class FoodieMealPlanController extends Controller
         for ($i = 0; $i < $mealId->count(); $i++) {
             $mealIngreds[$i] = ChefCustomizedIngredientMeal::where('meal_id', '=', $mealId[$i])->get();
         }
+        dd($mealIngreds);
         for ($i = 0; $i < count($mealIngreds); $i++) {
             foreach ($mealIngreds[$i] as $item) {
                 $customizeIngredient = new CustomizedIngredientMeal();
@@ -356,7 +357,7 @@ class FoodieMealPlanController extends Controller
 //        $customMeals = MealPlan::where('customized_meal_id', '=', $customize->meal_id)->get();
 //        dd($customMeals);
 
-        dd($customize);
+//        dd($customize);
 
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
