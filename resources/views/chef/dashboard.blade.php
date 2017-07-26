@@ -46,7 +46,7 @@
                     @if($plans->count()>0)
                         @foreach($plans->take(3) as $plan)
                             <li class="collection-item">
-                                <a href="#!">
+                                <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
                                     <p>Plan Name: {{$plan->plan_name}}</p>
                                     <div class="divider"></div>
                                     <p>Calories: {{$plan->calories}}</p>
