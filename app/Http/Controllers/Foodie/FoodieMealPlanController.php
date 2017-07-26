@@ -109,7 +109,6 @@ class FoodieMealPlanController extends Controller
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
-        $mealPlansCount = $mealPlans->count();
 
 //        $ingredientsMeal = '';
 //        $ingredientCount = DB::table('ingredient_meal')
@@ -129,9 +128,14 @@ class FoodieMealPlanController extends Controller
 //        }
 
         $mealPhotos = DB::table('meal_image')
-            ->join('meals','meal_image.meal_id','=','meals.id')
-            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
-            ->select('meal_plans.id','meals.description','meal_plans.plan_id','meal_image.image')->get();
+            ->join('chef_customized_meals','chef_customized_meals.meal_id','=','meal_image.meal_id')
+            ->join('meal_plans','meals_plans.meal_id','=','chef_customized_meals.id')
+            ->join('plans','plans.id','=','meal_plans.meal_id')
+//            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->where('plans.id','=',$plan->id)
+            ->select('meals.id','meal_image.image')->get();
+
+        dd($mealPhotos);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
