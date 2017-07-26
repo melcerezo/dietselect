@@ -274,7 +274,7 @@ class FoodieMealPlanController extends Controller
                 $customizeIngredient->save();
             }
         }
-        dd('finished meal ingred');
+//        dd('finished meal ingred');
 
         $customIdString=json_encode($customId);
 
