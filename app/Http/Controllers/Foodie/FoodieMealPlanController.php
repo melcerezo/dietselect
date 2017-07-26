@@ -424,9 +424,9 @@ class FoodieMealPlanController extends Controller
                                                     ->where('FdGrp_Cd', '~0900~')
                                                     ->get();
                                             }else{
-                                                if($categ=='nuts,seeds'){
+                                                if($categ=='beans,peanuts'){
                                                     $data = DB::table('ingredients')->select('Long_Desc')
-                                                        ->where('FdGrp_Cd', '~1200~')
+                                                        ->where('FdGrp_Cd', '~1600~')
                                                         ->get();
                                                 }
                                             }
