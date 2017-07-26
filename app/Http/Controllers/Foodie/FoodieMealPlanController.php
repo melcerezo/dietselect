@@ -130,7 +130,7 @@ class FoodieMealPlanController extends Controller
         $mealPhotos = DB::table('meal_image')
             ->join('chef_customized_meals','chef_customized_meals.meal_id','=','meal_image.meal_id')
             ->join('meal_plans','meal_plans.id','=','chef_customized_meals.mealplan_id')
-            ->join('plans','plans.id','=','meal_plans.meal_id')
+            ->join('plans','plans.id','=','meal_plans.plan_id')
 //            ->join('meals','meal_image.meal_id','=','meals.id')
             ->where('plans.id','=',$plan->id)
             ->select('chef_customized_meals.meal_id','meal_image.image')->get();
