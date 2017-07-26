@@ -465,7 +465,7 @@ class MealPlanController extends Controller
         $mealPlan->save();
 
         $customMeal=new ChefCustomizedMeal();
-        $customMeal->chef_id=Auth::guard('chef')->user()->id;
+        $customMeal->meal_id=$meal_id;
         $customMeal->mealplan_id=$mealPlan->id;
         $customMeal->description=$meal->description;
         $customMeal->main_ingredient=$meal->main_ingredient;
