@@ -239,12 +239,11 @@ class FoodieMealPlanController extends Controller
         $customPlan->plan_id = $plan->id;
         $customPlan->save();
         $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
-        $mealId = $mealPlans->pluck('customized_meal_id');
 //        dd($mealId);
 //        dd($customPlan);
 //    dd($mealIngreds[3]);
         $customId = [];// this array will hold the created customized meal ids
-
+        $mealId =[];
         foreach ($mealPlans as $mealPlan) {
             $customize = new CustomizedMeal();
             $customize->meal_id = $mealPlan->chefcustomize->id;
@@ -257,6 +256,7 @@ class FoodieMealPlanController extends Controller
             $customize->protein = $mealPlan->chefcustomize->protein;
             $customize->fat = $mealPlan->chefcustomize->fat;
             $customize->save();
+            $mealId = $mealPlan->chefcustomize->id;
             $customId[] = $customize->id;//saves the created meal id into $customId
         }
 
