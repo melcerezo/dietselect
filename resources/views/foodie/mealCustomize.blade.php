@@ -604,19 +604,20 @@
                             <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
                                 <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient">
                                     {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
-                                    <option value="chicken">Chicken</option>
-                                    <option value="beef">Beef</option>
-                                    <option value="pork">Pork</option>
-                                    <option value="seafood">Seafood</option>
-                                    <option value="carbohydrates">Carbohydrates</option>
-                                    <option value="vegetables">Vegetables</option>
-                                    <option value="fruits">Fruits</option>
+                                    <option value="Chicken">Chicken</option>
+                                    <option value="Beef">Beef</option>
+                                    <option value="Pork">Pork</option>
+                                    <option value="Seafood">Seafood</option>
+                                    <option value="Dairy/Egg">Dairy/Egg</option>
+                                    <option value="Vegetables">Vegetables</option>
+                                    <option value="Carbohydrates">Carbohydrates</option>
+                                    <option value="Fruits">Fruits</option>
                                 </select>
                             </div>
                             <script>
                                 $(document).ready(function () {
                                     var mainIngred='{{ $cust->main_ingredient}}';
-                                    $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
+                                    $('select#main_ingredient{{$i}}').val(mainIngred);
                                 });
                             </script>
 
@@ -636,9 +637,11 @@
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
                                                         <option value="pork">Pork</option>
+                                                        <option value="fish">Fish</option>
                                                         <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
                                                         <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains,Pasta)</option>
                                                         <option value="dairy,eggs">Dairy, Eggs</option>
+                                                        <option value="nuts,seeds">Nuts, Seeds</option>
                                                         <option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>
                                                         <option value="fruits">Fruits, Fruit Juices</option>
                                                         <option value="vegetables">Vegetables</option>

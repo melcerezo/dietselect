@@ -21,6 +21,7 @@ $(document).ready(function () {
                                 '<option value="carbohydrates(baked)">Carbohydrates(Baked)</option>' +
                                 '<option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>' +
                                 '<option value="dairy,eggs">Dairy, Eggs</option>' +
+                                '<option value="nuts,seeds">Nuts, Seeds</option>' +
                                 '<option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>' +
                                 '<option value="fruits">Fruits, Fruit Juices</option>' +
                                 '<option value="vegetables">Vegetables</option>' +
