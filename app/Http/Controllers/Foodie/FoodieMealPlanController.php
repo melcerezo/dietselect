@@ -133,7 +133,7 @@ class FoodieMealPlanController extends Controller
             ->join('plans','plans.id','=','meal_plans.meal_id')
 //            ->join('meals','meal_image.meal_id','=','meals.id')
             ->where('plans.id','=',$plan->id)
-            ->select('meals.id','meal_image.image')->get();
+            ->select('chef_customized_meals.meal_id','meal_image.image')->get();
 
         dd($mealPhotos);
 
