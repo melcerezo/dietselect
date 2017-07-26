@@ -157,9 +157,9 @@ class MealPlanController extends Controller
 //        dd($mealPlans);
         $meals= Meal::where('chef_id','=', $chef->id);
         $mealPhotos = DB::table('meal_image')
-            ->join('chef_customized_meals','meal_id','=','meal_image.meal_id')
-            ->where('chef_customized_meals.chef_id','=',$chef->id)
-            ->select('chef_customized_meals.id','meal_image.image')->get();
+            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->where('meals.chef_id','=',$chef->id)
+            ->select('meals.id','meal_image.image')->get();
 
         dd($mealPhotos);
 
