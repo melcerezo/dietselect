@@ -659,7 +659,7 @@
                                                         <div class="gramLabel"><label for="grams[]">Grams</label></div>
                                                         <input type="number" value="{{$ingredientsMeal[$j]['grams']}}"
                                                                name="grams[{{$j}}]"
-                                                               id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
+                                                               id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
                                                                class="required inputBehind">
                                                     </div>
                                                     <div class="error-foodieGram{{$j}} err"></div>
