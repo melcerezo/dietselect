@@ -359,9 +359,14 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
+//        $mealPhotos = DB::table('meal_image')
+//            ->join('meals','meal_image.meal_id','=','meals.id')
+//            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+//            ->select('meal_plans.id','meal_plans.plan_id','meal_image.image')->get();
+
         $mealPhotos = DB::table('meal_image')
-            ->join('meals','meal_image.meal_id','=','meals.id')
-            ->join('meal_plans','meal_plans.meal_id','=','meals.id')
+            ->join('chef_customized_meals','chef_customized_meals.meal_id','=','meal_image.meal_id')
+            ->join('meal_plans','meal_plans.id','=','chef_customized_meals.mealplan_id')
             ->select('meal_plans.id','meal_plans.plan_id','meal_image.image')->get();
 
         return view('foodie.mealCustomize', compact('plan', 'customize'))->with([
