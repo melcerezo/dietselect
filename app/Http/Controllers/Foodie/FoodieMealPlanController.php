@@ -135,7 +135,7 @@ class FoodieMealPlanController extends Controller
             ->where('plans.id','=',$plan->id)
             ->select('chef_customized_meals.meal_id','meal_image.image')->get();
 
-        dd($mealPhotos);
+//        dd($mealPhotos);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
