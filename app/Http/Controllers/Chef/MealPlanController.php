@@ -161,7 +161,7 @@ class MealPlanController extends Controller
             ->where('meals.chef_id','=',$chef->id)
             ->select('meals.id','meal_image.image')->get();
 
-        dd($mealPlans[0]->chefcustomize->meal->id);
+//        dd($mealPlans[0]->chefcustomize->meal->id);
 
 //        $ingredientsMeal= '';
 //        $ingredientCount=DB::table('ingredient_meal')
