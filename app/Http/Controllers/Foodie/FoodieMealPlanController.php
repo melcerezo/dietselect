@@ -262,7 +262,7 @@ class FoodieMealPlanController extends Controller
 
         $mealIngreds = [];
         //makes array of arrays
-        for ($i = 0; $i < $mealId->count(); $i++) {
+        for ($i = 0; $i < count($mealId); $i++) {
             $mealIngreds[$i] = ChefCustomizedIngredientMeal::where('meal_id', '=', $mealId[$i])->get();
         }
         dd($mealIngreds);
