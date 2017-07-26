@@ -356,7 +356,7 @@ class FoodieMealPlanController extends Controller
 //        $customMeals = MealPlan::where('customized_meal_id', '=', $customize->meal_id)->get();
 //        dd($customMeals);
 
-        dd($ingredientsMeal);
+        dd($customize);
 
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
