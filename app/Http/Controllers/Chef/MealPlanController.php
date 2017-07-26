@@ -159,7 +159,7 @@ class MealPlanController extends Controller
         $mealPhotos = DB::table('meal_image')
             ->join('chef_customized_meals','meal_id','=','meal_image.meal_id')
             ->where('chef_customized_meals.chef_id','=',$chef->id)
-            ->select('meals.id','meal_image.image')->get();
+            ->select('chef_customized_meals.id','meal_image.image')->get();
 
         dd($mealPhotos);
 
