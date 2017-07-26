@@ -518,6 +518,14 @@ class FoodieMealPlanController extends Controller
             $data = DB::table('ingredients')->select('Long_Desc')
                 ->where('FdGrp_Cd', '~0900~')
                 ->get();
+        }else if($categ=='beans,peanuts') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~1600~')
+                ->get();
+        }else if($categ == 'fat,oils') {
+            $data = DB::table('ingredients')->select('Long_Desc')
+                ->where('FdGrp_Cd', '~0400~')
+                ->get();
         }
 
 
