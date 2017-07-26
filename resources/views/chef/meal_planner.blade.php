@@ -518,13 +518,13 @@
                                 <option value="Dairy/Egg">Dairy/Egg</option>
                                 <option value="Vegetables">Vegetables</option>
                                 <option value="Carbohydrates">Carbohydrates</option>
-                                <option value="fruits">Fruits</option>
+                                <option value="Fruits">Fruits</option>
                             </select>
                             </div>
                             <script>
                                 $(document).ready(function () {
                                     var mainIngred='{{ $mealPlans[$i]->chefcustomize->main_ingredient}}';
-                                    $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
+                                    $('select#main_ingredient{{$i}}').val(mainIngred);
                                 });
                             </script>
                         <div class="ingredLabel"><label for="ingredient">Ingredients</label></div>
@@ -657,7 +657,7 @@
                     <option value="Dairy/Egg">Dairy/Egg</option>
                     <option value="Vegetables">Vegetables</option>
                     <option value="Carbohydrates">Carbohydrates</option>
-                    <option value="fruits">Fruits</option>
+                    <option value="Fruits">Fruits</option>
                 </select>
                 <div id="errorMainIngredient"></div>
                 <div class="file-field input-field">
