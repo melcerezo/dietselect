@@ -650,7 +650,7 @@
                                                     <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
                                                         <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
                                                         <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
-                                                               id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"
+                                                               id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}"
                                                                data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                                name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind">
                                                     </div>
