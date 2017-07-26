@@ -256,7 +256,7 @@ class FoodieMealPlanController extends Controller
             $customize->protein = $mealPlan->chefcustomize->protein;
             $customize->fat = $mealPlan->chefcustomize->fat;
             $customize->save();
-            $mealId = $mealPlan->chefcustomize->id;
+            $mealId[]= $mealPlan->chefcustomize->id;
             $customId[] = $customize->id;//saves the created meal id into $customId
         }
 
