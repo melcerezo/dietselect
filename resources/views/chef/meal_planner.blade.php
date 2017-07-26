@@ -511,12 +511,13 @@
                         <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
                             <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient">
                                 {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
-                                <option value="chicken">Chicken</option>
-                                <option value="beef">Beef</option>
-                                <option value="pork">Pork</option>
-                                <option value="seafood">Seafood</option>
-                                <option value="carbohydrates">Carbohydrates</option>
-                                <option value="vegetables">Vegetables</option>
+                                <option value="Chicken">Chicken</option>
+                                <option value="Beef">Beef</option>
+                                <option value="Pork">Pork</option>
+                                <option value="Seafood">Seafood</option>
+                                <option value="Dairy/Egg">Dairy/Egg</option>
+                                <option value="Vegetables">Vegetables</option>
+                                <option value="Carbohydrates">Carbohydrates</option>
                                 <option value="fruits">Fruits</option>
                             </select>
                             </div>
