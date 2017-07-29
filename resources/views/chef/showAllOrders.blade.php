@@ -29,7 +29,7 @@
                                     <td class="orderID">{{$order['id']}}</td>
                                     <td class="planName">{{$order['plan_name']}}</td>
                                     @foreach($foodies as $foodie)
-                                        @if($foodie->id==$foodie['foodie_id'])
+                                        @if($foodie->id==$order['foodie_id'])
                                             <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
                                         @endif
                                     @endforeach
