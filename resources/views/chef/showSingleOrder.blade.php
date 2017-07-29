@@ -12,7 +12,7 @@
             <h2>This Meal Plan is Empty!</h2>
         </div>
     @else
-        <div class="container" style="margin-top: 0.5rem;">
+        <div class="container" style="width:85%; margin-top: 0.5rem;">
             <div class="row">
                 <nav class="light-green lighten-1 white-text">
                     <div class="left col s12">
