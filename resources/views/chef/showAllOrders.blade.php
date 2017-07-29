@@ -6,9 +6,17 @@
 
     @if(count($orders)>0)
         <div class="container">
-            <div class="row">
-                <h2 class="center white-text">View Orders</h2>
-                <span class="center full-width white-text" style="font-size: 1.5em">See who has ordered from you!</span>
+            <div class="row" style="margin-top: 1rem;">
+                <nav class="light-green lighten-1 white-text">
+                    <div class="left col s12">
+                        <ul>
+                            <li>
+                                <span style="font-size: 20px;">View Orders</span>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
             @foreach($orders as $order)
             <div class="row">
                 <div class="card">
@@ -61,7 +69,6 @@
                 </div>
             </div>
             @endforeach
-            </div>
         </div>
     @else
         No Orders Yet!
