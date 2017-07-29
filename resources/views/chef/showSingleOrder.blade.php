@@ -43,8 +43,8 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Monday</td>
                                 <td id="MOBreakfast" data-day="MO" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->chefcustomize->day == 'MO' && $mealPlan->chefcustomize->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'MO' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
