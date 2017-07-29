@@ -21,11 +21,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-panel">
-                        @if($order->order_type==0)
-                            <a href="{{route()}}">
-                        @else
-                            <a href="{{route()}}">
-                        @endif
+                        <a href="{{route('chef.order.single', $order->id)}}">
                             <table>
                                 <thead>
                                     <tr>
