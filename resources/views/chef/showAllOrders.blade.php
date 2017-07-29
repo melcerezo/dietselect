@@ -40,7 +40,7 @@
                                         @if($order->order_type==0)
                                             <td class="planName">{{$order->plan->plan_name}}</td>
                                         @elseif($order->order_type==1)
-                                            <td class="planName">{{$order->customplan->plan_name}}</td>
+                                            <td class="planName">{{$order->customplan->plan->plan_name}}</td>
                                         @endif
                                         @foreach($foodies as $foodie)
                                             @if($foodie->id==$order->foodie_id)
