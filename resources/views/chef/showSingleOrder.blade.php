@@ -7,7 +7,7 @@
 @endsection
 
 @section('page_content')
-    @if($mealPlansCount==0)
+    @if(count($mealPlans)==0)
         <div>
             <h2>This Meal Plan is Empty!</h2>
         </div>
