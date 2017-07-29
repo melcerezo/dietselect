@@ -37,7 +37,7 @@ class ChefOrderController extends Controller
 
         $chef = Auth::guard('chef')->user();
 
-        $orders=OrderItem::has('plans')->get();
+        $orders=OrderItem::has('plan')->get();
         dd($orders);
 //        $orders=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
 //            ->join('plans','plans.id','=','order_items.plan_id')
