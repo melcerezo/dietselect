@@ -48,6 +48,8 @@ $(document).ready(function () {
                     $valType='fish';
                 }else if($valType=='dairy,egg'){
                     $valType='dairy,eggs';
+                }else if($valType=='soups,sauces,gravies'){
+                    $valType='soups,sauces,gravy';
                 }
                 var $ingredientAuto=ingredAjax($valType);
                 $ingredientAuto.done(function(response){
