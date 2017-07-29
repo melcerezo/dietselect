@@ -4,7 +4,7 @@
 
 @section('page_content')
 
-    @if($ordersCount>0)
+    @if($orders->count())
         <div class="container">
             <div class="row">
                 <h2 class="center white-text">View Orders</h2>
