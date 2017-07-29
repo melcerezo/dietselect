@@ -142,7 +142,7 @@
                                 <span>{{$orderAddress->brgy}}, </span>
                                 <span>{{$orderAddress->city}}</span>
                             </div>
-                            @if($order->is_paid==1)
+                            @if($order->is_paid==0)
                                 <div>
                                     <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
                                 </div>
