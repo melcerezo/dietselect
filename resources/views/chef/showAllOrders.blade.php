@@ -21,57 +21,63 @@
             <div class="row">
                 <div class="card">
                     <div class="card-panel">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Plan Name</th>
-                                    <th>Foodie Name</th>
-                                    <th>Quantity</th>
-                                    <th>Amount</th>
-                                    <th>Type</th>
-                                    <th>Payment Status</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="orderID">{{$order->id}}</td>
-                                    <td class="planName">{{$order->plan_name}}</td>
-                                    @foreach($foodies as $foodie)
-                                        @if($foodie->id==$order->foodie_id)
-                                            <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
-                                        @endif
-                                    @endforeach
-                                    <td class="quantity">{{$order->quantity}}</td>
-                                    <td class="amount">{{$order->price}}</td>
-                                    <td class="type">
-                                        @if($order->order_type==1)
-                                            <p>Customized</p>
-                                        @else
-                                            <p>Standard</p>
-                                        @endif
-                                    </td>
-                                    <td class="paid">
-                                        @if($order->is_cancelled==0)
-                                            @if($order->is_paid==1)
-                                                <p>Paid</p>
-                                            @elseif($order->is_paid==0)
-                                                <p>Pending</p>
+                        @if($order->order_type==0)
+                            <a href="{{route()}}">
+                        @else
+                            <a href="{{route()}}">
+                        @endif
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Plan Name</th>
+                                        <th>Foodie Name</th>
+                                        <th>Quantity</th>
+                                        <th>Amount</th>
+                                        <th>Type</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="orderID">{{$order->id}}</td>
+                                        <td class="planName">{{$order->plan_name}}</td>
+                                        @foreach($foodies as $foodie)
+                                            @if($foodie->id==$order->foodie_id)
+                                                <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
                                             @endif
-                                        @else
-                                            <p>Cancelled</p>
-                                        @endif
-                                    </td>
-                                    {{--<td>--}}
-                                        {{--@if($order->is_paid==0)--}}
-                                            {{--<p>Pending</p>--}}
-                                        {{--@else--}}
-                                            {{--<p>Paid</p>--}}
-                                        {{--@endif--}}
-                                    {{--</td>--}}
-                                </tr>
-                            </tbody>
-                        </table>
+                                        @endforeach
+                                        <td class="quantity">{{$order->quantity}}</td>
+                                        <td class="amount">{{$order->price}}</td>
+                                        <td class="type">
+                                            @if($order->order_type==1)
+                                                <p>Customized</p>
+                                            @else
+                                                <p>Standard</p>
+                                            @endif
+                                        </td>
+                                        <td class="paid">
+                                            @if($order->is_cancelled==0)
+                                                @if($order->is_paid==1)
+                                                    <p>Paid</p>
+                                                @elseif($order->is_paid==0)
+                                                    <p>Pending</p>
+                                                @endif
+                                            @else
+                                                <p>Cancelled</p>
+                                            @endif
+                                        </td>
+                                        {{--<td>--}}
+                                            {{--@if($order->is_paid==0)--}}
+                                                {{--<p>Pending</p>--}}
+                                            {{--@else--}}
+                                                {{--<p>Paid</p>--}}
+                                            {{--@endif--}}
+                                        {{--</td>--}}
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </a>
                     @if($order->order_type==1)
                     <div>
                         <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order->id])}}'" class="btn">See Customization</button>
