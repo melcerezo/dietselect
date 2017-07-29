@@ -43,6 +43,7 @@ class ChefOrderController extends Controller
                 'order_items.price','orders.is_paid','orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
             ->get();
 
+        dd($orders);
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
