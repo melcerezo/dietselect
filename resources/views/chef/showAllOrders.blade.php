@@ -52,10 +52,14 @@
                                         @endif
                                     </td>
                                     <td class="paid">
-                                        @if($order->is_paid==1)
-                                            <p>Paid</p>
+                                        @if($order->is_cancelled==0)
+                                            @if($order->is_paid==1)
+                                                <p>Paid</p>
+                                            @elseif($order->is_paid==0)
+                                                <p>Pending</p>
+                                            @endif
                                         @else
-                                            <p>Pending</p>
+                                            <p>Cancelled</p>
                                         @endif
                                     </td>
                                     {{--<td>--}}
