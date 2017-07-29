@@ -50,29 +50,29 @@
                                 </td>
                                 <td id="MOMorningSnack" data-day="MO" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'MO' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="MOLunch" data-day="MO" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'MO' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="MOAfternoonSnack" data-day="MO" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'MO' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="MODinner" data-day="MO" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'MO' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -81,36 +81,36 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Tuesday</td>
                                 <td id="TUBreakfast" data-day="TU" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TU' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="TUMorningSnack" data-day="TU" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TU' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="TULunch" data-day="TU" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TU' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="TUAfternoonSnack" data-day="TU" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TU' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="TUDinner" data-day="TU" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TU' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -119,36 +119,36 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Wednesday</td>
                                 <td id="WEBreakfast" data-day="WE" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'WE' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="WEMorningSnack" data-day="WE" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'WE' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="WELunch" data-day="WE" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'WE' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="WEAfternoonSnack" data-day="WE" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'WE' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->mealplans->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="WEDinner" data-day="WE" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'WE' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -157,36 +157,36 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Thursday</td>
                                 <td id="THBreakfast" data-day="TH" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TH' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="THMorningSnack" data-day="TH" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TH' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="THLunch" data-day="TH" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TH' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="THAfternoonSnack" data-day="TH" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TH' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="THDinner" data-day="TH" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'TH' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -195,36 +195,36 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Friday</td>
                                 <td id="FRBreakfast" data-day="FR" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="FRMorningSnack" data-day="FR" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="FRLunch" data-day="FR" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="FRAfternoonSnack" data-day="FR" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="FRDinner" data-day="FR" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
@@ -233,36 +233,36 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Saturday</td>
                                 <td id="SABreakfast" data-day="SA" data-meal-type="Breakfast" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'SA' && $mealPlan->mealplans->meal_type == 'Breakfast')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="SAMorningSnack" data-day="SA" data-meal-type="MorningSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'SA' && $mealPlan->mealplans->meal_type == 'MorningSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="SALunch" data-day="SA" data-meal-type="Lunch" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'SA' && $mealPlan->mealplans->meal_type == 'Lunch')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="SAAfternoonSnack" data-day="SA" data-meal-type="AfternoonSnack" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'SA' && $mealPlan->mealplans->meal_type == 'AfternoonSnack')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
                                 <td id="SADinner" data-day="SA" data-meal-type="Dinner" class="tdCell">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
-                                            {{$mealPlan->chefcustomize->description}}<br>
+                                        @if($mealPlan->mealplans->day == 'SA' && $mealPlan->mealplans->meal_type == 'Dinner')
+                                            {{$mealPlan->description}}<br>
                                         @endif
                                     @endforeach
                                 </td>
