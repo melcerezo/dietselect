@@ -30,6 +30,7 @@
                                     <th>Quantity</th>
                                     <th>Amount</th>
                                     <th>Type</th>
+                                    <th>Payment Status</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,6 +51,7 @@
                                             <p>Standard</p>
                                         @endif
                                     </td>
+                                    <td class="paid">{{$order->is_paid}}</td>
                                     {{--<td>--}}
                                         {{--@if($order->is_paid==0)--}}
                                             {{--<p>Pending</p>--}}

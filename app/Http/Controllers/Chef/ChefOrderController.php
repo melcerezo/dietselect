@@ -40,7 +40,7 @@ class ChefOrderController extends Controller
             ->join('plans','plans.id','=','order_items.plan_id')
             ->where('plans.chef_id','=',$chef->id)
             ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
-                'order_items.price','order_items.order_type','order_items.created_at','order_items.updated_at')
+                'order_items.price','orders.is_paid','orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
             ->get();
 
 
