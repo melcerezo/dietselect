@@ -26,17 +26,17 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="orderID">{{$order['id']}}</td>
-                                    <td class="planName">{{$order['plan_name']}}</td>
+                                    <td class="orderID">{{$order->id}}</td>
+                                    <td class="planName">{{$order->plan_name}}</td>
                                     @foreach($foodies as $foodie)
-                                        @if($foodie->id==$order['foodie_id'])
+                                        @if($foodie->id==$order->foodie_id)
                                             <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
                                         @endif
                                     @endforeach
-                                    <td class="quantity">{{$order['quantity']}}</td>
-                                    <td class="amount">{{$order['price']}}</td>
+                                    <td class="quantity">{{$order->quantity}}</td>
+                                    <td class="amount">{{$order->price}}</td>
                                     <td class="type">
-                                        @if($order['order_type']==1)
+                                        @if($order->order_type==1)
                                             <p>Customized</p>
                                         @else
                                             <p>Standard</p>
@@ -52,7 +52,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    @if($order->order_type=='c')
+                    @if($order->order_type==1)
                     <div>
                         <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order->id])}}'" class="btn">See Customization</button>
                     </div>
