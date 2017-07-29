@@ -51,7 +51,13 @@
                                             <p>Standard</p>
                                         @endif
                                     </td>
-                                    <td class="paid">{{$order->is_paid}}</td>
+                                    <td class="paid">
+                                        @if($order->is_paid==1)
+                                            <p>Paid</p>
+                                        @else
+                                            <p>Pending</p>
+                                        @endif
+                                    </td>
                                     {{--<td>--}}
                                         {{--@if($order->is_paid==0)--}}
                                             {{--<p>Pending</p>--}}
