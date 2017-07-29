@@ -5,7 +5,7 @@
 @section('page_content')
 
     @if(count($orders)>0)
-        <div class="container">
+        <div class="container" style="width: 85%;">
             <div class="row" style="margin-top: 1rem;">
                 <nav class="light-green lighten-1 white-text">
                     <div class="left col s12">
