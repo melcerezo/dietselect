@@ -142,9 +142,11 @@
                                 <span>{{$orderAddress->brgy}}, </span>
                                 <span>{{$orderAddress->city}}</span>
                             </div>
-                            <div>
-                                <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
-                            </div>
+                            @if($order->is_paid==1)
+                                <div>
+                                    <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
+                                </div>
+                            @endif
                         @else
                             <div>
                                 @if($foodieAddress==null)

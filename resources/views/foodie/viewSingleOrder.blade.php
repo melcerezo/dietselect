@@ -606,109 +606,109 @@
         </div>
 
 
-        @unless($mealPlansCount==0)
+        {{--@unless($mealPlansCount==0)--}}
 
 
-            @for($i=0;$i<$mealPlansCount;$i++)
-                @foreach($customize as $cust)
-                    @if($cust->meal_id == $mealPlans[$i]->meal_id)
-                        <div id="editMeal-{{$i}}" class="modal">
+            {{--@for($i=0;$i<$mealPlansCount;$i++)--}}
+                {{--@foreach($customize as $cust)--}}
+                    {{--@if($cust->meal_id == $mealPlans[$i]->meal_id)--}}
+                        {{--<div id="editMeal-{{$i}}" class="modal">--}}
                             {{--<i data-meal-id="{{$mealPlans[$i]->meal->id}}"></i>--}}
 
                             {{--Hello: {{$custom}} World--}}
-                            <div class="modal-content">
-                                <form id="editMeal{{$i}}"
+                            {{--<div class="modal-content">--}}
+                                {{--<form id="editMeal{{$i}}"--}}
                                       {{--                          action="{{route('foodie.meal.custom',array($mealPlans[$i]->meal->id, $mealPlans[$i]->customized_meal))}}"--}}
-                                      action="{{route('foodie.meal.custom',$cust->id)}}"
-                                      method="post" autocomplete="off" class="editMeal">
-                                    {{csrf_field()}}
-                                    <h6>Customize Meal</h6>
-                                    <h4>{{$cust->description}}</h4>
-                                    <h5>Meal Stats:</h5>
-                                    <div>
-                                        Calories: {{$cust->calories}}
-                                    </div>
-                                    <div>
-                                        Carbohydrates: {{$cust->carbohydrates}}g
-                                    </div>
-                                    <div>
-                                        Protein: {{$cust->protein}}g
-                                    </div>
-                                    <div>
-                                        Fat: {{$cust->fat}}g
-                                    </div>
+                                      {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
+                                      {{--method="post" autocomplete="off" class="editMeal">--}}
+                                    {{--{{csrf_field()}}--}}
+                                    {{--<h6>Customize Meal</h6>--}}
+                                    {{--<h4>{{$cust->description}}</h4>--}}
+                                    {{--<h5>Meal Stats:</h5>--}}
+                                    {{--<div>--}}
+                                        {{--Calories: {{$cust->calories}}--}}
+                                    {{--</div>--}}
+                                    {{--<div>--}}
+                                        {{--Carbohydrates: {{$cust->carbohydrates}}g--}}
+                                    {{--</div>--}}
+                                    {{--<div>--}}
+                                        {{--Protein: {{$cust->protein}}g--}}
+                                    {{--</div>--}}
+                                    {{--<div>--}}
+                                        {{--Fat: {{$cust->fat}}g--}}
+                                    {{--</div>--}}
 
-                                    <p><label for="main_ingredient">Main Ingredient</label></p>
-                                    <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
-                                        <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient" disabled>
+                                    {{--<p><label for="main_ingredient">Main Ingredient</label></p>--}}
+                                    {{--<div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">--}}
+                                        {{--<select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient" disabled>--}}
                                             {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
-                                            <option value="chicken">Chicken</option>
-                                            <option value="beef">Beef</option>
-                                            <option value="pork">Pork</option>
-                                            <option value="carbohydrates">Carbohydrates</option>
-                                            <option value="vegetables">Vegetables</option>
-                                            <option value="fruits">Fruits</option>
-                                        </select>
-                                    </div>
-                                    <script>
-                                        $(document).ready(function () {
-                                            var mainIngred='{{ $cust->main_ingredient}}';
-                                            $('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());
-                                        });
-                                    </script>
+                                            {{--<option value="chicken">Chicken</option>--}}
+                                            {{--<option value="beef">Beef</option>--}}
+                                            {{--<option value="pork">Pork</option>--}}
+                                            {{--<option value="carbohydrates">Carbohydrates</option>--}}
+                                            {{--<option value="vegetables">Vegetables</option>--}}
+                                            {{--<option value="fruits">Fruits</option>--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                    {{--<script>--}}
+                                        {{--$(document).ready(function () {--}}
+                                            {{--var mainIngred='{{ $cust->main_ingredient}}';--}}
+                                            {{--$('select#main_ingredient{{$i}}').val(mainIngred.toLowerCase());--}}
+                                        {{--});--}}
+                                    {{--</script>--}}
 
                                     {{--{{$cust->id}}--}}
-                                    <div id="ingredSelect" class="ingredSelect">
-                                        @for($j=0;$j<count($ingredientsMeal);$j++)
-                                            @for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)
-                                                @if($ingredientsMeal[$j]['meal']==$cust->id && $c<1)
-                                                    <div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"
-                                                         class="ingredSelectContainer">
-                                                        <select id="ingredSelectOption{{$cust->id}}{{$j}}"
-                                                                name="ingredient_select[]" class="updateIngredSelect" disabled>
-                                                            <option disabled
-                                                                    selected>{{$ingredientsMeal[$j]['ingredient_group']}}</option>
-                                                            <option value="chicken">Chicken</option>
-                                                            <option value="beef">Beef</option>
-                                                            <option value="pork">Pork</option>
-                                                            <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
-                                                            <option value="carbohydrates(grains,pasta)">
-                                                                Carbohydrates(Grains,
-                                                                Pasta)
-                                                            </option>
-                                                            <option value="dairy,eggs">Dairy, Eggs</option>
-                                                            <option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>
-                                                            <option value="fruits">Fruits, Fruit Juices</option>
-                                                            <option value="vegetables">Vegetables</option>
-                                                        </select>
-                                                        <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
-                                                            <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
-                                                            <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
-                                                                   id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"
-                                                                   name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind" readonly>
-                                                        </div>
-                                                        <div class="error-foodieIngred{{$j}} err"></div>
-                                                        <div class="ingredGramsAdd">
-                                                            <div class="gramLabel"><label for="grams[]">Grams</label></div>
-                                                            <input type="number" value="{{$ingredientsMeal[$j]['grams']}}"
-                                                                   name="grams[{{$j}}]"
-                                                                   id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
-                                                                   class="required inputBehind" readonly>
-                                                        </div>
-                                                        <div class="error-foodieGram{{$j}} err"></div>
-                                                    </div>
-                                                @endif
-                                            @endfor
-                                        @endfor
+                                    {{--<div id="ingredSelect" class="ingredSelect">--}}
+                                        {{--@for($j=0;$j<count($ingredientsMeal);$j++)--}}
+                                            {{--@for($c=0;$c<$mealPlans[$i]->meal->ingredient_meal->count();$c++)--}}
+                                                {{--@if($ingredientsMeal[$j]['meal']==$cust->id && $c<1)--}}
+                                                    {{--<div id="ingredSelect{{$mealPlans[$i]->meal->id}}{{$j}}"--}}
+                                                         {{--class="ingredSelectContainer">--}}
+                                                        {{--<select id="ingredSelectOption{{$cust->id}}{{$j}}"--}}
+                                                                {{--name="ingredient_select[]" class="updateIngredSelect" disabled>--}}
+                                                            {{--<option disabled--}}
+                                                                    {{--selected>{{$ingredientsMeal[$j]['ingredient_group']}}</option>--}}
+                                                            {{--<option value="chicken">Chicken</option>--}}
+                                                            {{--<option value="beef">Beef</option>--}}
+                                                            {{--<option value="pork">Pork</option>--}}
+                                                            {{--<option value="carbohydrates(baked)">Carbohydrates(Baked)</option>--}}
+                                                            {{--<option value="carbohydrates(grains,pasta)">--}}
+                                                                {{--Carbohydrates(Grains,--}}
+                                                                {{--Pasta)--}}
+                                                            {{--</option>--}}
+                                                            {{--<option value="dairy,eggs">Dairy, Eggs</option>--}}
+                                                            {{--<option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>--}}
+                                                            {{--<option value="fruits">Fruits, Fruit Juices</option>--}}
+                                                            {{--<option value="vegetables">Vegetables</option>--}}
+                                                        {{--</select>--}}
+                                                        {{--<div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">--}}
+                                                            {{--<div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>--}}
+                                                            {{--<input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"--}}
+                                                                   {{--id="ingredient{{$mealPlans[$i]->meal->id}}{{$j}}"--}}
+                                                                   {{--name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind" readonly>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="error-foodieIngred{{$j}} err"></div>--}}
+                                                        {{--<div class="ingredGramsAdd">--}}
+                                                            {{--<div class="gramLabel"><label for="grams[]">Grams</label></div>--}}
+                                                            {{--<input type="number" value="{{$ingredientsMeal[$j]['grams']}}"--}}
+                                                                   {{--name="grams[{{$j}}]"--}}
+                                                                   {{--id="grams{{$mealPlans[$i]->meal->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"--}}
+                                                                   {{--class="required inputBehind" readonly>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="error-foodieGram{{$j}} err"></div>--}}
+                                                    {{--</div>--}}
+                                                {{--@endif--}}
+                                            {{--@endfor--}}
+                                        {{--@endfor--}}
                                         {{--<div><button id="u{{$i}}" data-form-id="editMeal{{$i}}" class="updateB btn" type="submit" form="editMeal{{$i}}">Update</button></div>--}}
-                                    </div>
-                                    <div style="clear: both"></div>
-                                </form>
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            @endfor
-        @endunless
+                                    {{--</div>--}}
+                                    {{--<div style="clear: both"></div>--}}
+                                {{--</form>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--@endforeach--}}
+            {{--@endfor--}}
+        {{--@endunless--}}
 
 @endsection
