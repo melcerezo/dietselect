@@ -37,16 +37,9 @@ class ChefOrderController extends Controller
 
         $chef = Auth::guard('chef')->user();
 
-        $orders=OrderItem::with('plan')->get();
+        $orders=OrderItem::where('chef_id','=', $chef->id)->get();
+
         dd($orders);
-//        $orders=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
-//            ->join('plans','plans.id','=','order_items.plan_id')
-//            ->where('plans.chef_id','=',$chef->id)
-//            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
-//                'order_items.price','orders.is_paid','orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
-//            ->get();
-
-
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
