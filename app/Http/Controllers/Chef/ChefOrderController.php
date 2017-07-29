@@ -36,14 +36,16 @@ class ChefOrderController extends Controller
     public function getAllOrdersView(){
 
         $chef = Auth::guard('chef')->user();
-        $orders=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
-            ->join('plans','plans.id','=','order_items.plan_id')
-            ->where('plans.chef_id','=',$chef->id)
-            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
-                'order_items.price','orders.is_paid','orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
-            ->get();
 
+        $orders=OrderItem::has('plans')->get();
         dd($orders);
+//        $orders=DB::table('order_items')->join('orders','orders.id','=','order_items.order_id')
+//            ->join('plans','plans.id','=','order_items.plan_id')
+//            ->where('plans.chef_id','=',$chef->id)
+//            ->select('order_items.id','plans.plan_name','order_items.quantity','orders.foodie_id','orders.address_id',
+//                'order_items.price','orders.is_paid','orders.is_cancelled','order_items.order_type','order_items.created_at','order_items.updated_at')
+//            ->get();
+
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
