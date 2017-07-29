@@ -94,7 +94,7 @@
             </div>
         </nav>
 
-        {{-- Foodie Notification Dropdown --}}
+        {{-- Chef Notification Dropdown --}}
         <ul id="chefNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
             @unless($notifications->count()>0)
                 <li class="collection-item">
