@@ -37,7 +37,11 @@
                                 <tbody>
                                     <tr>
                                         <td class="orderID">{{$order->id}}</td>
-                                        <td class="planName">{{$order->plan_name}}</td>
+                                        @if($order->order_type==0)
+                                            <td class="planName">{{$order->plan->plan_name}}</td>
+                                        @elseif($order->order_type==1)
+                                            <td class="planName">{{$order->customplan->plan_name}}</td>
+                                        @endif
                                         @foreach($foodies as $foodie)
                                             @if($foodie->id==$order->foodie_id)
                                                 <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>

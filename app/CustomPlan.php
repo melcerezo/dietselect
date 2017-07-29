@@ -10,6 +10,10 @@ class CustomPlan extends Model
         return $this->belongsTo(Plan::class);
     }
 
+    public function order_items(){
+        return $this->hasMany(OrderItem::class);
+    }
+
     public function customized_meal(){
         return $this->hasMany(CustomizedMeal::class);
     }
