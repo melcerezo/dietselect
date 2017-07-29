@@ -19,31 +19,36 @@
                                     <th>ID</th>
                                     <th>Plan Name</th>
                                     <th>Foodie Name</th>
+                                    <th>Quantity</th>
                                     <th>Amount</th>
                                     <th>Type</th>
-                                    <th>Payment Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td class="orderID">{{$order->id}}</td>
-                                    <td class="planName">{{$order->plan->plan_name}}</td>
-                                    <td class="foodieName">{{$order->foodie->first_name.' '.$order->foodie->last_name}}</td>
-                                    <td class="amount">{{$order->plan->price}}</td>
+                                    <td class="orderID">{{$order['id']}}</td>
+                                    <td class="planName">{{$order['plan_name']}}</td>
+                                    @foreach($foodies as $foodie)
+                                        @if($foodie->id==$foodie['foodie_id'])
+                                            <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
+                                        @endif
+                                    @endforeach
+                                    <td class="quantity">{{$order['quantity']}}</td>
+                                    <td class="amount">{{$order['price']}}</td>
                                     <td class="type">
-                                        @if($order->order_type=='c')
+                                        @if($order['order_type']==1)
                                             <p>Customized</p>
                                         @else
                                             <p>Standard</p>
                                         @endif
                                     </td>
-                                    <td>
-                                        @if($order->is_paid==0)
-                                            <p>Pending</p>
-                                        @else
-                                            <p>Paid</p>
-                                        @endif
-                                    </td>
+                                    {{--<td>--}}
+                                        {{--@if($order->is_paid==0)--}}
+                                            {{--<p>Pending</p>--}}
+                                        {{--@else--}}
+                                            {{--<p>Paid</p>--}}
+                                        {{--@endif--}}
+                                    {{--</td>--}}
                                 </tr>
                             </tbody>
                         </table>
