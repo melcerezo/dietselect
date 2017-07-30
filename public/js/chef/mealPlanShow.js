@@ -8,11 +8,11 @@ function ingredAjax($id) {
 $(document).ready(function () {
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
+        console.log(id);
         var ingreds = ingredAjax(id);
 
         ingreds.done(function (response) {
             var valData = response;
-            console.log(response);
             for(var i=0,l=data.length;i<l;i++){
                 $('#m'+id).append(
                     '<tr>'+
