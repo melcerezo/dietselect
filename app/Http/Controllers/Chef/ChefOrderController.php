@@ -37,9 +37,26 @@ class ChefOrderController extends Controller
 
         $chef = Auth::guard('chef')->user();
 
-        $orders=OrderItem::where('chef_id','=', $chef->id)->get();
+        $orderItems=OrderItem::where('chef_id','=', $chef->id)->get();
 
-        dd($orders[1]->customplan()->get());
+        $orders = [];
+
+        foreach($orderItems as $orderItem){
+            if($orderItem->order_type==0){
+                $orderPlan = Plan::where('plan_id','=',$orderItem->plan_id)->first();
+                $orderPlanName = $orderPlan->plan_name;
+                $orderType="Standard";
+            }elseif($orderItem->order_type==1){
+                $orderPlan = CustomPlan::where('plan_id','=',$orderItem->plan_id)->first();
+                $orderPlanName = $orderPlan->plan->plan_name;
+                $orderType="Customized";
+            }
+            $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,
+                'quantity'=>$orderItem->quantity,'price'=>$orderItem->price,'order_type'=>$orderItem->order_type,'is_paid'=>$orderItem->order->is_paid,
+                'is_cancelled'=>$orderItem->order->is_cancelled);
+        }
+
+        dd($orders);
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();

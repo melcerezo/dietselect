@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="card">
                     <div class="card-panel">
-                        <a href="{{route('chef.order.single', $order->id)}}">
+                        <a href="{{route('chef.order.single', $order['id'])}}">
                             <table>
                                 <thead>
                                     <tr>
@@ -36,31 +36,23 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <td class="orderID">{{$order->id}}</td>
-                                        @if($order->order_type==0)
-                                            <td class="planName">{{$order->plan->plan_name}}</td>
-                                        @elseif($order->order_type==1)
-                                            <td class="planName">{{$order->customplan->plan->plan_name}}</td>
-                                        @endif
+                                        <td class="orderID">{{$order['id']}}</td>
+                                        <td class="planName">{{$order['plan_name']}}</td>
                                         @foreach($foodies as $foodie)
-                                            @if($foodie->id==$order->foodie_id)
+                                            @if($foodie->id==$order['foodie_id'])
                                                 <td class="foodieName">{{$foodie->first_name.' '.$foodie->last_name}}</td>
                                             @endif
                                         @endforeach
-                                        <td class="quantity">{{$order->quantity}}</td>
-                                        <td class="amount">{{$order->price}}</td>
+                                        <td class="quantity">{{$order['quantity']}}</td>
+                                        <td class="amount">{{$order['price']}}</td>
                                         <td class="type">
-                                            @if($order->order_type==1)
-                                                <p>Customized</p>
-                                            @else
-                                                <p>Standard</p>
-                                            @endif
+                                            <p>{{$order['order_type']}}</p>
                                         </td>
                                         <td class="paid">
-                                            @if($order->is_cancelled==0)
-                                                @if($order->is_paid==1)
+                                            @if($order['is_cancelled']==0)
+                                                @if($order['is_paid']==1)
                                                     <p>Paid</p>
-                                                @elseif($order->is_paid==0)
+                                                @elseif($order['is_paid']==0)
                                                     <p>Pending</p>
                                                 @endif
                                             @else
@@ -78,9 +70,9 @@
                                 </tbody>
                             </table>
                         </a>
-                    @if($order->order_type==1)
+                    @if($order['is_paid']==1)
                     <div>
-                        <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order->id])}}'" class="btn">See Customization</button>
+                        <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order['id']])}}'" class="btn">See Customization</button>
                     </div>
                     @endif
                     </div>
