@@ -734,7 +734,7 @@
 
 
 
-        @unless($mealPlansCount==0)
+        @unless($mealPlans->count()==0)
 
 
             @for($i=0;$i<$mealPlansCount;$i++)
