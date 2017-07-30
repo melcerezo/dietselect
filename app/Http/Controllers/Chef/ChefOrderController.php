@@ -95,8 +95,8 @@ class ChefOrderController extends Controller
                 $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Desc.'","grams":"'.$ingred->grams.'","is_customized":"'.$ingred->is_customized.'"} ';
             }
 
-            $ingredientMeals.= ']';
         }
+        $ingredientMeals.= ']';
         $response=$ingredientMeals;
         return $response;
     }

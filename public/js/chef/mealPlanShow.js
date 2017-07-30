@@ -1,6 +1,6 @@
-function ingredAjax($id) {
+function ingredAjax(id) {
     return $.ajax({
-        url:'/chef/ingred/get/'+ $id,
+        url:'/chef/ingred/get/'+ id,
         dataType:'json'
     });
 }
@@ -14,7 +14,6 @@ $(document).ready(function () {
 
         ingreds.done(function (response) {
             var valData = response;
-            console.log('hello');
             for(var i=0,l=data.length;i<l;i++){
                 $('#m'+id).append(
                     '<tr>'+
