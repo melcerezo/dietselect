@@ -737,7 +737,7 @@
         @unless($mealPlans->count()==0)
 
 
-            @for($i=0;$i<$mealPlansCount;$i++)
+            @for($i=0;$i<$mealPlans->count();$i++)
                 @foreach($customize as $cust)
                     @if($cust->meal_id == $mealPlans[$i]->meal_id)
                         <div id="editMeal-{{$i}}" class="modal">
