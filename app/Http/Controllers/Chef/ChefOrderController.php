@@ -48,7 +48,7 @@ class ChefOrderController extends Controller
                 $orderType="Standard";
             }elseif($orderItem->order_type==1){
                 $orderPlan = CustomPlan::where('plan_id','=',$orderItem->plan_id)->first();
-                dd($orderPlan);
+                dd($orderItem);
                 $orderPlanName = $orderPlan->plan->plan_name;
                 $orderType="Customized";
             }
