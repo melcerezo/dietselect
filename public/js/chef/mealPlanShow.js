@@ -15,18 +15,15 @@ $(document).ready(function () {
         ingreds.done(function(response) {
             var valData = response;
             console.log(valData);
-            // for(var i=0,l=valData.length;i<l;i++){
-            //     $('#m'+id).append(
-            //         '<tr>'+
-            //         '<td>'+valData[i].ingredient+'</td>'+
-            //         '<td>'+valData[i].grams+'</td>'+
-            //         '<td>'+valData[i].is_customized+'</td>'+
-            //         '</tr>'
-            //     );
-            // }
-
-
+            for(var i=0,l=valData.length;i<l;i++){
+                $('#m'+id).append(
+                    '<tr>'+
+                    '<td>'+valData[i].ingredient+'</td>'+
+                    '<td>'+valData[i].grams+'</td>'+
+                    '<td>'+valData[i].is_customized+'</td>'+
+                    '</tr>'
+                );
+            }
         });
-
     });
 });
