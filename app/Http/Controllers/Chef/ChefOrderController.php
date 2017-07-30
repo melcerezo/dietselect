@@ -95,7 +95,7 @@ class ChefOrderController extends Controller
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
             $orderMealPlans=$orderPlan->customized_meal()->get();
-            dd($orderMealPlans[0]->chefcustomize);
+            dd($orderMealPlans[0]->chefcustomize->mealplans);
             foreach($orderMealPlans as $orderMealPlan){
                 foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
                     $ingredientDesc = DB::table('ingredients')
