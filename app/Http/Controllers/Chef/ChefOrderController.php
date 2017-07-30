@@ -107,7 +107,8 @@ class ChefOrderController extends Controller
                         "meal"=>$orderMealIngredient->meal_id,
                         "ingredient"=>$ingredientDesc->Long_Desc,
                         "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
-                        "grams"=>$orderMealIngredient->grams
+                        "grams"=>$orderMealIngredient->grams,
+                        "is_customized"=>$orderMealIngredient->is_customized
                     );
 
                 }
