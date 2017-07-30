@@ -1,7 +1,7 @@
 function ingredAjax(id) {
     return $.ajax({
         url:'/chef/ingred/get/'+ id,
-        dataType: text
+        dataType: "text"
     });
 }
 
