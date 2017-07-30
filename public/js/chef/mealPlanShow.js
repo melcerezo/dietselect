@@ -16,11 +16,17 @@ $(document).ready(function () {
             var valData = response;
             console.log(valData);
             for(var i=0,l=valData.length;i<l;i++){
+                var cust = "";
+                if(valData[i].is_customized=='0'){
+                    cust = "No";
+                }else if(valData[i].is_customized=='1'){
+                    cust = "Yes";
+                }
                 $('#m'+id).append(
                     '<tr>'+
                     '<td>'+valData[i].ingredient+'</td>'+
                     '<td>'+valData[i].grams+'</td>'+
-                    '<td>'+valData[i].is_customized+'</td>'+
+                    '<td>'+cust+'</td>'+
                     '</tr>'
                 );
             }
