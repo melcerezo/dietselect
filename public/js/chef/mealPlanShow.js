@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         ingreds.done(function (response) {
             var valData = response;
-            for(var i=0,l=data.length;i<l;i++){
+            for(var i=0,l=valData.length;i<l;i++){
                 $('#m'+id).append(
                     '<tr>'+
                     '<td>'+valData[i].ingredient+'</td>'+
