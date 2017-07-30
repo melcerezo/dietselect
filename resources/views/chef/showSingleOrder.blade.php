@@ -753,7 +753,7 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <table id="m{{$id}}">
+                                    <table id="m{{$mealPlan->id}}">
                                         <tr>
                                             <th>Ingredient</th>
                                             <th>Grams</th>
