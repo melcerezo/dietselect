@@ -12,6 +12,7 @@ $(document).ready(function () {
 
         ingreds.done(function (response) {
             var valData = response;
+            console.log(response);
             for(var i=0,l=data.length;i<l;i++){
                 $('#m'+id).append(
                     '<tr>'+
