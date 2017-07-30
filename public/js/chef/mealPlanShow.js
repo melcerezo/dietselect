@@ -1,7 +1,7 @@
 function ingredAjax(id) {
     return $.ajax({
-        url:'/chef/ingred/get/'+ id,
-        dataType: "text"
+        url:'/chef/ingred/'+id+'/get',
+        dataType:'json'
     });
 }
 
@@ -12,17 +12,18 @@ $(document).ready(function () {
 
         ingreds.fail(console.log(ingreds.statusCode()));
 
-        ingreds.done(function (response) {
-            var valData = JSON.parse(response);
-            for(var i=0,l=valData.length;i<l;i++){
-                $('#m'+id).append(
-                    '<tr>'+
-                    '<td>'+valData[i].ingredient+'</td>'+
-                    '<td>'+valData[i].grams+'</td>'+
-                    '<td>'+valData[i].is_customized+'</td>'+
-                    '</tr>'
-                );
-            }
+        ingreds.done(function(response) {
+            var valData = response;
+            console.log(valData);
+            // for(var i=0,l=valData.length;i<l;i++){
+            //     $('#m'+id).append(
+            //         '<tr>'+
+            //         '<td>'+valData[i].ingredient+'</td>'+
+            //         '<td>'+valData[i].grams+'</td>'+
+            //         '<td>'+valData[i].is_customized+'</td>'+
+            //         '</tr>'
+            //     );
+            // }
 
 
         });

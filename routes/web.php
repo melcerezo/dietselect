@@ -161,7 +161,7 @@ Route::group(['prefix' => 'chef'], function () {
 
     //ordering
     Route::get('order/view', 'Chef\ChefOrderController@getAllOrdersView')->name('chef.order.view');
-    Route::get('ingred/get/{id}', 'Chef\ChefOrderController@getIngred');
+    Route::get('ingred/{id}/get', 'Chef\ChefOrderController@getIngred');
     Route::get('order/viewSingle/{orderItem}', 'Chef\ChefOrderController@getOneOrderDetails')->name('chef.order.single');
 
     // Chef Rating
