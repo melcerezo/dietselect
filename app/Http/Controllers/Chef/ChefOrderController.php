@@ -57,7 +57,7 @@ class ChefOrderController extends Controller
                 'is_cancelled'=>$orderItem->order->is_cancelled);
         }
 
-        dd($orders);
+//        dd($orders);
 
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
