@@ -110,7 +110,7 @@ class ChefOrderController extends Controller
 
                 }
             }
-            dd($ingredientMeals);
+//            dd($ingredientMeals);
         }
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 //        dd($orderCustomizedMeals);
