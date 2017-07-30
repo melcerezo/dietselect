@@ -753,12 +753,16 @@
                                     </ul>
                                 </div>
                                 <div>
-                                    <table id="m{{$mealPlan->id}}">
-                                        <tr>
-                                            <th>Ingredient</th>
-                                            <th>Grams</th>
-                                            <th>Customized</th>
-                                        </tr>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Ingredient</th>
+                                                <th>Grams</th>
+                                                <th>Customized</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="m{{$mealPlan->id}}">
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
