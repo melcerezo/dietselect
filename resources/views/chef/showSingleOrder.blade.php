@@ -18,7 +18,11 @@
                     <div class="left col s12">
                         <ul>
                             <li>
-                                <span style="font-size: 20px;">{{$orderItem->plan->plan_name}}</span>
+                                @if($orderItem->order_type==0)
+                                    <span style="font-size: 20px;">{{$orderItem->plan->plan_name}}</span>
+                                @elseif($orderItem->order_type==1)
+
+                                @endif
                             </li>
                         </ul>
                     </div>

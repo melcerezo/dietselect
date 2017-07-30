@@ -75,7 +75,7 @@ class ChefOrderController extends Controller
     }
 
     public function getOneOrderDetails(OrderItem $orderItem){
-        dd($orderItem);
+        $planName = '';
         $chef = Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
@@ -85,6 +85,7 @@ class ChefOrderController extends Controller
         $orderMealPlans="";
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan_name;
             $mealPlans=$orderPlan->mealplans()->get();
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
@@ -92,6 +93,7 @@ class ChefOrderController extends Controller
 //            dd($orderMealPlans[0]->mealplans->day);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
             $orderMealPlans=$orderPlan->customized_meal()->get();
 //            dd($orderMealPlans);
             foreach($orderMealPlans as $orderMealPlan){
@@ -122,6 +124,7 @@ class ChefOrderController extends Controller
             'foodies'=>$foodies,
             'chats'=>$chats,
             'messages'=>$messages,
+            'planName'=>$planName,
             'mealPlans'=>$orderMealPlans,
             'ingredientsMeal'=>$ingredientMeals,
             'orderItem'=>$orderItem,
