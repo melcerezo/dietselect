@@ -1,6 +1,6 @@
 function ingredAjax(id) {
     return $.ajax({
-        url:'/chef/ingred/get/'+ id,
+        url:'/chef/ingred/get/'+ id
     });
 }
 
