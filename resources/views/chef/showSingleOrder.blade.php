@@ -731,16 +731,16 @@
                 @if($orderItem->order_type==1)
                     @foreach($mealPlans as $id=>$mealPlan)
                         <div id="meal{{$id}}" class="modal">
+                            <nav class="light-green lighten-1 white-text">
+                                <div class="left col s12 m5 l5">
+                                    <ul>
+                                        <li>
+                                            <span>{{$mealPlan->description}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </nav>
                             <div class="modal-content">
-                                <nav class="light-green lighten-1 white-text">
-                                    <div class="left col s12 m5 l5">
-                                        <ul>
-                                            <li>
-                                                <span>{{$mealPlan->description}}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </nav>
                                 <div>
                                     <ul class="collection">
                                         <li class="collection-item light-green lighten-1 white-text">

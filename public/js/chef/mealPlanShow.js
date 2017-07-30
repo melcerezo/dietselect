@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         ingreds.done(function(response) {
             var valData = response;
-            console.log(valData);
+            // console.log(valData);
             for(var i=0,l=valData.length;i<l;i++){
                 var cust = "";
                 if(valData[i].is_customized=='0'){
