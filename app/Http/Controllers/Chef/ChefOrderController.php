@@ -43,7 +43,7 @@ class ChefOrderController extends Controller
 
         foreach($orderItems as $orderItem){
             if($orderItem->order_type==0){
-                $orderPlan = Plan::where('plan_id','=',$orderItem->plan_id)->first();
+                $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
                 $orderPlanName = $orderPlan->plan_name;
                 $orderType="Standard";
             }elseif($orderItem->order_type==1){
