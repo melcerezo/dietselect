@@ -290,7 +290,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Monday</td>
                                 <td id="MoBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'MO' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -304,7 +304,7 @@
                                 </td>
                                 <td id="MoMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'MO' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -318,7 +318,7 @@
                                 </td>
                                 <td id="MoLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'MO' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -332,7 +332,7 @@
                                 </td>
                                 <td id="MoAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'MO' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -346,7 +346,7 @@
                                 </td>
                                 <td id="MoDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'MO' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -363,7 +363,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Tuesday</td>
                                 <td id="TuBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TU' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -377,7 +377,7 @@
                                 </td>
                                 <td id="TuMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TU' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -391,7 +391,7 @@
                                 </td>
                                 <td id="TuLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TU' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -405,7 +405,7 @@
                                 </td>
                                 <td id="TuAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TU' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -419,7 +419,7 @@
                                 </td>
                                 <td id="TuDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TU' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -436,7 +436,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Wednesday</td>
                                 <td id="WeBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'WE' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -450,7 +450,7 @@
                                 </td>
                                 <td id="WeMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'WE' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -464,7 +464,7 @@
                                 </td>
                                 <td id="WeLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'WE' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -478,7 +478,7 @@
                                 </td>
                                 <td id="WeAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'WE' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -492,7 +492,7 @@
                                 </td>
                                 <td id="WeDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'WE' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -509,7 +509,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Thursday</td>
                                 <td id="ThBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TH' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -523,7 +523,7 @@
                                 </td>
                                 <td id="ThMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TH' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -537,7 +537,7 @@
                                 </td>
                                 <td id="ThLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TH' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -551,7 +551,7 @@
                                 </td>
                                 <td id="ThAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TH' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -565,7 +565,7 @@
                                 </td>
                                 <td id="ThDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'TH' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -582,7 +582,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Friday</td>
                                 <td id="FrBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'FR' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -596,7 +596,7 @@
                                 </td>
                                 <td id="FrMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'FR' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -610,7 +610,7 @@
                                 </td>
                                 <td id="FrLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'FR' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -624,7 +624,7 @@
                                 </td>
                                 <td id="FrAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'FR' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -638,7 +638,7 @@
                                 </td>
                                 <td id="FrDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'FR' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -655,7 +655,7 @@
                                 <td class="light-green white-text" style="font-weight: bold;">Saturday</td>
                                 <td id="SaBre">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'SA' && $mealPlan->chefcustomize->mealplans->meal_type == 'Breakfast')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -669,7 +669,7 @@
                                 </td>
                                 <td id="SaMorSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'SA' && $mealPlan->chefcustomize->mealplans->meal_type == 'MorningSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -683,7 +683,7 @@
                                 </td>
                                 <td id="SaLun">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'SA' && $mealPlan->chefcustomize->mealplans->meal_type == 'Lunch')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -697,7 +697,7 @@
                                 </td>
                                 <td id="SaAftSna">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'SA' && $mealPlan->chefcustomize->mealplans->meal_type == 'AfternoonSnack')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
@@ -711,7 +711,7 @@
                                 </td>
                                 <td id="SaDin">
                                     @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
+                                        @if($mealPlan->chefcustomize->mealplans->day == 'SA' && $mealPlan->chefcustomize->mealplans->meal_type == 'Dinner')
                                             <a href="#editMeal-{{$id}}"
                                                class="waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                             <br />
