@@ -10,7 +10,7 @@ $(document).ready(function () {
         var id = $(this).attr('data-id');
         var ingreds = ingredAjax(id);
 
-        ingreds.fail(console.log(ingreds.statusCode()));
+        // ingreds.fail(console.log(ingreds.statusCode()));
 
         ingreds.done(function(response) {
             var valData = response;
