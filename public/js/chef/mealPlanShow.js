@@ -8,7 +8,7 @@ function ingredAjax($id) {
 $(document).ready(function () {
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data_id');
-
+        console.log(id);
         var ingreds = ingredAjax(id);
 
         ingreds.done(function (response) {
