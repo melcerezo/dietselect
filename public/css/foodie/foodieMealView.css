@@ -7,6 +7,9 @@
     table-layout: fixed;
     width:100%;
 }
+td.dayTD{
+    width:10%;
+}
 
 .modal.gallery{
     min-height:78% !important;

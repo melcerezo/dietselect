@@ -29,7 +29,7 @@
                     </thead>
                     <tbody>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Monday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Monday</td>
                         <td id="MOBreakfast" data-day="MO" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
@@ -72,7 +72,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Tuesday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Tuesday</td>
                         <td id="TUBreakfast" data-day="TU" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
@@ -115,7 +115,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Wednesday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Wednesday</td>
                         <td id="WEBreakfast" data-day="WE" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
@@ -158,7 +158,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Thursday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Thursday</td>
                         <td id="THBreakfast" data-day="TH" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
@@ -201,7 +201,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Friday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Friday</td>
                         <td id="FRBreakfast" data-day="FR" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
@@ -244,7 +244,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="light-green white-text" style="font-weight: bold;">Saturday</td>
+                        <td class="dayTD light-green white-text" style="font-weight: bold;">Saturday</td>
                         <td id="SABreakfast" data-day="SA" data-meal-type="Breakfast" class="tdCell">
                             @foreach($mealPlans as $id =>$mealPlan)
                                 @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
