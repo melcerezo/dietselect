@@ -245,7 +245,7 @@
                             @endforeach
                         </td>
                     </tr>
-                    @if()
+                    @if($saMeals>0)
                         <tr>
                             <td class="dayTD light-green white-text" style="font-weight: bold;">Saturday</td>
                             <td id="SABreakfast" data-day="SA" data-meal-type="Breakfast" class="tdCell">

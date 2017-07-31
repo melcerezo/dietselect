@@ -110,8 +110,8 @@ class FoodieMealPlanController extends Controller
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 
-        $saMeals = $mealPlans->where('day','=','FR')->count();
-        dd($saMeals);
+        $saMeals = $mealPlans->where('day','=','SA')->count();
+//        dd($saMeals);
 //        $ingredientsMeal = '';
 //        $ingredientCount = DB::table('ingredient_meal')
 //            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
@@ -156,6 +156,7 @@ class FoodieMealPlanController extends Controller
             'chefs' => $chefs,
             'mealPlans' => $mealPlans,
             'mealPhotos'=>$mealPhotos,
+            'saMeals'=>$saMeals,
             'plan' => $plan,
             'sms_unverified' => $this->smsIsUnverified()
         ]);
