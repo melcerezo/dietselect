@@ -42,6 +42,10 @@ class Plan extends Model
         return $this->hasMany(CustomPlan::class);
     }
 
+    public function simple_custom_plan()
+    {
+        return $this->hasMany(SimpleCustomPlan::class);
+    }
 
     public function getCreatedAtAttribute($date)
     {
