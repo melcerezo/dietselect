@@ -111,6 +111,9 @@ class FoodieMealPlanController extends Controller
             ->get();
 
         $saMeals = $mealPlans->where('day','=','SA')->count();
+        $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+        $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+
 //        dd($saMeals);
 //        $ingredientsMeal = '';
 //        $ingredientCount = DB::table('ingredient_meal')
@@ -157,6 +160,8 @@ class FoodieMealPlanController extends Controller
             'mealPlans' => $mealPlans,
             'mealPhotos'=>$mealPhotos,
             'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals,
             'plan' => $plan,
             'sms_unverified' => $this->smsIsUnverified()
         ]);
