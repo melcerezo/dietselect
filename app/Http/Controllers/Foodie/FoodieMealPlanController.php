@@ -110,7 +110,7 @@ class FoodieMealPlanController extends Controller
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 
-        $saMeals = $mealPlans->where('day','=','SA')->count();
+        $saMeals = $mealPlans->where('day','=','FR')->count();
         dd($saMeals);
 //        $ingredientsMeal = '';
 //        $ingredientCount = DB::table('ingredient_meal')
