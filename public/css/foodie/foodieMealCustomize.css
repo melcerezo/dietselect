@@ -3,6 +3,17 @@
     margin-top: 0.5rem;
 }
 
+#custTable{
+    table-layout: fixed;
+    width:100%;
+}
+.dayTD{
+    width:10%;
+}
+.tdCell{
+    width:18%;
+}
+
 .card-panel.plSlMlInf{
     display: none;
     margin: 0;
