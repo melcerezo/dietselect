@@ -18,7 +18,7 @@
         </div>
         <div class="row">
             <div class="card-panel" style="padding: 0;">
-                <table class="striped centered">
+                <table id="mealTable" class="striped centered">
                     <thead class="light-green white-text" style="border: none;">
                     <th></th>
                     <th>Breakfast</th>

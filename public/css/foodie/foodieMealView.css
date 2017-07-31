@@ -3,6 +3,11 @@
     margin-top: 0.5rem;
 }
 
+#mealTable{
+    table-layout: fixed;
+    width:100%;
+}
+
 .modal.gallery{
     min-height:78% !important;
 }
