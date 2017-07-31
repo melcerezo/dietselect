@@ -20,12 +20,14 @@
             <div class="card-panel" style="padding: 0;">
                 <table id="mealTable" class="striped centered">
                     <thead class="light-green white-text" style="border: none;">
-                    <th></th>
-                    <th>Breakfast</th>
-                    <th>Morning Snack</th>
-                    <th>Lunch</th>
-                    <th>Afternoon Snack</th>
-                    <th>Dinner</th>
+                        <tr>
+                            <th class="dayTD"></th>
+                            <th>Breakfast</th>
+                            <th>Morning Snack</th>
+                            <th>Lunch</th>
+                            <th>Afternoon Snack</th>
+                            <th>Dinner</th>
+                        </tr>
                     </thead>
                     <tbody>
                     <tr>
