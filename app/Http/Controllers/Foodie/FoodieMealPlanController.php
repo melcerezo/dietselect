@@ -349,6 +349,10 @@ class FoodieMealPlanController extends Controller
             ->get();
         $mealPlansCount = $mealPlans->count();
 
+        $saMeals = $mealPlans->where('day','=','SA')->count();
+        $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+        $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+
 
 //        dd($mealPlans[0]->chefcustomize->id);
 
@@ -386,6 +390,9 @@ class FoodieMealPlanController extends Controller
             'foodie' => Auth::guard('foodie')->user(),
             'mealPlans' => $mealPlans,
             'mealPhotos' => $mealPhotos,
+            'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals,
             'mealPlansCount' => $mealPlansCount,
             'ingredientsMeal' => $ingredientMealData,
 //            'ingredientCount' => $ingredientCount,
