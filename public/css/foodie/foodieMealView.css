@@ -10,6 +10,9 @@
 .dayTD{
     width:10%;
 }
+.tdCell{
+    height:30%;
+}
 
 .modal.gallery{
     min-height:78% !important;

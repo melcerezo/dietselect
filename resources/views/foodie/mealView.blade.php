@@ -22,11 +22,11 @@
                     <thead class="light-green white-text" style="border: none;">
                         <tr>
                             <th class="dayTD"></th>
-                            <th>Breakfast</th>
-                            <th>Morning Snack</th>
-                            <th>Lunch</th>
-                            <th>Afternoon Snack</th>
-                            <th>Dinner</th>
+                            <th class="tdCell">Breakfast</th>
+                            <th class="tdCell">Morning Snack</th>
+                            <th class="tdCell">Lunch</th>
+                            <th class="tdCell">Afternoon Snack</th>
+                            <th class="tdCell">Dinner</th>
                         </tr>
                     </thead>
                     <tbody>
