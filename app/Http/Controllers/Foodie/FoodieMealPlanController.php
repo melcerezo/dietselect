@@ -167,6 +167,31 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
+    public function viewSimpleCustomize(Plan $plan)
+    {
+
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
+            ->get();
+        $chefs = Chef::all();
+        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+
+        return view('foodie.SimpleCustomize')->with([
+            'foodie'=>Auth::guard('foodie')->user(),
+            'sms_unverified' => $this->smsIsUnverified(),
+            'messages' => $messages,
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
+            'chefs' => $chefs,
+            'plan'=>$plan
+        ]);
+
+    }
+
     public function viewChefsMeals(Plan $plan, Request $request)
     {
 
