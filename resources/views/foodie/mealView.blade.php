@@ -10,7 +10,7 @@
     <script src="/js/foodie/foodieMealView.js" defer></script>
 @endsection
 
-
+@section('page_content')
     <div class="container vwMlCntr">
         <div class="row">
             <div class="col s12 light-green white-text plSlPlnNm valign-wrapper">
@@ -517,7 +517,5 @@
                 </div>
             </div>
         </div>
-
-
 
 @endsection
