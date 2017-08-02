@@ -4,7 +4,6 @@
     <script>
         $orderRoute='{{route('foodie.order.review', $plan->id)}}';
         $customizeRoute='{{route('foodie.plan.custom', $plan->id)}}';
-        $simpleCustomizeRoute='{{route('foodie.plan.simple',$plan->id)}}';
         $backRoute='{{route('foodie.plan.show')}}';
     </script>
     <script src="/js/foodie/foodieMealView.js" defer></script>
