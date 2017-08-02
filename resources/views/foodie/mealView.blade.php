@@ -489,7 +489,8 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m6">
-                        <div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">
+                        <div>
+                            <div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">
                                 <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                     <div class="white-text center-block">
                                         <i class="fa fa-check-square-o" style="font-size: 80px;"></i>
@@ -498,6 +499,7 @@
                                 <div class="white-text center">
                                     <span>Simple</span>
                                 </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col s12 m6">

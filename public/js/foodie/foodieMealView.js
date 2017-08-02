@@ -25,7 +25,7 @@ $(document).ready(function () {
         window.location.href=$customizeRoute;
     });
     $(document).on('click','#plSmpCst',function () {
-        window.location.href=$customizeRoute;
+        window.location.href=$simpleCustomizeRoute;
     });
     $(document).on('click','#plSlMlBck',function () {
         window.location.href=$backRoute;
