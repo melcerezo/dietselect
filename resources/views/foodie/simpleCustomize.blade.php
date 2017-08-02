@@ -12,7 +12,7 @@
         <form action="" method="post">
             <div class="row">
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Meat and Poultry</span>
                     </div>
                     <div>
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Taste</span>
                     </div>
                     <div>
@@ -68,7 +68,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Produce</span>
                     </div>
                     <div>
@@ -81,7 +81,7 @@
                     </div>
                 </div>
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Cooking Method</span>
                     </div>
                     <div>
@@ -100,7 +100,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Dry Goods/Condiments</span>
                     </div>
                     <div>
@@ -125,7 +125,7 @@
                     </div>
                 </div>
                 <div class="col s12 m6">
-                    <div>
+                    <div class="secTtl">
                         <span>Fats and Oils</span>
                     </div>
                     <div>
