@@ -24,6 +24,9 @@ $(document).ready(function () {
     $(document).on('click','#plSlMlCst',function () {
         window.location.href=$customizeRoute;
     });
+    $(document).on('click','#plSmpCst',function () {
+        window.location.href=$customizeRoute;
+    });
     $(document).on('click','#plSlMlBck',function () {
         window.location.href=$backRoute;
     });
