@@ -179,7 +179,7 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
-        return view('foodie.SimpleCustomize')->with([
+        return view('foodie.simpleCustomize')->with([
             'foodie'=>Auth::guard('foodie')->user(),
             'sms_unverified' => $this->smsIsUnverified(),
             'messages' => $messages,
