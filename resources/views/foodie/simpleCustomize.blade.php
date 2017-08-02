@@ -13,6 +13,9 @@
             <div class="row">
                 <div class="col s12 m6">
                     <div>
+                        <span>Meat and Poultry</span>
+                    </div>
+                    <div>
                         <input type="checkbox" id="pork"/>
                         <label for="pork">NO Pork</label>
                     </div>
@@ -39,6 +42,9 @@
                 </div>
                 <div class="col s12 m6">
                     <div>
+                        <span>Taste</span>
+                    </div>
+                    <div>
                         <input type="checkbox" id="sweet"/>
                         <label for="sweet">NO Sweet Foods</label>
                     </div>
@@ -63,6 +69,9 @@
             <div class="row">
                 <div class="col s12 m6">
                     <div>
+                        <span>Produce</span>
+                    </div>
+                    <div>
                         <input type="checkbox" id="fruit">
                         <label for="fruit">NO Fruits</label>
                     </div>
@@ -72,6 +81,9 @@
                     </div>
                 </div>
                 <div class="col s12 m6">
+                    <div>
+                        <span>Cooking Method</span>
+                    </div>
                     <div>
                         <input type="checkbox" id="fried">
                         <label for="fried">NO Fried Foods</label>
@@ -88,6 +100,9 @@
             </div>
             <div class="row">
                 <div class="col s12 m6">
+                    <div>
+                        <span>Dry Goods/Condiments</span>
+                    </div>
                     <div>
                         <input type="checkbox" id="cumin">
                         <label for="cumin">NO Cumin</label>
@@ -110,6 +125,9 @@
                     </div>
                 </div>
                 <div class="col s12 m6">
+                    <div>
+                        <span>Fats and Oils</span>
+                    </div>
                     <div>
                         <input type="checkbox" id="coconutOil">
                         <label for="coconutOil">NO Coconut Oil</label>
