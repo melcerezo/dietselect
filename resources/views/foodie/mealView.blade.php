@@ -503,7 +503,7 @@
                         </a>
                     </div>
                     <div class="col s12 m6">
-                        <div>
+                        <a href="{{route('foodie.plan.custom', $plan->id)}}">
                             <div id="plSlMlCst" class="light-green lighten-1" style="border-radius: 10px;">
                                 <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
                                     <div class="white-text center-block">
@@ -514,7 +514,7 @@
                                     <span>In-Depth</span>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

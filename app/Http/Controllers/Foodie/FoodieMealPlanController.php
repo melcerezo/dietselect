@@ -175,9 +175,9 @@ class FoodieMealPlanController extends Controller
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
-        $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
-        $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
         return view('foodie.SimpleCustomize')->with([
             'foodie'=>Auth::guard('foodie')->user(),
