@@ -49,6 +49,7 @@
                                     </td>
                                     <td>
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
+                                            {{ csrf_field() }}
                                             <div class="row">
                                                 <div class="col s12 m6">
                                                     <input type="number" name="qty" value="{{$cartItem->qty}}">
