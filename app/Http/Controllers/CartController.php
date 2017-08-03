@@ -61,7 +61,7 @@ class CartController extends Controller
             $plan = CustomPlan::where('id','=',$id)->first();
         }
 
-        dd($plan);
+//        dd($plan);
 
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
@@ -85,7 +85,7 @@ class CartController extends Controller
 
 
     public function update($id){
-        dd("hello");
+//        dd("hello");
         Cart::update($id, 2);
 
         return back()->with([
