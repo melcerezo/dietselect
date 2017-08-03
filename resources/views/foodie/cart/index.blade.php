@@ -48,7 +48,7 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <form action="{{route('cart.update')}}">
+                                        <form action="{{route('cart.update', $cartItem->rowId)}}">
                                             <div class="row">
                                                 <div class="col s12 m6">
                                                     <input type="number" name="qty" value="{{$cartItem->qty}}"/>
