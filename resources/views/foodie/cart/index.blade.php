@@ -51,7 +51,7 @@
                                         <form action="{{route('cart.update')}}">
                                             <div class="row">
                                                 <div class="col s12 m6">
-                                                    <input type="number" value="{{$cartItem->qty}}"/>
+                                                    <input type="number" name="qty" value="{{$cartItem->qty}}"/>
                                                 </div>
                                                 <div class="col s12 m6">
                                                     <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
