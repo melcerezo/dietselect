@@ -9,7 +9,7 @@
             <div class="col s12">
             </div>
         </div>
-        <form action="" method="post">
+        <form action="{{route('foodie.simple.custom', $plan->id)}}" method="post">
             <div class="row">
                 <div class="col s12 m6">
                     <div class="secTtl">

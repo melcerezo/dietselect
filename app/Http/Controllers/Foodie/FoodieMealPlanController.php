@@ -21,6 +21,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
 use phpDocumentor\Reflection\Types\Integer;
 
 
@@ -189,6 +190,10 @@ class FoodieMealPlanController extends Controller
             'chefs' => $chefs,
             'plan'=>$plan
         ]);
+    }
+
+    public function simpleMake(Plan $plan, Request $request)
+    {
 
     }
 

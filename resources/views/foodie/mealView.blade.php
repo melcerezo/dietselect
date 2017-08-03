@@ -329,7 +329,8 @@
                         <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Order Plan</button>
                     </div>
                     <div style="margin-bottom: 20px;">
-                        <button data-target="orderCustom" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Customize Plan</button>
+                        {{--<button data-target="orderCustom" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Customize Plan</button>--}}
+                        <button id="plSlMlCst" class="btn waves-effect waves-light" style="width: 100%;">Customize Plan</button>
                     </div>
                     <div style="margin-bottom: 20px;">
                         <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100; width: 100%;">Back to Plans</button>
@@ -467,56 +468,56 @@
             </div>
         </div>
 
-        <div id="orderCustom" class="modal">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Customize Plan</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col s12 m6">
-                        <span>For those who want to customize their plan:</span>
-                    </div>
-                    <div class="col s12 m6">
-                        <span>For those who are more experienced with dieting, and want more customization over their plan: </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <a href="{{route('foodie.plan.simple', $plan->id)}}">
-                            <div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">
-                                <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                    <div class="white-text center-block">
-                                        <i class="fa fa-check-square-o" style="font-size: 80px;"></i>
-                                    </div>
-                                </div>
-                                <div class="white-text center">
-                                    <span>Simple</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col s12 m6">
-                        <a href="{{route('foodie.plan.custom', $plan->id)}}">
-                            <div id="plSlMlCst" class="light-green lighten-1" style="border-radius: 10px;">
-                                <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                    <div class="white-text center-block">
-                                        <i class="fa fa-cubes" style="font-size: 80px;"></i>
-                                    </div>
-                                </div>
-                                <div class="white-text center">
-                                    <span>In-Depth</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div id="orderCustom" class="modal">--}}
+            {{--<nav class="light-green lighten-1 white-text">--}}
+                {{--<div class="left col s12 m5 l5">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Customize Plan</span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</nav>--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<span>For those who want to customize their plan:</span>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<span>For those who are more experienced with dieting, and want more customization over their plan: </span>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<a href="{{route('foodie.plan.simple', $plan->id)}}">--}}
+                            {{--<div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                    {{--<div class="white-text center-block">--}}
+                                        {{--<i class="fa fa-check-square-o" style="font-size: 80px;"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="white-text center">--}}
+                                    {{--<span>Simple</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<a href="{{route('foodie.plan.custom', $plan->id)}}">--}}
+                            {{--<div id="plSlMlCst" class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                    {{--<div class="white-text center-block">--}}
+                                        {{--<i class="fa fa-cubes" style="font-size: 80px;"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="white-text center">--}}
+                                    {{--<span>In-Depth</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
 @endsection
