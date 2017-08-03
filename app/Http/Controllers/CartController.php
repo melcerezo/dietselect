@@ -54,7 +54,7 @@ class CartController extends Controller
     }
 
     public function update($id){
-
+        dd(Cart::content());
         Cart::update($id, 2);
 
         return back()->with([
