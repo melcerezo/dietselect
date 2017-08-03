@@ -48,14 +48,17 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <div class="row">
-                                            <div class="col s12 m6">
-                                                {{$cartItem->qty}}
+                                        <form action="{{route('cart.update')}}">
+                                            <div class="row">
+                                                <div class="col s12 m6">
+                                                    <input type="number" value="{{$cartItem->qty}}"/>
+                                                </div>
+                                                <div class="col s12 m6">
+                                                    <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                </div>
                                             </div>
-                                            <div class="col s12 m6">
-                                                <a href="{{route('cart.update',$cartItem->rowId)}}"><i class="fa fa-plus"></i></a>
-                                            </div>
-                                        </div>
+
+                                        </form>
                                     </td>
                                     <td>{{$cartItem->price}}</td>
                                     <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
