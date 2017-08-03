@@ -53,7 +53,7 @@
                                                 {{$cartItem->qty}}
                                             </div>
                                             <div class="col s12 m6">
-                                                <a href="{{route('cart.addItem',$cartItem->rowId)}}"><i class="fa fa-plus"></i></a>
+                                                <a href="{{route('cart.update',$cartItem->rowId)}}"><i class="fa fa-plus"></i></a>
                                             </div>
                                         </div>
                                     </td>

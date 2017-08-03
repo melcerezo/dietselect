@@ -53,8 +53,7 @@ class CartController extends Controller
         ]);
     }
 
-    public function add($id, $cust)
-    {
+    public function add($id, $cust){
         $plan = '';
         if($cust==0){
             $plan = Plan::where('id','=',$id)->first();
@@ -76,10 +75,12 @@ class CartController extends Controller
         return back()->with(['status'=>'Added to cart!']);
     }
 
-    public function addItem($id){
+    public function update($id){
         Cart::update($id, 1);
 
-        return back()->with(['status'=>'Updated Quantity!']);
+        return back()->with([
+            'status'=>'Updated Quantity!'
+        ]);
 
     }
 
