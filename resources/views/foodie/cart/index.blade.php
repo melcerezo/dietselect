@@ -54,7 +54,7 @@
                                                     <input type="number" value="{{$cartItem->qty}}">
                                                 </div>
                                                 <div class="col s12 m6">
-                                                    <button class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                    <button class="btn btn-primary waves-effect waves-light">Update</button>
                                                 </div>
                                             </div>
                                         </form>
