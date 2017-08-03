@@ -100,7 +100,7 @@ Route::group(['prefix' => 'foodie'], function () {
 
     // Cart
     Route::get('cart', 'CartController@index')->name('cart.index');
-    Route::get('cart/{plan}/{cust}','CartController@add')->name('cart.add');
+//    Route::get('cart/{plan}/{cust}','CartController@add')->name('cart.add');
     Route::get('cart/update/{id}','CartController@update')->name('cart.update');
     Route::get('cart/{id}','CartController@remove')->name('cart.remove');
 });
