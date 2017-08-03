@@ -49,7 +49,9 @@
                                     </td>
                                     <td>
                                         {{$cartItem->qty}}
-                                        <a href="{{route('cart.add', ['id' => $cartItem->id,'cust' => $cartItem->options->cust])}}" class="btn btn-primary waves-light waves-effect">ADD</a>
+                                        {{--<a href="{{route('cart.add', ['id' => $cartItem->id,'cust' => $cartItem->options->cust])}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
+                                        <a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>
+
                                     </td>
                                     <td>{{$cartItem->price}}</td>
                                     <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>

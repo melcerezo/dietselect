@@ -75,8 +75,9 @@ class CartController extends Controller
         return back()->with(['status'=>'Added to cart!']);
     }
 
-    public function update($id, Request $request){
-        Cart::update($id, $request['qty']);
+    public function update($id){
+
+        Cart::update($id, 2);
 
         return back()->with([
             'status'=>'Updated Quantity!'
