@@ -48,17 +48,8 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <form action="{{route('cart.update', $cartItem->rowId)}}">
-                                            <div class="row">
-                                                <div class="col s12 m6">
-                                                    <input type="number" name="qty" value="{{$cartItem->qty}}"/>
-                                                </div>
-                                                <div class="col s12 m6">
-                                                    <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                </div>
-                                            </div>
-
-                                        </form>
+                                        {{$cartItem->qty}}
+                                        <a href="{{route('cart.add', ['id' => $cartItem->id,'cust' => $cartItem->options->cust])}}" class="btn btn-primary waves-light waves-effect">ADD</a>
                                     </td>
                                     <td>{{$cartItem->price}}</td>
                                     <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
