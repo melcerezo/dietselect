@@ -84,7 +84,7 @@ class CartController extends Controller
     }
 
 
-    public function update($id){
+    public function update($id, Request $request){
 //        dd("hello");
         Cart::update($id, 2);
 
