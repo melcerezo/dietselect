@@ -53,6 +53,16 @@ class CartController extends Controller
         ]);
     }
 
+    public function update($id){
+
+        Cart::update($id, 2);
+
+        return back()->with([
+            'status'=>'Updated Quantity!'
+        ]);
+
+    }
+
     public function add($id, $cust){
         $plan = '';
         if($cust==0){
@@ -75,15 +85,6 @@ class CartController extends Controller
         return back()->with(['status'=>'Added to cart!']);
     }
 
-    public function update($id){
-
-        Cart::update($id, 2);
-
-        return back()->with([
-            'status'=>'Updated Quantity!'
-        ]);
-
-    }
 
     public function remove($id)
     {
