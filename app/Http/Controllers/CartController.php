@@ -53,16 +53,6 @@ class CartController extends Controller
         ]);
     }
 
-    public function update($id){
-        dd("hello");
-        Cart::update($id, 2);
-
-        return back()->with([
-            'status'=>'Updated Quantity!'
-        ]);
-
-    }
-
     public function add($id, $cust){
         $plan = '';
         if($cust==0){
@@ -71,7 +61,7 @@ class CartController extends Controller
             $plan = CustomPlan::where('id','=',$id)->first();
         }
 
-//        dd($plan);
+        dd($plan);
 
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
@@ -92,4 +82,16 @@ class CartController extends Controller
 
         return back()->with(['status'=>'Removed cart item']);
     }
+
+
+    public function update($id){
+        dd("hello");
+        Cart::update($id, 2);
+
+        return back()->with([
+            'status'=>'Updated Quantity!'
+        ]);
+    }
+
+
 }
