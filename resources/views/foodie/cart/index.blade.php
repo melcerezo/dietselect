@@ -47,7 +47,16 @@
                                             <span>Customized</span>
                                         @endif
                                     </td>
-                                    <td>{{$cartItem->qty}}</td>
+                                    <td>
+                                        <div class="row">
+                                            <div class="col s12 m6">
+                                                {{$cartItem->qty}}
+                                            </div>
+                                            <div class="col s12 m6">
+                                                <a href="{{route('cart.addItem',$cartItem->rowId)}}"><i class="fa fa-plus"></i></a>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td>{{$cartItem->price}}</td>
                                     <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                                 </tr>
