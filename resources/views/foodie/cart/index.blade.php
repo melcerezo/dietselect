@@ -49,8 +49,14 @@
                                     </td>
                                     <td>
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
-                                            <input type="number" value="{{$cartItem->qty}}">
-                                            <button class="btn btn-primary waves-effect waves-light">Submit</button>
+                                            <div class="row">
+                                                <div class="col s12 m6">
+                                                    <input type="number" value="{{$cartItem->qty}}">
+                                                </div>
+                                                <div class="col s12 m6">
+                                                    <button class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                </div>
+                                            </div>
                                         </form>
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
