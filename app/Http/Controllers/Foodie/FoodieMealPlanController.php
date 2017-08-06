@@ -16,6 +16,7 @@ use App\MealPlan;
 use App\Plan;
 use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -194,7 +195,14 @@ class FoodieMealPlanController extends Controller
 
     public function simpleMake(Plan $plan, Request $request)
     {
+        dd($request);
 
+        $simpleCustom = new SimpleCustomPlan();
+        $simpleCustom->plan_id = $plan->id;
+        $simpleCustom->save();
+
+
+        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
     }
 
     public function viewChefsMeals(Plan $plan, Request $request)
