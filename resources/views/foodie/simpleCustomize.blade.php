@@ -10,6 +10,7 @@
             </div>
         </div>
         <form action="{{route('foodie.simple.custom', $plan->id)}}" method="post">
+            {{ csrf_field() }}
             <div class="row">
                 <div class="col s12 m6">
                     <div class="secTtl">
