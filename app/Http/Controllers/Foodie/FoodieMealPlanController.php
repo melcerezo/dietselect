@@ -196,7 +196,7 @@ class FoodieMealPlanController extends Controller
 
     public function simpleMake(Plan $plan, Request $request)
     {
-        dd($request);
+        dd($request["baconFat"]);
 
         $simpleCustom = new SimpleCustomPlan();
         $simpleCustom->plan_id = $plan->id;
