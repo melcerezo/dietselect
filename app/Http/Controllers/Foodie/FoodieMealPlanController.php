@@ -16,6 +16,7 @@ use App\MealPlan;
 use App\Plan;
 use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
+use App\SimpleCustomDetail;
 use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -200,6 +201,15 @@ class FoodieMealPlanController extends Controller
         $simpleCustom = new SimpleCustomPlan();
         $simpleCustom->plan_id = $plan->id;
         $simpleCustom->save();
+
+        foreach($request as $key=>$value){
+            if($value == "1"){
+                $detail = new SimpleCustomDetail;
+                $detail->simple_custom_plan_id = $simpleCustom->id;
+                $detail->detail = $key;
+            }
+        }
+
 
 
         return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
