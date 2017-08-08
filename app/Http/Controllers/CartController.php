@@ -73,7 +73,7 @@ class CartController extends Controller
             Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }elseif($cust == 2){
             Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
-            dd(Cart::content());
+//            dd(Cart::content());
         }
 
 //        dd($startOfNextWeek);
