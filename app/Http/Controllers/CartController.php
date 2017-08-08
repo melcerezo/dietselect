@@ -64,7 +64,6 @@ class CartController extends Controller
             $plan = SimpleCustomPlan::where('id','=',$id)->first();
         }
 
-        dd($plan);
 
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
@@ -73,6 +72,7 @@ class CartController extends Controller
         }elseif($cust == 1){
             Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }elseif($cust == 2){
+            dd($plan);
             Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }
 
