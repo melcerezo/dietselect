@@ -43,7 +43,7 @@
                                     <td>
                                         @if($cartItem->options->cust==0)
                                             <span>Standard</span>
-                                        @elseif($cartItem->options->cust==1)
+                                        @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
                                             <span>Customized</span>
                                         @endif
                                     </td>
