@@ -234,7 +234,7 @@ class FoodieOrderPlanController extends Controller
         $simpCusts = SimpleCustomDetail::where('simple_custom_plan_id','=', $plan->id)->get();
 
 
-        return view('foodie.simpCustShow')->with([
+        return view('foodie.simpleCustShow')->with([
             'foodie'=>Auth::guard('foodie')->user(),
             'sms_unverified' => $this->smsIsUnverified(),
             'messages' => $messages,
