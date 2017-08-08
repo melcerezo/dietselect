@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\CustomPlan;
+use App\SimpleCustomPlan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Plan;
@@ -59,15 +60,19 @@ class CartController extends Controller
             $plan = Plan::where('id','=',$id)->first();
         }elseif($cust==1){
             $plan = CustomPlan::where('id','=',$id)->first();
+        }elseif($cust==2){
+            $plan = SimpleCustomPlan::where('id','=',$id)->first();
         }
 
-//        dd($plan);
+        dd($plan);
 
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
         if($cust == 0){
             Cart::add($id, $plan->plan_name,1,$plan->price,['cust'=>$cust,'chef'=>$plan->chef->id, 'date'=>$startOfNextWeek]);
         }elseif($cust == 1){
+            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
+        }elseif($cust == 2){
             Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }
 
