@@ -24,9 +24,9 @@
                     </thead>
                     <tbody>
                         @foreach($orderItems as $orderItem)
-                            @if($orderItem->order_type==2)
-                                <a href="{{route('foodie.order.simpCust', $orderItem->id)}}">
-                            @endif
+                            {{--@if($orderItem->order_type==2)--}}
+                                {{--<a href="{{route('foodie.order.simpCust', $orderItem->id)}}">--}}
+                            {{--@endif--}}
                             <tr>
                                 @foreach($orderPlans as $orderPlan)
                                     @if($orderPlan->id == $orderItem->plan_id)
@@ -41,9 +41,9 @@
                                 @endforeach
                                 <td>{{$orderItem->quantity}}</td>
                                 <td>{{$orderItem->price}}</td>
-                            @if($orderItem->order_type==2)
-                                </a>
-                            @endif
+                            {{--@if($orderItem->order_type==2)--}}
+                                {{--</a>--}}
+                            {{--@endif--}}
                             </tr>
                         @endforeach
                     </tbody>
