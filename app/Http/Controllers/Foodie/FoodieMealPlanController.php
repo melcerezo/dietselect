@@ -209,6 +209,7 @@ class FoodieMealPlanController extends Controller
                 $detail->detail = $key;
                 $detail->save();
             }
+            dd($detail);
         }
 
 
