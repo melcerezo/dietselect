@@ -15,6 +15,8 @@ use App\OrderItem;
 use App\Plan;
 use App\Message;
 use App\CustomizedMeal;
+use App\SimpleCustomDetail;
+use App\SimpleCustomPlan;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Auth;
@@ -214,6 +216,37 @@ class FoodieOrderPlanController extends Controller
             'ingredientsMeal'=>$ingredientMealData,
             'ingredientCount'=>$ingredientCount
         ]);
+    }
+
+    public function getSimpCustView(OrderItem $orderItem)
+    {
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)
+            ->get();
+        $chefs = Chef::all();
+        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->latest($column = 'updated_at')->get();
+        $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
+        $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+
+        $plan = SimpleCustomPlan::where('id','=', $orderItem->plan_id)->first();
+
+        $simpCusts = SimpleCustomDetail::where('simple_custom_plan_id','=', $plan->id)->get();
+
+
+        return view('foodie.simpleCustomize')->with([
+            'foodie'=>Auth::guard('foodie')->user(),
+            'sms_unverified' => $this->smsIsUnverified(),
+            'messages' => $messages,
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
+            'chefs' => $chefs,
+            'orderItem'=>$orderItem,
+            'plan'=>$plan,
+            'simpCusts'=>$simpCusts
+        ]);
+
     }
 
     public function order(mailer\Mailer $mailer)
