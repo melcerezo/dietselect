@@ -32,13 +32,13 @@
                             @foreach($cartItems as $cartItem)
                                 <tr>
                                     <td>
-                                        @if($cartItem->options->cust==2)
-                                            <a href="{{route('foodie.order.simpCust', $cartItem->id)}}">
-                                        @endif
+                                        {{--@if($cartItem->options->cust==2)--}}
+                                            {{--<a href="{{route('foodie.order.', $cartItem->id)}}">--}}
+                                        {{--@endif--}}
                                             {{$cartItem->name}}
-                                        @if($cartItem->options->cust==2)
-                                            </a>
-                                        @endif
+                                        {{--@if($cartItem->options->cust==2)--}}
+                                            {{--</a>--}}
+                                        {{--@endif--}}
                                     </td>
                                     <td>
                                         @foreach($chefs as $chef)
