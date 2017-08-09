@@ -5,9 +5,9 @@
 @endsection
 
 @section('page_content')
-    <div class="container">
+    <div class="container" style="width: 85%; margin-top: 0.5rem;">
         <div class="row">
-            <div class="col s12 light-green lighten-1 white-text">
+            <div class="col s12 light-green lighten-1 white-text" style="min-height: 40px; font-size: 20px;">
                 <span>Simple Customization for: {{$plan->plan->plan_name}}</span>
             </div>
         </div>
