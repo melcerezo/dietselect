@@ -560,7 +560,7 @@
                                         <span>Main Ingredient: </span><span>{{ucwords($cust->main_ingredient)}}</span>
                                     </li>
                                     <li class="collection-item">
-                                        <span>Calories: </span><span>{{$cust->calories}}</span>
+                                        <span>Calories: </span><span>{{round($cust->calories,2)}}</span>
                                     </li>
                                 </ul>
                                 <div class="editButton">
