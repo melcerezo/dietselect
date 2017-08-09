@@ -77,7 +77,7 @@ class CartController extends Controller
         }
 
 //        dd($startOfNextWeek);
-        return back()->with(['status'=>'Added to cart!']);
+        return redirect()->route('cart.index')->with(['status'=>'Added to cart!']);
     }
 
 
