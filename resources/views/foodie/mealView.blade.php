@@ -391,7 +391,7 @@
                                 <span>Main Ingredient: </span><span>{{ucwords($mealPlan->chefcustomize->main_ingredient)}}</span>
                             </li>
                             <li class="collection-item">
-                                <span>Calories: </span><span>{{$mealPlan->chefcustomize->calories}}</span>
+                                <span>Calories: </span><span>{{round($mealPlan->chefcustomize->calories,2)}}</span>
                             </li>
                         </ul>
                     </div>
