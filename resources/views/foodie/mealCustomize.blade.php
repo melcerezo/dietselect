@@ -505,11 +505,11 @@
             </div>
             <div class="row">
                 <div class="col s12 m6 plSlCstMlBtn">
-                    <div>
+                    <div style="margin-bottom: 20px;">
                         <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
                     </div>
-                    <div>
-                        <a href="{{route('foodie.plan.show')}}" class="btn btn-primary waves-light waves-effect">Back to Plans</a>
+                    <div style="margin-bottom: 20px;">
+                        <a href="{{route('foodie.plan.show')}}" class="btn btn-primary waves-light waves-effect" style="font-weight: 100;">Back to Plans</a>
                     </div>
                 </div>
                 <div class="col s12 m6 plSlCstMlInfCnt">
