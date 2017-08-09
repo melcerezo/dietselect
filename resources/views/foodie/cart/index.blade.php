@@ -31,7 +31,15 @@
                         <tbody>
                             @foreach($cartItems as $cartItem)
                                 <tr>
-                                    <td>{{$cartItem->name}}</td>
+                                    <td>
+                                        @if($cartItem->options->cust==2)
+                                            <a href="{{route('foodie.order.simpCust', $cartItem->id)}}">
+                                        @endif
+                                            {{$cartItem->name}}
+                                        @if($cartItem->options->cust==2)
+                                            </a>
+                                        @endif
+                                    </td>
                                     <td>
                                         @foreach($chefs as $chef)
                                             @if($chef->id == $cartItem->options->chef)
