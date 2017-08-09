@@ -505,7 +505,12 @@
             </div>
             <div class="row">
                 <div class="col s12 m6 plSlCstMlBtn">
-                    <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
+                    <div>
+                        <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
+                    </div>
+                    <div>
+                        <a href="{{route('foodie.plan.show')}}" class="btn btn-primary waves-light waves-effect">Back to Plans</a>
+                    </div>
                 </div>
                 <div class="col s12 m6 plSlCstMlInfCnt">
                     <div class="card-panel plSlMlInfDef plSlCstMlInf">
