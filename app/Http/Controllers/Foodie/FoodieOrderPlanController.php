@@ -260,7 +260,10 @@ class FoodieOrderPlanController extends Controller
 //        >where('type','=','R')
         $foodie = Auth::guard('foodie')->user();
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id')->first();
-        $orderAddress= $foodieAddress->id;
+        dd($foodieAddress);
+        if($foodieAddress!=''){
+            $orderAddress= $foodieAddress->id;
+        }
         $cartItems = Cart::content();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')

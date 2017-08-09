@@ -17,10 +17,12 @@
                 <div class="card-panel shOrdMlTbl">
                 <table class="centered">
                     <thead class="light-green lighten-1 white-text" style="border: none;">
-                        <th>Plan</th>
-                        <th>Chef</th>
-                        <th>Quantity</th>
-                        <th>Price</th>
+                        <tr>
+                            <th>Plan</th>
+                            <th>Chef</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                        </tr>
                     </thead>
                     <tbody>
                         @foreach($orderItems as $orderItem)
