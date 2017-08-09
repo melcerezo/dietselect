@@ -52,6 +52,7 @@
                                             <th>Week</th>
                                             <th>Address</th>
                                             <th>Payment Status</th>
+                                            <th>Total</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -62,6 +63,7 @@
                                                     <td class="orderWeek">{{$orderItem['week']}}</td>
                                                     <td class="orderAddress">{{$orderItem['address']}}</td>
                                                     <td class="orderPaid">{{$orderItem['is_paid']}}</td>
+                                                    <td class="orderTotal">{{'PHP'.$orderItem['total']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
