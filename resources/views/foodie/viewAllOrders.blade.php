@@ -142,7 +142,7 @@
                                                 <td class="orderWeek">{{$orderItem['week']}}</td>
                                                 <td class="orderAddress">{{$orderItem['address']}}</td>
                                                 <td class="orderPaid">{{$orderItem['is_paid']}}</td>
-                                                <td class="orderTotal">{{$orderItem['total']}}</td>
+                                                <td class="orderTotal">{{'PHP'.$orderItem['total']}}</td>
                                             </tr>
                                         @endif
                                     @endforeach
@@ -211,7 +211,7 @@
                                                     <td class="orderWeek">{{$orderItem['week']}}</td>
                                                     <td class="orderAddress">{{$orderItem['address']}}</td>
                                                     <td class="orderPaid">{{$orderItem['is_paid']}}</td>
-                                                    <td class="orderTotal">{{$orderItem['total']}}</td>
+                                                    <td class="orderTotal">{{'PHP'.$orderItem['total']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -278,7 +278,7 @@
                                                     <td class="orderWeek">{{$orderItem['week']}}</td>
                                                     <td class="orderAddress">{{$orderItem['address']}}</td>
                                                     <td class="orderPaid">{{$orderItem['is_paid']}}</td>
-                                                    <td class="orderPaid">{{$orderItem['total']}}</td>
+                                                    <td class="orderPaid">{{'PHP'.$orderItem['total']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
@@ -345,7 +345,7 @@
                                                     <td class="orderWeek">{{$orderItem['week']}}</td>
                                                     <td class="orderAddress">{{$orderItem['address']}}</td>
                                                     <td class="orderPaid">{{$orderItem['is_paid']}}</td>
-                                                    <td class="orderPaid">{{$orderItem['total']}}</td>
+                                                    <td class="orderPaid">{{'PHP'.$orderItem['total']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
