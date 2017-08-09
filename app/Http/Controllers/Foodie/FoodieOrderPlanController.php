@@ -257,7 +257,7 @@ class FoodieOrderPlanController extends Controller
     public function order(mailer\Mailer $mailer)
     {
         $foodie = Auth::guard('foodie')->user();
-        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('type','=',0)->select('id')->first();
+        $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id')->first();
         $orderAddress= $foodieAddress->id;
         $cartItems = Cart::content();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
