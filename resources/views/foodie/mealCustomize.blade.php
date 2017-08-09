@@ -620,16 +620,16 @@
                                 {{--<h4>{{$cust->description}}</h4>--}}
                                 <h5>Meal Stats:</h5>
                                 <div>
-                                    Calories: {{$cust->calories}}
+                                    Calories: {{round($cust->calories,2)}}
                                 </div>
                                 <div>
-                                    Carbohydrates: {{$cust->carbohydrates}}g
+                                    Carbohydrates: {{round($cust->carbohydrates,2)}}g
                                 </div>
                                 <div>
-                                    Protein: {{$cust->protein}}g
+                                    Protein: {{round($cust->protein,2)}}g
                                 </div>
                                 <div>
-                                    Fat: {{$cust->fat}}g
+                                    Fat: {{round($cust->fat,2)}}g
                                 </div>
 
                             <p><label for="main_ingredient">Main Ingredient</label></p>
