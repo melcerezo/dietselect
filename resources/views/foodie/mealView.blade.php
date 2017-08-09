@@ -378,7 +378,14 @@
                                 @endif
                             </li>
                             <li class="collection-item">
-                                <span>Meal: </span><span>{{$mealPlan->meal_type}}</span>
+                                <span>Meal: </span>
+                                @if($mealPlan->meal_type=='MorningSnack')
+                                    <span>Morning Snack</span>
+                                @elseif($mealPlan->meal_type=='AfternoonSnack')
+                                    <span>Afternoon Snack</span>
+                                @else
+                                    <span>{{$mealPlan->meal_type}}</span>
+                                @endif
                             </li>
                             <li class="collection-item">
                                 <span>Main Ingredient: </span><span>{{ucwords($mealPlan->chefcustomize->main_ingredient)}}</span>
