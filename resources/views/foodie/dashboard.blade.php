@@ -39,7 +39,7 @@
                         <div class="dshPrfCrdInf">
                             <p>Birthday: {{$foodie->birthday}}</p>
                             <p>Email: {{$foodie->email}}</p>
-                            <p>Phone Number: {{$foodie->mobile_number}}</p>
+                            <p>Phone Number: {{"0".$foodie->mobile_number}}</p>
                         </div>
                         <div>
                             <a href="{{route('foodie.profile')}}">Edit Profile</a>
