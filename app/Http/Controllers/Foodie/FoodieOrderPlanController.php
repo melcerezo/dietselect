@@ -263,6 +263,8 @@ class FoodieOrderPlanController extends Controller
 //        dd($foodieAddress);
         if($foodieAddress!=null){
             $orderAddress= $foodieAddress->id;
+        }else{
+            $orderAddress=null;
         }
         $cartItems = Cart::content();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
