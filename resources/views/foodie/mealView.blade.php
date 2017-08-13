@@ -459,7 +459,7 @@
                 </div>
             </nav>
             <div class="modal-content">
-                <ul class="collection">
+                <ul id="reviewList" class="collection">
                     {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
                     <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
                     <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>

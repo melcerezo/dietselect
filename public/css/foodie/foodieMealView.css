@@ -18,6 +18,12 @@
     max-width: 37% !important;
 }
 
+#reviewList.collection{
+    max-width: 50%;
+    margin: 0 auto;
+}
+
+
 /*#orderReview.modal{*/
     /*max-width: 21% !important;*/
 /*}*/
