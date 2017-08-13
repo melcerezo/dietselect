@@ -22,6 +22,7 @@
 }
 
 .modal.gallery{
+    max-width: 37%;
     min-height:78% !important;
 }
 
