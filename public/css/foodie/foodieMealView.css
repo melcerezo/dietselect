@@ -22,8 +22,8 @@
 }
 
 .modal.gallery{
-    max-width: 37%;
-    min-height:78% !important;
+    max-width: 37% !important;
+    /*min-height:78% !important;*/
 }
 
 .row .col.plSlPlnNm{
