@@ -65,7 +65,7 @@
 
 .ingredSelect{
     display:inline-block;
-    width:75%;
+    /*width:100%;*/
     float:left;
 }
 .ingredGramsContainer{
@@ -75,12 +75,12 @@
 }
 
 .ingredSelectAdd{
-    width:75%;
+    /*width:100%;*/
     height:54px;
 }
 
 .ingredGramsAdd{
-    width:20%
+    width:20%;
 }
 
 .addIngred{
