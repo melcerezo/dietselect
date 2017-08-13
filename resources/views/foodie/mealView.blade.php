@@ -460,7 +460,7 @@
             </nav>
             <div class="modal-content">
                 <div class="row">
-                    <div class="col ">
+                    <div class="col">
                         <ul class="collection">
                             {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
                             <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
