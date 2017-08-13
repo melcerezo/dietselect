@@ -23,6 +23,10 @@
     margin: 0 auto;
 }
 
+.buttonHolder{
+    margin-top: 5px;
+}
+
 
 /*#orderReview.modal{*/
     /*max-width: 21% !important;*/
