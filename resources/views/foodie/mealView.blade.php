@@ -471,7 +471,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m6 offset-m3">
-                            <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width: 100%;">Cart</a>
+                            <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Cart</a>
                     </div>
                 </div>
             </div>
