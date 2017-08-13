@@ -82,7 +82,7 @@ class FoodieOrderPlanController extends Controller
 
         foreach($orders as $order){
             $dt = new Carbon($order->created_at);
-            $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d');
+            $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
 //            dd($startOfWeek);
             $orderAddress='';
 
