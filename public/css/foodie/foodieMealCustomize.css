@@ -18,6 +18,10 @@
     max-width: 37% !important;
 }
 
+.editFoodieCustModal.modal{
+    max-width: 47% !important;
+}
+
 .card-panel.plSlMlInf{
     display: none;
     margin: 0;

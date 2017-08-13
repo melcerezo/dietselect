@@ -508,9 +508,6 @@
                     <div style="margin-bottom: 20px;">
                         <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
                     </div>
-                    <div style="margin-bottom: 20px;">
-                        <a href="{{route('foodie.plan.show')}}" class="btn btn-primary waves-light waves-effect" style="font-weight: 100;">Back to Plans</a>
-                    </div>
                 </div>
                 <div class="col s12 m6 plSlCstMlInfCnt">
                     <div class="card-panel plSlMlInfDef plSlCstMlInf">
@@ -592,13 +589,21 @@
                 </div>
             </nav>
             <div class="modal-content">
-                <ul class="collection">
-                    {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                    <li class="collection-item">Chef Name: {{$viewPlan->chef->name}}</li>
-                    <li class="collection-item">Plan Name: {{$viewPlan->plan_name}}</li>
-                    <li class="collection-item">Plan Price: {{$viewPlan->price}}</li>
-                </ul>
-                <a href="{{route('cart.add', ['id' => $customPlan,'cust' => 1])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
+                <div class="row">
+                    <div class="col s12 m8 l10 offset-m2 offset-l1">
+                        <ul class="collection">
+                            {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                            <li class="collection-item">Chef Name: {{$viewPlan->chef->name}}</li>
+                            <li class="collection-item">Plan Name: {{$viewPlan->plan_name}}</li>
+                            <li class="collection-item">Plan Price: {{$viewPlan->price}}</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6 l4 offset-l4 offset-m3">
+                         <a href="{{route('cart.add', ['id' => $customPlan,'cust' => 1])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width: 100%;">Cart</a>
+                    </div>
+                </div>
             </div>
         </div>
         @unless($mealPlansCount==0)
