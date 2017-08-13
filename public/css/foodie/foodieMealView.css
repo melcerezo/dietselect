@@ -14,17 +14,21 @@
     width:18%;
 }
 
-#orderReview.modal{
-    max-width: 21% !important;
-}
-#orderCustom.modal{
+.modal{
     max-width: 37% !important;
 }
 
-.modal.gallery{
-    max-width: 37% !important;
-    /*min-height:78% !important;*/
-}
+/*#orderReview.modal{*/
+    /*max-width: 21% !important;*/
+/*}*/
+/*#orderCustom.modal{*/
+    /*max-width: 37% !important;*/
+/*}*/
+
+/*.modal.gallery{*/
+    /*max-width: 37% !important;*/
+    /*!*min-height:78% !important;*!*/
+/*}*/
 
 .row .col.plSlPlnNm{
     min-height: 40px;
