@@ -504,12 +504,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col s12 m6 plSlCstMlBtn">
+                <div class="col s12 m8 plSlCstMlBtn">
                     <div style="margin-bottom: 20px;">
                         <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
                     </div>
                 </div>
-                <div class="col s12 m6 plSlCstMlInfCnt">
+                <div class="col s12 m4 plSlCstMlInfCnt">
                     <div class="card-panel plSlMlInfDef plSlCstMlInf">
                         <span>Please click on a Meal to customize it!</span>
                     </div>
