@@ -27,6 +27,11 @@
     margin-top: 5px;
 }
 
+#orderButton{
+    margin: 0 auto;
+}
+
+
 
 /*#orderReview.modal{*/
     /*max-width: 21% !important;*/

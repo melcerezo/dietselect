@@ -466,7 +466,7 @@
                     <li class="collection-item">Plan Price: {{$plan->price}}</li>
                 </ul>
                 <div class="buttonHolder">
-                    <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
+                    <a id="orderButton" href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Add to Cart</a>
                 </div>
             </div>
         </div>
