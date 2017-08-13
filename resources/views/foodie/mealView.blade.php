@@ -323,26 +323,20 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m6 left plSlMlBtn">
-                <div class="col s12 m6">
-                    <div style="margin-bottom: 20px;">
-                        <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Order Plan</button>
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <button data-target="orderCustom" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Customize Plan</button>
-                        {{--<button id="plSlMlCst" class="btn waves-effect waves-light" style="width: 100%;">Customize Plan</button>--}}
-                    </div>
-                    <div style="margin-bottom: 20px;">
-                        <button id="plSlMlBck" class="btn waves-effect waves-light" style="color: white; font-weight:100; width: 100%;">Back to Plans</button>
-                    </div>
+            <div class="col s12 m8 left plSlMlBtn">
+                <div class="col s12 m4">
+                    <button data-target="orderReview" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Order Plan</button>
+                </div>
+                <div class="col s12 m4">
+                    <button data-target="orderCustom" class="btn waves-effect waves-light modal-trigger" style="width: 100%;">Customize Plan</button>
                 </div>
                 @if($mealPhotos->count())
-                    <div class="col s12 m6">
+                    <div class="col s12 m4">
                         <button style="width:100%;" id="plSlMlPht" data-target="photoGallery" class="modal-trigger btn waves-effect waves-light">View Gallery</button>
                     </div>
                 @endif
             </div>
-            <div class="col s12 m6 right plSlMlInfCnt">
+            <div class="col s12 m4 right plSlMlInfCnt">
                 <div class="plSlMlInfDef card-panel">
                     <span>Please click on a Meal for more info!</span>
                 </div>
