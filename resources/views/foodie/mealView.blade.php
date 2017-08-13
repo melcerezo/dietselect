@@ -465,7 +465,9 @@
                     <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
                     <li class="collection-item">Plan Price: {{$plan->price}}</li>
                 </ul>
-                <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
+                <div>
+                    <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light">Add to Cart</a>
+                </div>
             </div>
         </div>
 
