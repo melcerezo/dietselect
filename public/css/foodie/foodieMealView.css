@@ -14,8 +14,8 @@
     width:18%;
 }
 
-#orderReview.modal,#orderCustom.modal{
-    max-width: 65% !important;
+#orderReview.modal{
+    max-width: 21% !important;
 }
 
 .modal.gallery{

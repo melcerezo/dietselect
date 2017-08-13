@@ -14,6 +14,10 @@
     width:18%;
 }
 
+#orderReview.modal{
+    max-width: 21% !important;
+}
+
 .card-panel.plSlMlInf{
     display: none;
     margin: 0;
