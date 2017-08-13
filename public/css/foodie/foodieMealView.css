@@ -17,6 +17,9 @@
 #orderReview.modal{
     max-width: 21% !important;
 }
+#orderCustom.modal{
+    max-width: 37% !important;
+}
 
 .modal.gallery{
     min-height:78% !important;
