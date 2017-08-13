@@ -19,7 +19,7 @@
 }
 
 #reviewList.collection{
-    max-width: 50%;
+    max-width: 70%;
     margin: 0 auto;
 }
 
@@ -27,7 +27,7 @@
     margin-top: 5px;
 }
 
-#orderButton{
+.orderButton{
     margin: 0 auto;
 }
 
