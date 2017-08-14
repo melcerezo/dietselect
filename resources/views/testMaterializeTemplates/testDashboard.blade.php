@@ -27,8 +27,8 @@
                         <div style="font-size: 22px;">Paid</div>
                     </div>
                 </div>
-                </div>
-                <div class="card-content">
+            </div>
+            <div class="card-content">
                 <div class="row">
                     <div class="col s12 m2">
                         <span>Pic</span>
