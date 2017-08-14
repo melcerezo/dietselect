@@ -22,17 +22,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <span>Pic</span>
             </div>
-            <div class="col s12 m5">
+            <div class="col s12 m4">
                 <div>Weight Loss Plan</div>
                 <div>Made By: Delicious Diet</div>
                 <div>Type:  Standard</div>
                 <div>Quantity: 2</div>
                 <div>Amount: PHP1800.00</div>
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m2">
                 <a class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">See Details</a>
             </div>
         </div>
