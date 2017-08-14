@@ -101,7 +101,7 @@
                                     </div>
                                 </div>
                                 <div class="white-text center">
-                                    <span>Place Order</span>
+                                    <span>Order</span>
                                 </div>
                             </div>
                         </a>
