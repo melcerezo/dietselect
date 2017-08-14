@@ -58,10 +58,9 @@
                                     <td>
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                             {{ csrf_field() }}
-                                                <div>
-                                                    <input type="number" name="qty" value="{{$cartItem->qty}}">
-                                                    <button class="btn btn-primary waves-effect waves-light">Update</button>
-                                                </div>
+                                                    <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 50%;"></span>
+
+                                                    <span><button class="btn btn-primary waves-effect waves-light">Update</button></span>
                                         </form>
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
