@@ -6,6 +6,10 @@
         <div class="card">
             <div class="card-title" style="font-size: 18px;">
                 <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                    <div class="col s12 m1">
+                        <div>ID</div>
+                        <div style="font-size: 22px;">1</div>
+                    </div>
                     <div class="col s12 m2">
                         <div>For Week Of</div>
                         <div style="font-size: 22px;">August 14, 2017</div>
