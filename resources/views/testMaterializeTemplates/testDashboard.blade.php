@@ -4,7 +4,7 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-title">
+            <div class="card-content">
                 <div class="row light-green lighten-1 white-text">
                     <div class="col s12 m2">
                         <div>For Week Of</div>
@@ -23,8 +23,6 @@
                         <div>Paid</div>
                     </div>
                 </div>
-            </div>
-            <div class="card-content">
                 <div class="row">
                     <div class="col s12 m2">
                         <span>Pic</span>
