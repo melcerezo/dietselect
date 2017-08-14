@@ -18,15 +18,17 @@
         <div class="row">
             <div class="col s12" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
-                    <table class="centered">
+                    <table class="centered" style="table-layout: fixed;">
                         <thead class="light-green lighten-1 white-text" style="border: none;">
-                            <th>Plan</th>
-                            <th>Chef</th>
-                            <th>Week</th>
-                            <th>Type</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Remove</th>
+                            <tr>
+                                <th>Plan</th>
+                                <th>Chef</th>
+                                <th>Week</th>
+                                <th>Type</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Remove</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach($cartItems as $cartItem)
