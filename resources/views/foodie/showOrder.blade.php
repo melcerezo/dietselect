@@ -61,13 +61,13 @@
                         <div class="col s12 m3 center">
                             <button data-target="#bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
                                 <i class="fa fa-bank"></i>
-                                <span>Bank</span>
+                                <span style="font-size: 15px;">Bank</span>
                             </button>
                         </div>
                         <div class="col s12 m3 center">
                             <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">
                                     <i class="fa fa-paypal"></i>
-                                    <span>PayPal</span>
+                                    <span style="font-size: 15px;">PayPal</span>
                             </button>
                         </div>
                         <div class="col s12 m3 center">
@@ -78,7 +78,7 @@
                         <div class="col s12 m3 center">
                             <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">
                                 <i class="fa fa-ban"></i>
-                                <span>Cancel</span>
+                                <span style="font-size: 15px;">Cancel</span>
                             </button>
                         </div>
                     </div>
