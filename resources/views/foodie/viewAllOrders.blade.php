@@ -346,7 +346,7 @@
                                             </div>
                                             <div class="col s12 m3">
                                                 <div>Status</div>
-                                                <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
+                                                <div style="font-size: 22px;">Cancelled</div>
                                             </div>
                                         </div>
                                     </div>
