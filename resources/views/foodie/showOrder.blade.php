@@ -58,60 +58,58 @@
             @unless($order->is_paid==1)
                 <div class="col s12 m6">
                     <div class="row">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <a href="#bankPay" class="modal-trigger">
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
                                         <div class="white-text center-block">
-                                            <i class="fa fa-bank" style="font-size: 80px;"></i>
+                                            <i class="fa fa-bank" style="font-size: 30px;"></i>
                                         </div>
                                     </div>
                                     <div class="white-text center">
-                                        <span>Bank Payment</span>
+                                        <span>Bank</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <a href="#paypalPay" class="modal-trigger">
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
                                         <div class="white-text center-block">
-                                            <i class="fa fa-paypal" style="font-size: 80px;"></i>
+                                            <i class="fa fa-paypal" style="font-size: 30px;"></i>
                                         </div>
                                     </div>
                                     <div class="white-text center">
-                                        <span>PayPal Payment</span>
+                                        <span>PayPal</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <a href="#gcashModal" class="modal-trigger">
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
                                         <div class="white-text center-block">
                                             <span style="font-size: 40px;">GCash</span>
                                         </div>
                                     </div>
                                     <div class="white-text center">
-                                        <span>GCash Payment</span>
+                                        <span>GCash</span>
                                     </div>
                                 </div>
                             </a>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <a href="#cancelOrderModal" class="modal-trigger">
                                 <div class="red" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
+                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
                                         <div class="white-text center-block">
-                                            <i class="fa fa-ban" style="font-size: 80px;"></i>
+                                            <i class="fa fa-ban" style="font-size: 30px;"></i>
                                         </div>
                                     </div>
                                     <div class="white-text center">
-                                        <span>Cancel Order</span>
+                                        <span>Cancel</span>
                                     </div>
                                 </div>
                             </a>
