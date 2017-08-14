@@ -77,7 +77,7 @@
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
                                     <div class="row">
                                         <div class="col s2 white-text valign-wrapper" style="width: 100%; height: auto;">
-                                            <div class="white-text center-block">
+                                            <div class="white-text">
                                                 <i class="fa fa-paypal" style="font-size: 30px;"></i>
                                             </div>
                                         </div>
