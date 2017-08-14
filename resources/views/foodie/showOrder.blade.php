@@ -94,9 +94,9 @@
                                             <span style="font-size: 30px;">GCash</span>
                                         </div>
                                     </div>
-                                    <div class="white-text center">
-                                        <span>GCash</span>
-                                    </div>
+                                    {{--<div class="white-text center">--}}
+                                        {{--<span>GCash</span>--}}
+                                    {{--</div>--}}
                                 </div>
                             </a>
                         </div>
