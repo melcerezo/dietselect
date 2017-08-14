@@ -59,24 +59,24 @@
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m3 center">
-                            <button data-target="#bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:80%;">
+                            <button data-target="#bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
                                 <i class="fa fa-bank"></i>
                                 <span>Bank</span>
                             </button>
                         </div>
                         <div class="col s12 m3 center">
-                            <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:80%;">
+                            <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">
                                     <i class="fa fa-paypal"></i>
                                     <span>PayPal</span>
                             </button>
                         </div>
                         <div class="col s12 m3 center">
-                            <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:80%;">
+                            <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
                                 <span>GCash</span>
                             </button>
                         </div>
                         <div class="col s12 m3 center">
-                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:80%;">
+                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">
                                 <i class="fa fa-ban"></i>
                                 <span>Cancel</span>
                             </button>
