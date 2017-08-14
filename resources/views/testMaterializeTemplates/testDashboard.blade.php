@@ -29,7 +29,7 @@
                     <div class="col s12 m2">
                         <span>Pic</span>
                     </div>
-                    <div class="col s12 m4">
+                    <div class="col s12 m4" style="font-size: 18px;">
                         <div>Weight Loss Plan</div>
                         <div>Made By: Delicious Diet</div>
                         <div>Type:  Standard</div>
