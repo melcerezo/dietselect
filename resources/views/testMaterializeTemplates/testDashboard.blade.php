@@ -4,23 +4,23 @@
 
     <div class="container">
         <div class="card">
-            <div class="card-title">
-                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0;">
+            <div class="card-title" style="font-size: 18px;">
+                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
                     <div class="col s12 m2">
                         <div>For Week Of</div>
-                        <div>August 14, 2017</div>
+                        <div style="font-size: 20px;">August 14, 2017</div>
                     </div>
                     <div class="col s12 m2">
                         <div>Total</div>
-                        <div>PHP3600.00</div>
+                        <div style="font-size: 20px;">PHP3600.00</div>
                     </div>
                     <div class="col s12 m4">
                         <div>Address</div>
-                        <div>Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
+                        <div style="font-size: 20px;">Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
                     </div>
                     <div class="col s12 m4">
                         <div>Status</div>
-                        <div>Paid</div>
+                        <div style="font-size: 20px;">Paid</div>
                     </div>
                 </div>
                 </div>
