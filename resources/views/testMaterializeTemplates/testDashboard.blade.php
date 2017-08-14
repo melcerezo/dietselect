@@ -33,7 +33,7 @@
                 <div>Amount: PHP1800.00</div>
             </div>
             <div class="col s12 m3">
-                <button class="btn btn-primary waves-effect waves-light">See Details</button>
+                <a class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">See Details</a>
             </div>
         </div>
 
