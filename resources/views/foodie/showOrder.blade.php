@@ -75,7 +75,7 @@
                         <div class="col s12 m3">
                             <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect">
                                     <i class="fa fa-paypal left"></i>
-                                    <span>PayPal</span>
+                                    <span class="white-text">PayPal</span>
                             </button>
                         </div>
                         <div class="col s12 m3">
