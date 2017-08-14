@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col s12 m6 offset-m6">
                 <div class="row">
-                    <div class="col s12 m4">
+                    <div class="col s12 m4 offset-m6">
                         <ul class="collection">
                            <li class="collection-item light-green lighten-1 white-text">
                                 <span class="collection-header">Total Order:</span>
