@@ -60,8 +60,6 @@
                                             {{ csrf_field() }}
                                                 <div>
                                                     <input type="number" name="qty" value="{{$cartItem->qty}}">
-                                                </div>
-                                                <div>
                                                     <button class="btn btn-primary waves-effect waves-light">Update</button>
                                                 </div>
                                         </form>
