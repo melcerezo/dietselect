@@ -91,7 +91,7 @@
             @else
                 <div class="col s12 m6 offset-m6">
             @endif
-                <ul class="collection">
+                <ul class="collection" style="margin: 0;">
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Total Order:</span>
                     </li>
