@@ -75,16 +75,8 @@
                         <div class="col s12 m3">
                             <a href="#paypalPay" class="modal-trigger">
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="row">
-                                        <div class="col s2 white-text valign-wrapper" style="width: 20%; height: auto; padding:5px 0 0 5px;">
-                                            <div class="white-text">
-                                                <i class="fa fa-paypal" style="font-size: 30px;"></i>
-                                            </div>
-                                        </div>
-                                        <div class="col s4 white-text center">
-                                            <span>PayPal</span>
-                                        </div>
-                                    </div>
+                                    <i class="fa fa-paypal left"></i>
+                                    <span>PayPal</span>
                                 </div>
                             </a>
                         </div>
