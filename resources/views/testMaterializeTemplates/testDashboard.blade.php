@@ -36,7 +36,7 @@
                         <div>Quantity: 2</div>
                         <div>Amount: PHP1800.00</div>
                     </div>
-                    <div class="col s12 m2">
+                    <div class="col s12 offset-m2 m2">
                         <a class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">See Details</a>
                     </div>
                 </div>
