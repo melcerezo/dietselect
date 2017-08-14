@@ -12,11 +12,11 @@
                 <div>Total</div>
                 <div>PHP3600.00</div>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m5">
                 <div>Address</div>
                 <div>Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
             </div>
-            <div class="col s12 m2">
+            <div class="col s12 m3">
                 <div>Status</div>
                 <div>Paid</div>
             </div>
