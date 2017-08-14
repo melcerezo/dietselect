@@ -60,7 +60,7 @@
                                             {{ csrf_field() }}
                                                     <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 30%;"></span>
 
-                                                    <span><button type="submit">Update</button></span>
+                                                    <span><button type="submit">+</button></span>
                                         </form>
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
