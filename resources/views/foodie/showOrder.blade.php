@@ -59,18 +59,10 @@
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m3">
-                            <a href="#bankPay" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
-                                        <div class="white-text center-block">
-                                            <i class="fa fa-bank" style="font-size: 30px;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="white-text center">
-                                        <span>Bank</span>
-                                    </div>
-                                </div>
-                            </a>
+                            <button data-target="#bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0 1rem">
+                                <i class="fa fa-bank" style="font-size: 30px;"></i>
+                                <span>Bank</span>
+                            </button>
                         </div>
                         <div class="col s12 m3">
                             <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0 1rem">
