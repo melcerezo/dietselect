@@ -87,9 +87,9 @@
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             @if($order->is_paid==0)
-                <div class="col s12 m6">
+                <div class="col s12 m4">
             @else
-                <div class="col s12 m6 offset-m6">
+                <div class="col s12 m4 offset-m8">
             @endif
                 <ul class="collection" style="margin: 0;">
                     <li class="collection-item light-green lighten-1 white-text">
