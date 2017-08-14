@@ -76,7 +76,7 @@
                             </button>
                         </div>
                         <div class="col s12 m3 center">
-                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:80%;">
+                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:80%;">
                                 <i class="fa fa-ban"></i>
                                 <span>Cancel</span>
                             </button>
