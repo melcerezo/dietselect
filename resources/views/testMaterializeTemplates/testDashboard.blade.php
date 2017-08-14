@@ -3,40 +3,41 @@
 
 
     <div class="container">
-        <div class="row light-green lighten-1 white-text">
-            <div class="col s12 m2">
-                <div>For Week Of</div>
-                <div>August 14, 2017</div>
+        <div class="card-panel">
+            <div class="row light-green lighten-1 white-text">
+                <div class="col s12 m2">
+                    <div>For Week Of</div>
+                    <div>August 14, 2017</div>
+                </div>
+                <div class="col s12 m2">
+                    <div>Total</div>
+                    <div>PHP3600.00</div>
+                </div>
+                <div class="col s12 m4">
+                    <div>Address</div>
+                    <div>Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
+                </div>
+                <div class="col s12 m4">
+                    <div>Status</div>
+                    <div>Paid</div>
+                </div>
             </div>
-            <div class="col s12 m2">
-                <div>Total</div>
-                <div>PHP3600.00</div>
-            </div>
-            <div class="col s12 m4">
-                <div>Address</div>
-                <div>Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
-            </div>
-            <div class="col s12 m4">
-                <div>Status</div>
-                <div>Paid</div>
+            <div class="row">
+                <div class="col s12 m2">
+                    <span>Pic</span>
+                </div>
+                <div class="col s12 m4">
+                    <div>Weight Loss Plan</div>
+                    <div>Made By: Delicious Diet</div>
+                    <div>Type:  Standard</div>
+                    <div>Quantity: 2</div>
+                    <div>Amount: PHP1800.00</div>
+                </div>
+                <div class="col s12 m2">
+                    <a class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">See Details</a>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 m3">
-                <span>Pic</span>
-            </div>
-            <div class="col s12 m4">
-                <div>Weight Loss Plan</div>
-                <div>Made By: Delicious Diet</div>
-                <div>Type:  Standard</div>
-                <div>Quantity: 2</div>
-                <div>Amount: PHP1800.00</div>
-            </div>
-            <div class="col s12 m2">
-                <a class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">See Details</a>
-            </div>
-        </div>
-
     </div>
 
     {{--<nav>--}}
