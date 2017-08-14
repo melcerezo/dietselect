@@ -67,36 +67,19 @@
                         <div class="col s12 m3">
                             <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0 1rem">
                                     <i class="fa fa-paypal left"></i>
-                                    PayPal
+                                    <span>PayPal</span>
                             </button>
                         </div>
                         <div class="col s12 m3">
-                            <a href="#gcashModal" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
-                                        <div class="white-text center-block">
-                                            <span style="font-size: 30px;">GCash</span>
-                                        </div>
-                                    </div>
-                                    {{--<div class="white-text center">--}}
-                                        {{--<span>GCash</span>--}}
-                                    {{--</div>--}}
-                                </div>
-                            </a>
+                            <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0 1rem">
+                                <span>GCash</span>
+                            </button>
                         </div>
                         <div class="col s12 m3">
-                            <a href="#cancelOrderModal" class="modal-trigger">
-                                <div class="red" style="border-radius: 10px;">
-                                    <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
-                                        <div class="white-text center-block">
-                                            <i class="fa fa-ban" style="font-size: 30px;"></i>
-                                        </div>
-                                    </div>
-                                    <div class="white-text center">
-                                        <span>Cancel</span>
-                                    </div>
-                                </div>
-                            </a>
+                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0 1rem">
+                                <i class="fa fa-ban"></i>
+                                <span>Cancel</span>
+                            </button>
                         </div>
                     </div>
                 </div>
