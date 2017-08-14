@@ -73,12 +73,10 @@
                             </a>
                         </div>
                         <div class="col s12 m3">
-                            <a href="#paypalPay" class="modal-trigger">
-                                <div class="light-green lighten-1" style="border-radius: 10px;">
+                            <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect">
                                     <i class="fa fa-paypal left"></i>
                                     <span>PayPal</span>
-                                </div>
-                            </a>
+                            </button>
                         </div>
                         <div class="col s12 m3">
                             <a href="#gcashModal" class="modal-trigger">
