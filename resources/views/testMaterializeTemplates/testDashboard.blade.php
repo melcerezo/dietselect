@@ -3,7 +3,7 @@
 
 
     <div class="container">
-        <div class="card-panel">
+        <div class="card">
             <div class="row light-green lighten-1 white-text">
                 <div class="col s12 m2">
                     <div>For Week Of</div>
