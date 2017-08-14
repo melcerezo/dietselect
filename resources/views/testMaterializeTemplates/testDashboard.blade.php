@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <div class="card-content">
-                <div class="row light-green lighten-1 white-text">
+                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0;">
                     <div class="col s12 m2">
                         <div>For Week Of</div>
                         <div>August 14, 2017</div>
