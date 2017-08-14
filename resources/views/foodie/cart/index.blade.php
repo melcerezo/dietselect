@@ -104,6 +104,9 @@
                         <span class="collection-header">Total Order:</span>
                     </li>
                     <li class="collection-item">
+                        <span>Quantity: {{$cartCount}}</span>
+                    </li>
+                    <li class="collection-item">
                         <span>Total: {{$cartTotal}}</span>
                     </li>
                 </ul>

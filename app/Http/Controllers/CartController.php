@@ -28,6 +28,7 @@ class CartController extends Controller
     {
         $foodie= Auth::guard('foodie')->user()->id;
         $cartItems=Cart::content();
+        $cartCount=Cart::count();
         $cartTotal=Cart::total();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -43,6 +44,7 @@ class CartController extends Controller
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
             'cartTotal' =>$cartTotal,
+            'cartCount' =>$cartCount,
             'messages' => $messages,
             'notifications' => $notifications,
             'unreadNotifications'=> $unreadNotifications,
