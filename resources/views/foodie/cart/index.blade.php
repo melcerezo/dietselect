@@ -88,7 +88,7 @@
                                 <span>Quantity: {{$cartCount}}</span>
                             </li>
                             <li class="collection-item">
-                                <span>Total: {{$cartTotal}}</span>
+                                <span>Total: {{'PHP'.$cartTotal}}</span>
                             </li>
                         </ul>
                     </div>
