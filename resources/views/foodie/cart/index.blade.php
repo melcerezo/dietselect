@@ -59,7 +59,7 @@
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                             {{ csrf_field() }}
                                             <div class="row">
-                                                <div class="col s12 m1">
+                                                <div class="col s12 m2">
                                                     <input type="number" name="qty" value="{{$cartItem->qty}}">
                                                 </div>
                                                 <div class="col s12 m4">
