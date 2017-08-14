@@ -68,7 +68,7 @@
 
                                     </td>
                                     <td>{{$cartItem->price}}</td>
-                                    <td><a href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
+                                    <td><a id="removeButton" href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                                 </tr>
                             @endforeach
                         </tbody>
