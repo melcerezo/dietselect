@@ -22,7 +22,7 @@
                         <div>Address</div>
                         <div style="font-size: 22px;">Unit 2636, Tower D, SM Jazz Residences, Nicanor Garcia Corner Jupiter Street, Bel-Air, Makati</div>
                     </div>
-                    <div class="col s12 m4">
+                    <div class="col s12 m3">
                         <div>Status</div>
                         <div style="font-size: 22px;">Paid</div>
                     </div>
