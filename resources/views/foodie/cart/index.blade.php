@@ -58,7 +58,7 @@
                                     <td>
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                             {{ csrf_field() }}
-                                                    <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 50%;"></span>
+                                                    <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 30%;"></span>
 
                                                     <span><button class="btn btn-primary waves-effect waves-light">Update</button></span>
                                         </form>
