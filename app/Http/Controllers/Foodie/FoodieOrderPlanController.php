@@ -113,11 +113,13 @@ class FoodieOrderPlanController extends Controller
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $orderPlan = "";
+                $planPic="";
                 $planName = "";
                 $chefName = "";
                 $orderType="";
                 if($orderItem->order_type==0){
                     $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planPic=$orderPlan->picture;
                     $planName = $orderPlan->plan_name;
                     $chefName = $orderPlan->chef->name;
                     $orderType = "Standard";
@@ -127,14 +129,14 @@ class FoodieOrderPlanController extends Controller
                     }elseif($orderItem->order_type==2){
                         $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
                     }
-
+                    $planPic=$orderPlan->plan->picture;
                     $planName = $orderPlan->plan->plan_name;
                     $chefName = $orderPlan->plan->chef->name;
                     $orderType = "Customized";
                 }
 
                 $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
-                    'plan'=>$planName,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
             }
 
         }
