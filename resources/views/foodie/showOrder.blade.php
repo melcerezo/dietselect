@@ -91,7 +91,7 @@
                                 <div class="light-green lighten-1" style="border-radius: 10px;">
                                     <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
                                         <div class="white-text center-block">
-                                            <span style="font-size: 40px;">GCash</span>
+                                            <span style="font-size: 30px;">GCash</span>
                                         </div>
                                     </div>
                                     <div class="white-text center">
