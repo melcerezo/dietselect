@@ -207,7 +207,16 @@
 
             <ul class="collection">
                 <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
-                <li class="collection-item">BDO Savings Account: 007110098765</li>
+                @foreach($orderPlans as $orderPlan)
+                    @if($orderPlan->id == $orderItem->plan_id)
+                        @if($orderItem->order_type==0)
+                            <li class="collection-item">BDO Savings Account: {{$orderPlan->chef->bank_account}}</li>
+                        @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
+                            <li class="collection-item">BDO Savings Account: {{$orderPlan->plan->chef->bank_account}}</li>
+                        @endif
+                    @endif
+                @endforeach
+                {{--<li class="collection-item">BDO Savings Account: 007110098765</li>--}}
                 <li class="collection-item">DietSelect</li>
                 <li class="collection-item">Plan Name: {{$order->total}}</li>
             </ul>
