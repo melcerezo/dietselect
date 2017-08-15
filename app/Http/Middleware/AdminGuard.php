@@ -18,9 +18,9 @@ class AdminGuard
     public function handle($request, Closure $next, $guard = 'admin')
     {
         if (Auth::guard($guard)->guest()) {
-            dd("hello");
             if ($request->ajax() || $request->wantsJson())
                 return response('Unauthorized.', 401);
+            dd("hello");
             return redirect()->route('/home');//redirect to home;
         }
         return $next($request);
