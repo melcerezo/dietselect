@@ -57,7 +57,7 @@ return redirect('/');
 */
 public function login(Request $request)
 {
-    dd("HELLO!!!");
+    dd($request);
 $this->validateLogin($request);
 
 // If the class is using the ThrottlesLogins trait, we can automatically throttle
