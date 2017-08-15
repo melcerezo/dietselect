@@ -69,7 +69,7 @@ return $this->sendLockoutResponse($request);
 }
 
 $credentials = $this->credentials($request);
-dd($this->guard()->attempt($credentials));
+dd($credentials);
 if ($this->guard()->attempt($credentials)) {
     return $this->sendLoginResponse($request);
 }
