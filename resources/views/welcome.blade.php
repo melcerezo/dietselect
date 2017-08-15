@@ -118,8 +118,8 @@
                     <h3 class="mustard-text">Admin Login</h3>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="username" name="username" type="text" />
-                            <label for="n-login-email">User</label>
+                            <input id="username" name="email" type="text" />
+                            <label for="username">User</label>
                             {{--<div class="error-msg-login-email">--}}
                                 {{--@if ($errors->has('email'))--}}
                                     {{--{{ $errors->first('email') }}--}}
