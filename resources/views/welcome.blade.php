@@ -111,7 +111,7 @@
         <!-- End of client-type-modal -->
 
         {{-- admin-modal --}}
-        <div id="admin-modal" class="modal">
+        <div id="admin-modal" class="modal" style="max-width: 40%;">
             <form id="login" role="form" method="POST" action="{{ route('admin.login') }}">
                 {{ csrf_field() }}
                 <div class="modal-content">
