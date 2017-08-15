@@ -670,7 +670,7 @@ class FoodieOrderPlanController extends Controller
                 $orderPlans[]=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
             }
         }
-//        dd($orderItems);
+//        dd($orderPlans[0]->plan->chef->bank_account->bank);
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();
