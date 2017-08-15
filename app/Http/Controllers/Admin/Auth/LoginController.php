@@ -27,7 +27,7 @@ use AuthenticatesUsers;
 *
 * @var string
 */
-protected $redirectTo = '/admin/home';
+protected $redirectTo = '/admin/dashboard';
 
 /**
 * Create a new controller instance.
@@ -69,10 +69,11 @@ return $this->sendLockoutResponse($request);
 }
 
 $credentials = $this->credentials($request);
-dd($this->guard()->attempt($credentials, $request->has('remember')));
-if ($this->guard()->attempt($credentials, $request->has('remember'))) {
-    return $this->sendLoginResponse($request);
-}
+//dd($this->guard()->attempt($credentials, $request->has('remember')));
+    if (Auth::attempt($credentials)) {
+        // Authentication passed...
+        return $this->sendLoginResponse($request);
+    }
 
 // If the login attempt was unsuccessful we will increment the number of attempts
 // to login and redirect the user back to the login form. Of course, when this
