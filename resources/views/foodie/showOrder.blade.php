@@ -211,8 +211,8 @@
                     @if($orderPlan->id == $orderItem->plan_id)
                         @if($orderItem->order_type==0 && $orderPlan->chef->bank_account->bank != null)
                             <li class="collection-item">{{$orderPlan->chef->bank_account->bank}} Savings Account: {{$orderPlan->chef->bank_account->account}}</li>
-                        @elseif($orderItem->order_type==1  || $orderItem->order_type==2 && $orderPlan->plan->chef->bank_account->bank!= null)
-                            <li class="collection-item">{{$orderPlan->plan->chef->bank_account->bank}} Savings Account: {{$orderPlan->plan->chef->bank_account->account}}</li>
+                        {{--@elseif($orderItem->order_type==1  || $orderItem->order_type==2)--}}
+                            {{--<li class="collection-item">{{$orderPlan->plan->chef->bank_account->bank}} Savings Account: {{$orderPlan->plan->chef->bank_account->account}}</li>--}}
                         @endif
                     @endif
                 @endforeach
