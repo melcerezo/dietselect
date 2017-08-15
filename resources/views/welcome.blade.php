@@ -110,6 +110,14 @@
         </div>
         <!-- End of client-type-modal -->
 
+        {{-- admin-modal --}}
+        <div id="client-type-modal" class="modal">
+            <div class="modal-content">
+
+            </div>
+        </div>
+        {{-- end admin-modal --}}
+
     @if ($from == 'register')
         <!-- Foodie Registration Form Modal -->
         <div id="foodie-reg-form-modal" class="modal modal-fixed-footer">

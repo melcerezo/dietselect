@@ -54,6 +54,8 @@ class Kernel extends HttpKernel
         'chef.guest' => \App\Http\Middleware\RedirectIfChef::class,
         'foodie.auth' => \App\Http\Middleware\FoodieGuard::class,
         'foodie.guest' => \App\Http\Middleware\RedirectIfFoodie::class,
+        'admin.auth' => \App\Http\Middleware\AdminGuard::class,
+        'admin.guest' => \App\Http\Middleware\RedirectIfAdmin::class,
         //'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];

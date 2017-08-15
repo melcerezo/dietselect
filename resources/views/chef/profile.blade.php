@@ -130,6 +130,28 @@
                             <label for="website" class="active">Company Website</label>
                         </div>
                     </div>
+
+                    <p>Please enter your bank account number. This is required to receive your payments.</p>
+
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="website" name="website" type="text" class="validate" value="{{ $chef->website }}">
+                            <label for="website" class="active">Company Website</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="website" name="website" type="text" class="validate" value="{{ $chef->website }}">
+                            <label for="website" class="active">Company Website</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="website" name="website" type="text" class="validate" value="{{ $chef->website }}">
+                            <label for="website" class="active">Company Website</label>
+                        </div>
+                    </div>
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="hidden"/>

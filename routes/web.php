@@ -171,3 +171,7 @@ Route::group(['prefix' => 'chef'], function () {
     // Chef Rating
     Route::get('chef/rating', 'ChefRatingsController@viewRatings')->name('ratings');
 });
+
+Route::group(['prefix' => 'admin'], function () {
+
+});
