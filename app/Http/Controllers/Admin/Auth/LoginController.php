@@ -69,8 +69,8 @@ return $this->sendLockoutResponse($request);
 }
 
 $credentials = $this->credentials($request);
-dd($credentials);
-if ($this->guard()->attempt($credentials)) {
+dd($this->guard()->attempt($credentials, $request->has('remember')));
+if ($this->guard()->attempt($credentials, $request->has('remember'))) {
     return $this->sendLoginResponse($request);
 }
 
@@ -96,9 +96,9 @@ protected function sendLoginResponse(Request $request)
 
     $request->session()->regenerate();
 
-//$this->clearLoginAttempts($request);
+    $this->clearLoginAttempts($request);
 
-return $this->authenticated();
+    return $this->authenticated();
 }
 
 /**
