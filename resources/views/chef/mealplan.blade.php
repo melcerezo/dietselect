@@ -6,7 +6,7 @@
 @endsection
 @section('page_content')
 <div class="container" style="width:85%;">
-    @if()
+    @if($chef->bank_account)
             @if($planCount==0)
                 <div class="row" style="margin-top:10px;">
                     <div class="col s12 m6 l4">
@@ -120,6 +120,8 @@
             </div>
         </div>
         @endif
+    @else
+        <span>You do not have a recorded bank account. <a href="{{route('chef.profile')}}">Please provide a bank account through your profile page!</a></span>
     @endif
 </div>
 
