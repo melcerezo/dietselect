@@ -16,8 +16,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        dd("Hello!");
+//        dd("Hello!");
 
-        return view("welcome");
+        return view("admin.dashboard");
     }
 }
