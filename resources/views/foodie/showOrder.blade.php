@@ -59,7 +59,7 @@
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m3 center">
-                            <button data-target="#bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
+                            <button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
                                 <i class="fa fa-bank"></i>
                                 <span style="font-size: 15px;">Bank</span>
                             </button>
