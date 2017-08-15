@@ -120,11 +120,6 @@
                         <div class="input-field col s12">
                             <input id="username" name="email" type="text" />
                             <label for="username">User</label>
-                            {{--<div class="error-msg-login-email">--}}
-                                {{--@if ($errors->has('email'))--}}
-                                    {{--{{ $errors->first('email') }}--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
                         </div>
                     </div>
                     <div class="row">

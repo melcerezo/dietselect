@@ -100,7 +100,7 @@ return $this->sendFailedLoginResponse($request);
 */
 protected function sendLoginResponse(Request $request)
 {
-    dd("HELLO!");
+//    dd("HELLO!");
 
     $request->session()->regenerate();
 
