@@ -58,7 +58,6 @@ return redirect('/');
 public function login(Request $request)
 {
 $this->validateLogin($request);
-    dd($request);
 
 // If the class is using the ThrottlesLogins trait, we can automatically throttle
 // the login attempts for this application. We'll key this by the username and
@@ -70,6 +69,7 @@ return $this->sendLockoutResponse($request);
 }
 
 $credentials = $this->credentials($request);
+dd($request);
 
 if ($this->guard()->attempt($credentials, $request->has('remember'))) {
     return $this->sendLoginResponse($request);
