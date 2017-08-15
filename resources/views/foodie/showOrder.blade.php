@@ -209,9 +209,9 @@
                 <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
                 @foreach($orderPlans as $orderPlan)
                     @if($orderPlan->id == $orderItem->plan_id)
-                        @if($orderItem->order_type==0 && $orderPlan->chef->bank_account->bank)
+                        @if($orderItem->order_type==0 && $orderPlan->chef->bank_account->bank != null)
                             <li class="collection-item">{{$orderPlan->chef->bank_account->bank}} Savings Account: {{$orderPlan->chef->bank_account->account}}</li>
-                        @elseif($orderItem->order_type==1  || $orderItem->order_type==2 && $orderPlan->plan->chef->bank_account->bank)
+                        @elseif($orderItem->order_type==1  || $orderItem->order_type==2 && $orderPlan->plan->chef->bank_account->bank!= null)
                             <li class="collection-item">{{$orderPlan->plan->chef->bank_account->bank}} Savings Account: {{$orderPlan->plan->chef->bank_account->account}}</li>
                         @endif
                     @endif
