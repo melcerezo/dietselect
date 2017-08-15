@@ -174,4 +174,6 @@ Route::group(['prefix' => 'chef'], function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
+    Route::get('dashboard', 'Admin\AdminController@index')->name('admin.dashboard');
+
 });
