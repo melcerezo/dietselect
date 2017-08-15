@@ -111,10 +111,40 @@
         <!-- End of client-type-modal -->
 
         {{-- admin-modal --}}
-        <div id="client-type-modal" class="modal">
-            <div class="modal-content">
-
-            </div>
+        <div id="admin-modal" class="modal">
+            <form id="login" role="form" method="POST" action="{{ route('admin.login') }}">
+                {{ csrf_field() }}
+                <div class="modal-content">
+                    <h3 class="mustard-text">Admin Login</h3>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" name="username" type="text" />
+                            <label for="n-login-email">User</label>
+                            {{--<div class="error-msg-login-email">--}}
+                                {{--@if ($errors->has('email'))--}}
+                                    {{--{{ $errors->first('email') }}--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-login-pass" name="password" type="password" data-error=".error-msg-login-pass"/>
+                            <label for="n-login-pass">Password</label>
+                            <div class="error-msg-login-pass">
+                                @if ($errors->has('password'))
+                                    {{ $errors->first('password') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" class="hidden"/>
+                    {{--<a href="javascript:void(0)" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-times-circle"></i> <span class="hide-on-small-only n-modal-form-btn-text">Close</span></a>--}}
+                    <a href="javascript:void(0)" class="modal-action btn-flat n-btn-link n-submit-btn"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-modal-form-btn-text"> Submit</span></a>
+                </div>
+            </form>
         </div>
         {{-- end admin-modal --}}
 
@@ -314,7 +344,7 @@
             <button class="home" type="button" onclick="window.location='{{ route('welcome') }}'"><i class="fa fa-home"></i></button>
             <button class="fb" type="button"><i class="fa fa-facebook-f"></i></button>
             <button class="email" type="button"><i class="fa fa-envelope fb"></i></button>
-            <button class="partner" type="button" onclick="window.location='{{ route('chef.login.show') }}'"><i class="fa fa-apple"></i></button>
+            <button class="partner" type="button" data-target="admin-modal"><i class="fa fa-apple"></i></button>
         </div>
     </footer>
     <div id="n-site-preloader" class="valign-wrapper">
