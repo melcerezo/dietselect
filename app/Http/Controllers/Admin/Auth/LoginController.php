@@ -73,7 +73,7 @@ $credentials = $this->credentials($request);
 
 if (Auth::attempt($credentials)) {
     // Authentication passed...
-    dd("HELLO");
+//    dd("HELLO");
     return $this->sendLoginResponse($request);
 }
 
