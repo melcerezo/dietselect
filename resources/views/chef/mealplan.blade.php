@@ -6,118 +6,120 @@
 @endsection
 @section('page_content')
 <div class="container" style="width:85%;">
-        @if($planCount==0)
-            <div class="row" style="margin-top:10px;">
-                <div class="col s12 m6 l4">
-                    <div class="card sticky-action hoverable">
-                        <div class="card-image waves-effect waves-block waves-asparagus">
-                            <a href="#createPlan" class="modal-trigger">
-                                <span class="fa fa-plus-circle light-green-text" style="display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
-                            </a>
-                        </div>
-                        <div class="card-content no-pad-top">
-                            <h2 class="card-title activator grey-text center text-darken-4 no-pad-bot">Add New Plan</h2>
+    @if()
+            @if($planCount==0)
+                <div class="row" style="margin-top:10px;">
+                    <div class="col s12 m6 l4">
+                        <div class="card sticky-action hoverable">
+                            <div class="card-image waves-effect waves-block waves-asparagus">
+                                <a href="#createPlan" class="modal-trigger">
+                                    <span class="fa fa-plus-circle light-green-text" style="display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
+                                </a>
+                            </div>
+                            <div class="card-content no-pad-top">
+                                <h2 class="card-title activator grey-text center text-darken-4 no-pad-bot">Add New Plan</h2>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        @else
-            <div class="row" style="margin-top:10px;">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12">
-                        <ul>
-                            <li>
-                                <span style="font-size: 20px;">Upcoming Plans</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-                @foreach($futurePlans->chunk(3) as $chunk)
-                    @foreach($chunk as $plan)
-                        <div class="col s12 m6 l4">
-                            <div class="card sticky-action hoverable">
-                                <div class="card-image waves-effect waves-block waves-asparagus">
-                                    <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                        @if($plan->picture=='')
-                                            <img class="img-responsive" style="height: 120px;" src="/img/diet-meal-1.jpg">
-                                        @else
-                                            {{--image of plan--}}
-                                            <img class="img-responsive" style="height: 200px;" src="/img/{{ $plan->picture }}"/>
-                                        @endif
-                                    </a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
-                                    @if($plan->lockPlan==1)
-                                        <span><i class="material-icons" style="display: inline;">lock_outline</i></span>
-                                    @else
-                                        <span><i class="material-icons" style="display: inline;">lock_open</i></span>
-                                    @endif
-                                </div>
-                            </div>
-                            <div id="deletePlan" class="modal">
-                                <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
-                                <div class="modal-content">
-                                    <form id="deletePlanForm" action="{{route('chef.plan.delete',['plan'=>$plan->id])}}" method="post">
-                                        {{csrf_field()}}
-                                        <div>
-                                            <input type="submit" value="Submit" class="btn btn-primary">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+            @else
+                <div class="row" style="margin-top:10px;">
+                    <nav class="light-green lighten-1 white-text">
+                        <div class="left col s12">
+                            <ul>
+                                <li>
+                                    <span style="font-size: 20px;">Upcoming Plans</span>
+                                </li>
+                            </ul>
                         </div>
+                    </nav>
+                    @foreach($futurePlans->chunk(3) as $chunk)
+                        @foreach($chunk as $plan)
+                            <div class="col s12 m6 l4">
+                                <div class="card sticky-action hoverable">
+                                    <div class="card-image waves-effect waves-block waves-asparagus">
+                                        <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                            @if($plan->picture=='')
+                                                <img class="img-responsive" style="height: 120px;" src="/img/diet-meal-1.jpg">
+                                            @else
+                                                {{--image of plan--}}
+                                                <img class="img-responsive" style="height: 200px;" src="/img/{{ $plan->picture }}"/>
+                                            @endif
+                                        </a>
+                                    </div>
+                                    <div class="card-content">
+                                        <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
+                                        @if($plan->lockPlan==1)
+                                            <span><i class="material-icons" style="display: inline;">lock_outline</i></span>
+                                        @else
+                                            <span><i class="material-icons" style="display: inline;">lock_open</i></span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div id="deletePlan" class="modal">
+                                    <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
+                                    <div class="modal-content">
+                                        <form id="deletePlanForm" action="{{route('chef.plan.delete',['plan'=>$plan->id])}}" method="post">
+                                            {{csrf_field()}}
+                                            <div>
+                                                <input type="submit" value="Submit" class="btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     @endforeach
-                @endforeach
-            </div>
-            <div class="row">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12">
-                        <ul>
-                            <li>
-                                <span style="font-size: 20px;">Current Plans</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            @foreach($plans->chunk(3) as $chunk)
-                   @foreach($chunk as $plan)
-                        <div class="col s12 m6 l4">
-                            <div class="card sticky-action hoverable">
-                                <div class="card-image waves-effect waves-block waves-asparagus">
-                                    <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                        @if($plan->picture=='')
-                                            <img class="img-responsive" src="/img/diet-meal-1.jpg">
-                                        @else
-                                            {{--image of plan--}}
-                                            <img class="img-responsive" style="height: 200px;" src="/img/{{ $plan->picture }}"/>
-                                        @endif
-                                    </a>
-                                </div>
-                                <div class="card-content">
-                                    <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
-                                </div>
-                            </div>
-                            <div id="deletePlan" class="modal">
-                                <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
-                                <div class="modal-content">
-                                    <form id="deletePlanForm" action="{{route('chef.plan.delete',['plan'=>$plan->id])}}" method="post">
-                                        {{csrf_field()}}
-                                        <div>
-                                            <input type="submit" value="Submit" class="btn btn-primary">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+                </div>
+                <div class="row">
+                    <nav class="light-green lighten-1 white-text">
+                        <div class="left col s12">
+                            <ul>
+                                <li>
+                                    <span style="font-size: 20px;">Current Plans</span>
+                                </li>
+                            </ul>
                         </div>
-                   @endforeach
-            @endforeach
-        <div class="row">
-            <div class="col s12">
-                <button data-target="createPlan" class="modal-trigger btn waves-effect waves-light">Add New Plan</button>
+                    </nav>
+                @foreach($plans->chunk(3) as $chunk)
+                       @foreach($chunk as $plan)
+                            <div class="col s12 m6 l4">
+                                <div class="card sticky-action hoverable">
+                                    <div class="card-image waves-effect waves-block waves-asparagus">
+                                        <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                            @if($plan->picture=='')
+                                                <img class="img-responsive" src="/img/diet-meal-1.jpg">
+                                            @else
+                                                {{--image of plan--}}
+                                                <img class="img-responsive" style="height: 200px;" src="/img/{{ $plan->picture }}"/>
+                                            @endif
+                                        </a>
+                                    </div>
+                                    <div class="card-content">
+                                        <span class="card-title activator grey-text text-darken-4 no-pad-bot center">{{$plan->plan_name}}</span>
+                                    </div>
+                                </div>
+                                <div id="deletePlan" class="modal">
+                                    <h4>Are you sure you want to delete {{$plan->plan_name}}</h4>
+                                    <div class="modal-content">
+                                        <form id="deletePlanForm" action="{{route('chef.plan.delete',['plan'=>$plan->id])}}" method="post">
+                                            {{csrf_field()}}
+                                            <div>
+                                                <input type="submit" value="Submit" class="btn btn-primary">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                       @endforeach
+                @endforeach
+            <div class="row">
+                <div class="col s12">
+                    <button data-target="createPlan" class="modal-trigger btn waves-effect waves-light">Add New Plan</button>
+                </div>
             </div>
         </div>
-    </div>
+        @endif
     @endif
 </div>
 
