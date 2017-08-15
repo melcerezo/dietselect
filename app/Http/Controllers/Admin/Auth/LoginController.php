@@ -69,7 +69,7 @@ return $this->sendLockoutResponse($request);
 }
 
 $credentials = $this->credentials($request);
-dd($this->guard()->attempt($credentials, $request->has('remember')));
+//dd($this->guard()->attempt($credentials, $request->has('remember')));
 
 if (Auth::attempt($credentials)) {
     // Authentication passed...
