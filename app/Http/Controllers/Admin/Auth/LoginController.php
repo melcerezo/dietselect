@@ -45,6 +45,7 @@ $this->middleware('admin.guest', ['except' => 'logout']);
 */
 public function showLoginForm()
 {
+    dd("show login form");
 return redirect('/');
 }
 
