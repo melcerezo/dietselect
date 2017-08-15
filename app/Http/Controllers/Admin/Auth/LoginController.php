@@ -105,6 +105,7 @@ return $this->authenticated();
 */
 protected function authenticated()
 {
+    dd("authenticated");
 return redirect($this->redirectTo);
 }
 
