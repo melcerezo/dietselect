@@ -70,7 +70,7 @@ return $this->sendLockoutResponse($request);
 
 $credentials = $this->credentials($request);
 
-if ($this->guard()->attempt($credentials, $request->has('remember'))) {
+if ($this->guard()->attempt($credentials)) {
     return $this->sendLoginResponse($request);
 }
 
