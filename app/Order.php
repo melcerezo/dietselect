@@ -17,6 +17,10 @@ class Order extends Model
     {
         return $this->hasOne(Gcash::class);
     }
+    public function paypal(){
+        return $this->hasOne(PayPal::class);
+
+    }
 
     public function order_item(){
         return $this->hasMany(OrderItem::class);

@@ -157,6 +157,8 @@ class AddMoneyController extends Controller{
             $user=Auth::guard('foodie')->user();
             $foodieName = $user->first_name.' '.$user->last_name;
 
+            $paypal = new
+
             $order->is_paid = 1;
             $order->save();
 
