@@ -8,6 +8,7 @@ use App\CustomPlan;
 use App\Http\Requests;
 use App\Order;
 use App\Message;
+use App\PayPal;
 use App\Plan;
 use App\Rating;
 use App\Mail\PaymentSuccess;
@@ -157,7 +158,9 @@ class AddMoneyController extends Controller{
             $user=Auth::guard('foodie')->user();
             $foodieName = $user->first_name.' '.$user->last_name;
 
-            $paypal = new
+            $paypal = new PayPal();
+            $paypal->order_id = $order->id;
+            $paypal->save();
 
             $order->is_paid = 1;
             $order->save();
