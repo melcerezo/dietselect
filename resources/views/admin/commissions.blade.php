@@ -75,7 +75,7 @@
                                     @endforeach
                                 </td>
                                 <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                <td>{{'PHP'.number_format($commission->amount,2,'.')}}</td>
+                                <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
                                 <td>
                                     @if($commission->paid==0)
                                         <span>Not Paid</span>
