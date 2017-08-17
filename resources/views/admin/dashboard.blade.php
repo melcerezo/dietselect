@@ -185,6 +185,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Date</th>
+                                    <th>Amount</th>
                                     <th>Status</th>
                                 </tr>
                                 </thead>
@@ -193,6 +194,7 @@
                                     <tr>
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->created_at->format('F d, Y')}}</td>
+                                        <td>{{$order->total}}</td>
                                         <td>
                                             @if($order->is_cancelled==0)
                                                 @if($order->is_paid==0)
