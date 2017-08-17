@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <div class="card-content">
+                        @if($commissions->count()!=0)
                         <div>
                             <table class="">
                                 <thead>
@@ -96,10 +97,62 @@
                             </table>
                         </div>
                     </div>
+                    @else
+                        <div>
+                            <span>No Unpaid Commissions</span>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col s12 m6">
-
+                <div class="card">
+                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                        <div>
+                            <span>
+                                Paid Commissions
+                            </span>
+                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                {{$commissions->count()}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        @if($commissions->count()!=0)
+                            <div>
+                                <table class="">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Company Name</th>
+                                        <th>Date</th>
+                                        <th>Amount</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($commissions->take(5) as $commission)
+                                        <tr>
+                                            <td>{{$commission->id}}</td>
+                                            <td>
+                                                @foreach($chefs as $chef)
+                                                    @if($chef->id==$commission->chef_id)
+                                                        {{$commission->name}}
+                                                    @endif
+                                                @endforeach
+                                            </td>
+                                            <td>{{$commission->created_at}}</td>
+                                            <td>{{$commission->amount}}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                    </div>
+                    @else
+                        <div>
+                            <span>No Paid Commissions</span>
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
         <div class="row">
