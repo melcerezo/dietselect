@@ -98,8 +98,35 @@
                     </div>
                </div>
                 <div class="card">
-                    <div class="modal-content">
-
+                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                        <div>
+                            <span>
+                                Vendors
+                            </span>
+                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                {{$chefs->count()}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <table class="">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($chefs->take(5) as $chef)
+                                    <tr>
+                                        <td>{{$chef->id}}</td>
+                                        <td>{{$chef->name}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
