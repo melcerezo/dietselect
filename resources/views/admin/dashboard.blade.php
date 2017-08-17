@@ -56,7 +56,7 @@
             </div>
             <div class="col s12 m5">
                <div class="card">
-                    <div class="grey lighten-3" style="width: 100%; border-bottom: solid lightgray 1px;">
+                    <div class="grey lighten-3" style="width: 100%; padding: 5px; border-bottom: solid lightgray 1px;">
                         <div>
                             <span>
                                 Users
