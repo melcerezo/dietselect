@@ -20,7 +20,7 @@ class AdminGuard
         if (Auth::guard($guard)->guest()) {
             if ($request->ajax() || $request->wantsJson())
                 return response('Unauthorized.', 401);
-            return redirect()->route('/');//redirect to home;
+            return redirect()->route('home');//redirect to home;
         }
         return $next($request);
     }
