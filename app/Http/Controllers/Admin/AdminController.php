@@ -31,7 +31,7 @@ class AdminController extends Controller
     public function index()
     {
 
-        $foodies=Foodie::all()->orderBy('created_at', 'desc');
+        $foodies=Foodie::orderBy('created_at', 'desc')->get();
         $chefs=Chef::all();
         $orders = Order::all();
         $plans = Plan::all();
