@@ -109,6 +109,8 @@
                                                     @endif
                                                 </td>
                                             </tr>
+                                        @else
+                                            <tr>No Orders</tr>
                                         @endif
                                     @endforeach
                                 </tbody>
