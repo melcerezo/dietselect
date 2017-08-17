@@ -167,6 +167,50 @@
                         </div>
                     </div>
                 </div>
+                <div class="card">
+                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                        <div>
+                            <span>
+                                Orders
+                            </span>
+                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                {{$orders->count()}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <table class="">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($orders->take(5) as $order)
+                                    <tr>
+                                        <td>{{$order->id}}</td>
+                                        <td>{{$order->created_at->format('F d, Y')}}</td>
+                                        <td>
+                                            @if($order->is_cancelled==0)
+                                                @if($order->is_paid==0)
+                                                    <span>Pending</span>
+                                                @elseif($order->is_paid)
+                                                    <span>Paid</span>
+                                                @endif
+                                            @elseif($order->is_cancelled==1)
+                                                <span>Cancelled</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
