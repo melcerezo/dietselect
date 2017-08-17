@@ -53,6 +53,15 @@
                         </span>
                     </a>
                 </li>
+                <li>
+                    <form id="logout" method="post" action="{{ route('admin.logout') }}">
+                        {{ csrf_field() }}
+                        <a id="logout-link" class="nvItLnk" href="#">
+                            {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+                            <span class="hide-on-med-and-down">Logout</span>
+                        </a>
+                    </form>
+                </li>
             </ul>
         </div>
     </nav>
