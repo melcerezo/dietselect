@@ -7,7 +7,7 @@
     <nav>
         <div class="nav-wrapper light-green lighten-1">
             <div style="margin-left: 10px;">
-                <a href="#!" class="brand-logo">Admin Panel</a>
+                <a href="{{route("admin.dashboard")}}" class="brand-logo">Admin Panel</a>
             </div>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
