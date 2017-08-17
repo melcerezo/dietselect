@@ -89,7 +89,7 @@
                                                 @endif
                                             @endforeach
                                         </td>
-                                        <td>{{$commission->created_at}}</td>
+                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
                                         <td>{{$commission->amount}}</td>
                                     </tr>
                                 @endforeach
@@ -139,7 +139,7 @@
                                                     @endif
                                                 @endforeach
                                             </td>
-                                            <td>{{$commission->created_at}}</td>
+                                            <td>{{$commission->created_at->format('F d, Y')}}</td>
                                             <td>{{$commission->amount}}</td>
                                         </tr>
                                     @endforeach
