@@ -96,12 +96,16 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div>
-                    @else
+                        @else
+                            <div>
+                                <span>No Unpaid Commissions</span>
+                            </div>
+                        @endif
                         <div>
-                            <span>No Unpaid Commissions</span>
+                            <a href="#">See All</a>
                         </div>
-                    @endif
+                    </div>
+
                 </div>
             </div>
             <div class="col s12 m5">
@@ -146,12 +150,15 @@
                                     </tbody>
                                 </table>
                             </div>
+                            @else
+                                <div>
+                                    <span>No Paid Commissions</span>
+                                </div>
+                            @endif
+                            <div>
+                                <a href="#">See All</a>
+                            </div>
                     </div>
-                    @else
-                        <div>
-                            <span>No Paid Commissions</span>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
@@ -197,6 +204,9 @@
                                 </tbody>
                             </table>
                         </div>
+                        <div>
+                            <a href="#">See All</a>
+                        </div>
                     </div>
                </div>
                 <div class="card">
@@ -230,6 +240,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div>
+                            <a href="#">See All</a>
                         </div>
                     </div>
                 </div>
@@ -266,6 +279,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div>
+                            <a href="#">See All</a>
                         </div>
                     </div>
                 </div>
@@ -312,6 +328,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                        <div>
+                            <a href="#">See All</a>
                         </div>
                     </div>
                 </div>
