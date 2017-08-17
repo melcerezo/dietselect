@@ -43,8 +43,10 @@
         <div class="row">
             <div class="col s12 m2">
                 <ul class="collection">
-                    <li class="collection-item">
-                        <span></span>
+                    <li class="collection-item light-green lighten-1 white-text">
+                        <span class="collection-header">
+                            Admin
+                        </span>
                     </li>
                     <li class="collection-item"><a href="#">Commissions</a></li>
                     <li class="collection-item"><a href="#">Orders</a></li>
