@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('head')
-
+    <script src="/js/admin/admin.js" defer></script>
 @endsection
 
 @section('content')
