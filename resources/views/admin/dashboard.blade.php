@@ -197,7 +197,7 @@
                                             @if($order->is_cancelled==0)
                                                 @if($order->is_paid==0)
                                                     <span>Pending</span>
-                                                @elseif($order->is_paid)
+                                                @elseif($order->is_paid==1)
                                                     <span>Paid</span>
                                                 @endif
                                             @elseif($order->is_cancelled==1)
