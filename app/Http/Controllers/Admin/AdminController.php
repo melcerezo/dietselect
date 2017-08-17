@@ -32,14 +32,10 @@ class AdminController extends Controller
     {
 
         $foodies=Foodie::orderBy('created_at', 'desc')->get();
-        $chefs=Chef::all();
-        $orders = Order::all();
-        $plans = Plan::all();
-        $commissions = Commission::all();
-
-        dd($foodies);
-
-//        dd("Hello!");
+        $chefs=Chef::orderBy('created_at', 'desc')->get();
+        $orders = Order::orderBy('created_at', 'desc')->get();
+        $plans = Plan::orderBy('created_at', 'desc')->get();
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
 
         return view("admin.dashboard")->with([
             'foodies'=>$foodies,
