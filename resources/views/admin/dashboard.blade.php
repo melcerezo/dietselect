@@ -155,7 +155,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($chefs->take(5) as $chef)
+                                @foreach($plans->take(5) as $plan)
                                     <tr>
                                         <td>{{$plan->id}}</td>
                                         <td>{{$plan->plan_name}}</td>
