@@ -112,12 +112,12 @@
                                 Paid Commissions
                             </span>
                             <span class="badge light-green white-text" style="border-radius: 15px">
-                                {{$commissions->count()}}
+                                {{$paidCommissions->count()}}
                             </span>
                         </div>
                     </div>
                     <div class="card-content">
-                        @if($commissions->count()!=0)
+                        @if($paidCommissions->count()!=0)
                             <div>
                                 <table class="">
                                     <thead>
@@ -129,7 +129,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($commissions->take(5) as $commission)
+                                    @foreach($paidCommissions->take(5) as $commission)
                                         <tr>
                                             <td>{{$commission->id}}</td>
                                             <td>
