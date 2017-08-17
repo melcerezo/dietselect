@@ -133,7 +133,40 @@
                 </div>
             </div>
             <div class="col s12 m5">
-
+                <div class="card">
+                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                        <div>
+                            <span>
+                                Plans
+                            </span>
+                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                {{$plans->count()}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <table class="">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Plan Name</th>
+                                    <th>Price</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($chefs->take(5) as $chef)
+                                    <tr>
+                                        <td>{{$plan->id}}</td>
+                                        <td>{{$plan->plan_name}}</td>
+                                        <td>{{$plan->price}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
