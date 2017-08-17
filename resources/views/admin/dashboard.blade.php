@@ -56,12 +56,12 @@
             </div>
             <div class="col s12 m5">
                <div class="card">
-                    <div class="grey lighten-5" style="width: 100%;">
+                    <div class="grey lighten-3" style="width: 100%;">
                         <div>
                             <span>
                                 Users
                             </span>
-                            <span class="badge light-green white-text">
+                            <span class="badge light-green white-text" style="border-radius: 15px">
                                 {{$foodies->count()}}
                             </span>
                         </div>
