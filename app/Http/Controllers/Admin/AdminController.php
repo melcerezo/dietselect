@@ -35,7 +35,7 @@ class AdminController extends Controller
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $orders = Order::orderBy('created_at', 'desc')->get();
         $plans = Plan::orderBy('created_at', 'desc')->get();
-        $commissions = Commission::orderBy('created_at', 'desc')->get();
+        $commissions = Commission::where('paid','=',0)->orderBy('created_at', 'desc')->get();
 
         return view("admin.dashboard")->with([
             'foodies'=>$foodies,

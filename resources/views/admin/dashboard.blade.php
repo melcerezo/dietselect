@@ -41,6 +41,55 @@
 
     <div class="container" style="width: 85%;">
         <div class="row">
+            <div class="col s12 m6">
+                <div class="card">
+                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                        <div>
+                            <span>
+                                Unpaid Commissions
+                            </span>
+                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                {{$commissions->count()}}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div>
+                            <table class="">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Company Name</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($commissions->take(5) as $commission)
+                                    <tr>
+                                        <td>{{$commission->id}}</td>
+                                        <td>
+                                            @foreach($chefs as $chef)
+                                                @if($chef->id==$commission->chef_id)
+                                                    {{$commission->name}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{$commission->created_at}}</td>
+                                        <td>{{$commission->amount}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6">
+
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12 m2">
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">

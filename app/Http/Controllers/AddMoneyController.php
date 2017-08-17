@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chat;
 use App\Chef;
+use App\Commission;
 use App\CustomPlan;
 use App\Http\Requests;
 use App\Order;
@@ -209,18 +210,37 @@ class AddMoneyController extends Controller{
             $orderChef=[];
 
             foreach ($orderItems as $orderItem){
+                $ratingChef="";
+                $price="";
                 if($orderItem->order_type==0){
                     $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->chef->id;
+                    $ratingChef=$orderPlan->chef->id;
+                    $price=$orderPlan->price;
+
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan_name, 'chef_id'=>$orderPlan->chef->id, 'chef_name'=>$orderPlan->chef->name,
                         'price'=>$orderPlan->price,'type'=>'Standard');
                 }elseif($orderItem->order_type==1){
                     $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->plan->chef->id;
+                    $ratingChef=$orderPlan->plan->chef->id;
+                    $price=$orderPlan->plan->price;
+
                     $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
                         'price'=>$orderPlan->plan->price,
                         'type'=>'Customized');
                 }
+
+                $com = new Commission();
+                $com->chef_id = $ratingChef;
+                $com->amount = $price;
+                $com->save();
+
+                $rating = new Rating();
+                $rating->chef_id = $ratingChef;
+                $rating->foodie_id = Auth::guard('foodie')->user()->id;
+                $rating->order_item_id = $orderItem->id;
+                $rating->save();
             }
 
             $amount = $order->total;
