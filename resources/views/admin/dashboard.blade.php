@@ -53,18 +53,27 @@
                         </span>
                     </a>
                 </li>
+
                 <li>
-                    <form id="logout" method="post" action="{{ route('admin.logout') }}">
-                        {{ csrf_field() }}
-                        <a id="logout-link" class="nvItLnk" href="#">
-                            {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
-                            <span class="hide-on-med-and-down">Logout</span>
-                        </a>
-                    </form>
+                    <a class="dropdown-button" href="#" data-activates='admin-dropdown' data-beloworigin="true" data-constrainwidth="true">
+                        <span class="nvItTx hide-on-med-and-down">Admin</span>
+                    </a>
                 </li>
             </ul>
         </div>
     </nav>
+
+    <ul id='admin-dropdown' class='dropdown-content collection'>
+        <li class="collection-item">
+            <form id="logout" method="post" action="{{ route('admin.logout') }}">
+                {{ csrf_field() }}
+                <a id="logout-link" class="nvItLnk" href="#">
+                    {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
+                    <span class="hide-on-med-and-down">Logout</span>
+                </a>
+            </form>
+        </li>
+    </ul>
 
     <div class="container" style="width: 85%;">
         <div class="row">
