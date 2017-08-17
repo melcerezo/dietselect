@@ -114,7 +114,8 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
+                                    <th>Company Name</th>
+                                    <th>User Name</th>
                                 </tr>
                                 </thead>
                                 <tbody>
