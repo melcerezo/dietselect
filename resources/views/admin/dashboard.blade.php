@@ -69,7 +69,7 @@
                     <li class="collection-item"><a href="{{route('admin.commissions')}}">Commissions</a></li>
                     <li class="collection-item"><a href="#">Orders</a></li>
                     <li class="collection-item"><a href="#">Foodies</a></li>
-                    <li class="collection-item"><a href="#">Chefs</a></li>
+                    <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
             </div>
             <div class="col s12 m5">
