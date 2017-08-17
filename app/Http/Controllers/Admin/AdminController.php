@@ -47,4 +47,35 @@ class AdminController extends Controller
             'paidCommissions'=>$paidCommissions,
         ]);
     }
+
+    public function commissions()
+    {
+        $chefs=Chef::orderBy('created_at', 'desc')->get();
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
+
+        return view("admin.commissions")->with([
+            'chefs'=>$chefs,
+            'commissions'=>$commissions,
+        ]);
+    }
+
+    public function payCommission(Commission $commission)
+    {
+        $commission->paid=1;
+        $commission->save();
+
+        return back()->with(['status'=>'Paid commission!']);
+    }
+
+    public function payCommissionAll()
+    {
+        $commissions = Commission::where('paid','=',0)->get();
+
+        foreach($commissions as $commission){
+            $commission->paid=1;
+            $commission->save();
+        }
+
+        return back()->with(['status'=>'Paid all unpaid commissions!']);
+    }
 }

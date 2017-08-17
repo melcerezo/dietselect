@@ -176,5 +176,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
     Route::get('/', 'Admin\AdminController@index')->name('admin');
     Route::get('dashboard', 'Admin\AdminController@index')->name('admin.dashboard');
+    Route::get('commissions','Admin\AdminController@commissions')->name('admin.commissions');
+    Route::post('/payCommission/{commission}','Admin\AdminController@payCommission')->name('admin.pay');
+    Route::post('/payCommissionAll','Admin\AdminController@payCommissionAll')->name('admin.payAll');
 
 });
