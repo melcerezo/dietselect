@@ -95,15 +95,15 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div>
+                                <a href="#">See All</a>
+                            </div>
                         </div>
                         @else
                             <div>
                                 <span>No Unpaid Commissions</span>
                             </div>
                         @endif
-                        <div>
-                            <a href="#">See All</a>
-                        </div>
                     </div>
 
                 </div>
@@ -149,15 +149,15 @@
                                     @endforeach
                                     </tbody>
                                 </table>
+                                <div>
+                                    <a href="#">See All</a>
+                                </div>
                             </div>
                             @else
                                 <div>
                                     <span>No Paid Commissions</span>
                                 </div>
                             @endif
-                            <div>
-                                <a href="#">See All</a>
-                            </div>
                     </div>
                 </div>
             </div>
