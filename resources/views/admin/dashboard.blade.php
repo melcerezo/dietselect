@@ -9,12 +9,21 @@
             <div style="margin-left: 10px;">
                 <a href="#!" class="brand-logo">Admin Panel</a>
             </div>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <ul class="right hide-on-med-and-down">
                 <li>
                     <a href="{{route("admin.dashboard")}}">
                         <span class="valign-wrapper" style="position: relative;">
                             <span style="margin-left: 2px;">
                                 Dashboard
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route("admin.commissions")}}">
+                        <span class="valign-wrapper" style="position: relative;">
+                            <span style="margin-left: 2px;">
+                                Commissions
                             </span>
                         </span>
                     </a>
@@ -48,7 +57,7 @@
                             Admin
                         </span>
                     </li>
-                    <li class="collection-item"><a href="#">Commissions</a></li>
+                    <li class="collection-item"><a href="{{route('admin.commissions')}}">Commissions</a></li>
                     <li class="collection-item"><a href="#">Orders</a></li>
                     <li class="collection-item"><a href="#">Foodies</a></li>
                     <li class="collection-item"><a href="#">Chefs</a></li>
@@ -96,7 +105,7 @@
                                 </tbody>
                             </table>
                             <div>
-                                <a href="#">See All</a>
+                                <a href="{{route('admin.commissions')}}">See All</a>
                             </div>
                         </div>
                         @else
@@ -150,7 +159,7 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    <a href="#">See All</a>
+                                    <a href="{{route('admin.commissions')}}">See All</a>
                                 </div>
                             </div>
                             @else
