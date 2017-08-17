@@ -99,7 +99,7 @@
                                             @endforeach
                                         </td>
                                         <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                        <td>{{$commission->amount}}</td>
+                                        <td>{{'PHP'.$commission->amount}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -153,7 +153,7 @@
                                                 @endforeach
                                             </td>
                                             <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                            <td>{{$commission->amount}}</td>
+                                            <td>{{'PHP'.$commission->amount}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -283,7 +283,7 @@
                                     <tr>
                                         <td>{{$plan->id}}</td>
                                         <td>{{$plan->plan_name}}</td>
-                                        <td>{{$plan->price}}</td>
+                                        <td>{{'PHP'.$plan->price}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -321,7 +321,7 @@
                                     <tr>
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->created_at->format('F d, Y')}}</td>
-                                        <td>{{$order->total}}</td>
+                                        <td>{{'PHP'.$order->total}}</td>
                                         <td>
                                             @if($order->is_cancelled==0)
                                                 @if($order->is_paid==0)
