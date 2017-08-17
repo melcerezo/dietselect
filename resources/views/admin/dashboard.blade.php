@@ -68,27 +68,31 @@
                     </div>
                     <div class="card-content">
                         <div>
-                            <table>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>User Name</th>
-                                </tr>
-                                @foreach($foodies->take(5) as $foodie)
+                            <table class="">
+                                <thead>
                                     <tr>
-                                        <td>{{$foodie->id}}</td>
-                                        <td>{{$foodie->first_name}}</td>
-                                        <td>{{$foodie->last_name}}</td>
-                                        <td>
-                                            @if($foodie->username!="")
-                                                {{$foodie->username}}
-                                            @else
-                                                <span>N/A</span>
-                                            @endif
-                                        </td>
+                                        <th>ID</th>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>User Name</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody>
+                                    @foreach($foodies->take(5) as $foodie)
+                                        <tr>
+                                            <td>{{$foodie->id}}</td>
+                                            <td>{{$foodie->first_name}}</td>
+                                            <td>{{$foodie->last_name}}</td>
+                                            <td>
+                                                @if($foodie->username!="")
+                                                    {{$foodie->username}}
+                                                @else
+                                                    <span>N/A</span>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
                             </table>
                         </div>
                     </div>
