@@ -31,12 +31,13 @@ class AdminController extends Controller
     public function index()
     {
 
-        $foodies=Foodie::all();
+        $foodies=Foodie::all()->latest();
         $chefs=Chef::all();
         $orders = Order::all();
         $plans = Plan::all();
         $commissions = Commission::all();
 
+        dd($foodies);
 
 //        dd("Hello!");
 

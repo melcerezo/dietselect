@@ -69,10 +69,6 @@ class Chef extends Authenticatable
         return $this->hasOne(ChefBankAccount::class);
     }
 
-//    public function orders(){
-//        return $this->hasMany(OrderItem::class);
-//    }
-
     public function messages(){
         return $this->hasMany(Message::class);
     }

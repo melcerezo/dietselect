@@ -11,7 +11,7 @@
             </div>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
-                    <a>
+                    <a href="{{route("admin.dashboard")}}">
                         <span class="valign-wrapper" style="position: relative;">
                             <span style="margin-left: 2px;">
                                 Dashboard
@@ -20,7 +20,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="#">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
                                 Users
@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a href="#">
                         <span style="margin-left: 2px;">
                             Orders
                         </span>
@@ -54,7 +54,52 @@
                     <li class="collection-item"><a href="#">Chefs</a></li>
                 </ul>
             </div>
-            <div>
+            <div class="col s12 m5">
+               <div class="card">
+                    <div class="card-content">
+                        <div class="grey lighten-1">
+                            <div>
+                                <span>
+                                    Users
+                                </span>
+                            </div>
+                            <div class="right">
+                                <span class="badge light-green white-text">
+                                    {{$foodies->count()}}
+                                </span>
+                            </div>
+                        </div>
+                        <div>
+                            <table>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>User Name</th>
+                                </tr>
+                                @foreach($foodies->take(5) as $foodie)
+                                    <tr>
+                                        <td>{{$foodie->first_name}}</td>
+                                        <td>{{$foodie->last_name}}</td>
+                                        <td>
+                                            @if($foodie->username!="")
+                                                {{$foodie->username}}
+                                            @else
+                                                <span>N/A</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </table>
+                        </div>
+                    </div>
+               </div>
+                <div class="card">
+                    <div class="modal-content">
+
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5">
 
             </div>
         </div>
