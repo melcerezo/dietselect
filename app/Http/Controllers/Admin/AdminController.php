@@ -97,6 +97,8 @@ class AdminController extends Controller
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
         $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
         $plans = Plan::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $customPlan = CustomPlan::all();
+        $simpleCustomPlan = SimpleCustomPlan::all();
         $bank_account= ChefBankAccount::where('chef_id','=',$chef->id)->get();
 
         return view('admin.chef')->with([

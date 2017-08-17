@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.chefs')}}">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
                                 Chefs
@@ -260,7 +260,7 @@
                             </table>
                         </div>
                         <div>
-                            <a href="#">See All</a>
+                            <a href="{{route('admin.chefs')}}">See All</a>
                         </div>
                     </div>
                 </div>

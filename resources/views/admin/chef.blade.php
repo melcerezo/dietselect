@@ -38,7 +38,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.chefs')}}">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
                                 Chefs
@@ -93,11 +93,14 @@
                                             <tr>
                                                 <td>{{$orderItem->id}}</td>
                                                 <td>
-                                                    @foreach($plans as $plan)
-                                                        @if($plan->id == $orderItem->plan_id)
-                                                            {{$plan->plan_name}}
-                                                        @endif
-                                                    @endforeach
+                                                    @if($orderItem->order_type==0)
+                                                        @foreach($plans as $plan)
+                                                            @if($plan->id == $orderItem->plan_id)
+                                                                {{$plan->plan_name}}
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                    @endif
                                                 </td>
                                                 <td>{{$orderItem->quantity}}</td>
                                                 <td>{{$orderItem->price}}</td>
