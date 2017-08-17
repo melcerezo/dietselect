@@ -99,7 +99,7 @@
                                             @endforeach
                                         </td>
                                         <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                        <td>{{'PHP'.number_format($commission->amount,'.','')}}</td>
+                                        <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -153,7 +153,7 @@
                                                 @endforeach
                                             </td>
                                             <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                            <td>{{'PHP'.number_format($commission->amount,'.','')}}</td>
+                                            <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
