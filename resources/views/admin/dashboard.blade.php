@@ -123,6 +123,7 @@
                                     <tr>
                                         <td>{{$chef->id}}</td>
                                         <td>{{$chef->name}}</td>
+                                        <td>{{$chef->url_name}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
