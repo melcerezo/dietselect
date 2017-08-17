@@ -70,12 +70,14 @@
                         <div>
                             <table>
                                 <tr>
+                                    <th>ID</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
                                     <th>User Name</th>
                                 </tr>
                                 @foreach($foodies->take(5) as $foodie)
                                     <tr>
+                                        <td>{{$foodie->id}}</td>
                                         <td>{{$foodie->first_name}}</td>
                                         <td>{{$foodie->last_name}}</td>
                                         <td>
