@@ -85,7 +85,7 @@
                                 </td>
                                 <td>
                                     @if($commission->paid==0)
-                                        <form action="{{route('admin.payCommission',$commission->id)}}">
+                                        <form action="{{route('admin.pay',$commission->id)}}">
                                             {{ csrf_field() }}
                                             <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
                                         </form>
