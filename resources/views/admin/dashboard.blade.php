@@ -32,7 +32,16 @@
                     <a href="#">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
-                                Users
+                                Foodies
+                            </span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <span class="valign-wrapper">
+                            <span style="margin-left: 2px;">
+                                Chefs
                             </span>
                         </span>
                     </a>

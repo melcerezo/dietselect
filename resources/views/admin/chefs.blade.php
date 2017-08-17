@@ -62,57 +62,34 @@
             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                 <div>
                     <span>
-                        Commissions
+                        Chefs
                     </span>
-                     <span class="badge light-green white-text" style="border-radius: 15px">
-                        {{$commissions->count()}}
+                    <span class="badge light-green white-text" style="border-radius: 15px">
+                        {{$chefs->count()}}
                     </span>
                 </div>
             </div>
             <div class="card-content">
                 <table class="responsive-table">
                     <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Chef Name</th>
-                            <th>Date</th>
-                            <th>Amount</th>
-                            <th>Paid</th>
-                            <th>Update</th>
-                        </tr>
+                    <tr>
+                        <th>ID</th>
+                        <th>Company Name</th>
+                        <th>User Name</th>
+                        <th>Created</th>
+                    </tr>
                     </thead>
                     <tbody>
-                        @foreach($commissions as $commission)
-                            <tr>
-                                <td>{{$commission->id}}</td>
-                                <td>
-                                    @foreach($chefs as $chef)
-                                        @if($chef->id == $commission->chef_id)
-                                            {{$chef->name}}
-                                        @endif
-                                    @endforeach
-                                </td>
-                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
-                                <td>
-                                    @if($commission->paid==0)
-                                        <span>Not Paid</span>
-                                    @elseif($commission->paid==1)
-                                        <span>Paid</span>
-                                    @endif
-                                </td>
-                                <td>
-                                    @if($commission->paid==0)
-                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                            {{ csrf_field() }}
-                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                        </form>
-                                    @elseif($commission->paid==1)
-                                        <span>Paid</span>
-                                    @endif
-                                </td>
-                            </tr>
-                        @endforeach
+                    @foreach($chefs as $chef)
+                        <tr>
+                            <td>{{$chef->id}}</td>
+                            <td>
+                                <a href="{{route('admin.chef', $chef->id)}}">{{$chef->name}}</a>
+                            </td>
+                            <td>{{$chef->url_name}}</td>
+                            <td>{{$chef->created_at->format('F d, Y')}}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </div>

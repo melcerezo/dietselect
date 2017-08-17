@@ -179,5 +179,8 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('commissions','Admin\AdminController@commissions')->name('admin.commissions');
     Route::post('/payCommission/{commission}','Admin\AdminController@payCommission')->name('admin.pay');
     Route::post('/payCommissionAll','Admin\AdminController@payCommissionAll')->name('admin.payAll');
+    Route::get('chefs','Admin\AdminController@chefs')->name('admin.chefs');
+    Route::get('chefs/{chef}','Admin\AdminController@chef')->name('admin.chef');
+
 
 });

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\ChefBankAccount;
 use App\Http\Controllers\Controller;
+use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Foodie;
@@ -48,6 +50,8 @@ class AdminController extends Controller
         ]);
     }
 
+
+
     public function commissions()
     {
         $chefs=Chef::orderBy('created_at', 'desc')->get();
@@ -78,4 +82,30 @@ class AdminController extends Controller
 
         return back()->with(['status'=>'Paid all unpaid commissions!']);
     }
+
+    public function chefs()
+    {
+        $chefs = Chef::all();
+
+        return view('admin.chefs')->with([
+            'chefs'=>$chefs,
+        ]);
+    }
+
+    public function chef(Chef $chef)
+    {
+        $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $plans = Plan::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $bank_account= ChefBankAccount::where('chef_id','=',$chef->id)->get();
+
+        return view('admin.chef')->with([
+            'chef'=>$chef,
+            'orderItems'=>$orderItems,
+            'commissions'=>$commissions,
+            'plans'=>$plans,
+            'bank_account'=>$bank_account,
+        ]);
+    }
+
 }
