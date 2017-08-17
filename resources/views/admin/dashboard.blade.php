@@ -61,10 +61,10 @@
                             <span>
                                 Users
                             </span>
+                            <span class="badge light-green white-text">
+                                {{$foodies->count()}}
+                            </span>
                         </div>
-                        <span class="badge light-green white-text">
-                            {{$foodies->count()}}
-                        </span>
                     </div>
                     <div class="card-content">
                         <div>
