@@ -85,7 +85,7 @@
                                         <td>
                                             @foreach($chefs as $chef)
                                                 @if($chef->id==$commission->chef_id)
-                                                    {{$commission->name}}
+                                                    {{$chef->name}}
                                                 @endif
                                             @endforeach
                                         </td>
@@ -135,7 +135,7 @@
                                             <td>
                                                 @foreach($chefs as $chef)
                                                     @if($chef->id==$commission->chef_id)
-                                                        {{$commission->name}}
+                                                        {{$chef->name}}
                                                     @endif
                                                 @endforeach
                                             </td>
