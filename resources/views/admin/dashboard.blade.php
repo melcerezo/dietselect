@@ -283,7 +283,7 @@
                                     <tr>
                                         <td>{{$plan->id}}</td>
                                         <td>{{$plan->plan_name}}</td>
-                                        <td>{{'PHP'.number_format($plan->price, 2, '.', ' ')}}</td>
+                                        <td>{{'PHP'.number_format($plan->price, 2, '.', '')}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
@@ -321,7 +321,7 @@
                                     <tr>
                                         <td>{{$order->id}}</td>
                                         <td>{{$order->created_at->format('F d, Y')}}</td>
-                                        <td>{{'PHP'.number_format($order->total, 2, '.', ' ')}}</td>
+                                        <td>{{'PHP'.number_format($order->total, 2, '.', '')}}</td>
                                         <td>
                                             @if($order->is_cancelled==0)
                                                 @if($order->is_paid==0)
