@@ -162,6 +162,8 @@ class AddMoneyController extends Controller{
             $paypal->order_id = $order->id;
             $paypal->save();
 
+
+
             $order->is_paid = 1;
             $order->save();
 

@@ -7,16 +7,14 @@
     <nav>
         <div class="nav-wrapper light-green lighten-1">
             <div style="margin-left: 10px;">
-                <a href="#!" class="brand-logo">Diet Select</a>
+                <a href="#!" class="brand-logo">Admin Panel</a>
             </div>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li>
                     <a>
                         <span class="valign-wrapper" style="position: relative;">
-                            <i class="material-icons" style="display: inline">email</i>
                             <span style="margin-left: 2px;">
-                                Messages
-                                <span class="new badge red">4</span>
+                                Dashboard
                             </span>
                         </span>
                     </a>
@@ -24,24 +22,42 @@
                 <li>
                     <a>
                         <span class="valign-wrapper">
-                            <i class="material-icons" style="display: inline">announcement</i>
                             <span style="margin-left: 2px;">
-                                Notifications
-                                <span class="new badge red">2</span>
+                                Users
                             </span>
                         </span>
                     </a>
                 </li>
                 <li>
                     <a>
-                        <img class="circle" src="/img/user.jpg" style="width: 40px; height: 40px; position: relative;">
-                        <span style="margin-left: 2px;">Profile</span>
+                        <span style="margin-left: 2px;">
+                            Orders
+                        </span>
                     </a>
                 </li>
             </ul>
         </div>
     </nav>
 
+    <div class="container" style="width: 85%;">
+        <div class="row">
+            <div class="col s12 m2">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <span></span>
+                    </li>
+                    <li class="collection-item"><a href="#">Commissions</a></li>
+                    <li class="collection-item"><a href="#">Orders</a></li>
+                    <li class="collection-item"><a href="#">Foodies</a></li>
+                    <li class="collection-item"><a href="#">Chefs</a></li>
+                </ul>
+            </div>
+            <div>
 
-    {{"Hello This is the admin page!"}}
+            </div>
+        </div>
+    </div>
+
+
+
 @endsection

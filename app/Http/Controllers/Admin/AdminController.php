@@ -18,6 +18,7 @@ use App\Ingredient;
 use App\Rating;
 use App\CustomPlan;
 use App\SimpleCustomPlan;
+use App\Commission;
 
 
 class AdminController extends Controller
@@ -34,10 +35,17 @@ class AdminController extends Controller
         $chefs=Chef::all();
         $orders = Order::all();
         $plans = Plan::all();
+        $commissions = Commission::all();
 
 
 //        dd("Hello!");
 
-        return view("admin.dashboard");
+        return view("admin.dashboard")->with([
+            'foodies'=>$foodies,
+            'chefs'=>$chefs,
+            'orders'=>$orders,
+            'plans'=>$plans,
+            'commissions'=>$commissions,
+        ]);
     }
 }
