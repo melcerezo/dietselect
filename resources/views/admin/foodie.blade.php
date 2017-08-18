@@ -116,7 +116,7 @@
                                 <li class="collection-item">
                                     <span>Preference: </span>
                                     <span>
-                                        @if($foodiePreference->ingredient!='')
+                                        @if($foodiePreference)
                                             {{ucfirst($foodiePreference->ingredient)}}
                                         @else
                                             N/A
