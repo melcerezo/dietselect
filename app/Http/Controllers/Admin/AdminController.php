@@ -96,7 +96,7 @@ class AdminController extends Controller
     {
         $orderPlanNames=[];
 
-        $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
         $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
         foreach($orderItems as $orderItem){
             if($orderItem->order_type==0){

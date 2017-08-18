@@ -98,7 +98,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach(array_slice($orderPlanNames,0,5)as $orderItem)
+                                    @foreach($orderPlanNames as $orderItem)
                                         @if($orderItem['is_cancelled']!=1&&$orderItem['is_paid']==1)
                                             <tr>
                                                 <td>{{$orderItem['id']}}</td>
@@ -143,7 +143,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach(array_slice($orderPlanNames,0,5) as $orderItem)
+                                @foreach($orderPlanNames as $orderItem)
                                     @if($orderItem['is_cancelled']==1)
                                         <tr>
                                             <td>{{$orderItem['id']}}</td>
