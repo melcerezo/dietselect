@@ -116,8 +116,6 @@
                             </ul>
                         </div>
                     </div>
-                </div>
-                <div class="row">
                     <div class="col s12 m6">
                         <div class="card-panel">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
@@ -129,34 +127,36 @@
                             </div>
                             <table class="responsive-table centered" style="table-layout: fixed;">
                                 <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                        <th>Date</th>
-                                    </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Date</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($orders as $order)
-                                        @if($order->is_cancelled!=1)
-                                            <tr>
-                                                <td>{{$order->id}}</td>
-                                                <td>{{$order->total}}</td>
-                                                <td>
-                                                    @if($order->is_paid==0)
-                                                        <span>Pending</span>
-                                                    @elseif($order->is_paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>{{$order->created_at->format('F d, Y')}}</td>
-                                            </tr>
-                                        @endif
-                                    @endforeach
+                                @foreach($orders as $order)
+                                    @if($order->is_cancelled!=1)
+                                        <tr>
+                                            <td>{{$order->id}}</td>
+                                            <td>{{$order->total}}</td>
+                                            <td>
+                                                @if($order->is_paid==0)
+                                                    <span>Pending</span>
+                                                @elseif($order->is_paid==1)
+                                                    <span>Paid</span>
+                                                @endif
+                                            </td>
+                                            <td>{{$order->created_at->format('F d, Y')}}</td>
+                                        </tr>
+                                    @endif
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col s12 m6">
                         <div class="card-panel">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
@@ -192,24 +192,24 @@
                             </table>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <div class="card-panel">
-                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                <div>
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <div class="card-panel">
+                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                    <div>
                                     <span>
                                         Allergies
                                     </span>
+                                    </div>
                                 </div>
+                                <ul class="collection">
+                                    @foreach($foodieAllergy as $allergy)
+                                        <li class="collection-item">{{$allergy->allergy}}</li>
+                                    @endforeach
+                                </ul>
                             </div>
-                            <ul class="collection">
-                                @foreach($foodieAllergy as $allergy)
-                                    <li class="collection-item">{{$allergy->allergy}}</li>
-                                @endforeach
-                            </ul>
                         </div>
-                    </div>
+                </div>
                     <div class="col s12 m6">
                         <div class="card-panel">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
