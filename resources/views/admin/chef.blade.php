@@ -213,7 +213,7 @@
                                     <td>{{$plan->id}}</td>
                                     <td>{{$plan->plan_name}}</td>
                                     <td>{{$plan->price}}</td>
-                                    <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                    <td>{{$plan->created_at}}</td>
                                 @endforeach
                                 </tbody>
                             </table>
