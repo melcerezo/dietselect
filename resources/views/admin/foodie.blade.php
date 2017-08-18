@@ -192,24 +192,6 @@
                             </table>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col s12 m6">
-                            <div class="card-panel">
-                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                    <div>
-                                    <span>
-                                        Allergies
-                                    </span>
-                                    </div>
-                                </div>
-                                <ul class="collection">
-                                    @foreach($foodieAllergy as $allergy)
-                                        <li class="collection-item">{{$allergy->allergy}}</li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
-                </div>
                     <div class="col s12 m6">
                         <div class="card-panel">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
@@ -221,34 +203,52 @@
                             </div>
                             <table class="responsive-table centered" style="table-layout: fixed;">
                                 <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Address</th>
-                                        <th>Type</th>
-                                    </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Address</th>
+                                    <th>Type</th>
+                                </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($foodieAddresses as $foodieAddress)
-                                        <tr>
-                                            <td>{{$foodieAddress->id}}</td>
-                                            <td>
-                                                {{$foodieAddress->unit}}
-                                                @if($foodie->bldg!='')
-                                                    {{$foodieAddress->bldg}}
-                                                @endif
-                                                {{', '.$foodieAddress->street.', '.$foodieAddress->brgy.', '.$foodieAddress->city}}
-                                            </td>
-                                            <td>
-                                                @if($foodieAddress->type=='R')
-                                                    <span>Residence</span>
-                                                @elseif($foodieAddress->type=='O')
-                                                    <span>Office</span>
-                                                @endif
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($foodieAddresses as $foodieAddress)
+                                    <tr>
+                                        <td>{{$foodieAddress->id}}</td>
+                                        <td>
+                                            {{$foodieAddress->unit}}
+                                            @if($foodie->bldg!='')
+                                                {{$foodieAddress->bldg}}
+                                            @endif
+                                            {{', '.$foodieAddress->street.', '.$foodieAddress->brgy.', '.$foodieAddress->city}}
+                                        </td>
+                                        <td>
+                                            @if($foodieAddress->type=='R')
+                                                <span>Residence</span>
+                                            @elseif($foodieAddress->type=='O')
+                                                <span>Office</span>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card-panel">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                <span>
+                                    Allergies
+                                </span>
+                                </div>
+                            </div>
+                            <ul class="collection">
+                                @foreach($foodieAllergy as $allergy)
+                                    <li class="collection-item">{{$allergy->allergy}}</li>
+                                @endforeach
+                            </ul>
                         </div>
                     </div>
                 </div>
