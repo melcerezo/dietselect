@@ -47,8 +47,8 @@ class Plan extends Model
         return $this->hasMany(SimpleCustomPlan::class);
     }
 
-    public function getCreatedAtAttribute($date)
-    {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
-    }
+//    public function getCreatedAtAttribute($date)
+//    {
+//        return Carbon::createFromFormat('Y-m-d H:i:s', $date)->format('Y-m-d');
+//    }
 }
