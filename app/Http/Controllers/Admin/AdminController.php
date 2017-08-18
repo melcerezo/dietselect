@@ -23,6 +23,7 @@ use App\Rating;
 use App\CustomPlan;
 use App\SimpleCustomPlan;
 use App\Commission;
+use Illuminate\Support\Facades\DB;
 
 
 class AdminController extends Controller
