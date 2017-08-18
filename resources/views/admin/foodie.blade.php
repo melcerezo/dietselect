@@ -115,7 +115,7 @@
                                 </li>
                                 <li class="collection-item">
                                     <span>Preference: </span>
-                                    <span>{{$foodiePreference}}</span>
+                                    <span>{{$foodiePreference->ingredient}}</span>
                                 </li>
                                 <li class="collection-item">
                                     <span>Foodie Since:</span>
