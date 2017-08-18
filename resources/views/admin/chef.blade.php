@@ -114,6 +114,7 @@
                                                         <span>Customized</span>
                                                     @endif
                                                 </td>
+                                                <td>{{$orderItem->date}}</td>
                                             </tr>
                                         @endif
                                     @endforeach
