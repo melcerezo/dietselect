@@ -109,10 +109,10 @@ class AddMoneyController extends Controller{
                 /** $err_data = json_decode($ex->getData(), true); **/
                 /** exit; **/
             } else {
+                 dd('Some error occur, sorry for inconvenient');
                 \Session::put('error', 'Some error occur, sorry for inconvenient');
                 return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
 //                return Redirect::route('addmoney.paywithpaypal', compact('order'));
-                /** die('Some error occur, sorry for inconvenient'); **/
             }
         }
         foreach ($payment->getLinks() as $link) {
@@ -127,6 +127,7 @@ class AddMoneyController extends Controller{
             /** redirect to paypal **/
             return Redirect::away($redirect_url);
         }
+        dd('error here');
         \Session::put('error', 'Unknown error occurred');
         return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
 //        return Redirect::route('addmoney.paywithpaypal', compact('order'));
@@ -321,7 +322,7 @@ class AddMoneyController extends Controller{
             return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
-//        \Session::put('error', 'Payment failed');
-//        return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
+       \Session::put('error', 'Payment failed');
+        return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
     }
 }
