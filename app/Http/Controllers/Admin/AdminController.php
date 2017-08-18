@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Allergy;
 use App\ChefBankAccount;
+use App\FoodiePreference;
 use App\Http\Controllers\Controller;
 use App\Message;
 use Illuminate\Http\Request;
@@ -124,6 +126,32 @@ class AdminController extends Controller
             'commissions'=>$commissions,
             'bank_account'=>$bank_account,
         ]);
+    }
+
+
+    public function foodies()
+    {
+        $foodies = Foodie::all();
+
+        return view('admin.foodies')->with([
+            'foodies'=>$foodies,
+        ]);
+    }
+
+    public function foodie(Foodie $foodie)
+    {
+        $orders=Order::where('foodie_id','=',$foodie->id)->orderBy('created_at','desc')->take(5)->get();
+        $foodieAddresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+        $foodieAllergy = Allergy::where('foodie_id','=',$foodie->id)->get();
+        $foodiePreference = FoodiePreference::where('foodie_id','=',$foodie->id)->first();
+
+        return view('admin.foodie')->with([
+            'orders'=>$orders,
+            'foodieAddresses'=>$foodieAddresses,
+            'foodieAllergy'=>$foodieAllergy,
+            'foodiePreference'=>$foodiePreference
+        ]);
+
     }
 
 }
