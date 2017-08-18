@@ -92,7 +92,7 @@
                                     <span>
                                         @if($foodie->gender=='M')
                                             Male
-                                        @elseif($foodie->gender=='F)
+                                        @elseif($foodie->gender=='F')
                                             Female
                                         @else
                                             N/A
