@@ -142,7 +142,7 @@ class AdminController extends Controller
     public function foodie(Foodie $foodie)
     {
         $orders=Order::where('foodie_id','=',$foodie->id)->orderBy('created_at','desc')->take(5)->get();
-        $foodieAddresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+        $foodieAddresses = DB::table('foodie_address')->where('foodie_id', '=', $foodie->id)->get();
         $foodieAllergy = Allergy::where('foodie_id','=',$foodie->id)->get();
         $foodiePreference = FoodiePreference::where('foodie_id','=',$foodie->id)->first();
 
