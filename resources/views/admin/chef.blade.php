@@ -108,11 +108,7 @@
                                                 <td>{{$orderItem['quantity']}}</td>
                                                 <td>{{$orderItem['price']}}</td>
                                                 <td>
-                                                    @if($orderItem['type']==0)
-                                                        <span>Standard</span>
-                                                    @elseif($orderItem['type']==1||$orderItem['type']==2)
-                                                        <span>Customized</span>
-                                                    @endif
+                                                    {{$orderItem['type']}}
                                                 </td>
                                                 <td>{{$orderItem['date']}}</td>
                                             </tr>
@@ -153,11 +149,7 @@
                                             <td>{{$orderItem['quantity']}}</td>
                                             <td>{{$orderItem['price']}}</td>
                                             <td>
-                                                @if($orderItem['type']==0)
-                                                    <span>Standard</span>
-                                                @elseif($orderItem['type']==1||$orderItem['type']==2)
-                                                    <span>Customized</span>
-                                                @endif
+                                                {{$orderItem['type']}}
                                             </td>
                                             <td>{{$orderItem['date']}}</td>
                                         </tr>
