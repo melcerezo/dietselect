@@ -152,7 +152,8 @@ class AddMoneyController extends Controller{
 //        $execution->setPayerId(empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id));
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
-        /** dd($result);exit; /** DEBUG RESULT, remove it later **/
+         dd($result);exit;
+         /** /** DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
 
             /** it's all right **/
