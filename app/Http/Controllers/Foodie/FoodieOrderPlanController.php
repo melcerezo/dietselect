@@ -119,7 +119,7 @@ class FoodieOrderPlanController extends Controller
                 $orderType="";
                 if($orderItem->order_type==0){
                     $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
-                    dd($orderPlan);
+                    dd($orderPlan->picture);
                     $planPic=$orderPlan->picture;
                     $planName = $orderPlan->plan_name;
                     $chefName = $orderPlan->chef->name;
