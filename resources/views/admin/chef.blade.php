@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.foodies')}}">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
                                 Foodies

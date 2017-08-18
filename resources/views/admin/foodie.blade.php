@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="{{route('admin.foodies')}}">
                         <span class="valign-wrapper">
                             <span style="margin-left: 2px;">
                                 Foodies
@@ -97,7 +97,13 @@
                                 </li>
                                 <li class="collection-item">
                                     <span>Username: </span>
-                                    <span>{{$foodie->username}}</span>
+                                    <span>
+                                        @if($foodie->username!="")
+                                            {{$foodie->username}}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </span>
                                 </li>
                                 <li class="collection-item">
                                     <span>Preference: </span>
