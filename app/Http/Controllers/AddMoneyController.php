@@ -152,7 +152,7 @@ class AddMoneyController extends Controller{
 //        $execution->setPayerId(empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id));
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
-         dd($result);exit;
+         dd($result);
          /** /** DEBUG RESULT, remove it later **/
         if ($result->getState() == 'approved') {
 
@@ -321,7 +321,7 @@ class AddMoneyController extends Controller{
             return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
-        \Session::put('error', 'Payment failed');
-        return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
+//        \Session::put('error', 'Payment failed');
+//        return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
     }
 }
