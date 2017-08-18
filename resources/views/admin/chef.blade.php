@@ -175,6 +175,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Amount</th>
+                                    <th>Status</th>
                                     <th>Date</th>
                                 </tr>
                                 </thead>
@@ -182,6 +183,13 @@
                                     @foreach($commissions as $commission)
                                         <tr>
                                             <td>{{$commission->id}}</td>
+                                            <td>
+                                                @if($commission->paid==0)
+                                                    <span>Unpaid</span>
+                                                @elseif($commission->paid==1)
+                                                    <span>Paid</span>
+                                                @endif
+                                            </td>
                                             <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
                                             <td>{{$commission->created_at->format('F d, Y')}}</td>
                                         </tr>
