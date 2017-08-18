@@ -147,6 +147,7 @@ class AdminController extends Controller
         $foodiePreference = FoodiePreference::where('foodie_id','=',$foodie->id)->first();
 
         return view('admin.foodie')->with([
+            'foodie'=>$foodie,
             'orders'=>$orders,
             'foodieAddresses'=>$foodieAddresses,
             'foodieAllergy'=>$foodieAllergy,
