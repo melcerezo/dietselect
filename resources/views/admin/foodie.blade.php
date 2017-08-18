@@ -89,7 +89,15 @@
                             <ul class="collection">
                                 <li class="collection-item">
                                     <span>Gender: </span>
-                                    <span>{{$foodie->gender}}</span>
+                                    <span>
+                                        @if($foodie->gender=='M')
+                                            Male
+                                        @elseif($foodie->gender=='F)
+                                            Female
+                                        @else
+                                            N/A
+                                        @endif
+                                    </span>
                                 </li>
                                 <li class="collection-item">
                                     <span>Birthday: </span>
