@@ -161,7 +161,72 @@
                     </div>
                 </div>
                 <div class="row">
-
+                    <div class="col s12 m6">
+                        <div class="card-panel">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                    <span>
+                                        Commission
+                                    </span>
+                                </div>
+                            </div>
+                            <table class="responsive-table centered" style="table-layout: fixed;">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Company Name</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($commissions->take(5) as $commission)
+                                    <tr>
+                                        <td>{{$commission->id}}</td>
+                                        <td>
+                                            @foreach($chefs as $chef)
+                                                @if($chef->id==$commission->chef_id)
+                                                    {{$chef->name}}
+                                                @endif
+                                            @endforeach
+                                        </td>
+                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                        <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="card-panel">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                    <span>
+                                        Plans
+                                    </span>
+                                </div>
+                            </div>
+                            <table class="responsive-table centered" style="table-layout: fixed;">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Plan Name</th>
+                                    <th>Amount</th>
+                                    <th>Date</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($plans as $plan)
+                                    <td>{{$plan->id}}</td>
+                                    <td>{{$plan->plan_name}}</td>
+                                    <td>{{$plan->price}}</td>
+                                    <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

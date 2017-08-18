@@ -97,7 +97,8 @@ class AdminController extends Controller
         $orderPlanNames=[];
 
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
-        $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
+        $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
+        $plans = Plan::where('chef_id','=',$chef->id)->take(5)->get();
         foreach($orderItems as $orderItem){
             if($orderItem->order_type==0){
                 $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
@@ -118,6 +119,7 @@ class AdminController extends Controller
         return view('admin.chef')->with([
             'chef'=>$chef,
             'orderPlanNames'=>$orderPlanNames,
+            'plans'=>$plans,
             'commissions'=>$commissions,
             'bank_account'=>$bank_account,
         ]);
