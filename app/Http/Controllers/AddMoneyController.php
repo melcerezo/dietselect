@@ -14,6 +14,7 @@ use App\Plan;
 use App\Rating;
 use App\Mail\PaymentSuccess;
 use App\Mail\PaymentSuccessChef;
+use App\SimpleCustomPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -222,6 +223,15 @@ class AddMoneyController extends Controller{
                         'price'=>$orderPlan->price,'type'=>'Standard');
                 }elseif($orderItem->order_type==1){
                     $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $orderChef[]=$orderPlan->plan->chef->id;
+                    $ratingChef=$orderPlan->plan->chef->id;
+                    $price=$orderPlan->plan->price;
+
+                    $orderPlanNames[] = array('plan_name'=>$orderPlan->plan->plan_name, 'chef_id'=>$orderPlan->plan->chef->id,'chef_name'=>$orderPlan->plan->chef->name,
+                        'price'=>$orderPlan->plan->price,
+                        'type'=>'Customized');
+                }elseif($orderItem->order_type==2){
+                    $orderPlan= SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $orderChef[]=$orderPlan->plan->chef->id;
                     $ratingChef=$orderPlan->plan->chef->id;
                     $price=$orderPlan->plan->price;

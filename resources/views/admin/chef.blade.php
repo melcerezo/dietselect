@@ -94,29 +94,23 @@
                                         <th>Quantity</th>
                                         <th>Amount</th>
                                         <th>Type</th>
+                                        <th>Date</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($orderItems->take(5) as $orderItem)
-                                        @if($orderItem->order->is_cancelled!=1 && $orderItem->order->is_paid==1)
+                                    @foreach($orderPlanNames->take(5) as $orderItem)
+                                        @if($orderItem->is_cancelled!=1&&$orderItem->is_paid==1)
                                             <tr>
                                                 <td>{{$orderItem->id}}</td>
                                                 <td>
-                                                    @if($orderItem->order_type==0)
-                                                        @foreach($plans as $plan)
-                                                            @if($plan->id == $orderItem->plan_id)
-                                                                {{$plan->plan_name}}
-                                                            @endif
-                                                        @endforeach
-                                                    @else
-                                                    @endif
+                                                    {{$orderItem->plan_name}}
                                                 </td>
                                                 <td>{{$orderItem->quantity}}</td>
                                                 <td>{{$orderItem->price}}</td>
                                                 <td>
-                                                    @if($orderItem->order_type==0)
+                                                    @if($orderItem->type==0)
                                                         <span>Standard</span>
-                                                    @elseif($orderItem->order_type==1||$orderItem->order_type==2)
+                                                    @elseif($orderItem->type==1||$orderItemtype==2)
                                                         <span>Customized</span>
                                                     @endif
                                                 </td>

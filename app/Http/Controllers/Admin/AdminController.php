@@ -94,18 +94,31 @@ class AdminController extends Controller
 
     public function chef(Chef $chef)
     {
+        $orderPlanNames=[];
+
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
         $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
-        $plans = Plan::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->get();
-        $customPlan = CustomPlan::all();
-        $simpleCustomPlan = SimpleCustomPlan::all();
+        foreach($orderItems as $orderItem){
+            if($orderItem->order_type==0){
+                $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                $orderPlanNames[] = array('id'=>$orderItem->id,'plan_name'=>$orderPlan->plan_name,'price'=>$orderPlan->price,'quantity'=>$orderItem->quantity,
+                    'type'=>'Standard','is_paid'=>$orderItem->order->is_paid,'is_cancelled'=>$orderItem->order->is_cancelled,'date'=>$orderItem->created_at->format('F d, Y'));
+            }elseif($orderItem->order_type==1){
+                $orderPlan= CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                $orderPlanNames[] = array('id'=>$orderItem->id,'plan_name'=>$orderPlan->plan->plan_name,'price'=>$orderPlan->plan->price,'quantity'=>$orderItem->quantity,
+                    'type'=>'Customized','is_paid'=>$orderItem->order->is_paid,'is_cancelled'=>$orderItem->order->is_cancelled,'date'=>$orderItem->created_at->format('F d, Y'));
+            }elseif($orderItem->order_type==2){
+                $orderPlan= SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                $orderPlanNames[] = array('id'=>$orderItem->id,'plan_name'=>$orderPlan->plan->plan_name,'price'=>$orderPlan->plan->price,'quantity'=>$orderItem->quantity,
+                    'type'=>'Customized','is_paid'=>$orderItem->order->is_paid,'is_cancelled'=>$orderItem->order->is_cancelled,'date'=>$orderItem->created_at->format('F d, Y'));
+            }
+        }
         $bank_account= ChefBankAccount::where('chef_id','=',$chef->id)->get();
 
         return view('admin.chef')->with([
             'chef'=>$chef,
-            'orderItems'=>$orderItems,
+            'orderPlanNames'=>$orderPlanNames,
             'commissions'=>$commissions,
-            'plans'=>$plans,
             'bank_account'=>$bank_account,
         ]);
     }
