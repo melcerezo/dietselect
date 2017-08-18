@@ -95,7 +95,13 @@
                                 <td>
                                     <a href="{{route('admin.foodie', $foodie->id)}}">{{$foodie->first_name.' '.$foodie->last_name}}</a>
                                 </td>
-                                <td>{{$foodie->username}}</td>
+                                <td>
+                                    @if($foodie->username!="")
+                                        {{$foodie->username}}
+                                    @else
+                                        N/A
+                                    @endif
+                                </td>
                                 <td>{{$foodie->created_at->format('F d, Y')}}</td>
                             </tr>
                         @endforeach
