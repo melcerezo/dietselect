@@ -127,7 +127,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <table class="responsive-table">
+                            <table class="responsive-table center">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
