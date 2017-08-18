@@ -174,24 +174,16 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Company Name</th>
-                                    <th>Date</th>
                                     <th>Amount</th>
+                                    <th>Date</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($commissions->take(5) as $commission)
                                     <tr>
                                         <td>{{$commission->id}}</td>
-                                        <td>
-                                            @foreach($chefs as $chef)
-                                                @if($chef->id==$commission->chef_id)
-                                                    {{$chef->name}}
-                                                @endif
-                                            @endforeach
-                                        </td>
-                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
                                         <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
+                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
