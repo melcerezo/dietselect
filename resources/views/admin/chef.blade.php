@@ -179,13 +179,13 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($commissions->take(5) as $commission)
-                                    <tr>
-                                        <td>{{$commission->id}}</td>
-                                        <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
-                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                    </tr>
-                                @endforeach
+                                    @foreach($commissions as $commission)
+                                        <tr>
+                                            <td>{{$commission->id}}</td>
+                                            <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
+                                            <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
