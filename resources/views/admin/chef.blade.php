@@ -210,11 +210,14 @@
                                 </thead>
                                 <tbody>
                                 @foreach($plans as $plan)
-                                    <td>{{$plan->id}}</td>
-                                    <td>{{$plan->plan_name}}</td>
-                                    <td>{{$plan->price}}</td>
-                                    <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                    <tr>
+                                        <td>{{$plan->id}}</td>
+                                        <td>{{$plan->plan_name}}</td>
+                                        <td>{{$plan->price}}</td>
+                                        <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                    </tr>
                                 @endforeach
+
                                 </tbody>
                             </table>
                         </div>
