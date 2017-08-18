@@ -115,7 +115,13 @@
                                 </li>
                                 <li class="collection-item">
                                     <span>Preference: </span>
-                                    <span>{{ucfirst($foodiePreference->ingredient)}}</span>
+                                    <span>
+                                        @if($foodiePreference->ingredient!='')
+                                            {{ucfirst($foodiePreference->ingredient)}}
+                                        @else
+                                            N/A
+                                        @endif
+                                    </span>
                                 </li>
                                 <li class="collection-item">
                                     <span>Foodie Since:</span>
