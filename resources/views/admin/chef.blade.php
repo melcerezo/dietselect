@@ -106,7 +106,7 @@
                                                     {{$orderItem['plan_name']}}
                                                 </td>
                                                 <td>{{$orderItem['quantity']}}</td>
-                                                <td>{{$orderItem['price']}}</td>
+                                                <td>{{'PHP'.$orderItem['price']}}</td>
                                                 <td>
                                                     {{$orderItem['type']}}
                                                 </td>
@@ -147,7 +147,7 @@
                                                 {{$orderItem['plan_name']}}
                                             </td>
                                             <td>{{$orderItem['quantity']}}</td>
-                                            <td>{{$orderItem['price']}}</td>
+                                            <td>{{'PHP'.$orderItem['price']}}</td>
                                             <td>
                                                 {{$orderItem['type']}}
                                             </td>
