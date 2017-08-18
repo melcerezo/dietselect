@@ -99,7 +99,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach($orderPlanNames->take(5) as $orderItem)
-                                        @if($orderItem['is_cancelled']!=1&&$orderItem->['is_paid']==1)
+                                        @if($orderItem['is_cancelled']!=1&&$orderItem['is_paid']==1)
                                             <tr>
                                                 <td>{{$orderItem['id']}}</td>
                                                 <td>
