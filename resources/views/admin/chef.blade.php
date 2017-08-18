@@ -86,7 +86,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <table class="responsive-table">
+                            <table class="responsive-table centered" style="table-layout: fixed;">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
@@ -127,7 +127,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <table class="responsive-table center">
+                            <table class="responsive-table centered" style="table-layout: fixed;">
                                 <thead>
                                 <tr>
                                     <th>ID</th>
