@@ -115,7 +115,7 @@
                                 </li>
                                 <li class="collection-item">
                                     <span>Preference: </span>
-                                    <span>{{$foodiePreference->ingredient}}</span>
+                                    <span>{{ucfirst($foodiePreference->ingredient)}}</span>
                                 </li>
                                 <li class="collection-item">
                                     <span>Foodie Since:</span>
