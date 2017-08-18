@@ -241,7 +241,7 @@
                                             <td>
                                                 @if($foodieAddress->type=='R')
                                                     <span>Residence</span>
-                                                @elseif($foodieAddress->type=='0')
+                                                @elseif($foodieAddress->type=='O')
                                                     <span>Office</span>
                                                 @endif
                                             </td>
