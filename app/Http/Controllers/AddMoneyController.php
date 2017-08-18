@@ -322,6 +322,7 @@ class AddMoneyController extends Controller{
             return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
 //            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
+        dd("HELLO ERROR");
        \Session::put('error', 'Payment failed');
         return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
     }
