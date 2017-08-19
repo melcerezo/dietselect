@@ -53,7 +53,7 @@ class ChefMessageController extends Controller{
         $foodies = Foodie::all();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
         $selectedChat= $chats->where('id', $id)->first();
-
+        dd($chats);
 
         foreach($selectedChat->message()->where('receiver_type','c')->latest()->get() as $message){
             if($message->is_read==0){
