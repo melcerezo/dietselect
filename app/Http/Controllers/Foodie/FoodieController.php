@@ -284,20 +284,22 @@ class FoodieController extends Controller
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
-                    $orderPlan = "";
-                    $type="";
-                    $planName = "";
-                    if ($orderItem->order_type == 0) {
-                        $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
-                        $planName = $orderPlan->plan_name;
-                        $type="Standard";
-                    } elseif ($orderItem->order_type == 1) {
-                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
-                        $planName = $orderPlan->plan->plan_name;
-                        $type="Customized";
-                    }
+                    if($orderItem->rating->is_rated==0){
+                        $orderPlan = "";
+                        $type="";
+                        $planName = "";
+                        if ($orderItem->order_type == 0) {
+                            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan_name;
+                            $type="Standard";
+                        } elseif ($orderItem->order_type == 1) {
+                            $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan->plan_name;
+                            $type="Customized";
+                        }
 
-                    $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
+                        $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
+                    }
                 }
             }
 
