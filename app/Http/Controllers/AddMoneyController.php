@@ -92,8 +92,8 @@ class AddMoneyController extends Controller{
         $redirect_urls = new RedirectUrls();
 //        $redirect_urls->setReturnUrl(URL::route('order.show', $order->id))/** Specify return URL **/
         $redirect_urls->setReturnUrl(URL::route('addmoney.paywithpaypal', compact('order')))/** Specify return URL **/
-//        ->setCancelUrl(URL::route('order.show', $order->id));
-        ->setCancelUrl(URL::route('addmoney.paywithpaypal', compact('order')));
+        ->setCancelUrl(URL::route('order.show', $order->id));
+//        ->setCancelUrl(URL::route('addmoney.paywithpaypal', compact('order')));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
@@ -142,7 +142,7 @@ class AddMoneyController extends Controller{
         Session::forget('paypal_payment_id');
 //        if (empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id) || empty(Input::get('token'))) {
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-            Session::put('error', 'Payment failed');
+            \Session::put('error', 'Payment failed');
             return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('error', 'Payment Failed');
 //            return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
         }
