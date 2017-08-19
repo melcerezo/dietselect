@@ -321,11 +321,11 @@ class AddMoneyController extends Controller{
                     $amount));
 
 
-            Session::put('success', 'Payment success');
+            \Session::put('success', 'Payment success');
 //            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
-            return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('success','Payment success');
+            return Redirect::route('addmoney.paywithpaypal', compact('order'));
         }
-       Session::put('error', 'Payment failed');
-        return Redirect::route('order.show', $order->id)->with('error', 'payment failed');
+       \Session::put('error', 'Payment failed');
+        return Redirect::route('order.show', $order->id);
     }
 }
