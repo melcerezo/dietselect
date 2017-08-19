@@ -26,7 +26,7 @@
                                 <label for="amount" class="col-md-4 control-label">Amount</label>
                                 <div class="col-md-6">
                                     {{--<input id="amount" type="text" class="form-control" name="amount" value="{{ old('amount') }}" autofocus>--}}
-                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $order->plan->price}}" autofocus readonly>
+                                    <input id="amount" type="text" class="form-control" name="amount" value="{{ $order->total }}" autofocus readonly>
                                     @if ($errors->has('amount'))
                                         <span class="help-block">
                                         <strong>{{ $errors->first('amount') }}</strong>
