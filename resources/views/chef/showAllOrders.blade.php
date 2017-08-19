@@ -18,7 +18,7 @@
                 </nav>
             </div>
             @foreach($orders as $order)
-                @if($order->order->is_cancelled==0)
+                @if($order['is_cancelled']==0)
                     <div class="row">
                         <div class="card">
                             <div class="card-panel">
