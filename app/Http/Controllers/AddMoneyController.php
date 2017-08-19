@@ -7,6 +7,7 @@ use App\Chef;
 use App\Commission;
 use App\CustomPlan;
 use App\Http\Requests;
+use App\Notification;
 use App\Order;
 use App\Message;
 use App\PayPal;
