@@ -90,10 +90,10 @@ class AddMoneyController extends Controller{
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-//        $redirect_urls->setReturnUrl(URL::route('order.show', $order->id))/** Specify return URL **/
-        $redirect_urls->setReturnUrl(URL::route('addmoney.paywithpaypal', compact('order')))/** Specify return URL **/
-        ->setCancelUrl(URL::route('order.show', $order->id));
-//        ->setCancelUrl(URL::route('addmoney.paywithpaypal', compact('order')));
+        $redirect_urls->setReturnUrl(URL::route('order.show', $order->id))/** Specify return URL **/
+//        $redirect_urls->setReturnUrl(URL::route('addmoney.paywithpaypal', compact('order')))/** Specify return URL **/
+//        ->setCancelUrl(URL::route('order.show', $order->id));
+        ->setCancelUrl(URL::route('addmoney.paywithpaypal', compact('order')));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
