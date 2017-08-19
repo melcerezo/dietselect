@@ -46,7 +46,13 @@
                                         <td class="quantity">{{$order['quantity']}}</td>
                                         <td class="amount">{{$order['price']}}</td>
                                         <td class="type">
-                                            <p>{{$order['order_type']}}</p>
+                                            <p>
+                                                @if($order['order_type']==0)
+                                                    <span>Standard</span>
+                                                @elseif($order['order_type']==1 || $order['order_type']==2)
+                                                    <span>Customized</span>
+                                                @endif
+                                            </p>
                                         </td>
                                         <td class="paid">
                                             @if($order['is_cancelled']==0)
