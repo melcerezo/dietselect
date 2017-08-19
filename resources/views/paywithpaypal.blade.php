@@ -4,6 +4,7 @@
         <div class="row" style="margin-top: 50px;">
             <div class="col s4 offset-s4">
                 <div class="panel panel-default">
+                    {{Session::all()}}
                     @if ($message = Session::get('success'))
                         <div class="custom-alerts alert alert-success fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
