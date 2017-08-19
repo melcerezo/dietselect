@@ -68,7 +68,11 @@
                                 </div>
                             </div>
                         </div>
+                            @endif
+                        @endforeach
                         <div class="card-content">
+                            @foreach($orderItemArray as $orderItemItem)
+                                @if($orderItemItem['order_id']==$order->id)
                             <div class="row">
                                 <div class="col s12 m2">
                                     <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
