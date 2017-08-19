@@ -317,8 +317,8 @@ class AddMoneyController extends Controller{
 
             $mailer->to($user->email)
                 ->send(new PaymentSuccess(
-                    $orderPlanNames,
-                    $amount));
+                    $amount,
+                    $orderPlanNames));
 
 
             \Session::put('success', 'Payment success');
