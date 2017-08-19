@@ -92,15 +92,16 @@ class AddMoneyController extends Controller{
             ->setItemList($item_list)
             ->setDescription('Your transaction description');
         $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('foodie.dashboard'))/** Specify return URL **/
+        $redirect_urls->setReturnUrl(URL::route('payment.status', $order->id))/** Specify return URL **/
 //        $redirect_urls->setReturnUrl(URL::route('addmoney.paywithpaypal', compact('order')))/** Specify return URL **/
 //        ->setCancelUrl(URL::route('order.show', $order->id));
-        ->setCancelUrl(URL::route('addmoney.paywithpaypal', compact('order')));
+        ->setCancelUrl(URL::route('payment.status', compact('order')));
         $payment = new Payment();
         $payment->setIntent('Sale')
             ->setPayer($payer)
             ->setRedirectUrls($redirect_urls)
             ->setTransactions(array($transaction));
+
         /** dd($payment->create($this->_api_context));exit; **/
         try {
             $payment->create($this->_api_context);
@@ -138,6 +139,7 @@ class AddMoneyController extends Controller{
     }
 
     public function getPaymentStatus(Order $order,mailer\Mailer $mailer){
+        dd('in payment status');
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
         /** clear the session payment ID **/
