@@ -22,7 +22,7 @@
                 <div class="card">
                     <div class="card-panel">
                         <a href="{{route('chef.order.single', $order['id'])}}">
-                            <table>
+                            <table class="responsive-table centered" style="table-layout: fixed;">
                                 <thead>
                                     <tr>
                                         <th>ID</th>
