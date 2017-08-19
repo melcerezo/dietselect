@@ -47,7 +47,7 @@ class AddMoneyController extends Controller{
      * @return void
      */
     public function __construct(){
-        parent::__construct();
+//        parent::__construct();
 
         /** setup PayPal api context **/
         $paypal_conf = \Config::get('paypal');
