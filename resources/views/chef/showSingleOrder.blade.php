@@ -723,6 +723,13 @@
                             </tr>
                             </tbody>
                         </table>
+                    @elseif($orderItem->order_type==2)
+                        <ul class="collection">
+                            <li class="collection-item"></li>
+                            @foreach()
+                                <li class="collection-item"></li>
+                            @endforeach
+                        </ul>
                     @endif
                 @endif
                 </div>

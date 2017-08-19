@@ -79,7 +79,7 @@
                                 </a>
                             @if($order['is_paid']==1)
                             <div>
-                                <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order['id']])}}'" class="btn">See Customization</button>
+                                <button onclick="window.location.href='{{route('chef.order.single',['order'=>$order['id']])}}'" class="btn">See Plan</button>
                             </div>
                             @endif
                             </div>

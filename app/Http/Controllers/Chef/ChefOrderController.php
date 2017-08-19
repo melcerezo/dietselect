@@ -17,6 +17,7 @@ use App\Plan;
 use App\MealPlan;
 use App\Meal;
 use App\IngredientMeal;
+use App\SimpleCustomPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -108,6 +109,7 @@ class ChefOrderController extends Controller
         $foodies=Foodie::all();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderMealPlans = [];
+        $orderPlan='';
         $ingredientMeals=[];
         $orderMealPlans="";
         if($orderItem->order_type==0){
@@ -141,6 +143,9 @@ class ChefOrderController extends Controller
                 }
             }
 //            dd($ingredientMeals);
+        }elseif($orderItem->order_type==2){
+            $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
         }
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 //        dd($orderCustomizedMeals);
@@ -152,6 +157,7 @@ class ChefOrderController extends Controller
             'foodies'=>$foodies,
             'chats'=>$chats,
             'messages'=>$messages,
+            'orderPlan'=>$orderPlan,
             'planName'=>$planName,
             'mealPlans'=>$orderMealPlans,
             'ingredientsMeal'=>$ingredientMeals,
