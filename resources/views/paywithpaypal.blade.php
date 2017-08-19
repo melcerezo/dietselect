@@ -5,6 +5,7 @@
             <div class="col s4 offset-s4">
                 <div class="panel panel-default">
                     {{--{{$message}}--}}
+                    {{Session::get('success')}}
                     @if ($message = Session::get('success'))
                         <div class="custom-alerts alert alert-success fade in">
                             <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
