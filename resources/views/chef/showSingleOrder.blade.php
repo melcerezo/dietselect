@@ -726,8 +726,8 @@
                     @elseif($orderItem->order_type==2)
                         <ul class="collection">
                             <li class="collection-item"></li>
-                            @foreach()
-                                <li class="collection-item"></li>
+                            @foreach($orderPlan->simple_custom_detail->get() as $detail)
+                                <li class="collection-item">{{$detail->detail}}</li>
                             @endforeach
                         </ul>
                     @endif
