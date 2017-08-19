@@ -29,9 +29,11 @@ class ChefMessageController extends Controller{
         $foodies = Foodie::all();
         $chef = Auth::guard('chef')->user();
         $chats = Chat::where('chef_id', '=', $chef->id)->get();
-
+        dd($chats);
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
+
+
 
         return view('chef.messaging.chefMessages')->with([
             'sms_unverified' => $this->mobileNumberExists(),
