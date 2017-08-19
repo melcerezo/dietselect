@@ -329,6 +329,6 @@ class AddMoneyController extends Controller{
         }
         dd($result);
        \Session::put('error', 'Payment failed');
-        return Redirect::route('order.show', $order->id);
+//        return Redirect::route('order.show', $order->id);
     }
 }
