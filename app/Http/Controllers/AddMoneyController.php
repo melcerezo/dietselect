@@ -290,11 +290,6 @@ class AddMoneyController extends Controller{
                         $foodieName,
                         $chefOrderPlans));
 
-                $rating = new Rating();
-                $rating->chef_id = $uniqueChef;
-                $rating->foodie_id = Auth::guard('foodie')->user()->id;
-                $rating->save();
-
                 $message = $foodieName.'has confirmed their order for: ';
                 foreach($chefOrderPlans as $chefOrderPlan){
                     $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
