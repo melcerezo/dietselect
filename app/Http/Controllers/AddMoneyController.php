@@ -111,7 +111,7 @@ class AddMoneyController extends Controller{
                 /** $err_data = json_decode($ex->getData(), true); **/
                 /** exit; **/
             } else {
-                 dd('Some error occur, sorry for inconvenient');
+//                 dd('Some error occur, sorry for inconvenient');
                 \Session::put('error', 'Some error occur, sorry for inconvenient');
 //                return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
                 return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('error','Error occurred');
@@ -129,7 +129,7 @@ class AddMoneyController extends Controller{
             /** redirect to paypal **/
             return Redirect::away($redirect_url);
         }
-        dd('error here');
+//        dd('error here');
         \Session::put('error', 'Unknown error occurred');
 //        return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
         return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('error','Payment Failed');
@@ -142,7 +142,7 @@ class AddMoneyController extends Controller{
         Session::forget('paypal_payment_id');
 //        if (empty(Auth::guard('foodie')->user()->id || Auth::guard('chef')->user()->id) || empty(Input::get('token'))) {
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
-            \Session::put('error', 'Payment failed');
+            Session::put('error', 'Payment failed');
             return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('error', 'Payment Failed');
 //            return Redirect::route('order.show', $order->id)->with(['status'=>'Payment cancelled!']);
         }
@@ -321,11 +321,11 @@ class AddMoneyController extends Controller{
                     $amount));
 
 
-            \Session::put('success', 'Payment success');
+            Session::put('success', 'Payment success');
 //            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Paypal Successful!', 'status2'=>'Please rate '.$order->chef->name.'!']);
             return Redirect::route('addmoney.paywithpaypal', compact('order'))->with('success','Payment success');
         }
-       \Session::put('error', 'Payment failed');
+       Session::put('error', 'Payment failed');
         return Redirect::route('order.show', $order->id)->with('error', 'payment failed');
     }
 }
