@@ -51,8 +51,8 @@ class ChefController extends Controller
 
         $chef= Auth::guard('chef')->user();
         $foodies=Foodie::all();
-        $plans= Plan::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $plans= Plan::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->latest($column = 'created_at')->take(3)->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'created_at')->get();
 
 //        dd($chats->count());
 
