@@ -43,7 +43,7 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Past Plans</span>
                     </li>
-                    @if($plans->count()>0)
+                    @if($prevPlans->count()>0)
                         @foreach($prevPlans as $plan)
                             <li class="collection-item">
                                 <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
@@ -55,6 +55,12 @@
                                 </a>
                             </li>
                         @endforeach
+                    @else
+                        <li class="collection-item">
+                            <a href="#!">
+                                <span>No Past Plans</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="collection">
@@ -85,7 +91,7 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Upcoming Plans</span>
                     </li>
-                    @if($plans->count()>0)
+                    @if($pendPlans->count()>0)
                         @foreach($pendPlans as $plan)
                             <li class="collection-item">
                                 <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
@@ -97,6 +103,12 @@
                                 </a>
                             </li>
                         @endforeach
+                    @else
+                        <li class="collection-item">
+                            <a href="#!">
+                                <span>No Pending Plans</span>
+                            </a>
+                        </li>
                     @endif
                 </ul>
                 <ul class="collection">
