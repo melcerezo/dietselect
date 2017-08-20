@@ -41,7 +41,7 @@
                 </div>
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Current Plans</span>
+                        <span class="collection-header">Upcoming Plans</span>
                     </li>
                     @if($plans->count()>0)
                         @foreach($plans->take(3) as $plan)
@@ -58,7 +58,7 @@
                     @else
                         <li class="collection-item">
                             <a href="#!">
-                                <span>No Plans Yet!</span>
+                                <span>No Plans Added For Next Week</span>
                             </a>
                         </li>
                     @endif

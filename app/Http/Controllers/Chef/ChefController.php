@@ -46,12 +46,13 @@ class ChefController extends Controller
      */
     public function index()
     {
+        $lastTwoWeeks = Carbon::parse("previous week Saturday 15:00:00")->subDays(7)->format('Y-m-d H:i:s');
         $lastSaturday = Carbon::parse("last saturday 15:01:00")->format('Y-m-d H:i:s');
         $dt = Carbon::now();
 
         $chef= Auth::guard('chef')->user();
         $foodies=Foodie::all();
-        $plans= Plan::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->latest($column = 'created_at')->take(3)->get();
+        $plans= Plan::where('chef_id','=',$chef->id)->where('created_at','>=',$lastTwoWeeks)->where('created_at','<=',$lastSaturday)->latest($column = 'created_at')->take(3)->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'created_at')->get();
 
 //        dd($chats->count());
