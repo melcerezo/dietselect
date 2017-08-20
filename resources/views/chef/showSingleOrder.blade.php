@@ -768,7 +768,7 @@
                 @endif
                 </div>
             </div>
-            @unless($mealPlans->count()==0)
+            @unless(count($mealPlans)==0)
                 @if($orderItem->order_type==1)
                     @foreach($mealPlans as $id=>$mealPlan)
                         <div id="meal{{$id}}" class="modal">
