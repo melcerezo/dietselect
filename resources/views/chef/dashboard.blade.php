@@ -57,9 +57,7 @@
                         @endforeach
                     @else
                         <li class="collection-item">
-                            <a href="#!">
-                                <span>No Past Plans</span>
-                            </a>
+                            <span>No Past Plans</span>
                         </li>
                     @endif
                 </ul>
@@ -81,9 +79,7 @@
                         @endforeach
                     @else
                         <li class="collection-item">
-                            <a href="#!">
-                                <span>No Plans Added For Next Week</span>
-                            </a>
+                            <span>No Plans Added For This Week</span>
                         </li>
                     @endif
                 </ul>
