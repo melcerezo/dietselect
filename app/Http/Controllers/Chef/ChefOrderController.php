@@ -112,6 +112,9 @@ class ChefOrderController extends Controller
         $orderPlan='';
         $ingredientMeals=[];
         $orderMealPlans="";
+        $saMeals = 0;
+        $moSnaMeals = 0;
+        $aftSnaMeals = 0;
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
@@ -127,9 +130,6 @@ class ChefOrderController extends Controller
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
             $orderMealPlans=$orderPlan->customized_meal()->get();
-            $saMeals = 0;
-            $moSnaMeals = 0;
-            $aftSnaMeals = 0;
             foreach($orderMealPlans as $orderMealPlan){
                 if($orderMealPlan->chefcustomize->mealplans->day=='SA'){
                     $saMeals+=1;
