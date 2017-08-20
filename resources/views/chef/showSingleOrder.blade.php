@@ -33,9 +33,13 @@
                             <tr>
                                 <th></th>
                                 <th>Breakfast</th>
-                                <th>Morning Snack</th>
+                                @if($moSnaMeals>0)
+                                    <th>Morning Snack</th>
+                                @endif
                                 <th>Lunch</th>
-                                <th>Afternoon Snack</th>
+                                @if($aftSnaMeals>0)
+                                    <th>Afternoon Snack</th>
+                                @endif
                                 <th>Dinner</th>
                             </tr>
                             </thead>

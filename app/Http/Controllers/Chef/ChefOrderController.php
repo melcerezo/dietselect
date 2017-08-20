@@ -116,6 +116,9 @@ class ChefOrderController extends Controller
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
             $mealPlans=$orderPlan->mealplans()->get();
+            $saMeals = $mealPlans->where('day','=','SA')->count();
+            $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+            $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
             }
@@ -124,7 +127,20 @@ class ChefOrderController extends Controller
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
             $orderMealPlans=$orderPlan->customized_meal()->get();
-//            dd($orderMealPlans[0]->chefcustomize->mealplans);
+            $saMeals = 0;
+            $moSnaMeals = 0;
+            $aftSnaMeals = 0;
+            foreach($orderMealPlans as $orderMealPlan){
+                if($orderMealPlan->chefcustomize->mealplans->day=='SA'){
+                    $saMeals+=1;
+                }
+                if($orderMealPlan->chefcustomize->mealplans->meal_type=='MorningSnack'){
+                    $moSnaMeals+=1;
+                }elseif($orderMealPlan->chefcustomize->mealplans->meal_type=='AfternoonSnack'){
+                    $aftSnaMeals+=1;
+                }
+            }
+            dd($saMeals.' '.$moSnaMeals.' '.$aftSnaMeals);
             foreach($orderMealPlans as $orderMealPlan){
                 foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
                     $ingredientDesc = DB::table('ingredients')
@@ -158,6 +174,9 @@ class ChefOrderController extends Controller
             'chats'=>$chats,
             'messages'=>$messages,
             'orderPlan'=>$orderPlan,
+            'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals,
             'planName'=>$planName,
             'mealPlans'=>$orderMealPlans,
             'ingredientsMeal'=>$ingredientMeals,
