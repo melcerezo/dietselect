@@ -140,7 +140,7 @@ class ChefOrderController extends Controller
                     $aftSnaMeals+=1;
                 }
             }
-            dd($saMeals.' '.$moSnaMeals.' '.$aftSnaMeals);
+//            dd($saMeals.' '.$moSnaMeals.' '.$aftSnaMeals);
             foreach($orderMealPlans as $orderMealPlan){
                 foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
                     $ingredientDesc = DB::table('ingredients')
