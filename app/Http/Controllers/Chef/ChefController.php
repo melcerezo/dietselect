@@ -52,7 +52,17 @@ class ChefController extends Controller
 
         $chef= Auth::guard('chef')->user();
         $foodies=Foodie::all();
-        $plans= Plan::where('chef_id','=',$chef->id)->where('created_at','>=',$lastTwoWeeks)->where('created_at','<=',$lastSaturday)->latest($column = 'created_at')->take(3)->get();
+        $prevPlans = Plan::where('chef_id','=',$chef->id)
+                ->where('created_at','<=',$lastTwoWeeks)
+                ->latest($column = 'created_at')
+                ->take(3)->get();
+        $plans= Plan::where('chef_id','=',$chef->id)
+            ->where('created_at','>=',$lastTwoWeeks)
+            ->where('created_at','<=',$lastSaturday)
+            ->latest($column = 'created_at')->take(3)->get();
+        $pendPlans = Plan::where('chef_id','=',$chef->id)
+            ->where('created_at','>=',$lastSaturday)
+            ->latest($column = 'created_at')->take(3)->get();
         $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'created_at')->get();
 
 //        dd($chats->count());
@@ -110,7 +120,9 @@ class ChefController extends Controller
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
+            'prevPlans'=>$prevPlans,
             'plans' =>$plans,
+            'pendPlans'=>$pendPlans,
             'pendingOrders' => $pendingOrders,
             'messages'=>$messages,
             'chats'=>$chats,
