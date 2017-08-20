@@ -57,7 +57,7 @@ class ChefController extends Controller
 //        dd($chats->count());
 
 
-        $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->get();
+        $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('created_at','>',$lastSaturday)->take(3)->get();
 
         $pendingOrders = [];
 
