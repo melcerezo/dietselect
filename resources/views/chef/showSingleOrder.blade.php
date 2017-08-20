@@ -221,7 +221,7 @@
                                         @endif
                                     @endforeach
                                 </td>
-                                @if($aftSnaMeals>0)
+                                @if($moSnaMeals>0)
                                     <td id="FRMorningSnack" data-day="FR" data-meal-type="MorningSnack" class="tdCell">
                                         @foreach($mealPlans as $id =>$mealPlan)
                                             @if($mealPlan->mealplans->day == 'FR' && $mealPlan->mealplans->meal_type == 'MorningSnack')
