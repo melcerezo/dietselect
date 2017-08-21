@@ -136,10 +136,10 @@
                                         </a>
                                     </li>
                                 @endforeach
-                                </ul>
                                 <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
                                 </div>
+                            </ul>
                             @else
                                 <div>
                                     <div>
@@ -170,10 +170,10 @@
                                         </a>
                                     </li>
                                 @endforeach
-                                </ul>
                                 <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
                                 </div>
+                            </ul>
                             @else
                                 <div>
                                     <div>
