@@ -560,7 +560,7 @@
                             @endfor
                         @endfor
                         {{--<label for="grams">Grams:</label>--}}
-                        <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                            <button id="u{{$i}}" data-form-id="editMeal{{$i}}" class="updateB btn" type="button">Update</button>
                         </div>
                 </form>
                 </div>
@@ -681,7 +681,7 @@
                 </div>
                 <div id="ingredError"></div>
                 <div id="formError"></div>
-                <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                <div><button class="createB btn" type="button">Created</button></div>
             </form>
         </div>
     </div>

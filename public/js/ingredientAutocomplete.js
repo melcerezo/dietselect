@@ -35,21 +35,21 @@ $(document).ready(function () {
                                 'Ingredient' +
                             '</label>' +
                         '</div>' +
-                    '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
-                            '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="required autocomplete inputBehind">' +
-                    '</div>'+
-                    '<div class="error-ingredient'+count+' err"></div>' +
-                        '<div class="ingredGramsAdd">' +
-                            '<div class="gramLabel">' +
-                                '<label for="grams[]">' +
-                                    'Grams' +
-                                '</label>' +
-                            '</div>' +
-                            '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="required inputBehind">' +
+                        '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
+                                '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="required autocomplete inputBehind">' +
                         '</div>'+
-                    '<div class="error-gram'+count+' err"></div>' +
-                    '</div>'+
-                    '<a href="#" class="removeField">X</a>' +
+                        '<div class="error-ingredient'+count+' err"></div>' +
+                            '<div class="ingredGramsAdd">' +
+                                '<div class="gramLabel">' +
+                                    '<label for="grams[]">' +
+                                        'Grams' +
+                                    '</label>' +
+                                '</div>' +
+                                '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="required inputBehind">' +
+                            '</div>'+
+                            '<div class="error-gram'+count+' err"></div>' +
+                        '</div>'+
+                        '<a href="#" class="removeField">X</a>' +
                     '</div>');
                 $('select').material_select();
                 $('.addSelectIngred').on('change','select',function (){

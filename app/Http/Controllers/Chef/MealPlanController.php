@@ -640,5 +640,10 @@ class MealPlanController extends Controller
         $mealPlan->delete();
         return back()->with(['status'=>'Successfully deleted the meal!']);
     }
+
+
+
 }
+
+
 
