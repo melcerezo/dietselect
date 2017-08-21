@@ -136,9 +136,9 @@
                                         </a>
                                     </li>
                                 @endforeach
-                                <li class="collection-item">
+                                <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
-                                </li>
+                                </div>
                             @else
                                 <li class="collection-item">
                                     <div>
@@ -170,9 +170,9 @@
                                         </a>
                                     </li>
                                 @endforeach
-                                <li class="collection-item">
+                                <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
-                                </li>
+                                </div>
                             @else
                                 <li class="collection-item">
                                     <div>
