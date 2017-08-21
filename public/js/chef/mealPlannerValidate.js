@@ -28,7 +28,7 @@ $(document).ready(function () {
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.ingredChefAdd');
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
-                console.log($valType);
+                console.log($("option:selected",$thisSelect).val());
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
                 }else if($valType=='carbohydrates(grains, pasta)'){
