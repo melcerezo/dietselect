@@ -218,7 +218,7 @@ $(document).ready(function () {
 
     $(document).on('blur','select.ingredChefAdd',function () {
         var errSelect= $(this).attr('data-error');
-        console.log(errSelect);
+        console.log($("option:selected",$(this)).val());
         if($("option:selected",$(this)).val()==""){
             $(errSelect).empty();
             $(errSelect).append('Please select ingredient type.');
@@ -229,7 +229,7 @@ $(document).ready(function () {
     $(document).on('blur','input.autocomplete',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
-        if($("option:selected",$(this)).val()==""){
+        if($(this).val()==""){
             $(errSelect).empty();
             $(errSelect).append('Please choose an ingredient.');
         }else{
