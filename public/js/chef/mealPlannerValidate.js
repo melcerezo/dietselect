@@ -114,6 +114,7 @@ $(document).ready(function () {
                     }
                 });
             }else{
+                $('#loadWait').hide();
                 $errorContainer.empty();
                 $errorSelContainer.empty();
                 $errorSelContainer.append('Please select ingredient type');
