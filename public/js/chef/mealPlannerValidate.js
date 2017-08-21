@@ -10,17 +10,18 @@ $(document).ready(function () {
 
 
     $('.createB').click(function () {
-        console.log('create form');
+        // console.log('create form');
         var form=$(this).closest("form");
-        console.log(form);
-        var ingredSelect=form.find("#ingredSelect").children();
+        var ingredSelect=form.find("#ingredientContainer").children();
+        console.log(ingredSelect);
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
         var ingredCountz=ingredFind.length;
-        console.log(ingredCountz);
+        // console.log(ingredCountz);
         var matchData=0;
         $('#loadWait').show();
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
+            console.log(ingredIn);
             var $thisVal=ingredIn.val();
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
