@@ -29,7 +29,7 @@
                         </nav>
                         <div class="card-content">
                             <span>Please Rate the Plan!</span>
-                            <form action="{{route('rate.chef', $order['id'])}}" method="post">
+                            <form action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
                                 {{csrf_field()}}
                                 <input name="rate{{$key}}" type="radio" id="test1{{$key}}" value="1" checked/>
                                 <label for="test1{{$key}}">1</label>

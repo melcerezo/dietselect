@@ -78,14 +78,14 @@ class RatingsController extends Controller
         ]);
     }
 
-    public function rateChef(OrderItem $orderItem, Request $request)
+    public function rateChef(OrderItem $orderItem,$key, Request $request)
     {
 
         $foodie = Auth::guard('foodie')->user();
         $rating = Rating::where('order_item_id', '=', $orderItem->id)->where('foodie_id', '=', $foodie->id)->first();
 //        dd($rating);
-        $rating->feedback = $request['feedback'];
-        $rating->rating = $request['rate'];
+        $rating->feedback = $request['feedback'.$key];
+        $rating->rating = $request['rate'.$key];
         $rating->is_rated = true;
         $orderItem->rating()->save($rating);
 //        dd($rating);

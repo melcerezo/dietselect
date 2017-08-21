@@ -359,7 +359,7 @@ class MealPlanController extends Controller
 
     public function setMeal(Request $request, Plan $plan)
     {
-
+        dd($request['ingredients']);
         $mealPlan=New MealPlan();
         $mealPlan->plan_id=$plan->id;
         $mealPlan->day=$request['dayCreate'];

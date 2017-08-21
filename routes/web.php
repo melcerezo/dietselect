@@ -97,7 +97,7 @@ Route::group(['prefix' => 'foodie'], function () {
 
     // Rating
     Route::get('foodie/rating', 'RatingsController@getRatingPage')->name('chef.rating');
-    Route::post('rate/chef/{orderItem}', 'RatingsController@rateChef')->name('rate.chef');
+    Route::post('rate/chef/{orderItem}/{id}', 'RatingsController@rateChef')->name('rate.chef');
 
     // Cart
     Route::get('cart', 'CartController@index')->name('cart.index');
