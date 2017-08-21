@@ -134,28 +134,46 @@
 
                     <p>Please enter your bank account number. This is required to receive your payments.</p>
 
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <script>
-                                $(document).ready(function () {
-                                    $('select#bank').val('{{ $chef->bank_account->bank ? $chef->bank_account->bank : 0 }}');
-                                });
-                            </script>
-                            <select id="bank" name="bank">
-                                <option value="0" disabled selected>Please choose</option>
-                                <option value="BDO">BDO</option>
-                                <option value="BPI">BPI</option>
-                            </select>
-                            <label for="bank" class="active">Bank</label>
+                    @if($chef->bank_account!=null)
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <script>
+                                    $(document).ready(function () {
+                                        $('select#bank').val('{{ $chef->bank_account->bank ? $chef->bank_account->bank : 0 }}');
+                                    });
+                                </script>
+                                <select id="bank" name="bank">
+                                    <option value="0" disabled selected>Please choose</option>
+                                    <option value="BDO">BDO</option>
+                                    <option value="BPI">BPI</option>
+                                </select>
+                                <label for="bank" class="active">Bank</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="account" name="account" type="text" class="validate" value="{{ $chef->bank_account->account }}">
-                            <label for="account" class="active">Bank Account</label>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="account" name="account" type="text" class="validate" value="{{ $chef->bank_account->account }}">
+                                <label for="account" class="active">Bank Account</label>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <select id="bank" name="bank">
+                                    <option value="0" disabled selected>Please choose</option>
+                                    <option value="BDO">BDO</option>
+                                    <option value="BPI">BPI</option>
+                                </select>
+                                <label for="bank" class="active">Bank</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <input id="account" name="account" type="text" class="validate" value="">
+                                <label for="account" class="active">Bank Account</label>
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="hidden"/>
