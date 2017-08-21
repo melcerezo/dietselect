@@ -9,9 +9,8 @@ $(document).ready(function () {
     }
 
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-    $('#loadWait').show();
     $('.createB').click(function () {
-        // console.log('create form');
+        $('#loadWait').show();
         var form=$(this).closest("form");
         var errCount = 0;
         if($('#description').val()==""){
