@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Chef;
 
 use App\Chat;
 use App\Chef;
+use App\ChefBankAccount;
 use App\CustomPlan;
 use Carbon\Carbon;
 use App\Foodie;
@@ -177,7 +178,9 @@ class ChefController extends Controller
             'company_name' => 'required|max:100',
 //            'mobile_number' => 'required|max:100',
             'email' =>'required|email|max:50',
-            'website' =>'url|max:50'
+            'website' =>'url|max:50',
+            'bank' =>'required',
+            'account'=>'required|numeric|max:20'
         ])->validate();
 
         $chef= Auth::guard('chef')->user();
@@ -193,6 +196,11 @@ class ChefController extends Controller
 //        $chef->mobile_number=$request['mobile_number'];
         $chef->website=$request['website'];
         $chef->save();
+
+        $bank = new ChefBankAccount();
+        $bank->bank = $request['bank'];
+        $bank->account = $request['account'];
+        $bank->save();
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
