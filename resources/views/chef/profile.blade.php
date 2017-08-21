@@ -86,7 +86,7 @@
                     <div class="prfCntInf">
                         <div class="row prfCntRw">
                             <div class="col s4 m4 l4">
-                                <span>Account:</span>
+                                <span>Account Number:</span>
                             </div>
                             <div class="col s8 m8 l8">
                                 @if($chef->bank_account!=null)
