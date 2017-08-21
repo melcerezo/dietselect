@@ -52,6 +52,7 @@ $(document).ready(function () {
             $('#ingredError').empty();
         }
 
+
         console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
@@ -65,11 +66,19 @@ $(document).ready(function () {
             // console.log($thisVal);
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
+            var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
+            var $selectThis=$thisSelect.children('.ingredChefAdd').children('.ingredChefAdd');
+            var $valType=$("option:selected",$selectThis).val().toLowerCase();
+            console.log($valType);
+            if($valType==''){
+                errCount+=1;
+                $errorContainer.empty();
+                $errorContainer.append("Please enter an ingredient");
+            }else{
+                errCount-=1;
+                $errorContainer.empty();
+            }
             if($thisVal!=""){
-                var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
-                var $selectThis=$thisSelect.children('.ingredChefAdd').children('.ingredChefAdd');
-                var $valType=$("option:selected",$selectThis).val().toLowerCase();
-                console.log($valType);
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
                 }else if($valType=='carbohydrates(grains, pasta)'){
@@ -101,6 +110,9 @@ $(document).ready(function () {
                         form.unbind('submit').submit();
                     }
                 });
+            }else{
+                $errorContainer.empty();
+                $errorContainer.append("Please enter an ingredient");
             }
         });
     });
@@ -205,13 +217,6 @@ $(document).ready(function () {
         $('#errorDescription').empty();
     });
 
-    $(document).on('change','#day',function(){
-        $('#errorDay').empty();
-    });
-    $(document).on('change','#meal_type',function () {
-        $('#errorMealType').empty();
-    })
-    var dayType='';
 
     $('#main_ingredient').on('change',function () {
         $('#errorMainIngredient').empty();
