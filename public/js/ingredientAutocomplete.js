@@ -12,7 +12,7 @@ $(document).ready(function () {
                                 '<label for="ingredient_select[]">Type of Ingredient</label>' +
                             '</div>' +
                             '<div id="ingredSelectContent'+count+'" class="addSelectIngred">' +
-                                '<select id="ingredSelectOption'+count+'" class="ingredChefAdd" name="ingredient_select['+count+']">' +
+                                '<select id="ingredSelectOption'+count+'" class="ingredChefAdd" data-error=".error-select'+count+'" name="ingredient_select['+count+']">' +
                                     '<option disabled selected>Select Type of Ingredient</option>' +
                                     '<option value="chicken">Chicken</option>' +
                                     '<option value="beef">Beef</option>' +
@@ -28,6 +28,7 @@ $(document).ready(function () {
                                     '<option value="vegetables">Vegetables</option>' +
                                 '</select>' +
                             '</div>' +
+                            '<div class="error-select'+count+' err"></div>' +
                         '</div>'+
                         '<div class="ingredients">' +
                             '<div class="ingredLabel">' +

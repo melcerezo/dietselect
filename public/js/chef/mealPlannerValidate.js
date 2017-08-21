@@ -68,8 +68,10 @@ $(document).ready(function () {
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
             var $selectThis=$thisSelect.children('.ingredChefAdd').children('.ingredChefAdd');
+            var $errSel=$selectThis.attr('data-error');
+            var $errorSelContainer=ingredIn.parents().eq(2).find($errSel);
             var $valType=$("option:selected",$selectThis).val().toLowerCase();
-            console.log($valType);
+            console.log($errorSelContainer);
             if($valType==''){
                 errCount+=1;
                 $('#loadWait').hide();
@@ -113,6 +115,8 @@ $(document).ready(function () {
                 });
             }else{
                 $errorContainer.empty();
+                $errorSelContainer.empty();
+                $errorSelContainer.append('Please select ingredient type');
                 $errorContainer.append("Please enter an ingredient");
             }
         });
