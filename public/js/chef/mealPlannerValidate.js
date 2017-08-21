@@ -52,7 +52,15 @@ $(document).ready(function () {
             $('#ingredError').empty();
         }
 
-
+        $('select.ingredChefAdd').on('blur',function () {
+            var errSelect= $(this).attr('data-error');
+            if($("option:selected",$(this)).val()==""){
+                $(errSelect).empty();
+                $(errSelect).append('Please choose an ingredient type.');
+            }else{
+                $(errSelect).empty();
+            }
+        });
         console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
@@ -60,6 +68,8 @@ $(document).ready(function () {
         var ingredCountz=ingredFind.length;
         // console.log(ingredCountz);
         var matchData=0;
+
+
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
             var $thisVal=ingredIn.val();
@@ -198,6 +208,8 @@ $(document).ready(function () {
     console.log($('#day').val());
     console.log($('#meal_type').val());
     console.log($('#main_ingredient').val());
+
+
 
     $('#description').on('blur',function (){
         if($('#description').val()==""){
