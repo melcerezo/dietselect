@@ -197,11 +197,18 @@ class ChefController extends Controller
         $chef->website=$request['website'];
         $chef->save();
 
-        $bank = new ChefBankAccount();
-        $bank->chef_id=$chef->id;
-        $bank->bank = $request['bank'];
-        $bank->account = $request['account'];
-        $bank->save();
+        if($chef->bank_account==null){
+            $bank = new ChefBankAccount();
+            $bank->chef_id=$chef->id;
+            $bank->bank = $request['bank'];
+            $bank->account = $request['account'];
+            $bank->save();
+        }else{
+            $bank = $chef->bank_account;
+            $bank->bank=$request['bank'];
+            $bank->account = $request['account'];
+            $bank->save();
+        }
 
         return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
 
