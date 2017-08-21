@@ -73,9 +73,6 @@
                                 </div>
                             </div>
                         </div>
-                    <div class="prfCntBtn">
-                        <button data-target="basic-profile-modal" class="btn modal-trigger">Edit Basic Profile</button>
-                    </div>
                     <div class="prfCntTtl" style="margin-top: 15px;">
                         <span>
                             BANK ACCOUNT
