@@ -16,7 +16,7 @@ $(document).ready(function () {
         var ingredFind=ingredSelect.children('.ingredChefAdd');
         console.log(ingredFind);
         var ingredCountz=ingredFind.length;
-        // console.log(ingredCountz);
+        console.log(ingredCountz);
         var matchData=0;
         $('#loadWait').show();
         $(ingredFind).each(function () {
