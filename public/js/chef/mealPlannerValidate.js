@@ -21,9 +21,10 @@ $(document).ready(function () {
         $('#loadWait').show();
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
-            console.log(ingredIn);
+            // console.log(ingredIn);
             var $thisVal=ingredIn.val();
             var $error=ingredIn.attr('data-error');
+            console.log($error);
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
