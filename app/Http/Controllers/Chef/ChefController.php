@@ -198,6 +198,7 @@ class ChefController extends Controller
         $chef->save();
 
         $bank = new ChefBankAccount();
+        $bank->chef_id=$chef->id;
         $bank->bank = $request['bank'];
         $bank->account = $request['account'];
         $bank->save();
