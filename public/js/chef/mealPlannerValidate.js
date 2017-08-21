@@ -24,10 +24,10 @@ $(document).ready(function () {
             // console.log(ingredIn);
             var $thisVal=ingredIn.val();
             var $error=ingredIn.attr('data-error');
-            console.log($error);
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
-                var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
+                var $thisSelect=ingredIn.parents().eq(1).find('select.ingredChefAdd');
+                console.log($thisSelect);
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
