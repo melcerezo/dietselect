@@ -257,7 +257,12 @@
     </div>
     <div id="dltCht" class="modal">
         <div class="modal-content">
-            <a href="{{route('foodie.chat.delete',$chatId)}}">Delete</a>
+            <form id="foodieMessageReply" action="{{route('foodie.chat.delete',$chatId)}}" method="post">
+                {{csrf_field()}}
+                <div>
+                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                </div>
+            </form>
         </div>
     </div>
 
