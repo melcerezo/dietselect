@@ -216,20 +216,20 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('change','select.ingredChefAdd',function () {
+    $(document).on('blur','select.ingredChefAdd',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
-        if($("option:selected",$(this)).val()!=""){
+        if($("option:selected",$(this)).val()==""){
             $(errSelect).empty();
             $(errSelect).append('Please select ingredient type.');
         }else{
             $(errSelect).empty();
         }
     });
-    $(document).on('change','input.autocomplete',function () {
+    $(document).on('blur','input.autocomplete',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
-        if($("option:selected",$(this)).val()!=""){
+        if($("option:selected",$(this)).val()==""){
             $(errSelect).empty();
             $(errSelect).append('Please choose an ingredient.');
         }else{
