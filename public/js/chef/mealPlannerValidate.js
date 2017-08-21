@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-    $('select.ingredChefAdd').on('blur',function () {
+    $('.ingredChefAdd').on('blur',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
         if($("option:selected",$(this)).val()!=""){
@@ -95,15 +95,6 @@ $(document).ready(function () {
             var $errorSelContainer=ingredIn.parents().eq(2).find($errSel);
             var $valType=$("option:selected",$selectThis).val().toLowerCase();
             console.log($valType);
-            if($valType==''){
-                errCount+=1;
-                $('#loadWait').hide();
-                $errorSelContainer.empty();
-                $errorSelContainer.append("Please choose ingredient type");
-            }else{
-                errCount-=1;
-                $errorSelContainer.empty();
-            }
             if($thisVal!=""){
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
