@@ -94,7 +94,7 @@
                             @foreach($pendingOrders as $orderItem)
                                 <li class="collection-item">
                                     <a href="{{route('chef.order.single',$orderItem['id'])}}">
-                                        <p>Plan Name: <span>{{$orderItem['name']}}</span></p>
+                                        <p>Name: <span>{{$orderItem['name']}}</span></p>
                                         <div class="divider"></div>
                                         <p>Foodie:
                                             @foreach($foodies as $foodie)
@@ -128,7 +128,7 @@
                                 @foreach($prevPlans as $plan)
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <p>Name: {{$plan->plan_name}}</p>
                                             <div class="divider"></div>
                                             <p>Calories: {{$plan->calories}}</p>
                                             <div class="divider"></div>
@@ -152,7 +152,7 @@
                                 @foreach($plans as $plan)
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <p>Name: {{$plan->plan_name}}</p>
                                             <div class="divider"></div>
                                             <p>Calories: {{$plan->calories}}</p>
                                             <div class="divider"></div>
@@ -188,9 +188,7 @@
                                 @endforeach
                             @else
                                 <li class="collection-item">
-                                    <a href="#!">
-                                        <span>No Pending Plans</span>
-                                    </a>
+                                    <span>No Pending Plans</span>
                                 </li>
                             @endif
                         </ul>
