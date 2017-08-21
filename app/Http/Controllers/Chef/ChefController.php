@@ -180,7 +180,7 @@ class ChefController extends Controller
             'email' =>'required|email|max:50',
             'website' =>'url|max:50',
             'bank' =>'required',
-            'account'=>'required|numeric|max:20'
+            'account'=>'required|numeric'
         ])->validate();
 
         $chef= Auth::guard('chef')->user();
