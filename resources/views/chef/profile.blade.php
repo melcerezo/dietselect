@@ -52,17 +52,6 @@
                         </div>
                     </div>
                     <div class="divider"></div>
-                    {{--<div class="prfCntInf">--}}
-                        {{--<div class="row prfCntRw">--}}
-                            {{--<div class="col s4 m4 l4">--}}
-                                {{--<span>Number:</span>--}}
-                            {{--</div>--}}
-                            {{--<div class="col s8 m8 l8">--}}
-                                {{--<span>{{ $chef->mobile_number}}</span>--}}
-                            {{--</div>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<div class="divider"></div>--}}
                         <div class="prfCntInf">
                             <div class="row prfCntRw">
                                 <div class="col s4 m4 l4">
@@ -82,10 +71,14 @@
                     <div class="prfCntInf">
                         <div class="row prfCntRw">
                             <div class="col s4 m4 l4">
-                                <span>Name:</span>
+                                <span>Bank:</span>
                             </div>
                             <div class="col s8 m8 l8">
-                                <span>{{$chef->name}}</span>
+                                @if($chef->bank_account!=null)
+                                    <span>{{$chef->bank_account->bank}}</span>
+                                @else
+                                    <span>N/A</span>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -93,10 +86,14 @@
                     <div class="prfCntInf">
                         <div class="row prfCntRw">
                             <div class="col s4 m4 l4">
-                                <span>Email:</span>
+                                <span>Account:</span>
                             </div>
                             <div class="col s8 m8 l8">
-                                <span>{{$chef->email}}</span>
+                                @if($chef->bank_account!=null)
+                                    <span>{{$chef->bank_account->account}}</span>
+                                @else
+                                    <span>N/A</span>
+                                @endif
                             </div>
                         </div>
                     </div>
