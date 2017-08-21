@@ -12,7 +12,7 @@
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image dshPrfCrdCnt">
-                        @if($chef->cover=)
+                        @if($chef->cover==null)
                             <a id="coverLinkPhoto" href="#addCover" class="modal-trigger">
                                 <span class="fa fa-camera grey-text lighten-3" style="position: absolute; top:12px; left: 0; display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
                                 <div id="addCoverPhotoLink">
