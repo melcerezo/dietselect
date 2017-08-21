@@ -16,13 +16,13 @@ $(document).ready(function () {
         var ingredFind=ingredSelect.children('.ingredients');
         // console.log(ingredFind);
         var ingredCountz=ingredFind.length;
-        console.log(ingredCountz);
+        // console.log(ingredCountz);
         var matchData=0;
         $('#loadWait').show();
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
-            // console.log(ingredIn);
             var $thisVal=ingredIn.val();
+            console.log(ingredIn);
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
