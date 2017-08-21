@@ -337,7 +337,7 @@
                             <option value="F">Female</option>
                             <option value="N">Prefer not to say</option>
                         </select>
-                        <label>Gender</label>
+                        <label for="gender">Gender</label>
                     </div>
                     <div class="input-field col m6 s12">
                         <input id="birthday" name="birthday" type="text" class="validate datepicker" value="{{ $foodie->birthday }}">
