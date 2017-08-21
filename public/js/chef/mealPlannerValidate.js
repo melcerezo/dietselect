@@ -72,8 +72,9 @@ $(document).ready(function () {
             console.log($valType);
             if($valType==''){
                 errCount+=1;
+                $('#loadWait').hide();
                 $errorContainer.empty();
-                $errorContainer.append("Please enter an ingredient");
+                $errorContainer.append("Please choose ingredient type");
             }else{
                 errCount-=1;
                 $errorContainer.empty();
