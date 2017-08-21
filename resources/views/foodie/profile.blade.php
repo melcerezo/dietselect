@@ -513,9 +513,11 @@
             {{ csrf_field() }}
             <div class="modal-content">
                 <h4>Food Preferences</h4>
-                <p>Now let us know the food that you prefer to have in your meals. (Leave all of them unchecked if you don't have a preference.)</p>
+                <p>Now let us know the food that you prefer to have in your meals.</p>
                 <div class="row">
                     <div class="input-field col l4 s12">
+                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                        <label for="pref-none">No Preference</label><br/>
                         <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
                         <label for="pref-beef">Beef-based</label><br/>
                         <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork" data-error=".error-pref"/>
