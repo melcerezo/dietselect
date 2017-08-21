@@ -54,6 +54,7 @@ $(document).ready(function () {
 
         $('select.ingredChefAdd').on('blur',function () {
             var errSelect= $(this).attr('data-error');
+            console.log(errSelect);
             if($("option:selected",$(this)).val()==""){
                 $(errSelect).empty();
                 $(errSelect).append('Please choose an ingredient type.');
