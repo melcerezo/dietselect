@@ -71,7 +71,7 @@ $(document).ready(function () {
             var $errSel=$selectThis.attr('data-error');
             var $errorSelContainer=ingredIn.parents().eq(2).find($errSel);
             var $valType=$("option:selected",$selectThis).val().toLowerCase();
-            console.log($errorSelContainer);
+            console.log($errSel);
             if($valType==''){
                 errCount+=1;
                 $('#loadWait').hide();
