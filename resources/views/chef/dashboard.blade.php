@@ -136,11 +136,12 @@
                                         </a>
                                     </li>
                                 @endforeach
+                                </ul>
                                 <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
                                 </div>
                             @else
-                                <li class="collection-item">
+                                <div>
                                     <div>
                                         <span>No Pending Plans</span>
                                     </div>
@@ -149,9 +150,8 @@
                                             Add Plans
                                         </a>
                                     </div>
-                                </li>
+                                </div>
                             @endif
-                        </ul>
                     </div>
                     <div class="col s12 m6">
                         <ul class="collection">
@@ -170,20 +170,20 @@
                                         </a>
                                     </li>
                                 @endforeach
+                                </ul>
                                 <div>
                                     <a href="{{route('chef.plan')}}">View Plans</a>
                                 </div>
                             @else
-                                <li class="collection-item">
+                                <div>
                                     <div>
                                         <span>No Plans Added For This Week</span>
                                     </div>
                                     <div>
                                         <a href="{{route('chef.plan')}}">View Plans</a>
                                     </div>
-                                </li>
+                                </div>
                             @endif
-                        </ul>
                     </div>
                 </div>
             </div>
