@@ -139,7 +139,7 @@
                             </ul>
                             @else
                                 <div>
-                                    <div style="margin-bottom: 5px;">
+                                    <div style="margin: 5px;">
                                         <span>No Pending Plans</span>
                                     </div>
                                     <div>
@@ -170,7 +170,7 @@
                             </ul>
                             @else
                                 <div>
-                                    <div style="margin-bottom: 5px;">
+                                    <div style="margin: 5px;">
                                         <span>No Plans Added For This Week</span>
                                     </div>
                                     <div>
