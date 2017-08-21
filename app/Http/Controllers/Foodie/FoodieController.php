@@ -283,9 +283,8 @@ class FoodieController extends Controller
             $ordersRatingPlans= [];
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
-//                dd($orderItems[1]->rating);
                 foreach($orderItems as $orderItem){
-                    if($orderItem->rating->is_rated==0){
+//                    if($orderItem->rating->is_rated==0){
                         $orderPlan = "";
                         $type="";
                         $planName = "";
@@ -300,7 +299,7 @@ class FoodieController extends Controller
                         }
 
                         $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
-                    }
+
                 }
             }
 
