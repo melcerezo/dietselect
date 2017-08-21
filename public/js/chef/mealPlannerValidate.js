@@ -27,7 +27,7 @@ $(document).ready(function () {
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
-                var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children();
+                var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
                 console.log($thisSelect);
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
                 if($valType=="fruits/fruit juices"){
