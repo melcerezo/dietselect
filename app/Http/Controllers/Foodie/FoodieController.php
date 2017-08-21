@@ -276,15 +276,18 @@ class FoodieController extends Controller
 
             $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->where('is_paid', '=', 1)
+                ->where('created_at', '>=', $lastTwoWeeks)
                 ->where('created_at', '<', $lastSaturday)
                 ->latest($column = 'created_at')
                 ->get();
+
+            dd($ordersRating);
 
             $ordersRatingPlans= [];
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
-//                    if($orderItem->rating->is_rated==0){
+                    if($orderItem->rating->is_rated==0){
                         $orderPlan = "";
                         $type="";
                         $planName = "";
@@ -299,7 +302,7 @@ class FoodieController extends Controller
                         }
 
                         $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
-
+                    }
                 }
             }
 
