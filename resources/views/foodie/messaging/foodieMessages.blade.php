@@ -140,22 +140,22 @@
                                                     </div>
                                                 @endif
                                             @endforeach
-                                            <div>
-                                                <a href="#dltMsg{{$message->id}}" class="modal-trigger"><i class="material-icons">delete</i></a>
-                                            </div>
-                                            <div id="dltMsg{{$message->id}}" class="modal">
-                                                <div class="modal-content">
-                                                    <div>
-                                                        <span>Do you want to delete this message?</span>
-                                                    </div>
-                                                    <form action="{{route('foodie.message.delete',$message->id)}}" method="post">
-                                                        {{csrf_field()}}
-                                                        <div>
-                                                            <div><input type="submit" value="Delete" class="btn btn-primary"></div>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
+                                            {{--<div>--}}
+                                                {{--<a href="#dltMsg{{$message->id}}" class="modal-trigger"><i class="material-icons">delete</i></a>--}}
+                                            {{--</div>--}}
+                                            {{--<div id="dltMsg{{$message->id}}" class="modal">--}}
+                                                {{--<div class="modal-content">--}}
+                                                    {{--<div>--}}
+                                                        {{--<span>Do you want to delete this message?</span>--}}
+                                                    {{--</div>--}}
+                                                    {{--<form action="{{route('foodie.message.delete',$message->id)}}" method="post">--}}
+                                                        {{--{{csrf_field()}}--}}
+                                                        {{--<div>--}}
+                                                            {{--<div><input type="submit" value="Delete" class="btn btn-primary"></div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</form>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
                                         </div>
                                         <div class="msgCnt">
                                             <p>{{$message->message}}</p>
