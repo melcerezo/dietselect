@@ -15,6 +15,7 @@ $(document).ready(function () {
         var errCount = 0;
         if($('#description').val()==""){
             errCount+=1;
+            $('#loadWait').hide();
             $('#errorDescription').empty();
             $('#formError').empty();
             $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
@@ -23,12 +24,12 @@ $(document).ready(function () {
             $('#formError').append($errorForm);
         }else{
             errCount-=1;
-            $('#loadWait').hide();
             $('#errorDescription').empty();
             $('#formError').empty();
         }
         if($('#main_ingredient').val()==""){
             errCount+=1;
+            $('#loadWait').hide();
             $('#errorMainIngredient').empty();
             $('#formError').empty();
             $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
@@ -37,7 +38,6 @@ $(document).ready(function () {
             $('#formError').append($errorForm);
         }else{
             errCount-=1;
-            $('#loadWait').hide();
             $('#errorMainIngredient').empty();
             $('#formError').empty();
         }
