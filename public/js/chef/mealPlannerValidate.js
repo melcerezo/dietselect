@@ -14,7 +14,7 @@ $(document).ready(function () {
         var form=$(this).closest("form");
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredAddContainer');
-        console.log(ingredSelect);
+        console.log(ingredFind);
         var ingredCountz=ingredFind.length;
         // console.log(ingredCountz);
         var matchData=0;
