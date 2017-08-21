@@ -7,7 +7,7 @@ $(document).ready(function () {
                 // '<a href="#" class="removeField">X</a></div>');
                 $('#ingredientContainer').prepend(
                     '<div class="ingredAddContainer">' +
-                        '<div id="ingredientSelection'+count+'">' +
+                        '<div id="ingredientSelection'+count+'" class="ingredChefSelect">' +
                             '<div>' +
                                 '<label for="ingredient_select[]">Type of Ingredient</label>' +
                             '</div>' +
