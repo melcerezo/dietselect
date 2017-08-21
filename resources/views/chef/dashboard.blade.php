@@ -132,13 +132,23 @@
                                             <div class="divider"></div>
                                             <p>Calories: {{$plan->calories}}</p>
                                             <div class="divider"></div>
-                                            <p>Price: {{$plan->price}}</p>
+                                            <p>Price: {{'PHP'.$plan->price}}</p>
                                         </a>
                                     </li>
                                 @endforeach
+                                <li class="collection-item">
+                                    <a href="{{route('chef.plan')}}">View Plans</a>
+                                </li>
                             @else
                                 <li class="collection-item">
-                                    <span>No Pending Plans</span>
+                                    <div>
+                                        <span>No Pending Plans</span>
+                                    </div>
+                                    <div>
+                                        <a href="{{route('chef.plan')}}">
+                                            Add Plans
+                                        </a>
+                                    </div>
                                 </li>
                             @endif
                         </ul>
@@ -156,13 +166,21 @@
                                             <div class="divider"></div>
                                             <p>Calories: {{$plan->calories}}</p>
                                             <div class="divider"></div>
-                                            <p>Price: {{$plan->price}}</p>
+                                            <p>Price: {{'PHP'.$plan->price}}</p>
                                         </a>
                                     </li>
                                 @endforeach
+                                <li class="collection-item">
+                                    <a href="{{route('chef.plan')}}">View Plans</a>
+                                </li>
                             @else
                                 <li class="collection-item">
-                                    <span>No Plans Added For This Week</span>
+                                    <div>
+                                        <span>No Plans Added For This Week</span>
+                                    </div>
+                                    <div>
+                                        <a href="{{route('chef.plan')}}">View Plans</a>
+                                    </div>
                                 </li>
                             @endif
                         </ul>
