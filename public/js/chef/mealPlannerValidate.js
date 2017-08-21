@@ -13,6 +13,35 @@ $(document).ready(function () {
     $('.createB').click(function () {
         // console.log('create form');
         var form=$(this).closest("form");
+        var errCount = 0;
+        if($('#description').val()==""){
+            errCount+=1;
+            $('#errorDescription').empty();
+            $('#formError').empty();
+            $errorsDesc="<span style='font-size:12px;color:#ff0000;'>Please add in a description!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorDescription').append($errorsDesc);
+            $('#formError').append($errorForm);
+        }else{
+            errCount-=1;
+            $('#errorDescription').empty();
+            $('#formError').empty();
+        }
+        if($('#main_ingredient').val()==""){
+            errCount+=1;
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+            $errorsMainIngredient="<span style='font-size:12px;color:#ff0000;'>Please choose a main ingredient!</span>";
+            $errorForm="<span style='font-size:12px;color:#ff0000;'>Please fill out the form completely!</span>";
+            $('#errorMainIngredient').append($errorsMainIngredient);
+            $('#formError').append($errorForm);
+        }else{
+            errCount-=1;
+            $('#errorMainIngredient').empty();
+            $('#formError').empty();
+        }
+
+        console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
         // console.log(ingredFind);
@@ -68,6 +97,7 @@ $(document).ready(function () {
 
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
+
         console.log(form);
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
@@ -150,24 +180,7 @@ $(document).ready(function () {
             $('#errorDescription').empty();
         }
     });
-    $('#day').on('blur',function (){
-        if($('#day').val()==""){
-            $('#errorDay').empty();
-            $errorsDay="<span style='font-size:12px;color:#ff0000;'>Please choose a day!</span>";
-            $('#errorDay').append($errorsDay);
-        }else{
-            $('#errorDay').empty();
-        }
-    });
-    $('#meal_type').on('blur',function (){
-        if($('#meal_type').val()==""){
-            $('#errorMealType').empty();
-            $errorsMealType="<span style='font-size:12px;color:#ff0000;'>Please choose a meal type!</span>";
-            $('#errorMealType').append($errorsMealType);
-        }else{
-            $('#errorMealType').empty();
-        }
-    });
+
     $('#main_ingredient').on('blur',function (){
         if($('#main_ingredient').val()==""){
             $('#errorMainIngredient').empty();
