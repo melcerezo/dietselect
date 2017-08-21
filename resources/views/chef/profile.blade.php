@@ -76,6 +76,36 @@
                     <div class="prfCntBtn">
                         <button data-target="basic-profile-modal" class="btn modal-trigger">Edit Basic Profile</button>
                     </div>
+                    <div class="prfCntTtl" style="margin-top: 15px;">
+                        <span>
+                            BANK ACCOUNT
+                        </span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="prfCntInf">
+                        <div class="row prfCntRw">
+                            <div class="col s4 m4 l4">
+                                <span>Name:</span>
+                            </div>
+                            <div class="col s8 m8 l8">
+                                <span>{{$chef->name}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="prfCntInf">
+                        <div class="row prfCntRw">
+                            <div class="col s4 m4 l4">
+                                <span>Email:</span>
+                            </div>
+                            <div class="col s8 m8 l8">
+                                <span>{{$chef->email}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prfCntBtn">
+                        <button data-target="basic-profile-modal" class="btn modal-trigger">Edit Basic Profile</button>
+                    </div>
                 </div>
             </div>
         </div>
