@@ -10,26 +10,7 @@ $(document).ready(function () {
 
 
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-    $('select.ingredChefAdd').on('change',function () {
-        var errSelect= $(this).attr('data-error');
-        console.log(errSelect);
-        if($("option:selected",$(this)).val()!=""){
-            $(errSelect).empty();
-            $(errSelect).append('Please select ingredient type.');
-        }else{
-            $(errSelect).empty();
-        }
-    });
-    $('input.autocomplete').on('change',function () {
-        var errSelect= $(this).attr('data-error');
-        console.log(errSelect);
-        if($("option:selected",$(this)).val()!=""){
-            $(errSelect).empty();
-            $(errSelect).append('Please choose an ingredient.');
-        }else{
-            $(errSelect).empty();
-        }
-    });
+
     $('.createB').click(function () {
         $('#loadWait').show();
         var form=$(this).closest("form");
@@ -232,6 +213,27 @@ $(document).ready(function () {
             $('#errorMainIngredient').append($errorsMainIngredient);
         }else{
             $('#errorMainIngredient').empty();
+        }
+    });
+
+    $('select.ingredChefAdd').on('change',function () {
+        var errSelect= $(this).attr('data-error');
+        console.log(errSelect);
+        if($("option:selected",$(this)).val()!=""){
+            $(errSelect).empty();
+            $(errSelect).append('Please select ingredient type.');
+        }else{
+            $(errSelect).empty();
+        }
+    });
+    $('input.autocomplete').on('change',function () {
+        var errSelect= $(this).attr('data-error');
+        console.log(errSelect);
+        if($("option:selected",$(this)).val()!=""){
+            $(errSelect).empty();
+            $(errSelect).append('Please choose an ingredient.');
+        }else{
+            $(errSelect).empty();
         }
     });
 
