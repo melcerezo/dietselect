@@ -38,7 +38,7 @@
                         <div class="divider dshPrfCrdDvd"></div>
                         <div class="dshPrfCrdInf">
                             <p>Email: {{$chef->email}}</p>
-                            <p>Phone Number: {{$chef->mobile_number}}</p>
+                            <p>Phone Number: {{'0'.$chef->mobile_number}}</p>
                         </div>
                         <div>
                             <a href="{{route('chef.profile')}}">Edit Profile</a>
