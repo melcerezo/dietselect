@@ -138,6 +138,7 @@ $(document).ready(function () {
         var mealDay = $(this).attr('data-day');
         var mealType=$(this).attr('data-meal-type');
         $("#chooseModal"+mealDay+mealType).closeModal();
+        $('#mealsTableBody').empty();
 //                $('option:selected','select[name="day"]').removeAttr('selected');
         switch(mealDay){
             case 'MO':
