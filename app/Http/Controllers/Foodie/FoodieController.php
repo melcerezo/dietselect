@@ -283,6 +283,7 @@ class FoodieController extends Controller
             $ordersRatingPlans= [];
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
+                dd($orderItems);
                 foreach($orderItems as $orderItem){
 //                    dd($orderItem->rating->is_rated);
                     if($orderItem->rating->is_rated==0){
