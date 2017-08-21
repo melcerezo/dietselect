@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
 
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-
+    $('#loadWait').show();
     $('.createB').click(function () {
         // console.log('create form');
         var form=$(this).closest("form");
@@ -24,6 +24,7 @@ $(document).ready(function () {
             $('#formError').append($errorForm);
         }else{
             errCount-=1;
+            $('#loadWait').hide();
             $('#errorDescription').empty();
             $('#formError').empty();
         }
@@ -37,6 +38,7 @@ $(document).ready(function () {
             $('#formError').append($errorForm);
         }else{
             errCount-=1;
+            $('#loadWait').hide();
             $('#errorMainIngredient').empty();
             $('#formError').empty();
         }
@@ -48,7 +50,6 @@ $(document).ready(function () {
         var ingredCountz=ingredFind.length;
         // console.log(ingredCountz);
         var matchData=0;
-        $('#loadWait').show();
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
             var $thisVal=ingredIn.val();
