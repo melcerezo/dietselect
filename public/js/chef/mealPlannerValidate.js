@@ -29,6 +29,7 @@ $(document).ready(function () {
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
                 var $selectThis=$thisSelect.children('select.ingredChefAdd');
+                console.log($selectThis);
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
