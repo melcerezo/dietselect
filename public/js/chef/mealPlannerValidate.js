@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     $('button.createB').click(function () {
-        console.log('hello');
+        console.log('create form');
         var form=$(this).closest("form");
         console.log(form);
         var ingredSelect=form.find("#ingredSelect").children();
