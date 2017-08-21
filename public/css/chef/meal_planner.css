@@ -114,5 +114,8 @@
     background-color: lightskyblue ;
 }
 
+#loadWait{
+    display: none;
+}
 
 
