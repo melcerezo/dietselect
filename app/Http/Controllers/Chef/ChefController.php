@@ -138,6 +138,7 @@ class ChefController extends Controller
         $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
+        dd($chef->bank_account);
 //        dd($chef->bank_account);
         return view('chef.profile')->with([
             'chef'=>$chef,
