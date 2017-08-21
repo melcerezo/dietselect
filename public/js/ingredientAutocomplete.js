@@ -6,51 +6,51 @@ $(document).ready(function () {
                 //     '<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind"></div>'+
                 // '<a href="#" class="removeField">X</a></div>');
                 $('#ingredientContainer').prepend(
-                    '<div>' +
-                    '<div id="ingredientSelection'+count+'">' +
-                        '<div>' +
-                            '<label for="ingredient_select[]">Type of Ingredient</label>' +
-                        '</div>' +
-                        '<div id="ingredSelectContent'+count+'" class="addSelectIngred">' +
-                            '<select id="ingredSelectOption'+count+'" class="ingredChefAdd" name="ingredient_select['+count+']">' +
-                                '<option disabled selected>Select Type of Ingredient</option>' +
-                                '<option value="chicken">Chicken</option>' +
-                                '<option value="beef">Beef</option>' +
-                                '<option value="pork">Pork</option>' +
-                                '<option value="fish">Fish</option>' +
-                                '<option value="carbohydrates(baked)">Carbohydrates(Baked)</option>' +
-                                '<option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>' +
-                                '<option value="dairy,eggs">Dairy, Eggs</option>' +
-                                '<option value="beans,peanuts">Beans, Peanuts</option>' +
-                                '<option value="fat,oils">Dressings, Oil</option>' +
-                                '<option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>' +
-                                '<option value="fruits">Fruits, Fruit Juices</option>' +
-                                '<option value="vegetables">Vegetables</option>' +
-                            '</select>' +
-                        '</div>' +
-                    '</div>'+
-                    '<div class="ingredients">' +
-                        '<div class="ingredLabel">' +
-                            '<label for="ingredients[]">' +
-                                'Ingredient' +
-                            '</label>' +
-                        '</div>' +
-                        '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
-                                '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="required autocomplete inputBehind">' +
+                    '<div class="ingredAddContainer">' +
+                        '<div id="ingredientSelection'+count+'">' +
+                            '<div>' +
+                                '<label for="ingredient_select[]">Type of Ingredient</label>' +
+                            '</div>' +
+                            '<div id="ingredSelectContent'+count+'" class="addSelectIngred">' +
+                                '<select id="ingredSelectOption'+count+'" class="ingredChefAdd" name="ingredient_select['+count+']">' +
+                                    '<option disabled selected>Select Type of Ingredient</option>' +
+                                    '<option value="chicken">Chicken</option>' +
+                                    '<option value="beef">Beef</option>' +
+                                    '<option value="pork">Pork</option>' +
+                                    '<option value="fish">Fish</option>' +
+                                    '<option value="carbohydrates(baked)">Carbohydrates(Baked)</option>' +
+                                    '<option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>' +
+                                    '<option value="dairy,eggs">Dairy, Eggs</option>' +
+                                    '<option value="beans,peanuts">Beans, Peanuts</option>' +
+                                    '<option value="fat,oils">Dressings, Oil</option>' +
+                                    '<option value="soups,sauces,gravy">Soups, Sauces, Gravy</option>' +
+                                    '<option value="fruits">Fruits, Fruit Juices</option>' +
+                                    '<option value="vegetables">Vegetables</option>' +
+                                '</select>' +
+                            '</div>' +
                         '</div>'+
-                        '<div class="error-ingredient'+count+' err"></div>' +
-                            '<div class="ingredGramsAdd">' +
-                                '<div class="gramLabel">' +
-                                    '<label for="grams[]">' +
-                                        'Grams' +
-                                    '</label>' +
-                                '</div>' +
-                                '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="required inputBehind">' +
+                        '<div class="ingredients">' +
+                            '<div class="ingredLabel">' +
+                                '<label for="ingredients[]">' +
+                                    'Ingredient' +
+                                '</label>' +
+                            '</div>' +
+                            '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
+                                    '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="required autocomplete inputBehind">' +
                             '</div>'+
-                            '<div class="error-gram'+count+' err"></div>' +
-                        '</div>'+
-                        '<a href="#" class="removeField">X</a>' +
-                    '</div>');
+                            '<div class="error-ingredient'+count+' err"></div>' +
+                                '<div class="ingredGramsAdd">' +
+                                    '<div class="gramLabel">' +
+                                        '<label for="grams[]">' +
+                                            'Grams' +
+                                        '</label>' +
+                                    '</div>' +
+                                    '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="required inputBehind">' +
+                                '</div>'+
+                                '<div class="error-gram'+count+' err"></div>' +
+                            '</div>'+
+                            '<a href="#" class="removeField">X</a>' +
+                        '</div>');
                 $('select').material_select();
                 $('.addSelectIngred').on('change','select',function (){
                     var $type=$(this).val();
