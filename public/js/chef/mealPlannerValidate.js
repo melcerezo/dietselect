@@ -83,6 +83,11 @@ $(document).ready(function () {
         $('#ingredError').empty();
 
     });
+    $('#ingredientContainer').on("click",".removeField",function () {
+        counter-=1;
+        $('#ingredError').empty();
+
+    });
     $errorCounter="";
     $(document).on('change','#day, #meal_type', function () {
         dayType=$('#day').val()+$('#meal_type').val();
