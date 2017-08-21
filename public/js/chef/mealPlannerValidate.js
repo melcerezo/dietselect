@@ -22,13 +22,13 @@ $(document).ready(function () {
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
             var $thisVal=ingredIn.val();
-            console.log($thisVal);
+            // console.log($thisVal);
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
                 var $thisSelect=ingredIn.parents().eq(1).find('select.ingredChefAdd');
-                console.log($thisSelect);
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
+                console.log($valType);
                 if($valType=="fruits/fruit juices"){
                     $valType='fruits';
                 }else if($valType=='carbohydrates(grains, pasta)'){
