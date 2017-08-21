@@ -132,7 +132,7 @@
                     </div>
                     <div class="divider"></div>
 
-                    <div style="margin-bottom:10px; ">Please enter your bank account number. This is required to receive your payments.</div>
+                    <div style="margin:30px 0 30px 0; ">Please enter your bank account number. This is required to receive your payments.</div>
 
                     @if($chef->bank_account!=null)
                         <div class="row">
