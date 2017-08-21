@@ -87,7 +87,7 @@ $(document).ready(function () {
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
                     }
-                    if(matchData==ingredCountz){
+                    if(matchData==ingredCountz&&errCount==0){
                         form.unbind('submit').submit();
                     }
                 });
