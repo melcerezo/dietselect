@@ -3,12 +3,11 @@ $(document).ready(function () {
 
     function ingredAjax($valType){
         return $.ajax({
-            url: '/foodie/' + $valType + '/validateIngredJson',
+            url: '/chef/' + $valType + '/validateIngredJson',
             dataType:'json'
         });
     }
 
-    console.log('hello');
 
     $('button.createB').click(function () {
         console.log('hello');
