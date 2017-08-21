@@ -9,7 +9,7 @@ $(document).ready(function () {
     }
 
 
-    $('button.createB').click(function () {
+    $('.createB').click(function () {
         console.log('create form');
         var form=$(this).closest("form");
         console.log(form);
