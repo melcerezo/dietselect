@@ -85,7 +85,7 @@
             </div>
             <div class="col s12 m6 l6">
                 <div class="row">
-                    <div class="s12">
+                    <div class="col s12">
                     <ul class="collection">
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
