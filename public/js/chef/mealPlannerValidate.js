@@ -52,16 +52,16 @@ $(document).ready(function () {
             $('#ingredError').empty();
         }
 
-        $('.ingredChefAdd').on('focus',function () {
-            var errSelect= $(this).attr('data-error');
-            console.log(errSelect);
-            if($("option:selected",$(this)).val()==""){
-                $(errSelect).empty();
-                $(errSelect).append('Please choose an ingredient type.');
-            }else{
-                $(errSelect).empty();
-            }
-        });
+        // $('.ingredChefAdd').on('focus',function () {
+        //     var errSelect= $(this).attr('data-error');
+        //     console.log(errSelect);
+        //     if($("option:selected",$(this)).val()==""){
+        //         $(errSelect).empty();
+        //         $(errSelect).append('Please choose an ingredient type.');
+        //     }else{
+        //         $(errSelect).empty();
+        //     }
+        // });
         console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
@@ -86,11 +86,11 @@ $(document).ready(function () {
             if($valType==''){
                 errCount+=1;
                 $('#loadWait').hide();
-                $errorContainer.empty();
-                $errorContainer.append("Please choose ingredient type");
+                $errorSelContainer.empty();
+                $errorSelContainer.append("Please choose ingredient type");
             }else{
                 errCount-=1;
-                $errorContainer.empty();
+                $errorSelContainer.empty();
             }
             if($thisVal!=""){
                 if($valType=="fruits/fruit juices"){
@@ -127,8 +127,8 @@ $(document).ready(function () {
             }else{
                 $('#loadWait').hide();
                 $errorContainer.empty();
-                $errorSelContainer.empty();
-                $errorSelContainer.append('Please select ingredient type');
+                // $errorSelContainer.empty();
+                // $errorSelContainer.append('Please select ingredient type');
                 $errorContainer.append("Please enter an ingredient");
             }
         });
