@@ -8,6 +8,7 @@ $(document).ready(function () {
         });
     }
 
+    $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
     $('.createB').click(function () {
         // console.log('create form');
@@ -26,7 +27,7 @@ $(document).ready(function () {
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             if($thisVal!=""){
-                var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect');
+                var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children();
                 console.log($thisSelect);
                 var $valType=$("option:selected",$thisSelect).val().toLowerCase();
                 if($valType=="fruits/fruit juices"){
