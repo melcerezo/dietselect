@@ -41,6 +41,16 @@ $(document).ready(function () {
             $('#errorMainIngredient').empty();
             $('#formError').empty();
         }
+        if(counter<1){
+            errCount+=1;
+            $('#loadWait').hide();
+            $('#ingredError').empty();
+            $errorCounter="<span style='font-size:12px;color:#ff0000;'>Please add at least one ingredient!</span>";
+            $('#ingredError').append($errorCounter);
+        }else{
+            errCount-=1;
+            $('#ingredError').empty();
+        }
 
         console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
