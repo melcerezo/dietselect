@@ -681,7 +681,7 @@
                 </div>
                 <div id="ingredError"></div>
                 <div id="formError"></div>
-                <div><button class="createB btn" type="button">Created</button></div>
+                <div><button class="createB btn" type="button">Create</button></div>
             </form>
         </div>
     </div>
