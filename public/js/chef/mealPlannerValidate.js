@@ -8,7 +8,28 @@ $(document).ready(function () {
         });
     }
 
+
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+    $('select.ingredChefAdd').on('blur',function () {
+        var errSelect= $(this).attr('data-error');
+        console.log(errSelect);
+        if($("option:selected",$(this)).val()!=""){
+            $(errSelect).empty();
+            $(errSelect).append('Please select ingredient type.');
+        }else{
+            $(errSelect).empty();
+        }
+    });
+    $('input.autocomplete').on('blur',function () {
+        var errSelect= $(this).attr('data-error');
+        console.log(errSelect);
+        if($("option:selected",$(this)).val()!=""){
+            $(errSelect).empty();
+            $(errSelect).append('Please choose an ingredient.');
+        }else{
+            $(errSelect).empty();
+        }
+    });
     $('.createB').click(function () {
         $('#loadWait').show();
         var form=$(this).closest("form");
@@ -52,16 +73,7 @@ $(document).ready(function () {
             $('#ingredError').empty();
         }
 
-        // $('.ingredChefAdd').on('focus',function () {
-        //     var errSelect= $(this).attr('data-error');
-        //     console.log(errSelect);
-        //     if($("option:selected",$(this)).val()==""){
-        //         $(errSelect).empty();
-        //         $(errSelect).append('Please choose an ingredient type.');
-        //     }else{
-        //         $(errSelect).empty();
-        //     }
-        // });
+
         console.log(errCount);
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
@@ -127,8 +139,8 @@ $(document).ready(function () {
             }else{
                 $('#loadWait').hide();
                 $errorContainer.empty();
-                // $errorSelContainer.empty();
-                // $errorSelContainer.append('Please select ingredient type');
+                $errorSelContainer.empty();
+                $errorSelContainer.append('Please select ingredient type');
                 $errorContainer.append("Please enter an ingredient");
             }
         });
