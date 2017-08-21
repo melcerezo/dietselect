@@ -284,6 +284,7 @@ class FoodieController extends Controller
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
+                    dd($orderItem->rating->is_rated);
                     if($orderItem->rating->is_rated==0){
                         $orderPlan = "";
                         $type="";
@@ -487,7 +488,7 @@ class FoodieController extends Controller
             'type' => 'required|max:100',
             // 'company' => 'required|max:100',
             // 'landmark' => 'required|max:100',
-            //'remarks' => 'required|max:100',
+            'remarks' => 'max:255',
         ])->validate();
 
         $result = DB::table('foodie_address')->insert([
