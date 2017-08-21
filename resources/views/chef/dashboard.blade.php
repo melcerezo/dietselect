@@ -41,74 +41,6 @@
                 </div>
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Past Plans</span>
-                    </li>
-                    @if($prevPlans->count()>0)
-                        @foreach($prevPlans as $plan)
-                            <li class="collection-item">
-                                <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                    <p>Plan Name: {{$plan->plan_name}}</p>
-                                    <div class="divider"></div>
-                                    <p>Calories: {{$plan->calories}}</p>
-                                    <div class="divider"></div>
-                                    <p>Price: {{$plan->price}}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="collection-item">
-                            <span>No Past Plans</span>
-                        </li>
-                    @endif
-                </ul>
-                <ul class="collection">
-                    <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Current Plans</span>
-                    </li>
-                    @if($plans->count()>0)
-                        @foreach($plans as $plan)
-                            <li class="collection-item">
-                                <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                    <p>Plan Name: {{$plan->plan_name}}</p>
-                                    <div class="divider"></div>
-                                    <p>Calories: {{$plan->calories}}</p>
-                                    <div class="divider"></div>
-                                    <p>Price: {{$plan->price}}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="collection-item">
-                            <span>No Plans Added For This Week</span>
-                        </li>
-                    @endif
-                </ul>
-                <ul class="collection">
-                    <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Upcoming Plans</span>
-                    </li>
-                    @if($pendPlans->count()>0)
-                        @foreach($pendPlans as $plan)
-                            <li class="collection-item">
-                                <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                    <p>Plan Name: {{$plan->plan_name}}</p>
-                                    <div class="divider"></div>
-                                    <p>Calories: {{$plan->calories}}</p>
-                                    <div class="divider"></div>
-                                    <p>Price: {{$plan->price}}</p>
-                                </a>
-                            </li>
-                        @endforeach
-                    @else
-                        <li class="collection-item">
-                            <a href="#!">
-                                <span>No Pending Plans</span>
-                            </a>
-                        </li>
-                    @endif
-                </ul>
-                <ul class="collection">
-                    <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Messages From Foodie</span>
                     </li>
                     @if($messages->count()>0)
@@ -152,7 +84,7 @@
                 {{--</ul>--}}
             </div>
             <div class="col s12 m6 l6">
-                <div>
+                <div class="row">
                     <ul class="collection">
                         <li class="collection-item light-green lighten-1 white-text">
                             <div class="collection-header">Pending Order</div>
@@ -183,6 +115,84 @@
                             </li>
                         @endif
                     </ul>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <ul class="collection">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <span class="collection-header">Past Plans</span>
+                            </li>
+                            @if($prevPlans->count()>0)
+                                @foreach($prevPlans as $plan)
+                                    <li class="collection-item">
+                                        <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <div class="divider"></div>
+                                            <p>Calories: {{$plan->calories}}</p>
+                                            <div class="divider"></div>
+                                            <p>Price: {{$plan->price}}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="collection-item">
+                                    <span>No Past Plans</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                    <div class="col s12 m6">
+                        <ul class="collection">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <span class="collection-header">Current Plans</span>
+                            </li>
+                            @if($plans->count()>0)
+                                @foreach($plans as $plan)
+                                    <li class="collection-item">
+                                        <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <div class="divider"></div>
+                                            <p>Calories: {{$plan->calories}}</p>
+                                            <div class="divider"></div>
+                                            <p>Price: {{$plan->price}}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="collection-item">
+                                    <span>No Plans Added For This Week</span>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <ul class="collection">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <span class="collection-header">Upcoming Plans</span>
+                            </li>
+                            @if($pendPlans->count()>0)
+                                @foreach($pendPlans as $plan)
+                                    <li class="collection-item">
+                                        <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <div class="divider"></div>
+                                            <p>Calories: {{$plan->calories}}</p>
+                                            <div class="divider"></div>
+                                            <p>Price: {{$plan->price}}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="collection-item">
+                                    <a href="#!">
+                                        <span>No Pending Plans</span>
+                                    </a>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
             {{-- placeholder--}}
