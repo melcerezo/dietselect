@@ -10,7 +10,7 @@ $(document).ready(function () {
 
 
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-    $('.ingredChefAdd').on('blur',function () {
+    $('select.ingredChefAdd').on('change',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
         if($("option:selected",$(this)).val()!=""){
@@ -20,7 +20,7 @@ $(document).ready(function () {
             $(errSelect).empty();
         }
     });
-    $('input.autocomplete').on('blur',function () {
+    $('input.autocomplete').on('change',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
         if($("option:selected",$(this)).val()!=""){
