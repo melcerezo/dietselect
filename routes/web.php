@@ -85,6 +85,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('message/send', 'Foodie\FoodieMessageController@send')->name('foodie.message.send');
     Route::post('message/reply', 'Foodie\FoodieMessageController@reply')->name('foodie.message.reply');
     Route::post('message/delete/{message}', 'Foodie\FoodieMessageController@delete')->name('foodie.message.delete');
+    Route::post('message/deleteChat/{id}', 'Foodie\FoodieMessageController@deleteChat')->name('foodie.chat.delete');
 
 
     Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));

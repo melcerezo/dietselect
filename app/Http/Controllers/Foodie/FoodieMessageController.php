@@ -138,6 +138,14 @@ class FoodieMessageController extends Controller
 
 
     }
+
+    public function deleteChat($id){
+        $chat = Chat::where('id','=', $id)->first();
+
+        $messages= $chat->message->get();
+        dd($messages);
+    }
+
     public function delete(Message $message){
 //        dd($message->id);
         $message->delete();

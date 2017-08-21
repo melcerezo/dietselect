@@ -257,7 +257,7 @@
     </div>
     <div id="dltCht" class="modal">
         <div class="modal-content">
-            Hello
+            <a href="{{route('foodie.chat.delete',$chatId)}}">Delete</a>
         </div>
     </div>
 
