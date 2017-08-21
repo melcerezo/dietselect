@@ -52,7 +52,7 @@ $(document).ready(function () {
             $('#ingredError').empty();
         }
 
-        $('select.ingredChefAdd').on('focus',function () {
+        $('.ingredChefAdd').on('focus',function () {
             var errSelect= $(this).attr('data-error');
             console.log(errSelect);
             if($("option:selected",$(this)).val()==""){
