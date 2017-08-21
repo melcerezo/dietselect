@@ -147,7 +147,7 @@ class FoodieMessageController extends Controller
         }
         $chat->delete();
 
-        return back()->with(['status'=>'Deleted Chat']);
+        return redirect()->route('chef.message.index')->with(['status'=>'Deleted Chat']);
     }
 
 
