@@ -142,7 +142,7 @@
                                     <div style="margin: 5px;">
                                         <span>No Pending Plans</span>
                                     </div>
-                                    <div>
+                                    <div style="margin: 5px;">
                                         <a href="{{route('chef.plan')}}">
                                             Add Plans
                                         </a>
@@ -173,7 +173,7 @@
                                     <div style="margin: 5px;">
                                         <span>No Plans Added For This Week</span>
                                     </div>
-                                    <div>
+                                    <div style="margin: 5px">
                                         <a href="{{route('chef.plan')}}">View Plans</a>
                                     </div>
                                 </div>
