@@ -90,7 +90,9 @@
                             </div>
                             <div class="col s8 m8 l8">
                                 @if($chef->bank_account!=null)
-                                    <span>{{$chef->bank_account->account}}</span>
+                                    @if($chef->bank_account->bank=="BDO")
+                                        <span>{{'00'.$chef->bank_account->account}}</span>
+                                    @endif
                                 @else
                                     <span>N/A</span>
                                 @endif
@@ -176,7 +178,11 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="account" name="account" type="text" class="validate" value="{{ $chef->bank_account->account }}">
+                                @if($chef->bank_account->bank=="BDO")
+                                    <input id="account" name="account" type="text" class="validate" value="{{ '00'.$chef->bank_account->account }}">
+                                @else
+                                    <input id="account" name="account" type="text" class="validate" value="{{ $chef->bank_account->account }}">
+                                @endif
                                 <label for="account" class="active">Bank Account</label>
                             </div>
                         </div>
