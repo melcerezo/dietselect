@@ -189,10 +189,10 @@ $(document).ready(function () {
             }
         }
     });
-    console.log($('#description').val());
-    console.log($('#day').val());
-    console.log($('#meal_type').val());
-    console.log($('#main_ingredient').val());
+    // console.log($('#description').val());
+    // console.log($('#day').val());
+    // console.log($('#meal_type').val());
+    // console.log($('#main_ingredient').val());
 
 
 
@@ -216,7 +216,7 @@ $(document).ready(function () {
         }
     });
 
-    $('select.ingredChefAdd').on('change',function () {
+    $(document).on('change','select.ingredChefAdd',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
         if($("option:selected",$(this)).val()!=""){
@@ -226,7 +226,7 @@ $(document).ready(function () {
             $(errSelect).empty();
         }
     });
-    $('input.autocomplete').on('change',function () {
+    $(document).on('change','input.autocomplete',function () {
         var errSelect= $(this).attr('data-error');
         console.log(errSelect);
         if($("option:selected",$(this)).val()!=""){
