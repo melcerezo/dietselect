@@ -8,6 +8,8 @@ $(document).ready(function () {
         });
     }
 
+    console.log('hello');
+
     $('button.createB').click(function () {
         console.log('hello');
         var form=$(this).closest("form");
