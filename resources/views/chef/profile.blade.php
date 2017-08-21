@@ -92,6 +92,8 @@
                                 @if($chef->bank_account!=null)
                                     @if($chef->bank_account->bank=="BDO")
                                         <span>{{'00'.$chef->bank_account->account}}</span>
+                                    @else
+                                        <span>{{$chef->bank_account->account}}</span>
                                     @endif
                                 @else
                                     <span>N/A</span>
