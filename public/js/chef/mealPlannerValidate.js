@@ -13,7 +13,7 @@ $(document).ready(function () {
         // console.log('create form');
         var form=$(this).closest("form");
         var ingredSelect=form.find("#ingredientContainer").children();
-        var ingredFind=ingredSelect.children('.ingredAddContainer');
+        var ingredFind=ingredSelect.children('.ingredients');
         console.log(ingredFind);
         var ingredCountz=ingredFind.length;
         // console.log(ingredCountz);
