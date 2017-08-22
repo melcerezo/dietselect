@@ -539,7 +539,7 @@
                                             <option value="pork">Pork</option>
                                             <option value="fish">Fish</option>
                                             <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
-                                            <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
+                                            <option value="carbohydrates(grains, pasta)">Carbohydrates(Grains, Pasta)</option>
                                             <option value="dairy,eggs">Dairy, Eggs</option>
                                             <option value="fat,oils">Dressings, Oil</option>
                                             <option value="beans,peanuts">Beans, Peanuts</option>
@@ -549,10 +549,22 @@
                                         </select>
                                         <script>
                                             $(document).ready(function () {
-                                                console.log('{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}');
+                                                {{--console.log('{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}');--}}
+                                                var $valz = '{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}';
+                                                if($valz=="fruits/fruit juices"){
+                                                    $valz='fruits';
+                                                }else if($valz=='carbohydrates(grains, pasta)'){
+                                                    $valz='carbohydrates(grains,pasta)';
+                                                }else if($valz=='fish/shellfish'){
+                                                    $valz='fish';
+                                                }else if($valz=='dairy,egg'){
+                                                    $valz='dairy,eggs';
+                                                }else if($valz=='soups,sauces,gravies'){
+                                                    $valz='soups,sauces,gravy';
+                                                }
                                                 var id='{{$mealPlans[$i]->chefcustomize->id}}{{$j}}';
                                                 $('#ingredSelectOption'+id+' option').each(function () {
-                                                    if($(this).val()=='{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}'){
+                                                    if($(this).val()==$valz){
                                                         $(this).attr("selected", true);
                                                     }
                                                 });
