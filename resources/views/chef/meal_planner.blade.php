@@ -546,10 +546,6 @@
                                             <option value="fruits">Fruits, Fruit Juices</option>
                                             <option value="vegetables">Vegetables</option>
                                         </select>
-                                        <script>
-                                            var ingred='{{$ingredientsMeal[$j]->FdGrp_Desc}}';
-                                            $('ingredSelect{{$mealPlans[$i]->chefcustomize->id}}{{$j}}').val(ingred.toLowerCase());
-                                        </script>
                                         <div id="updateIngredText{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" class="ingredSelectAdd input-field" >
                                             <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" name="ingredients[{{$j}}]" data-error=".error-updateIngred{{$j}}" class="required autocomplete ingredAuto inputBehind">
                                         </div>
