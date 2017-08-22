@@ -91,31 +91,25 @@
                         </div>
                     </div>
                     <div class="card-content">
-                        <div class="row">
-                            @foreach($orderItems as $orderItem)
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$orderItem->plan->picture}}" class="img-responsive" style="max-width:150px;"/>
-                                    </div>
-                                    <div class="col s12 m4" style="font-size: 20px;">
-                                        <div>{{$orderItem->plan->plan_name}}</div>
-                                        <div>Made By: {{$orderItem->chef->name}}</div>
-                                        <div>Type:
-                                            @if($orderItem->order_type==0)
-                                                <span>Standard</span>
-                                            @elseif($orderItem->order_type==1)
-                                                <span>Customized</span>
-                                            @endif
+                            @foreach($orderItemArray as $orderItemItem)
+                                @if($orderItemItem['order_id']==$order->id)
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
                                         </div>
-                                        <div>Quantity: {{$orderItem->quantity}}</div>
-                                        <div>Amount: {{$orderItem->price}}</div>
+                                        <div class="col s12 m4" style="font-size: 20px;">
+                                            <div>{{$orderItemItem['plan']}}</div>
+                                            <div>Made By: {{$orderItemItem['chef']}}</div>
+                                            <div>Type:  {{$orderItemItem['type']}}</div>
+                                            <div>Quantity: {{$orderItemItem['quantity']}}</div>
+                                            <div>Amount: {{$orderItemItem['price']}}</div>
+                                        </div>
+                                        <div class="col s12 offset-m2 m2">
+                                            {{--<a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>--}}
+                                        </div>
                                     </div>
-                                    <div class="col s12 offset-m2 m2">
-                                        {{--<a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>--}}
-                                    </div>
-                                </div>
+                                @endif
                             @endforeach
-                        </div>
                     </div>
                 </div>
             </div>

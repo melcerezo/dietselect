@@ -207,12 +207,41 @@ class AdminController extends Controller
     public function order(Order $order)
     {
         $orderItems = $order->order_item()->get();
+        $orderItemArray = [];
 
-        dd($orderItems[0]);
+        foreach($orderItems as $orderItem){
+            $orderPlan = "";
+            $planPic="";
+            $planName = "";
+            $chefName = "";
+            $orderType="";
+            if($orderItem->order_type==0){
+                $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+//                    dd($orderPlan->picture);
+                $planPic=$orderPlan->picture;
+                $planName = $orderPlan->plan_name;
+                $chefName = $orderPlan->chef->name;
+                $orderType = "Standard";
+            }elseif($orderItem->order_type==1 || $orderItem->order_type==2){
+                if($orderItem->order_type==1 ){
+                    $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                }elseif($orderItem->order_type==2){
+                    $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                }
+                $planPic=$orderPlan->plan->picture;
+                $planName = $orderPlan->plan->plan_name;
+                $chefName = $orderPlan->plan->chef->name;
+                $orderType = "Customized";
+            }
+
+            $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
+                'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+        }
 
         return view('admin.order')->with([
             'order'=>$order,
-            'orderItems'=>$orderItems
+            'orderItems'=>$orderItems,
+            'orderItemArray'=>$orderItemArray
         ]);
     }
 }
