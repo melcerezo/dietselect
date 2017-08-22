@@ -93,10 +93,10 @@ $(document).ready(function () {
                 });
 
             });
-            $('select.addSelectIngred').each(function () {
-                var valz=$(this).val();
-                console.log(valz);
-            });
+                $('.addSelectIngred').each(function () {
+                    var valz=$(this).val();
+                    console.log(valz);
+                });
 
 
             $('#ingredientContainer').on("click",".removeField", function (e) {
