@@ -42,8 +42,9 @@ $(document).ready(function () {
 
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
+
         var form=$(this).closest("form");
-        console.log(form);
+        console.log(form.valid());
         $('#loadWait').show();
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
