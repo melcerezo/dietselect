@@ -104,19 +104,19 @@
                                     @foreach($orderItemArray as $orderItemItem)
                                         @if($orderItemItem['order_id']==$order->id)
                                             <div class="row">
-                                                <div class="col s12 m3">
+                                                <div class="col s12 l3">
                                                     <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
                                                 </div>
-                                                <div class="col s12 m4" style="font-size: 20px;">
+                                                <div class="col s12 l4" style="font-size: 20px;">
                                                     <div>{{$orderItemItem['plan']}}</div>
                                                     <div>Made By: {{$orderItemItem['chef']}}</div>
                                                     <div>Type:  {{$orderItemItem['type']}}</div>
                                                     <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                     <div>Amount: {{$orderItemItem['price']}}</div>
                                                 </div>
-                                                <div class="col s12 m3">
+                                                <div class="col s12 l3">
                                                     <div class="center">
-                                                        <a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light valign" style="font-weight: 100;">Details</a>
+                                                        <a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light valign" style="font-weight: 100; padd">Details</a>
                                                     </div>
                                                 </div>
                                             </div>
