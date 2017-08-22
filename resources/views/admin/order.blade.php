@@ -107,7 +107,7 @@
                                                 <div class="col s12 l3">
                                                     <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
                                                 </div>
-                                                <div class="col s12 l4" style="font-size: 20px;">
+                                                <div class="col s12 l6" style="font-size: 20px;">
                                                     <div>{{$orderItemItem['plan']}}</div>
                                                     <div>Made By: {{$orderItemItem['chef']}}</div>
                                                     <div>Type:  {{$orderItemItem['type']}}</div>
