@@ -548,12 +548,12 @@
                                             <option value="vegetables">Vegetables</option>
                                         </select>
                                         <div id="updateIngredText{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" class="ingredSelectAdd input-field" >
-                                            <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" name="ingredients[{{$j}}]" data-error=".error-updateIngred" class="required autocomplete ingredAuto inputBehind">
+                                            <input type="text" value="{{$ingredientsMeal[$j]->Long_Desc}}" id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" name="ingredients[{{$j}}]" data-error=".error-updateIngred{{$j}}" class="required autocomplete ingredAuto inputBehind">
                                         </div>
-                                        <div class="error-updateIngred err"></div>
+                                        <div class="error-updateIngred{{$j}} err"></div>
                                         <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div>
-                                            <input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[{{$j}}]" id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-updateGram" class="required gramsAuto inputBehind"></div>
-                                        <div class="error-updateGram err"></div>
+                                            <input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[{{$j}}]" id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-updateGram{{$j}}" class="required gramsAuto inputBehind"></div>
+                                        <div class="error-updateGram{{$j}} err"></div>
                                     </div>
                                 @endif
                             @endfor
