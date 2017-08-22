@@ -93,6 +93,12 @@ $(document).ready(function () {
                 });
 
             });
+            $('select.addSelectIngred').each(function () {
+                var valz=$(this).val();
+                console.log(valz);
+            });
+
+
             $('#ingredientContainer').on("click",".removeField", function (e) {
                 e.preventDefault();
                 $('select#ingredSelectOption'+count).rules('remove');
