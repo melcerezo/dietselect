@@ -92,7 +92,7 @@
                     </div>
                     <div class="card-content">
                         <div class="row">
-                            <div class="col s12 m8">
+                            <div class="col s12 m9">
                                 <div class="card-panel" style="padding: 0;">
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
