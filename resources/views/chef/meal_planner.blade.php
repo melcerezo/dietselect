@@ -548,11 +548,13 @@
                                             <option value="vegetables">Vegetables</option>
                                         </select>
                                         <script>
-                                            var id='{{$mealPlans[$i]->chefcustomize->id}}{{$j}}';
-                                            $('#ingredSelectOption'+id+' option').each(function () {
-                                                if($(this).val()=='{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}'){
-                                                    $(this).attr("selected", true);
-                                                }
+                                            $(document).ready(function () {
+                                                var id='{{$mealPlans[$i]->chefcustomize->id}}{{$j}}';
+                                                $('#ingredSelectOption'+id+' option').each(function () {
+                                                    if($(this).val()=='{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}'){
+                                                        $(this).attr("selected", true);
+                                                    }
+                                                });
                                             });
                                         </script>
                                         <div id="updateIngredText{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" class="ingredSelectAdd input-field" >

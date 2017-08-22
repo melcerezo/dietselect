@@ -113,6 +113,7 @@ $(document).ready(function () {
             });
 
 
+
             $('.updateIngredSelect').on('change',function (){
                 var $type=$(this).val();
                 var $ingredsID=$(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
