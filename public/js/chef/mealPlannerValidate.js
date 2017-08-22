@@ -47,16 +47,16 @@ $(document).ready(function () {
         $('#loadWait').show();
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
-        // console.log(ingredFind);
+        console.log(ingredFind);
         var ingredCountz=ingredFind.length;
-        // console.log(ingredCountz);
+        console.log(ingredCountz);
         var matchData=0;
 
 
         $(ingredFind).each(function () {
             var ingredIn=$(this).find('input.autocomplete');
             var $thisVal=ingredIn.val();
-            // console.log($thisVal);
+            console.log($thisVal);
             var $error=ingredIn.attr('data-error');
             var $errorContainer=ingredIn.parents().eq(1).find($error);
             var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
