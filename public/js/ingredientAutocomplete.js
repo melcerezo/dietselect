@@ -51,6 +51,14 @@ $(document).ready(function () {
                             '<a href="#" class="removeField">X</a>' +
                         '</div>');
                 $('#ingredSelectOption'+count).material_select();
+
+                $('#ingredSelectOption'+count).rules({
+                    required: true,
+                    messages:{
+                        required: "Please choose an ingredient type."
+                    }
+                });
+
                 $('#ingredient'+count).rules('add', {
                     required: true,
                     messages: {
