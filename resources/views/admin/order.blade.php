@@ -94,7 +94,7 @@
                             @foreach($orderItemArray as $orderItemItem)
                                 @if($orderItemItem['order_id']==$order->id)
                                     <div class="row">
-                                        <div class="col s12 m2">
+                                        <div class="col s12 m3">
                                             <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
                                         </div>
                                         <div class="col s12 m4" style="font-size: 20px;">
@@ -104,8 +104,8 @@
                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                         </div>
-                                        <div class="col s12 offset-m2 m2">
-                                            {{--<a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>--}}
+                                        <div class="col s12 offset-m1 m2">
+                                            {{--<a href="{{route('admin.plan', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>--}}
                                         </div>
                                     </div>
                                 @endif
