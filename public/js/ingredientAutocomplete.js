@@ -3,12 +3,12 @@ $(document).ready(function () {
             $('#ingredientContainer').on("click","#ingredAdd",function () {
                 count++;
 
-                $('ingredient'+count).rules('add', {
+                $('#ingredient'+count).rules('add', {
                         required: true,
                         messages: "Please pick an ingredient."
                 });
 
-                $('grams'+count).rules('add', {
+                $('#grams'+count).rules('add', {
                         required: true,
                         messages: "Please specify number of grams."
                 });
