@@ -8,7 +8,7 @@ $(document).ready(function () {
         });
     }
 
-    // $('select#main_ingredient').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+    $('select#main_ingredient').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
     $('form#createMealForm').validate({

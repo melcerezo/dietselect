@@ -646,11 +646,11 @@
             <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
-                <input type="text" name="description" id="description" class="form-control">
+                <input type="text" name="description" data-error=".errorDescription" id="description" class="form-control">
                 <div id="errorDescription"></div>
                 <input type="hidden" id="dayCreate" name="dayCreate" value="">
                 <input type="hidden" id="meal_typeCreate" name="meal_typeCreate" value="">
-                <select id="main_ingredient" name="main_ingredient">
+                <select id="main_ingredient" data-error=".errorMainIngredient" name="main_ingredient">
                     <option selected value="">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>
                     <option value="Beef">Beef</option>
