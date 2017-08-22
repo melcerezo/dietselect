@@ -199,6 +199,8 @@ class AdminController extends Controller
     {
         $orders = Order::all();
 
+        dd($orders[0]->foodie->first_name);
+
         return view('admin.orders')->with([
             'orders'=>$orders,
         ]);
