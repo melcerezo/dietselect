@@ -95,6 +95,10 @@ $(document).ready(function () {
             });
             $('#ingredientContainer').on("click",".removeField", function (e) {
                 e.preventDefault();
+                $('select#ingredSelectOption'+count).rules('remove');
+                $('#ingredient'+count).rules('remove');
+
+                $('#grams'+count).rules('remove');
                 $(this).parent('div').remove();
                 count--;
             });
