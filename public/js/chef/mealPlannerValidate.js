@@ -21,14 +21,12 @@ $(document).ready(function () {
             }
         },
         messages:{
-            messages: {
-                description: {
-                    required: "Please enter a description!"
-                },
-                main_ingredient: {
-                    required: "Please enter a main ingredient!"
-                }
+            description: {
+                required: "Please enter a description!"
             },
+            main_ingredient: {
+                required: "Please enter a main ingredient!"
+            }
         },
         errorElement : 'div',
         errorPlacement: function(error, element) {
