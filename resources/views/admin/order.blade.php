@@ -105,7 +105,7 @@
                                         @if($orderItemItem['order_id']==$order->id)
                                             <div class="row">
                                                 <div class="col s12 m3">
-                                                    <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
+                                                    <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:90px;"/>
                                                 </div>
                                                 <div class="col s12 m4" style="font-size: 20px;">
                                                     <div>{{$orderItemItem['plan']}}</div>
