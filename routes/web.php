@@ -185,6 +185,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('chefs/{chef}','Admin\AdminController@chef')->name('admin.chef');
     Route::get('foodies','Admin\AdminController@foodies')->name('admin.foodies');
     Route::get('foodies/{foodie}','Admin\AdminController@foodie')->name('admin.foodie');
+    Route::get('plans','Admin\AdminController@plans')->name('admin.plans');
 
 
 });

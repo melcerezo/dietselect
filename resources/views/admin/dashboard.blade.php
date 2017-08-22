@@ -314,7 +314,7 @@
                             </table>
                         </div>
                         <div>
-                            <a href="#">See All</a>
+                            <a href="{{route('admin.plans')}}">See All</a>
                         </div>
                     </div>
                 </div>

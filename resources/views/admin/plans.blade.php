@@ -115,7 +115,7 @@
                                     <td>
                                         {{$plan->chef->name}}
                                     </td>
-                                    <td>{{$plan->price}}</td>
+                                    <td>{{'PHP'.number_format($plan->price, 2, '.', '')}}</td>
                                     <td>{{$plan->created_at->format('F d, Y')}}</td>
                                 </tr>
                             @endforeach
