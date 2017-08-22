@@ -185,7 +185,7 @@ class AdminController extends Controller
 
 //        dd($mealPhotos);
 
-        return view('foodie.mealView')->with([
+        return view('admin.plan')->with([
             'mealPlans' => $mealPlans,
             'mealPhotos'=>$mealPhotos,
             'saMeals'=>$saMeals,
