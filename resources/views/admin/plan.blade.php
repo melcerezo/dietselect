@@ -400,11 +400,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col s12 m8 left plSlMlBtn">
-                                <div class="col s12 m4">
-                                </div>
-                            </div>
-                            <div class="col s12 m4 right plSlMlInfCnt">
+                            <div class="col s12 m6 offset-m3 plSlMlInfCnt">
                                 <div class="plSlMlInfDef card-panel">
                                     <span>Please click on a Meal for more info!</span>
                                 </div>
