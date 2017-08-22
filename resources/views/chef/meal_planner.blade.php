@@ -510,7 +510,6 @@
                         <p><label for="main_ingredient">Main Ingredient</label></p>
                         <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
                             <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient">
-                                {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
                                 <option value="Chicken">Chicken</option>
                                 <option value="Beef">Beef</option>
                                 <option value="Pork">Pork</option>
@@ -559,10 +558,9 @@
                                 @endif
                             @endfor
                         @endfor
-                        {{--<label for="grams">Grams:</label>--}}
-                            <button id="u{{$i}}" data-form-id="editMeal{{$i}}" class="updateB btn" type="button">Update</button>
+                            <button class="btn" type="submit">Update</button>
                         </div>
-                </form>
+                    </form>
                 </div>
             </div>
             <div id="deleteMeal{{$i}}" class="modal">
