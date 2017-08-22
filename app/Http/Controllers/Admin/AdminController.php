@@ -207,9 +207,17 @@ class AdminController extends Controller
     public function order(Order $order)
     {
 
-        $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->get();
+        $foodieAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
+
+        $orderAddress = $foodieAddress->unit;
+        if($foodieAddress->bldg!=''){
+            $orderAddress.=' '.$foodieAddress->bldg.', ';
+        }
+        $orderAddress.= ' '.$foodieAddress->street;
+        $orderAddress.= ', '.$foodieAddress->brgy;
+        $orderAddress.= ' '.$foodieAddress->city;
 
         foreach($orderItems as $orderItem){
             $orderPlan = "";
