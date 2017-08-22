@@ -11,13 +11,13 @@ $(document).ready(function () {
     $('select#main_ingredient').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
-    $('#createMealForm').validate({
+    $('form#createMealForm').validate({
         rules:{
             description: {
                 required: true
             },
             main_ingredient: {
-                valueNotEquals: "0"
+                required: true
             }
         },
         messages:{
@@ -26,7 +26,7 @@ $(document).ready(function () {
                     required: "Please enter a description!"
                 },
                 main_ingredient: {
-                    valueNotEquals: "Please enter a main ingredient!"
+                    required: "Please enter a main ingredient!"
                 }
             },
         },
@@ -38,10 +38,10 @@ $(document).ready(function () {
             } else {
                 error.insertAfter(element);
             }
-        },
-        submitHandler: function(form){
-
         }
+        // submitHandler: function(form){
+        //
+        // }
     });
 
     $('input.autocomplete').each(function () {
