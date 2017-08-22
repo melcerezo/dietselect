@@ -109,7 +109,6 @@
                                                 <th>Quantity</th>
                                                 <th>Amount</th>
                                                 <th>Type</th>
-                                                <th>Date</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -125,7 +124,6 @@
                                                         <td>
                                                             {{$orderItem['type']}}
                                                         </td>
-                                                        <td>{{$orderItem['date']}}</td>
                                                     </tr>
                                                 @endif
                                             @endforeach
@@ -150,7 +148,6 @@
                                             <th>Quantity</th>
                                             <th>Amount</th>
                                             <th>Type</th>
-                                            <th>Date</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -166,7 +163,6 @@
                                                     <td>
                                                         {{$orderItem['type']}}
                                                     </td>
-                                                    <td>{{$orderItem['date']}}</td>
                                                 </tr>
                                             @endif
                                         @endforeach
