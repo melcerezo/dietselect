@@ -110,6 +110,26 @@
                                     </div>
                                 @endif
                             @endforeach
+                        <div class="row">
+                            <div class="col s12 m4">
+                                <ul class="collection">
+                                    <li class="collection-item">{{$order->foodie->first_name.' '.$order->foodie->last_name}}</li>
+                                    <li class="collection-item">{{$orderAddress}}</li>
+                                    <li class="collection-item">
+                                        @if($order->is_cancelled==0)
+                                            @if($order->is_paid==0)
+                                                <span>Pending</span>
+                                            @elseif($order->is_paid==1)
+                                                <span>Paid</span>
+                                            @endif
+                                        @elseif($order->is_cancelled==1)
+                                            <span>Cancelled</span>
+                                        @endif
+                                    </li>
+                                    <li class="collection-item">{{$order->total}}</li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -206,6 +206,8 @@ class AdminController extends Controller
 
     public function order(Order $order)
     {
+
+        $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
 
@@ -217,7 +219,6 @@ class AdminController extends Controller
             $orderType="";
             if($orderItem->order_type==0){
                 $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
-//                    dd($orderPlan->picture);
                 $planPic=$orderPlan->picture;
                 $planName = $orderPlan->plan_name;
                 $chefName = $orderPlan->chef->name;
@@ -241,7 +242,8 @@ class AdminController extends Controller
         return view('admin.order')->with([
             'order'=>$order,
             'orderItems'=>$orderItems,
-            'orderItemArray'=>$orderItemArray
+            'orderItemArray'=>$orderItemArray,
+            'orderAddress'=>$orderAddress
         ]);
     }
 }
