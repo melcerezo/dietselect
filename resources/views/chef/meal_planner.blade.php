@@ -650,7 +650,7 @@
                 <div id="errorDescription"></div>
                 <input type="hidden" id="dayCreate" name="dayCreate" value="">
                 <input type="hidden" id="meal_typeCreate" name="meal_typeCreate" value="">
-                <select id="main_ingredient" name="main_ingredient" class="selectRequired">
+                <select id="main_ingredient" name="main_ingredient">
                     <option selected value="">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>
                     <option value="Beef">Beef</option>
