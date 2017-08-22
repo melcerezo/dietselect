@@ -46,20 +46,20 @@ $(document).ready(function () {
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
 
-        $('input.autoCreate').each(function () {
-            console.log($(this));
-            $(this).rules('add', {
-                required: true
-                // messages: "Please pick an ingredient."
-            });
-        });
-        $('input.createGrams').each(function () {
-            console.log($(this).attr('id'));
-            $(this).rules('add', {
-                required: true
-                // messages: "Please specify number of grams."
-            });
-        });
+        // $('input.autoCreate').each(function () {
+        //     console.log($(this));
+        //     $(this).rules('add', {
+        //         required: true
+        //         // messages: "Please pick an ingredient."
+        //     });
+        // });
+        // $('input.createGrams').each(function () {
+        //     console.log($(this).attr('id'));
+        //     $(this).rules('add', {
+        //         required: true
+        //         // messages: "Please specify number of grams."
+        //     });
+        // });
 
 
 
