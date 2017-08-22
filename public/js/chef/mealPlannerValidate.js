@@ -43,16 +43,23 @@ $(document).ready(function () {
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
         var form=$(this).closest("form");
-        console.log(form.valid());
-        if(form.valid()){
-            $('#loadWait').show();
-            var ingredSelect=form.find("#ingredientContainer").children();
-            var ingredFind=ingredSelect.children('.ingredients');
-            console.log(ingredFind);
-            var ingredCountz=ingredFind.length;
-            console.log(ingredCountz);
-            var matchData=0;
+        var ingredSelect=form.find("#ingredientContainer").children();
+        var ingredFind=ingredSelect.children('.ingredients');
+        console.log(ingredFind);
+        var ingredCountz=ingredFind.length;
+        console.log(ingredCountz);
+        if(ingredCountz<1){
+            $('#loadWait').hide();
+            $('#ingredError').empty();
+            $errorCounter="<span style='font-size:12px;color:#ff0000;'>Please add at least one ingredient!</span>";
+            $('#ingredError').append($errorCounter);
+        }else{
+            $('#ingredError').empty();
+        }
 
+        if(form.valid() && ingredCountz>0){
+            $('#loadWait').show();
+            var matchData=0;
 
             $(ingredFind).each(function () {
                 var ingredIn=$(this).find('input.autocomplete');
