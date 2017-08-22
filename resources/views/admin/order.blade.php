@@ -114,11 +114,11 @@
                                                     <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                     <div>Amount: {{$orderItemItem['price']}}</div>
                                                 </div>
-                                                <div class="col s12 l3">
-                                                    <div style="padding: 10px">
-                                                        <a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light valign" style="font-weight: 100; padd">Details</a>
-                                                    </div>
-                                                </div>
+                                                {{--<div class="col s12 l3">--}}
+                                                    {{--<div style="padding: 10px">--}}
+                                                        {{--<a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light valign" style="font-weight: 100; padd">Details</a>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
                                             </div>
                                         @endif
                                     @endforeach
