@@ -116,7 +116,7 @@
                                                 </div>
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        <a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100; width:70%; vertical-align: middle;">Details</a>
+                                                        <a href="{{route('admin.plan', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100; width:85%;">Details</a>
                                                     </div>
                                                 </div>
                                             </div>
