@@ -651,7 +651,7 @@
                 <input type="hidden" id="dayCreate" name="dayCreate" value="">
                 <input type="hidden" id="meal_typeCreate" name="meal_typeCreate" value="">
                 <select id="main_ingredient" name="main_ingredient" class="selectRequired">
-                    <option selected value="">Choose Main Ingredient</option>
+                    <option selected value="0">Choose Main Ingredient</option>
                     <option value="Chicken">Chicken</option>
                     <option value="Beef">Beef</option>
                     <option value="Pork">Pork</option>
@@ -681,7 +681,7 @@
                 </div>
                 <div id="ingredError"></div>
                 <div id="formError"></div>
-                <div><button class="createB btn" type="button">Create</button></div>
+                <div><button class="createB btn" type="submit">Create</button></div>
             </form>
         </div>
     </div>
