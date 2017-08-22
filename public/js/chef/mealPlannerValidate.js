@@ -42,11 +42,69 @@ $(document).ready(function () {
 
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
+        var form=$(this).closest("form");
+        console.log(form);
+        $('#loadWait').show();
+        var ingredSelect=form.find("#ingredientContainer").children();
+        var ingredFind=ingredSelect.children('.ingredients');
+        // console.log(ingredFind);
+        var ingredCountz=ingredFind.length;
+        // console.log(ingredCountz);
+        var matchData=0;
 
 
-
-
-
+        $(ingredFind).each(function () {
+            var ingredIn=$(this).find('input.autocomplete');
+            var $thisVal=ingredIn.val();
+            // console.log($thisVal);
+            var $error=ingredIn.attr('data-error');
+            var $errorContainer=ingredIn.parents().eq(1).find($error);
+            var $thisSelect=ingredIn.parents().eq(2).find('.ingredChefSelect').children('.addSelectIngred');
+            var $selectThis=$thisSelect.children('.ingredChefAdd').children('.ingredChefAdd');
+            var $errSel=$selectThis.attr('data-error');
+            var $errorSelContainer=ingredIn.parents().eq(2).find($errSel);
+            var $valType=$("option:selected",$selectThis).val().toLowerCase();
+            console.log($valType);
+            if($thisVal!=""){
+                if($valType=="fruits/fruit juices"){
+                    $valType='fruits';
+                }else if($valType=='carbohydrates(grains, pasta)'){
+                    $valType='carbohydrates(grains,pasta)';
+                }else if($valType=='fish/shellfish'){
+                    $valType='fish';
+                }else if($valType=='dairy,egg'){
+                    $valType='dairy,eggs';
+                }else if($valType=='soups,sauces,gravies'){
+                    $valType='soups,sauces,gravy';
+                }
+                var $ingredientAuto=ingredAjax($valType);
+                $ingredientAuto.done(function(response){
+                    // console.log('This is in ajax');
+                    var valData=response;
+                    for(var i = 0,l=valData.length;i<l;i++){
+                        var ingred= valData[i].name;
+                        if($thisVal==ingred){
+                            matchData+=1;
+                            $errorContainer.empty();
+                        }
+                    }
+                    if(!matchData){
+                        $('#loadWait').hide();
+                        $errorContainer.empty();
+                        $errorContainer.append("The listed ingredient is not found");
+                    }
+                    if(matchData==ingredCountz&&errCount==0){
+                        form.unbind('submit').submit();
+                    }
+                });
+            }else{
+                $('#loadWait').hide();
+                $errorContainer.empty();
+                $errorSelContainer.empty();
+                $errorSelContainer.append('Please select ingredient type');
+                $errorContainer.append("Please enter an ingredient");
+            }
+        });
     });
 
 
