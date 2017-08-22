@@ -112,6 +112,7 @@ $(document).ready(function () {
                 meal_id.push($(this).attr("data-meal-id"));
             });
 
+
             $('.updateIngredSelect').on('change',function (){
                 var $type=$(this).val();
                 var $ingredsID=$(this).parents().eq(1).find('.input-field').find('.autocomplete').attr("id");
@@ -125,7 +126,7 @@ $(document).ready(function () {
 
                         $(function(){
                             $('#'+$ingredsID+'.autocomplete').autocomplete(JSON.parse($ingredsData));
-                        })
+                        });
                         // console.log(JSON.parse($ingredsData));
                     }
                 });
