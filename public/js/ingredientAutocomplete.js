@@ -93,6 +93,7 @@ $(document).ready(function () {
                 });
 
             });
+
                 $('.addSelectIngred').each(function () {
                     var valz=$(this).val();
                     console.log(valz);
