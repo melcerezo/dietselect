@@ -3,17 +3,6 @@ $(document).ready(function () {
             $('#ingredientContainer').on("click","#ingredAdd",function () {
                 count++;
 
-                $('#ingredient'+count).rules('add', {
-                        required: true,
-                        messages: "Please pick an ingredient."
-                });
-
-                $('#grams'+count).rules('add', {
-                        required: true,
-                        messages: "Please specify number of grams."
-                });
-
-
                 $('#ingredientContainer').prepend(
                     '<div class="ingredAddContainer">' +
                         '<div id="ingredientSelection'+count+'" class="ingredChefSelect">' +
@@ -62,6 +51,15 @@ $(document).ready(function () {
                             '<a href="#" class="removeField">X</a>' +
                         '</div>');
                 $('#ingredSelectOption'+count).material_select();
+                // $('#ingredient'+count).rules('add', {
+                //     required: true,
+                //     messages: "Please pick an ingredient."
+                // });
+                //
+                // $('#grams'+count).rules('add', {
+                //     required: true,
+                //     messages: "Please specify number of grams."
+                // });
                 $('.addSelectIngred').on('change','select',function (){
                     var $type=$(this).val();
                     var $ingredsAddID=$(this).parents().eq(3).find('.ingredients').find('.input-field').find('.autocomplete').attr("id");
