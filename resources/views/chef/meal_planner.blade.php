@@ -647,7 +647,7 @@
                 {{csrf_field()}}
                 <label for="description">Meal Name:</label>
                 <input type="text" name="description" data-error=".errorDescription" id="description" class="form-control">
-                <div id="errorDescription"></div>
+                <div class="errorDescription"></div>
                 <input type="hidden" id="dayCreate" name="dayCreate" value="">
                 <input type="hidden" id="meal_typeCreate" name="meal_typeCreate" value="">
                 <select id="main_ingredient" data-error=".errorMainIngredient" name="main_ingredient">
@@ -661,7 +661,7 @@
                     <option value="Carbohydrates">Carbohydrates</option>
                     <option value="Fruits">Fruits</option>
                 </select>
-                <div id="errorMainIngredient"></div>
+                <div class="errorMainIngredient"></div>
                 <div class="file-field input-field">
                     <label for="mealPic" class="active">Picture Upload:</label>
                     <div style="padding-top: 10px;">
