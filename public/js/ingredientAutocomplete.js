@@ -52,7 +52,7 @@ $(document).ready(function () {
                         '</div>');
                 $('#ingredSelectOption'+count).material_select();
 
-                $('#ingredSelectOption'+count).rules({
+                $('#ingredSelectOption'+count).rules('add', {
                     required: true,
                     messages:{
                         required: "Please choose an ingredient type."
