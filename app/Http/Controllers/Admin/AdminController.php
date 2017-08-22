@@ -203,4 +203,14 @@ class AdminController extends Controller
             'orders'=>$orders,
         ]);
     }
+
+    public function order(Order $order)
+    {
+        $orderItems = $order->order_item()->get();
+
+        return view()->with([
+            'order'=>$order,
+            'orderItems'=>$orderItems
+        ]);
+    }
 }
