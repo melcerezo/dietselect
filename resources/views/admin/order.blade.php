@@ -104,7 +104,7 @@
                                     @foreach($orderItemArray as $orderItemItem)
                                         @if($orderItemItem['order_id']==$order->id)
                                             <div class="row">
-                                                <div class="col s12 l3">
+                                                <div class="col s12 l4">
                                                     <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
                                                 </div>
                                                 <div class="col s12 l6" style="font-size: 20px;">
