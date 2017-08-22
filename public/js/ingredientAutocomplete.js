@@ -37,7 +37,7 @@ $(document).ready(function () {
                                 '</label>' +
                             '</div>' +
                             '<div id="ingredInput'+count+'" class="ingredSelectAdd input-field" >' +
-                                    '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="autocomplete inputBehind">' +
+                                    '<input type="text" id="ingredient'+count+'" name="ingredients['+count+']" data-error=".error-ingredient'+count+'" class="autoCreate autocomplete">' +
                             '</div>'+
                             '<div class="error-ingredient'+count+' err"></div>' +
                                 '<div class="ingredGramsAdd">' +
@@ -46,7 +46,7 @@ $(document).ready(function () {
                                             'Grams' +
                                         '</label>' +
                                     '</div>' +
-                                    '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="grams inputBehind">' +
+                                    '<input type="number" name="grams['+count+']" id="grams'+(count)+'" data-error=".error-gram'+count+'" class="createGrams inputBehind">' +
                                 '</div>'+
                                 '<div class="error-gram'+count+' err"></div>' +
                             '</div>'+

@@ -42,15 +42,15 @@ $(document).ready(function () {
     });
 
     $('form#createMealForm').submit(function (event) {
-        $('input.autocomplete').each(function () {
+        $('input.autoCreate').each(function () {
             console.log($(this));
             $(this).rules('add', {
                 required: true
                 // messages: "Please pick an ingredient."
             });
         });
-        $('.grams').each(function () {
-            // console.log($(this).attr('id'));
+        $('.createGrams').each(function () {
+            console.log($(this).attr('id'));
             $(this).rules('add', {
                 required: true
                 // messages: "Please specify number of grams."
