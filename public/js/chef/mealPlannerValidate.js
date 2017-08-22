@@ -39,6 +39,10 @@ $(document).ready(function () {
         }
     });
 
+    $('#ingredAdd').on('click', function () {
+        $('#ingredError').empty();
+    });
+
 
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
