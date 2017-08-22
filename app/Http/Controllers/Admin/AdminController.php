@@ -199,7 +199,7 @@ class AdminController extends Controller
     {
         $orders = Order::all();
 
-        dd($orders[0]->foodie->first_name);
+        dd($orders[0]->foodie);
 
         return view('admin.orders')->with([
             'orders'=>$orders,
