@@ -365,7 +365,7 @@
                             </table>
                         </div>
                         <div>
-                            <a href="#">See All</a>
+                            <a href="{{route('admin.orders')}}">See All</a>
                         </div>
                     </div>
                 </div>

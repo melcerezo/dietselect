@@ -194,4 +194,13 @@ class AdminController extends Controller
             'plan' => $plan,
         ]);
     }
+
+    public function orders()
+    {
+        $orders = Order::all();
+
+        return view('admin.orders')->with([
+            'orders'=>$orders,
+        ]);
+    }
 }
