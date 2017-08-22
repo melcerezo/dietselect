@@ -40,15 +40,15 @@ $(document).ready(function () {
     });
 
     $('#ingredientContainer').on("click","#ingredAdd",function () {
-        $('#ingredient'+count).rules('add', {
-            required: true,
-            messages: "Please pick an ingredient."
-        });
-
-        $('#grams'+count).rules('add', {
-            required: true,
-            messages: "Please specify number of grams."
-        });
+        // $('#ingredient'+count).rules('add', {
+        //     required: true,
+        //     messages: "Please pick an ingredient."
+        // });
+        //
+        // $('#grams'+count).rules('add', {
+        //     required: true,
+        //     messages: "Please specify number of grams."
+        // });
     });
 
     $('form#createMealForm').submit(function (event) {
