@@ -50,7 +50,8 @@ $(document).ready(function () {
                             '</div>'+
                             '<a href="#" class="removeField">X</a>' +
                         '</div>');
-                $('#ingredSelectOption'+count).rules('add', {
+                $('select#ingredSelectOption'+count).css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+                $('select#ingredSelectOption'+count).rules('add', {
                     required: true,
                     messages:{
                         required: "Please choose an ingredient type."
