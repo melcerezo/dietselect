@@ -129,7 +129,7 @@
                                             <span>Cancelled</span>
                                         @endif
                                     </li>
-                                    <li class="collection-item">Total: {{$order->total}}</li>
+                                    <li class="collection-item">Total: {{'PHP'.number_format($order->total, 2, '.', '')}}</li>
                                 </ul>
                             </div>
                         </div>
