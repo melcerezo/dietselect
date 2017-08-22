@@ -40,6 +40,8 @@ $(document).ready(function () {
     });
 
     $('form#createMealForm').submit(function (event) {
+        event.preventDefault();
+
         $('input.autoCreate').each(function () {
             console.log($(this));
             $(this).rules('add', {
@@ -55,7 +57,6 @@ $(document).ready(function () {
             });
         });
 
-        event.preventDefault();
 
 
 
