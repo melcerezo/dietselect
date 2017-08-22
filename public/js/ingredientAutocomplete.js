@@ -53,12 +53,16 @@ $(document).ready(function () {
                 $('#ingredSelectOption'+count).material_select();
                 $('#ingredient'+count).rules('add', {
                     required: true,
-                    messages: "Please pick an ingredient."
+                    messages: {
+                        required: "Please pick an ingredient."
+                    }
                 });
 
                 $('#grams'+count).rules('add', {
                     required: true,
-                    messages: "Please specify number of grams."
+                    messages: {
+                        required: "Please specify number of grams."
+                    }
                 });
                 $('.addSelectIngred').on('change','select',function (){
                     var $type=$(this).val();
