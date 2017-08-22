@@ -1,6 +1,8 @@
 @extends("layouts.app")
 @section('head')
+    <link rel="stylesheet" href="/css/admin/adminPlanView.css">
     <script src="/js/admin/admin.js" defer></script>
+    <script src="/js/admin/adminPlanView.js" defer></script>
 @endsection
 
 @section('content')
