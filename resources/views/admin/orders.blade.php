@@ -107,8 +107,8 @@
                             <tbody>
                             @foreach($orders as $order)
                                 <tr>
-                                    {{--{{route('admin.order', $order->id)}}--}}
-                                    <td><a href="#!">{{$order->id}}</a></td>
+
+                                    <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                     <td>
                                         {{$order->foodie->first_name.' '.$order->foodie->last_name}}
                                     </td>
