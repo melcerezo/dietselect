@@ -146,16 +146,16 @@ $(document).ready(function () {
 
         });
     });
-    $('select.updateIngredSelect').each(function () {
-        console.log($(this).attr('id'));
-        $(this).css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
-        $(this).rules('add', {
-            required: true,
-            messages: {
-                required: "Please pick an ingredient type."
-            }
-        });
-    });
+    // $('select.updateIngredSelect').each(function () {
+    //     console.log($(this).attr('id'));
+    //     $(this).css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+    //     $(this).rules('add', {
+    //         required: true,
+    //         messages: {
+    //             required: "Please pick an ingredient type."
+    //         }
+    //     });
+    // });
     $('input.ingredAuto').each(function () {
         console.log($(this).attr('id'));
         $(this).rules('add', {
