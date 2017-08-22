@@ -207,7 +207,7 @@ class AdminController extends Controller
     public function order(Order $order)
     {
 
-        $foodieAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->get();
+        $foodieAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
 
