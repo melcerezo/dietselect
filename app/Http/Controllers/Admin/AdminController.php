@@ -156,4 +156,17 @@ class AdminController extends Controller
 
     }
 
+    public function plans()
+    {
+        $plans = Plan::all();
+
+        return view('admin.plans')->with([
+            'plans'=>$plans,
+        ]);
+    }
+
+    public function plan(Plan $plan)
+    {
+
+    }
 }
