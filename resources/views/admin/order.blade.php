@@ -118,7 +118,7 @@
                                     </li>
                                     <li class="collection-item">Ordered By: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</li>
                                     <li class="collection-item">Address: {{$orderAddress}}</li>
-                                    <li class="collection-item">Status
+                                    <li class="collection-item">Status:
                                         @if($order->is_cancelled==0)
                                             @if($order->is_paid==0)
                                                 <span>Pending</span>
