@@ -51,7 +51,7 @@ $(document).ready(function () {
             messages: "Please pick an ingredient."
         });
     });
-    $('input.gramsAuto').each(function () {
+    $('input.grams').each(function () {
         console.log($(this).attr('id'));
         $(this).rules('add', {
             required: true,
