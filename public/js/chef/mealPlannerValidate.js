@@ -49,7 +49,7 @@ $(document).ready(function () {
                 // messages: "Please pick an ingredient."
             });
         });
-        $('.createGrams').each(function () {
+        $('input.createGrams').each(function () {
             console.log($(this).attr('id'));
             $(this).rules('add', {
                 required: true
