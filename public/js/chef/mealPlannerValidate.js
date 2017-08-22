@@ -217,10 +217,7 @@ $(document).ready(function () {
                             $errorContainer.empty();
                         }
                     }
-                    if(!form.valid()){
-                        $('#loadWait').hide();
-                    }
-                    if(!matchData){
+                    if(!matchData || !form.valid()){
                         $('#loadWait').hide();
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
