@@ -549,6 +549,7 @@
                                         </select>
                                         <script>
                                             $(document).ready(function () {
+                                                console.log('{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}');
                                                 var id='{{$mealPlans[$i]->chefcustomize->id}}{{$j}}';
                                                 $('#ingredSelectOption'+id+' option').each(function () {
                                                     if($(this).val()=='{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}'){
