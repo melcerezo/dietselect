@@ -39,6 +39,10 @@ $(document).ready(function () {
         }
     });
 
+    $('#ingredientContainer').on("click","#ingredAdd",function () {
+
+    });
+
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
 

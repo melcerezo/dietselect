@@ -2,9 +2,18 @@ $(document).ready(function () {
             var count=0;
             $('#ingredientContainer').on("click","#ingredAdd",function () {
                 count++;
-                // $('#ingredientContainer').prepend('<div class="ingredients"><div class="ingredLabel"><label for="ingredients[]">Ingredients</label></div>'+'<div class="ingredSelectAdd input-field" ><input type="text" id="ingredient'+count+'" name="ingredients[]" class="autocomplete inputBehind"></div>'+
-                //     '<div class="ingredGramsAdd">'+'<div class="gramLabel"><label for="grams[]">Grams</label></div>'+'<input type="number" name="grams[]" id="grams'+(count)+'" class="inputBehind"></div>'+
-                // '<a href="#" class="removeField">X</a></div>');
+
+                $('ingredient'+count).rules('add', {
+                        required: true,
+                        messages: "Please pick an ingredient."
+                });
+
+                $('grams'+count).rules('add', {
+                        required: true,
+                        messages: "Please specify number of grams."
+                });
+
+
                 $('#ingredientContainer').prepend(
                     '<div class="ingredAddContainer">' +
                         '<div id="ingredientSelection'+count+'" class="ingredChefSelect">' +
