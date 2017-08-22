@@ -93,16 +93,10 @@ $(document).ready(function () {
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
                     }
-                    if(matchData==ingredCountz&&errCount==0){
+                    if(matchData==ingredCountz&&form.valid()=='true'){
                         form.unbind('submit').submit();
                     }
                 });
-            }else{
-                $('#loadWait').hide();
-                $errorContainer.empty();
-                $errorSelContainer.empty();
-                $errorSelContainer.append('Please select ingredient type');
-                $errorContainer.append("Please enter an ingredient");
             }
         });
     });
