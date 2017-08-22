@@ -279,7 +279,6 @@
                 </div>
                 </div>
             </div>
-            </div>
             <div class="row">
             <div class="col s12 m5">
                 <div class="card">
