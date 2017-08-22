@@ -38,7 +38,7 @@
         </div>
         <div class="row">
             <div class="card-panel" style="padding: 0;">
-                <table class="striped centered">
+                <table class="striped centered responsive-table" style="table-layout: fixed;">
                     <thead class="light-green white-text" style="border: none;">
                         <tr>
                             <th></th>
