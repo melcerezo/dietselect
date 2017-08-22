@@ -216,7 +216,7 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('blur','select.ingredChefAdd',function () {
+    $(document).on('change','select.ingredChefAdd',function () {
         var errSelect= $(this).attr('data-error');
         console.log($("option:selected",$(this)).val());
         if($("option:selected",$(this)).val()==""){
