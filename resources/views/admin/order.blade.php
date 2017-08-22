@@ -113,6 +113,9 @@
                         <div class="row">
                             <div class="col s12 m4">
                                 <ul class="collection">
+                                    <li class="collection-item grey lighten-3">
+                                        <div class="collection-header">Pending Order</div>
+                                    </li>
                                     <li class="collection-item">Ordered By: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</li>
                                     <li class="collection-item">Address: {{$orderAddress}}</li>
                                     <li class="collection-item">Status
