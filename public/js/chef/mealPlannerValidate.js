@@ -43,7 +43,7 @@ $(document).ready(function () {
 
     $('form#createMealForm').submit(function (event) {
         $('.autocomplete').each(function () {
-            // console.log($(this).attr('id'));
+            console.log($(this).attr('id'));
             $(this).rules('add', {
                 required: true
                 // messages: "Please pick an ingredient."
