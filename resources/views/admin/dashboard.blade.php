@@ -280,7 +280,7 @@
                 </div>
             </div>
             <div class="row">
-            <div class="col s12 m5">
+            <div class="col s12 m5 offset-m2">
                 <div class="card">
                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                         <div>
