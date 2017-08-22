@@ -52,7 +52,7 @@ $(document).ready(function () {
                             '</div>'+
                             '<a href="#" class="removeField">X</a>' +
                         '</div>');
-                $('select').material_select();
+                $('#ingredSelectOption'+count).material_select();
                 $('.addSelectIngred').on('change','select',function (){
                     var $type=$(this).val();
                     var $ingredsAddID=$(this).parents().eq(3).find('.ingredients').find('.input-field').find('.autocomplete').attr("id");
