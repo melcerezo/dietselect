@@ -186,50 +186,48 @@ $(document).ready(function () {
         console.log(ingredCountz);
         var matchData=0;
 
-        if(form.valid()){
-            $('#loadWait').show();
-            $(ingredFind).each(function () {
-                var ingredIn=$(this).find('input.autocomplete');
-                var $thisVal=ingredIn.val();
-                var $error=ingredIn.attr('data-error');
-                var $errorContainer=ingredIn.parents().eq(1).find($error);
-                if($thisVal!=""){
-                    var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
-                    var $valType=$("option:selected",$thisSelect).val().toLowerCase();
-                    if($valType=="fruits/fruit juices"){
-                        $valType='fruits';
-                    }else if($valType=='carbohydrates(grains, pasta)'){
-                        $valType='carbohydrates(grains,pasta)';
-                    }else if($valType=='fish/shellfish'){
-                        $valType='fish';
-                    }else if($valType=='dairy,egg'){
-                        $valType='dairy,eggs';
-                    }else if($valType=='soups,sauces,gravies'){
-                        $valType='soups,sauces,gravy';
-                    }
-                    var $ingredientAuto=ingredAjax($valType);
-                    $ingredientAuto.done(function(response){
-                        // console.log('This is in ajax');
-                        var valData=response;
-                        for(var i = 0,l=valData.length;i<l;i++){
-                            var ingred= valData[i].name;
-                            if($thisVal==ingred){
-                                matchData+=1;
-                                $errorContainer.empty();
-                            }
-                        }
-                        if(!matchData){
-                            $('#loadWait').hide();
-                            $errorContainer.empty();
-                            $errorContainer.append("The listed ingredient is not found");
-                        }
-                        if(matchData==ingredCountz){
-                            form.unbind('submit').submit();
-                        }
-                    });
+        $('#loadWait').show();
+        $(ingredFind).each(function () {
+            var ingredIn=$(this).find('input.autocomplete');
+            var $thisVal=ingredIn.val();
+            var $error=ingredIn.attr('data-error');
+            var $errorContainer=ingredIn.parents().eq(1).find($error);
+            if($thisVal!=""){
+                var $thisSelect=ingredIn.parents().eq(1).find('select.updateIngredSelect');
+                var $valType=$("option:selected",$thisSelect).val().toLowerCase();
+                if($valType=="fruits/fruit juices"){
+                    $valType='fruits';
+                }else if($valType=='carbohydrates(grains, pasta)'){
+                    $valType='carbohydrates(grains,pasta)';
+                }else if($valType=='fish/shellfish'){
+                    $valType='fish';
+                }else if($valType=='dairy,egg'){
+                    $valType='dairy,eggs';
+                }else if($valType=='soups,sauces,gravies'){
+                    $valType='soups,sauces,gravy';
                 }
-            });
-        }
+                var $ingredientAuto=ingredAjax($valType);
+                $ingredientAuto.done(function(response){
+                    // console.log('This is in ajax');
+                    var valData=response;
+                    for(var i = 0,l=valData.length;i<l;i++){
+                        var ingred= valData[i].name;
+                        if($thisVal==ingred){
+                            matchData+=1;
+                            $errorContainer.empty();
+                        }
+                    }
+                    if(!matchData){
+                        $('#loadWait').hide();
+                        $errorContainer.empty();
+                        $errorContainer.append("The listed ingredient is not found");
+                    }
+                    if(matchData==ingredCountz&&form.valid()){
+                        form.unbind('submit').submit();
+                    }
+                });
+            }
+        });
     });
 });
     //
