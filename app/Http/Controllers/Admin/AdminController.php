@@ -208,7 +208,7 @@ class AdminController extends Controller
     {
         $orderItems = $order->order_item()->get();
 
-        return view()->with([
+        return view('admin.order')->with([
             'order'=>$order,
             'orderItems'=>$orderItems
         ]);
