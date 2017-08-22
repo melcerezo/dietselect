@@ -217,6 +217,9 @@ $(document).ready(function () {
                             $errorContainer.empty();
                         }
                     }
+                    if(!form.valid()){
+                        $('#loadWait').hide();
+                    }
                     if(!matchData){
                         $('#loadWait').hide();
                         $errorContainer.empty();
