@@ -109,8 +109,7 @@
                                 <tr>
                                     <td>{{$plan->id}}</td>
                                     <td>
-                                        {{--{{route('admin.plan', $plan->id)}}--}}
-                                        <a href="#!">{{$plan->plan_name}}</a>
+                                        <a href="{{route('admin.plan', $plan->id)}}">{{$plan->plan_name}}</a>
                                     </td>
                                     <td>
                                         {{$plan->chef->name}}

@@ -167,6 +167,31 @@ class AdminController extends Controller
 
     public function plan(Plan $plan)
     {
+        $mealPlans = $plan->mealplans()
+            ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
+            ->get();
 
+        $saMeals = $mealPlans->where('day','=','SA')->count();
+        $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+        $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+
+        $mealPhotos = DB::table('meal_image')
+            ->join('chef_customized_meals','chef_customized_meals.meal_id','=','meal_image.meal_id')
+            ->join('meal_plans','meal_plans.id','=','chef_customized_meals.mealplan_id')
+            ->join('plans','plans.id','=','meal_plans.plan_id')
+//            ->join('meals','meal_image.meal_id','=','meals.id')
+            ->where('plans.id','=',$plan->id)
+            ->select('chef_customized_meals.meal_id','meal_plans.plan_id','chef_customized_meals.description','meal_image.image')->get();
+
+//        dd($mealPhotos);
+
+        return view('foodie.mealView')->with([
+            'mealPlans' => $mealPlans,
+            'mealPhotos'=>$mealPhotos,
+            'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals,
+            'plan' => $plan,
+        ]);
     }
 }
