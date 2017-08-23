@@ -120,6 +120,7 @@ class ChefMessageController extends Controller{
         $chtId = $request['chtId'];
 
         $replyChat = Chat::where('id','=',$chtId)->first();
+        $replyChat->foodie_can_see=1;
         $replyChat->updated_at= Carbon::now();
         $replyChat->save();
 
@@ -137,11 +138,11 @@ class ChefMessageController extends Controller{
 
     public function deleteChat($id){
         $chat = Chat::where('id','=', $id)->first();
-        $messages= $chat->message()->get();
-        foreach($messages as $message){
-            $message->chef_can_see=0;
-            $message->save();
-        }
+//        $messages= $chat->message()->get();
+//        foreach($messages as $message){
+//            $message->chef_can_see=0;
+//            $message->save();
+//        }
         $chat->chef_can_see=0;
         $chat->save();
 
