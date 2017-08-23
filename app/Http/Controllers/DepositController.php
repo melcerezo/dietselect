@@ -412,7 +412,7 @@ class DepositController extends Controller
                 file_get_contents($url, false, $context);
             }
 
-            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Bank Deposit Successful!']);
+            return Redirect::route('foodie.dashboard')->with(['status'=>'Payment through Gcash Successful!']);
         }
     }
 }
