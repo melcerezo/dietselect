@@ -76,7 +76,7 @@
                         </span>
                     </li>
                     <li class="collection-item"><a href="{{route('admin.commissions')}}">Commissions</a></li>
-                    <li class="collection-item"><a href={{route('admin.orders)}}>Orders</a></li>
+                    <li class="collection-item"><a href={{route('admin.orders')}}>Orders</a></li>
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
