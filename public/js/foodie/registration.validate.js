@@ -11,8 +11,8 @@ $(document).ready(function(){
     //     }
     // });
 
-    $('#n-reg-mobile-num').on('keydown keyup', function(e){
-        if ($(this).val().length >= 10
+    $('#receipt').on('keydown keyup', function(e){
+        if ($(this).val().length >= 20
             && e.keyCode != 46 // delete
             && e.keyCode != 8 // backspace
             && e.keyCode != 9 // tab
@@ -21,7 +21,7 @@ $(document).ready(function(){
             // $(this).val(100);
         }else{
             if(e.shiftKey && ((e.keyCode >=48 && e.keyCode <=57)
-                || (e.keyCode >=186 &&  e.keyCode <=222))){
+                || (e.keyCode >=186 &&  e.keyCode <=222) || (e.keyCode >64 &&  e.keyCode <91))){
                 // Ensure that it is a number and stop the Special chars
                 e.preventDefault();
             }
@@ -31,7 +31,7 @@ $(document).ready(function(){
             else{
                 // Allow only backspace , delete, numbers
                 if (e.keyCode == 9 || e.keyCode == 46 || e.keyCode == 8 || e.keyCode == 39 ||e.keyCode == 37
-                    || (e.keyCode >=48 && e.keyCode <=57)) {
+                    || (e.keyCode >=48 && e.keyCode <=57) || (e.keyCode >64 &&  e.keyCode <91)) {
                     // let it happen, don't do anything
                 }
                 else {

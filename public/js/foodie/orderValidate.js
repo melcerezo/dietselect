@@ -33,11 +33,42 @@ $(document).ready(function () {
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
+    $('#n-reg-mobile-num').on('keydown keyup', function(e){
+        if ($(this).val().length >= 10
+            && e.keyCode != 46 // delete
+            && e.keyCode != 8 // backspace
+            && e.keyCode != 9 // tab
+        ) {
+            e.preventDefault();
+            // $(this).val(100);
+        }else{
+            if(e.shiftKey && ((e.keyCode >=48 && e.keyCode <=57)
+                || (e.keyCode >=186 &&  e.keyCode <=222))){
+                // Ensure that it is a number and stop the Special chars
+                e.preventDefault();
+            }
+            else if ((e.shiftKey || e.ctrlKey) && (e.keyCode > 34 && e.keyCode < 40)){
+                // let it happen, don't do anything
+            }
+            else{
+                // Allow only backspace , delete, numbers
+                if (e.keyCode == 9 || e.keyCode == 46 || e.keyCode == 8 || e.keyCode == 39 ||e.keyCode == 37
+                    || (e.keyCode >=48 && e.keyCode <=57)) {
+                    // let it happen, don't do anything
+                }
+                else {
+                    // Ensure that it is a number and stop the key press
+                    e.preventDefault();
+                }
+            }
+        }
+    });
+
     $('form#bankPayForm').validate({
         rules: {
             receipt_number: {
                 required: true,
-                minlength:16,
+                minlength:11,
                 maxlength: 16
             },
             datePay:{
