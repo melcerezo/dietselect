@@ -53,7 +53,7 @@
                                                     @foreach($chefs as $chef)
                                                         @if($chef->id == $chat->chef_id)
                                                             <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                            <span class="msgUserName">{{$chef->name}}</span>
+                                                            <div class="msgUserName">{{$chef->name}}</div>
                                                             <p class="truncate grey-text">
                                                                 @if($chat->message()->latest()->first()->receiver_type=='f')
                                                                     <span>{{$chef->name.': '}}</span>
