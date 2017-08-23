@@ -43,11 +43,12 @@ class FoodieMealPlanController extends Controller
         $foodie = Auth::guard('foodie')->user()->id;
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see','=',1)
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
         $plans = Plan::where('created_at','>',$lastSaturday)->where('lockPlan','=',1)->get();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
 
 //        dd($plans);
 
@@ -89,9 +90,10 @@ class FoodieMealPlanController extends Controller
         $chefsPlanCount = $chefPlans->count();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see','=',1)
             ->where('is_read','=',0)
             ->get();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.planSelect')->with([
@@ -147,10 +149,11 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see','=',1)
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         return view('foodie.mealView')->with([
@@ -175,10 +178,11 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
@@ -243,6 +247,8 @@ class FoodieMealPlanController extends Controller
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
+            ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
         $ingredId = [];
@@ -405,11 +411,12 @@ class FoodieMealPlanController extends Controller
 
 //        dd($mealPlans[0]->chefcustomize->id);
 
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
 
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();

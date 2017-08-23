@@ -18,8 +18,8 @@ class ChefRatingsController extends Controller
     {
         $chef = Auth::guard('chef')->user();
         $ratings = Rating::where('chef_id', '=', $chef->id)->get();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 
         return view('chef.ratings', compact('ratings', 'messages', 'chef'))->with([
             'sms_unverified' => $this->mobileNumberExists(),

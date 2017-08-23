@@ -163,6 +163,8 @@ Route::group(['prefix' => 'chef'], function () {
     Route::post('message/reply', 'Chef\ChefMessageController@reply')->name('chef.message.reply');
     Route::post('message/delete/{message}', 'Chef\ChefMessageController@delete')->name('chef.message.delete');
     Route::post('message/readMessage/{message}', 'Chef\ChefMessageController@readMessage')->name('chef.message.read');
+    Route::post('message/deleteChat/{id}', 'Chef\ChefMessageController@deleteChat')->name('chef.chat.delete');
+
 
     //ordering
     Route::get('order/view', 'Chef\ChefOrderController@getAllOrdersView')->name('chef.order.view');

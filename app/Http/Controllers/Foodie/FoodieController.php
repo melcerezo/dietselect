@@ -268,9 +268,10 @@ class FoodieController extends Controller
 //        dd($paidOrderCount);
 //      for message dropdown
             $chefs = Chef::all();
-            $chats = Chat::where('foodie_id', '=', $foodie)->latest($column = 'updated_at')->get();
+            $chats = Chat::where('foodie_id', '=', $foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
             $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-                ->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
+                ->where('receiver_type', '=', 'f')
+                ->where('foodie_can_see','=',1)->where('is_read', '=', 0)->get();
 //        dd($messages);
 //      Ratings Stuff
 
@@ -362,12 +363,14 @@ class FoodieController extends Controller
     public function profile()
     {
         $foodie = Auth::guard('foodie')->user()->id;
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
         $addresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
         $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
         $preference = FoodiePreference::where('foodie_id', Auth::guard('foodie')->user()->id)->first();
         $chefs = Chef::all();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see','=',1)->where('is_read','=',0)->get();
         $allergyJson = '[';
         $i = 0;
         foreach ($allergies as $allergy) {

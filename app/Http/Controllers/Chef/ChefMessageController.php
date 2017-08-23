@@ -28,9 +28,9 @@ class ChefMessageController extends Controller{
     public function index(){
         $foodies = Foodie::all();
         $chef = Auth::guard('chef')->user();
-        $chats = Chat::where('chef_id', '=', $chef->id)->get();
+        $chats = Chat::where('chef_id', '=', $chef->id)->where('chef_can_see', '=', 1)->get();
 //        dd($chats);
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
 
@@ -51,7 +51,7 @@ class ChefMessageController extends Controller{
 
         $chef=Auth::guard('chef')->user();
         $foodies = Foodie::all();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $selectedChat= $chats->where('id', $id)->first();
 //        dd($chats);
 
@@ -62,7 +62,7 @@ class ChefMessageController extends Controller{
             }
         }
 
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 //        dd($notifications);
         return view('chef.messaging.chefMessages')->with([
@@ -133,6 +133,19 @@ class ChefMessageController extends Controller{
         $message->save();
 
         return redirect()->route('chef.message.message', compact('chtId'))->with(['status'=>'Successfully sent the message!']);
+    }
+
+    public function deleteChat($id){
+        $chat = Chat::where('id','=', $id)->first();
+        $messages= $chat->message()->get();
+        foreach($messages as $message){
+            $message->chef_can_see=0;
+            $message->save();
+        }
+        $chat->chef_can_see=0;
+        $chat->save();
+
+        return redirect()->route('foodie.message.index')->with(['status'=>'Deleted Chat']);
     }
 
     public function delete(Message $message){

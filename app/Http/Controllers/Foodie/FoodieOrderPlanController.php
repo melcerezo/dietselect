@@ -71,7 +71,7 @@ class FoodieOrderPlanController extends Controller
 
 
 
-        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $chefs= Chef::all();
         if($ordersCount>0){
             $orders=Order::where('foodie_id','=',$foodie->id)->latest($column = 'created_at')->get();
@@ -144,7 +144,10 @@ class FoodieOrderPlanController extends Controller
 
 //        dd($orderArray[0]['id']);
 
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
+            ->where('is_read','=',0)->get();
 
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
@@ -172,8 +175,12 @@ class FoodieOrderPlanController extends Controller
 
     public function getOneOrderDetails(Order $order){
         $foodie = Auth::guard('foodie')->user();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
+            ->where('is_read','=',0)
+            ->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $orderPlan=$order->plan->first();
         $orderMealPlans=$orderPlan->mealplans()->get();
         $orderMealPlansCount = $orderMealPlans->count();
@@ -230,10 +237,11 @@ class FoodieOrderPlanController extends Controller
     {
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
+            ->where('foodie_can_see', '=', 1)
             ->where('is_read','=',0)
             ->get();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
@@ -675,8 +683,8 @@ class FoodieOrderPlanController extends Controller
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
-        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 

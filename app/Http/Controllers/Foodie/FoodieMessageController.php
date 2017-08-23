@@ -33,8 +33,10 @@ class FoodieMessageController extends Controller
 
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
+        $messages = Message::where('receiver_id', '=', $foodie->id)
+            ->where('receiver_type', '=', 'f')
+            ->where('is_read','=',0)->where('foodie_can_see','=',1)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
@@ -55,7 +57,7 @@ class FoodieMessageController extends Controller
 
         $foodie=Auth::guard('foodie')->user();
         $chefs = Chef::all();
-        $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $selectedChat= $chats->where('id', $id)->first();
 
 
@@ -66,7 +68,7 @@ class FoodieMessageController extends Controller
                 }
             }
 
-        $messages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        $aMessages = Message::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
 //        dd($id);
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
@@ -143,9 +145,11 @@ class FoodieMessageController extends Controller
         $chat = Chat::where('id','=', $id)->first();
         $messages= $chat->message()->get();
         foreach($messages as $message){
-            $message->delete();
+            $message->foodie_can_see=0;
+            $message->save();
         }
-        $chat->delete();
+        $chat->foodie_can_see=0;
+        $chat->save();
 
         return redirect()->route('foodie.message.index')->with(['status'=>'Deleted Chat']);
     }

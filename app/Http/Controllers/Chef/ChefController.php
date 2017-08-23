@@ -64,7 +64,7 @@ class ChefController extends Controller
         $pendPlans = Plan::where('chef_id','=',$chef->id)
             ->where('created_at','>=',$lastSaturday)
             ->latest($column = 'created_at')->take(3)->get();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'created_at')->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'created_at')->get();
 
 //        dd($chats->count());
 
@@ -111,7 +111,7 @@ class ChefController extends Controller
 //
 //        dd($lastSaturday);
 
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
 //        dd($messageCount);
 
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
@@ -135,8 +135,8 @@ class ChefController extends Controller
     {
         $foodies=Foodie::all();
         $chef= Auth::guard('chef')->user();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
-        $messages = Message::where('receiver_id', '=', $chef->id)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
         return view('chef.profile')->with([

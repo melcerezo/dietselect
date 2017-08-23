@@ -30,9 +30,9 @@ class RatingsController extends Controller
     public function getRatingPage()
     {
         $foodie = Auth::guard('foodie')->user();
-        $chats= Chat::where('foodie_id','=',$foodie)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
+        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
         $orders = Order::where('foodie_id', '=', $foodie->id)->where('created_at','<',$lastSaturday)->where('is_paid','=',1)->get();
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();

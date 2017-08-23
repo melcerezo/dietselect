@@ -42,7 +42,7 @@ class MealPlanController extends Controller
     {
         $chef= Auth::guard('chef')->user()->id;
         $foodies=Foodie::all();
-        $chats= Chat::where('chef_id','=',$chef)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('chef_id','=',$chef)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
 
         $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
         # DO NOT REMOVE THIS
@@ -101,7 +101,7 @@ class MealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',$chef)->where('receiver_type','=','c')->get();
 
 //        dd($plans);
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         return view('chef.mealplan')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef' => Auth::guard('chef')->user(),
@@ -151,8 +151,8 @@ class MealPlanController extends Controller
     {
         $foodies= Foodie::all();
         $chef=Auth::guard('chef')->user();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
 //        dd($mealPlans);
         $meals= Meal::where('chef_id','=', $chef->id);

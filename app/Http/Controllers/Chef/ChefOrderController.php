@@ -60,9 +60,9 @@ class ChefOrderController extends Controller
 
 //        dd($orders);
 
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
         return view('chef.showAllOrders')->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -105,9 +105,9 @@ class ChefOrderController extends Controller
     public function getOneOrderDetails(OrderItem $orderItem){
         $planName = '';
         $chef = Auth::guard('chef')->user();
-        $chats= Chat::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->get();
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
-        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('receiver_type','=','c')->where('is_read','=',0)->get();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderMealPlans = [];
         $orderPlan='';
         $ingredientMeals=[];

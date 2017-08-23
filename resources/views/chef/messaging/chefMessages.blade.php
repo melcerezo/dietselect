@@ -259,7 +259,15 @@
     </div>
     <div id="dltCht" class="modal">
         <div class="modal-content">
-            Hello
+            <div>
+                <span>Do you want to delete this chat?</span>
+            </div>
+            <form action="{{route('chef.chat.delete',$chatId)}}" method="post">
+                {{csrf_field()}}
+                <div>
+                    <div><input type="submit" value="Delete" class="btn btn-primary"></div>
+                </div>
+            </form>
         </div>
     </div>
 
