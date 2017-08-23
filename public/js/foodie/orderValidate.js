@@ -33,6 +33,13 @@ $(document).ready(function () {
         selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
+    $('#bankPayForm').submit(function () {
+        $('#loadWait').show();
+    });
+    $('#gcPayForm').submit(function () {
+        $('#loadWait').show();
+    });
+
     $('#receipt').on('keydown keyup', function(e){
         if ($(this).val().length >= 20
             && e.keyCode != 46 // delete

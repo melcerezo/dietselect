@@ -356,6 +356,20 @@
         </div>
     </div>
 </div>
+
+    <div id="loadWait" class="valign-wrapper">
+        <div id="loadStatus" class="preloader-wrapper active valign">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
             {{--<h2 class="center white-text">Order Confirmation</h2>--}}
             {{--<div><span class="center full-width white-text" style="font-size: 1.5em">You have placed your order!</span>--}}
             {{--</div>--}}
