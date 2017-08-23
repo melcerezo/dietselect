@@ -43,7 +43,7 @@ $(document).ready(function () {
             // $(this).val(100);
         }else{
             if(e.shiftKey && ((e.keyCode >=48 && e.keyCode <=57)
-                || (e.keyCode >=186 &&  e.keyCode <=222) || (e.keyCode >64 &&  e.keyCode <91))){
+                || (e.keyCode >=186 &&  e.keyCode <=222))){
                 // Ensure that it is a number and stop the Special chars
                 e.preventDefault();
             }
