@@ -539,7 +539,7 @@
                                             <option value="pork">Pork</option>
                                             <option value="fish">Fish</option>
                                             <option value="carbohydrates(baked)">Carbohydrates(Baked)</option>
-                                            <option value="carbohydrates(grains, pasta)">Carbohydrates(Grains, Pasta)</option>
+                                            <option value="carbohydrates(grains,pasta)">Carbohydrates(Grains, Pasta)</option>
                                             <option value="dairy,eggs">Dairy, Eggs</option>
                                             <option value="fat,oils">Dressings, Oil</option>
                                             <option value="beans,peanuts">Beans, Peanuts</option>
