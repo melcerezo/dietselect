@@ -69,7 +69,7 @@ $(document).ready(function () {
             receipt_number: {
                 required: true,
                 minlength:11,
-                maxlength: 16
+                maxlength: 20
             },
             datePay:{
                 required:true
