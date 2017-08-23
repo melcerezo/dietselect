@@ -79,7 +79,7 @@
                                                     @foreach($chefs as $chef)
                                                         @if($chef->id == $chat->chef_id)
                                                             <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                            <span class="msgUserName">{{$chef->name}}</span>
+                                                            <div class="msgUserName">{{$chef->name}}</div>
                                                         @endif
                                                     @endforeach
                                                     {{--@foreach($chat->message as $message)--}}
