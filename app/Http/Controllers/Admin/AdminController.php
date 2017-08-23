@@ -102,7 +102,6 @@ class AdminController extends Controller
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
         $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
         $plans = Plan::where('chef_id','=',$chef->id)->take(5)->get();
-        dd($orderItems[4]);
         foreach($orderItems as $orderItem){
             if($orderItem->order_type==0){
                 $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
