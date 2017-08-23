@@ -136,7 +136,7 @@
                                             @foreach($chefs as $chef)
                                                 @if($chef->id == $chat->chef_id)
                                                     <div class="col s2 m2 l2 email-actions msgRply">
-                                                        <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                                        <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rpl-sub="{{$message->subject}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
                                                     </div>
                                                 @endif
                                             @endforeach

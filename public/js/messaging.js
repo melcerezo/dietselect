@@ -9,6 +9,7 @@ $(document).ready(function(){
         var $this=$(this);
         $('#replyRecName').empty();
         $('#replyRecName').append($this.attr('data-rec-name'));
+        $('#replySubject').val('RE:'+$this.attr('data-rpl-sub'));
         $('#replyRec').val($this.attr('data-rec'));
         $('#chtId').val($this.attr('data-chat-id'));
     });
