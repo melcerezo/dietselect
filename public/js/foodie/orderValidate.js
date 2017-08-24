@@ -75,7 +75,7 @@ $(document).ready(function () {
         rules: {
             receipt_number: {
                 required: true,
-                minlength:11,
+                minlength:8,
                 maxlength: 20
             },
             datePay:{
@@ -112,7 +112,7 @@ $(document).ready(function () {
         rules: {
             gcRefNmbr: {
                 required: true,
-                minlength:16,
+                minlength:8,
                 maxlength: 16
             },
             gcDatePay:{
