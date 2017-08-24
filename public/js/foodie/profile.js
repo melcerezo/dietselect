@@ -86,6 +86,99 @@ $(document).ready(function() {
         }
     });
 
+    $('form#address').validate({
+        rules: {
+            city: {
+                required: true
+            },
+            unit: {
+                required: true
+            },
+            street: {
+                required: true
+            },
+            brgy: {
+                required: true
+            },
+            type: {
+                required: true
+            }
+        },
+        messages: {
+            city: {
+                required: "Please select your city."
+            },
+            unit: {
+                required: "Please enter the condo/apartment unit number or house street number."
+            },
+            street: {
+                required: "Please enter your street."
+            },
+            brgy: {
+                required: "Please enter your Barangay/Village."
+            },
+            type: {
+                required: "Please select an address type."
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    $('form.updateAddressForm').each(function(){
+        $(this).validate({
+            rules: {
+                city: {
+                    required: true
+                },
+                unit: {
+                    required: true
+                },
+                street: {
+                    required: true
+                },
+                brgy: {
+                    required: true
+                },
+                type: {
+                    required: true
+                }
+            },
+            messages: {
+                city: {
+                    required: "Please select your city."
+                },
+                unit: {
+                    required: "Please enter the condo/apartment unit number or house street number."
+                },
+                street: {
+                    required: "Please enter your street."
+                },
+                brgy: {
+                    required: "Please enter your Barangay/Village."
+                },
+                type: {
+                    required: "Please select an address type."
+                }
+            },
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+        });
+    });
 
     $('form#food-preferences').validate({
         rules: {

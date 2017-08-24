@@ -135,7 +135,7 @@
                                 {{--<button data-target="delete-address-modal{{$address->id}}" class="btn modal-trigger">Delete Address</button>--}}
                             </div>
                             <div id="update-address-modal{{$address->id}}" class="modal">
-                                <form id="address" method="post" action="{{ route('foodie.address.update', $address->id) }}">
+                                <form id="update-address{{$address->id}}" class="updateAddressForm" method="post" action="{{ route('foodie.address.update', $address->id) }}">
                                     {{csrf_field()}}
                                     <div class="modal-content">
                                         <h4 id="address-section">Address</h4>
@@ -144,12 +144,13 @@
                                             <div class="input-field col s12">
                                                 <script>
                                                     $(document).ready(function () {
-                                                        $('select#address-city{{$address->id}}').val('{{ $address->city ? $address->city : 0 }}');
+                                                        $('select#address-city{{$address->id}}').val('{{ $address->city ? $address->city : "" }}');
                                                         console.log($('select#address-city{{$address->id}}').val());
+                                                        $('select#address-city{{$address->id}}').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
                                                     });
                                                 </script>
-                                                <select id="address-city{{$address->id}}" name="city">
-                                                    <option value="0" disabled selected>Please choose</option>
+                                                <select id="address-city{{$address->id}}" name="city" data-error=".error-city{{$address->id}}">
+                                                    <option value="" selected>Please choose</option>
                                                     <option value="Caloocan">Caloocan</option>
                                                     <option value="Las Piñas">Las Piñas</option>
                                                     <option value="Makati">Makati</option>
@@ -171,15 +172,24 @@
                                                 <label for="address-city{{$address->id}}">City</label>
                                                 <small class="notes"><span class="flame-text">*</span> Please take note that we only cover Metro Manila as of the moment.</small>
                                             </div>
+                                            <div class="error-city{{$address->id}} err">
+
+                                            </div>
                                         </div>
                                         <div class="row">
                                             <div class="input-field col s6">
-                                                <input id="address-unit{{$address->id}}" name="unit" type="text" class="validate" value="{{$address->unit}}">
+                                                <input id="address-unit{{$address->id}}" name="unit" type="text" class="validate" data-error=".error-unit{{$address->id}}" value="{{$address->unit}}">
                                                 <label for="address-unit{{$address->id}}">Unit No.<span class="flame-text">*</span></label>
                                             </div>
+                                            <div class="error-unit{{$address->id}} err">
+
+                                            </div>
                                             <div class="input-field col s6">
-                                                <input id="address-street{{$address->id}}" name="street" type="text" class="validate" value="{{$address->street}}">
+                                                <input id="address-street{{$address->id}}" name="street" type="text" class="validate" data-error=".error-street{{$address->id}}" value="{{$address->street}}">
                                                 <label for="address-street{{$address->id}}">Street<span class="flame-text">*</span></label>
+                                            </div>
+                                            <div class="error-street{{$address->id}} err">
+
                                             </div>
                                         </div>
                                         <div class="row">
@@ -188,8 +198,11 @@
                                                 <label for="address-bldg{{$address->id}}">Building</label>
                                             </div>
                                             <div class="input-field col s6">
-                                                <input id="address-brgy{{$address->id}}" name="brgy" type="text" class="validate" value="{{$address->brgy}}">
+                                                <input id="address-brgy{{$address->id}}" data-error=".error-brgy{{$address->id}}" name="brgy" type="text" class="validate" value="{{$address->brgy}}">
                                                 <label for="address-brgy{{$address->id}}">Barangay/Village<span class="flame-text">*</span></label>
+                                                <div class="error-brgy{{$address->id}} err">
+
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -197,14 +210,18 @@
                                                 <script>
                                                     $(document).ready(function () {
                                                         $('select#address-type{{$address->id}}').val('{{ $address->type ? $address->type : 0 }}');
+                                                        $('select#address-type{{$address->id}}').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
                                                     });
                                                 </script>
-                                                <select id="address-type{{$address->id}}" name="type">
-                                                    <option value="0" disabled selected>Please choose</option>
+                                                <select id="address-type{{$address->id}}" name="type" data-error=".error-type{{$address->id}}">
+                                                    <option value="" selected>Please choose</option>
                                                     <option value="R">Residential</option>
                                                     <option value="O">Office</option>
                                                 </select>
                                                 <label for="address-type{{$address->id}}">Address Type<span class="flame-text">*</span></label>
+                                                <div class="error-type{{$address->id}} err">
+
+                                                </div>
                                             </div>
                                             <div class="input-field col s6">
                                                 <input id="address-company{{$address->id}}" name="company" type="text" class="validate" value="{{$address->company}}">
@@ -369,10 +386,11 @@
                         <script>
                             $(document).ready(function () {
                                 $('select#address-city').val('');
+                                $('select#address-city').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
                             });
                         </script>
-                        <select id="address-city" name="city">
-                            <option value="0" disabled selected>Please choose</option>
+                        <select id="address-city" name="city" data-error=".error-city">
+                            <option value="" selected>Please choose</option>
                             <option value="Caloocan">Caloocan</option>
                             <option value="Las Piñas">Las Piñas</option>
                             <option value="Makati">Makati</option>
@@ -393,16 +411,23 @@
                         </select>
                         <label for="address-city">City</label>
                         <small class="notes"><span class="flame-text">*</span> Please take note that we only cover Metro Manila as of the moment.</small>
+                        <div class="error-city err">
+
+                        </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
-                        <input id="address-unit" name="unit" type="text" class="validate" value="">
+                        <input id="address-unit" name="unit" type="text" class="validate" data-error=".error-unit" value="">
                         <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
+                        <div class="error-unit err">
+                        </div>
                     </div>
                     <div class="input-field col s6">
-                        <input id="address-street" name="street" type="text" class="validate" value="">
+                        <input id="address-street" name="street" type="text" class="validate" data-error=".error-street" value="">
                         <label for="address-street">Street<span class="flame-text">*</span></label>
+                        <div class="error-street err">
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -411,8 +436,10 @@
                         <label for="address-bldg">Building</label>
                     </div>
                     <div class="input-field col s6">
-                        <input id="address-brgy" name="brgy" type="text" class="validate" value="">
+                        <input id="address-brgy" name="brgy" type="text" class="validate" data-error=".error-brgy" value="">
                         <label for="address-brgy">Barangay/Village<span class="flame-text">*</span></label>
+                        <div class="error-brgy err">
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -420,14 +447,17 @@
                         <script>
                             $(document).ready(function () {
                                 $('select#address-type').val('');
+                                $('select#address-type').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
                             });
                         </script>
-                        <select id="address-type" name="type">
+                        <select id="address-type" name="type" data-error=".error-type">
                             <option value="0" disabled selected>Please choose</option>
                             <option value="R">Residential</option>
                             <option value="O">Office</option>
                         </select>
                         <label for="address-type">Address Type<span class="flame-text">*</span></label>
+                        <div class="error-type err">
+                        </div>
                     </div>
                     <div class="input-field col s6">
                         <input id="address-company" name="company" type="text" class="validate" value="">
