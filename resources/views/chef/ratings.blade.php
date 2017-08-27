@@ -4,10 +4,16 @@
 @endsection
 @section('page_content')
     <div class="container">
-        <div class="row prfMnTtl">
-            <div class="col s12 light-green lighten-1 white-text">
-                <span>Ratings</span>
-            </div>
+        <div class="row">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12">
+                    <ul>
+                        <li>
+                            <span style="font-size: 20px;">Ratings</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
         <div class="row">
             @forelse($ratings as $rating)
