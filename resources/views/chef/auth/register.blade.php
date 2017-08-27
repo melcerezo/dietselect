@@ -134,7 +134,7 @@
             <input type="submit" class="hidden"/>
             <a href="javascript:void(0)" class="btn-flat n-btn-link n-submit-btn right"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-form-btn-text"> Submit</span></a>
             <a href="{{ route('welcome') }}" class="btn-flat n-btn-link"><i class="fa fa-home"></i><span class="hide-on-small-only n-form-btn-text"> Home</span></a>
-            <a href="{{ route('chef.login.show') }}" class="btn-flat n-btn-link"><i class="fa fa-sign-in"></i><span class="hide-on-small-only n-form-btn-text"> Partner Login</span></a>
+            {{--<a href="{{ route('chef.login.show') }}" class="btn-flat n-btn-link"><i class="fa fa-sign-in"></i><span class="hide-on-small-only n-form-btn-text"> Partner Login</span></a>--}}
         </div>
     </form>
 </div>
