@@ -295,6 +295,7 @@
                 </div>
                 <div class="modal-footer">
                     <input type="submit" class="hidden"/>
+                    <a href="{{route('chef.login.show')}}" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-cutlery"></i> <span class="hide-on-small-only n-modal-form-btn-text">Chef Login</span></a>
                     <a href="javascript:void(0)" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-times-circle"></i> <span class="hide-on-small-only n-modal-form-btn-text">Close</span></a>
                     <a href="javascript:void(0)" class="modal-action btn-flat n-btn-link n-submit-btn"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-modal-form-btn-text"> Submit</span></a>
                 </div>
