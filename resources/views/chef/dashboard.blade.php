@@ -72,22 +72,46 @@
                         </li>
                     @endif
                 </ul>
-                {{--<ul class="collection">--}}
-                    {{--<li class="collection-item light-green lighten-1 white-text">--}}
-                        {{--<span class="collection-header">Suggested Meal Plans</span>--}}
-                    {{--</li>--}}
-                    {{--@if(count($suggested)>0)--}}
-                        {{--@foreach($suggested as $sug)--}}
-                            {{--<li class="collection-item">--}}
-                                {{--<a href="{{route('foodie.plan.standard', $sug['id'])}}">{{$sug['name']}}</a>--}}
-                            {{--</li>--}}
-                        {{--@endforeach--}}
-                    {{--@else--}}
-                        {{--<li class="collection-item">--}}
-                            {{--<span>No Plans!</span>--}}
-                        {{--</li>--}}
-                    {{--@endif--}}
-                {{--</ul>--}}
+                <ul class="collection">
+                    <li class="collection-item light-green lighten-1 white-text">
+                        <span class="collection-header">Latest Ratings</span>
+                    </li>
+                    @if(count($suggested)>0)
+                        @foreach($ratings as $rating)
+                            <li class="collection-item">
+                                    <div>
+                                        <h6><img class="circle" style="width: 60px;" src="/img/{{ $rating->foodie->avatar }}"> {{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h6>
+                                    </div>
+                                    @if($rating->rating == 5)
+                                        @for($i=0; $i<5; $i++)
+                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                        @endfor
+                                    @elseif($rating->rating == 4)
+                                        @for($i=0; $i<4; $i++)
+                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                        @endfor
+                                    @elseif($rating->rating == 3)
+                                        @for($i=0; $i<3; $i++)
+                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                        @endfor
+                                    @elseif($rating->rating == 2)
+                                        @for($i=0; $i<2; $i++)
+                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                        @endfor
+                                    @elseif($rating->rating == 1)
+                                        @for($i=0; $i<1; $i++)
+                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                        @endfor
+                                    @endif
+                                    <p>Comment: {{$rating->feedback}}</p>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="collection-item">
+                            <span>No Ratings Yet!</span>
+                        </li>
+                    @endif
+                </ul>
             </div>
             <div class="col s12 m6 l6">
                 <div class="row">
