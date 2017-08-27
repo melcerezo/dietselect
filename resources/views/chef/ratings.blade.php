@@ -20,7 +20,7 @@
                 @if($rating->is_rated==1)
                 <div class="card">
                     <div class="card-panel">
-                        <img src="/img/{{ $rating->foodie->avatar }}">
+                        <img class="circle" src="/img/{{ $rating->foodie->avatar }}">
                         <h4>{{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h4>
                         @if($rating->rating == 5)
                             @for($i=0; $i<5; $i++)
