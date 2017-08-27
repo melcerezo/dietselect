@@ -122,36 +122,39 @@
             <div class="col s12 m6 l6">
                 <div class="row">
                     <div class="col s12">
-                    <ul class="collection">
-                        <li class="collection-item light-green lighten-1 white-text">
-                            <div class="collection-header">Pending Order</div>
-                        </li>
-                        @if(count($pendingOrders)>0)
-                            @foreach($pendingOrders as $orderItem)
-                                <li class="collection-item">
-                                    <a href="{{route('chef.order.single',$orderItem['id'])}}">
-                                        <p>Name: <span>{{$orderItem['name']}}</span></p>
-                                        <div class="divider"></div>
-                                        <p>Foodie:
-                                            @foreach($foodies as $foodie)
-                                                @if($foodie->id == $orderItem['foodie_id'])
-                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                @endif
-                                            @endforeach
-                                        </p>
-                                        <div class="divider"></div>
-                                        <p>Quantity: {{$orderItem['quantity']}}</p>
-                                        <div class="divider"></div>
-                                        <p>Type: {{$orderItem['type']}}</p>
-                                    </a>
-                                </li>
-                            @endforeach
-                        @else
-                            <li class="collection-item">
-                                <span>No Pending Orders</span>
+                        <ul class="collection">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <div class="collection-header">Pending Order</div>
                             </li>
-                        @endif
-                    </ul>
+                            @if(count($pendingOrders)>0)
+                                @foreach($pendingOrders as $orderItem)
+                                    <li class="collection-item">
+                                        <a href="{{route('chef.order.single',$orderItem['id'])}}">
+                                            <p>Name: <span>{{$orderItem['name']}}</span></p>
+                                            <div class="divider"></div>
+                                            <p>Foodie:
+                                                @foreach($foodies as $foodie)
+                                                    @if($foodie->id == $orderItem['foodie_id'])
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </p>
+                                            <div class="divider"></div>
+                                            <p>Quantity: {{$orderItem['quantity']}}</p>
+                                            <div class="divider"></div>
+                                            <p>Type: {{$orderItem['type']}}</p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="collection-item">
+                                    <span>No Pending Orders</span>
+                                </li>
+                            @endif
+                        </ul>
+                        <div>
+                            <a href="{{route('chef.order.view')}}">See All</a>
+                        </div>
                     </div>
                 </div>
                 <div class="row">
@@ -178,13 +181,11 @@
                                     <div style="margin: 5px;">
                                         <span>No Pending Plans</span>
                                     </div>
-                                    <div style="margin: 5px;">
-                                        <a href="{{route('chef.plan')}}">
-                                            Add Plans
-                                        </a>
-                                    </div>
                                 </div>
                             @endif
+                            <div>
+                                <a href="{{route('chef.plan')}}">See All</a>
+                            </div>
                     </div>
                     <div class="col s12 m6">
                         <ul class="collection">
@@ -209,11 +210,11 @@
                                     <div style="margin: 5px;">
                                         <span>No Plans Added For This Week</span>
                                     </div>
-                                    <div style="margin: 5px">
-                                        <a href="{{route('chef.plan')}}">View Plans</a>
-                                    </div>
                                 </div>
                             @endif
+                        <div>
+                            <a href="{{route('chef.plan')}}">See All</a>
+                        </div>
                     </div>
                 </div>
             </div>
