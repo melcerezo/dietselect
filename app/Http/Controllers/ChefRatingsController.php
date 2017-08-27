@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Chat;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
 use App\Message;
+use App\Notification;
 use App\Rating;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
