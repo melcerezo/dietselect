@@ -86,6 +86,7 @@ img.n-client-type-icon {
 
 #client-type-modal{
     max-height: 85%;
+    min-height: 75%;
 }
 
 #login-modal {
