@@ -112,6 +112,9 @@
                         </li>
                     @endif
                 </ul>
+                <div>
+                    <a href="{{route('chef.ratings')}}">See All</a>
+                </div>
             </div>
             <div class="col s12 m6 l6">
                 <div class="row">

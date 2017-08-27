@@ -172,7 +172,7 @@ Route::group(['prefix' => 'chef'], function () {
     Route::get('order/viewSingle/{orderItem}', 'Chef\ChefOrderController@getOneOrderDetails')->name('chef.order.single');
 
     // Chef Rating
-    Route::get('rating', 'ChefRatingsController@viewRatings')->name('ratings');
+    Route::get('rating', 'ChefRatingsController@viewRatings')->name('chef.ratings');
 });
 
 Route::group(['prefix' => 'admin'], function () {
