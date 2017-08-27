@@ -4,11 +4,16 @@
 @endsection
 @section('page_content')
     <div class="container">
+        <div class="row prfMnTtl">
+            <div class="col s12 light-green lighten-1 white-text">
+                <span>Ratings</span>
+            </div>
+        </div>
         <div class="row">
             @forelse($ratings as $rating)
                 @if($rating->is_rated==1)
                 <div class="card">
-                    <div class="card-panel green lighten-3">
+                    <div class="card-panel">
                         <h4>Rated By: {{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h4>
                         @if($rating->rating == 5)
                             @for($i=0; $i<5; $i++)
