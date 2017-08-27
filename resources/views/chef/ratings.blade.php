@@ -3,7 +3,7 @@
 
 @endsection
 @section('page_content')
-    <div class="container">
+    <div class="container" style="margin-top: 10px;">
         <div class="row">
             <nav class="light-green lighten-1 white-text">
                 <div class="left col s12">
