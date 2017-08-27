@@ -20,11 +20,13 @@ class ChefRatingsController extends Controller
         $ratings = Rating::where('chef_id', '=', $chef->id)->get();
         $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $messages = Message::where('receiver_id', '=', $chef->id)->where('chef_can_see', '=', 1)->where('receiver_type', '=', 'c')->where('is_read','=',0)->get();
+        $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
 
         return view('chef.ratings', compact('ratings', 'messages', 'chef'))->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chats'=>$chats,
-            'messages'=>$messages
+            'messages'=>$messages,
+            'notifications'=>$notifications
         ]);
     }
 }
