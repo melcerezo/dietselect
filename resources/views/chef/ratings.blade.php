@@ -21,7 +21,7 @@
                 <div class="card">
                     <div class="card-panel">
                         <div>
-                            <h4><img class="circle" style="width: 50px;" src="/img/{{ $rating->foodie->avatar }}"> {{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h4>
+                            <h4><img class="circle" style="width: 60px;" src="/img/{{ $rating->foodie->avatar }}"> {{$rating->foodie->first_name.' '.$rating->foodie->last_name}}</h4>
                         </div>
                         @if($rating->rating == 5)
                             @for($i=0; $i<5; $i++)
