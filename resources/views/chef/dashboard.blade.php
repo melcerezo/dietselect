@@ -76,7 +76,7 @@
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Latest Ratings</span>
                     </li>
-                    @if(count($suggested)>0)
+                    @if($ratings->count()>0)
                         @foreach($ratings as $rating)
                             <li class="collection-item">
                                     <div>
