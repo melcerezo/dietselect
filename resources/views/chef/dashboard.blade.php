@@ -72,6 +72,9 @@
                         </li>
                     @endif
                 </ul>
+                <div>
+                    <a href="{{route('chef.message.index')}}">See All</a>
+                </div>
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
                         <span class="collection-header">Latest Ratings</span>
