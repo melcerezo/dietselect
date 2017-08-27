@@ -84,6 +84,10 @@ img.n-client-type-icon {
     height: 75%;
 }
 
+#client-type-modal{
+    max-height: 85%;
+}
+
 #login-modal {
     max-width: 390px;
     min-height: 520px;
