@@ -42,6 +42,7 @@ class RatingsController extends Controller
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $rating = $orderItem->rating;
+                dd($rating);
                 if($rating->is_rated==0){
                     $planName = "";
                     $chefName = "";
