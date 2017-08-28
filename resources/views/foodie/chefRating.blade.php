@@ -2,7 +2,7 @@
 @section('page_head')
     <style>
         .starRating:not(old) > input{
-            margin-right : -100%;
+            margin-left : -100%;
             opacity      : 0;
         }
         .starRating:not(old) > label{
