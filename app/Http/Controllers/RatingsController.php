@@ -42,7 +42,7 @@ class RatingsController extends Controller
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $rating = $orderItem->rating;
-                dd($rating);
+//                dd($rating);
                 if($rating->is_rated==0){
                     $planName = "";
                     $chefName = "";
@@ -65,7 +65,7 @@ class RatingsController extends Controller
             }
         }
 
-//        dd($ratings);
+        dd($ordersRatingChef);
 //        dd($orders);
 //        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([
