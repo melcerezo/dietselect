@@ -9,7 +9,7 @@
             display         : block;
             float           : right;
             position        : relative;
-            background      : url('img/star-off.svg');
+            background      : url('../../../public/img/star-off.svg');
             background-size : contain;
         }
         .starRating:not(old) > label:before{
@@ -17,7 +17,7 @@
             display         : block;
             width           : 1.5em;
             height          : 1.5em;
-            background      : url('img/star-on.svg');
+            background      : url('../../../public/img/star-on.svg');
             background-size : contain;
             opacity         : 0;
             transition      : opacity 0.2s linear;
