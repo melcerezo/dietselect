@@ -283,7 +283,7 @@ class FoodieController extends Controller
                 ->latest($column = 'created_at')
                 ->get();
 
-//            dd($ordersRating);
+            dd($ordersRating);
 
             $ordersRatingPlans= [];
             foreach($ordersRating as $order){
