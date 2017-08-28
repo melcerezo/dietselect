@@ -61,19 +61,19 @@
                             <form action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
                                 {{csrf_field()}}
                                 <span class="starRating">
-                                    <input name="rate{{$key}}" type="radio" id="test1{{$key}}" value="1" checked/>
+                                    <input name="rate{{$key}}" class="browser-default" type="radio" id="test1{{$key}}" value="1" checked/>
                                     <label for="test1{{$key}}">1</label>
 
-                                    <input name="rate{{$key}}" type="radio" id="test2{{$key}}" value="2"/>
+                                    <input name="rate{{$key}}" class="browser-default" type="radio" id="test2{{$key}}" value="2"/>
                                     <label for="test2{{$key}}">2</label>
 
-                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test3{{$key}}" value="3"/>
+                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test3{{$key}}" value="3"/>
                                     <label for="test3{{$key}}">3</label>
 
-                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test4{{$key}}" value="4"/>
+                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test4{{$key}}" value="4"/>
                                     <label for="test4{{$key}}">4</label>
 
-                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test5{{$key}}" value="5"/>
+                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test5{{$key}}" value="5"/>
                                     <label for="test5{{$key}}">5</label>
                                 </span>
                                 <div class="row">
