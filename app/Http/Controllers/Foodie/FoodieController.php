@@ -277,8 +277,9 @@ class FoodieController extends Controller
 
             $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->where('is_paid', '=', 1)
-                ->where('created_at', '>=', $lastTwoWeeks)
-                ->where('created_at', '<', $lastSaturday)
+                ->where('created_at', '<', $lastTwoWeeks)
+//                ->where('created_at', '>=', $lastTwoWeeks)
+//                ->where('created_at', '<', $lastSaturday)
                 ->latest($column = 'created_at')
                 ->get();
 
