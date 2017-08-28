@@ -27,6 +27,14 @@
         .starRating:not(:hover) > :checked ~ label:before{
             opacity : 1 !important;
         }
+        [type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {
+            border: 0px;
+        }
+
+        [type="radio"]:checked + label::after, .with-gap[type="radio"]:checked + label::after {
+            z-index: -999;
+        }
+
     </style>
 @endsection
 @section('page_content')
