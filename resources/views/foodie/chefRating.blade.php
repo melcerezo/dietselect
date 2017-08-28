@@ -2,30 +2,30 @@
 @section('page_head')
     <style>
         .starRating:not(old) > input{
-            margin-right : -100%;
-            opacity      : 0;
+            margin-right : -100% !important;
+            opacity      : 0 !important;
         }
         .starRating:not(old) > label{
-            display         : block;
-            float           : right;
-            position        : relative;
-            background      : url('/img/star-off.svg');
-            background-size : contain;
+            display         : block !important;
+            float           : right !important;
+            position        : relative !important;
+            background      : url('/img/star-off.svg') !important;
+            background-size : contain !important;
         }
         .starRating:not(old) > label:before{
-            content         : '';
-            display         : block;
-            width           : 1.5em;
-            height          : 1.5em;
-            background      : url('/img/star-on.svg');
-            background-size : contain;
-            opacity         : 0;
-            transition      : opacity 0.2s linear;
+            content         : '' !important;
+            display         : block !important;
+            width           : 1.5em !important;
+            height          : 1.5em !important;
+            background      : url('/img/star-on.svg') !important;
+            background-size : contain !important;
+            opacity         : 0 !important;
+            transition      : opacity 0.2s linear !important;
         }
         .starRating:not(old) > label:hover:before,
         .starRating:not(old) > label:hover ~ label:before,
         .starRating:not(:hover) > :checked ~ label:before{
-            opacity : 1;
+            opacity : 1 !important;
         }
     </style>
 @endsection
