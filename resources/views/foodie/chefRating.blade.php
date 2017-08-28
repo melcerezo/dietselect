@@ -1,41 +1,42 @@
 @extends('foodie.layout')
 @section('page_head')
-    <style>
-        .starRating:not(old) > input{
-            margin-right : -100%;
-            opacity      : 0;
-        }
-        .starRating:not(old) > label{
-            display         : block;
-            float           : right;
-            position        : relative;
-            background      : url('/img/star-off.svg');
-            background-size : contain;
-        }
-        .starRating:not(old) > label:before{
-            content         : '';
-            display         : block;
-            width           : 1.5em;
-            height          : 1.5em;
-            background      : url('/img/star-on.svg');
-            background-size : contain;
-            opacity         : 0;
-            transition      : opacity 0.2s linear;
-        }
-        .starRating:not(old) > label:hover:before,
-        .starRating:not(old) > label:hover ~ label:before,
-        .starRating:not(:hover) > :checked ~ label:before{
-            opacity : 1;
-        }
-        [type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {
-            border: 0px;
-        }
+    {{--<style>--}}
+        {{--.starRating:not(old) > input{--}}
+            {{--margin-right : -100%;--}}
+            {{--opacity      : 0;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label{--}}
+            {{--display         : block;--}}
+            {{--float           : right;--}}
+            {{--position        : relative;--}}
+            {{--background      : url('/img/star-off.svg');--}}
+            {{--background-size : contain;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label:before{--}}
+            {{--content         : '';--}}
+            {{--display         : block;--}}
+            {{--width           : 1.5em;--}}
+            {{--height          : 1.5em;--}}
+            {{--background      : url('/img/star-on.svg');--}}
+            {{--background-size : contain;--}}
+            {{--opacity         : 0;--}}
+            {{--transition      : opacity 0.2s linear;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label:hover:before,--}}
+        {{--.starRating:not(old) > label:hover ~ label:before,--}}
+        {{--.starRating:not(:hover) > :checked ~ label:before{--}}
+            {{--opacity : 1;--}}
+        {{--}--}}
+        {{--[type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {--}}
+            {{--border: 0px;--}}
+        {{--}--}}
 
-        [type="radio"]:checked + label::after, .with-gap[type="radio"]:checked + label::after {
-            z-index: -999;
-        }
+        {{--[type="radio"]:checked + label::after, .with-gap[type="radio"]:checked + label::after {--}}
+            {{--z-index: -999;--}}
+            {{--border: 0px;--}}
+        {{--}--}}
 
-    </style>
+    {{--</style>--}}
 @endsection
 @section('page_content')
 
@@ -69,19 +70,19 @@
                             <form action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
                                 {{csrf_field()}}
                                 <span class="starRating">
-                                    <input name="rate{{$key}}" class="browser-default" type="radio" id="test1{{$key}}" value="1" checked/>
+                                    <input name="rate{{$key}}" type="radio" id="test1{{$key}}" value="1" checked/>
                                     <label for="test1{{$key}}">1</label>
 
-                                    <input name="rate{{$key}}" class="browser-default" type="radio" id="test2{{$key}}" value="2"/>
+                                    <input name="rate{{$key}}" type="radio" id="test2{{$key}}" value="2"/>
                                     <label for="test2{{$key}}">2</label>
 
-                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test3{{$key}}" value="3"/>
+                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test3{{$key}}" value="3"/>
                                     <label for="test3{{$key}}">3</label>
 
-                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test4{{$key}}" value="4"/>
+                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test4{{$key}}" value="4"/>
                                     <label for="test4{{$key}}">4</label>
 
-                                    <input class="with-gap browser-default" name="rate{{$key}}" type="radio" id="test5{{$key}}" value="5"/>
+                                    <input class="with-gap" name="rate{{$key}}" type="radio" id="test5{{$key}}" value="5"/>
                                     <label for="test5{{$key}}">5</label>
                                 </span>
                                 <div class="row">
