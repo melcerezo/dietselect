@@ -64,7 +64,7 @@ class RatingsController extends Controller
             }
         }
 
-        dd($ordersRatingChef);
+//        dd($ordersRatingChef);
 //        dd($orders);
 //        dd($ratings);
         return view('foodie.chefRating', compact('foodie', 'orders', 'ratings'))->with([
