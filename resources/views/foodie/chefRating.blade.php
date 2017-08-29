@@ -41,6 +41,15 @@
                                             rating: 1,
                                             fullStar: true
                                         });
+
+                                        $("#rateYo{{$key}}").rateYo()
+                                                .on("rateyo.set", function (e, data) {
+                                                    var $rate = data.rating;
+
+                                                    $('input#rate{{$key}}').val($rate);
+                                                    window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");
+                                                });
+
                                     });
                                 </script>
 
