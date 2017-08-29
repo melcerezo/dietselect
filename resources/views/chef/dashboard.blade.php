@@ -106,7 +106,9 @@
                                             <span><i class="fa fa-star" style="color: yellow"></i></span>
                                         @endfor
                                     @endif
-                                    <p>Comment: {{$rating->feedback}}</p>
+                                    @if($rating->feedback!=null)
+                                        <p>Comment: {{$rating->feedback}}</p>
+                                    @endif
                             </li>
                         @endforeach
                     @else
