@@ -66,7 +66,7 @@ class ChefController extends Controller
             ->latest($column = 'created_at')->take(3)->get();
         $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'created_at')->get();
 
-        $ratings = Rating::where('chef_id','=',$chef->id)->latest($column = 'updated_at')->take(3)->get();
+        $ratings = Rating::where('chef_id','=',$chef->id)->where('is_rated','=',1)->latest($column = 'updated_at')->take(3)->get();
 
 //        dd($chats->count());
 
