@@ -85,7 +85,7 @@ class RatingsController extends Controller
         $rating = Rating::where('order_item_id', '=', $orderItem->id)->where('foodie_id', '=', $foodie->id)->first();
 //        dd($rating);
         $rating->feedback = $request['feedback'.$key];
-        $rating->rating = $request['rate'.$key];
+        $rating->rating = $request['rating'];
         $rating->is_rated = true;
         $orderItem->rating()->save($rating);
 //        dd($rating);

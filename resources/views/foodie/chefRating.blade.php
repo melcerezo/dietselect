@@ -1,5 +1,6 @@
 @extends('foodie.layout')
 @section('page_head')
+    <script src="/js/foodie/rating.js" defer></script>
 @endsection
 @section('page_content')
 
@@ -30,11 +31,13 @@
                         </nav>
                         <div class="card-content">
                             <div>Please Rate the Plan!</div>
-                            <form action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
+                            <form class="ratingForm" action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
                                 {{csrf_field()}}
 
-                                <input type="hidden" name="rating{{$key}}" id="rate{{$key}}" value=""/>
+                                <input type="hidden" name="rating" id="rate{{$key}}" data-error=".error{{$key}}" value=""/>
                                 <div id="rateYo{{$key}}"></div>
+                                <div class="error{{$key}} err">
+                                </div>
                                 <script>
                                     $(function () {
                                         $("#rateYo{{$key}}").rateYo({
@@ -47,7 +50,7 @@
                                                     var $rate = data.rating;
 
                                                     $('input#rate{{$key}}').val($rate);
-                                                    window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");
+                                                    {{--window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");--}}
                                                 });
 
                                     });
