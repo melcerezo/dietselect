@@ -214,9 +214,9 @@
                                     </div>
                                 </div>
                             @endif
-                        <div>
-                            <a href="{{route('chef.plan')}}">See All</a>
-                        </div>
+                    </div>
+                    <div>
+                        <a href="{{route('chef.plan')}}">See All</a>
                     </div>
                 </div>
             </div>
