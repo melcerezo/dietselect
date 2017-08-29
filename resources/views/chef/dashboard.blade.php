@@ -177,14 +177,14 @@
                                         </a>
                                     </li>
                                 @endforeach
-                            </ul>
                             @else
-                                <div>
+                                <li class="collection-item">
                                     <div style="margin: 5px;">
                                         <span>No Pending Plans</span>
                                     </div>
-                                </div>
+                                </li>
                             @endif
+                            </ul>
                             <div>
                                 <a href="{{route('chef.plan')}}">See All</a>
                             </div>
@@ -206,7 +206,6 @@
                                         </a>
                                     </li>
                                 @endforeach
-                            </ul>
                             @else
                                 <li class="collection-item">
                                     <div style="margin: 5px;">
@@ -214,6 +213,7 @@
                                     </div>
                                 </li>
                             @endif
+                        </ul>
                         <div>
                             <a href="{{route('chef.plan')}}">See All</a>
                         </div>
