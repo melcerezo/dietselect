@@ -23,6 +23,10 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
           rel="stylesheet">
 
+    <!-- Star rating CSS -->
+    <link rel="stylesheet" href="/css/vendor/jquery.rateyo.min.css">
+
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="/css/main.css">
 
@@ -46,7 +50,12 @@
     <script src="/js/vendor/additional-methods.min.js" defer></script>
     <script src="/js/plugins.js" defer></script>
     <script src="/js/main.js" defer></script>
-    @if (session('status'))
+
+    <!-- jQuery star rating -->
+    <script src="/js/vendor/jquery.rateyo.min.js" defer></script>
+
+
+@if (session('status'))
         <script>
             jQuery(window).load(function() {
                 Materialize.toast("{{ session('status') }}", 7000, 'rounded');
