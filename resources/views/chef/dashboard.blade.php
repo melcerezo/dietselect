@@ -208,11 +208,11 @@
                                 @endforeach
                             </ul>
                             @else
-                                <div>
+                                <li class="collection-item">
                                     <div style="margin: 5px;">
                                         <span>No Plans Added For This Week</span>
                                     </div>
-                                </div>
+                                </li>
                             @endif
                         <div>
                             <a href="{{route('chef.plan')}}">See All</a>
