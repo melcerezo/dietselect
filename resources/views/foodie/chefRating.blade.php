@@ -1,42 +1,42 @@
 @extends('foodie.layout')
 @section('page_head')
-    <style>
-        .starRating:not(old) > input{
-            margin-right : -100%;
-            opacity      : 0;
-        }
-        .starRating:not(old) > label{
-            display         : block;
-            /*float           : right;*/
-            position        : relative;
-            background      : url('/img/star-off.svg');
-            background-size : contain;
-        }
-        .starRating:not(old) > label:before{
-            content         : '';
-            display         : block;
-            width           : 1.5em;
-            height          : 1.5em;
-            background      : url('/img/star-on.svg');
-            background-size : contain;
-            opacity         : 0;
-            transition      : opacity 0.2s linear;
-        }
-        .starRating:not(old) > label:hover:before,
-        .starRating:not(old) > label:hover ~ label:before,
-        .starRating:not(:hover) > :checked ~ label:before{
-            opacity : 1;
-        }
-        [type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {
-            border: 0px;
-        }
+    {{--<style>--}}
+        {{--.starRating:not(old) > input{--}}
+            {{--margin-right : -100%;--}}
+            {{--opacity      : 0;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label{--}}
+            {{--display         : block;--}}
+            {{--/*float           : right;*/--}}
+            {{--position        : relative;--}}
+            {{--background      : url('/img/star-off.svg');--}}
+            {{--background-size : contain;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label:before{--}}
+            {{--content         : '';--}}
+            {{--display         : block;--}}
+            {{--width           : 1.5em;--}}
+            {{--height          : 1.5em;--}}
+            {{--background      : url('/img/star-on.svg');--}}
+            {{--background-size : contain;--}}
+            {{--opacity         : 0;--}}
+            {{--transition      : opacity 0.2s linear;--}}
+        {{--}--}}
+        {{--.starRating:not(old) > label:hover:before,--}}
+        {{--.starRating:not(old) > label:hover ~ label:before,--}}
+        {{--.starRating:not(:hover) > :checked ~ label:before{--}}
+            {{--opacity : 1;--}}
+        {{--}--}}
+        {{--[type="radio"]:not(:checked) + label::before, [type="radio"]:not(:checked) + label::after {--}}
+            {{--border: 0px;--}}
+        {{--}--}}
 
-        [type="radio"]:checked + label::after, .with-gap[type="radio"]:checked + label::after {
-            z-index: -999;
-            border: 0px;
-        }
+        {{--[type="radio"]:checked + label::after, .with-gap[type="radio"]:checked + label::after {--}}
+            {{--z-index: -999;--}}
+            {{--border: 0px;--}}
+        {{--}--}}
 
-    </style>
+    {{--</style>--}}
 @endsection
 @section('page_content')
 
