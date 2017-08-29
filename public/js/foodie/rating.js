@@ -7,7 +7,7 @@ $(document).ready(function () {
                 }
             },
             messages: {
-                city: {
+                rating: {
                     required: "Please provide a rating."
                 }
             },
