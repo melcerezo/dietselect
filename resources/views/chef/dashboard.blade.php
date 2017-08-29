@@ -186,7 +186,13 @@
                             @endif
                             </ul>
                             <div>
-                                <a href="{{route('chef.plan')}}">See All</a>
+                                <a href="{{route('chef.plan')}}">
+                                    @if($pendPlans->count()>0)
+                                        See All
+                                    @else
+                                        View Plans
+                                    @endif
+                                </a>
                             </div>
                     </div>
                     <div class="col s12 m6">
@@ -215,7 +221,13 @@
                             @endif
                         </ul>
                         <div>
-                            <a href="{{route('chef.plan')}}">See All</a>
+                            <a href="{{route('chef.plan')}}">
+                                @if($plans->count()>0)
+                                    See All
+                                @else
+                                    View Plans
+                                @endif
+                            </a>
                         </div>
                     </div>
                 </div>
