@@ -29,7 +29,7 @@
                             </div>
                         </nav>
                         <div class="card-content">
-                            <span>Please Rate the Plan!</span>
+                            <div>Please Rate the Plan!</div>
                             <form action="{{route('rate.chef', [$order['id'],$key])}}" method="post">
                                 {{csrf_field()}}
 
