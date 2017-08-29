@@ -95,15 +95,15 @@
                                         @endfor
                                     @elseif($rating->rating == 3)
                                         @for($i=0; $i<3; $i++)
-                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                            <span><i class="fa fa-star" style="color: gold"></i></span>
                                         @endfor
                                     @elseif($rating->rating == 2)
                                         @for($i=0; $i<2; $i++)
-                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                            <span><i class="fa fa-star" style="color: gold"></i></span>
                                         @endfor
                                     @elseif($rating->rating == 1)
                                         @for($i=0; $i<1; $i++)
-                                            <span><i class="fa fa-star" style="color: yellow"></i></span>
+                                            <span><i class="fa fa-star" style="color: gold"></i></span>
                                         @endfor
                                     @endif
                                     @if($rating->feedback!=null)
