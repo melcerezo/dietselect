@@ -207,26 +207,9 @@
 
             <ul class="collection">
                 <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
-                @foreach($orderPlans as $orderPlan)
-                    @if($orderPlan->id == $orderItem->plan_id)
-                        @if($orderItem->order_type==0)
-                            @if($orderPlan->chef->bank_account->bank=="BDO")
-                                <li class="collection-item">{{$orderPlan->chef->bank_account->bank}} Savings Account: {{'00'.$orderPlan->chef->bank_account->account}}</li>
-                            @else
-                                <li class="collection-item">{{$orderPlan->chef->bank_account->bank}} Savings Account: {{$orderPlan->chef->bank_account->account}}</li>
-                            @endif
-                        @elseif($orderItem->order_type==1  || $orderItem->order_type==2)
-                            @if($orderPlan->plan->chef->bank_account->bank=="BDO")
-                                <li class="collection-item">{{$orderPlan->plan->chef->bank_account->bank}} Savings Account: {{'00'.$orderPlan->plan->chef->bank_account->account}}</li>
-                            @else
-                                <li class="collection-item">{{$orderPlan->plan->chef->bank_account->bank}} Savings Account: {{$orderPlan->plan->chef->bank_account->account}}</li>
-                            @endif
-                        @endif
-                    @endif
-                @endforeach
-                {{--<li class="collection-item">BDO Savings Account: 007110098765</li>--}}
+                <li class="collection-item">BDO Savings Account: 007110023351</li>
                 <li class="collection-item">DietSelect</li>
-                <li class="collection-item">Plan Name: {{$order->total}}</li>
+                <li class="collection-item">Total {{$order->total}}</li>
             </ul>
             <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
@@ -272,6 +255,11 @@
             </div>
         </nav>
         <div class="modal-content">
+            <ul class="collection">
+                <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
+                <li class="collection-item">Total {{$order->total}}</li>
+            </ul>
+
             @if ($message = Session::get('success'))
                 <div class="custom-alerts alert alert-success fade in">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
