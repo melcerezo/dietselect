@@ -60,8 +60,9 @@ $(document).ready(function () {
     console.log(orig);
 
     $('form.editMeal').on('change keyup',function () {
+        var form = $(this);
         var disable = true;
-        $("form.editMeal :input").each(function () {
+        $(form+":input").each(function () {
             var type = $(this).getType();
             var id = $(this).attr('id');
             console.log($(this).val());
