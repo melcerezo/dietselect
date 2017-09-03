@@ -749,7 +749,7 @@
                                             @endif
                                         @endfor
                                     @endfor
-                                <div><button id="u{{$i}}" disabled="" data-form-id="editMeal{{$i}}" class="updateB btn" type="button">Update</button></div>
+                                <div><button id="u{{$i}}" disabled="true" data-form-id="editMeal{{$i}}" class="updateB btn" type="button">Update</button></div>
                                 </div>
                             <div style="clear: both"></div>
                         </form>
