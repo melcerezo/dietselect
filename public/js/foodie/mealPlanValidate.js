@@ -71,9 +71,9 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
-            if (!disable) {
-                return false; // break out of loop
-            }
+            // if (!disable) {
+            //     return false; // break out of loop
+            // }
         });
 
         button.prop('disabled', disable);
