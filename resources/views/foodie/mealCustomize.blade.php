@@ -689,6 +689,44 @@
                                                         <option value="fruits">Fruits, Fruit Juices</option>
                                                         <option value="vegetables">Vegetables</option>
                                                     </select>
+                                                    <script>
+                                                        $(document).ready(function () {
+                                                                    {{--console.log('{{strtolower($ingredientsMeal[$j]->FdGrp_Desc)}}');--}}
+                                                            var $valz = '{{strtolower($ingredientsMeal[$j]['ingredient_group'])}}';
+                                                            if($valz=="fruits/fruit juices"){
+                                                                $valz='fruits';
+                                                            }else if($valz=='carbohydrates(grains, pasta)'){
+                                                                $valz='carbohydrates(grains,pasta)';
+                                                            }else if($valz=='fish/shellfish'){
+                                                                $valz='fish';
+                                                            }else if($valz=='dairy,egg'){
+                                                                $valz='dairy,eggs';
+                                                            }else if($valz=='soups,sauces,gravies'){
+                                                                $valz='soups,sauces,gravy';
+                                                            }
+                                                            var id='{{$cust->id}}{{$j}}';
+                                                            $('#ingredSelectOption'+id+' option').each(function () {
+                                                                if($(this).val()==$valz){
+                                                                    $(this).attr("selected", true);
+                                                                }
+                                                            });
+
+
+//                                                            $.ajax({
+//                                                                url:'/chef/'+$valz+'/getIngredJson',
+//                                                                success: function(response) {
+//                                                                    // console.log($('#'+prevAutoComplete).find('.autocomplete-content').attr('class'));
+////                                                        $('#'+prevAutoComplete).find('.autocomplete-content').remove();
+//                                                                    var $ingredsData = response;
+//                                                                    // console.log($ingredsData);
+//                                                                    $(function(){
+//                                                                        $('#ingredient'+id+'.autocomplete').autocomplete(JSON.parse($ingredsData));
+//                                                                    })
+//                                                                }
+//                                                            });
+
+                                                        });
+                                                    </script>
                                                     <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
                                                         <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
                                                         <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
