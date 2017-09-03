@@ -30,6 +30,18 @@ $(document).ready(function () {
 
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
+    $("form.editMeal :input").each(function () {
+        var type = $(this).getType();
+        var tmp = {
+            'type': type,
+            'value': $(this).val()
+        };
+        if (type == 'radio') {
+            tmp.checked = $(this).is(':checked');
+        }
+        orig[$(this).attr('id')] = tmp;
+    });
+
     $('form.editMeal').each(function () {
         $(this).validate({
             errorElement : 'div',
@@ -50,6 +62,9 @@ $(document).ready(function () {
         inputs.each(function () {
             console.log($(this).val());
         });
+
+
+
     });
 
     $('button.updateB').click(function () {
