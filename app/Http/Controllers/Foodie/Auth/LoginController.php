@@ -126,7 +126,7 @@ class LoginController extends Controller
      */
     protected function authenticated($user)
     {
-//        dd($user->active);
+        dd($user->active);
         if($user->active == 1){
             return redirect($this->redirectTo);
         }elseif($user->active == 0){
