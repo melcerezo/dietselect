@@ -685,13 +685,11 @@ class FoodieMealPlanController extends Controller
 
 
 
-        foreach($origMeal->customized_ingredient_meal()->get() as $item) {
-            for ($i = 0; $i < $origMeal->customized_ingredient_meal()->count(); $i++){
-                if($ingredId[$i]->NDB_No!=$item->ingredient_id || $request['grams'][$arrayKeys[$i]]!=$item->grams){
-                    DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
-                        ['meal_id' => $customize->id,'is_customized'=>1, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
-                    );
-                }
+        foreach($origMeal->customized_ingredient_meal()->get() as $i=>$item) {
+            if($ingredId[$i]->NDB_No!=$item->ingredient_id || $request['grams'][$arrayKeys[$i]]!=$item->grams){
+                DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
+                    ['meal_id' => $customize->id,'is_customized'=>1, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
+                );
             }
         }
 

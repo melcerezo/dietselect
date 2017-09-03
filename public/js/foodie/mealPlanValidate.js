@@ -128,7 +128,6 @@ $(document).ready(function () {
                     // console.log($thisVal);
                     console.log(!contain);
                     if(!contain){
-                        console.log(!matchData);
                         $('#loadWait').hide();
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
