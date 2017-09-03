@@ -115,17 +115,19 @@ $(document).ready(function () {
                 $ingredientAuto.done(function(response){
                     // console.log('This is in ajax');
                     var valData=response;
+                    var contain=false;
                     for(var i = 0,l=valData.length;i<l;i++){
                         var ingred= valData[i].name;
                         if($thisVal==ingred){
                             matchData+=1;
+                            contain=true;
                             $errorContainer.empty();
                             break;
                         }
                     }
                     // console.log($thisVal);
-                    console.log(!matchData);
-                    if(!matchData){
+                    console.log(!contain);
+                    if(!contain){
                         console.log(!matchData);
                         $('#loadWait').hide();
                         $errorContainer.empty();
