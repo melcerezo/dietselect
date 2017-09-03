@@ -155,6 +155,23 @@ class AdminController extends Controller
 
     }
 
+    public function foodieFreeze(Foodie $foodie)
+    {
+        $foodie->active=0;
+        $foodie->save();
+
+        return back()->with(['status'=>'Successfully froze user account']);
+    }
+
+    public function foodiUnfreeeze(Foodie $foodie)
+    {
+        $foodie->active=1;
+        $foodie->save();
+
+        return back()->with(['status'=>'Successfully unfroze user account']);
+    }
+
+
     public function plans()
     {
         $plans = Plan::all();

@@ -289,10 +289,10 @@
             <div class="col s12">
                 <div class="row">
                     <div class="col offset-m2 s12 m3">
-                        <button class="btn waves-effect waves-light">Freeze</button>
+                        <a href="{{route('admin.foodie.freeze',$foodie->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Freeze</a>
                     </div>
                     <div class="col s12 m3">
-                        <button class="btn waves-effect waves-light">Unfreeze</button>
+                        <a href="{{route('admin.foodie.unfreeze',$foodie->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unfreeze</a>
                     </div>
                 </div>
             </div>
