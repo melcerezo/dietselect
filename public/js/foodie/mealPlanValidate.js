@@ -57,12 +57,14 @@ $(document).ready(function () {
         });
     });
 
-    console.log(orig);
 
     $('form.editMeal').bind('change', function () {
+        var disable = true;
         var inputs =$(this).find('input');
         inputs.each(function () {
-            console.log($(this).val());
+            var type = $(this).getType();
+            var id = $(this).attr('id');
+            console.log(type);
         });
 
 
