@@ -56,6 +56,7 @@ class MealPlanController extends Controller
 
         $pastPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
             ->where('created_at', '<=', $lastTwoWeeks)
+            ->where('is_banned','=',0)
             ->limit(5)
             ->get();
 
@@ -67,6 +68,7 @@ class MealPlanController extends Controller
         $plans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
             ->where('created_at', '>=', $lastTwoWeeks)
             ->where('created_at', '<=', $lastSaturday)
+            ->where('is_banned','=',0)
             ->get();
 
         /* FUTURE PLANS
@@ -74,6 +76,7 @@ class MealPlanController extends Controller
          */
         $futurePlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
             ->where('created_at', '>=', $lastSaturday)
+            ->where('is_banned','=',0)
             ->get();
 
 //        dd($futurePlans[0]->created_at);
