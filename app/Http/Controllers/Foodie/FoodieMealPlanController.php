@@ -619,10 +619,6 @@ class FoodieMealPlanController extends Controller
     public function customizeChefsMeals(CustomizedMeal $customize, Request $request)
     {
         $origMeal=$customize->chefcustomize;
-
-        dd($origMeal->customized_ingredient_meal);
-
-//        dd($request['ingredients']);
         $ingredId = [];
         $user = Auth::guard('foodie')->user()->id;
         $main_ingredient = $request['main_ingredient'];
@@ -689,13 +685,12 @@ class FoodieMealPlanController extends Controller
 
 
 
-        for ($i = 0; $i < $customize->customized_ingredient_meal->count(); $i++) {
-//            if(){
-//
-//            }
-            DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
-                ['meal_id' => $customize->id,'is_customized'=>1, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
-            );
+        foreach($origMeal->customized_ingredient_meal()->get() as $item) {
+            if($ingredId[$i]->NDB_No!=$item->ingredient_id || $request['grams'][$arrayKeys[$i]]!=$item->grams){
+                DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
+                    ['meal_id' => $customize->id,'is_customized'=>1, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
+                );
+            }
 //            update([
 //                'ingredient_id'=>$ingredId[$i]->NDB_No,
 //                'grams' => $request['grams'][$arrayKeys[$i]]
