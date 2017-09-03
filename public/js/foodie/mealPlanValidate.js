@@ -83,7 +83,7 @@ $(document).ready(function () {
             }
             // console.log($(this));
             console.log($(this).val());
-            console.log(disable);
+            // console.log(disable);
             // if (!disable) {
             //     return false; // break out of loop
             // }
