@@ -139,6 +139,14 @@
                                             </span>
                                         </li>
                                         <li class="collection-item">
+                                            <span>Status:</span>
+                                            @if($foodie->active==1)
+                                                <span>Active</span>
+                                            @elseif($foodie->active==0)
+                                                <span>Frozen</span>
+                                            @endif
+                                        </li>
+                                        <li class="collection-item">
                                             <span>Foodie Since:</span>
                                             <span>{{$foodie->created_at->format('F d, Y')}}</span>
                                         </li>
