@@ -122,19 +122,14 @@ $(document).ready(function () {
                             $errorContainer.empty();
                         }
                     }
-                    // console.log(!matchData);
-                    // if(!matchData){
-                    //     $('#loadWait').hide();
-                    //     $errorContainer.empty();
-                    //     $errorContainer.append("The listed ingredient is not found");
-                    // }
+                    console.log(!matchData);
+                    if(!matchData){
+                        $('#loadWait').hide();
+                        $errorContainer.empty();
+                        $errorContainer.append("The listed ingredient is not found");
+                    }
                     if(matchData==ingredCountz){
                         form.unbind('submit').submit();
-                    }else{
-                            $('#loadWait').hide();
-                            $errorContainer.empty();
-                            $errorContainer.append("The listed ingredient is not found");
-                        return false;
                     }
                 });
             }

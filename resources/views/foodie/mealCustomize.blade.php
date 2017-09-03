@@ -804,18 +804,18 @@
                                                             });
 //                                                            console.log($('#ingredSelectOption'+id).val());
 
-                                                            $.ajax({
-                                                                url:'/foodie/'+$valz+'/getIngredJson',
-                                                                success: function(response) {
-                                                                    // console.log($('#'+prevAutoComplete).find('.autocomplete-content').attr('class'));
-//                                                        $('#'+prevAutoComplete).find('.autocomplete-content').remove();
-                                                                    var $ingredsData = response;
-                                                                    // console.log($ingredsData);
-                                                                    $(function(){
-                                                                        $('#ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}.autocomplete').autocomplete(JSON.parse($ingredsData));
-                                                                    })
-                                                                }
-                                                            });
+                                                            {{--$.ajax({--}}
+                                                                {{--url:'/foodie/'+$valz+'/getIngredJson',--}}
+                                                                {{--success: function(response) {--}}
+                                                                    {{--// console.log($('#'+prevAutoComplete).find('.autocomplete-content').attr('class'));--}}
+{{--//                                                        $('#'+prevAutoComplete).find('.autocomplete-content').remove();--}}
+                                                                    {{--var $ingredsData = response;--}}
+                                                                    {{--// console.log($ingredsData);--}}
+                                                                    {{--$(function(){--}}
+                                                                        {{--$('#ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}.autocomplete').autocomplete(JSON.parse($ingredsData));--}}
+                                                                    {{--})--}}
+                                                                {{--}--}}
+                                                            {{--});--}}
 
                                                         });
                                                     </script>
