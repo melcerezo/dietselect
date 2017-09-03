@@ -675,7 +675,7 @@
                                                      class="ingredSelectContainer">
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
                                                             name="ingredient_select[]" class="updateIngredSelect upSel"
-                                                            data-orig="{{$ingredientsMeal[$j]['ingredient_group']}}"
+                                                            data-orig=""
                                                             data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}">
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
