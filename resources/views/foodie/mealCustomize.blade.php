@@ -805,7 +805,7 @@
 //                                                            console.log($('#ingredSelectOption'+id).val());
 
                                                             $.ajax({
-                                                                url:'/chef/'+$valz+'/getIngredJson',
+                                                                url:'/foodie/'+$valz+'/getIngredJson',
                                                                 success: function(response) {
                                                                     // console.log($('#'+prevAutoComplete).find('.autocomplete-content').attr('class'));
 //                                                        $('#'+prevAutoComplete).find('.autocomplete-content').remove();
