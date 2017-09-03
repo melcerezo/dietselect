@@ -73,10 +73,6 @@ $(document).ready(function () {
                 var selz = $(this).siblings('select.upSel');
                 disable = (selz.attr('data-orig') == selz.val());
             }
-            console.log(disable);
-            // console.log($(this));
-            // console.log(disable);
-            // console.log(disable);
             if (!disable) {
                 return false; // break out of loop
             }
