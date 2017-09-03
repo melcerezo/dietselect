@@ -43,7 +43,7 @@ $(document).ready(function () {
                 'type': type,
                 'value': $(this).val()
             };
-            console.log($(this));
+            // console.log($(this));
             if (type == 'radio') {
                 tmp.checked = $(this).is(':checked');
             }
