@@ -154,7 +154,7 @@
         </div>
         <div class="row">
             <div class="col offset-m2 s12 m3">
-                <button data-target="cancelModal" class="btn waves-effect waves-light">Cancel</button>
+                <button data-target="cancelModal" class="btn waves-effect waves-light modal-trigger">Cancel</button>
             </div>
         </div>
     </div>
