@@ -44,7 +44,7 @@ $(document).ready(function () {
         orig[$(this).attr('id')] = tmp;
     });
 
-    console.log(orig);
+    // console.log(orig);
 
     $('form.editMeal').each(function () {
         $(this).validate({
@@ -74,8 +74,7 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
-            console.log(id);
-            console.log(type);
+            console.log($(this));
             console.log(disable);
             // if (!disable) {
             //     return false; // break out of loop
