@@ -122,6 +122,7 @@ $(document).ready(function () {
                             $errorContainer.empty();
                         }
                     }
+                    console.log(matchData);
                     if(!matchData){
                         $('#loadWait').hide();
                         $errorContainer.empty();
