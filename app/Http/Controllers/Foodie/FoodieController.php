@@ -277,6 +277,7 @@ class FoodieController extends Controller
 
             $ordersRating = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->where('is_paid', '=', 1)
+                ->where('is_cancelled', '=', 0)
                 ->where('created_at', '<', $lastTwoWeeks)
 //                ->where('created_at', '>=', $lastTwoWeeks)
 //                ->where('created_at', '<', $lastSaturday)
@@ -289,21 +290,22 @@ class FoodieController extends Controller
             foreach($ordersRating as $order){
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
-                    if($orderItem->rating->is_rated==0){
-                        $orderPlan = "";
-                        $type="";
-                        $planName = "";
-                        if ($orderItem->order_type == 0) {
-                            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
-                            $planName = $orderPlan->plan_name;
-                            $type="Standard";
-                        } elseif ($orderItem->order_type == 1) {
-                            $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
-                            $planName = $orderPlan->plan->plan_name;
-                            $type="Customized";
+                    if(!is_null($orderItem->rating)){
+                        if($orderItem->rating->is_rated==0){
+                            $orderPlan = "";
+                            $type="";
+                            $planName = "";
+                            if ($orderItem->order_type == 0) {
+                                $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                                $planName = $orderPlan->plan_name;
+                                $type="Standard";
+                            } elseif ($orderItem->order_type == 1) {
+                                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                                $planName = $orderPlan->plan->plan_name;
+                                $type="Customized";
+                            }
+                            $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
                         }
-
-                        $ordersRatingPlans[] = array('plan_name'=>$planName,'type'=>$type);
                     }
                 }
             }
