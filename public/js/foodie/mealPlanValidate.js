@@ -44,7 +44,7 @@ $(document).ready(function () {
         orig[$(this).attr('id')] = tmp;
     });
 
-    // console.log(orig);
+    console.log(orig);
 
     $('form.editMeal').each(function () {
         $(this).validate({
