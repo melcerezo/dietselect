@@ -408,7 +408,7 @@
                                         <button data-target="#banPlan" class="modal-trigger btn waves-effect waves-light disabled">Ban</button>
                                     @endif
                                 </div>
-                                <div>
+                                <div style="margin-top: 10px;">
                                     @if($plan->is_banned==0)
                                         <button data-target="#unbanPlan" class="modal-trigger btn waves-effect waves-light disabled">Unban</button>
                                     @elseif($plan->is_banned==1)
