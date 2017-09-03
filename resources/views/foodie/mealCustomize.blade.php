@@ -709,7 +709,7 @@
                                                                     $(this).attr("selected", true);
                                                                 }
                                                             });
-
+                                                            console.log($('#ingredSelectOption'+id).val());
 
 //                                                            $.ajax({
 //                                                                url:'/chef/'+$valz+'/getIngredJson',
