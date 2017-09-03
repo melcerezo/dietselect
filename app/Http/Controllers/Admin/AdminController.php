@@ -133,6 +133,12 @@ class AdminController extends Controller
         $chef->active=0;
         $chef->save();
 
+        $plans = Plan::where('chef_id','=',$chef->id)->get();
+        foreach($plans as $plan){
+            $plan->lockPlan=0;
+            $plan->save();
+        }
+
         return back()->with(['status'=>'Successfully froze user account']);
     }
 
