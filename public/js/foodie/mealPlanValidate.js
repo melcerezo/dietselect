@@ -54,29 +54,29 @@ $(document).ready(function () {
 
     $('form.editMeal').bind('change', function () {
         var button = $(this).closest('button.updateB');
-        var disable = true;
-        var inputs =$(this).find('input');
-        // console.log($("form.editMeal :input"));
-        inputs.each(function () {
-            var type = $(this).getType();
-            // if($(this).hasClass('select-dropdown')){
-            //     type = 'select';
-            // }
-            var id = $(this).attr('id');
-            if (type == 'text' || type == 'select' || type == 'number') {
-                disable = ($(this).attr('data-orig') == $(this).val());
-            } else if (type == 'radio') {
-                disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
-            }
-            console.log($(this));
-            // console.log(disable);
-            // console.log(disable);
-            // if (!disable) {
-            //     return false; // break out of loop
-            // }
-        });
+        // var disable = true;
+        // var inputs =$(this).find('input');
+        // // console.log($("form.editMeal :input"));
+        // inputs.each(function () {
+        //     var type = $(this).getType();
+        //     // if($(this).hasClass('select-dropdown')){
+        //     //     type = 'select';
+        //     // }
+        //     var id = $(this).attr('id');
+        //     if (type == 'text' || type == 'select' || type == 'number') {
+        //         disable = ($(this).attr('data-orig') == $(this).val());
+        //     } else if (type == 'radio') {
+        //         disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
+        //     }
+        //     console.log($(this));
+        //     // console.log(disable);
+        //     // console.log(disable);
+        //     // if (!disable) {
+        //     //     return false; // break out of loop
+        //     // }
+        // });
 
-        button.prop('disabled', disable);
+        button.prop('disabled', false);
 
     });
 
