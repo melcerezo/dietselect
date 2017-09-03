@@ -126,10 +126,12 @@ class LoginController extends Controller
      */
     protected function authenticated($user)
     {
-        dd($user->active);
-//        if(){
+//        dd($user->active);
+        if($user->active == 1){
             return redirect($this->redirectTo);
-//        }
+        }elseif($user->active == 0){
+            return view('welcome', ['from' => 'login'])->with(['status' => 'Your account has been frozen.']);
+        }
     }
 
     public function guard()
