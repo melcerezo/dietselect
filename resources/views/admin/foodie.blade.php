@@ -288,7 +288,7 @@
         <div class="row">
             <div class="col s12">
                 <div class="row">
-                    <div class="col s12 m3">
+                    <div class="col offset-m2 s12 m3">
                         <button class="btn waves-effect waves-light">Freeze</button>
                     </div>
                     <div class="col s12 m3">
