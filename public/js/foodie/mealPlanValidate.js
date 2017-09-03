@@ -77,7 +77,7 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
-            console.log(id);
+            console.log($(this));
             console.log($(this).val());
             console.log(disable);
             // if (!disable) {
