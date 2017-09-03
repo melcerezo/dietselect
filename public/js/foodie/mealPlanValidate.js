@@ -123,7 +123,7 @@ $(document).ready(function () {
                             break;
                         }
                     }
-                    console.log(matchData);
+                    console.log(!matchData);
                     if(!matchData){
                         console.log(!matchData);
                         $('#loadWait').hide();
