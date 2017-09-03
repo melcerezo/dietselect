@@ -55,7 +55,7 @@ $(document).ready(function () {
 
 
 
-    $('form.editMeal').on('change', function () {
+    $('form.editMeal').on('change keyup', function () {
         var button = $(this).find('button.updateB');
         var disable = true;
         var inputs =$(this).find('input');
