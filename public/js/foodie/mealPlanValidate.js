@@ -70,10 +70,10 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             } else if(type == 'select'){
-                var ulz = $(this).closest('ul.select-dropdown');
-                console.log($(this).closest('ul'));
+                var ulz = $(this).siblings('ul.dropdown-content');
+                console.log(ulz);
             }
-            console.log($(this));
+            // console.log($(this));
             // console.log(disable);
             // console.log(disable);
             // if (!disable) {
