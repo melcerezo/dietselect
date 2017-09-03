@@ -59,7 +59,7 @@ $(document).ready(function () {
 
 
     $('form.editMeal').bind('change', function () {
-        var button = $(this).closest('.updateB');
+        var button = $(this).closest('button.updateB');
         var disable = true;
         var inputs =$(this).find('input');
         inputs.each(function () {
