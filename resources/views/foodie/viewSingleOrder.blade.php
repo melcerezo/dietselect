@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/css/foodie/foodieMealCustomize.css">
     <script src="/js/foodie/foodieIngredientAutocomplete.js"></script>
     <script src="/js/foodie/mealPlanValidate.js"></script>
+    <script src="/js/foodie/foodieMealPlanShow.js"></script>
 
 @endsection
 

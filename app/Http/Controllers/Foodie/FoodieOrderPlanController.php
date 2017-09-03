@@ -259,6 +259,33 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
+    public function getIngred($id){
+        $meal = CustomizedMeal::where('id','=',$id)->first();
+
+        $ingreds = $meal->customized_ingredient_meal()->get();
+
+        $ingredientMeals = '[';
+        $i=0;
+        foreach($ingreds as $ingred){
+            $ingredientDesc = DB::table('ingredients')
+                ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+                ->where('NDB_No','=',$ingred->ingredient_id)
+                ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+                ->first();
+
+            if(++$i<$ingreds->count()) {
+                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Desc.'","grams":"'.$ingred->grams.'","is_customized":"'.$ingred->is_customized.'"}, ';
+            }
+            else{
+                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Desc.'","grams":"'.$ingred->grams.'","is_customized":"'.$ingred->is_customized.'"} ';
+            }
+
+        }
+        $ingredientMeals.= ']';
+        $response=$ingredientMeals;
+        return $response;
+    }
+
     public function getSimpCustView(OrderItem $orderItem)
     {
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
