@@ -71,7 +71,8 @@ $(document).ready(function () {
                 disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             } else if(type == 'select'){
                 var selz = $(this).siblings('select.upSel');
-                console.log(selz);
+                disable = (selz.attr('data-orig') == selz.val());
+                console.log(disable);
             }
             // console.log($(this));
             // console.log(disable);
