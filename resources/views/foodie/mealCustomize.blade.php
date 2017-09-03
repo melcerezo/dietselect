@@ -644,7 +644,7 @@
 
                             <p><label for="main_ingredient">Main Ingredient</label></p>
                             <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
-                                <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient"
+                                <select id='main_ingredient{{$i}}' class="selectRequired upSel" name="main_ingredient"
                                 data-orig="{{ $cust->main_ingredient}}" >
                                     {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
                                     <option value="Chicken">Chicken</option>
@@ -674,7 +674,7 @@
                                                      data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                      class="ingredSelectContainer">
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
-                                                            name="ingredient_select[]" class="updateIngredSelect"
+                                                            name="ingredient_select[]" class="updateIngredSelect upSel"
                                                             data-orig="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                             data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}">
                                                         <option value="chicken">Chicken</option>

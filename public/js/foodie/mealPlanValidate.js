@@ -70,8 +70,8 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             } else if(type == 'select'){
-                var ulz = $(this).siblings('ul.dropdown-content');
-                console.log(ulz.find('li.selected'));
+                var selz = $(this).siblings('select.upSel');
+                console.log(selz);
             }
             // console.log($(this));
             // console.log(disable);
