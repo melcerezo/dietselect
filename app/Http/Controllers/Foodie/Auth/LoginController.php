@@ -74,6 +74,7 @@ class LoginController extends Controller
                 return $this->sendLoginResponse($request);
             }elseif($this->guard()->user()->active==0){
 //                dd($this->guard()->user()->active);
+                $this->guard()->logout();
                 return redirect('/')->with(['status' => 'Your account has been frozen']);
 
             }
