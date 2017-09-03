@@ -91,12 +91,16 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
-        dd($this->guard()->user());
-        $request->session()->regenerate();
 
-        $this->clearLoginAttempts($request);
+        if($this->guard()->user()->active == 1){
+            $request->session()->regenerate();
 
-        return $this->authenticated($this->guard()->user());
+            $this->clearLoginAttempts($request);
+
+            return $this->authenticated($this->guard()->user());
+        }elseif($this->guard()->user()->active == 0){
+            return redirect('/')->with(['status' => 'Your account has been frozen.']);
+        }
     }
 
     /**
@@ -127,12 +131,7 @@ class LoginController extends Controller
      */
     protected function authenticated($user)
     {
-        dd($user->active);
-        if($user->active == 1){
-            return redirect($this->redirectTo);
-        }elseif($user->active == 0){
-            return redirect('/')->with(['status' => 'Your account has been frozen.']);
-        }
+        return redirect($this->redirectTo);
     }
 
     public function guard()
