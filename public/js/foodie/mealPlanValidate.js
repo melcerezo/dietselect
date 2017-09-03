@@ -18,14 +18,24 @@ $(document).ready(function () {
         });
     }
 
+    var orig =[];
+
+    $.fn.getType = function () {
+        return this[0].tagName == "INPUT" ? $(this[0]).attr("type").toLowerCase() : this[0].tagName.toLowerCase();
+    };
+
     $('#orderFrm').submit(function () {
         $('#loadWait').show();
     });
 
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+
+
+
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
         console.log(form);
+
         var ingredSelect=form.find("#ingredSelect").children();
         var ingredFind=ingredSelect.children('.ingredSelectAdd');
         var ingredCountz=ingredFind.length;
@@ -79,9 +89,23 @@ $(document).ready(function () {
     //     e.preventDefault();
     // });
 
+
     $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+
     $('form.editMeal').each(function () {
-        console.log($(this).attr('id'));
+
+        $('form.editMeal :input').each(function () {
+            var type = $(this).getType();
+            var tmp = {
+                'type': type,
+                'value': $(this).val()
+            };
+            if (type == 'radio') {
+                tmp.checked = $(this).is(':checked');
+            }
+            orig[$(this).attr('id')] = tmp;
+        });
+
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -95,4 +119,25 @@ $(document).ready(function () {
 
         });
     });
+
+    $('form.editMeal').bind('change keyup',function () {
+        var disable = true;
+        $("form :input").each(function () {
+            var type = $(this).getType();
+            var id = $(this).attr('id');
+
+            if (type == 'text' || type == 'select') {
+                disable = (orig[id].value == $(this).val());
+            } else if (type == 'radio') {
+                disable = (orig[id].checked == $(this).is(':checked'));
+            }
+
+            if (!disable) {
+                return false; // break out of loop
+            }
+        });
+
+        $('button.updateB').prop('disabled', disable);
+    });
+
 });
