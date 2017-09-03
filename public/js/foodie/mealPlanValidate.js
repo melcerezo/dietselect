@@ -120,6 +120,7 @@ $(document).ready(function () {
                         if($thisVal==ingred){
                             matchData+=1;
                             $errorContainer.empty();
+                            break;
                         }
                     }
                     console.log(matchData);
