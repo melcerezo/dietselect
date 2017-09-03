@@ -97,6 +97,31 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
+                                               Chef Information
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <ul class="collection">
+                                        <li class="collection-item">
+                                            <span>Status:</span>
+                                            @if($chef->active==1)
+                                                <span>Active</span>
+                                            @elseif($chef->active==0)
+                                                <span>Frozen</span>
+                                            @endif
+                                        </li>
+                                        <li class="collection-item">
+                                            <span>Chef Since:</span>
+                                            <span>{{$chef->created_at->format('F d, Y')}}</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col s12 m6">
+                                <div class="card-panel">
+                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                        <div>
+                                            <span>
                                                 Latest Orders
                                             </span>
                                         </div>
@@ -242,6 +267,18 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="col offset-m2 s12 m3">
+                        <a href="{{route('admin.chef.freeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Freeze</a>
+                    </div>
+                    <div class="col s12 m3">
+                        <a href="{{route('admin.chef.unfreeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unfreeze</a>
                     </div>
                 </div>
             </div>

@@ -128,6 +128,22 @@ class AdminController extends Controller
         ]);
     }
 
+    public function chefFreeze(Chef $chef)
+    {
+        $chef->active=0;
+        $chef->save();
+
+        return back()->with(['status'=>'Successfully froze user account']);
+    }
+
+    public function chefUnfreeze(Chef $chef)
+    {
+        $chef->active=1;
+        $chef->save();
+
+        return back()->with(['status'=>'Successfully unfroze user account']);
+    }
+
 
     public function foodies()
     {

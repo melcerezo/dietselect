@@ -99,7 +99,7 @@
                             <tr>
                                 <th>ID</th>
                                 <th>Company Name</th>
-                                <th>User Name</th>
+                                <th>Status</th>
                                 <th>Created</th>
                             </tr>
                             </thead>
@@ -110,7 +110,13 @@
                                     <td>
                                         <a href="{{route('admin.chef', $chef->id)}}">{{$chef->name}}</a>
                                     </td>
-                                    <td>{{$chef->url_name}}</td>
+                                    <td>
+                                        @if($chef->active==1)
+                                            <span>Active</span>
+                                        @elseif($chef->active==0)
+                                            <span>Frozen</span>
+                                        @endif
+                                    </td>
                                     <td>{{$chef->created_at->format('F d, Y')}}</td>
                                 </tr>
                             @endforeach
