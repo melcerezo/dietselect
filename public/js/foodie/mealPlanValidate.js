@@ -84,9 +84,9 @@ $(document).ready(function () {
             // console.log($(this));
             console.log($(this).val());
             console.log(disable);
-            if (!disable) {
-                return false; // break out of loop
-            }
+            // if (!disable) {
+            //     return false; // break out of loop
+            // }
         });
 
         $('button.updateB').prop('disabled', disable);
