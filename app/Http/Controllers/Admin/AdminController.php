@@ -163,7 +163,7 @@ class AdminController extends Controller
         return back()->with(['status'=>'Successfully froze user account']);
     }
 
-    public function foodiUnfreeeze(Foodie $foodie)
+    public function foodieUnfreeze(Foodie $foodie)
     {
         $foodie->active=1;
         $foodie->save();
