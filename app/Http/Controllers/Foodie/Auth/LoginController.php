@@ -70,8 +70,8 @@ class LoginController extends Controller
         $credentials = $this->credentials($request);
 //        dd($credentials);
         if ($this->guard()->attempt($credentials, $request->has('remember'))) {
-            dd($this->guard()->user()->active);
             if($this->guard()->user()->active==1){
+                dd($this->guard()->user()->active);
                 return $this->sendLoginResponse($request);
             }elseif($this->guard()->user()->active==0){
                 return $this->sendFailedLoginResponse($request);
