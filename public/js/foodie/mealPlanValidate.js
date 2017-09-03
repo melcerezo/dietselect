@@ -34,6 +34,7 @@ $(document).ready(function () {
 
         $('form.editMeal :input').each(function () {
             var type = $(this).getType();
+            console.log(type);
             var tmp = {
                 'type': type,
                 'value': $(this).val()
@@ -44,6 +45,25 @@ $(document).ready(function () {
             orig[$(this).attr('id')] = tmp;
         });
 
+        $('form.editMeal').bind('change keyup',function () {
+            var disable = true;
+            $("form :input").each(function () {
+                var type = $(this).getType();
+                var id = $(this).attr('id');
+
+                if (type == 'text' || type == 'select') {
+                    disable = (orig[id].value == $(this).val());
+                } else if (type == 'radio') {
+                    disable = (orig[id].checked == $(this).is(':checked'));
+                }
+
+                if (!disable) {
+                    return false; // break out of loop
+                }
+            });
+
+            $('button.updateB').prop('disabled', disable);
+        });
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -58,25 +78,6 @@ $(document).ready(function () {
         });
     });
 
-    $('form.editMeal').bind('change keyup',function () {
-        var disable = true;
-        $("form :input").each(function () {
-            var type = $(this).getType();
-            var id = $(this).attr('id');
-
-            if (type == 'text' || type == 'select') {
-                disable = (orig[id].value == $(this).val());
-            } else if (type == 'radio') {
-                disable = (orig[id].checked == $(this).is(':checked'));
-            }
-
-            if (!disable) {
-                return false; // break out of loop
-            }
-        });
-
-        $('button.updateB').prop('disabled', disable);
-    });
 
 
 
