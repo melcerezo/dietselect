@@ -77,9 +77,9 @@ $(document).ready(function () {
             // console.log($(this));
             // console.log(disable);
             // console.log(disable);
-            // if (!disable) {
-            //     return false; // break out of loop
-            // }
+            if (!disable) {
+                return false; // break out of loop
+            }
         });
 
         button.prop('disabled', disable);
