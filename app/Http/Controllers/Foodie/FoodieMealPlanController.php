@@ -392,7 +392,8 @@ class FoodieMealPlanController extends Controller
               "meal"=>$ingredientsMeal[$i]->meal_id,
               "ingredient"=>$ingredientDesc->Long_Desc,
               "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
-              "grams"=>$ingredientsMeal[$i]->grams
+              "grams"=>$ingredientsMeal[$i]->grams,
+              "custom"=>$ingredientsMeal[$i]->is_customized
           );
         }
 
