@@ -28,6 +28,8 @@ $(document).ready(function () {
         $('#loadWait').show();
     });
 
+    $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
     $("form.editMeal :input").each(function () {
@@ -141,7 +143,7 @@ $(document).ready(function () {
     // });
 
 
-    $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+
 
 
 });
