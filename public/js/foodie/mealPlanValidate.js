@@ -72,8 +72,8 @@ $(document).ready(function () {
             } else if(type == 'select'){
                 var selz = $(this).siblings('select.upSel');
                 disable = (selz.attr('data-orig') == selz.val());
-                console.log(disable);
             }
+            console.log(disable);
             // console.log($(this));
             // console.log(disable);
             // console.log(disable);
