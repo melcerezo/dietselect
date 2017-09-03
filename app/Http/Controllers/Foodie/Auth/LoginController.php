@@ -70,7 +70,12 @@ class LoginController extends Controller
         $credentials = $this->credentials($request);
 //        dd($credentials);
         if ($this->guard()->attempt($credentials, $request->has('remember'))) {
-            return $this->sendLoginResponse($request);
+            if($this->guard()->user()->active==1){
+                return $this->sendLoginResponse($request);
+            }elseif($this->guard()->user()->active==0){
+                return $this->sendFailedLoginResponse($request);
+            }
+
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
@@ -91,16 +96,11 @@ class LoginController extends Controller
      */
     protected function sendLoginResponse(Request $request)
     {
+        $request->session()->regenerate();
 
-        if($this->guard()->user()->active == 1){
-            $request->session()->regenerate();
+        $this->clearLoginAttempts($request);
 
-            $this->clearLoginAttempts($request);
-
-            return $this->authenticated($this->guard()->user());
-        }elseif($this->guard()->user()->active == 0){
-            return redirect('/')->with(['status' => 'Your account has been frozen.']);
-        }
+        return $this->authenticated($this->guard()->user());
     }
 
     /**
