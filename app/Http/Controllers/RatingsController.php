@@ -42,24 +42,26 @@ class RatingsController extends Controller
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
                 $rating = $orderItem->rating;
-                if($rating->is_rated==0){
-                    $planName = "";
-                    $chefName = "";
-                    $orderType = "";
-                    if ($orderItem->order_type == 0) {
-                        $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
-                        $planName = $orderPlan->plan_name;
-                        $chefName = $orderPlan->chef->name;
-                        $orderType = "Standard";
-                    } elseif ($orderItem->order_type == 1) {
-                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
-                        $planName = $orderPlan->plan->plan_name;
-                        $chefName = $orderPlan->plan->chef->name;
-                        $orderType = "Customized";
-                    }
+                if(!is_null($orderItem->rating)){
+                    if($rating->is_rated==0){
+                        $planName = "";
+                        $chefName = "";
+                        $orderType = "";
+                        if ($orderItem->order_type == 0) {
+                            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan_name;
+                            $chefName = $orderPlan->chef->name;
+                            $orderType = "Standard";
+                        } elseif ($orderItem->order_type == 1) {
+                            $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan->plan_name;
+                            $chefName = $orderPlan->plan->chef->name;
+                            $orderType = "Customized";
+                        }
 
-                    $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
-                        'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                        $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                            'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                    }
                 }
             }
         }
