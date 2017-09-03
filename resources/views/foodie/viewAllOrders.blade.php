@@ -85,11 +85,18 @@
                                     <div>Amount: {{$orderItemItem['price']}}</div>
                                 </div>
                                 <div class="col s12 offset-m2 m2">
-                                    <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                    <div>
+                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                    </div>
                                 </div>
                             </div>
                             @endif
                         @endforeach
+                        <div class="row">
+                            <div class="col s12">
+                                <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             @elseif($order->is_paid==1 && $order->is_cancelled==0)
