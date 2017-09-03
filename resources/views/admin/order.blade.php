@@ -152,6 +152,16 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col offset-m2 s12 m3">
+                <button data-target="cancelModal" class="btn waves-effect waves-light">Cancel</button>
+            </div>
+        </div>
+    </div>
+    <div id="cancelModal" class="modal">
+        <div class="modal-content">
+            <a href="{{route('admin.order.cancel', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100;">Cancel Order?</a>
+        </div>
     </div>
 
 

@@ -192,6 +192,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('plans/{plan}','Admin\AdminController@plan')->name('admin.plan');
     Route::get('orders','Admin\AdminController@orders')->name('admin.orders');
     Route::get('orders/{order}','Admin\AdminController@order')->name('admin.order');
+    Route::get('order/cancel/{order}','Admin\AdminController@orderCancel')->name('admin.order.cancel');
     Route::get('foodie/freeze/{foodie}','Admin\AdminController@foodieFreeze')->name('admin.foodie.freeze');
     Route::get('foodie/unfreeze/{foodie}','Admin\AdminController@foodieUnfreeze')->name('admin.foodie.unfreeze');
     Route::get('chef/freeze/{chef}','Admin\AdminController@chefFreeze')->name('admin.chef.freeze');

@@ -292,4 +292,12 @@ class AdminController extends Controller
             'orderAddress'=>$orderAddress
         ]);
     }
+
+    public function orderCancel(Order $order)
+    {
+        $order->is_cancelled=1;
+        $order->save();
+
+        return back()->with(['status'=>'Cancelled Order']);
+    }
 }
