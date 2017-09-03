@@ -66,7 +66,7 @@ $(document).ready(function () {
             var type = $(this).getType();
             var id = $(this).attr('id');
 
-            if (type == 'text' || type == 'select') {
+            if (type == 'text' || type == 'select' || type=='number') {
                 disable = (orig[id].value == $(this).val());
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
