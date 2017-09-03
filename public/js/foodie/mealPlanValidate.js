@@ -55,9 +55,9 @@ $(document).ready(function () {
     $('form.editMeal').bind('change', function () {
         var button = $(this).closest('button.updateB');
         var disable = true;
-        // var inputs =$(this).find('input');
+        var inputs =$(this).find('input');
         // console.log($("form.editMeal :input"));
-        $("form.editMeal :input").each(function () {
+        inputs.each(function () {
             var type = $(this).getType();
             // if($(this).hasClass('select-dropdown')){
             //     type = 'select';
