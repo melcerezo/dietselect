@@ -62,7 +62,7 @@ $(document).ready(function () {
 
     $('form.editMeal').bind('change keyup',function () {
         var disable = true;
-        $("form :input").each(function () {
+        $("form.editMeal :input").each(function () {
             var type = $(this).getType();
             var id = $(this).attr('id');
 
