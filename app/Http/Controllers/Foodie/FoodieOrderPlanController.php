@@ -137,7 +137,7 @@ class FoodieOrderPlanController extends Controller
                 }
 
                 $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
-                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
             }
 
         }
@@ -173,7 +173,7 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
-    public function getOneOrderDetails(Order $order){
+    public function getOneOrderDetails(OrderItem $orderItem){
         $foodie = Auth::guard('foodie')->user();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -181,36 +181,60 @@ class FoodieOrderPlanController extends Controller
             ->where('is_read','=',0)
             ->get();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
-        $orderPlan=$order->plan->first();
-        $orderMealPlans=$orderPlan->mealplans()->get();
-        $orderMealPlansCount = $orderMealPlans->count();
-//        dd($orderMealPlans);
-        $orderCustomizedMeals=[];
+        $orderMealPlans = [];
+        $orderPlan='';
         $ingredientMeals=[];
-        $ingredientMealData=[];
-        $ingredientCount = DB::table('ingredient_meal')
-            ->join('meals', 'ingredient_meal.meal_id', '=', 'meals.id')
-            ->join('meal_plans', 'meal_plans.meal_id', '=', 'meals.id')
-            ->count();
-
-        for($i=0;$i<count($orderMealPlans);$i++){
-            $orderCustomizedMeals[]=CustomizedMeal::where('meal_id','=',$orderMealPlans[$i]->meal_id)->where('order_id','=',$order->id)->first();
-            for($j=0;$j<$orderCustomizedMeals[$i]->customized_ingredient_meal->count();$j++){
-                $ingredientMeals[]=$orderCustomizedMeals[$i]->customized_ingredient_meal[$j];
+        $orderMealPlans="";
+        $saMeals = 0;
+        $moSnaMeals = 0;
+        $aftSnaMeals = 0;
+        if($orderItem->order_type==0){
+            $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan_name;
+            $mealPlans=$orderPlan->mealplans()->get();
+            $saMeals = $mealPlans->where('day','=','SA')->count();
+            $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+            $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+            foreach($mealPlans as $item){
+                $orderMealPlans[]= $item->chefcustomize;
             }
-        }
-        for($i=0;$i<count($ingredientMeals);$i++){
-            $ingredientDesc=DB::table('ingredients')
-                ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
-                ->where('NDB_No','=',$ingredientMeals[$i]->ingredient_id)
-                ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
-                ->first();
-            $ingredientMealData[]=array(
-                "meal"=>$ingredientMeals[$i]->meal_id,
-                "ingredient"=>$ingredientDesc->Long_Desc,
-                "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
-                "grams"=>$ingredientMeals[$i]->grams
-            );
+//            dd($orderMealPlans[0]->mealplans->day);
+        }elseif($orderItem->order_type==1){
+            $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
+            $orderMealPlans=$orderPlan->customized_meal()->get();
+            foreach($orderMealPlans as $orderMealPlan){
+                if($orderMealPlan->chefcustomize->mealplans->day=='SA'){
+                    $saMeals+=1;
+                }
+                if($orderMealPlan->chefcustomize->mealplans->meal_type=='MorningSnack'){
+                    $moSnaMeals+=1;
+                }elseif($orderMealPlan->chefcustomize->mealplans->meal_type=='AfternoonSnack'){
+                    $aftSnaMeals+=1;
+                }
+            }
+//            dd($saMeals.' '.$moSnaMeals.' '.$aftSnaMeals);
+            foreach($orderMealPlans as $orderMealPlan){
+                foreach($orderMealPlan->customized_ingredient_meal()->get() as $orderMealIngredient){
+                    $ingredientDesc = DB::table('ingredients')
+                        ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
+                        ->where('NDB_No','=',$orderMealIngredient->ingredient_id)
+                        ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+                        ->first();
+                    $ingredientMeals[]=array(
+                        "meal"=>$orderMealIngredient->meal_id,
+                        "ingredient"=>$ingredientDesc->Long_Desc,
+                        "ingredient_group"=>$ingredientDesc->FdGrp_Desc,
+                        "grams"=>$orderMealIngredient->grams,
+                        "is_customized"=>$orderMealIngredient->is_customized
+                    );
+
+                }
+            }
+//            dd($ingredientMeals);
+        }elseif($orderItem->order_type==2){
+            $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
         }
 //        dd($ingredientMealData);
 
@@ -225,11 +249,13 @@ class FoodieOrderPlanController extends Controller
             'messages'=>$messages,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
+            'orderPlan'=>$orderPlan,
+            'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals,
+            'planName'=>$planName,
             'mealPlans'=>$orderMealPlans,
-            'mealPlansCount'=>$orderMealPlansCount,
-            'customize'=>$orderCustomizedMeals,
-            'ingredientsMeal'=>$ingredientMealData,
-            'ingredientCount'=>$ingredientCount
+            'orderItem'=>$orderItem,
         ]);
     }
 
