@@ -122,8 +122,8 @@ $(document).ready(function () {
                             $errorContainer.empty();
                         }
                     }
+                    console.log(!matchData);
                     if(!matchData){
-                        console.log(matchData);
                         $('#loadWait').hide();
                         $errorContainer.empty();
                         $errorContainer.append("The listed ingredient is not found");
