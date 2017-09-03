@@ -812,7 +812,7 @@
                                                                     var $ingredsData = response;
                                                                     // console.log($ingredsData);
                                                                     $(function(){
-                                                                        $('ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}.autocomplete').autocomplete(JSON.parse($ingredsData));
+                                                                        $('#ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}.autocomplete').autocomplete(JSON.parse($ingredsData));
                                                                     })
                                                                 }
                                                             });
