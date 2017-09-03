@@ -71,7 +71,7 @@ $(document).ready(function () {
                 disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             } else if(type == 'select'){
                 var ulz = $(this).siblings('ul.dropdown-content');
-                console.log(ulz);
+                console.log(ulz.find('li.selected'));
             }
             // console.log($(this));
             // console.log(disable);
