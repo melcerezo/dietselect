@@ -18,6 +18,10 @@ class RedirectIfFoodie
     public function handle($request, Closure $next, $guard = 'foodie')
     {
         if (Auth::guard($guard)->check()) {
+            dd(Auth::guard($guard));
+//            if(){
+//
+//            }else
             return redirect()->route('foodie.dashboard');
         }
 
