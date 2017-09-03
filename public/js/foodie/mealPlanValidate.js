@@ -46,40 +46,6 @@ $(document).ready(function () {
         });
     });
 
-    $('form.editMeal :input').each(function () {
-        var type = $(this).getType();
-        var tmp = {
-            'type': type,
-            'value': $(this).val()
-        };
-        if (type == 'radio') {
-            tmp.checked = $(this).is(':checked');
-        }
-        orig[$(this).attr('id')] = tmp;
-    });
-    console.log(orig);
-
-    $('form.editMeal').on('change keyup',function () {
-        var form = $(this).attr('id');
-        console.log(form);
-        var disable = true;
-        $("form#"+form+" :input").each(function () {
-            var type = $(this).getType();
-            var id = $(this).attr('id');
-            console.log($(this).val());
-            if (type == 'text' || type == 'select' || type=='number') {
-                disable = (orig[id].value == $(this).val());
-            } else if (type == 'radio') {
-                disable = (orig[id].checked == $(this).is(':checked'));
-            }
-
-            if (!disable) {
-                return false; // break out of loop
-            }
-        });
-
-        $('button.updateB').prop('disabled', disable);
-    });
 
 
     $('button.updateB').click(function () {
