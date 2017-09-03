@@ -45,7 +45,7 @@ $(document).ready(function () {
         });
     });
 
-    $('form.editMeal').bind('change keyup', function () {
+    $('form.editMeal').bind('change', function () {
         var inputs =$(this).find('input');
         inputs.each(function () {
             console.log($(this).val());
