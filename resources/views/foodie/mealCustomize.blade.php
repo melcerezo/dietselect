@@ -660,7 +660,7 @@
                                 $(document).ready(function () {
                                     var mainIngred='{{ $cust->main_ingredient}}';
                                     $('select#main_ingredient{{$i}}').val(mainIngred);
-                                    console.log(mainIngred);
+//                                    console.log(mainIngred);
                                 });
                             </script>
 
