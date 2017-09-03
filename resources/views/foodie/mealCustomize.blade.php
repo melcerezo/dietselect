@@ -836,12 +836,12 @@
                                                                class="required inputBehind">
                                                     </div>
                                                     <div class="error-foodieGram{{$j}} err"></div>
+                                                    @if($ingredientsMeal[$j]['custom']==1)
+                                                        <div>
+                                                            <span>Customized</span>
+                                                        </div>
+                                                    @endif
                                                 </div>
-                                                @if($ingredientsMeal[$j]['custom']==1)
-                                                    <div>
-                                                        <span>Customized</span>
-                                                    </div>
-                                                @endif
                                             @endif
                                         @endfor
                                     @endfor
