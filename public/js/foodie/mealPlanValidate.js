@@ -30,6 +30,54 @@ $(document).ready(function () {
 
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
+    $('form.editMeal').each(function () {
+
+        $('form.editMeal :input').each(function () {
+            var type = $(this).getType();
+            var tmp = {
+                'type': type,
+                'value': $(this).val()
+            };
+            if (type == 'radio') {
+                tmp.checked = $(this).is(':checked');
+            }
+            orig[$(this).attr('id')] = tmp;
+        });
+
+        $(this).validate({
+            errorElement : 'div',
+            errorPlacement: function(error, element) {
+                var placement = $(element).data('error');
+                if (placement) {
+                    $(placement).append(error);
+                } else {
+                    error.insertAfter(element);
+                }
+            }
+
+        });
+    });
+
+    $('form.editMeal').bind('change keyup',function () {
+        var disable = true;
+        $("form :input").each(function () {
+            var type = $(this).getType();
+            var id = $(this).attr('id');
+
+            if (type == 'text' || type == 'select') {
+                disable = (orig[id].value == $(this).val());
+            } else if (type == 'radio') {
+                disable = (orig[id].checked == $(this).is(':checked'));
+            }
+
+            if (!disable) {
+                return false; // break out of loop
+            }
+        });
+
+        $('button.updateB').prop('disabled', disable);
+    });
+
 
 
     $('button.updateB').click(function () {
@@ -92,52 +140,5 @@ $(document).ready(function () {
 
     $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
-    $('form.editMeal').each(function () {
-
-        $('form.editMeal :input').each(function () {
-            var type = $(this).getType();
-            var tmp = {
-                'type': type,
-                'value': $(this).val()
-            };
-            if (type == 'radio') {
-                tmp.checked = $(this).is(':checked');
-            }
-            orig[$(this).attr('id')] = tmp;
-        });
-
-        $(this).validate({
-            errorElement : 'div',
-            errorPlacement: function(error, element) {
-                var placement = $(element).data('error');
-                if (placement) {
-                    $(placement).append(error);
-                } else {
-                    error.insertAfter(element);
-                }
-            }
-
-        });
-    });
-
-    $('form.editMeal').bind('change keyup',function () {
-        var disable = true;
-        $("form :input").each(function () {
-            var type = $(this).getType();
-            var id = $(this).attr('id');
-
-            if (type == 'text' || type == 'select') {
-                disable = (orig[id].value == $(this).val());
-            } else if (type == 'radio') {
-                disable = (orig[id].checked == $(this).is(':checked'));
-            }
-
-            if (!disable) {
-                return false; // break out of loop
-            }
-        });
-
-        $('button.updateB').prop('disabled', disable);
-    });
 
 });
