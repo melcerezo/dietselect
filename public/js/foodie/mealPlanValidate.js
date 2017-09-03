@@ -36,19 +36,6 @@ $(document).ready(function () {
 
 
     $('form.editMeal').each(function () {
-        var $id=$(this).attr('id');
-        $("form#"+$id+" :input").each(function () {
-            var type = $(this).getType();
-            var tmp = {
-                'type': type,
-                'value': $(this).val()
-            };
-            // console.log($(this));
-            if (type == 'radio') {
-                tmp.checked = $(this).is(':checked');
-            }
-            orig[$(this).attr('id')] = tmp;
-        });
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -69,27 +56,27 @@ $(document).ready(function () {
         var button = $(this).closest('button.updateB');
         var disable = true;
         // var inputs =$(this).find('input');
-        console.log($("form.editMeal :input"));
+        // console.log($("form.editMeal :input"));
         $("form.editMeal :input").each(function () {
             var type = $(this).getType();
-            if($(this).hasClass('select-dropdown')){
-                type = 'select';
-            }
+            // if($(this).hasClass('select-dropdown')){
+            //     type = 'select';
+            // }
             var id = $(this).attr('id');
             if (type == 'text' || type == 'select' || type == 'number') {
-                disable = (orig[id].value == $(this).val());
+                disable = ($(this).attr('data-orig') == $(this).val());
             } else if (type == 'radio') {
-                disable = (orig[id].checked == $(this).is(':checked'));
+                disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             }
             // console.log($(this));
-            console.log($(this).val());
+            console.log(disable);
             // console.log(disable);
             // if (!disable) {
             //     return false; // break out of loop
             // }
         });
 
-        $('button.updateB').prop('disabled', disable);
+        button.prop('disabled', disable);
 
     });
 

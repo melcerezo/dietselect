@@ -644,7 +644,8 @@
 
                             <p><label for="main_ingredient">Main Ingredient</label></p>
                             <div id="ingredUpdateSelectContent{{$i}}" class="addSelectIngred">
-                                <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient">
+                                <select id='main_ingredient{{$i}}' class="selectRequired" name="main_ingredient"
+                                data-orig="{{ $cust->main_ingredient}}" >
                                     {{--<option disabled selected value="{{$mealPlans[$i]->meal->main_ingredient}}">{{$mealPlans[$i]->meal->main_ingredient}}</option>--}}
                                     <option value="Chicken">Chicken</option>
                                     <option value="Beef">Beef</option>
@@ -674,6 +675,7 @@
                                                      class="ingredSelectContainer">
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
                                                             name="ingredient_select[]" class="updateIngredSelect"
+                                                            data-orig="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                             data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}">
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
@@ -729,6 +731,7 @@
                                                     <div id="updateIngredText{{$cust->id}}{{$j}}" class="ingredSelectAdd input-field">
                                                         <div class="ingredLabel"><label for="ingredients[]" class="active" style="color: #9e9e9e;">Ingredient</label></div>
                                                         <input type="text" value="{{$ingredientsMeal[$j]['ingredient']}}"
+                                                               data-orig="{{$ingredientsMeal[$j]['ingredient']}}"
                                                                id="ingredient{{$mealPlans[$i]->chefcustomize->id}}{{$j}}"
                                                                data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}"
                                                                name="ingredients[{{$j}}]" data-error=".error-foodieIngred{{$j}}" class="required autocomplete inputBehind">
@@ -736,7 +739,7 @@
                                                     <div class="error-foodieIngred{{$j}} err"></div>
                                                     <div class="ingredGramsAdd">
                                                         <div class="gramLabel"><label for="grams[]">Grams</label></div>
-                                                        <input type="number" value="{{$ingredientsMeal[$j]['grams']}}"
+                                                        <input type="number" data-orig="{{$ingredientsMeal[$j]['grams']}}" value="{{$ingredientsMeal[$j]['grams']}}"
                                                                name="grams[{{$j}}]"
                                                                id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-foodieGram{{$j}}"
                                                                class="required inputBehind">
