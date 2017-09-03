@@ -76,7 +76,16 @@ class LoginController extends Controller
                 $this->clearLoginAttempts($request);
                 return $this->sendsUnverifiedEmailResponse($request);
             }
-            return $this->sendLoginResponse($request);
+
+            if($this->guard()->user()->active==1){
+                return $this->sendLoginResponse($request);
+            }elseif($this->guard()->user()->active==0){
+//                dd($this->guard()->user()->active);
+                $this->guard()->logout();
+                $this->clearLoginAttempts($request);
+                return redirect('/')->with(['status' => 'Your account has been frozen']);
+
+            }
         }
 
         // If the login attempt was unsuccessful we will increment the number of attempts
