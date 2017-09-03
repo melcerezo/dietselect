@@ -130,7 +130,7 @@ class LoginController extends Controller
         if($user->active == 1){
             return redirect($this->redirectTo);
         }elseif($user->active == 0){
-            return view('welcome', ['from' => 'login'])->with(['status' => 'Your account has been frozen.']);
+            return redirect('/')->with(['status' => 'Your account has been frozen.']);
         }
     }
 
