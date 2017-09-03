@@ -706,6 +706,7 @@
                                                                 $valz='soups,sauces,gravy';
                                                             }
                                                             var id='{{$cust->id}}{{$j}}';
+                                                            $('#ingredSelectOption'+id).attr('data-orig',$valz);
                                                             $('#ingredSelectOption'+id+' option').each(function () {
                                                                 if($(this).val()==$valz){
                                                                     $(this).attr("selected", true);
