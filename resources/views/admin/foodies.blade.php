@@ -100,6 +100,7 @@
                                     <th>ID</th>
                                     <th>Name</th>
                                     <th>User Name</th>
+                                    <th>Status</th>
                                     <th>Created</th>
                                 </tr>
                             </thead>
@@ -115,6 +116,13 @@
                                                 {{$foodie->username}}
                                             @else
                                                 N/A
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($foodie->active==1)
+                                                <span>Active</span>
+                                            @elseif($foodie->active==0)
+                                                <span>Frozen</span>
                                             @endif
                                         </td>
                                         <td>{{$foodie->created_at->format('F d, Y')}}</td>
