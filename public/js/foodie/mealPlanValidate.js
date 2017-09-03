@@ -32,20 +32,6 @@ $(document).ready(function () {
 
     $('form.editMeal').each(function () {
 
-        $('form.editMeal :input').each(function () {
-            var type = $(this).getType();
-            console.log(type);
-            var tmp = {
-                'type': type,
-                'value': $(this).val()
-            };
-            if (type == 'radio') {
-                tmp.checked = $(this).is(':checked');
-            }
-            orig[$(this).attr('id')] = tmp;
-        });
-
-
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -59,6 +45,19 @@ $(document).ready(function () {
 
         });
     });
+
+    $('form.editMeal :input').each(function () {
+        var type = $(this).getType();
+        var tmp = {
+            'type': type,
+            'value': $(this).val()
+        };
+        if (type == 'radio') {
+            tmp.checked = $(this).is(':checked');
+        }
+        orig[$(this).attr('id')] = tmp;
+    });
+    console.log(orig);
 
     $('form.editMeal').bind('change keyup',function () {
         var disable = true;
