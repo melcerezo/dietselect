@@ -674,8 +674,6 @@
                                                     <select id="ingredSelectOption{{$cust->id}}{{$j}}"
                                                             name="ingredient_select[]" class="updateIngredSelect"
                                                             data-ing-type="{{$ingredientsMeal[$j]['ingredient_group']}}">
-                                                        <option disabled
-                                                                selected value="{{$ingredientsMeal[$j]['ingredient_group']}}">{{$ingredientsMeal[$j]['ingredient_group']}}</option>
                                                         <option value="chicken">Chicken</option>
                                                         <option value="beef">Beef</option>
                                                         <option value="pork">Pork</option>
