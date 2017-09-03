@@ -285,6 +285,19 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <div class="col s12">
+                <div class="row">
+                    <div class="col s12 m3">
+                        <button class="btn waves-effect waves-light">Freeze</button>
+                    </div>
+                    <div class="col s12 m3">
+                        <button class="btn waves-effect waves-light">Unfreeze</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
