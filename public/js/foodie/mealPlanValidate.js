@@ -66,6 +66,7 @@ $(document).ready(function () {
         var button = $(this).closest('button.updateB');
         var disable = true;
         // var inputs =$(this).find('input');
+        console.log($("form.editMeal :input"));
         $("form.editMeal :input").each(function () {
             var type = $(this).getType();
             if($(this).hasClass('select-dropdown')){
@@ -77,7 +78,7 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
-            console.log($(this));
+            // console.log($(this));
             // console.log($(this).val());
             // console.log(disable);
             // if (!disable) {
