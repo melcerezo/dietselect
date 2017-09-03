@@ -73,7 +73,10 @@
                                             @if($cust->meal_id == $mealPlan->chefcustomize->id)
                                                 <a data-meal-active="#viewMeal-{{$id}}"
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
-                                                <br /><span id="cu{{$id}}"></span>
+                                                <br />
+                                                @if($cust->custom_type)
+                                                    <span id="cu{{$id}}">Customized</span>
+                                                @endif
                                             @endif
                                         @endforeach
                                     @endif
@@ -89,7 +92,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -106,7 +109,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -123,7 +126,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -140,7 +143,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -159,7 +162,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -176,7 +179,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -193,7 +196,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -210,7 +213,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -227,7 +230,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -246,7 +249,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -263,7 +266,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -280,7 +283,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -297,7 +300,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -314,7 +317,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -333,7 +336,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -350,7 +353,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -367,7 +370,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -384,7 +387,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -401,7 +404,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -420,7 +423,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -437,7 +440,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -454,7 +457,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -471,7 +474,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -488,7 +491,7 @@
                                                    class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                 <br />
                                                 @if($cust->custom_type)
-                                                    <span id="cu{{$id}}">C</span>
+                                                    <span id="cu{{$id}}">Customized</span>
                                                 @endif
                                             @endif
                                         @endforeach
@@ -508,7 +511,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -525,7 +528,7 @@
                                                            class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                         <br />
                                                         @if($cust->custom_type)
-                                                            <span id="cu{{$id}}">C</span>
+                                                            <span id="cu{{$id}}">Customized</span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -542,7 +545,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
@@ -559,7 +562,7 @@
                                                            class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                         <br />
                                                         @if($cust->custom_type)
-                                                            <span id="cu{{$id}}">C</span>
+                                                            <span id="cu{{$id}}">Customized</span>
                                                         @endif
                                                     @endif
                                                 @endforeach
@@ -576,7 +579,7 @@
                                                        class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$cust->description}}</a>
                                                     <br />
                                                     @if($cust->custom_type)
-                                                        <span id="cu{{$id}}">C</span>
+                                                        <span id="cu{{$id}}">Customized</span>
                                                     @endif
                                                 @endif
                                             @endforeach
