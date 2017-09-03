@@ -1,7 +1,7 @@
 @extends('foodie.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/foodieMealCustomize.css">
-    <script src="/js/foodie/foodieIngredientAutocomplete.js"></script>
+    {{--<script src="/js/foodie/foodieIngredientAutocomplete.js"></script>--}}
     <script src="/js/foodie/mealPlanValidate.js"></script>
     <script>
         $(document).ready(function () {
