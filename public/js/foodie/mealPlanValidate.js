@@ -68,13 +68,16 @@ $(document).ready(function () {
         var inputs =$(this).find('input');
         inputs.each(function () {
             var type = $(this).getType();
+            if($(this).hasClass('select-dropdown')){
+                type = 'select';
+            }
             var id = $(this).attr('id');
             if (type == 'text' || type == 'select' || type == 'number') {
                 disable = (orig[id].value == $(this).val());
             } else if (type == 'radio') {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
-            console.log($(this));
+            console.log(type);
             console.log(disable);
             // if (!disable) {
             //     return false; // break out of loop
