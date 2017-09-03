@@ -400,7 +400,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col s12 m6 offset-m3 plSlMlInfCnt">
+                            <div class="col s12 m6">
+                                <button data-target="#banPlan" class="modal-trigger btn waves-effect waves-light">Ban</button>
+                            </div>
+                            <div class="col s12 m6 plSlMlInfCnt">
                                 <div class="plSlMlInfDef card-panel">
                                     <span>Please click on a Meal for more info!</span>
                                 </div>
@@ -461,7 +464,11 @@
             </div>
         </div>
     </div>
-
+    <div id="banPlan" class="modal">
+        <div class="modal-content">
+            <a href="{{route('admin.plan.ban', $plan->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Ban Plan?</a>
+        </div>
+    </div>
 
 
 @endsection

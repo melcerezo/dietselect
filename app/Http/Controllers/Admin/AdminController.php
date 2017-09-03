@@ -233,6 +233,14 @@ class AdminController extends Controller
         ]);
     }
 
+    public function planBan(Plan $plan)
+    {
+        $plan->is_banned=1;
+        $plan->save();
+
+        return back()->with(['status'=>'Banned Plan']);
+    }
+
     public function orders()
     {
         $orders = Order::all();
