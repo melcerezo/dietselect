@@ -838,7 +838,7 @@
                                                     <div class="error-foodieGram{{$j}} err"></div>
                                                     @if($ingredientsMeal[$j]['custom']==1)
                                                         <div>
-                                                            <span>Customized</span>
+                                                            <span class="orange-text">Customized</span>
                                                         </div>
                                                     @endif
                                                 </div>
