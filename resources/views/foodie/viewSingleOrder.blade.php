@@ -811,10 +811,10 @@
                                         <li class="collection-item light-green lighten-1 white-text">
                                             <span class="collection-header">Meal Information</span>
                                         </li>
-                                        <li class="collection-item"><span>Calories:</span><span>{{$mealPlan->calories}}</span></li>
-                                        <li class="collection-item"><span>Carbohydrates:</span><span>{{$mealPlan->carbohydrates}}</span></li>
-                                        <li class="collection-item"><span>Protein:</span><span>{{$mealPlan->protein}}</span></li>
-                                        <li class="collection-item"><span>Fat:</span><span>{{$mealPlan->fat}}</span></li>
+                                        <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
+                                        <li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>
+                                        <li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>
+                                        <li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>
                                     </ul>
                                 </div>
                                 <div>
