@@ -812,7 +812,7 @@
                                                                     var $ingredsData = response;
                                                                     // console.log($ingredsData);
                                                                     $(function(){
-                                                                        $('#ingredient'+id+'.autocomplete').autocomplete(JSON.parse($ingredsData));
+                                                                        $('#ingredSelectOption'+id+'.autocomplete').autocomplete(JSON.parse($ingredsData));
                                                                     })
                                                                 }
                                                             });
