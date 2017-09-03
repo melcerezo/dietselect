@@ -83,7 +83,7 @@ class LoginController extends Controller
 //                dd($this->guard()->user()->active);
                 $this->guard()->logout();
                 $this->clearLoginAttempts($request);
-                return redirect('/')->with(['status' => 'Your account has been frozen']);
+                return redirect()->route('chef.login.show')->with(['status' => 'Your account has been frozen']);
 
             }
         }
