@@ -690,9 +690,9 @@ class FoodieMealPlanController extends Controller
 
 
         for ($i = 0; $i < $customize->customized_ingredient_meal->count(); $i++) {
-            if(){
-
-            }
+//            if(){
+//
+//            }
             DB::table('customized_ingredient_meals')->where('id','=',$customIngred[$i]->id)->where('ingredient_id','=',$prevIngreds[$i]->ingredient_id)->update(
                 ['meal_id' => $customize->id,'is_customized'=>1, 'ingredient_id' => $ingredId[$i]->NDB_No, 'grams' => $request['grams'][$arrayKeys[$i]]]
             );
