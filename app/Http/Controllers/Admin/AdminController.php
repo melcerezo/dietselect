@@ -241,6 +241,14 @@ class AdminController extends Controller
         return back()->with(['status'=>'Banned Plan']);
     }
 
+    public function planUnban(Plan $plan)
+    {
+        $plan->is_banned=0;
+        $plan->save();
+
+        return back()->with(['status'=>'Unbanned Plan']);
+    }
+
     public function orders()
     {
         $orders = Order::all();

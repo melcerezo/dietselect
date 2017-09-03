@@ -401,7 +401,20 @@
                         </div>
                         <div class="row">
                             <div class="col s12 m6">
-                                <button data-target="#banPlan" class="modal-trigger btn waves-effect waves-light">Ban</button>
+                                <div>
+                                    @if($plan->is_banned==0)
+                                        <button data-target="#banPlan" class="modal-trigger btn waves-effect waves-light">Ban</button>
+                                    @elseif($plan->is_banned==1)
+                                        <button data-target="#banPlan" class="modal-trigger btn waves-effect waves-light disabled">Ban</button>
+                                    @endif
+                                </div>
+                                <div>
+                                    @if($plan->is_banned==0)
+                                        <button data-target="#unbanPlan" class="modal-trigger btn waves-effect waves-light disabled">Unban</button>
+                                    @elseif($plan->is_banned==1)
+                                        <button data-target="#unbanPlan" class="modal-trigger btn waves-effect waves-light">Unban</button>
+                                    @endif
+                                </div>
                             </div>
                             <div class="col s12 m6 plSlMlInfCnt">
                                 <div class="plSlMlInfDef card-panel">
@@ -467,6 +480,11 @@
     <div id="banPlan" class="modal">
         <div class="modal-content">
             <a href="{{route('admin.plan.ban', $plan->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Ban Plan?</a>
+        </div>
+    </div>
+    <div id="unbanPlan" class="modal">
+        <div class="modal-content">
+            <a href="{{route('admin.plan.unban', $plan->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unban Plan?</a>
         </div>
     </div>
 
