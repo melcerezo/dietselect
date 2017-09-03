@@ -124,12 +124,12 @@ $(document).ready(function () {
                         }
                     }
                     console.log(matchData);
-                    // if(!matchData){
-                    //     console.log(!matchData);
-                    //     $('#loadWait').hide();
-                    //     $errorContainer.empty();
-                    //     $errorContainer.append("The listed ingredient is not found");
-                    // }
+                    if(!matchData){
+                        console.log(!matchData);
+                        $('#loadWait').hide();
+                        $errorContainer.empty();
+                        $errorContainer.append("The listed ingredient is not found");
+                    }
                     if(matchData==ingredCountz){
                         form.unbind('submit').submit();
                     }
