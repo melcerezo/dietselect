@@ -82,11 +82,11 @@ $(document).ready(function () {
                 disable = (orig[id].checked == $(this).is(':checked'));
             }
             // console.log($(this));
-            // console.log($(this).val());
-            // console.log(disable);
-            // if (!disable) {
-            //     return false; // break out of loop
-            // }
+            console.log($(this).val());
+            console.log(disable);
+            if (!disable) {
+                return false; // break out of loop
+            }
         });
 
         $('button.updateB').prop('disabled', disable);
