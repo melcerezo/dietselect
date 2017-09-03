@@ -123,6 +123,7 @@ $(document).ready(function () {
                             break;
                         }
                     }
+                    console.log($thisVal);
                     console.log(!matchData);
                     if(!matchData){
                         console.log(!matchData);
