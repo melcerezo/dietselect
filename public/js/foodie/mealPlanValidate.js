@@ -123,7 +123,7 @@ $(document).ready(function () {
                             return false;
                         }
                     }
-                    // console.log(!matchData);
+                    console.log(!matchData);
                     if(!matchData){
                         $('#loadWait').hide();
                         $errorContainer.empty();
