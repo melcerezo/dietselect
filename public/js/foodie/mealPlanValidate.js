@@ -31,7 +31,7 @@ $(document).ready(function () {
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
     $('form.editMeal').each(function () {
-
+        console.log($(this).find('input'));
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
