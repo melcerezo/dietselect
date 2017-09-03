@@ -57,6 +57,8 @@ $(document).ready(function () {
         });
     });
 
+    console.log(orig);
+
     $('form.editMeal').bind('change', function () {
         var inputs =$(this).find('input');
         inputs.each(function () {
