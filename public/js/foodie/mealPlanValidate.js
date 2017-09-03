@@ -66,7 +66,7 @@ $(document).ready(function () {
         $("form#"+form+" :input").each(function () {
             var type = $(this).getType();
             var id = $(this).attr('id');
-            console.log($(this).val());
+            console.log($(this));
             if (type == 'text' || type == 'select' || type=='number') {
                 disable = (orig[id].value == $(this).val());
             } else if (type == 'radio') {
