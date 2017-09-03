@@ -43,6 +43,7 @@ $(document).ready(function () {
                 'type': type,
                 'value': $(this).val()
             };
+            console.log($(this.val()));
             if (type == 'radio') {
                 tmp.checked = $(this).is(':checked');
             }
@@ -62,7 +63,7 @@ $(document).ready(function () {
         });
     });
 
-    console.log(orig);
+    // console.log(orig);
 
     $('form.editMeal').bind('change', function () {
         var button = $(this).closest('button.updateB');
