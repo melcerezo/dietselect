@@ -126,6 +126,8 @@ class LoginController extends Controller
      */
     protected function authenticated($user)
     {
+        dd($user);
+
         return redirect($this->redirectTo);
     }
 
