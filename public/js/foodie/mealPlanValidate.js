@@ -31,10 +31,6 @@ $(document).ready(function () {
     $("select.updateIngredSelect").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
     $('form.editMeal').each(function () {
-        var inputs =$(this).find('input');
-        inputs.each(function () {
-            console.log($(this).val());
-        });
         $(this).validate({
             errorElement : 'div',
             errorPlacement: function(error, element) {
@@ -49,6 +45,12 @@ $(document).ready(function () {
         });
     });
 
+    $('form.editMeal').bind('change keyup', function () {
+        var inputs =$(this).find('input');
+        inputs.each(function () {
+            console.log($(this).val());
+        });
+    });
 
     $('button.updateB').click(function () {
         var form=$(this).closest("form");
