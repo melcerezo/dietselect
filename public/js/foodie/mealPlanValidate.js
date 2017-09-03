@@ -120,11 +120,10 @@ $(document).ready(function () {
                         if($thisVal==ingred){
                             matchData+=1;
                             $errorContainer.empty();
-                        }else{
-                            console.log('no match');
+                            return false;
                         }
                     }
-                    console.log(!matchData);
+                    // console.log(!matchData);
                     if(!matchData){
                         $('#loadWait').hide();
                         $errorContainer.empty();
