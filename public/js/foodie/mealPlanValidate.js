@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
     console.log(orig);
 
-    $('form.editMeal').bind('change keyup',function () {
+    $('form.editMeal').on('change keyup',function () {
         var disable = true;
         $("form.editMeal :input").each(function () {
             var type = $(this).getType();
