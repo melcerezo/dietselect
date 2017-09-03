@@ -68,8 +68,8 @@ $(document).ready(function () {
             } else if (type == 'radio') {
                 disable = ($(this).attr('data-orig').checked == $(this).is(':checked'));
             }
-            // console.log($(this));
-            console.log(disable);
+            console.log($(this));
+            // console.log(disable);
             // console.log(disable);
             // if (!disable) {
             //     return false; // break out of loop
