@@ -267,7 +267,7 @@
                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                         </div>
-                                        <div>
+                                        <div class="col s12 offset-m2 m2">
                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                         </div>
                                     </div>
@@ -386,7 +386,7 @@
                                                 <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                 <div>Amount: {{$orderItemItem['price']}}</div>
                                             </div>
-                                            <div>
+                                            <div class="col s12 offset-m2 m2">
                                                 <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                             </div>
                                         </div>
