@@ -183,7 +183,7 @@ class AdminController extends Controller
     {
         $foodie->active=0;
         $foodie->save();
-
+        dd($foodie->email);
         $mailer->to($foodie->email)
             ->send(new FreezeMail($foodie));
 
