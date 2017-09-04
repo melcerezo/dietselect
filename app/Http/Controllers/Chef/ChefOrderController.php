@@ -107,7 +107,7 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $foodies=Foodie::all();
-        $foodie = Foodie::where('foodie_id','=',$orderItem->order->foodie->id)->first();
+        $foodie = Foodie::where('id','=',$orderItem->order->foodie->id)->first();
         dd($foodie);
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderMealPlans = [];
