@@ -6,6 +6,7 @@ use App\Allergy;
 use App\ChefBankAccount;
 use App\FoodiePreference;
 use App\Http\Controllers\Controller;
+use App\Mail\FreezeMail;
 use App\Message;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,6 +25,7 @@ use App\CustomPlan;
 use App\SimpleCustomPlan;
 use App\Commission;
 use DB;
+use Illuminate\Mail as mailer;
 
 
 class AdminController extends Controller
@@ -177,10 +179,13 @@ class AdminController extends Controller
 
     }
 
-    public function foodieFreeze(Foodie $foodie)
+    public function foodieFreeze(Foodie $foodie, mailer\Mailer $mailer)
     {
         $foodie->active=0;
         $foodie->save();
+
+        $mailer->to($foodie->email)
+            ->send(new FreezeMail($foodie));
 
         return back()->with(['status'=>'Successfully froze user account']);
     }
