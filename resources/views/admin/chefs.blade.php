@@ -1,6 +1,7 @@
 @extends("layouts.app")
 @section('head')
     <script src="/js/admin/admin.js" defer></script>
+    <script src="/js/admin/chefRegistration.validate.js" defer></script>
 @endsection
 
 @section('content')
@@ -126,8 +127,110 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <button data-target="registration" class="btn waves-effect waves-light modal-trigger">Create Chef</button>
+        </div>
     </div>
 
+    <div id="registration" class="modal">
+        <div class="modal-content">
+            <form id="registration" role="form" method="POST" action="{{ route('admin.chef.register') }}">
+                {{ csrf_field() }}
+                <div class="card-content">
+                    <h3 class="mustard-text">Chef Admin Creation</h3>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-reg-name" name="name" type="text" data-error=".error-msg-name" value="{{ old('name') }}">
+                            <label for="n-reg-name">Business/Company Name</label>
+                            <div class="error-msg-name">
+                                @if ($errors->has('name'))
+                                    {{ $errors->first('name') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-reg-email" name="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-error=".error-msg-email" value="{{ old('email') }}"/>
+                            <label for="n-reg-email">Email</label>
+                            <div class="error-msg-email">
+                                @if ($errors->has('email'))
+                                    {{ $errors->first('email') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <div class="col s1 light-green lighten-1 valign-wrapper center" style="height: 2rem; margin-top: 10px;">
+                                <span>+63</span>
+                            </div>
+                            <div class="col s11">
+                                <label for="n-reg-mobile-num">Mobile Number</label>
+                                <input id="n-reg-mobile-num" name="mobile_number" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ old('mobile_number') }}"/>
+                                <div class="error-msg-mobile-num">
+                                    @if ($errors->has('mobile_number'))
+                                        {{ $errors->first('mobile_number') }}
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-reg-website" name="website" type="text" data-error=".error-msg-website" value="{{ old('website') }}" placeholder="http://">
+                            <label for="n-reg-website">Website</label>
+                            <div class="error-msg-website">
+                                @if ($errors->has('website'))
+                                    {{ $errors->first('website') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-reg-url" name="url_name" type="text" data-error=".error-msg-url" value="{{ old('url_name') }}">
+                            <label for="n-reg-url">URL Name</label>
+                            <div class="error-msg-url">
+                                @if ($errors->has('url_name'))
+                                    {{ $errors->first('url_name') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s9">
+                            <input id="n-reg-pass" name="password" type="password" data-error=".error-msg-pass"/>
+                            <label for="n-reg-pass">Password</label>
+                            <div class="error-msg-pass">
+                                @if ($errors->has('password'))
+                                    {{ $errors->first('password') }}
+                                @endif
+                            </div>
+                        </div>
+                        <div class="col s3 valign-wrapper">
+                            <span id="result" style="margin-top:43px;"></span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="n-reg-confirm-password" name="password_confirmation" type="password" data-error=".error-msg-confirm-pass"/>
+                            <label for="n-reg-confirm-password">Confirm Password</label>
+                            <div class="error-msg-confirm-pass">
+                                @if ($errors->has('password_confirmation'))
+                                    {{ $errors->first('password_confirmation') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-action">
+                    <input type="submit" class="hidden"/>
+                    <a href="javascript:void(0)" class="btn-flat n-btn-link n-submit-btn right"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-form-btn-text"> Submit</span></a>
+                </div>
+            </form>
+        </div>
+    </div>
 
 
 @endsection

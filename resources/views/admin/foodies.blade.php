@@ -1,6 +1,7 @@
 @extends("layouts.app")
 @section('head')
     <script src="/js/admin/admin.js" defer></script>
+    <script src="/js/admin/foodieRegistration.validate.js" defer></script>
 @endsection
 
 @section('content')
@@ -134,8 +135,96 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <button data-target="foodie-reg-form-modal" class="btn waves-effect waves-light modal-trigger">Create Foodie</button>
+        </div>
     </div>
 
+    <div id="foodie-reg-form-modal" class="modal modal-fixed-footer">
+        <form id="registration" role="form" method="POST" action="{{ route('admin.foodie.register') }}">
+            {{ csrf_field() }}
+            <div class="modal-content">
+                <h3 class="mustard-text">Admin Foodie Creation</h3>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="n-reg-fname" name="first_name" type="text" data-error=".error-msg-fname" value="{{ old('first_name') }}"/>
+                        <label for="n-reg-fname">First Name</label>
+                        <div class="error-msg-fname">
+                            @if ($errors->has('first_name'))
+                                {{ $errors->first('first_name') }}
+                            @endif
+                        </div>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="n-reg-lname" name="last_name" type="text" data-error=".error-msg-lname" value="{{ old('last_name') }}">
+                        <label for="n-reg-lname">Last Name</label>
+                        <div class="error-msg-lname">
+                            @if ($errors->has('last_name'))
+                                {{ $errors->first('last_name') }}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <div class="col s1 light-green lighten-1 valign-wrapper center" style="height: 2rem; margin-top: 10px;">
+                            <span>+63</span>
+                        </div>
+                        <div class="col s11">
+                            <label for="n-reg-mobile-num">Mobile Number</label>
+                            <input id="n-reg-mobile-num" name="mobile_number" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ old('mobile_number') }}"/>
+                            <div class="error-msg-mobile-num">
+                                @if ($errors->has('mobile_number'))
+                                    {{ $errors->first('mobile_number') }}
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="n-reg-email" name="registration_email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" data-error=".error-msg-email" value="{{ old('registration_email') }}"/>
+                        <label for="n-reg-email">Email</label>
+                        <div class="error-msg-email">
+                            @if ($errors->has('registration_email'))
+                                {{ $errors->first('registration_email') }}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s9">
+                        <input id="n-reg-pass" name="password" type="password" data-error=".error-msg-pass"/>
+                        <label for="n-reg-pass">Password</label>
+                        <div class="error-msg-pass">
+                            @if ($errors->has('password'))
+                                {{ $errors->first('password') }}
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col s3 valign-wrapper">
+                        <span id="result" style="margin-top:43px;"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="n-reg-confirm-password" name="password_confirmation" type="password" data-error=".error-msg-confirm-pass"/>
+                        <label for="n-reg-confirm-password">Confirm Password</label>
+                        <div class="error-msg-confirm-pass">
+                            @if ($errors->has('password_confirmation'))
+                                {{ $errors->first('password_confirmation') }}
+                            @endif
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="hidden"/>
+                <a href="javascript:void(0)" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-times-circle"></i> <span class="hide-on-small-only n-modal-form-btn-text">Close</span></a>
+                <a href="javascript:void(0)" class="modal-action btn-flat n-btn-link n-submit-btn"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-modal-form-btn-text"> Submit</span></a>
+            </div>
+        </form>
+    </div>
 
 
 @endsection

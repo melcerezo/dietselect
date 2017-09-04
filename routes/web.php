@@ -199,5 +199,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('foodie/unfreeze/{foodie}','Admin\AdminController@foodieUnfreeze')->name('admin.foodie.unfreeze');
     Route::get('chef/freeze/{chef}','Admin\AdminController@chefFreeze')->name('admin.chef.freeze');
     Route::get('chef/unfreeze/{chef}','Admin\AdminController@chefUnfreeze')->name('admin.chef.unfreeze');
+    Route::post('foodie/register', 'Admin\AdminUserCreateController@register')->name('admin.foodie.register');
+    Route::post('chef/register', 'Admin\AdminVendorCreateController@register')->name('admin.chef.register');
 
 });
