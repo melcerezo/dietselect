@@ -162,7 +162,15 @@
 
                                 <li class="collection-item">
                                     <a href="{{route('order.show',$order['id'])}}">
-                                        <p>Order Address: {{$order['address']}}</p>
+                                        <p>Order Address:
+                                            @if($order['address']!='')
+                                            {{$order['address']}}
+                                            @else
+                                                <a href="{{route('foodie.profile')}}">
+                                                    <span>No Address Available. Please add one so we can deliver to you!</span>
+                                                </a>
+                                            @endif
+                                        </p>
                                         <div class="divider"></div>
                                         <p>Number of Items: {{$order['quantity']}}</p>
                                         <div class="divider"></div>
