@@ -417,7 +417,7 @@ class FoodieOrderPlanController extends Controller
                 'date'=>$thisSaturday
             ];
         }
-        dd($mailHTML);
+//        dd($mailHTML);
 
 
         $price = Cart::total();
