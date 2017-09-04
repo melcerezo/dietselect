@@ -830,7 +830,7 @@
             <div id="allergiesModal" class="modal">
                 <nav class="light-green lighten-1 white-text">
                     <div>
-                        <span style="font-size: 20px; margin-left: 5px;"></span>
+                        <span style="font-size: 20px; margin-left: 5px;">Allergies</span>
                     </div>
                 </nav>
                 <div class="modal-content">
