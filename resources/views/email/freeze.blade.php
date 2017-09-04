@@ -11,7 +11,7 @@
 <h1>Account Freeze</h1>
     <div>
         <div>
-            <p>We at DietSelect regret to inform you, {{$foodie->name}}, that your account has been frozen.</p>
+            <p>We at DietSelect regret to inform you, {{$foodie->first_name.' '.$foodie->last_name}}, that your account has been frozen.</p>
             <p>Please contact us at admin@dietselect.com for further assistance in this matter.</p>
         </div>
     </div>
