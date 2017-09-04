@@ -97,7 +97,15 @@
                                 <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                             </div>
                             <div class="col s12 m3">
-                                <a href="{{route('foodie.orderAll.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100;">Cancel</a>
+                                <a href="#cancelModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</a>
+                            </div>
+                        </div>
+                        <div id="cancelModal{{$order->id}}" class="modal">
+                            <div class="modal-content">
+                                <form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">
+                                    {{ csrf_field() }}
+                                    <button class="btn waves-effect waves-light">Cancel Order?</button>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -215,7 +223,15 @@
                                     <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                                 </div>
                                 <div class="col s12 m2">
-                                    <a href="{{route('foodie.orderAll.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100;">Cancel</a>
+                                    <a href="#cancelModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</a>
+                                </div>
+                            </div>
+                            <div id="cancelModal{{$order->id}}" class="modal">
+                                <div class="modal-content">
+                                    <form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">
+                                        {{csrf_field()}}
+                                        <button class="btn waves-effect waves-light">Cancel Order?</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -410,6 +426,7 @@
     No Orders Yet!
 @endif
 </div>
+
 
 
 
