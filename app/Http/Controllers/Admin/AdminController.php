@@ -265,6 +265,8 @@ class AdminController extends Controller
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
 
+        dd($orderAddress);
+
         $orderAddress = $foodieAddress->unit;
         if($foodieAddress->bldg!=''){
             $orderAddress.=' '.$foodieAddress->bldg.', ';
