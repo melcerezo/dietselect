@@ -86,7 +86,7 @@
             @endunless
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-            @if($order->is_paid==0)
+            @if($order->is_paid==0 && $foodieAddress!=null && $orderAddress!=null)
                 <div class="col s12 offset-m2 m4">
             @elseif($order->is_paid==1 || $order->is_paid==0 && $foodieAddress==null || $order->is_paid==0 && $orderAddress==null)
                 <div class="col s12 m4 offset-m8 right">
