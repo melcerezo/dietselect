@@ -303,28 +303,24 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col s12">
-                <div class="row">
-                    <div class="col offset-m2 s12 m3">
-                        @if($chef->active==0)
-                            <a href="{{route('admin.chef.freeze',$chef->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Freeze</a>
-                        @elseif($chef->active==1)
-                            <a href="{{route('admin.chef.freeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Freeze</a>
-                        @endif
-                    </div>
-                    <div class="col s12 m3">
-                        @if($chef->active==0)
-                            <a href="{{route('admin.chef.unfreeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unfreeze</a>
-                        @elseif($chef->active==1)
-                            <a href="{{route('admin.chef.unfreeze',$chef->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Unfreeze</a>
-                        @endif
-                    </div>
+            <div class="row">
+                <div class="col offset-m2 s12 m3">
+                    @if($chef->active==0)
+                        <a href="{{route('admin.chef.freeze',$chef->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Freeze</a>
+                    @elseif($chef->active==1)
+                        <a href="{{route('admin.chef.freeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Freeze</a>
+                    @endif
+                </div>
+                <div class="col s12 m3">
+                    @if($chef->active==0)
+                        <a href="{{route('admin.chef.unfreeze',$chef->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unfreeze</a>
+                    @elseif($chef->active==1)
+                        <a href="{{route('admin.chef.unfreeze',$chef->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Unfreeze</a>
+                    @endif
                 </div>
             </div>
         </div>
-    </div>
+
 
     <div id="loadWait" class="valign-wrapper">
         <div id="loadStatus" class="preloader-wrapper active valign">
