@@ -192,14 +192,17 @@ class FoodieController extends Controller
             $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d');
             $orderAddress = DB::table('foodie_address')->where('id', '=', $order->address_id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->first();
             $orderQuantity = $order->order_item()->count();
-
-            $oAdd = $orderAddress->unit;
-            if ($orderAddress->bldg != '') {
-                $oAdd .= ' ' . $orderAddress->bldg . ', ';
+            if($orderAddress!=null){
+                $oAdd = $orderAddress->unit;
+                if ($orderAddress->bldg != '') {
+                    $oAdd .= ' ' . $orderAddress->bldg . ', ';
+                }
+                $oAdd .= ' ' . $orderAddress->street;
+                $oAdd .= ', ' . $orderAddress->brgy;
+                $oAdd .= ' ' . $orderAddress->city;
+            }else{
+                $oAdd='';
             }
-            $oAdd .= ' ' . $orderAddress->street;
-            $oAdd .= ', ' . $orderAddress->brgy;
-            $oAdd .= ' ' . $orderAddress->city;
 
             $orderArray[] = array('id' => $order->id, 'address' => $oAdd, 'quantity' => $orderQuantity, 'total' => $order->total,
                 'week' => $startOfWeek);
