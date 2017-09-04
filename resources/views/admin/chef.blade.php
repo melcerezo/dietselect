@@ -265,38 +265,38 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col s12 m6">
-                                <div class="card-panel">
-                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                        <div>
-                                            <span>
-                                                Plans
-                                            </span>
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="card-panel">
+                                        <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                            <div>
+                                                <span>
+                                                    Plans
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <table class="responsive-table centered" style="table-layout: fixed;">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Plan Name</th>
-                                            <th>Amount</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($plans as $plan)
+                                        <table class="responsive-table centered" style="table-layout: fixed;">
+                                            <thead>
                                             <tr>
-                                                <td>{{$plan->id}}</td>
-                                                <td>{{$plan->plan_name}}</td>
-                                                <td>{{$plan->price}}</td>
-                                                <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                                <th>ID</th>
+                                                <th>Plan Name</th>
+                                                <th>Amount</th>
+                                                <th>Date</th>
                                             </tr>
-                                        @endforeach
+                                            </thead>
+                                            <tbody>
+                                            @foreach($plans as $plan)
+                                                <tr>
+                                                    <td>{{$plan->id}}</td>
+                                                    <td>{{$plan->plan_name}}</td>
+                                                    <td>{{$plan->price}}</td>
+                                                    <td>{{$plan->created_at->format('F d, Y')}}</td>
+                                                </tr>
+                                            @endforeach
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
