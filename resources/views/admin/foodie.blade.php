@@ -1,6 +1,36 @@
 @extends("layouts.app")
 @section('head')
     <script src="/js/admin/admin.js" defer></script>
+    <style>
+        #loadWait{
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, .6);
+            z-index: 999999;
+            height: 100%;
+        }
+        #loadStatus {
+            position: relative;
+            margin:230px auto;
+            height: 90px;
+            width: 90px;
+            display: block;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $('a.frz').on('click', function () {
+                $('#loadWait').show();
+            })
+            $('a.unfrz').on('click', function () {
+                $('#loadWait').show();
+            })
+        })
+    </script>
 @endsection
 
 @section('content')
@@ -300,12 +330,12 @@
                         @if($foodie->active==0)
                             <a href="{{route('admin.foodie.freeze',$foodie->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Freeze</a>
                         @elseif($foodie->active==1)
-                            <a href="{{route('admin.foodie.freeze',$foodie->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Freeze</a>
+                            <a href="{{route('admin.foodie.freeze',$foodie->id)}}" class="btn waves-effect waves-light frz" style="font-weight: 100">Freeze</a>
                         @endif
                     </div>
                     <div class="col s12 m3">
                         @if($foodie->active==0)
-                            <a href="{{route('admin.foodie.unfreeze',$foodie->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Unfreeze</a>
+                            <a href="{{route('admin.foodie.unfreeze',$foodie->id)}}" class="btn waves-effect waves-light unfrz" style="font-weight: 100">Unfreeze</a>
                         @elseif($foodie->active==1)
                             <a href="{{route('admin.foodie.unfreeze',$foodie->id)}}" class="btn waves-effect waves-light disabled" style="font-weight: 100">Unfreeze</a>
                         @endif
@@ -315,6 +345,21 @@
         </div>
 
     </div>
+
+    <div id="loadWait" class="valign-wrapper">
+        <div id="loadStatus" class="preloader-wrapper active valign">
+            <div class="spinner-layer spinner-red-only">
+                <div class="circle-clipper left">
+                    <div class="circle"></div>
+                </div><div class="gap-patch">
+                    <div class="circle"></div>
+                </div><div class="circle-clipper right">
+                    <div class="circle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 
 
