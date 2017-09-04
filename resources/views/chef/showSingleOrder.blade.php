@@ -799,10 +799,50 @@
                             Order Details
                         </span>
                     </li>
-                    <li class="collection-item">{{$orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name}}</li>
-                    <li class="collection-item"></li>
-                    <li class="collection-item"></li>
+                    <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
+                    <li class="collection-item">Allergies:
+                        <div>
+                            @if($allergies->count()>0)
+                                <button data-target="allergiesModal" class="btn waves-effect waves-light">View Allergies</button>
+                            @else
+                                <span>No Allergies</span>
+                            @endif
+                        </div>
+
+                    </li>
+                    <li class="collection-item">Address:
+                        @unless($orderAddress==null)
+                            {{$orderAddress}}
+                        @endunless
+                    </li>
                 </ul>
+            </div>
+            <div id="allergiesModal" class="modal">
+                <nav class="light-green lighten-1 white-text">
+                    <div>
+                        <span style="font-size: 20px; margin-left: 5px;"></span>
+                    </div>
+                </nav>
+                <div class="modal-content">
+                    <ul>
+                        @foreach($allergies as $allergy)
+                            <li>
+                                <div class="divider"></div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            @if($allergy->allergy=='shrimp')
+                                                <span>Squid, Shrimp and Crab</span>
+                                            @else
+                                                <span>{{ ucfirst($allergy->allergy) }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
             @unless(count($mealPlans)==0)
                 @if($orderItem->order_type==1)
