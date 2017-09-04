@@ -110,7 +110,9 @@ class ChefOrderController extends Controller
         $foodie = Foodie::where('id','=',$orderItem->order->foodie->id)->first();
         DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress=DB::table('foodie_address')->where('id','=',$orderItem->order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
-        dd($orderAddress);
+//        dd($orderAddress);
+        $allergies = $foodie->allergy->get();
+        dd($allergies);
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderMealPlans = [];
         $orderPlan='';
@@ -129,7 +131,6 @@ class ChefOrderController extends Controller
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
             }
-//            dd($orderMealPlans[0]->mealplans->day);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
@@ -175,9 +176,11 @@ class ChefOrderController extends Controller
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
             'foodies'=>$foodies,
+            'foodie'=>$foodie,
             'chats'=>$chats,
             'messages'=>$messages,
             'orderPlan'=>$orderPlan,
+            'orderAddress'=>$orderAddress,
             'saMeals'=>$saMeals,
             'moSnaMeals'=>$moSnaMeals,
             'aftSnaMeals'=>$aftSnaMeals,
