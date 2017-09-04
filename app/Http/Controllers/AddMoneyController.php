@@ -188,7 +188,7 @@ class AddMoneyController extends Controller{
 //        dd($foodnotif);
             $foodnotif->save();
 
-            $messageFoodie = 'You have confirmed your order through bank deposit. Thank you.';
+            $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through PayPal. Thank you.';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
@@ -290,7 +290,7 @@ class AddMoneyController extends Controller{
                         $foodieName,
                         $chefOrderPlans));
 
-                $message = $foodieName.'has confirmed their order for: ';
+                $message = 'Greetings from DietSelect! '.$foodieName.'has confirmed their order for: ';
                 foreach($chefOrderPlans as $chefOrderPlan){
                     $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
                 }
