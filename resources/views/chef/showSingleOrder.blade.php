@@ -792,6 +792,18 @@
                 @endif
                 </div>
             </div>
+            <div class="row">
+                <ul class="collection">
+                    <li class="collection-item light-green white-text">
+                        <span class="collection-header">
+                            Order Details
+                        </span>
+                    </li>
+                    <li class="collection-item">{{$orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name}}</li>
+                    <li class="collection-item"></li>
+                    <li class="collection-item"></li>
+                </ul>
+            </div>
             @unless(count($mealPlans)==0)
                 @if($orderItem->order_type==1)
                     @foreach($mealPlans as $id=>$mealPlan)
