@@ -103,7 +103,6 @@ class AdminController extends Controller
         $orderPlanNames=[];
 
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
-        dd($orderItems);
         $commissions = Commission::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
         $plans = Plan::where('chef_id','=',$chef->id)->take(5)->get();
         foreach($orderItems as $orderItem){
@@ -123,6 +122,7 @@ class AdminController extends Controller
         }
         $bank_account= ChefBankAccount::where('chef_id','=',$chef->id)->get();
 
+        dd($orderPlanNames);
         return view('admin.chef')->with([
             'chef'=>$chef,
             'orderPlanNames'=>$orderPlanNames,
