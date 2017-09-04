@@ -380,16 +380,10 @@ class FoodieOrderPlanController extends Controller
 
         $cartChefs = [];
 
-        $mailHTML ='<table>';
-        $mailHTML .='<tr>';
-        $mailHTML .='<td>Name</td>';
-        $mailHTML .='<td>Chef</td>';
-        $mailHTML .='<td>Quantity</td>';
-        $mailHTML .='<td>Price</td>';
-        $mailHTML .='<td>Type</td>';
-        $mailHTML .='<td>Week</td>';
-        $mailHTML .='</tr>';
-
+        $mailHTML =[];
+        $mailChefHTML='';
+        $mailNameHTML='';
+        $mailTypeHTML='';
         foreach($cartItems as $cartItem){
             $orderItem = new OrderItem();
             $orderItem->order_id = $order->id;
@@ -399,26 +393,31 @@ class FoodieOrderPlanController extends Controller
             $orderItem->quantity = $cartItem->qty;
             $orderItem->price = $cartItem->price;
             $orderItem->save();
-            $mailHTML.='<tr>';
-            $mailHTML.='<td>'.$cartItem->name.'</td>';
+            $mailNameHTML.=$cartItem->name;
+            $mailQtyHTML=$cartItem->qty;
+            $mailPriceHTML=$cartItem->price;
             foreach($chefs as $chef){
                 if($chef->id==$cartItem->options->chef){
-                    $mailHTML.='<td>'.$chef->name.'</td>';
+                    $mailChefHTML.=$chef->name;
                 }
             }
-            $mailHTML.='<td>'.$cartItem->qty.'</td>';
-            $mailHTML.='<td>'.$cartItem->price.'</td>';
             if($cartItem->options->cust==0){
-                $mailHTML.='<td>Standard</td>';
+                $mailTypeHTML='Standard';
             }elseif($cartItem->options->cust==1){
-                $mailHTML.='<td>Customized</td>';
+                $mailTypeHTML='Customized';
             }
-            $mailHTML.='<td>'.$cartItem->options->date.'</td>';
-            $mailHTML.='</tr>';
+//            $mailDateHTML=$cartItem->options->date;
             $cartChefs[] = $cartItem->options->chef;
+            $mailHTML[]= array([
+                'name'=>$mailNameHTML,
+                'qty'=>$mailQtyHTML,
+                'price'=>$mailPriceHTML,
+                'chef'=>$mailChefHTML,
+                'type'=>$mailTypeHTML,
+                'date'=>$thisSaturday
+            ]);
         }
 
-        $mailHTML.='</table>';
 
 
         $price = Cart::total();

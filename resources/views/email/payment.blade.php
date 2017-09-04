@@ -9,7 +9,10 @@
 </head>
 <body>
     <h1>Payment Successful</h1>
-    <p>You have confirmed order for: </p>
-    <p>Amount: {{$amount}}</p>
+    <div>
+        <p>Hello, this is DietSelect!</p>
+        <p>You have confirmed order!</p>
+        <p>Amount: {{$amount}}</p>
+    </div>
 </body>
 </html>

@@ -9,9 +9,11 @@
 </head>
 <body>
 <h1>{{$foodieName}} has ordered:</h1>
-@foreach($planName as $plan)
-    <p>-{{$plan}}</p>
-@endforeach
+<ul>
+    @foreach($planName as $plan)
+        <li>{{$plan}}</li>
+    @endforeach
+</ul>
 <p>Total: {{$price}}</p>
 </body>
 </html>
