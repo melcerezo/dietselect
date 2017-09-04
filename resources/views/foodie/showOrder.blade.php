@@ -33,10 +33,10 @@
                                 @foreach($orderPlans as $orderPlan)
                                     @if($orderPlan->id == $orderItem->plan_id)
                                         @if($orderItem->order_type==0)
-                                            <td>{{$orderPlan->plan_name}}</td>
+                                            <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></td>
                                             <td>{{$orderPlan->chef->name}}</td>
                                         @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
-                                            <td><a href="{{route('foodie.order.simpCust', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
+                                            <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
                                             <td>{{$orderPlan->plan->chef->name}}</td>
                                         @endif
                                     @endif
