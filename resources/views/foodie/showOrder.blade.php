@@ -55,7 +55,7 @@
         </div>
         @unless($order->is_cancelled==1)
         <div class="row">
-            @unless($order->is_paid==1 || $foodieAddress==null || $orderAddress==null)
+            @unless($order->is_paid==1 || count($foodieAddress)==0 || $orderAddress==null)
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m3 center">
@@ -86,7 +86,7 @@
             @endunless
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-            @if($order->is_paid==0 && $foodieAddress!=null && $orderAddress!=null)
+            @if($order->is_paid==0 && count($foodieAddress)>0 && $orderAddress!=null)
                 <div class="col s12 offset-m2 m4">
             @else
                 <div class="col s12 m4 offset-m8 right">
@@ -122,7 +122,7 @@
                             @endif
                         @else
                             <div>
-                                @if($foodieAddress==null)
+                                @if(count($foodieAddress)==0)
                                     <a href="{{route('foodie.profile')}}">
                                         <span>No Address Available. Please add one so we can deliver to you!</span>
                                     </a>

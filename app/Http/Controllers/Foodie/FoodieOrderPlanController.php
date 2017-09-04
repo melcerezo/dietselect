@@ -733,7 +733,6 @@ class FoodieOrderPlanController extends Controller
         }
 //        dd($orderPlans[0]->chef->bank_account);
         $foodieAddress= DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
-        dd($foodieAddress);
         $orderAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $chefs=Chef::all();
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read','=',0)->get();
