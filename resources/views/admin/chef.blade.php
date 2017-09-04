@@ -186,80 +186,83 @@
                                     </table>
                                 </div>
                             </div>
-                            <div class="col s12 m6">
-                                <div class="card-panel">
-                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                        <div>
-                                            <span>
-                                                Cancelled Orders
-                                            </span>
+                        </div>
+                        <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="card-panel">
+                                        <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                            <div>
+                                                <span>
+                                                    Cancelled Orders
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <table class="responsive-table centered" style="table-layout: fixed;">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Plan Name</th>
-                                            <th>Quantity</th>
-                                            <th>Amount</th>
-                                            <th>Type</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($orderPlanNames as $orderItem)
-                                            @if($orderItem['is_cancelled']==1)
-                                                <tr>
-                                                    <td>{{$orderItem['id']}}</td>
-                                                    <td>
-                                                        {{$orderItem['plan_name']}}
-                                                    </td>
-                                                    <td>{{$orderItem['quantity']}}</td>
-                                                    <td>{{'PHP'.$orderItem['price']}}</td>
-                                                    <td>
-                                                        {{$orderItem['type']}}
-                                                    </td>
-                                                </tr>
-                                            @endif
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            <div class="col s12 m6">
-                                <div class="card-panel">
-                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                        <div>
-                                            <span>
-                                                Commission
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <table class="responsive-table centered" style="table-layout: fixed;">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Amount</th>
-                                            <th>Status</th>
-                                            <th>Date</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach($commissions as $commission)
-                                                <tr>
-                                                    <td>{{$commission->id}}</td>
-                                                    <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
-                                                    <td>
-                                                        @if($commission->paid==0)
-                                                            <span>Unpaid</span>
-                                                        @elseif($commission->paid==1)
-                                                            <span>Paid</span>
-                                                        @endif
-                                                    </td>
-                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                </tr>
+                                        <table class="responsive-table centered" style="table-layout: fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Plan Name</th>
+                                                <th>Quantity</th>
+                                                <th>Amount</th>
+                                                <th>Type</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($orderPlanNames as $orderItem)
+                                                @if($orderItem['is_cancelled']==1)
+                                                    <tr>
+                                                        <td>{{$orderItem['id']}}</td>
+                                                        <td>
+                                                            {{$orderItem['plan_name']}}
+                                                        </td>
+                                                        <td>{{$orderItem['quantity']}}</td>
+                                                        <td>{{'PHP'.$orderItem['price']}}</td>
+                                                        <td>
+                                                            {{$orderItem['type']}}
+                                                        </td>
+                                                    </tr>
+                                                @endif
                                             @endforeach
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                <div class="col s12 m6">
+                                    <div class="card-panel">
+                                        <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                            <div>
+                                                <span>
+                                                    Commission
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <table class="responsive-table centered" style="table-layout: fixed;">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Amount</th>
+                                                <th>Status</th>
+                                                <th>Date</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                @foreach($commissions as $commission)
+                                                    <tr>
+                                                        <td>{{$commission->id}}</td>
+                                                        <td>{{'PHP'.number_format($commission->amount,2,'.','')}}</td>
+                                                        <td>
+                                                            @if($commission->paid==0)
+                                                                <span>Unpaid</span>
+                                                            @elseif($commission->paid==1)
+                                                                <span>Paid</span>
+                                                            @endif
+                                                        </td>
+                                                        <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
