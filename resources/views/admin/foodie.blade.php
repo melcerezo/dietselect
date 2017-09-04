@@ -25,10 +25,10 @@
         $(document).ready(function () {
             $('a.frz').on('click', function () {
                 $('#loadWait').show();
-            })
+            });
             $('a.unfrz').on('click', function () {
                 $('#loadWait').show();
-            })
+            });
         })
     </script>
 @endsection
