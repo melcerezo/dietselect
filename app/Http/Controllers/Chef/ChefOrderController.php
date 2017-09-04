@@ -111,7 +111,7 @@ class ChefOrderController extends Controller
         DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->select('id','city','unit','street','brgy','bldg','type')->get();
         $orderAddress=DB::table('foodie_address')->where('id','=',$orderItem->order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
 //        dd($orderAddress);
-        $allergies = $foodie->allergy->get();
+        $allergies = $foodie->allergy()->get();
         dd($allergies);
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
         $orderMealPlans = [];
