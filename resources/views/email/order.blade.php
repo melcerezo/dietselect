@@ -25,19 +25,19 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($chefOrderPlans as $chefOrderPlan)
+                @foreach($mailHTML as $item)
                     <tr>
-                        <td>{{$mailHTML['name']}}</td>
-                        <td>{{$mailHTML['chef']}}</td>
-                        <td>{{$mailHTML['type']}}</td>
-                        <td>{{$mailHTML['qty']}}</td>
-                        <td>{{$mailHTML['price']}}</td>
+                        <td>{{$item['name']}}</td>
+                        <td>{{$item['chef']}}</td>
+                        <td>{{$item['type']}}</td>
+                        <td>{{$item['qty']}}</td>
+                        <td>{{$item['price']}}</td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
     <p>Total: {{$price}}</p>
-    <p>Please pay before {{$mailHTML['date']}}</p>
+    <p>Please pay before {{$mailHTML[0]['date']}}</p>
 </body>
 </html>
