@@ -88,7 +88,7 @@
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             @if($order->is_paid==0)
                 <div class="col s12 offset-m2 m4">
-            @else
+            @elseif($order->is_paid==1 || $foodieAddress==null || $orderAddress==null)
                 <div class="col s12 m4 offset-m8 right">
             @endif
                 <ul class="collection" style="margin: 0;">
