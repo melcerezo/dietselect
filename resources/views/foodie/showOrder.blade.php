@@ -55,7 +55,7 @@
         </div>
         @unless($order->is_cancelled==1)
         <div class="row">
-            @unless($order->is_paid==1 || $foodieAddress==null)
+            @unless($order->is_paid==1 || $foodieAddress==null || $orderAddress==null)
                 <div class="col s12 m6">
                     <div class="row">
                         <div class="col s12 m3 center">
