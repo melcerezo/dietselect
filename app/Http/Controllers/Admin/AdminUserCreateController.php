@@ -60,12 +60,17 @@ class AdminUserCreateController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $this->create($request->all());
-
+        $this->guard()->login($this->create($request->all()));
         $this->createSmsVerification();
+        $this->guard()->logout();
 
         return back()->with([
             'status' => 'Foodie successfully registered!',
         ]);
+    }
+
+    public function guard()
+    {
+        return Auth::guard('foodie');
     }
 }

@@ -63,16 +63,19 @@ class AdminVendorCreateController extends Controller
     {
         $this->validator($request->all())->validate();
 
-        $this->create($request->all());
+        $this->guard()->login($this->create($request->all()));
 
         $this->createsSmsVerification();
         $this->createsEmailVerification($request['email']);
-
+        $this->guard()->logout();
 
         return redirect()->back()->with([
             'status' => 'Chef successfully created!',
         ]);
     }
 
-
+    public function guard()
+    {
+        return Auth::guard('chef');
+    }
 }

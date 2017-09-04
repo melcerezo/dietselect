@@ -206,7 +206,6 @@ trait   VerifiesSms
      */
     public function mobile_number()
     {
-        dd(Auth::guard($this->guard)->user());
         return Auth::guard($this->guard)->user()->mobile_number;
     }
 }
