@@ -393,12 +393,12 @@ class FoodieOrderPlanController extends Controller
             $orderItem->quantity = $cartItem->qty;
             $orderItem->price = $cartItem->price;
             $orderItem->save();
-            $mailNameHTML.=$cartItem->name;
+            $mailNameHTML=$cartItem->name;
             $mailQtyHTML=$cartItem->qty;
             $mailPriceHTML=$cartItem->price;
             foreach($chefs as $chef){
                 if($chef->id==$cartItem->options->chef){
-                    $mailChefHTML.=$chef->name;
+                    $mailChefHTML=$chef->name;
                 }
             }
             if($cartItem->options->cust==0){
