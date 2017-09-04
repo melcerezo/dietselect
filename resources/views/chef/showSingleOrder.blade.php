@@ -812,7 +812,15 @@
                     </li>
                     <li class="collection-item">Address:
                         @unless($orderAddress==null)
-                            {{$orderAddress}}
+                            <div>
+                                <span>{{$orderAddress->unit}}</span>
+                                @unless($orderAddress->bldg=='')
+                                    <span> {{$orderAddress->bldg}}, </span>
+                                @endunless
+                                <span>{{$orderAddress->street}}, </span>
+                                <span>{{$orderAddress->brgy}}, </span>
+                                <span>{{$orderAddress->city}}</span>
+                            </div>
                         @endunless
                     </li>
                 </ul>
