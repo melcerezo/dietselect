@@ -408,14 +408,14 @@ class FoodieOrderPlanController extends Controller
             }
 //            $mailDateHTML=$cartItem->options->date;
             $cartChefs[] = $cartItem->options->chef;
-            $mailHTML[]= array([
+            $mailHTML[]= [
                 'name'=>$mailNameHTML,
                 'qty'=>$mailQtyHTML,
                 'price'=>$mailPriceHTML,
                 'chef'=>$mailChefHTML,
                 'type'=>$mailTypeHTML,
                 'date'=>$thisSaturday
-            ]);
+            ];
         }
         dd($mailHTML);
 
