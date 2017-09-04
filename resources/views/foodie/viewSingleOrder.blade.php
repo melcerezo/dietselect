@@ -791,7 +791,7 @@
                             @endforeach
                         </ul>
                     @endif
-                    @endif
+                @endif
                 </div>
             </div>
             @unless(count($mealPlans)==0)
