@@ -122,7 +122,6 @@ class AdminController extends Controller
         }
         $bank_account= ChefBankAccount::where('chef_id','=',$chef->id)->get();
 
-        dd($orderPlanNames);
         return view('admin.chef')->with([
             'chef'=>$chef,
             'orderPlanNames'=>$orderPlanNames,
