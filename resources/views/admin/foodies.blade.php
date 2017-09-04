@@ -136,7 +136,9 @@
             </div>
         </div>
         <div class="row">
-            <button data-target="foodie-reg-form-modal" class="btn waves-effect waves-light modal-trigger">Create Foodie</button>
+            <div class="col s12 offset-m2">
+                <button data-target="foodie-reg-form-modal" class="btn waves-effect waves-light modal-trigger">Create Foodie</button>
+            </div>
         </div>
     </div>
 

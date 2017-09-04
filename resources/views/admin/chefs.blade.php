@@ -128,7 +128,9 @@
             </div>
         </div>
         <div class="row">
-            <button data-target="registration" class="btn waves-effect waves-light modal-trigger">Create Chef</button>
+            <div class="col s12 offset-m2">
+                <button data-target="registration" class="btn waves-effect waves-light modal-trigger">Create Chef</button>
+            </div>
         </div>
     </div>
 
