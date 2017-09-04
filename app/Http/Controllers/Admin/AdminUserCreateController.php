@@ -45,7 +45,8 @@ class AdminUserCreateController extends Controller
             'first_name' => $data['first_name'],
             'mobile_number' => $data['mobile_number'],
             'email' => $data['registration_email'],
-            'password' => bcrypt($data['password'])
+            'password' => bcrypt($data['password']),
+            'joined_newsletter' => 0,
         ]);
     }
 
