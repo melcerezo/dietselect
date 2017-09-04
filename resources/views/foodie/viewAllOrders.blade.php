@@ -208,8 +208,11 @@
                                 @endif
                             @endforeach
                             <div class="row">
-                                <div class="col s12">
+                                <div class="col s12 m4">
                                     <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
+                                </div>
+                                <div class="col s12 m4">
+                                    <a href="{{route('foodie.order.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100; width:100%;">Details</a>
                                 </div>
                             </div>
                         </div>
