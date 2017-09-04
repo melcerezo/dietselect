@@ -359,7 +359,7 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type=1;
         $foodnotif->save();
 
-        $messageFoodie = 'Your order has been placed. Please pay your balance of: PHP';
+        $messageFoodie = 'Greetings from DietSelect! Your order has been placed. Please pay your balance of: PHP';
         $messageFoodie.= $order->total.' before '. $thisSaturday;
         $foodiePhoneNumber = '0'.$foodie->mobile_number;
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -456,7 +456,7 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->save();
 
             $phoneChef = Chef::where('id','=', $orderChef)->select('mobile_number')->first();
-            $message = $foodie->first_name.' '.$foodie->last_name.' has ordered: ';
+            $message = 'Greetings from DietSelect! '.$foodie->first_name.' '.$foodie->last_name.' has ordered: ';
             foreach($planName as $pName){
                 $message.= $pName.' ';
             }
