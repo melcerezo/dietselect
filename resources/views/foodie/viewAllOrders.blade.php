@@ -93,8 +93,11 @@
                             @endif
                         @endforeach
                         <div class="row">
-                            <div class="col s12">
+                            <div class="col s12 m3">
                                 <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
+                            </div>
+                            <div class="col s12 m3">
+                                <a href="{{route('foodie.orderAll.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100;">Cancel</a>
                             </div>
                         </div>
                     </div>
@@ -212,7 +215,7 @@
                                     <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                                 </div>
                                 <div class="col s12 m3">
-                                    <a href="{{route('foodie.order.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100;">Cance</a>
+                                    <a href="{{route('foodie.orderAll.cancel', $order->id)}}" class="btn btn-primary waves-effect waves-light red" style="font-weight: 100;">Cancel</a>
                                 </div>
                             </div>
                         </div>

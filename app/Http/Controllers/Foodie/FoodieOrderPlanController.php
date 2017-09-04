@@ -821,6 +821,53 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
+    public function cancelAllOrder(Order $order)
+    {
+        $foodie = Auth::guard('foodie')->user();
+        $orderItems = $order->order_item()->get();
+        $orderChef=[];
+        foreach($orderItems as $orderItem){
+            if($orderItem->order_type==0){
+                $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                $orderChef[]=$orderPlan->chef->id;
+            }elseif($orderItem->order_type==0){
+                $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                $orderChef[]=$orderPlan->plan->chef->id;
+            }
+        }
+
+        $uniqueChef = array_unique($orderChef);
+
+        foreach($uniqueChef as $chef){
+            $chefnotif=new Notification();
+            $chefnotif->sender_id=0;
+            $chefnotif->receiver_id=$chef;
+            $chefnotif->receiver_type='c';
+            $chefnotif->notification=$foodie->first_name.' '.$foodie->last_name .' has cancelled their order.';
+            $chefnotif->notification_type=3;
+//        dd($chefnotif);
+            $chefnotif->save();
+        }
+//        $chef = $order->chef->id;
+//        dd($chef);
+        $order->is_cancelled = 1;
+        $order->save();
+
+        $foodnotif = new Notification();
+        $foodnotif->sender_id=0;
+        $foodnotif->receiver_id=$foodie->id;
+        $foodnotif->receiver_type='f';
+        $foodnotif->notification='You have cancelled your order.';
+//        $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
+        $foodnotif->notification_type=3;
+//        dd($foodnotif);
+        $foodnotif->save();
+
+        return redirect() ->route('foodie.order.view', ['from'=>3])->with([
+            'status'=>'You have cancelled your order.'
+        ]);
+    }
+
     public function changeOrderAddress(Request $request, $id)
     {
         Validator::make($request->all(), [
