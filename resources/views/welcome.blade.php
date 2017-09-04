@@ -338,8 +338,8 @@
     <footer>
         <div class="container center">
             <button class="home" type="button" onclick="window.location='{{ route('welcome') }}'"><i class="fa fa-home"></i></button>
-            <button class="fb" type="button"><i class="fa fa-facebook-f"></i></button>
-            <button class="email" type="button"><i class="fa fa-envelope fb"></i></button>
+            {{--<button class="fb" type="button"><i class="fa fa-facebook-f"></i></button>--}}
+            {{--<button class="email" type="button"><i class="fa fa-envelope fb"></i></button>--}}
             <button class="partner modal-trigger" type="button" data-target="admin-modal"><i class="fa fa-apple"></i></button>
         </div>
     </footer>
