@@ -783,7 +783,9 @@
                         </table>
                     @elseif($orderItem->order_type==2)
                         <ul class="collection">
-                            <li class="collection-item"></li>
+                            <li class="collection-item">
+                                <span class="collection-header">Simple Customization</span>
+                            </li>
                             @foreach($orderPlan->simple_custom_detail()->get() as $detail)
                                 <li class="collection-item">{{'NO '.$detail->detail}}</li>
                             @endforeach
