@@ -265,15 +265,19 @@ class AdminController extends Controller
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
 
-        dd($orderAddress);
 
-        $orderAddress = $foodieAddress->unit;
-        if($foodieAddress->bldg!=''){
-            $orderAddress.=' '.$foodieAddress->bldg.', ';
+        if($foodieAddress!=null){
+
+            $orderAddress = $foodieAddress->unit;
+            if($foodieAddress->bldg!=''){
+                $orderAddress.=' '.$foodieAddress->bldg.', ';
+            }
+            $orderAddress.= ' '.$foodieAddress->street;
+            $orderAddress.= ', '.$foodieAddress->brgy;
+            $orderAddress.= ' '.$foodieAddress->city;
+        }else{
+            $orderAddress="none";
         }
-        $orderAddress.= ' '.$foodieAddress->street;
-        $orderAddress.= ', '.$foodieAddress->brgy;
-        $orderAddress.= ' '.$foodieAddress->city;
 
         foreach($orderItems as $orderItem){
             $orderPlan = "";
