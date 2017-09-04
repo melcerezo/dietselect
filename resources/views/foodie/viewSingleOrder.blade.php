@@ -837,7 +837,9 @@
                     @endforeach
                 @endif
             @endunless
-
+            <div class="row">
+                <a href="{{route('order.show',$orderItem->order->id)}}" class="btn waves-effect waves-light">Back to Order</a>
+            </div>
         </div>
 
 
