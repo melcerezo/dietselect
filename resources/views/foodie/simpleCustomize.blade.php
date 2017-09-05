@@ -15,9 +15,8 @@
     </script>
 @endsection
 @section('page_content')
-    <div class="container">
+    <div class="container" style="margin-top: 0.5rem;">
         <div class="row">
-
             <table class="striped centered responsive-table" style="table-layout: fixed;">
                 <thead class="light-green white-text" style="border: none;">
                 <tr>
