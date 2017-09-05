@@ -99,7 +99,7 @@ class ChefController extends Controller
                     'address_id'=>$orderItem->order->address_id,'type'=>$type);
             }
         }
-        dd($pendingOrders);
+//        dd($pendingOrders);
 
 
 
