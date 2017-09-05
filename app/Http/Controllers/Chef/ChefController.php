@@ -77,10 +77,10 @@ class ChefController extends Controller
 
 
 
-        dd($pendingOrderItems);
+//        dd($pendingOrderItems);
 
         foreach($pendingOrderItems as $orderItem){
-            if($orderItem->order->is_paid == 1){
+            if($orderItem->order->is_paid == 1 && $orderItem->order->is_cancelled!=1){
 
                 $planName="";
                 $type="";
@@ -99,7 +99,7 @@ class ChefController extends Controller
                     'address_id'=>$orderItem->order->address_id,'type'=>$type);
             }
         }
-//        dd($pendingOrders);
+        dd($pendingOrders);
 
 
 
