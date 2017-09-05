@@ -841,7 +841,7 @@
                 @if($orderItem->order->is_paid==0)
                     <a href="{{route('order.show',$orderItem->order->id)}}" class="btn waves-effect waves-light">Back to Order</a>
                 @elseif($orderItem->order->is_paid==1)
-                    <a href="{{route('foodie.order.view', ['from'=>0])}}" class="btn waves-effect waves-light">Back to Orders</a>
+                    <a href="{{route('order.show',$orderItem->order->id)}}" class="btn waves-effect waves-light">Back to Order</a>
                 @endif
             </div>
         </div>

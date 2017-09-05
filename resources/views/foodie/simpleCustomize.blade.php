@@ -562,7 +562,7 @@
                         </ul>
                         <div class="editButton">
                             <span>
-                                <button data-target="editMeal-{{$id}}" class="btn waves-effect waves-light modal-trigger">Edit</button>
+                                <button data-target="editMeal-{{$id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>
                             </span>
                         </div>
                     </div>
@@ -583,26 +583,37 @@
                 </div>
             </nav>
             <div class="modal-content">
+                <div>
+                    <ul class="collection">
+                        <li class="collection-item light-green white-text">
+                            <span class="collection-header">Meal Stats</span>
+                        </li>
+                        <li class="collection-item">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</li>
+                        <li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>
+                        <li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>
+                        <li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>
+                    </ul>
+                </div>
+                <div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Grams</th>
+                            <th>Customized</th>
+                        </tr>
+                        </thead>
+                        <tbody id="m{{$mealPlan->id}}">
+                        </tbody>
+                    </table>
+                </div>
+
+
+
                 <form id="editMeal{{$id}}"
                       {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
                       method="post" autocomplete="off" class="editMeal">
                     {{csrf_field()}}
-                    <h5>Meal Stats:</h5>
-                    <div>
-                        Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}
-                    </div>
-                    <div>
-                        Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g
-                    </div>
-                    <div>
-                        Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g
-                    </div>
-                    <div>
-                        Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g
-                    </div>
-
-
-
                 </form>
             </div>
         </div>
