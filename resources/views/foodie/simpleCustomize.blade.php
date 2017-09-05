@@ -589,16 +589,16 @@
                     {{csrf_field()}}
                     <h5>Meal Stats:</h5>
                     <div>
-                        Calories: {{round($cust->calories,2)}}
+                        Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}
                     </div>
                     <div>
-                        Carbohydrates: {{round($cust->carbohydrates,2)}}g
+                        Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g
                     </div>
                     <div>
-                        Protein: {{round($cust->protein,2)}}g
+                        Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g
                     </div>
                     <div>
-                        Fat: {{round($cust->fat,2)}}g
+                        Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g
                     </div>
 
 
