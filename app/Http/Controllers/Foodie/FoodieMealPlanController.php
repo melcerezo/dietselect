@@ -199,9 +199,9 @@ class FoodieMealPlanController extends Controller
     {
         $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id);
 
-//        $simpleCustomMeals = $si
+        $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal;
 
-        dd($id);
+        dd($simpleCustomMeals);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
