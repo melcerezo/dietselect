@@ -6,51 +6,57 @@
     <script src="/js/foodie/planSelect.js" defer></script>
 @endsection
 @section('page_content')
-    <div class="container plSlCntr">
-        <div class="row">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px;">Plans</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+    @if($sms_unverified)
+        <div>
+            Please verify your phone number before ordering any plans.
         </div>
-        <div class="row">
-            @if($plans->count()>0)
-                @foreach($plans->chunk(3) as $chunk)
-                    <div class="row">
-                        @foreach($chunk as $plan)
-                            <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
-                                <div class="col s12 m4">
-                                    <div>
-                                       <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
-                                    </div>
-                                    <div class="plSlCnt">
-                                        <div class="plSlCntTtl">
-                                            <span>{{$plan->plan_name}}</span>
-                                        </div>
-                                        <div class="plSlCntChf">
-                                            <span>By: </span><span>{{$plan->chef->name}}</span>
-                                        </div>
-                                        <div class="plSlCntDes">
-                                            <p>{{$plan->description}}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        @endforeach
+    @else
+        <div class="container plSlCntr">
+            <div class="row">
+                <nav class="light-green lighten-1 white-text">
+                    <div class="left col s12">
+                        <ul>
+                            <li>
+                                <span style="font-size: 20px;">Plans</span>
+                            </li>
+                        </ul>
                     </div>
-                @endforeach
-            @else
-                <div>
-                    <span>No Plans Yet for the coming Week!</span>
-                </div>
-            @endif
+                </nav>
+            </div>
+            <div class="row">
+                @if($plans->count()>0)
+                    @foreach($plans->chunk(3) as $chunk)
+                        <div class="row">
+                            @foreach($chunk as $plan)
+                                <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
+                                    <div class="col s12 m4">
+                                        <div>
+                                           <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
+                                        </div>
+                                        <div class="plSlCnt">
+                                            <div class="plSlCntTtl">
+                                                <span>{{$plan->plan_name}}</span>
+                                            </div>
+                                            <div class="plSlCntChf">
+                                                <span>By: </span><span>{{$plan->chef->name}}</span>
+                                            </div>
+                                            <div class="plSlCntDes">
+                                                <p>{{$plan->description}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            @endforeach
+                        </div>
+                    @endforeach
+                @else
+                    <div>
+                        <span>No Plans Yet for the coming Week!</span>
+                    </div>
+                @endif
+            </div>
         </div>
-    </div>
+    @endif
 @endsection
 
 

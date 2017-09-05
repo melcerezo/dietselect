@@ -50,7 +50,7 @@ class FoodieMealPlanController extends Controller
         $plans = Plan::where('created_at','>',$lastSaturday)->where('lockPlan','=',1)->where('is_banned','=',0)->get();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
 
-        dd($this->smsIsUnverified());
+//        dd($this->smsIsUnverified());
 
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
