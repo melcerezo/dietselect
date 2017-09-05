@@ -197,11 +197,9 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
-
-
         $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal()->get();
 
-        dd($simpleCustomMeals);
+        dd($simpleCustomMeals[0]->chefcustomize);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -213,7 +211,17 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
-        return view('foodie.simpleCustomize');
+        return view('foodie.simpleCustomize')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
+            'foodie' => Auth::guard('foodie')->user(),
+            'chats' => $chats,
+            'notifications'=>$notifications,
+            'unreadNotifications'=>$unreadNotifications,
+            'messages' => $messages,
+            'chefs' => $chefs,
+            'simpleCustomPlan'=>$simpleCustomPlan,
+            'simpleCustomMeals'=>$simpleCustomMeals
+        ]);
     }
 
     public function simpleMake(Plan $plan, Request $request)
