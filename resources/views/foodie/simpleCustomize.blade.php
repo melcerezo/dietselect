@@ -562,7 +562,7 @@
                         </ul>
                         <div class="editButton">
                             <span>
-                                <button data-target="editMeal-{{$id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>
+                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>
                             </span>
                         </div>
                     </div>
@@ -603,7 +603,7 @@
                             <th>Customized</th>
                         </tr>
                         </thead>
-                        <tbody id="m{{$mealPlan->id}}">
+                        <tbody id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
                         </tbody>
                     </table>
                 </div>
