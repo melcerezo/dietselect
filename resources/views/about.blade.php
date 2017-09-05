@@ -25,8 +25,8 @@
                             <li class="collection-item light-green white-text">
                                 <span class="collection-header">About</span>
                             </li>
-                            <li class="collection-item"><a href="{{route('disclaimer')}}"></a></li>
-                            <li class="collection-item"><a href="{{route('faq')}}"></a></li>
+                            <li class="collection-item"><a href="{{route('disclaimer')}}">Disclaimer</a></li>
+                            <li class="collection-item"><a href="{{route('faq')}}">FAQ</a></li>
                         </ul>
                     </div>
                 </div>
