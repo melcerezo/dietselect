@@ -342,7 +342,7 @@
             <script>
                 $(document).ready(function () {
                     $('#faq').on('click', function () {
-                        window.location.href = "{{route('faq')}}";
+                        window.location.href = "{{route('about')}}";
                     });
                 });
             </script>

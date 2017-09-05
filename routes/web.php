@@ -21,6 +21,8 @@ Route::get('/', 'PagesController@welcome')->name('welcome');
 
 Route::get('/faq', 'PagesController@faq')->name('faq');
 
+Route::get('/faq', 'PagesController@about')->name('about');
+
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
 
 Route::group(['prefix' => 'foodie'], function () {
