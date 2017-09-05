@@ -197,9 +197,16 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
+        $mealPlans = $simpleCustomPlan->plan->mealplans()
+            ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
+            ->get();
+
         $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal()->get();
 
-        dd($simpleCustomMeals[0]->chef_customized_meal->mealplans);
+//        dd($simpleCustomMeals[0]->chef_customized_meal->mealplans);
+        $saMeals = $mealPlans->where('day','=','SA')->count();
+        $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
+        $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -220,7 +227,10 @@ class FoodieMealPlanController extends Controller
             'messages' => $messages,
             'chefs' => $chefs,
             'simpleCustomPlan'=>$simpleCustomPlan,
-            'simpleCustomMeals'=>$simpleCustomMeals
+            'simpleCustomMeals'=>$simpleCustomMeals,
+            'saMeals'=>$saMeals,
+            'moSnaMeals'=>$moSnaMeals,
+            'aftSnaMeals'=>$aftSnaMeals
         ]);
     }
 
