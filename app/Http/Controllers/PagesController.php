@@ -13,4 +13,8 @@ class PagesController extends Controller
     {
         return view('faq');
     }
+    public function disclaimer()
+    {
+        return view('disclaimer');
+    }
 }
