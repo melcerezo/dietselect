@@ -571,7 +571,7 @@
         </div>
     </div>
 
-    @foreach($simpleCustomMeals as $simpleCustomMeal)
+    @foreach($simpleCustomMeals as $i=>$simpleCustomMeal)
         <div id="editMeal-{{$i}}" class="editFoodieCustModal modal">
             <nav class="light-green lighten-1 white-text">
                 <div class="left col s12 m5 l5">
