@@ -17,6 +17,7 @@ use App\Plan;
 use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\SimpleCustomDetail;
+use App\SimpleCustomMeal;
 use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -175,6 +176,30 @@ class FoodieMealPlanController extends Controller
 
     public function viewSimpleCustomize(Plan $plan)
     {
+        $simpleCustomPlan=new SimpleCustomPlan();
+        $simpleCustomPlan->foodie_id=Auth::guard('foodie')->user()->id;
+        $simpleCustomPlan->plan_id=$plan->id;
+        $simpleCustomPlan->save();
+
+        $mealPlans = $plan->mealplans()
+            ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
+            ->get();
+
+        foreach($mealPlans as $mealPlan){
+            $simpleCustomMeal = new SimpleCustomMeal();
+            $simpleCustomMeal->simple_custom_plan_id = $simpleCustomPlan->id;
+            $simpleCustomMeal->chef_customized_meal_id = $mealPlan->chefcustomize->id;
+            $simpleCustomMeal->save();
+        }
+
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomPlan->id);
+    }
+
+    public function simpleCustomizeView(SimpleCustomPlan $simpleCustomPlan)
+    {
+        $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal()->get();
+
+        dd($simpleCustomMeals);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -186,16 +211,7 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
-        return view('foodie.simpleCustomize')->with([
-            'foodie'=>Auth::guard('foodie')->user(),
-            'sms_unverified' => $this->smsIsUnverified(),
-            'messages' => $messages,
-            'chats' => $chats,
-            'notifications'=>$notifications,
-            'unreadNotifications'=>$unreadNotifications,
-            'chefs' => $chefs,
-            'plan'=>$plan
-        ]);
+        return back();
     }
 
     public function simpleMake(Plan $plan, Request $request)
