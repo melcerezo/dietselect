@@ -27,6 +27,7 @@
                             </li>
                             <li class="collection-item"><a href="{{route('disclaimer')}}">Disclaimer</a></li>
                             <li class="collection-item"><a href="{{route('faq')}}">FAQ</a></li>
+                            <li class="collection-item">Contact: admin@dietselect.org</li>
                         </ul>
                     </div>
                 </div>
