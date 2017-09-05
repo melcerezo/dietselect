@@ -1,4 +1,41 @@
-.secTtl{
-    margin:0 0 5px 0;
-    font-weight: bold;
+.card-panel.plSlMlInf{
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+
+.collection.plSlMlInfCtnt{
+    margin: 0;
+}
+.plSlMlCstBtn{
+    margin-left: 10px;
+}
+.plSlMlInfDef{
+    display: block;
+    margin: 0;
+}
+.plSlMlInfDef{
+    min-height:150px;
+}
+.row .col.m6.plSlMlInfCnt{
+    padding-right:0;
+}
+
+.row .col.plSlCstPlnNm{
+    min-height: 40px;
+    font-size: 20px;
+}
+
+.row .col.plSlCstMlBtn{
+    padding-left: 0;
+}
+.row .col.plSlCstMlInfCnt{
+    padding-right: 0;
+}
+.plSlCstMlInf{
+    min-height: 150px;
+}
+
+.editButton{
+    padding: 10px;
 }
