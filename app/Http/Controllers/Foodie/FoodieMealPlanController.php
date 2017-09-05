@@ -195,7 +195,7 @@ class FoodieMealPlanController extends Controller
         return redirect()->route('foodie.plan.simpleView', ['id'=>$simpleCustomPlan->id]);
     }
 
-    public function simpleCustomizeView($id)
+    public function simpleCustomView($id)
     {
         $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id);
 
