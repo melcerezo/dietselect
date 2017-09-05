@@ -1,6 +1,6 @@
 function ingredAjax(id) {
     return $.ajax({
-        url:'/foodie/ingred/'+id+'/get',
+        url:'/foodie/ingredMeal/'+id+'/get',
         dataType:'json'
     });
 }

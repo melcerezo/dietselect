@@ -399,10 +399,9 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
-    public function getIngred($id){
-        $meal = ChefCustomizedMeal::where('id','=',$id)->first();
+    public function getIngred(ChefCustomizedMeal $chefCustomizedMeal){
 
-        $ingreds = $meal->customized_ingredient_meal()->get();
+        $ingreds = $chefCustomizedMeal->customized_ingredient_meal()->get();
 
         $ingredientMeals = '[';
         $i=0;
