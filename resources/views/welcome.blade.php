@@ -338,7 +338,7 @@
     <footer>
         <div class="container center">
             <button class="home" type="button" onclick="window.location='{{ route('welcome') }}'"><i class="fa fa-home"></i></button>
-            <button id="faq" class="fb" type="button"><i class="fa fa-question"></i></button>
+            <button id="faq" class="fb" type="button"><i class="fa fa-info-circle"></i></button>
             <script>
                 $(document).ready(function () {
                     $('#faq').on('click', function () {
