@@ -27,7 +27,7 @@
                     @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                         @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
                             <a href="#meal{{$id}}"
-                               class="waves-effect waves-light mealLink modal-trigger" data-id="{{$simpleCustomMeal->id}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$simpleCustomMeal->description}}</a>
+                               class="waves-effect waves-light mealLink modal-trigger" data-id="{{$simpleCustomMeal->id}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                             <br />
                             <div id="cu{{$id}}">
                                 @if($simpleCustomMeal->is_customized==1)
