@@ -570,6 +570,42 @@
             </div>
         </div>
     </div>
+
+    @foreach($simpleCustomMeals as $simpleCustomMeal)
+        <div id="editMeal-{{$i}}" class="editFoodieCustModal modal">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12 m5 l5">
+                    <ul>
+                        <li>
+                            <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">Customize {{$simpleCustomMeal->chef_customized_meal->description}}</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="modal-content">
+                <form id="editMeal{{$i}}"
+                      {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
+                      method="post" autocomplete="off" class="editMeal">
+                    {{csrf_field()}}
+                    <h5>Meal Stats:</h5>
+                    <div>
+                        Calories: {{round($cust->calories,2)}}
+                    </div>
+                    <div>
+                        Carbohydrates: {{round($cust->carbohydrates,2)}}g
+                    </div>
+                    <div>
+                        Protein: {{round($cust->protein,2)}}g
+                    </div>
+                    <div>
+                        Fat: {{round($cust->fat,2)}}g
+                    </div>
+
+
+
+                </form>
+            </div>
+    @endforeach
 @endsection
         {{--<div class="row">--}}
             {{--<div class="col s12">--}}
