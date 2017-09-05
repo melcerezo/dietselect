@@ -8,6 +8,11 @@
         <a href="#" class="brand-logo">Diet Select</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
             <li>
+                <a href="{{route('about')}}">
+                    <span style="margin-left: 2px;">About</span>
+                </a>
+            </li>
+            <li>
                 <a href="{{route('welcome')}}">
                     <span style="margin-left: 2px;">Back To Welcome Page</span>
                 </a>
