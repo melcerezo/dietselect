@@ -595,12 +595,11 @@
                     </ul>
                 </div>
                 <div>
-                    <table>
+                    <table style="table-layout: fixed;">
                         <thead>
                         <tr>
                             <th>Ingredient</th>
                             <th>Grams</th>
-                            <th>Customized</th>
                         </tr>
                         </thead>
                         <tbody id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
