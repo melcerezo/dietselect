@@ -15,6 +15,4 @@ class SimpleCustomPlan extends Model
     {
         return $this->hasMany(SimpleCustomMeal::class);
     }
-
-
 }
