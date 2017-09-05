@@ -59,7 +59,7 @@
                         @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                             @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
                                 <a data-meal-active="#viewMeal-{{$id}}"
-                                   class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}>{{$simpleCustomMeal->chef_customized_meal->description}}</a>
+                                   class="waves-effect waves-light data-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                 <br />
                                 <div id="cu{{$id}}">
                                     @if($simpleCustomMeal->is_customized==1)
