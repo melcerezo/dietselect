@@ -571,8 +571,8 @@
         </div>
     </div>
 
-    @foreach($simpleCustomMeals as $i=>$simpleCustomMeal)
-        <div id="editMeal-{{$i}}" class="editFoodieCustModal modal">
+    @foreach($simpleCustomMeals as $id=>$simpleCustomMeal)
+        <div id="editMeal-{{$id}}" class="editFoodieCustModal modal">
             <nav class="light-green lighten-1 white-text">
                 <div class="left col s12 m5 l5">
                     <ul>
@@ -583,7 +583,7 @@
                 </div>
             </nav>
             <div class="modal-content">
-                <form id="editMeal{{$i}}"
+                <form id="editMeal{{$id}}"
                       {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
                       method="post" autocomplete="off" class="editMeal">
                     {{csrf_field()}}
@@ -605,6 +605,7 @@
 
                 </form>
             </div>
+        </div>
     @endforeach
 @endsection
         {{--<div class="row">--}}
