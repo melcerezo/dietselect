@@ -8,4 +8,9 @@ class PagesController extends Controller
     {
         return view('welcome', ['from' => 'welcome']);
     }
+
+    public function faq()
+    {
+        return view('faq');
+    }
 }

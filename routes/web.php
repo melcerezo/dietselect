@@ -19,6 +19,8 @@ Route::get('/testMealPlanner', 'DashController@loadMealPlanner')->name('testMeal
 
 Route::get('/', 'PagesController@welcome')->name('welcome');
 
+Route::get('/faq', 'PagesController@faq')->name('faq');
+
 Route::group(['prefix' => 'foodie'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
