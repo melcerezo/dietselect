@@ -11,9 +11,9 @@ class SimpleCustomPlan extends Model
         return $this->belongsTo(Plan::class);
     }
 
-    public function simple_custom_detail()
+    public function simple_custom_meal()
     {
-        return $this->hasMany(SimpleCustomDetail::class);
+        return $this->hasMany(SimpleCustomMeal::class);
     }
 
 
