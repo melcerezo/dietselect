@@ -192,12 +192,12 @@ class FoodieMealPlanController extends Controller
             $simpleCustomMeal->save();
         }
 
-        return redirect()->route('foodie.plan.simpleView', ['id'=>$simpleCustomPlan->id]);
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomPlan->id);
     }
 
-    public function simpleCustomView($id)
+    public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
-        $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id);
+
 
 //        $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal;
 
