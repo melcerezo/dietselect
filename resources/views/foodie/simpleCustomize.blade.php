@@ -2,6 +2,17 @@
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/foodieSimpleCustomize.css">
     <script src="/js/foodie/foodieSimpleCustomize.js" defer></script>
+    <script>
+        $(document).ready(function () {
+            $(document).on('click','.data-trigger',function () {
+                var $this=$(this);
+                var mealDataID= $this.attr('data-meal-active');
+                $('.plSlMlInf').hide();
+                $('.plSlMlInfDef').hide();
+                $(mealDataID).show();
+            });
+        });
+    </script>
 @endsection
 @section('page_content')
     <div class="container">
