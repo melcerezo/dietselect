@@ -107,14 +107,16 @@ $(document).ready(function () {
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
 
-               if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0 && !produceType.find('#peanut'+id).length){
+               if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
+               || valData[j].ingredient_group=='~1600~') && !produceType.find('#nut'+id).length){
                    produceType.append('<div>' +
-                       '<div id="peanut'+id+'"><span style="font-size: 20px;">Nuts</span></div>' +
-                       '<input type="checkbox" name="peanut" value="peanut" class="filled-in" id="peanut'+id+'" data-error=""/>' +
-                       '<label for="dairy'+id+'">No Peanuts</label><br/>' +
+                       '<div id="nut'+id+'"><span style="font-size: 20px;">Nuts</span></div>' +
+                       '<input type="checkbox" name="nut" value="nut" class="filled-in" id="nut'+id+'" data-error=""/>' +
+                       '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }
             }
+
 
 
 
