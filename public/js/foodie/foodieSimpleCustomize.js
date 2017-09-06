@@ -31,10 +31,10 @@ $(document).ready(function () {
             // meatType.empty();
             // produceType.empty();
             // dairyType.empty();
-                meatType.append('<div></div>');
-                console.log(meatType.has('div').length);
 
-            if($.inArray("~0500~",groupArray)!=-1){
+
+            if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
+                meatType.append('<div></div>');
             }else if($.inArray("~1000~",groupArray)!=-1){
                 meatType.append();
             }else if($.inArray("~1300~",groupArray)!=-1){
