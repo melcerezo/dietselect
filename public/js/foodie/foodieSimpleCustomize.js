@@ -106,8 +106,8 @@ $(document).ready(function () {
                    && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
-                       '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
-                       '<label for="dairy'+id+'">No Dairy/Dairy Products</label><br/>' +
+                       '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairyCheck'+id+'" data-error=""/>' +
+                       '<label for="dairyCheck'+id+'">No Dairy/Dairy Products</label><br/>' +
                        '</div>');
                }
                 // console.log(
@@ -123,7 +123,7 @@ $(document).ready(function () {
                             '<input type="checkbox" name="gluten" value="noGluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
                             '<label for="gluten'+id+'">No Gluten</label><br/>' +
                             '<input type="checkbox" name="wheat" value="wheatOnly" class="filled-in" id="wheat'+id+'" data-error=""/>' +
-                            '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
+                            '<label for="wheat'+id+'">Wheat Products Only</label><br/>' +
                             '</div>');
                             console.log((valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0));
                             console.log((valData[j].ingredient_group=='~2000~')
@@ -138,9 +138,9 @@ $(document).ready(function () {
                     produceType.append('<div id="rice'+id+'">' +
                         '<div ><span style="font-size: 20px;">Rice</span></div>' +
                         '<input type="radio" name="rice" value="whiteRice" class="filled-in" id="white'+id+'" data-error=""/>' +
-                        '<label for="dairy'+id+'">White Rice</label><br/>' +
+                        '<label for="wheat'+id+'">White Rice</label><br/>' +
                         '<input type="radio" name="rice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
-                        '<label for="dairy'+id+'">Brown Rice</label><br/>' +
+                        '<label for="wheat'+id+'">Brown Rice</label><br/>' +
                         '</div>');
                 }
 
