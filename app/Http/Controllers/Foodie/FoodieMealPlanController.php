@@ -265,7 +265,7 @@ class FoodieMealPlanController extends Controller
     {
 
 
-        dd($simpleCustomMeal->simple_custom_plan);
+//        dd($simpleCustomMeal->simple_custom_plan);
 
 
         foreach($request->all() as $value){
@@ -281,7 +281,7 @@ class FoodieMealPlanController extends Controller
         $simpleCustomMeal->is_customized=1;
         $simpleCustomMeal->save();
 
-        return redirect()->route('foodie.plan.simpleView', $simpleCustomMeal->simple_custom_plan()->id)->with([
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomMeal->simple_custom_plan->id)->with([
             'status'=>'Successfully customized the meal!'
         ]);
 //        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
