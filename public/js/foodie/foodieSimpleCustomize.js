@@ -35,6 +35,7 @@ $(document).ready(function () {
 
             if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
+                    '<div><span style="font-size: 20px;">Meat</span></div>' +
                     '<input type="radio" name="foodPref" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
                     '<label for="beef'+id+'">Switch to Beef</label><br/>' +
                     '<input type="radio" name="foodPref" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
@@ -46,6 +47,7 @@ $(document).ready(function () {
                     '</div>');
             }else if($.inArray("~1000~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
+                    '<div><span style="font-size: 20px;">Meat</span></div>' +
                     '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
                     '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
                     '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
@@ -57,6 +59,7 @@ $(document).ready(function () {
                     '</div>');
             }else if($.inArray("~1300~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
+                    '<div><span style="font-size: 20px;">Meat</span></div>' +
                     '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
                     '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
                     '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
