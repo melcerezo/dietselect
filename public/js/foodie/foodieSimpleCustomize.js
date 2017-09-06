@@ -25,16 +25,22 @@ $(document).ready(function () {
             }
 
             var meatType=$('#m'+id).find('div.meatSection');
-            console.log(meatType);
+            var produceType=$('#m'+id).find('div.productSection');
+            var dairyType=$('#m'+id).find('div.dairySection');
+            // console.log(meatType);
+            // meatType.empty();
+            // produceType.empty();
+            // dairyType.empty();
+                meatType.append('<div></div>');
+                console.log(meatType.has('div').length);
 
             if($.inArray("~0500~",groupArray)!=-1){
-
             }else if($.inArray("~1000~",groupArray)!=-1){
-
+                meatType.append();
             }else if($.inArray("~1300~",groupArray)!=-1){
-
+                meatType.append();
             }else if($.inArray("~1500~",groupArray)!=-1){
-
+                meatType.append();
             }
             // $('#m'+id).append(
             //     '<tr>'+
