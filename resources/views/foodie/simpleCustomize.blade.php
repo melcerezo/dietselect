@@ -586,34 +586,40 @@
                 <div>
                     <ul class="collection">
                         <li class="collection-item light-green white-text">
-                            <span class="collection-header">Meal Stats</span>
+                            {{--<span class="collection-header">Meal Stats</span>--}}
+                            <span class="collection-header">Meal Calories</span>
                         </li>
                         <li class="collection-item">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</li>
-                        <li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>
-                        <li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>
-                        <li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>
+                        {{--<li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>--}}
+                        {{--<li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>--}}
+                        {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
                     </ul>
                 </div>
                 <div>
-                    <table style="table-layout: fixed;">
-                        <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Grams</th>
-                        </tr>
-                        </thead>
-                        <tbody id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
-                        </tbody>
-                    </table>
+                    {{--<table style="table-layout: fixed;">--}}
+                        {{--<thead>--}}
+                        {{--<tr>--}}
+                            {{--<th>Ingredient</th>--}}
+                            {{--<th>Grams</th>--}}
+                        {{--</tr>--}}
+                        {{--</thead>--}}
+                        {{--<tbody id="m{{$simpleCustomMeal->chef_customized_meal->id}}">--}}
+                        {{--</tbody>--}}
+                    {{--</table>--}}
+                    <form id="editMeal{{$id}}"
+                          {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
+                          method="post" autocomplete="off" class="editMeal">
+                        {{csrf_field()}}
+                        <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
+
+                        </div>
+                        <button class="btn waves-effect waves-light">Customize</button>
+                    </form>
+
                 </div>
 
 
 
-                <form id="editMeal{{$id}}"
-                      {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
-                      method="post" autocomplete="off" class="editMeal">
-                    {{csrf_field()}}
-                </form>
             </div>
         </div>
     @endforeach

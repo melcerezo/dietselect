@@ -12,24 +12,47 @@ $(document).ready(function () {
 
         // ingreds.fail(console.log(ingreds.statusCode()));
 
+
         ingreds.done(function(response) {
             var valData = response;
             // console.log(valData);
+            var groupArray = [];
+
+
             $('#m'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
-                var cust = "";
-                if(valData[i].is_customized=='0'){
-                    cust = "No";
-                }else if(valData[i].is_customized=='1'){
-                    cust = "Yes";
-                }
-                $('#m'+id).append(
-                    '<tr>'+
-                    '<td>'+valData[i].ingredient+'</td>'+
-                    '<td>'+valData[i].grams+'</td>'+
-                    '</tr>'
-                );
+                groupArray.push(valData[i].ingredient_group);
             }
+
+            console.log(groupArray);
+
+            // $('#m'+id).append(
+            //     '<tr>'+
+            //     '<td>'+valData[i].ingredient+'</td>'+
+            //     '<td>'+valData[i].grams+'</td>'+
+            //     '</tr>'
+            // );
         });
+
+
+        // ingreds.done(function(response) {
+        //     var valData = response;
+        //     // console.log(valData);
+        //     $('#m'+id).empty();
+        //     for(var i=0,l=valData.length;i<l;i++){
+        //         var cust = "";
+        //         if(valData[i].is_customized=='0'){
+        //             cust = "No";
+        //         }else if(valData[i].is_customized=='1'){
+        //             cust = "Yes";
+        //         }
+        //         $('#m'+id).append(
+        //             '<tr>'+
+        //             '<td>'+valData[i].ingredient+'</td>'+
+        //             '<td>'+valData[i].grams+'</td>'+
+        //             '</tr>'
+        //         );
+        //     }
+        // });
     });
 });
