@@ -265,7 +265,7 @@ class FoodieMealPlanController extends Controller
     {
 
 
-        dd($request->all());
+//        dd($request->all());
 
 
         foreach($request->except(['_token']) as $value){
