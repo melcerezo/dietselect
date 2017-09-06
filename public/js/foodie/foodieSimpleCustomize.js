@@ -92,7 +92,7 @@ $(document).ready(function () {
             for(var j=0,m=valData.length;j<m;j++){
                if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")!=-1&& !dairyType.find('#egg'+id).length){
                    dairyType.append('<div>' +
-                       '<div id="egg'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
+                       '<div id="egg'+id+'"><span style="font-size: 20px;">Eggs</span></div>' +
                        '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
