@@ -130,7 +130,7 @@ $(document).ready(function () {
                             && !produceType.find('#carb'+id).length);
                         console.log((valData[j].ingredient_group=='~2000~')
                             && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
-                            && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1);
+                            && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1));
                 }else if((valData[j].ingredient_group=='~2000~')
                     && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
                     && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1)
