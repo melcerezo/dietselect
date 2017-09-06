@@ -577,7 +577,7 @@
     </div>
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
-        <div id="detailCust" class="modal-content">
+        <div id="detailCust" class="modal">
            <div class="modal-content">
                 <ul class="collection">
                     <li class="collection-item light-green white-text"></li>
