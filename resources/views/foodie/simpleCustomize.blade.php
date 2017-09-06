@@ -503,7 +503,8 @@
         <div class="row">
             <div class="col s12 m8 plSlCstMlBtn">
                 <div style="margin-bottom: 20px;">
-                    <button type="button" data-target="orderReview" class="modal-trigger btn">Order</button>
+                    <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin-right: 10px;">Order</button>
+                    <button type="button" data-target="planCust" class="modal-trigger btn" style="margin-right: 10px;">Customize</button>
                 </div>
             </div>
             <div class="col s12 m4 plSlCstMlInfCnt">
@@ -568,6 +569,91 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+    </div>
+
+    <div id="planCust" class="modal">
+        <div class="modal-content">
+            <form action="{{route('foodie.simple.custom', $plan->id)}}" method="post">
+                {{ csrf_field() }}
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="secTtl">
+                            <span>Taste</span>
+                        </div>
+                        <div>
+                            <input type="hidden" name="dairy" value="0"/>
+                            <input type="checkbox" id="sweet" name="sweet" value="1"/>
+                            <label for="sweet">NO Sweet Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="salty" value="0"/>
+                            <input type="checkbox" id="salty" name="salty" value="1"/>
+                            <label for="salty">NO Salty Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="spicy" value="0"/>
+                            <input type="checkbox" id="spicy" name="spicy" value="1"/>
+                            <label for="spicy">NO Spicy Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="bitter" value="0"/>
+                            <input type="checkbox" id="bitter" name="bitter" value="1"/>
+                            <label for="bitter">NO Bitter Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="savory" value="0"/>
+                            <input type="checkbox" id="savory" name="savory" value="1"/>
+                            <label for="savory">NO Savory Foods</label>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <div class="secTtl">
+                            <span>Cooking Method</span>
+                        </div>
+                        <div>
+                            <input type="hidden" name="fried" value="0"/>
+                            <input type="checkbox" id="fried" name="fried" value="1">
+                            <label for="fried">NO Fried Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="grilled" value="0"/>
+                            <input type="checkbox" id="grilled" name="grilled" value="1">
+                            <label for="grilled">NO Grilled Foods</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="steamed" value="0"/>
+                            <input type="checkbox" id="steamed" name="steamed" value="1">
+                            <label for="steamed">NO Steamed Foods</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="secTtl">
+                            <span>Dry Goods/Condiments</span>
+                        </div>
+                        <div>
+                            <input type="hidden" name="preservatives" value="0"/>
+                            <input type="checkbox" id="preservatives" name="preservatives" value="1">
+                            <label for="preservatives">NO Preservatives</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="salt" value="0"/>
+                            <input type="checkbox" id="salt" name="salt" value="1">
+                            <label for="salt">NO Salt</label>
+                        </div>
+                        <div>
+                            <input type="hidden" name="sweeteners" value="0"/>
+                            <input type="checkbox" id="sweeteners" name="sweeteners" value="1">
+                            <label for="sweeteners">NO Sweeteners</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
 
