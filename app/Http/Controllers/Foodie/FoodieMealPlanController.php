@@ -265,16 +265,17 @@ class FoodieMealPlanController extends Controller
     {
 
 
+        dd($simpleCustomMeal->simple_custom_plan);
 
-        foreach($request->all() as $key=>$value){
+
+        foreach($request->all() as $value){
 //            dd($request);
-            if($value == "1"){
-                $detail = new SimpleCustomDetail();
-                $detail->simple_custom_meal_id = $simpleCustomMeal->id;
+            $detail = new SimpleCustomDetail();
+            $detail->simple_custom_meal_id = $simpleCustomMeal->id;
 
-                $detail->detail = 'NO '.$key;
-                $detail->save();
-            }
+            $detail->detail = $value;
+            $detail->save();
+
         }
 
         $simpleCustomMeal->is_customized=1;
