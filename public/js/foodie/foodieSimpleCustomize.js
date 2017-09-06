@@ -116,7 +116,7 @@ $(document).ready(function () {
                 // );
 
                 if((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
-                    && (valData[j].ingredient.indexOf("rice")!=-1 || valData[j].ingredient.indexOf("Rice")!=1 || valData[j].ingredient.indexOf("RICE")!=-1)
+                    && (valData[j].ingredient.indexOf("rice")==-1 || valData[j].ingredient.indexOf("Rice")==-1 || valData[j].ingredient.indexOf("RICE")==-1)
                     && !produceType.find('#carb'+id).length){
                     produceType.append('<div id="carb'+id+'">' +
                         '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
