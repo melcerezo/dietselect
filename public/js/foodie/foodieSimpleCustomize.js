@@ -24,8 +24,18 @@ $(document).ready(function () {
                 groupArray.push(valData[i].ingredient_group);
             }
 
-            console.log(groupArray);
+            var meatType=$('#m'+id).find('div.meatSection');
+            console.log(meatType);
 
+            if($.inArray("~0500~",groupArray)!=-1){
+
+            }else if($.inArray("~1000~",groupArray)!=-1){
+
+            }else if($.inArray("~1300~",groupArray)!=-1){
+
+            }else if($.inArray("~1500~",groupArray)!=-1){
+
+            }
             // $('#m'+id).append(
             //     '<tr>'+
             //     '<td>'+valData[i].ingredient+'</td>'+

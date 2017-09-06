@@ -611,7 +611,12 @@
                           method="post" autocomplete="off" class="editMeal">
                         {{csrf_field()}}
                         <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
-
+                            <div class="meatSection">
+                            </div>
+                            <div class="produceSection">
+                            </div>
+                            <div class="dairySection">
+                            </div>
                         </div>
                         <button class="btn waves-effect waves-light">Customize</button>
                     </form>
