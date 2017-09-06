@@ -136,11 +136,11 @@ $(document).ready(function () {
                         '<input type="radio" name="rice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">Brown Rice</label><br/>' +
                         '</div>');
+                        console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
+                            && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
+                            && !produceType.find('#carb'+id).length);
                 }
 
-                console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
-                    && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
-                    && !produceType.find('#carb'+id).length);
 
                if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
