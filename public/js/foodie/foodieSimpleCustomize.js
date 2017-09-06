@@ -115,6 +115,9 @@ $(document).ready(function () {
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }
+               console.log(valData[j].ingredient.indexOf("Peanut"));
+               console.log(valData[j].ingredient_group=='~1600~');
+
             }
 
 
