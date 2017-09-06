@@ -124,17 +124,15 @@ $(document).ready(function () {
                         '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
                         '</div>');
-                }
-
-                if((valData[j].ingredient_group=='~2000~')
+                }else if((valData[j].ingredient_group=='~2000~')
                     && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
                     && (valData[j].ingredient.indexOf("pasta")<0 || valData[j].ingredient.indexOf("Pasta")<0 || valData[j].ingredient.indexOf("PASTA")<0)
                     && !produceType.find('#rice'+id).length){
                     produceType.append('<div id="rice'+id+'">' +
                         '<div ><span style="font-size: 20px;">Rice</span></div>' +
-                        '<input type="checkbox" name="whiteRice" value="whiteRice" class="filled-in" id="white'+id+'" data-error=""/>' +
+                        '<input type="radio" name="rice" value="whiteRice" class="filled-in" id="white'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">White Rice</label><br/>' +
-                        '<input type="checkbox" name="brownRice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
+                        '<input type="radio" name="rice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">Brown Rice</label><br/>' +
                         '</div>');
                 }
