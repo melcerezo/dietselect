@@ -97,7 +97,6 @@ $(document).ready(function () {
                        '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
-                   // console.log(valData[j].ingredient.indexOf("Egg"));
                }
                if( (valData[j].ingredient.indexOf("milk")>=0
                    || valData[j].ingredient.indexOf("Milk")>=0
@@ -109,13 +108,37 @@ $(document).ready(function () {
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
                        '<label for="dairy'+id+'">No Dairy/Dairy Products</label><br/>' +
                        '</div>');
-                   // console.log(valData[j].ingredient.indexOf("Egg"));
                }
-                console.log(
-                    (valData[j].ingredient.indexOf("milk")>=0
-                    || valData[j].ingredient.indexOf("Milk")>=0 || valData[j].ingredient.indexOf("MILK")>=0
-                    || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0)) && !dairyType.find('#dairy'+id).length
-                );
+                // console.log(
+                //     (valData[j].ingredient.indexOf("milk")>=0
+                //     || valData[j].ingredient.indexOf("Milk")>=0 || valData[j].ingredient.indexOf("MILK")>=0
+                //     || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0)) && !dairyType.find('#dairy'+id).length
+                // );
+
+                if((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
+                    && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0) && !produceType.find('#carb'+id).length){
+                    produceType.append('<div id="carb'+id+'">' +
+                        '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                        '<input type="checkbox" name="gluten" value="gluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
+                        '<label for="gluten'+id+'">No Gluten</label><br/>' +
+                        '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
+                        '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
+                        '</div>');
+                }
+
+                if((valData[j].ingredient_group=='~2000~')
+                    && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
+                    && (valData[j].ingredient.indexOf("pasta")<0 || valData[j].ingredient.indexOf("Pasta")<0 || valData[j].ingredient.indexOf("PASTA")<0)
+                    && !produceType.find('#rice'+id).length){
+                    produceType.append('<div id="rice'+id+'">' +
+                        '<div ><span style="font-size: 20px;">Rice</span></div>' +
+                        '<input type="checkbox" name="whiteRice" value="whiteRice" class="filled-in" id="white'+id+'" data-error=""/>' +
+                        '<label for="dairy'+id+'">White Rice</label><br/>' +
+                        '<input type="checkbox" name="brownRice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
+                        '<label for="dairy'+id+'">Brown Rice</label><br/>' +
+                        '</div>');
+                }
+
                if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
@@ -124,7 +147,6 @@ $(document).ready(function () {
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }
-               console.log(dairyType.find('#dairy'+id).length);
 
             }
 
