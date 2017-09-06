@@ -116,7 +116,7 @@ $(document).ready(function () {
                 // );
 
                 if((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
-                    && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
+                    && (valData[j].ingredient.indexOf("rice")!=-1 || valData[j].ingredient.indexOf("Rice")!=1 || valData[j].ingredient.indexOf("RICE")!=-1)
                     && !produceType.find('#carb'+id).length){
                     produceType.append('<div id="carb'+id+'">' +
                         '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
@@ -128,9 +128,12 @@ $(document).ready(function () {
                         console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
                             && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
                             && !produceType.find('#carb'+id).length);
+                        console.log((valData[j].ingredient_group=='~2000~')
+                            && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
+                            && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1);
                 }else if((valData[j].ingredient_group=='~2000~')
                     && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
-                    && (valData[j].ingredient.indexOf("pasta")<0 || valData[j].ingredient.indexOf("Pasta")<0 || valData[j].ingredient.indexOf("PASTA")<0)
+                    && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1)
                     && !produceType.find('#rice'+id).length){
                     produceType.append('<div id="rice'+id+'">' +
                         '<div ><span style="font-size: 20px;">Rice</span></div>' +
