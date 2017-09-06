@@ -265,7 +265,7 @@ class FoodieMealPlanController extends Controller
     {
 
 
-//        dd($simpleCustomMeal->simple_custom_plan);
+        dd($request->all());
 
 
         foreach($request->all() as $value){
