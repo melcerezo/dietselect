@@ -89,23 +89,34 @@ $(document).ready(function () {
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }
+
             for(var j=0,m=valData.length;j<m;j++){
-               if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")!=-1&& !dairyType.find('#egg'+id).length){
+               if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")>=0&& !dairyType.find('#egg'+id).length){
                    dairyType.append('<div>' +
                        '<div id="egg'+id+'"><span style="font-size: 20px;">Eggs</span></div>' +
                        '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
-                   console.log(valData[j].ingredient.indexOf("Egg"));
+                   // console.log(valData[j].ingredient.indexOf("Egg"));
                }else if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")<0&& !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div>' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
                        '<label for="dairy'+id+'">No Dairy</label><br/>' +
                        '</div>');
-                   console.log(valData[j].ingredient.indexOf("Egg"));
+                   // console.log(valData[j].ingredient.indexOf("Egg"));
+               }
+
+               if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0 && !produceType.find('#peanut'+id).length){
+                   produceType.append('<div>' +
+                       '<div id="peanut'+id+'"><span style="font-size: 20px;">Nuts</span></div>' +
+                       '<input type="checkbox" name="peanut" value="peanut" class="filled-in" id="peanut'+id+'" data-error=""/>' +
+                       '<label for="dairy'+id+'">No Peanuts</label><br/>' +
+                       '</div>');
                }
             }
+
+
 
             // if($.inArray("~0100~",groupArray)!=-1 && dairyType.has('div').length==0){
             //     meatType.append('<div>' +
