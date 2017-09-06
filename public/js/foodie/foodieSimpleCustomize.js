@@ -120,8 +120,7 @@ $(document).ready(function () {
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }
-               console.log(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
-                   || valData[j].ingredient_group=='~1200~' && !produceType.find('#nut'+id).length);
+               console.log(!produceType.find(!dairyType.find('#dairy'+id).length));
 
             }
 
