@@ -34,13 +34,49 @@ $(document).ready(function () {
 
 
             if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
-                meatType.append('<div></div>');
+                meatType.append('<div>' +
+                    '<input type="radio" name="foodPref" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<label for="beef'+id+'">Switch to Beef</label><br/>' +
+                    '<input type="radio" name="foodPref" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<label for="pork'+id+'">Switch to Pork</label><br/>' +
+                    '<input type="radio" name="foodPref" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
+                    '<input type="radio" name="foodPref" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<label for="vege'+id+'">Vegetarian</label><br/>' +
+                    '</div>');
             }else if($.inArray("~1000~",groupArray)!=-1 && meatType.has('div').length==0){
-                meatType.append('<div></div>');
+                meatType.append('<div>' +
+                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
+                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<label for="beef'+id+'">Switch to Beef</label><br/>' +
+                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
+                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<label for="vege'+id+'">Vegetarian</label><br/>' +
+                    '</div>');
             }else if($.inArray("~1300~",groupArray)!=-1 && meatType.has('div').length==0){
-                meatType.append('<div></div>');
+                meatType.append('<div>' +
+                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
+                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<label for="pork'+id+'">Switch to Pork</label><br/>' +
+                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
+                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<label for="vege'+id+'">Vegetarian</label><br/>' +
+                    '</div>');
             }else if($.inArray("~1500~",groupArray)!=-1 && meatType.has('div').length==0){
-                meatType.append('<div></div>');
+                meatType.append('<div>' +
+                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
+                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<label for="beef'+id+'">Switch to Beef</label><br/>' +
+                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<label for="pork'+id+'">Switch to Pork</label><br/>' +
+                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<label for="vege'+id+'">Vegetarian</label><br/>' +
+                    '</div>');
             }
             // $('#m'+id).append(
             //     '<tr>'+
