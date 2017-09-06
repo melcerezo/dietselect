@@ -71,7 +71,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('chef/meal/{plan}/{id}/{customPlan}', 'Foodie\FoodieMealPlanController@viewMeal')->name('foodie.meal');
     Route::post('chefs/customize/{customize}', 'Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
     Route::post('chefs/customize/simple/{simpleCustomPlan}','Foodie\FoodieMealPlanController@simpleMake')->name('foodie.simple.custom');
-    Route::post('chefs/customize/simple/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleMealMake')->name('foodie.simpleMeal.custom');
+    Route::post('chefs/customize/simpleMeal/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleMealMake')->name('foodie.simpleMeal.custom');
     Route::get('{type}/getIngredJson', 'Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
     Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
 
