@@ -101,7 +101,8 @@ $(document).ready(function () {
                if( (valData[j].ingredient.indexOf("milk")>=0
                    || valData[j].ingredient.indexOf("Milk")>=0
                    || valData[j].ingredient.indexOf("MILK")>=0
-                   || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0))
+                   || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0)
+                   && valData.ingredient_group!='~1500~')
                    && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
