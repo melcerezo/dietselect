@@ -505,7 +505,11 @@
                 <div style="margin-bottom: 20px;">
                     <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin-right: 10px;">Order</button>
                     <button type="button" data-target="planCust" class="modal-trigger btn" style="margin-right: 10px;">Customize</button>
+                    @if($simpleCustomPlan->simple_custom_plan_detail->count())
+                        <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin-right: 10px;">View Details</button>
+                    @endif
                 </div>
+
             </div>
             <div class="col s12 m4 plSlCstMlInfCnt">
                 <div class="card-panel plSlMlInfDef plSlCstMlInf">
@@ -571,6 +575,19 @@
             </div>
         </div>
     </div>
+
+    @if($simpleCustomPlan->simple_custom_plan_detail->count())
+        <div>
+            <ul class="collection">
+                <li class="collection-item light-green white-text"></li>
+                @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
+                    <li class="collection-item">
+                        <span>{{$detail->detail}}</span>
+                    </li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
     <div id="planCust" class="modal">
         <div class="modal-content">
@@ -688,7 +705,7 @@
                         </tbody>
                     </table>
                     <form id="editMeal{{$id}}"
-                          {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
+                          action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"
                           method="post" autocomplete="off" class="editMeal">
                         {{csrf_field()}}
                         <div>
