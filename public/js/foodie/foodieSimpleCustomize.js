@@ -103,7 +103,7 @@ $(document).ready(function () {
                    || valData[j].ingredient.indexOf("milk")>=0
                    || valData[j].ingredient.indexOf("Milk")>=0
                    || valData[j].ingredient.indexOf("MILK")>=0
-                   && !dairyType.find('#dairy'+id).length){
+                   && dairyType.find('#dairy'+id).length<1){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
