@@ -115,9 +115,9 @@ $(document).ready(function () {
                 //     || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0)) && !dairyType.find('#dairy'+id).length
                 // );
 
-                if((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
+                if((valData[j].ingredient_group=='~1800~'
+                    || (valData[j].ingredient_group=='~2000~' && ((valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0))))
                     && !produceType.find('#carb'+id).length){
-                    if(valData[j].ingredient.indexOf("Rice")<0){
                         produceType.append('<div id="carb'+id+'">' +
                             '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
                             '<input type="checkbox" name="gluten" value="gluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
@@ -129,7 +129,6 @@ $(document).ready(function () {
                             console.log((valData[j].ingredient_group=='~2000~')
                                 && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
                                 && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1));
-                    }
                 }
 
                 if((valData[j].ingredient_group=='~2000~')
