@@ -99,7 +99,7 @@ $(document).ready(function () {
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
-               if(valData[j].ingredient_group=='~0100~'
+               if((valData[j].ingredient_group=='~0100~'
                    && valData[j].ingredient.indexOf("Egg")<0
                    // || valData[j].ingredient.indexOf("milk")>=0
                    // || valData[j].ingredient.indexOf("Milk")>=0
@@ -112,11 +112,11 @@ $(document).ready(function () {
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
-                console.log(valData[j].ingredient_group=='~0100~'
-                    && valData[j].ingredient.indexOf("Egg")<0
-                    // || valData[j].ingredient.indexOf("milk")>=0
-                    // || valData[j].ingredient.indexOf("Milk")>=0
-                    // || valData[j].ingredient.indexOf("MILK")>=0
+                console.log(((valData[j].ingredient_group=='~0100~'
+                    && valData[j].ingredient.indexOf("Egg")<0)
+                    || valData[j].ingredient.indexOf("milk")>=0
+                    || valData[j].ingredient.indexOf("Milk")>=0
+                    || valData[j].ingredient.indexOf("MILK")>=0)
                     && dairyType.find('#dairy'+id).length==0);
                if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~' && !produceType.find('#nut'+id).length){
