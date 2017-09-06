@@ -117,21 +117,22 @@ $(document).ready(function () {
 
                 if((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
                     && !produceType.find('#carb'+id).length
-                    && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
                 ){
-                    produceType.append('<div id="carb'+id+'">' +
-                        '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
-                        '<input type="checkbox" name="gluten" value="gluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
-                        '<label for="gluten'+id+'">No Gluten</label><br/>' +
-                        '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
-                        '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
-                        '</div>');
-                        console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
-                            && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
-                            && !produceType.find('#carb'+id).length);
-                        console.log((valData[j].ingredient_group=='~2000~')
-                            && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
-                            && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1));
+                    if(valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0){
+                        produceType.append('<div id="carb'+id+'">' +
+                            '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                            '<input type="checkbox" name="gluten" value="gluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
+                            '<label for="gluten'+id+'">No Gluten</label><br/>' +
+                            '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
+                            '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
+                            '</div>');
+                            console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
+                                && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
+                                && !produceType.find('#carb'+id).length);
+                            console.log((valData[j].ingredient_group=='~2000~')
+                                && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
+                                && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1));
+                    }
                 }
 
                 if((valData[j].ingredient_group=='~2000~')
