@@ -43,13 +43,13 @@ $(document).ready(function () {
             if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
                     '<div><span style="font-size: 20px;">Meat</span></div>' +
-                    '<input type="radio" name="foodPref" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
                     '<label for="beef'+id+'">Switch to Beef</label><br/>' +
-                    '<input type="radio" name="foodPref" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
                     '<label for="pork'+id+'">Switch to Pork</label><br/>' +
-                    '<input type="radio" name="foodPref" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
                     '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
-                    '<input type="radio" name="foodPref" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }else if($.inArray("~1000~",groupArray)!=-1 && meatType.has('div').length==0){
@@ -89,6 +89,31 @@ $(document).ready(function () {
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }
+            for(var j=0,m=valData.length;j<m;j++){
+               if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")>0&& !dairyType.find('#egg'+id).length){
+                   dairyType.append('<div>' +
+                       '<div id="egg'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
+                       '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
+                       '<label for="eggs'+id+'">No Eggs</label><br/>' +
+                       '</div>');
+               }else if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")<0&& !dairyType.find('#dairy'+id).length){
+                   dairyType.append('<div>' +
+                       '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
+                       '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
+                       '<label for="dairy'+id+'">No Dairy</label><br/>' +
+                       '</div>');
+               }
+            }
+
+            // if($.inArray("~0100~",groupArray)!=-1 && dairyType.has('div').length==0){
+            //     meatType.append('<div>' +
+            //         '<div><span style="font-size: 20px;">Dairy</span></div>' +
+            //         '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
+            //         '<label for="eggs'+id+'">No Eggs</label><br/>' +
+            //         '<input type="checkbox" name="cheese" value="cheese" class="filled-in" id="dairy'+id+'" data-error=""/>' +
+            //         '<label for="dairy'+id+'">No Dairy</label><br/>' +
+            //         '</div>');
+            // }
 
         });
 
