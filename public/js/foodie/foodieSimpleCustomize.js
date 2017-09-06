@@ -32,7 +32,7 @@ $(document).ready(function () {
             }
 
             var meatType=$('#m'+id).find('div.meatSection');
-            var produceType=$('#m'+id).find('div.productSection');
+            var produceType=$('#m'+id).find('div.produceSection');
             var dairyType=$('#m'+id).find('div.dairySection');
             // console.log(meatType);
             // meatType.empty();
