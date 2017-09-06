@@ -25,7 +25,7 @@ $(document).ready(function () {
             }
 
             var meatType=$('#m'+id).find('div.meatSection');
-            console.log(meatType);
+            console.log($('#m'+id).children());
 
             if($.inArray("~0500~",groupArray)!=-1){
 
