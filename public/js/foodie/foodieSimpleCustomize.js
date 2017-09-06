@@ -35,12 +35,12 @@ $(document).ready(function () {
 
             if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div></div>');
-            }else if($.inArray("~1000~",groupArray)!=-1){
-                meatType.append();
-            }else if($.inArray("~1300~",groupArray)!=-1){
-                meatType.append();
-            }else if($.inArray("~1500~",groupArray)!=-1){
-                meatType.append();
+            }else if($.inArray("~1000~",groupArray)!=-1 && meatType.has('div').length==0){
+                meatType.append('<div></div>');
+            }else if($.inArray("~1300~",groupArray)!=-1 && meatType.has('div').length==0){
+                meatType.append('<div></div>');
+            }else if($.inArray("~1500~",groupArray)!=-1 && meatType.has('div').length==0){
+                meatType.append('<div></div>');
             }
             // $('#m'+id).append(
             //     '<tr>'+
