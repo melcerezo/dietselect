@@ -125,6 +125,9 @@ $(document).ready(function () {
                         '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
                         '</div>');
+                        console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
+                            && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
+                            && !produceType.find('#carb'+id).length);
                 }else if((valData[j].ingredient_group=='~2000~')
                     && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
                     && (valData[j].ingredient.indexOf("pasta")<0 || valData[j].ingredient.indexOf("Pasta")<0 || valData[j].ingredient.indexOf("PASTA")<0)
@@ -136,9 +139,6 @@ $(document).ready(function () {
                         '<input type="radio" name="rice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
                         '<label for="dairy'+id+'">Brown Rice</label><br/>' +
                         '</div>');
-                        console.log((valData[j].ingredient_group=='~1800~' || valData[j].ingredient_group=='~2000~')
-                            && (valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0)
-                            && !produceType.find('#carb'+id).length);
                 }
 
 
