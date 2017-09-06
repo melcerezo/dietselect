@@ -101,10 +101,7 @@ $(document).ready(function () {
                }
                if((valData[j].ingredient_group=='~0100~'
                    && valData[j].ingredient.indexOf("Egg")<0)
-                   && !dairyType.find('#dairy'+id).length
-                   && (valData[j].ingredient.indexOf("milk")>=0
-                   || valData[j].ingredient.indexOf("Milk")>=0
-                   || valData[j].ingredient.indexOf("MILK")>=0 && !dairyType.find('#dairy'+id).length)){
+                   && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
@@ -119,8 +116,8 @@ $(document).ready(function () {
                 //     || valData[j].ingredient.indexOf("Milk")>=0
                 //     || valData[j].ingredient.indexOf("MILK")>=0 && !dairyType.find('#dairy'+id).length)
                 // );
-               if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
-                   || valData[j].ingredient_group=='~1200~' && !produceType.find('#nut'+id).length){
+               if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
+                   || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
                        '<div ><span style="font-size: 20px;">Nuts</span></div>' +
                        '<input type="checkbox" name="nut" value="nut" class="filled-in" id="nut'+id+'" data-error=""/>' +
