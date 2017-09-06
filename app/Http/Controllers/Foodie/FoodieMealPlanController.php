@@ -268,7 +268,7 @@ class FoodieMealPlanController extends Controller
         dd($request->all());
 
 
-        foreach($request->all() as $value){
+        foreach($request->except(['_token']) as $value){
 //            dd($request);
             $detail = new SimpleCustomDetail();
             $detail->simple_custom_meal_id = $simpleCustomMeal->id;
