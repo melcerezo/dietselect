@@ -19,7 +19,7 @@ $(document).ready(function () {
             var groupArray = [];
 
 
-            $('#m'+id).empty();
+            // $('#m'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
                 groupArray.push(valData[i].ingredient_group);
             }
