@@ -92,8 +92,8 @@ $(document).ready(function () {
 
             for(var j=0,m=valData.length;j<m;j++){
                if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")>=0&& !dairyType.find('#egg'+id).length){
-                   dairyType.append('<div>' +
-                       '<div id="egg'+id+'"><span style="font-size: 20px;">Eggs</span></div>' +
+                   dairyType.append('<div id="egg'+id+'">' +
+                       '<div ><span style="font-size: 20px;">Eggs</span></div>' +
                        '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
@@ -104,18 +104,18 @@ $(document).ready(function () {
                    || valData[j].ingredient.indexOf("Milk")>=0
                    || valData[j].ingredient.indexOf("MILK")>=0
                    && !dairyType.find('#dairy'+id).length){
-                   dairyType.append('<div>' +
+                   dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
-                       '<label for="dairy'+id+'">No Dairy</label><br/>' +
+                       '<label for="dairy'+id+'">No Dairy/Dairy Products</label><br/>' +
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
 
                if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~' && !produceType.find('#nut'+id).length){
-                   produceType.append('<div>' +
-                       '<div id="nut'+id+'"><span style="font-size: 20px;">Nuts</span></div>' +
+                   produceType.append('<div id="nut'+id+'">' +
+                       '<div ><span style="font-size: 20px;">Nuts</span></div>' +
                        '<input type="checkbox" name="nut" value="nut" class="filled-in" id="nut'+id+'" data-error=""/>' +
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
