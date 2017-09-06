@@ -43,49 +43,49 @@ $(document).ready(function () {
             if($.inArray("~0500~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
                     '<div><span style="font-size: 20px;">Meat</span></div>' +
-                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchBeef" class="filled-in" id="beef'+id+'" data-error=""/>' +
                     '<label for="beef'+id+'">Switch to Beef</label><br/>' +
-                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchPork" class="filled-in" id="pork'+id+'" data-error=""/>' +
                     '<label for="pork'+id+'">Switch to Pork</label><br/>' +
-                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchSeafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
                     '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
-                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchVegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }else if($.inArray("~1000~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
                     '<div><span style="font-size: 20px;">Meat</span></div>' +
-                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchChicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
                     '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
-                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchBeef" class="filled-in" id="beef'+id+'" data-error=""/>' +
                     '<label for="beef'+id+'">Switch to Beef</label><br/>' +
-                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchSeafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
                     '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
-                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchVegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }else if($.inArray("~1300~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
                     '<div><span style="font-size: 20px;">Meat</span></div>' +
-                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchChicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
                     '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
-                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchPork" class="filled-in" id="pork'+id+'" data-error=""/>' +
                     '<label for="pork'+id+'">Switch to Pork</label><br/>' +
-                    '<input type="radio" name="meat" value="seafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchSeafood" class="filled-in" id="seafood'+id+'" data-error=""/>' +
                     '<label for="seafood'+id+'">Switch to Seafood</label><br/>' +
-                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchVegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }else if($.inArray("~1500~",groupArray)!=-1 && meatType.has('div').length==0){
                 meatType.append('<div>' +
                     '<div><span style="font-size: 20px;">Meat</span></div>' +
-                    '<input type="radio" name="meat" value="chicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchChicken" class="filled-in" id="chicken'+id+'" data-error=""/>' +
                     '<label for="chicken'+id+'">Switch to Chicken</label><br/>' +
-                    '<input type="radio" name="meat" value="beef" class="filled-in" id="beef'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchBeef" class="filled-in" id="beef'+id+'" data-error=""/>' +
                     '<label for="beef'+id+'">Switch to Beef</label><br/>' +
-                    '<input type="radio" name="meat" value="pork" class="filled-in" id="pork'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchPork" class="filled-in" id="pork'+id+'" data-error=""/>' +
                     '<label for="pork'+id+'">Switch to Pork</label><br/>' +
-                    '<input type="radio" name="meat" value="vegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
+                    '<input type="radio" name="meat" value="switchVegetarian" class="filled-in" id="vege'+id+'" data-error=""/>' +
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }
@@ -94,7 +94,7 @@ $(document).ready(function () {
                if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")>=0&& !dairyType.find('#egg'+id).length){
                    dairyType.append('<div id="egg'+id+'">' +
                        '<div ><span style="font-size: 20px;">Eggs</span></div>' +
-                       '<input type="checkbox" name="eggs" value="eggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
+                       '<input type="checkbox" name="eggs" value="noEggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
                }
@@ -106,7 +106,7 @@ $(document).ready(function () {
                    && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
-                       '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
+                       '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
                        '<label for="dairy'+id+'">No Dairy/Dairy Products</label><br/>' +
                        '</div>');
                }
@@ -120,9 +120,9 @@ $(document).ready(function () {
                     && !produceType.find('#carb'+id).length){
                         produceType.append('<div id="carb'+id+'">' +
                             '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
-                            '<input type="checkbox" name="gluten" value="gluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
+                            '<input type="checkbox" name="gluten" value="noGluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
                             '<label for="gluten'+id+'">No Gluten</label><br/>' +
-                            '<input type="checkbox" name="wheat" value="wheat" class="filled-in" id="wheat'+id+'" data-error=""/>' +
+                            '<input type="checkbox" name="wheat" value="wheatOnly" class="filled-in" id="wheat'+id+'" data-error=""/>' +
                             '<label for="dairy'+id+'">Wheat Products Only</label><br/>' +
                             '</div>');
                             console.log((valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0));
@@ -149,7 +149,7 @@ $(document).ready(function () {
                    || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
                        '<div ><span style="font-size: 20px;">Nuts</span></div>' +
-                       '<input type="checkbox" name="nut" value="nut" class="filled-in" id="nut'+id+'" data-error=""/>' +
+                       '<input type="checkbox" name="nut" value="noNuts" class="filled-in" id="nut'+id+'" data-error=""/>' +
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }

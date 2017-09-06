@@ -574,7 +574,7 @@
 
     <div id="planCust" class="modal">
         <div class="modal-content">
-            <form action="{{route('foodie.simple.custom', $plan->id)}}" method="post">
+            <form action="{{route('foodie.simple.custom', $simpleCustomPlan->id)}}" method="post">
                 {{ csrf_field() }}
                 <div class="row">
                     <div class="col s12 m6">
@@ -620,11 +620,6 @@
                             <input type="hidden" name="grilled" value="0"/>
                             <input type="checkbox" id="grilled" name="grilled" value="1">
                             <label for="grilled">NO Grilled Foods</label>
-                        </div>
-                        <div>
-                            <input type="hidden" name="steamed" value="0"/>
-                            <input type="checkbox" id="steamed" name="steamed" value="1">
-                            <label for="steamed">NO Steamed Foods</label>
                         </div>
                     </div>
                 </div>

@@ -20,6 +20,7 @@ use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\SimpleCustomDetail;
 use App\SimpleCustomMeal;
 use App\SimpleCustomPlan;
+use App\SimpleCustomPlanDetail;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -241,26 +242,43 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
-    public function simpleMake(Plan $plan, Request $request)
+    public function simpleMake(SimpleCustomPlan $simpleCustomPlan, Request $request)
     {
 
-        $simpleCustom = new SimpleCustomPlan();
-        $simpleCustom->plan_id = $plan->id;
-        $simpleCustom->save();
+        foreach($request->all() as $key=>$value){
+//            dd($request);
+            if($value == "1"){
+                $detail = new SimpleCustomPlanDetail();
+                $detail->simple_custom_plan_id = $simpleCustomPlan->id;
+                $detail->detail = 'NO'.$key;
+                $detail->save();
+            }
+        }
+
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomPlan->id)->with([
+            'status'=>'Successfully customized the plan!'
+        ]);
+//        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
+    }
+
+    public function simpleMealMake(SimpleCustomMeal $simpleCustomMeal, Request $request)
+    {
 
         foreach($request->all() as $key=>$value){
 //            dd($request);
             if($value == "1"){
                 $detail = new SimpleCustomDetail();
-                $detail->simple_custom_plan_id = $simpleCustom->id;
-                $detail->detail = $key;
+                $detail->simple_custom_meal_id = $simpleCustomMeal->id;
+                
+                $detail->detail = 'NO'.$key;
                 $detail->save();
             }
         }
 
-
-
-        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomMeal->simple_custom_plan()->id)->with([
+            'status'=>'Successfully customized the plan!'
+        ]);
+//        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
     }
 
     public function viewChefsMeals(Plan $plan, Request $request)
