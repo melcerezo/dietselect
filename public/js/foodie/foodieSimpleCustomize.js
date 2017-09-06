@@ -105,7 +105,7 @@ $(document).ready(function () {
                    )
                    && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
-                       '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
+                       '<div><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairyCheck'+id+'" data-error=""/>' +
                        '<label for="dairyCheck'+id+'">No Dairy/Dairy Products</label><br/>' +
                        '</div>');
