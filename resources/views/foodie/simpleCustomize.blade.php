@@ -610,6 +610,9 @@
                           {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
                           method="post" autocomplete="off" class="editMeal">
                         {{csrf_field()}}
+                        <div>
+                            <span style="font-size: 30px;">Meal Customization</span>
+                        </div>
                         <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
                             <div class="meatSection">
                             </div>
