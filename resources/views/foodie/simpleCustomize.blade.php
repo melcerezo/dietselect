@@ -577,15 +577,17 @@
     </div>
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
-        <div>
-            <ul class="collection">
-                <li class="collection-item light-green white-text"></li>
-                @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
-                    <li class="collection-item">
-                        <span>{{$detail->detail}}</span>
-                    </li>
-                @endforeach
-            </ul>
+        <div id="detailCust" class="modal-content">
+           <div class="modal-content">
+                <ul class="collection">
+                    <li class="collection-item light-green white-text"></li>
+                    @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
+                        <li class="collection-item">
+                            <span>{{$detail->detail}}</span>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
         </div>
     @endif
 
