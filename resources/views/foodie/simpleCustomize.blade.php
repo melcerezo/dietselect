@@ -596,16 +596,16 @@
                     </ul>
                 </div>
                 <div>
-                    {{--<table style="table-layout: fixed;">--}}
-                        {{--<thead>--}}
-                        {{--<tr>--}}
-                            {{--<th>Ingredient</th>--}}
-                            {{--<th>Grams</th>--}}
-                        {{--</tr>--}}
-                        {{--</thead>--}}
-                        {{--<tbody id="m{{$simpleCustomMeal->chef_customized_meal->id}}">--}}
-                        {{--</tbody>--}}
-                    {{--</table>--}}
+                    <table style="table-layout: fixed;">
+                        <thead>
+                        <tr>
+                            <th>Ingredient</th>
+                            <th>Grams</th>
+                        </tr>
+                        </thead>
+                        <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
+                        </tbody>
+                    </table>
                     <form id="editMeal{{$id}}"
                           {{--action="{{route('foodie.meal.custom',$cust->id)}}"--}}
                           method="post" autocomplete="off" class="editMeal">

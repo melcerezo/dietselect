@@ -20,8 +20,15 @@ $(document).ready(function () {
 
 
             // $('#m'+id).empty();
+
             for(var i=0,l=valData.length;i<l;i++){
                 groupArray.push(valData[i].ingredient_group);
+                $('#h'+id).append(
+                    '<tr>'+
+                    '<td>'+valData[i].ingredient+'</td>'+
+                    '<td>'+valData[i].grams+'</td>'+
+                    '</tr>'
+                );
             }
 
             var meatType=$('#m'+id).find('div.meatSection');
@@ -82,12 +89,7 @@ $(document).ready(function () {
                     '<label for="vege'+id+'">Vegetarian</label><br/>' +
                     '</div>');
             }
-            // $('#m'+id).append(
-            //     '<tr>'+
-            //     '<td>'+valData[i].ingredient+'</td>'+
-            //     '<td>'+valData[i].grams+'</td>'+
-            //     '</tr>'
-            // );
+
         });
 
 
