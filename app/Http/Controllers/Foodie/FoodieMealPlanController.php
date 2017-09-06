@@ -409,14 +409,14 @@ class FoodieMealPlanController extends Controller
             $ingredientDesc = DB::table('ingredients')
                 ->join('ingredients_group_description','ingredients.FdGrp_Cd','=','ingredients_group_description.FdGrp_Cd')
                 ->where('NDB_No','=',$ingred->ingredient_id)
-                ->select('ingredients.Long_Desc','ingredients_group_description.FdGrp_Desc')
+                ->select('ingredients.Long_Desc','ingredients.FdGrp_Cd','ingredients_group_description.FdGrp_Desc')
                 ->first();
 
             if(++$i<$ingreds->count()) {
-                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Desc.'","grams":"'.$ingred->grams.'"}, ';
+                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Cd.'","grams":"'.$ingred->grams.'"}, ';
             }
             else{
-                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Desc.'","grams":"'.$ingred->grams.'"} ';
+                $ingredientMeals .= '{ "meal":"' . $ingred->meal_id . '","ingredient":"'.$ingredientDesc->Long_Desc.'","ingredient_group":"'.$ingredientDesc->FdGrp_Cd.'","grams":"'.$ingred->grams.'"} ';
             }
 
         }
