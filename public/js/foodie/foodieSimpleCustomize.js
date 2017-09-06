@@ -120,7 +120,7 @@ $(document).ready(function () {
                        '<label for="dairy'+id+'">No Nut/Nut Products</label><br/>' +
                        '</div>');
                }
-               console.log(!dairyType.find('#dairy'+id).length);
+               console.log(dairyType.find('#dairy'+id).length);
 
             }
 
