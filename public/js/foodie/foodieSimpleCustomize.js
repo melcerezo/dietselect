@@ -114,8 +114,12 @@ $(document).ready(function () {
                }
                 console.log((valData[j].ingredient_group=='~0100~'
                     && valData[j].ingredient.indexOf("Egg")<0)
-                    // || (valData[j].ingredient.indexOf("milk")>=0 || valData[j].ingredient.indexOf("Milk")>=0 || valData[j].ingredient.indexOf("MILK")>=0)
-                    && !dairyType.find('#dairy'+id).length);
+                    && !dairyType.find('#dairy'+id).length
+                    && (valData[j].ingredient.indexOf("milk")>=0
+                    || valData[j].ingredient.indexOf("Milk")>=0
+                    || valData[j].ingredient.indexOf("MILK")>=0 && !dairyType.find('#dairy'+id).length
+                    )
+                );
                if(valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~' && !produceType.find('#nut'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
