@@ -101,9 +101,9 @@ $(document).ready(function () {
                }
                if(valData[j].ingredient_group=='~0100~'
                    && valData[j].ingredient.indexOf("Egg")<0
-                   || valData[j].ingredient.indexOf("milk")>=0
-                   || valData[j].ingredient.indexOf("Milk")>=0
-                   || valData[j].ingredient.indexOf("MILK")>=0
+                   // || valData[j].ingredient.indexOf("milk")>=0
+                   // || valData[j].ingredient.indexOf("Milk")>=0
+                   // || valData[j].ingredient.indexOf("MILK")>=0
                    && dairyType.find('#dairy'+id).length==0){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
