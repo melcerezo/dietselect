@@ -99,8 +99,10 @@ $(document).ready(function () {
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
-               if((valData[j].ingredient_group=='~0100~'
-                   && valData[j].ingredient.indexOf("Egg")<0)
+               if( (valData[j].ingredient.indexOf("milk")>=0
+                   || valData[j].ingredient.indexOf("Milk")>=0
+                   || valData[j].ingredient.indexOf("MILK")>=0
+                   || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0))
                    && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div id="dairy'+id+'">' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
@@ -109,13 +111,11 @@ $(document).ready(function () {
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
                }
-                // console.log((valData[j].ingredient_group=='~0100~'
-                //     && valData[j].ingredient.indexOf("Egg")<0)
-                //     && !dairyType.find('#dairy'+id).length
-                //     && (valData[j].ingredient.indexOf("milk")>=0
-                //     || valData[j].ingredient.indexOf("Milk")>=0
-                //     || valData[j].ingredient.indexOf("MILK")>=0 && !dairyType.find('#dairy'+id).length)
-                // );
+                console.log(
+                    (valData[j].ingredient.indexOf("milk")>=0
+                    || valData[j].ingredient.indexOf("Milk")>=0 || valData[j].ingredient.indexOf("MILK")>=0
+                    || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0)) && !dairyType.find('#dairy'+id).length
+                );
                if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
