@@ -98,7 +98,12 @@ $(document).ready(function () {
                        '<label for="eggs'+id+'">No Eggs</label><br/>' +
                        '</div>');
                    // console.log(valData[j].ingredient.indexOf("Egg"));
-               }else if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")<0&& !dairyType.find('#dairy'+id).length){
+               }else if((valData[j].ingredient_group=='~0100~'
+                   && valData[j].ingredient.indexOf("Egg")<0)
+                   || valData[j].ingredient.indexOf("milk")>=0
+                   || valData[j].ingredient.indexOf("Milk")>=0
+                   || valData[j].ingredient.indexOf("MILK")>=0
+                   && !dairyType.find('#dairy'+id).length){
                    dairyType.append('<div>' +
                        '<div id="dairy'+id+'"><span style="font-size: 20px;">Dairy</span></div>' +
                        '<input type="checkbox" name="dairy" value="dairy" class="filled-in" id="dairy'+id+'" data-error=""/>' +
