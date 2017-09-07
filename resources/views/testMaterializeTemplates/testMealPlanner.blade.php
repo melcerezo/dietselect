@@ -1,149 +1,149 @@
 @extends('layouts.app')
 @section('head')
-    <style>
-        .container{
-            width:85%;
-        }
-        #testCreateModal.modal{
-            width: 50% !important;
-            max-height: 100% !important;
-            border-radius: 5px;
-        }
-        .modal-header{
-            width:100%;
-            height:100%;
-            min-height:80px;
-        }
-    </style>
-    <script>
-        $(document).ready(function () {
-//            $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
+    {{--<style>--}}
+        {{--.container{--}}
+            {{--width:85%;--}}
+        {{--}--}}
+        {{--#testCreateModal.modal{--}}
+            {{--width: 50% !important;--}}
+            {{--max-height: 100% !important;--}}
+            {{--border-radius: 5px;--}}
+        {{--}--}}
+        {{--.modal-header{--}}
+            {{--width:100%;--}}
+            {{--height:100%;--}}
+            {{--min-height:80px;--}}
+        {{--}--}}
+    {{--</style>--}}
+    {{--<script>--}}
+        {{--$(document).ready(function () {--}}
+{{--//            $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});--}}
 
-            $('.tdCell').each(function () {
-                var day=$(this).attr('data-day');
-                var mealType=$(this).attr('data-meal-type');
-                if($(this).text().trim()==""){
-                    $(this).append('<a href="#testCreateModal" data-day="'+day+'" data-meal-type="'+mealType+'" class="createMealLink modal-trigger">+Add Meal</a>');
-                }
-            });
-            $('.createMealLink').on('click',function () {
-                var mealDay = $(this).attr('data-day');
-                var mealType=$(this).attr('data-meal-type');
-//                $('option:selected','select[name="day"]').removeAttr('selected');
-                switch(mealDay){
-                    case 'MO':
-                        $('#day').val("MO");
-                        $('#dayName').empty();
-                        $('#dayName').append("Monday");
-                        break;
-                    case 'TU':
-                        $('#day').val("TU");
-                        $('#dayName').empty();
-                        $('#dayName').append("Tuesday");
-                        console.log($('#day').val());
-                        break;
-                    case 'WE':
-                        $('#day').val("WE");
-                        $('#dayName').empty();
-                        $('#dayName').append("Wednesday");
-                            console.log($('#day').val());
-                        break;
-                    case 'TH':
-                        $('#day').val("TH");
-                        $('#dayName').empty();
-                        $('#dayName').append("Thursday");
-                            console.log($('#day').val());
-                        break;
-                    case 'FR':
-                        $('#day').val("FR");
-                        $('#dayName').empty();
-                        $('#dayName').append("Friday");
-                            console.log($('#day').val());
-                        break;
-                    case 'SA':
-                        $('#day').val("SA");
-                        $('#dayName').empty();
-                        $('#dayName').append("Saturday");
-                            console.log($('#day').val());
-                        break;
-                }
+            {{--$('.tdCell').each(function () {--}}
+                {{--var day=$(this).attr('data-day');--}}
+                {{--var mealType=$(this).attr('data-meal-type');--}}
+                {{--if($(this).text().trim()==""){--}}
+                    {{--$(this).append('<a href="#testCreateModal" data-day="'+day+'" data-meal-type="'+mealType+'" class="createMealLink modal-trigger">+Add Meal</a>');--}}
+                {{--}--}}
+            {{--});--}}
+            {{--$('.createMealLink').on('click',function () {--}}
+                {{--var mealDay = $(this).attr('data-day');--}}
+                {{--var mealType=$(this).attr('data-meal-type');--}}
+{{--//                $('option:selected','select[name="day"]').removeAttr('selected');--}}
+                {{--switch(mealDay){--}}
+                    {{--case 'MO':--}}
+                        {{--$('#day').val("MO");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Monday");--}}
+                        {{--break;--}}
+                    {{--case 'TU':--}}
+                        {{--$('#day').val("TU");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Tuesday");--}}
+                        {{--console.log($('#day').val());--}}
+                        {{--break;--}}
+                    {{--case 'WE':--}}
+                        {{--$('#day').val("WE");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Wednesday");--}}
+                            {{--console.log($('#day').val());--}}
+                        {{--break;--}}
+                    {{--case 'TH':--}}
+                        {{--$('#day').val("TH");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Thursday");--}}
+                            {{--console.log($('#day').val());--}}
+                        {{--break;--}}
+                    {{--case 'FR':--}}
+                        {{--$('#day').val("FR");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Friday");--}}
+                            {{--console.log($('#day').val());--}}
+                        {{--break;--}}
+                    {{--case 'SA':--}}
+                        {{--$('#day').val("SA");--}}
+                        {{--$('#dayName').empty();--}}
+                        {{--$('#dayName').append("Saturday");--}}
+                            {{--console.log($('#day').val());--}}
+                        {{--break;--}}
+                {{--}--}}
 
-                switch(mealType){
-                    case 'Breakfast':
-                        $('#meal_type').val("Breakfast");
-                        $('#mealType').empty();
-                        $('#mealType').append("Breakfast");
-                        break;
-                    case 'MorningSnack':
-                        $('#meal_type').val("MorningSnack");
-                        $('#mealType').empty();
-                        $('#mealType').append("Morning Snack");
-                        console.log($('#meal_type').val());
-                        break;
-                    case 'Lunch':
-                        $('#meal_type').val("Lunch");
-                        $('#mealType').empty();
-                        $('#mealType').append("Lunch");
-                            console.log($('#meal_type').val());
-                        break;
-                    case 'AfternoonSnack':
-                        $('#meal_type').val("AfternoonSnack");
-                        $('#mealType').empty();
-                        $('#mealType').append("Afternoon Snack");
-                            console.log($('#meal_type').val());
-                        break;
-                    case 'Dinner':
-                        $('#meal_type').val("Dinner");
-                        $('#mealType').empty();
-                        $('#mealType').append("Dinner");
-                            console.log($('#meal_type').val());
-                        break;
-                }
-            });
+                {{--switch(mealType){--}}
+                    {{--case 'Breakfast':--}}
+                        {{--$('#meal_type').val("Breakfast");--}}
+                        {{--$('#mealType').empty();--}}
+                        {{--$('#mealType').append("Breakfast");--}}
+                        {{--break;--}}
+                    {{--case 'MorningSnack':--}}
+                        {{--$('#meal_type').val("MorningSnack");--}}
+                        {{--$('#mealType').empty();--}}
+                        {{--$('#mealType').append("Morning Snack");--}}
+                        {{--console.log($('#meal_type').val());--}}
+                        {{--break;--}}
+                    {{--case 'Lunch':--}}
+                        {{--$('#meal_type').val("Lunch");--}}
+                        {{--$('#mealType').empty();--}}
+                        {{--$('#mealType').append("Lunch");--}}
+                            {{--console.log($('#meal_type').val());--}}
+                        {{--break;--}}
+                    {{--case 'AfternoonSnack':--}}
+                        {{--$('#meal_type').val("AfternoonSnack");--}}
+                        {{--$('#mealType').empty();--}}
+                        {{--$('#mealType').append("Afternoon Snack");--}}
+                            {{--console.log($('#meal_type').val());--}}
+                        {{--break;--}}
+                    {{--case 'Dinner':--}}
+                        {{--$('#meal_type').val("Dinner");--}}
+                        {{--$('#mealType').empty();--}}
+                        {{--$('#mealType').append("Dinner");--}}
+                            {{--console.log($('#meal_type').val());--}}
+                        {{--break;--}}
+                {{--}--}}
+            {{--});--}}
 
-            $('#addMealButton').on('click',function () {
-                $('#description').val($('#mealName').val());
-                console.log($('#mealName').val());
-            });
-        });
-    </script>
+            {{--$('#addMealButton').on('click',function () {--}}
+                {{--$('#description').val($('#mealName').val());--}}
+                {{--console.log($('#mealName').val());--}}
+            {{--});--}}
+        {{--});--}}
+    {{--</script>--}}
 @endsection
 @section('content')
-    <nav>
-        <div class="nav-wrapper light-green">
-            <a href="#" class="brand-logo">Diet Select</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a>
-                        <span class="valign-wrapper" style="position: relative;">
-                            <i class="material-icons" style="display: inline">email</i>
-                            <span style="margin-left: 2px;">
-                                Messages
-                                <span class="new badge red">4</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <span class="valign-wrapper">
-                            <i class="material-icons" style="display: inline">announcement</i>
-                            <span style="margin-left: 2px;">
-                                Notifications
-                                <span class="new badge red">2</span>
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <img class="circle" src="/img/user.jpg" style="width: 40px; height: 40px; position: relative;">
-                        <span style="margin-left: 2px;">Profile</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+    {{--<nav>--}}
+        {{--<div class="nav-wrapper light-green">--}}
+            {{--<a href="#" class="brand-logo">Diet Select</a>--}}
+            {{--<ul id="nav-mobile" class="right hide-on-med-and-down">--}}
+                {{--<li>--}}
+                    {{--<a>--}}
+                        {{--<span class="valign-wrapper" style="position: relative;">--}}
+                            {{--<i class="material-icons" style="display: inline">email</i>--}}
+                            {{--<span style="margin-left: 2px;">--}}
+                                {{--Messages--}}
+                                {{--<span class="new badge red">4</span>--}}
+                            {{--</span>--}}
+                        {{--</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a>--}}
+                        {{--<span class="valign-wrapper">--}}
+                            {{--<i class="material-icons" style="display: inline">announcement</i>--}}
+                            {{--<span style="margin-left: 2px;">--}}
+                                {{--Notifications--}}
+                                {{--<span class="new badge red">2</span>--}}
+                            {{--</span>--}}
+                        {{--</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+                {{--<li>--}}
+                    {{--<a>--}}
+                        {{--<img class="circle" src="/img/user.jpg" style="width: 40px; height: 40px; position: relative;">--}}
+                        {{--<span style="margin-left: 2px;">Profile</span>--}}
+                    {{--</a>--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+        {{--</div>--}}
+    {{--</nav>--}}
         {{--<div class="row">--}}
             {{--<div class="col s12 card-panel light-green" style="margin-top: 1rem; padding:5px 10px; position: relative;">--}}
                 {{--<div class="col s12 m6 l4">--}}
