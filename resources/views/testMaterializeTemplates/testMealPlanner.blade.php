@@ -109,7 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; }
             table td { border-left: 1px solid #000; }
-            td.dayTD { max-width: 50px}
+            /*td.dayTD { max-width: 50px}*/
             div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}
             table td.headZ { border: none; }
             table td:first-child { border-left: none; }
@@ -121,7 +121,7 @@
 
             <table class="centered">
                 <tr>
-                    <td></td>
+                    <td style="max-width: 50px;"></td>
                     <td class="headZ">Bre</td>
                     <td class="headZ">Sna</td>
                     <td class="headZ">Lun</td>
