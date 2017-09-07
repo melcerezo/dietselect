@@ -107,11 +107,11 @@
         {{--});--}}
     {{--</script>--}}
         <style>
-            table { border: none; border-collapse: collapse; }
+            table { border: none; border-collapse: collapse;}
             table td { border-left: 1px solid #000; }
-            /*td.dayTD { max-width: 50px}*/
+            td.dayTD { width: 50px}
             div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}
-            table td.headZ { border: none; }
+            td.headZ { border: none; width:123px}
             table td:first-child { border-left: none; }
         </style>
 @endsection
@@ -121,7 +121,7 @@
 
             <table class="centered">
                 <tr>
-                    <td style="max-width: 50px;"></td>
+                    <td></td>
                     <td class="headZ"><div class="light-green white-text">Bre
                     </div></td>
                     <td class="headZ"><div class="light-green white-text">Sna
