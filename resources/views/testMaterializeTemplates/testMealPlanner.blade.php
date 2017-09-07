@@ -121,7 +121,7 @@
 
             <table class="centered">
                 <tr>
-                    <td style="width: 50px;"></td>
+                    <td class="dayTD"></td>
                     <td class="headZ"><div class="light-green white-text">Bre
                     </div></td>
                     <td class="headZ"><div class="light-green white-text">Sna
