@@ -109,7 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed }
             table td { border-left: 1px solid #000; }
-            table td div { width: 100%; }
+            table td div { width: 100%; border-radius: 10px;}
             table td.headZ { border: none; }
             table td:first-child { border-left: none; }
         </style>
