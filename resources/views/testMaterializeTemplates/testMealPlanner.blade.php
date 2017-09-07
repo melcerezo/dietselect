@@ -166,15 +166,15 @@
 
                 <table class="centered">
                     <tr>
-                        <th></th>
-                        <th>Bre</th>
-                        <th>Sna</th>
-                        <th>Lun</th>
-                        <th>Sna</th>
-                        <th>Din</th>
+                        <td></td>
+                        <td>Bre</td>
+                        <td>Sna</td>
+                        <td>Lun</td>
+                        <td>Sna</td>
+                        <td>Din</td>
                     </tr>
                     <tr>
-                        <th>Mo</th>
+                        <td>Mo</td>
                         <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                         <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
                         <td><div class="truncate">Meal 3</div><i class="material-icons">done</i></td>
@@ -182,7 +182,7 @@
                         <td><div class="truncate">Meal 5</div></td>
                     </tr>
                     <tr>
-                        <th>Tu</th>
+                        <td>Tu</td>
                         <td><div class="truncate">Meal 6</div></td>
                         <td><div class="truncate">Meal 7</div></td>
                         <td><div class="truncate">Meal 8</div></td>
@@ -190,7 +190,7 @@
                         <td><div class="truncate">Meal 10</div></td>
                     </tr>
                     <tr>
-                        <th>We</th>
+                        <td>We</td>
                         <td><div class="truncate">Meal 11</div></td>
                         <td><div class="truncate">Meal 12</div></td>
                         <td><div class="truncate">Meal 13</div></td>
@@ -198,7 +198,7 @@
                         <td><div class="truncate">Meal 15</div></td>
                     </tr>
                     <tr>
-                        <th>Th</th>
+                        <td>Th</td>
                         <td><div class="truncate">Meal 16</div></td>
                         <td><div class="truncate">Meal 17</div></td>
                         <td><div class="truncate">Meal 18</div></td>
@@ -206,7 +206,7 @@
                         <td><div class="truncate">Meal 20</div></td>
                     </tr>
                     <tr>
-                        <th>Fr</th>
+                        <td>Fr</td>
                         <td><div class="truncate">Meal 21</div></td>
                         <td><div class="truncate">Meal 22</div></td>
                         <td><div class="truncate">Meal 23</div></td>
@@ -214,7 +214,7 @@
                         <td><div class="truncate">Meal 25</div></td>
                     </tr>
                     <tr>
-                        <th>Sa</th>
+                        <td>Sa</td>
                         <td><div class="truncate"></div></td>
                         <td><div class="truncate"></div></td>
                         <td><div class="truncate"></div></td>
