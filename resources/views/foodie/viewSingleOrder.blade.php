@@ -1276,7 +1276,7 @@
                             <div class="left col s12 m5 l5">
                                 <ul>
                                     <li>
-                                        <span>{{$planName}} Plan Customization</span>
+                                        <span>{{$planName}} Customization</span>
                                     </li>
                                 </ul>
                             </div>
