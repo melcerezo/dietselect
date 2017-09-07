@@ -109,7 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed }
             table td { border-left: 1px solid #000; }
-            table td div { width: 100%; border-radius: 10px;}
+            div.dayz { width: 100%; border-radius: 10px;}
             table td.headZ { border: none; }
             table td:first-child { border-left: none; }
         </style>
@@ -129,7 +129,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <div class="light-green">Mo</div>
+                        <div class="dayz light-green">Mo</div>
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
