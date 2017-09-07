@@ -113,6 +113,7 @@
             td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             th.headZ {padding: 0 0; border-radius: 0;}
+            thead{ border: none !important; }
 
             table td:first-child { border-left: none; }
         </style>
