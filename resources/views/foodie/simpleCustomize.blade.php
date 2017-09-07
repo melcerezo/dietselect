@@ -586,6 +586,35 @@
         </div>
     </div>
 
+    <div id="orderReview" class="modal" >
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Review Order of {{$simpleCustomPlan->plan->plan_name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 m8 l10 offset-m2 offset-l1">
+                    <ul class="collection">
+                        {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
+                        <li class="collection-item">Chef Name: {{$simpleCustomPlan->plan->chef->name}}</li>
+                        <li class="collection-item">Plan Name: {{$simpleCustomPlan->plan->plan_name}}</li>
+                        <li class="collection-item">Plan Price: {{$simpleCustomPlan->plan->price}}</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m6 l4 offset-l4 offset-m3">
+                    <a href="{{route('cart.add', ['id' => $simpleCustomPlan->id,'cust' => 2])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width: 100%;">Cart</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
         <div id="detailCust" class="modal">
