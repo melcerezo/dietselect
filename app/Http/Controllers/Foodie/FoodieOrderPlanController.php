@@ -232,9 +232,23 @@ class FoodieOrderPlanController extends Controller
                 }
             }
 //            dd($ingredientMeals);
-        }elseif($orderItem->order_type==2){
+        }
+        elseif($orderItem->order_type==2){
             $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
+            $orderMealPlans=$orderPlan->simple_custom_meal()->get();
+            foreach($orderMealPlans as $orderMealPlan){
+                if($orderMealPlan->chef_customized_meal->mealplans->day=='SA'){
+                    $saMeals+=1;
+                }
+                if($orderMealPlan->chef_customized_meal->mealplans->meal_type=='MorningSnack'){
+                    $moSnaMeals+=1;
+                }elseif($orderMealPlan->chef_customized_meal->mealplans->meal_type=='AfternoonSnack'){
+                    $aftSnaMeals+=1;
+                }
+            }
+
+
         }
 //        dd($ingredientMealData);
 
