@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <style>
-        table { border: none; border-collapse: collapse; }
+        table { border: none; border-collapse: collapse; table-layout: fixed }
         table td { border-left: 1px solid #000; }
         table td:first-child { border-left: none; }
         /*.container{*/
@@ -164,7 +164,7 @@
     <div class="container">
         <div class="row">
 
-                <table style="table-layout: fixed;">
+                <table class="centered">
                     <tr>
                         <th></th>
                         <th>Bre</th>
