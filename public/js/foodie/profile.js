@@ -27,7 +27,7 @@ $(document).ready(function() {
         $('#basic-profile-container,#addresses-container,#allergies-container').hide();
     });
 
-    console.log(Date.now().toString());
+    console.log(Date.now().getFullYear());
 
     $('#birthday').pickadate({
         // Buttons
