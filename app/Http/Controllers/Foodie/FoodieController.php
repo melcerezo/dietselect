@@ -268,7 +268,7 @@ class FoodieController extends Controller
                         $planName = $orderPlan->plan->plan_name;
                         $chefName = $orderPlan->plan->chef->name;
                         $orderType = "Customized";
-                    }elseif ($orderItem->order_type == 1) {
+                    }elseif ($orderItem->order_type == 2) {
                         $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                         $planName = $orderPlan->plan->plan_name;
                         $chefName = $orderPlan->plan->chef->name;
