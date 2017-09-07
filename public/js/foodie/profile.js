@@ -27,7 +27,7 @@ $(document).ready(function() {
         $('#basic-profile-container,#addresses-container,#allergies-container').hide();
     });
 
-    console.log(Date);
+    console.log(Date.now()-568024668000);
 
     $('#birthday').pickadate({
         // Buttons
