@@ -120,7 +120,7 @@
     <div class="container">
         <div class="row">
 
-            <table class="centered">
+            <table class="centered striped">
                 <tr>
                     <td class="dayTD"></td>
                     <td class="headZ"><div class="light-green white-text">Bre
