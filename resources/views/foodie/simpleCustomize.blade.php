@@ -661,7 +661,7 @@
                             <span>Taste</span>
                         </div>
                         <div>
-                            <input type="hidden" name="dairy" value="0"/>
+                            <input type="hidden" name="sweet" value="0"/>
                             <input type="checkbox" id="sweet" name="sweet" value="1"/>
                             <label for="sweet">NO Sweet Foods</label>
                         </div>
