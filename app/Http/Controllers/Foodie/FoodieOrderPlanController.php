@@ -764,7 +764,7 @@ class FoodieOrderPlanController extends Controller
     public function show(Order $order){
 
         $dt=$order->created_at;
-        $nextWeek = $dt->addDay(7);
+        $nextWeek = $dt->addDay(7)->startOfWeek();
         dd($nextWeek);
         $nextWeekEnd = Carbon::parse("this monday")->addDay(5)->format('F d');
         $foodie = Auth::guard('foodie')->user();
