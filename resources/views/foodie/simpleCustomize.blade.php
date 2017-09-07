@@ -572,7 +572,7 @@
                             </span>
                             @elseif($simpleCustomMeal->is_customized==1)
                             <span>
-                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">See Customizations</button>
+                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Customizations</button>
                             </span>
                             @endif
                         </div>
