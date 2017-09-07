@@ -110,7 +110,7 @@
             table { border: none; border-collapse: collapse; table-layout: fixed;}
             table td { border-left: 1px solid #000; }
             td.dayTD { width: 50px; padding: 0 0;}
-            td.dayTD div { border-radius: 100%; }
+            td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             td.headZ { border: none; width:123px}
             table td:first-child { border-left: none; }
