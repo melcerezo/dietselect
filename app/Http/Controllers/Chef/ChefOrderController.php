@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Chef;
 
+use App\ChefCustomizedMeal;
 use App\CustomPlan;
 use App\Foodie;
 use App\Http\Controllers\Controller;
@@ -75,8 +76,12 @@ class ChefOrderController extends Controller
         ]);
     }
 
-    public function getIngred($id){
-        $meal = CustomizedMeal::where('id','=',$id)->first();
+    public function getIngred($id,$cust){
+        if($cust==1){
+            $meal = CustomizedMeal::where('id','=',$id)->first();
+        }else if($cust==2){
+            $meal = ChefCustomizedMeal::where('id','=',$id)->first();
+        }
 
         $ingreds = $meal->customized_ingredient_meal()->get();
 
