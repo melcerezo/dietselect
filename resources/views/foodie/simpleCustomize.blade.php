@@ -610,6 +610,15 @@
     @endif
 
     <div id="planCust" class="modal">
+        <nav class="light-green lighten-1 white-text">
+            <div class="left col s12 m5 l5">
+                <ul>
+                    <li>
+                        <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">Customize {{$simpleCustomPlan->plan->plan_name}}</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="modal-content">
             <form action="{{route('foodie.simple.custom', $simpleCustomPlan->id)}}" method="post">
                 {{ csrf_field() }}
