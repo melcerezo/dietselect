@@ -503,10 +503,10 @@
         <div class="row">
             <div class="col s12 m8 plSlCstMlBtn">
                 <div style="margin-bottom: 20px;">
-                    <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin-right: 10px;">Order</button>
-                    <button type="button" data-target="planCust" class="modal-trigger btn" style="margin-right: 10px;">Customize</button>
+                    <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
+                    <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize</button>
                     @if($simpleCustomPlan->simple_custom_plan_detail->count())
-                        <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin-right: 10px;">View Details</button>
+                        <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>
                     @endif
                 </div>
 
