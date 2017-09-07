@@ -1302,7 +1302,7 @@
                                             <th>Customized</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="m{{$mealPlan->id}}">
+                                        <tbody id="m{{$mealPlan->chef_customized_meal->id}}">
                                         </tbody>
                                     </table>
                                 </div>
