@@ -205,7 +205,7 @@ class FoodieMealPlanController extends Controller
 
         $simpleCustomMeals = $simpleCustomPlan->simple_custom_meal()->get();
 
-//        dd($simpleCustomMeals[0]->chef_customized_meal->mealplans);
+        dd($simpleCustomMeals->where('is_customized','=',1)->count());
         $saMeals = $mealPlans->where('day','=','SA')->count();
         $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
         $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
