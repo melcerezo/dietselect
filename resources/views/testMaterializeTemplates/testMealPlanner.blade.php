@@ -109,7 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed }
             table td { border-left: 1px solid #000; }
-            /*td.dayTD { padding:0; }*/
+            td.dayTD { max-width: 50px}
             div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}
             table td.headZ { border: none; }
             table td:first-child { border-left: none; }
