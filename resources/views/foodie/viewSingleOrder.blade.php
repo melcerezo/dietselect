@@ -1304,11 +1304,18 @@
                                 <div>
                                     <table>
                                         <thead>
+                                        @if($orderItem->order_type==1)
                                         <tr>
                                             <th>Ingredient</th>
                                             <th>Grams</th>
                                             <th>Customized</th>
                                         </tr>
+                                        @elseif($orderItem->order_type==2)
+                                            <tr>
+                                                <th>Ingredient</th>
+                                                <th>Grams</th>
+                                            </tr>
+                                        @endif
                                         </thead>
                                         @if($orderItem->order_type==1)
                                             <tbody id="m{{$mealPlan->id}}">
