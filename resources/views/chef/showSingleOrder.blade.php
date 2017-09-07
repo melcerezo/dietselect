@@ -1467,18 +1467,23 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <ul class="collection">
-                            <li class="collection-item light-green white-text">
-                                <span class="collection-header">Cooking Methods</span>
-                            </li>
-                            @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                                @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
-                                    <li class="collection-item">
-                                            <span>{{'NO '.$detail->detail.' food'}}</span>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
+                        @if($orderPlan->simple_custom_plan_detail()
+                            ->where('detail','=','fried')
+                            ->where('detail','=','grilled')
+                            ->count())
+                            <ul class="collection">
+                                <li class="collection-item light-green white-text">
+                                    <span class="collection-header">Cooking Methods</span>
+                                </li>
+                                @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                    @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
+                                        <li class="collection-item">
+                                                <span>{{'NO '.$detail->detail.' food'}}</span>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        @endif
                         @if($orderPlan->simple_custom_plan_detail()
                             ->where('detail','=','preservatives')
                             ->where('detail','=','salt')
