@@ -125,10 +125,13 @@ $(document).ready(function () {
                             '<input type="checkbox" name="wheat" value="wheatOnly" class="filled-in" id="wheat'+id+'" data-error=""/>' +
                             '<label for="wheat'+id+'">Wheat Products Only</label><br/>' +
                             '</div>');
-                            console.log((valData[j].ingredient.indexOf("rice")<0 || valData[j].ingredient.indexOf("Rice")<0 || valData[j].ingredient.indexOf("RICE")<0));
-                            console.log((valData[j].ingredient_group=='~2000~')
-                                && (valData[j].ingredient.indexOf("rice")>=0 || valData[j].ingredient.indexOf("Rice")>=0 || valData[j].ingredient.indexOf("RICE")>=0)
-                                && (valData[j].ingredient.indexOf("pasta")!=-1 || valData[j].ingredient.indexOf("Pasta")!=1 || valData[j].ingredient.indexOf("PASTA")!=-1));
+                }else if((valData[j].ingredient_group=='~1800~' && valData[j].ingredient.indexOf("wheat")>=0) || (valData[j].ingredient_group=='~2000~' && valData[j].ingredient.indexOf("Rice")<0)
+                    && !produceType.find('#carb'+id).length){
+                    produceType.append('<div id="carb'+id+'">' +
+                        '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                        '<input type="checkbox" name="gluten" value="noGluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
+                        '<label for="gluten'+id+'">No Gluten</label><br/>' +
+                        '</div>');
                 }
 
                 if((valData[j].ingredient_group=='~2000~')
@@ -138,9 +141,9 @@ $(document).ready(function () {
                     produceType.append('<div id="rice'+id+'">' +
                         '<div ><span style="font-size: 20px;">Rice</span></div>' +
                         '<input type="radio" name="rice" value="whiteRice" class="filled-in" id="white'+id+'" data-error=""/>' +
-                        '<label for="wheat'+id+'">White Rice</label><br/>' +
+                        '<label for="white'+id+'">White Rice</label><br/>' +
                         '<input type="radio" name="rice" value="brownRice" class="filled-in" id="brown'+id+'" data-error=""/>' +
-                        '<label for="wheat'+id+'">Brown Rice</label><br/>' +
+                        '<label for="brown'+id+'">Brown Rice</label><br/>' +
                         '</div>');
                 }
 
