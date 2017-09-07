@@ -1,6 +1,6 @@
-function ingredAjax(id) {
+function ingredAjax(id,cust) {
     return $.ajax({
-        url:'/foodie/ingred/'+id+'/get',
+        url:'/foodie/ingred/'+id+'/get/'+cust,
         dataType:'json'
     });
 }
@@ -8,7 +8,8 @@ function ingredAjax(id) {
 $(document).ready(function () {
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
-        var ingreds = ingredAjax(id);
+        var cust = $(this).attr('data-cust');
+        var ingreds = ingredAjax(id,cust);
 
         // ingreds.fail(console.log(ingreds.statusCode()));
 
