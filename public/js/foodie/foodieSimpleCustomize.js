@@ -125,7 +125,8 @@ $(document).ready(function () {
                             '<input type="checkbox" name="wheat" value="wheatOnly" class="filled-in" id="wheat'+id+'" data-error=""/>' +
                             '<label for="wheat'+id+'">Wheat Products Only</label><br/>' +
                             '</div>');
-                }else{
+                }else if((((valData[j].ingredient_group=='~1800~' && valData[j].ingredient.indexOf("wheat")>=0)) || (valData[j].ingredient_group=='~2000~' && valData[j].ingredient.indexOf("Rice")<0))
+                    && !produceType.find('#carb'+id).length){
                     produceType.append('<div id="carb'+id+'">' +
                         '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
                         '<input type="checkbox" name="gluten" value="noGluten" class="filled-in" id="gluten'+id+'" data-error=""/>' +
