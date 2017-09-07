@@ -109,7 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed;}
             /*table td { border-left: 1px solid #000; }*/
-            th.dayTD { width: 50px;}
+            th.dayTD { width: 50px; height: 30px;}
             td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             /*td.headZ { border: none; width:123px}*/
@@ -125,7 +125,7 @@
                 <thead style="width: 50px;">
                     <tr class="light-green white-text">
                         <th class="dayTD"></th>
-                        <th class="light-green white-text">
+                        <th class="headZ">
                             Bre
                         </th>
                         <th class="headZ">
