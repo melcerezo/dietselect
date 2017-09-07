@@ -1459,32 +1459,36 @@
                                 <span class="collection-header">Taste</span>
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                                <li class="collection-item">
-                                    @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
-                                        $detail->detail== 'bitter' || $detail->detail== 'savory')
-                                        <span>{{'NO '.$detail->detail.' food'}}</span>
-                                    @endif
-                                </li>
+                                @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
+                                    $detail->detail== 'bitter' || $detail->detail== 'savory')
+                                    <li class="collection-item">
+                                            <span>{{'NO '.$detail->detail.' food'}}</span>
+                                    </li>
+                                @endif
                             @endforeach
+                        </ul>
+                        <ul class="collection">
                             <li class="collection-item light-green white-text">
                                 <span class="collection-header">Cooking Methods</span>
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                                <li class="collection-item">
-                                    @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
-                                        <span>{{'NO '.$detail->detail.' food'}}</span>
-                                    @endif
-                                </li>
+                                @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
+                                    <li class="collection-item">
+                                            <span>{{'NO '.$detail->detail.' food'}}</span>
+                                    </li>
+                                @endif
                             @endforeach
+                        </ul>
+                        <ul class="collection">
                             <li class="collection-item light-green white-text">
                                 <span class="collection-header">Dry Goods/Condiments</span>
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                                <li class="collection-item">
-                                    @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
-                                        <span>{{'NO '.$detail->detail}}</span>
-                                    @endif
-                                </li>
+                                @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
+                                    <li class="collection-item">
+                                            <span>{{'NO '.$detail->detail}}</span>
+                                    </li>
+                                @endif
                             @endforeach
                         </ul>
                     </div>
