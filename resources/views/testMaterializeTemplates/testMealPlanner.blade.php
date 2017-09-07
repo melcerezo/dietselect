@@ -110,7 +110,8 @@
             table { border: none; border-collapse: collapse; table-layout: fixed;}
             table td { border-left: 1px solid #000; }
             td.dayTD { width: 50px;}
-            div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}
+            td.dayTD div { border-radius: 100%; }
+            /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             td.headZ { border: none; width:123px}
             table td:first-child { border-left: none; }
         </style>
@@ -135,7 +136,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        M
+                        <div class="light-green white-text">M</div>
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
@@ -145,7 +146,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        T
+                        <div class="light-green white-text">T</div>
                     </td>
                     <td><div class="truncate">Meal 6</div></td>
                     <td><div class="truncate">Meal 7</div></td>
@@ -155,7 +156,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        W
+                        <div class="light-green white-text">W</div>
                     </td>
                     <td><div class="truncate">Meal 11</div></td>
                     <td><div class="truncate">Meal 12</div></td>
@@ -165,7 +166,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        Th
+                        <div class="light-green white-text">Th</div>
                     </td>
                     <td><div class="truncate">Meal 16</div></td>
                     <td><div class="truncate">Meal 17</div></td>
@@ -175,7 +176,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        F
+                        <div class="light-green white-text">F</div>
                     </td>
                     <td><div class="truncate">Meal 21</div></td>
                     <td><div class="truncate">Meal 22</div></td>
@@ -185,7 +186,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        S
+                        <div class="light-green white-text">S</div>
                     </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
