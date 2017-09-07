@@ -566,15 +566,22 @@
                             </li>
                         </ul>
                         <div class="editButton">
+                            @if($simpleCustomMeal->is_customized==0)
                             <span>
                                 <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>
                             </span>
+                            @elseif($simpleCustomMeal->is_customized==1)
+                            <span>
+                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">See Customizations</button>
+                            </span>
+                            @endif
                         </div>
                     </div>
                 @endforeach
             </div>
         </div>
     </div>
+
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
         <div id="detailCust" class="modal">
@@ -706,23 +713,37 @@
                         <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
                         </tbody>
                     </table>
-                    <form id="editMeal{{$id}}"
-                          action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"
-                          method="post" autocomplete="off" class="editMeal">
-                        {{csrf_field()}}
-                        <div>
-                            <span style="font-size: 30px;">Meal Customization</span>
-                        </div>
-                        <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
-                            <div class="meatSection">
+                    @if($simpleCustomMeal->is_customized==0)
+
+                        <form id="editMeal{{$id}}"
+                              action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"
+                              method="post" autocomplete="off" class="editMeal">
+                            {{csrf_field()}}
+                            <div>
+                                <span style="font-size: 30px;">Meal Customization</span>
                             </div>
-                            <div class="produceSection">
+                            <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
+                                <div class="meatSection">
+                                </div>
+                                <div class="produceSection">
+                                </div>
+                                <div class="dairySection">
+                                </div>
                             </div>
-                            <div class="dairySection">
-                            </div>
-                        </div>
-                        <button class="btn waves-effect waves-light">Customize</button>
-                    </form>
+                            <button class="btn waves-effect waves-light">Customize</button>
+                        </form>
+                    @elseif($simpleCustomMeal->is_customized==1)
+                        @if($simpleCustomMeal->simple_custom_detail->count())
+                            <ul class="collection">
+                                <li class="collection-item light-green white-text">
+                                    <span class="collection-header">Customizations</span>
+                                </li>
+                                @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
+                                    <li class="collection-item">{{$detail->detail}}</li>
+                                @endforeach
+                            </ul>
+                        @endif
+                    @endif
 
                 </div>
 
