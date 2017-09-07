@@ -503,9 +503,11 @@
         <div class="row">
             <div class="col s12 m8 plSlCstMlBtn">
                 <div style="margin-bottom: 20px;">
-
-                    <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
-
+                    @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
+                        <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
+                    @else
+                        <button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Order</button>
+                    @endif
                     <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize Plan</button>
                     @if($simpleCustomPlan->simple_custom_plan_detail->count())
                         <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>
