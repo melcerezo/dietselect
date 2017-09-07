@@ -1460,7 +1460,12 @@
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
                                 <li class="collection-item">
-                                    <span>{{$detail->detail}}</span>
+
+                                    @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
+                                        <span>{{'NO '.$detail->detail}}</span>
+                                    @else
+                                        <span>{{'NO '.$detail->detail.' food'}}</span>
+                                    @endif
                                 </li>
                             @endforeach
                         </ul>

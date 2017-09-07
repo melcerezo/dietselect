@@ -250,7 +250,7 @@ class FoodieMealPlanController extends Controller
             if($value == "1"){
                 $detail = new SimpleCustomPlanDetail();
                 $detail->simple_custom_plan_id = $simpleCustomPlan->id;
-                $detail->detail = 'NO '.$key;
+                $detail->detail = $key;
                 $detail->save();
             }
         }
