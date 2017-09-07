@@ -113,6 +113,7 @@
             td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             /*td.headZ { border: none; width:123px}*/
+
             table td:first-child { border-left: none; }
         </style>
 @endsection
@@ -121,7 +122,7 @@
         <div class="row">
 
             <table class="centered striped">
-                <thead>
+                <thead style="width: 50px;">
                     <tr class="light-green white-text">
                         <th class="dayTD"></th>
                         <th class="light-green white-text">
