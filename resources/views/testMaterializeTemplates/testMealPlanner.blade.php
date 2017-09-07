@@ -109,6 +109,7 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed }
             table td { border-left: 1px solid #000; }
+            /*td.dayTD { padding:0; }*/
             div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}
             table td.headZ { border: none; }
             table td:first-child { border-left: none; }
@@ -129,7 +130,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green">M</div>
+                        <div class="dayz light-green white-text" style="font-size: 20px;">M</div>
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
