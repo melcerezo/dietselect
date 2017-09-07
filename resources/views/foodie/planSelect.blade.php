@@ -7,15 +7,15 @@
 @endsection
 @section('page_content')
     @if($sms_unverified && $foodie->birthday==null)
-        <div>
+        <div style="margin-top: 10px;">
             Please verify your phone number and birthday before ordering any plans.
         </div>
     @elseif($sms_unverified)
-        <div>
+        <div style="margin-top: 10px;">
             Please verify your phone number before ordering any plans.
         </div>
     @elseif($foodie->birthday==null)
-        <div>
+        <div style="margin-top: 10px;">
             Please verify your birthday before ordering any plans.
         </div>
     @else
