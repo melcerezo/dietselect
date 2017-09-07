@@ -1454,13 +1454,7 @@
                         </div>
                     </nav>
                     <div class="modal-content">
-                        @if($orderPlan->simple_custom_plan_detail
-                            ->where('detail','=','sweet')
-                            ->where('detail','=','salty')
-                            ->where('detail','=','spicy')
-                            ->where('detail','=','bitter')
-                            ->where('detail','=','savory')
-                            ->count())
+                        @if($tasteCount>0)
                         <ul class="collection">
                             <li class="collection-item light-green white-text">
                                 <span class="collection-header">Taste</span>
@@ -1475,10 +1469,7 @@
                             @endforeach
                         </ul>
                         @endif
-                        @if($orderPlan->simple_custom_plan_detail
-                            ->where('detail','=','fried')
-                            ->where('detail','=','grilled')
-                            ->count())
+                        @if($cookCount>0)
                             <ul class="collection">
                                 <li class="collection-item light-green white-text">
                                     <span class="collection-header">Cooking Methods</span>
@@ -1492,11 +1483,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                        @if($orderPlan->simple_custom_plan_detail
-                            ->where('detail','=','preservatives')
-                            ->where('detail','=','salt')
-                            ->where('detail','=','sweeteners')
-                            ->count())
+                        @if($driedCount>0)
                             <ul class="collection">
                                 <li class="collection-item light-green white-text">
                                     <span class="collection-header">Dry Goods/Condiments</span>
