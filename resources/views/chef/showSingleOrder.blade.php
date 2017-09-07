@@ -1454,6 +1454,13 @@
                         </div>
                     </nav>
                     <div class="modal-content">
+                        @if($orderPlan->simple_custom_plan_detail()
+                            ->where('detail','=','sweet')
+                            ->where('detail','=','salty')
+                            ->where('detail','=','spicy')
+                            ->where('detail','=','bitter')
+                            ->where('detail','=','savory')
+                            ->count())
                         <ul class="collection">
                             <li class="collection-item light-green white-text">
                                 <span class="collection-header">Taste</span>
@@ -1467,6 +1474,7 @@
                                 @endif
                             @endforeach
                         </ul>
+                        @endif
                         @if($orderPlan->simple_custom_plan_detail()
                             ->where('detail','=','fried')
                             ->where('detail','=','grilled')
