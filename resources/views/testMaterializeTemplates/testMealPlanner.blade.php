@@ -112,7 +112,7 @@
             th.dayTD { width: 50px;}
             td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
-            td.headZ { border: none; width:123px}
+            /*td.headZ { border: none; width:123px}*/
             table td:first-child { border-left: none; }
         </style>
 @endsection
