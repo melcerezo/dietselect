@@ -121,19 +121,31 @@
         <div class="row">
 
             <table class="centered striped">
-                <tr>
-                    <td class="dayTD"></td>
-                    <td class="headZ"><div class="light-green white-text">Bre
-                    </div></td>
-                    <td class="headZ"><div class="light-green white-text">Sna
-                    </div></td>
-                    <td class="headZ"><div class="light-green white-text">Lun
-                    </div></td>
-                    <td class="headZ"><div class="light-green white-text">Sna
-                    </div></td>
-                    <td class="headZ"><div class="light-green white-text">Din
-                    </div></td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th class="dayTD"></th>
+                        <th class="headZ">
+                            <div class="light-green white-text">Bre
+                            </div>
+                        </th>
+                        <th class="headZ">
+                            <div class="light-green white-text">Sna
+                            </div>
+                        </th>
+                        <th class="headZ">
+                            <div class="light-green white-text">Lun
+                            </div>
+                        </th>
+                        <th class="headZ">
+                            <div class="light-green white-text">Sna
+                            </div>
+                        </th>
+                        <th class="headZ">
+                            <div class="light-green white-text">Din
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
                 <tr>
                     <td class="dayTD">
                         <div class="light-green white-text">M</div>
