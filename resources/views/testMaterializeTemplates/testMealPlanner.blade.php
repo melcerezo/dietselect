@@ -1,20 +1,23 @@
 @extends('layouts.app')
 @section('head')
-    {{--<style>--}}
-        {{--.container{--}}
-            {{--width:85%;--}}
-        {{--}--}}
-        {{--#testCreateModal.modal{--}}
-            {{--width: 50% !important;--}}
-            {{--max-height: 100% !important;--}}
-            {{--border-radius: 5px;--}}
-        {{--}--}}
-        {{--.modal-header{--}}
-            {{--width:100%;--}}
-            {{--height:100%;--}}
-            {{--min-height:80px;--}}
-        {{--}--}}
-    {{--</style>--}}
+    <style>
+        table { border: none; border-collapse: collapse; }
+        table td { border-left: 1px solid #000; }
+        table td:first-child { border-left: none; }
+        /*.container{*/
+            /*width:85%;*/
+        /*}*/
+        /*#testCreateModal.modal{*/
+            /*width: 50% !important;*/
+            /*max-height: 100% !important;*/
+            /*border-radius: 5px;*/
+        /*}*/
+        /*.modal-header{*/
+            /*width:100%;*/
+            /*height:100%;*/
+            /*min-height:80px;*/
+        /*}*/
+    </style>
     {{--<script>--}}
         {{--$(document).ready(function () {--}}
 {{--//            $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});--}}
