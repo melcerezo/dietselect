@@ -1454,7 +1454,7 @@
                         </div>
                     </nav>
                     <div class="modal-content">
-                        @if($orderPlan->simple_custom_plan_detail()
+                        @if($orderPlan->simple_custom_plan_detail
                             ->where('detail','=','sweet')
                             ->where('detail','=','salty')
                             ->where('detail','=','spicy')
@@ -1475,7 +1475,7 @@
                             @endforeach
                         </ul>
                         @endif
-                        @if($orderPlan->simple_custom_plan_detail()
+                        @if($orderPlan->simple_custom_plan_detail
                             ->where('detail','=','fried')
                             ->where('detail','=','grilled')
                             ->count())
@@ -1492,7 +1492,7 @@
                                 @endforeach
                             </ul>
                         @endif
-                        @if($orderPlan->simple_custom_plan_detail()
+                        @if($orderPlan->simple_custom_plan_detail
                             ->where('detail','=','preservatives')
                             ->where('detail','=','salt')
                             ->where('detail','=','sweeteners')
