@@ -14,6 +14,7 @@ $(document).ready(function () {
         // ingreds.fail(console.log(ingreds.statusCode()));
 
         ingreds.done(function(response) {
+            var cust = $(this).attr('data-cust');
             var valData = response;
             // console.log(valData);
             $('#m'+id).empty();
@@ -35,7 +36,6 @@ $(document).ready(function () {
                 }
             }else if(cust==2){
                 for(var i=0,l=valData.length;i<l;i++){
-
                     $('#m'+id).append(
                         '<tr>'+
                         '<td>'+valData[i].ingredient+'</td>'+
