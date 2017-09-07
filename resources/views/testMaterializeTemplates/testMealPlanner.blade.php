@@ -123,21 +123,21 @@
 
             <table class="centered striped">
                 <thead style="width: 50px;">
-                    <tr class="light-green white-text">
+                    <tr>
                         <th class="dayTD"></th>
-                        <th class="headZ">
+                        <th class="headZ light-green white-text">
                             Bre
                         </th>
-                        <th class="headZ">
+                        <th class="headZ light-green white-text">
                             Sna
                         </th>
-                        <th class="headZ">
+                        <th class="headZ light-green white-text">
                             Lun
                         </th>
-                        <th class="headZ">
+                        <th class="headZ light-green white-text">
                             Sna
                         </th>
-                        <th class="headZ">
+                        <th class="headZ light-green white-text">
                             Din
                         </th>
                     </tr>
