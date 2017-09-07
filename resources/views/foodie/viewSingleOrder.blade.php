@@ -1268,6 +1268,73 @@
                 @endif
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12 m3">
+                    <button data-target="planCustom" class="btn waves-effect waves-light modal-trigger">See Customizations</button>
+                </div>
+            </div>
+
+            @if($orderItem->order_type==2)
+                @if($orderPlan->simple_custom_plan_detail->count())
+                    <div id="planCustomization" class="modal">
+                        <nav class="light-green lighten-1 white-text">
+                            <div class="left col s12 m5 l5">
+                                <ul>
+                                    <li>
+                                        <span>{{$planName}} Plan Customization</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="modal-content">
+                            @if($tasteCount>0)
+                                <ul class="collection">
+                                    <li class="collection-item light-green white-text">
+                                        <span class="collection-header">Taste</span>
+                                    </li>
+                                    @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                        @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
+                                            $detail->detail== 'bitter' || $detail->detail== 'savory')
+                                            <li class="collection-item">
+                                                <span>{{'NO '.$detail->detail.' food'}}</span>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                            @if($cookCount>0)
+                                <ul class="collection">
+                                    <li class="collection-item light-green white-text">
+                                        <span class="collection-header">Cooking Methods</span>
+                                    </li>
+                                    @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                        @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
+                                            <li class="collection-item">
+                                                <span>{{'NO '.$detail->detail.' food'}}</span>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                            @if($driedCount>0)
+                                <ul class="collection">
+                                    <li class="collection-item light-green white-text">
+                                        <span class="collection-header">Dry Goods/Condiments</span>
+                                    </li>
+                                    @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                        @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
+                                            <li class="collection-item">
+                                                <span>{{'NO '.$detail->detail}}</span>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+            @endif
+
             @unless(count($mealPlans)==0)
                 @if($orderItem->order_type==1 || $orderItem->order_type==2)
                     @foreach($mealPlans as $id=>$mealPlan)
