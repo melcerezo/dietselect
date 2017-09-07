@@ -109,8 +109,8 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed;}
             /*table td { border-left: 1px solid #000; }*/
-            th.dayTD { width: 50px; padding: 0 0; border-radius: 0;}
-            td.dayTD div { border-radius: 100%; font-size: 20px}
+            th.dayTD { width: 70px; padding: 0 0; border-radius: 0;}
+            td.dayTD div { font-size: 30px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
             th.headZ {padding: 0 0; border-radius: 0;}
             thead{ border: none !important; }
@@ -127,25 +127,25 @@
                     <tr>
                         <th class="dayTD light-green"></th>
                         <th class="headZ light-green white-text">
-                            Bre
+                            Breakfast
                         </th>
                         <th class="headZ light-green white-text">
-                            Sna
+                            Snack
                         </th>
                         <th class="headZ light-green white-text">
-                            Lun
+                            Lunch
                         </th>
                         <th class="headZ light-green white-text">
-                            Sna
+                            Snack
                         </th>
                         <th class="headZ light-green white-text">
-                            Din
+                            Dinner
                         </th>
                     </tr>
                 </thead>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">M</div>
+                        <div class="light-green white-text">Monday</div>
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
@@ -155,7 +155,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">T</div>
+                        <div class="light-green white-text">Tuesday</div>
                     </td>
                     <td><div class="truncate">Meal 6</div></td>
                     <td><div class="truncate">Meal 7</div></td>
@@ -165,7 +165,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">W</div>
+                        <div class="light-green white-text">Wednesday</div>
                     </td>
                     <td><div class="truncate">Meal 11</div></td>
                     <td><div class="truncate">Meal 12</div></td>
@@ -175,7 +175,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Th</div>
+                        <div class="light-green white-text">Thursday</div>
                     </td>
                     <td><div class="truncate">Meal 16</div></td>
                     <td><div class="truncate">Meal 17</div></td>
@@ -185,7 +185,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">F</div>
+                        <div class="light-green white-text">Friday</div>
                     </td>
                     <td><div class="truncate">Meal 21</div></td>
                     <td><div class="truncate">Meal 22</div></td>
@@ -195,7 +195,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">S</div>
+                        <div class="light-green white-text">Saturday</div>
                     </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
