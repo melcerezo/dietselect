@@ -125,7 +125,7 @@
             <table class="centered striped">
                 <thead style="width: 50px;">
                     <tr>
-                        <th class="dayTD"></th>
+                        <th class="dayTD light-green"></th>
                         <th class="headZ light-green white-text">
                             Bre
                         </th>
