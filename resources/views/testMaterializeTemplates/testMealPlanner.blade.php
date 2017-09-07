@@ -122,11 +122,16 @@
             <table class="centered">
                 <tr>
                     <td style="max-width: 50px;"></td>
-                    <td class="headZ">Bre</td>
-                    <td class="headZ">Sna</td>
-                    <td class="headZ">Lun</td>
-                    <td class="headZ">Sna</td>
-                    <td class="headZ">Din</td>
+                    <td class="headZ"><div class="light-green white-text">Bre
+                    </div></td>
+                    <td class="headZ"><div class="light-green white-text">Sna
+                    </div></td>
+                    <td class="headZ"><div class="light-green white-text">Lun
+                    </div></td>
+                    <td class="headZ"><div class="light-green white-text">Sna
+                    </div></td>
+                    <td class="headZ"><div class="light-green white-text">Din
+                    </div></td>
                 </tr>
                 <tr>
                     <td class="dayTD">
