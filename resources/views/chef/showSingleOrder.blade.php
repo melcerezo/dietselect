@@ -1443,30 +1443,30 @@
 
         @if($orderItem->order_type==2)
             @if($orderPlan->simple_custom_plan_detail->count())
-            @endif
-        <div id="planCustomization" class="modal">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span>{{$planName}}</span>
-                        </li>
-                    </ul>
+                <div id="planCustomization" class="modal">
+                    <nav class="light-green lighten-1 white-text">
+                        <div class="left col s12 m5 l5">
+                            <ul>
+                                <li>
+                                    <span>{{$planName}}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <div class="modal-content">
+                        <ul class="collection">
+                            <li class="collection-item light-green white-text">
+                                <span class="collection-header">Plan Customizations</span>
+                            </li>
+                            @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                <li class="collection-item">
+                                    <span>{{$detail->detail}}</span>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
-            </nav>
-            <div class="modal-content">
-                <ul class="collection">
-                    <li class="collection-item light-green white-text">
-                        <span class="collection-header">Plan Customizations</span>
-                    </li>
-                    @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                        <li class="collection-item">
-                            <span>{{$detail->detail}}</span>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
+            @endif
         @endif
 
 
