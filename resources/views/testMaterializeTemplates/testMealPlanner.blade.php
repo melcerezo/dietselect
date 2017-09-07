@@ -179,7 +179,9 @@
                     <td><div class="truncate">Meal 25</div></td>
                 </tr>
                 <tr>
-                    <td>Sa</td>
+                    <td class="dayTD">
+                        <div class="dayz light-green white-text" style="font-size: 20px;">S</div>
+                    </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
