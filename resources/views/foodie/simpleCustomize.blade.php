@@ -759,7 +759,33 @@
                                     <span class="collection-header">Customizations</span>
                                 </li>
                                 @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
-                                    <li class="collection-item">{{$detail->detail}}</li>
+                                    <li class="collection-item">
+                                        @if($detail->detail=='switchChicken')
+                                            <span>Switch to Chicken</span>
+                                        @elseif($detail->detail=='switchBeef')
+                                            <span>Switch to Beef</span>
+                                        @elseif($detail->detail=='switchPork')
+                                            <span>Switch to Pork</span>
+                                        @elseif($detail->detail=='switchSeafood')
+                                            <span>Switch to Seafood</span>
+                                        @elseif($detail->detail=='switchVegetarian')
+                                            <span>Vegetarian</span>
+                                        @elseif($detail->detail=='noEggs')
+                                            <span>No Eggs</span>
+                                        @elseif($detail->detail=='noDairy')
+                                            <span>No Dairy</span>
+                                        @elseif($detail->detail=='noGluten')
+                                            <span>No Gluten</span>
+                                        @elseif($detail->detail=='wheatOnly')
+                                            <span>Wheat Products Only</span>
+                                        @elseif($detail->detail=='whiteRice')
+                                            <span>White Rice</span>
+                                        @elseif($detail->detail=='brownRice')
+                                            <span>Brown Rice</span>
+                                        @elseif($detail->detail=='noNuts')
+                                            <span>No Nuts/Nut Products</span>
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         @endif
