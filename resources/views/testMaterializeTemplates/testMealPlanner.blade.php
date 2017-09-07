@@ -135,7 +135,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">M</div>
+                        M
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
@@ -145,7 +145,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">T</div>
+                        T
                     </td>
                     <td><div class="truncate">Meal 6</div></td>
                     <td><div class="truncate">Meal 7</div></td>
@@ -155,7 +155,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">W</div>
+                        W
                     </td>
                     <td><div class="truncate">Meal 11</div></td>
                     <td><div class="truncate">Meal 12</div></td>
@@ -165,7 +165,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">Th</div>
+                        Th
                     </td>
                     <td><div class="truncate">Meal 16</div></td>
                     <td><div class="truncate">Meal 17</div></td>
@@ -175,7 +175,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">F</div>
+                        F
                     </td>
                     <td><div class="truncate">Meal 21</div></td>
                     <td><div class="truncate">Meal 22</div></td>
@@ -185,7 +185,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green white-text" style="font-size: 20px;">S</div>
+                        F
                     </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
