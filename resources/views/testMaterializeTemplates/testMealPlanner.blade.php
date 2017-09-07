@@ -185,7 +185,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        F
+                        S
                     </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
