@@ -121,12 +121,12 @@
 
             <table class="centered">
                 <tr>
-                    <td style="max-width: 50px;"></td>
-                    <td class="headZ">Bre</td>
-                    <td class="headZ">Sna</td>
-                    <td class="headZ">Lun</td>
-                    <td class="headZ">Sna</td>
-                    <td class="headZ">Din</td>
+                    <th style="max-width: 50px;"></th>
+                    <th class="headZ">Bre</th>
+                    <th class="headZ">Sna</th>
+                    <th class="headZ">Lun</th>
+                    <th class="headZ">Sna</th>
+                    <th class="headZ">Din</th>
                 </tr>
                 <tr>
                     <td class="dayTD">
