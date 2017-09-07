@@ -40,7 +40,7 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd',
 
         //Date limits
-        max: Date.now()-568024668000,
+        max: date.getFullYear()-18,
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
