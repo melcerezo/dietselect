@@ -27,7 +27,7 @@ $(document).ready(function() {
         $('#basic-profile-container,#addresses-container,#allergies-container').hide();
     });
 
-    console.log(Date.now().getFullYear());
+    console.log(Date);
 
     $('#birthday').pickadate({
         // Buttons
@@ -39,7 +39,7 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd',
 
         //Date limits
-        max: Date.now()-1000,
+        max: Date.now()-568024668000,
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
