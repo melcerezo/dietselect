@@ -163,7 +163,6 @@
         {{--</div>--}}
     <div class="container">
         <div class="row">
-            <div class="card-panel" style="padding: 0;">
 
                 <table style="table-layout: fixed;">
                     <tr>
@@ -223,6 +222,8 @@
                         <td><div class="truncate"></div></td>
                     </tr>
                 </table>
+        </div>
+    </div>
                 {{--<table class="striped centered">--}}
                     {{--<thead class="light-green white-text" style="border: none;">--}}
                         {{--<th></th>--}}
@@ -493,9 +494,8 @@
                         {{--</tr>--}}
                     {{--</tbody>--}}
                 {{--</table>--}}
-            </div>
-        </div>
-    </div>
+        {{--</div>--}}
+    {{--</div>--}}
 
     {{--<div id="testCreateModal" class="modal" >--}}
         {{--<div class="modal-header light-green valign-wrapper">--}}
