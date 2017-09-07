@@ -6,6 +6,7 @@ use App\Chat;
 use App\Chef;
 use App\ChefBankAccount;
 use App\CustomPlan;
+use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use App\Foodie;
 use App\Http\Controllers\Chef\Auth\VerifiesEmail;
@@ -90,6 +91,10 @@ class ChefController extends Controller
                     $type = "Standard";
                 }elseif($orderItem->order_type==1){
                     $plan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan->plan_name;
+                    $type = "Customized";
+                }elseif($orderItem->order_type==2){
+                    $plan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
                     $planName = $plan->plan->plan_name;
                     $type = "Customized";
                 }

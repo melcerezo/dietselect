@@ -13,6 +13,7 @@ use App\Notification;
 use App\Order;
 use App\Rating;
 use App\Message;
+use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -229,6 +230,11 @@ class FoodieController extends Controller
                     $orderType = "Standard";
                 } elseif ($orderItem->order_type == 1) {
                     $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan->plan_name;
+                    $chefName = $orderPlan->plan->chef->name;
+                    $orderType = "Customized";
+                } elseif($orderItem->order_type == 2){
+                    $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                     $planName = $orderPlan->plan->plan_name;
                     $chefName = $orderPlan->plan->chef->name;
                     $orderType = "Customized";
