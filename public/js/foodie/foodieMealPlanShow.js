@@ -14,35 +14,24 @@ $(document).ready(function () {
         // ingreds.fail(console.log(ingreds.statusCode()));
 
         ingreds.done(function(response) {
-            var cust = $(this).attr('data-cust');
             var valData = response;
             // console.log(valData);
             $('#m'+id).empty();
-            if(cust==1){
-                for(var i=0,l=valData.length;i<l;i++){
-                    var cust = "";
-                    if(valData[i].is_customized=='0'){
-                        cust = "No";
-                    }else if(valData[i].is_customized=='1'){
-                        cust = "Yes";
-                    }
-                    $('#m'+id).append(
-                        '<tr>'+
-                        '<td>'+valData[i].ingredient+'</td>'+
-                        '<td>'+valData[i].grams+'</td>'+
-                        '<td>'+cust+'</td>'+
-                        '</tr>'
-                    );
+
+            for(var i=0,l=valData.length;i<l;i++){
+                var cust = "";
+                if(valData[i].is_customized=='0'){
+                    cust = "No";
+                }else if(valData[i].is_customized=='1'){
+                    cust = "Yes";
                 }
-            }else if(cust==2){
-                for(var i=0,l=valData.length;i<l;i++){
-                    $('#m'+id).append(
-                        '<tr>'+
-                        '<td>'+valData[i].ingredient+'</td>'+
-                        '<td>'+valData[i].grams+'</td>'+
-                        '</tr>'
-                    );
-                }
+                $('#m'+id).append(
+                    '<tr>'+
+                    '<td>'+valData[i].ingredient+'</td>'+
+                    '<td>'+valData[i].grams+'</td>'+
+                    '<td>'+cust+'</td>'+
+                    '</tr>'
+                );
             }
         });
     });

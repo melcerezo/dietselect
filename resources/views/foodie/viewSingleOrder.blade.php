@@ -1307,9 +1307,7 @@
                                         <tr>
                                             <th>Ingredient</th>
                                             <th>Grams</th>
-                                            @if($orderItem->order_type==1)
-                                                <th>Customized</th>
-                                            @endif
+                                            <th>Customized</th>
                                         </tr>
                                         </thead>
                                         @if($orderItem->order_type==1)
