@@ -109,10 +109,10 @@
         <style>
             table { border: none; border-collapse: collapse; table-layout: fixed;}
             /*table td { border-left: 1px solid #000; }*/
-            th.dayTD { width: 50px; padding: 0 0}
+            th.dayTD { width: 50px; padding: 0 0; border-radius: 0;}
             td.dayTD div { border-radius: 100%; font-size: 20px}
             /*div.dayz { width: 100%; padding: 0 0; border-radius: 100%;}*/
-            th.headZ {padding: 0 0;}
+            th.headZ {padding: 0 0; border-radius: 0;}
 
             table td:first-child { border-left: none; }
         </style>
