@@ -766,7 +766,7 @@ class FoodieOrderPlanController extends Controller
         $dt=$order->created_at;
         $nextWeekString = $dt->addDay(7)->startOfWeek()->format('F d');
         $nextWeek = $dt->addDay(7)->startOfWeek();
-        dd($dt);
+        dd($order->created_at);
         $nextWeekEnd = $nextWeek->addDay(4);
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
