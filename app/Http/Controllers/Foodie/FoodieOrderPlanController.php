@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
+use App\ChefCustomizedMeal;
 use App\CustomPlan;
 use App\Notification;
 use App\Chef;
@@ -275,7 +276,11 @@ class FoodieOrderPlanController extends Controller
 
 
     public function getIngred($id,$cust){
-        $meal = CustomizedMeal::where('id','=',$id)->first();
+        if($cust==1){
+            $meal = CustomizedMeal::where('id','=',$id)->first();
+        }elseif ($cust==2){
+            $meal = ChefCustomizedMeal::where('id','=',$id)->first();
+        }
 
         $ingreds = $meal->customized_ingredient_meal()->get();
 
