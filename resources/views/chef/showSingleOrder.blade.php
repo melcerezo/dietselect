@@ -1479,18 +1479,24 @@
                                 @endif
                             @endforeach
                         </ul>
-                        <ul class="collection">
-                            <li class="collection-item light-green white-text">
-                                <span class="collection-header">Dry Goods/Condiments</span>
-                            </li>
-                            @foreach($orderPlan->simple_custom_plan_detail as $detail)
-                                @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
-                                    <li class="collection-item">
-                                            <span>{{'NO '.$detail->detail}}</span>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
+                        @if($orderPlan->simple_custom_plan_detail()
+                            ->where('detail','=','preservatives')
+                            ->where('detail','=','salt')
+                            ->where('detail','=','sweeteners')
+                            ->count())
+                            <ul class="collection">
+                                <li class="collection-item light-green white-text">
+                                    <span class="collection-header">Dry Goods/Condiments</span>
+                                </li>
+                                @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                                    @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
+                                        <li class="collection-item">
+                                                <span>{{'NO '.$detail->detail}}</span>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        @endif
                     </div>
                 </div>
             @endif
