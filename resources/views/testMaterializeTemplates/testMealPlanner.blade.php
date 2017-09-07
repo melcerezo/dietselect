@@ -140,7 +140,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green">T</div>
+                        <div class="dayz light-green white-text" style="font-size: 20px;">T</div>
                     </td>
                     <td><div class="truncate">Meal 6</div></td>
                     <td><div class="truncate">Meal 7</div></td>
@@ -150,7 +150,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green">W</div>
+                        <div class="dayz light-green white-text" style="font-size: 20px;">W</div>
                     </td>
                     <td><div class="truncate">Meal 11</div></td>
                     <td><div class="truncate">Meal 12</div></td>
@@ -160,7 +160,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green">Th</div>
+                        <div class="dayz light-green white-text" style="font-size: 20px;">Th</div>
                     </td>
                     <td><div class="truncate">Meal 16</div></td>
                     <td><div class="truncate">Meal 17</div></td>
@@ -170,7 +170,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="dayz light-green">F</div>
+                        <div class="dayz light-green white-text" style="font-size: 20px;">F</div>
                     </td>
                     <td><div class="truncate">Meal 21</div></td>
                     <td><div class="truncate">Meal 22</div></td>
