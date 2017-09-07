@@ -764,8 +764,9 @@ class FoodieOrderPlanController extends Controller
     public function show(Order $order){
 
         $dt=$order->created_at;
-        $nextWeek = $dt->addDay(7)->startOfWeek()->format('F d');
-        $nextWeekEnd = $dt->addDay(7)->startOfWeek()->addDay(4)->format('F d');
+        $nextWeekString = $dt->addDay(7)->startOfWeek()->format('F d');
+        $nextWeek = $dt->addDay(7)->startOfWeek();
+        $nextWeekEnd = $nextWeek->addDay(4)->format('F d');
 //        dd($nextWeek);
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
@@ -801,7 +802,7 @@ class FoodieOrderPlanController extends Controller
             'chats' => $chats,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
-            'nextWeek'=>$nextWeek,
+            'nextWeek'=>$nextWeekString,
             'nextWeekEnd'=>$nextWeekEnd
         ]);
 
