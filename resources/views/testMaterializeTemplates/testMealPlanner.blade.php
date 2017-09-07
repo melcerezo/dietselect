@@ -1,27 +1,22 @@
 @extends('layouts.app')
 @section('head')
-    <style>
-        table { border: none; border-collapse: collapse; table-layout: fixed }
-        table td { border-left: 1px solid #000; }
-        table td.headZ { border: none; }
-        table td:first-child { border-left: none; }
-        /*.container{*/
-            /*width:85%;*/
-        /*}*/
-        /*#testCreateModal.modal{*/
-            /*width: 50% !important;*/
-            /*max-height: 100% !important;*/
-            /*border-radius: 5px;*/
-        /*}*/
-        /*.modal-header{*/
-            /*width:100%;*/
-            /*height:100%;*/
-            /*min-height:80px;*/
-        /*}*/
-    </style>
+        {{--/*.container{*/--}}
+            {{--/*width:85%;*/--}}
+        {{--/*}*/--}}
+        {{--/*#testCreateModal.modal{*/--}}
+            {{--/*width: 50% !important;*/--}}
+            {{--/*max-height: 100% !important;*/--}}
+            {{--/*border-radius: 5px;*/--}}
+        {{--/*}*/--}}
+        {{--/*.modal-header{*/--}}
+            {{--/*width:100%;*/--}}
+            {{--/*height:100%;*/--}}
+            {{--/*min-height:80px;*/--}}
+        {{--/*}*/--}}
     {{--<script>--}}
         {{--$(document).ready(function () {--}}
 {{--//            $("select.selectRequired").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});--}}
+
 
             {{--$('.tdCell').each(function () {--}}
                 {{--var day=$(this).attr('data-day');--}}
@@ -111,8 +106,83 @@
             {{--});--}}
         {{--});--}}
     {{--</script>--}}
+        <style>
+            table { border: none; border-collapse: collapse; table-layout: fixed }
+            table td { border-left: 1px solid #000; }
+            table td div { }
+            table td.headZ { border: none; }
+            table td:first-child { border-left: none; }
+        </style>
 @endsection
 @section('content')
+    <div class="container">
+        <div class="row">
+
+            <table class="centered">
+                <tr>
+                    <td></td>
+                    <td class="headZ">Bre</td>
+                    <td class="headZ">Sna</td>
+                    <td class="headZ">Lun</td>
+                    <td class="headZ">Sna</td>
+                    <td class="headZ">Din</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="light-green">Mo</div>
+                    </td>
+                    <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
+                    <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
+                    <td><div class="truncate">Meal 3</div><i class="material-icons">done</i></td>
+                    <td><div class="truncate">Meal 4</div></td>
+                    <td><div class="truncate">Meal 5</div></td>
+                </tr>
+                <tr>
+                    <td>
+                        Tu
+                    </td>
+                    <td><div class="truncate">Meal 6</div></td>
+                    <td><div class="truncate">Meal 7</div></td>
+                    <td><div class="truncate">Meal 8</div></td>
+                    <td><div class="truncate">Meal 9</div></td>
+                    <td><div class="truncate">Meal 10</div></td>
+                </tr>
+                <tr>
+                    <td>We</td>
+                    <td><div class="truncate">Meal 11</div></td>
+                    <td><div class="truncate">Meal 12</div></td>
+                    <td><div class="truncate">Meal 13</div></td>
+                    <td><div class="truncate">Meal 14</div></td>
+                    <td><div class="truncate">Meal 15</div></td>
+                </tr>
+                <tr>
+                    <td>Th</td>
+                    <td><div class="truncate">Meal 16</div></td>
+                    <td><div class="truncate">Meal 17</div></td>
+                    <td><div class="truncate">Meal 18</div></td>
+                    <td><div class="truncate">Meal 19</div></td>
+                    <td><div class="truncate">Meal 20</div></td>
+                </tr>
+                <tr>
+                    <td>Fr</td>
+                    <td><div class="truncate">Meal 21</div></td>
+                    <td><div class="truncate">Meal 22</div></td>
+                    <td><div class="truncate">Meal 23</div></td>
+                    <td><div class="truncate">Meal 24</div></td>
+                    <td><div class="truncate">Meal 25</div></td>
+                </tr>
+                <tr>
+                    <td>Sa</td>
+                    <td><div class="truncate"></div></td>
+                    <td><div class="truncate"></div></td>
+                    <td><div class="truncate"></div></td>
+                    <td><div class="truncate"></div></td>
+                    <td><div class="truncate"></div></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
     {{--<nav>--}}
         {{--<div class="nav-wrapper light-green">--}}
             {{--<a href="#" class="brand-logo">Diet Select</a>--}}
@@ -162,69 +232,7 @@
             {{--</div>--}}
 
         {{--</div>--}}
-    <div class="container">
-        <div class="row">
 
-                <table class="centered">
-                    <tr>
-                        <td></td>
-                        <td class="headZ">Bre</td>
-                        <td class="headZ">Sna</td>
-                        <td class="headZ">Lun</td>
-                        <td class="headZ">Sna</td>
-                        <td class="headZ">Din</td>
-                    </tr>
-                    <tr>
-                        <td>Mo</td>
-                        <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
-                        <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
-                        <td><div class="truncate">Meal 3</div><i class="material-icons">done</i></td>
-                        <td><div class="truncate">Meal 4</div></td>
-                        <td><div class="truncate">Meal 5</div></td>
-                    </tr>
-                    <tr>
-                        <td>Tu</td>
-                        <td><div class="truncate">Meal 6</div></td>
-                        <td><div class="truncate">Meal 7</div></td>
-                        <td><div class="truncate">Meal 8</div></td>
-                        <td><div class="truncate">Meal 9</div></td>
-                        <td><div class="truncate">Meal 10</div></td>
-                    </tr>
-                    <tr>
-                        <td>We</td>
-                        <td><div class="truncate">Meal 11</div></td>
-                        <td><div class="truncate">Meal 12</div></td>
-                        <td><div class="truncate">Meal 13</div></td>
-                        <td><div class="truncate">Meal 14</div></td>
-                        <td><div class="truncate">Meal 15</div></td>
-                    </tr>
-                    <tr>
-                        <td>Th</td>
-                        <td><div class="truncate">Meal 16</div></td>
-                        <td><div class="truncate">Meal 17</div></td>
-                        <td><div class="truncate">Meal 18</div></td>
-                        <td><div class="truncate">Meal 19</div></td>
-                        <td><div class="truncate">Meal 20</div></td>
-                    </tr>
-                    <tr>
-                        <td>Fr</td>
-                        <td><div class="truncate">Meal 21</div></td>
-                        <td><div class="truncate">Meal 22</div></td>
-                        <td><div class="truncate">Meal 23</div></td>
-                        <td><div class="truncate">Meal 24</div></td>
-                        <td><div class="truncate">Meal 25</div></td>
-                    </tr>
-                    <tr>
-                        <td>Sa</td>
-                        <td><div class="truncate"></div></td>
-                        <td><div class="truncate"></div></td>
-                        <td><div class="truncate"></div></td>
-                        <td><div class="truncate"></div></td>
-                        <td><div class="truncate"></div></td>
-                    </tr>
-                </table>
-        </div>
-    </div>
                 {{--<table class="striped centered">--}}
                     {{--<thead class="light-green white-text" style="border: none;">--}}
                         {{--<th></th>--}}
