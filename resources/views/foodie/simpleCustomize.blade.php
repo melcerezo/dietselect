@@ -585,6 +585,15 @@
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
         <div id="detailCust" class="modal">
+            <nav class="light-green lighten-1 white-text">
+                <div class="left col s12 m5 l5">
+                    <ul>
+                        <li>
+                            <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">{{$simpleCustomPlan->plan->plan_name}} Customization</span>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
            <div class="modal-content">
                 <ul class="collection">
                     <li class="collection-item light-green white-text">
