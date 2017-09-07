@@ -191,22 +191,22 @@ class ChefOrderController extends Controller
                     $aftSnaMeals+=1;
                 }
             }
-            $tasteCount=$orderPlan->simple_custom_plan_detail()->count();
-//                ->where('detail','=','sweet')
-//                ->where('detail','=','salty')
-//                ->where('detail','=','spicy')
-//                ->where('detail','=','bitter')
-//                ->where('detail','=','savory')
-//                ->count();
+            $tasteCount=$orderPlan->simple_custom_plan_detail()
+                ->where('detail','=','sweet')
+                ->orWhere('detail','=','salty')
+                ->orWhere('detail','=','spicy')
+                ->orWhere('detail','=','bitter')
+                ->orWhere('detail','=','savory')
+                ->count();
             $cookCount = $orderPlan->simple_custom_plan_detail()
                 ->where('detail','=','fried')
-                ->where('detail','=','grilled')
+                ->orWhere('detail','=','grilled')
                 ->count();
 
             $driedCount = $orderPlan->simple_custom_plan_detail()
                 ->where('detail','=','preservatives')
-                ->where('detail','=','salt')
-                ->where('detail','=','sweeteners')
+                ->orWhere('detail','=','salt')
+                ->orWhere('detail','=','sweeteners')
                 ->count();
 
         }
