@@ -587,7 +587,9 @@
         <div id="detailCust" class="modal">
            <div class="modal-content">
                 <ul class="collection">
-                    <li class="collection-item light-green white-text"></li>
+                    <li class="collection-item light-green white-text">
+                        <span class="collection-header">Plan Customizations</span>
+                    </li>
                     @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
                         <li class="collection-item">
                             <span>{{$detail->detail}}</span>
