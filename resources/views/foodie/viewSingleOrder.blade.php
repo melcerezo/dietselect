@@ -1302,8 +1302,13 @@
                                             <th>Customized</th>
                                         </tr>
                                         </thead>
-                                        <tbody id="m{{$mealPlan->chef_customized_meal->id}}">
-                                        </tbody>
+                                        @if($orderItem->order_type==1)
+                                            <tbody id="m{{$mealPlan->id}}">
+                                            </tbody>
+                                        @elseif($orderItem->order_type==2)
+                                            <tbody id="m{{$mealPlan->chef_customized_meal->id}}">
+                                            </tbody>
+                                        @endif
                                     </table>
                                 </div>
                                 @if($orderItem->order_type==2)
