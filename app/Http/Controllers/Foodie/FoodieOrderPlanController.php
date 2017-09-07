@@ -763,6 +763,8 @@ class FoodieOrderPlanController extends Controller
 
     public function show(Order $order){
 
+        $nextWeek = Carbon::parse("this monday")->format('F d');
+        $nextWeekEnd = Carbon::parse("this monday")->addDay(5)->format('F d');
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
         $orderPlans = [];
@@ -796,7 +798,9 @@ class FoodieOrderPlanController extends Controller
             'chefs'=>$chefs,
             'chats' => $chats,
             'notifications'=>$notifications,
-            'unreadNotifications'=>$unreadNotifications
+            'unreadNotifications'=>$unreadNotifications,
+            'nextWeek'=>$nextWeek,
+            'nextWeekEnd'=>$nextWeekEnd
         ]);
 
 //        dd('hello');
