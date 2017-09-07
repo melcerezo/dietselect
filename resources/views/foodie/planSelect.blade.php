@@ -6,9 +6,17 @@
     <script src="/js/foodie/planSelect.js" defer></script>
 @endsection
 @section('page_content')
-    @if($sms_unverified)
+    @if($sms_unverified && $foodie->birthday==null)
+        <div>
+            Please verify your phone number and birthday before ordering any plans.
+        </div>
+    @elseif($sms_unverified)
         <div>
             Please verify your phone number before ordering any plans.
+        </div>
+    @elseif($foodie->birthday==null)
+        <div>
+            Please verify your birthday before ordering any plans.
         </div>
     @else
         <div class="container plSlCntr">

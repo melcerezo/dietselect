@@ -42,7 +42,6 @@ class FoodieMealPlanController extends Controller
 
     public function viewPlans(){
         $lastSaturday = Carbon::parse("last saturday 15:00:00")->format('Y-m-d H:i:s');
-
         $foodie = Auth::guard('foodie')->user()->id;
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
