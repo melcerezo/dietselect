@@ -1276,7 +1276,7 @@
                                 <div class="left col s12 m5 l5">
                                     <ul>
                                         <li>
-                                            <span>{{$mealPlan->description}}</span>
+                                            <span>{{$mealPlan->chef_customized_meal->description}}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -1287,10 +1287,10 @@
                                         <li class="collection-item light-green lighten-1 white-text">
                                             <span class="collection-header">Meal Information</span>
                                         </li>
-                                        <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
-                                        <li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>
-                                        <li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>
-                                        <li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>
+                                        <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->chef_customized_meal->calories,2)}}</span></li>
+                                        {{--<li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>--}}
+                                        {{--<li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>--}}
+                                        {{--<li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>--}}
                                     </ul>
                                 </div>
                                 <div>
