@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     date=new Date();
     console.log(date.getFullYear()-18);
-    var now = new Date()
+    var now = new Date();
     $('#birthday').pickadate({
         // Buttons
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
