@@ -102,7 +102,7 @@
                         <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
                     </li>
                     <li class="collection-item">
-                        <span>Week of: {{$nextWeek->format('F d').' - '.$nextWeekEnd->format('F d')}}</span>
+                        <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
                     </li>
                     <li class="collection-item">
                         <div>
