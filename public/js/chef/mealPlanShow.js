@@ -8,7 +8,7 @@ function ingredAjax(id,type) {
 $(document).ready(function () {
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
-        var id = $(this).attr('data-type');
+        var type = $(this).attr('data-type');
         var ingreds = ingredAjax(id,type);
 
         // ingreds.fail(console.log(ingreds.statusCode()));
