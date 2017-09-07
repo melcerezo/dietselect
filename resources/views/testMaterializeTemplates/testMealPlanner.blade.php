@@ -122,27 +122,22 @@
 
             <table class="centered striped">
                 <thead>
-                    <tr>
+                    <tr class="light-green white-text">
                         <th class="dayTD"></th>
-                        <th class="headZ">
-                            <div class="light-green white-text">Bre
-                            </div>
+                        <th class="light-green white-text">
+                            Bre
                         </th>
                         <th class="headZ">
-                            <div class="light-green white-text">Sna
-                            </div>
+                            Sna
                         </th>
                         <th class="headZ">
-                            <div class="light-green white-text">Lun
-                            </div>
+                            Lun
                         </th>
                         <th class="headZ">
-                            <div class="light-green white-text">Sna
-                            </div>
+                            Sna
                         </th>
                         <th class="headZ">
-                            <div class="light-green white-text">Din
-                            </div>
+                            Din
                         </th>
                     </tr>
                 </thead>
