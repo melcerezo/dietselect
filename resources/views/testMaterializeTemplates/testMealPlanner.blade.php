@@ -129,8 +129,8 @@
                     <td class="headZ">Din</td>
                 </tr>
                 <tr>
-                    <td class="dayTD">
-                        <div class="dayz light-green">Mo</div>
+                    <td class="light-green">
+                        Mo
                     </td>
                     <td><div class="truncate">Meal 1</div><i class="material-icons">done</i></td>
                     <td><div class="truncate">Meal 2</div><i class="material-icons">done</i></td>
