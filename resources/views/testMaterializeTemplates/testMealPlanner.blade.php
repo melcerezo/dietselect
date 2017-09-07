@@ -3,6 +3,7 @@
     <style>
         table { border: none; border-collapse: collapse; table-layout: fixed }
         table td { border-left: 1px solid #000; }
+        table td.headZ { border: none; }
         table td:first-child { border-left: none; }
         /*.container{*/
             /*width:85%;*/
@@ -167,11 +168,11 @@
                 <table class="centered">
                     <tr>
                         <td></td>
-                        <td>Bre</td>
-                        <td>Sna</td>
-                        <td>Lun</td>
-                        <td>Sna</td>
-                        <td>Din</td>
+                        <td class="headZ">Bre</td>
+                        <td class="headZ">Sna</td>
+                        <td class="headZ">Lun</td>
+                        <td class="headZ">Sna</td>
+                        <td class="headZ">Din</td>
                     </tr>
                     <tr>
                         <td>Mo</td>
