@@ -155,7 +155,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Tuesday</div>
+                        <div class="light-green lighten-1 white-text">Tuesday</div>
                     </td>
                     <td><div class="truncate">Meal 6</div></td>
                     <td><div class="truncate">Meal 7</div></td>
@@ -165,7 +165,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Wednesday</div>
+                        <div class="light-green lighten-1 white-text">Wednesday</div>
                     </td>
                     <td><div class="truncate">Meal 11</div></td>
                     <td><div class="truncate">Meal 12</div></td>
@@ -175,7 +175,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Thursday</div>
+                        <div class="light-green lighten-2 white-text">Thursday</div>
                     </td>
                     <td><div class="truncate">Meal 16</div></td>
                     <td><div class="truncate">Meal 17</div></td>
@@ -185,7 +185,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Friday</div>
+                        <div class="light-green lighten-2 white-text">Friday</div>
                     </td>
                     <td><div class="truncate">Meal 21</div></td>
                     <td><div class="truncate">Meal 22</div></td>
@@ -195,7 +195,7 @@
                 </tr>
                 <tr>
                     <td class="dayTD">
-                        <div class="light-green white-text">Saturday</div>
+                        <div class="light-green lighten-3 white-text">Saturday</div>
                     </td>
                     <td><div class="truncate"></div></td>
                     <td><div class="truncate"></div></td>
