@@ -132,7 +132,6 @@ class ChefOrderController extends Controller
         $aftSnaMeals = 0;
         $tasteCount= 0;
         $cookCount = 0;
-
         $driedCount = 0;
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();

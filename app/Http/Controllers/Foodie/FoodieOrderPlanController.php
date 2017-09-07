@@ -175,6 +175,7 @@ class FoodieOrderPlanController extends Controller
     }
 
     public function getOneOrderDetails(OrderItem $orderItem){
+        $planName = '';
         $foodie = Auth::guard('foodie')->user();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -189,6 +190,9 @@ class FoodieOrderPlanController extends Controller
         $saMeals = 0;
         $moSnaMeals = 0;
         $aftSnaMeals = 0;
+        $tasteCount= 0;
+        $cookCount = 0;
+        $driedCount = 0;
         if($orderItem->order_type==0){
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
@@ -196,6 +200,7 @@ class FoodieOrderPlanController extends Controller
             $saMeals = $mealPlans->where('day','=','SA')->count();
             $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
             $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
             }
@@ -248,7 +253,23 @@ class FoodieOrderPlanController extends Controller
                     $aftSnaMeals+=1;
                 }
             }
+            $tasteCount=$orderPlan->simple_custom_plan_detail()
+                ->where('detail','=','sweet')
+                ->orWhere('detail','=','salty')
+                ->orWhere('detail','=','spicy')
+                ->orWhere('detail','=','bitter')
+                ->orWhere('detail','=','savory')
+                ->count();
+            $cookCount = $orderPlan->simple_custom_plan_detail()
+                ->where('detail','=','fried')
+                ->orWhere('detail','=','grilled')
+                ->count();
 
+            $driedCount = $orderPlan->simple_custom_plan_detail()
+                ->where('detail','=','preservatives')
+                ->orWhere('detail','=','salt')
+                ->orWhere('detail','=','sweeteners')
+                ->count();
 
         }
 //        dd($ingredientMealData);
@@ -268,6 +289,9 @@ class FoodieOrderPlanController extends Controller
             'saMeals'=>$saMeals,
             'moSnaMeals'=>$moSnaMeals,
             'aftSnaMeals'=>$aftSnaMeals,
+            'tasteCount'=>$tasteCount,
+            'cookCount'=>$cookCount,
+            'driedCount'=>$driedCount,
             'planName'=>$planName,
             'mealPlans'=>$orderMealPlans,
             'orderItem'=>$orderItem,
