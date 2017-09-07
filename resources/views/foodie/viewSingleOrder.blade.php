@@ -1268,15 +1268,10 @@
                 @endif
                 </div>
             </div>
-            <div class="row">
-                <div class="col s12 m3">
-                    <button data-target="planCustom" class="btn waves-effect waves-light modal-trigger">See Customizations</button>
-                </div>
-            </div>
 
             @if($orderItem->order_type==2)
                 @if($orderPlan->simple_custom_plan_detail->count())
-                    <div id="planCustomization" class="modal">
+                    <div id="planCustom" class="modal">
                         <nav class="light-green lighten-1 white-text">
                             <div class="left col s12 m5 l5">
                                 <ul>
@@ -1442,6 +1437,12 @@
                 @elseif($orderItem->order->is_paid==1)
                     <a href="{{route('order.show',$orderItem->order->id)}}" class="btn waves-effect waves-light">Back to Order</a>
                 @endif
+                @if($orderItem->order_type==2)
+                    @if($orderPlan->simple_custom_plan_detail->count())
+                        <button data-target="planCustom" class="btn waves-effect waves-light modal-trigger" style="margin-left: 10px;">See Customizations</button>
+                    @endif
+                @endif
+
             </div>
         </div>
 
