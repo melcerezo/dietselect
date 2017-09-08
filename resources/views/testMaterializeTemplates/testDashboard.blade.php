@@ -32,26 +32,15 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 m4">
-                Delicious Diet
-            </div>
-            <div class="col s12 m4">
-                Wellness Getaway
-            </div>
-            <div class="col s12 m4">
-                Gourmet Kusina
-            </div>
-        </div>
         <div class="row products">
             <div class="col s12 m3">
                <div>
                     <span>By Chef</span>
                 </div>
-               <ul class="collection">
-                   <li class="collection-item">Delicious Diet</li>
-                   <li class="collection-item">Wellness Gateway</li>
-                   <li class="collection-item">Gourmet Kusina</li>
+               <ul>
+                   <li>Delicious Diet</li>
+                   <li>Wellness Gateway</li>
+                   <li>Gourmet Kusina</li>
                </ul>
             </div>
             <div class="col s12 m3">
