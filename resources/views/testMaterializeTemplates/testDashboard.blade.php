@@ -3,6 +3,8 @@
     <style>
         .buyBtn{ display: none;}
         .row.products .col { padding:0; }
+        div.buyCard { box-shadow: none !important; }
+        div.buyCard:hover{ border: 1px solid #d1d1d1; }
     </style>
     <script>
         $(document).ready(function () {
