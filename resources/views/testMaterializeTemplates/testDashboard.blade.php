@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('content')
+    <style>
+        .buyBtn{ display: none;}
+    </style>
+    <script>
+
+    </script>
     <div class="container">
         <div class="row">
             <div class="col s12 m4" >
@@ -42,7 +48,7 @@
                         <div>
                             Description about this diet.
                         </div>
-                        <div class="center-align">
+                        <div class="buyBtn center-align">
                             <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
@@ -63,7 +69,7 @@
                         <div>
                             Description about this diet.
                         </div>
-                        <div class="center-align">
+                        <div class="buyBtn center-align">
                             <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
@@ -84,7 +90,7 @@
                         <div>
                             Description about this diet.
                         </div>
-                        <div class="center-align">
+                        <div class="buyBtn center-align">
                             <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
@@ -105,7 +111,7 @@
                         <div>
                             Description about this diet.
                         </div>
-                        <div class="center-align">
+                        <div class="buyBtn center-align">
                             <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
