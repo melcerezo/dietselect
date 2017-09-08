@@ -12,10 +12,10 @@
         </nav>
     </div>
     <div>
-        <div>
+        <div style="inline">
             <span>Brand</span>
         </div>
-        <div style="display: inline">
+        <div >
             <span>Cart</span>
         </div>
     </div>
