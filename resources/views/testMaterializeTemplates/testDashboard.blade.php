@@ -7,6 +7,19 @@
         div.buyCard div.card-content { padding: 15px; }
         div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
         div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
+        div.buyCateg div.category {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+
+        div.buyCateg:hover div.category{
+            display: block;
+            background: rgba(0, 0, 0, .6);
+        }
     </style>
     <script>
         $(document).ready(function () {
@@ -22,18 +35,33 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m4" >
-                <div style="max-width: 100%; max-height: 100%;">
+                <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
+                    <div class="category">
+                         <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                            <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col s12 m4">
-                <div style="max-width: 100%; max-height: 100%;">
+                <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
+                    <div class="category">
+                         <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                            <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col s12 m4">
-                <div style="max-width: 100%; max-height: 100%;">
+                <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
+                    <div class="category">
+                         <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                            <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
