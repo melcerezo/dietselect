@@ -3,6 +3,7 @@
     <style>
         .buyBtn{ display: none;}
         div.buyCard { box-shadow: none !important; }
+        div.products { border: 1px solid #d1d1d1; text-decoration: none; }
         div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
     </style>
     <script>
@@ -44,9 +45,9 @@
                </ul>
             </div>
 
-            <div class="col s9">
+            <div class="col s9 products">
                 <div class="row">
-                    <div class="col s12 m3">
+                    <div class="col s12 m4">
                         <div class="card buyCard">
                             <div class="card-image">
                                 <img src="img/bg.jpg">
@@ -67,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m4">
                         <div class="card buyCard">
                             <div class="card-image">
                                 <img src="img/bg.jpg">
@@ -88,7 +89,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col s12 m3">
+                    <div class="col s12 m4">
                         <div class="card buyCard">
                             <div class="card-image">
                                 <img src="img/bg.jpg">
