@@ -2,7 +2,7 @@
 @section('content')
     <style>
         .buyBtn{ display: none;}
-
+        .row.products .col { padding:0; }
     </style>
     <script>
         $(document).ready(function () {
@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row products">
             <div class="col s12 m4">
                 Delicious Diet
             </div>
