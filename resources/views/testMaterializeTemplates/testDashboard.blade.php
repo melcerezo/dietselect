@@ -32,11 +32,11 @@
                 <div class="light-green" style="height: 200px;">
                 </div>
             </div>
-            <div class="col s12 m3 offset-m3">
+            <div class="col s12 m3">
                 <div class="light-green" style="height: 200px;">
                 </div>
             </div>
-            <div class="col s12 m3 offset-m3">
+            <div class="col s12 m3">
                 <div class="light-green" style="height: 200px;">
                 </div>
             </div>
