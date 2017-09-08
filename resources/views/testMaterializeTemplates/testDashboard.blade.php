@@ -3,21 +3,21 @@
 
 <header>
     <div>
-        <nav>
-            <ul class="right">
-                <li>Messages</li>
-                <li>Notifications</li>
-                <li>FoodieName</li>
-            </ul>
-        </nav>
+        <ul class="right">
+            <li>Messages</li>
+            <li>Notifications</li>
+            <li>FoodieName</li>
+        </ul>
     </div>
     <div>
-        <div style="display: inline;">
-            <span>Brand</span>
-        </div>
-        <div >
-            <span>Cart</span>
-        </div>
+        <nav>
+            <div style="display: inline;">
+                <span>Brand</span>
+            </div>
+           <ul>
+               <li>Cart</li>
+           </ul>
+        </nav>
     </div>
     <div>
         <ul>
