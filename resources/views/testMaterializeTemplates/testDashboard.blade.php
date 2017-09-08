@@ -43,7 +43,7 @@
                             Description about this diet.
                         </div>
                         <div class="center-align">
-                            <button>Buy Now</button>
+                            <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                             Description about this diet.
                         </div>
                         <div class="center-align">
-                            <button>Buy Now</button>
+                            <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                             Description about this diet.
                         </div>
                         <div class="center-align">
-                            <button>Buy Now</button>
+                            <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
                 </div>
@@ -106,7 +106,7 @@
                             Description about this diet.
                         </div>
                         <div class="center-align">
-                            <button>Buy Now</button>
+                            <button class="orange btn btn-primary waves-effect waves-light">Buy Now</button>
                         </div>
                     </div>
                 </div>
