@@ -32,7 +32,7 @@
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating btn-large light-green"><i class="material-icons">add</i></a>
+                        <a class="btn-floating btn-large light-green"><i class="material-icons">PHP 1,800.00</i></a>
                     </div>
                     <div class="card-content">
                     </div>
