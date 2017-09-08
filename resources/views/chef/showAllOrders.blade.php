@@ -35,6 +35,26 @@
                 @foreach($orders as $order)
                     @if($order['is_paid']==0 && $order['is_cancelled']==0)
                         <div class="card">
+                            <div class="card-title" style="font-size: 18px;">
+                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="col s12 m2">
+                                        <div>For Week Of</div>
+                                        <div style="font-size: 22px;">{{$order['week']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                           <div> Ordered By:</div>
+                                            <div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($order['foodie_id']==$foodie->id)
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
@@ -43,16 +63,16 @@
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            Ordered By:
-                                            @foreach($foodies as $foodie)
-                                                @if($order['foodie_id']==$foodie->id)
-                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
+                                    {{--<div class="col s12 m2" style="font-size: 20px;">--}}
+                                        {{--<div>--}}
+                                            {{--Ordered By:--}}
+                                            {{--@foreach($foodies as $foodie)--}}
+                                                {{--@if($order['foodie_id']==$foodie->id)--}}
+                                                    {{--<span>{{$foodie->first_name.' '.$foodie->last_name}}</span>--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:  {{$order['order_type']}}</div>
                                     </div>
@@ -83,6 +103,26 @@
                         </div>
                     @elseif($order['is_paid']==1 && $order['is_cancelled']==0)
                         <div class="card">
+                            <div class="card-title" style="font-size: 18px;">
+                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="col s12 m2">
+                                        <div>For Week Of</div>
+                                        <div style="font-size: 22px;">{{$order['week']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            <div> Ordered By:</div>
+                                            <div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($order['foodie_id']==$foodie->id)
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
@@ -136,6 +176,26 @@
                 @foreach($orders as $order)
                     @if($order['is_paid']==0 && $order['is_cancelled']==0)
                         <div class="card">
+                            <div class="card-title" style="font-size: 18px;">
+                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="col s12 m2">
+                                        <div>For Week Of</div>
+                                        <div style="font-size: 22px;">{{$order['week']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            <div> Ordered By:</div>
+                                            <div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($order['foodie_id']==$foodie->id)
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
@@ -189,6 +249,26 @@
                 @foreach($orders as $order)
                     @if($order['is_paid']==1 && $order['is_cancelled']==0)
                         <div class="card">
+                            <div class="card-title" style="font-size: 18px;">
+                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="col s12 m2">
+                                        <div>For Week Of</div>
+                                        <div style="font-size: 22px;">{{$order['week']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            <div> Ordered By:</div>
+                                            <div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($order['foodie_id']==$foodie->id)
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
@@ -242,6 +322,26 @@
                 @foreach($orders as $order)
                     @if($order['is_cancelled']==1)
                         <div class="card">
+                            <div class="card-title" style="font-size: 18px;">
+                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="col s12 m2">
+                                        <div>For Week Of</div>
+                                        <div style="font-size: 22px;">{{$order['week']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            <div> Ordered By:</div>
+                                            <div>
+                                                @foreach($foodies as $foodie)
+                                                    @if($order['foodie_id']==$foodie->id)
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
