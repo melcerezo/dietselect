@@ -7,11 +7,11 @@
     <script>
         $(document).ready(function () {
             $('div.buyCard').on('mouseenter',function () {
-                $(this).children('.buyBtn').show();
+                $(this).find('.card-content').find('.buyBtn').show();
                 console.log($(this).children('.buyBtn'));
             });
             $('div.buyCard').on('mouseleave',function () {
-                $(this).children('.buyBtn').hide();
+                $(this).find('.card-content').find('.buyBtn').hide();
                 console.log('stuff');
             });
         });
