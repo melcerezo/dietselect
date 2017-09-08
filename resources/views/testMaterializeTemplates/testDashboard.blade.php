@@ -32,7 +32,9 @@
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating btn-large light-green">PHP 1,800.00</a>
+                        <div class="light-green white-text" style="border-radius: 50%; position: absolute; left: 0; top: 0;">
+                            PHP 1,800.00
+                        </div>
                     </div>
                     <div class="card-content">
                     </div>
@@ -43,7 +45,9 @@
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating btn-large light-green">PHP 1,800.00</a>
+                        <div class="light-green white-text" style="border-radius: 50%; position: absolute; left: 0; top: 0;">
+                            PHP 1,800.00
+                        </div>
                     </div>
                     <div class="card-content">
                     </div>
@@ -54,7 +58,9 @@
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating btn-large light-green">PHP 1,800.00</a>
+                        <div class="light-green white-text" style="border-radius: 50%; position: absolute; left: 0; top: 0;">
+                            PHP 1,800.00
+                        </div>
                     </div>
                     <div class="card-content">
                     </div>
@@ -65,7 +71,9 @@
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <span class="card-title">Card Title</span>
-                        <a class="btn-floating btn-large light-green">PHP 1,800.00</a>
+                        <div class="light-green white-text" style="border-radius: 50%; position: absolute; left: 0; top: 0;">
+                            PHP 1,800.00
+                        </div>
                     </div>
                     <div class="card-content">
                     </div>
