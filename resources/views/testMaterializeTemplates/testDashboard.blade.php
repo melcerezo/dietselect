@@ -1,17 +1,19 @@
 @extends('layouts.app')
 @section('content')
     <style>
-        .buyBtn{ display: none;}
-        div.buyCard { box-shadow: none !important; }
+        .buyBtn{ visibility: hidden }
+        div.buyCard { box-shadow: none !important;  }
         div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
         div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
     </style>
     <script>
         $(document).ready(function () {
             $('div.buyCard').hover(function () {
-                $(this).find('.card-content').find('.buyBtn').stop().fadeIn();
-            }, function () {
-                $(this).find('.card-content').find('.buyBtn').stop().fadeOut();
+                if($(this).find('.card-content').find('.buyBtn').css('visibility'=='hidden')){
+                    $(this).find('.card-content').find('.buyBtn').css('visibility','visible');
+                }else{
+                    $(this).find('.card-content').find('.buyBtn').css('visibility','hidden');
+                }
             });
         });
     </script>
@@ -39,9 +41,9 @@
                     <span>By Chef</span>
                 </div>
                <ul>
-                   <li>Delicious Diet</li>
-                   <li>Wellness Gateway</li>
-                   <li>Gourmet Kusina</li>
+                   <li><a href="#">Delicious Diet</a></li>
+                   <li><a href="#">Wellness Gateway</a></li>
+                   <li><a href="#">Gourmet Kusina</a></li>
                </ul>
             </div>
 
