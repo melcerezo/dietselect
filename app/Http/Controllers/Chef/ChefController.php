@@ -72,16 +72,17 @@ class ChefController extends Controller
 //        dd($chats->count());
 
 
-        $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->latest()->take(3)->get();
+        $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->latest()->take(6)->get();
 
         $pendingOrders = [];
 
+        $paidOrders = [];
 
 
 //        dd($pendingOrderItems);
 
         foreach($pendingOrderItems as $orderItem){
-            if($orderItem->order->is_paid == 1 && $orderItem->order->is_cancelled!=1){
+            if($orderItem->order->is_paid == 0 && $orderItem->order->is_cancelled!=1){
 
                 $planName="";
                 $type="";
@@ -100,6 +101,27 @@ class ChefController extends Controller
                 }
 
                 $pendingOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
+                    'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
+                    'address_id'=>$orderItem->order->address_id,'type'=>$type);
+            }else if($orderItem->order->is_paid == 0 && $orderItem->order->is_cancelled!=1){
+
+                $planName="";
+                $type="";
+                if($orderItem->order_type==0){
+                    $plan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan_name;
+                    $type = "Standard";
+                }elseif($orderItem->order_type==1){
+                    $plan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan->plan_name;
+                    $type = "Customized";
+                }elseif($orderItem->order_type==2){
+                    $plan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $plan->plan->plan_name;
+                    $type = "Customized";
+                }
+
+                $paidOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
                     'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
                     'address_id'=>$orderItem->order->address_id,'type'=>$type);
             }
@@ -134,6 +156,7 @@ class ChefController extends Controller
             'plans' =>$plans,
             'pendPlans'=>$pendPlans,
             'pendingOrders' => $pendingOrders,
+            'paidOrders'=>$paidOrders,
             'messages'=>$messages,
             'chats'=>$chats,
             'notifications'=>$notifications,

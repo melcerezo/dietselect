@@ -123,7 +123,7 @@
             </div>
             <div class="col s12 m6 l6">
                 <div class="row">
-                    <div class="col s12">
+                    <div class="col s12 m6">
                         <ul class="collection">
                             <li class="collection-item light-green lighten-1 white-text">
                                 <div class="collection-header">Pending Order</div>
@@ -141,16 +141,43 @@
                                                     @endif
                                                 @endforeach
                                             </p>
-                                            <div class="divider"></div>
-                                            <p>Quantity: {{$orderItem['quantity']}}</p>
-                                            <div class="divider"></div>
-                                            <p>Type: {{$orderItem['type']}}</p>
                                         </a>
                                     </li>
                                 @endforeach
                             @else
                                 <li class="collection-item">
                                     <span>No Pending Orders</span>
+                                </li>
+                            @endif
+                        </ul>
+                        <div>
+                            <a href="{{route('chef.order.view')}}">See All</a>
+                        </div>
+                    </div>
+                    <div class="col s12 m6">
+                        <ul class="collection">
+                            <li class="collection-item light-green lighten-1 white-text">
+                                <div class="collection-header">Paid Order</div>
+                            </li>
+                            @if(count($paidOrders)>0)
+                                @foreach($paidOrders as $orderItem)
+                                    <li class="collection-item">
+                                        <a href="{{route('chef.order.single',$orderItem['id'])}}">
+                                            <p>Name: <span>{{$orderItem['name']}}</span></p>
+                                            <div class="divider"></div>
+                                            <p>Foodie:
+                                                @foreach($foodies as $foodie)
+                                                    @if($foodie->id == $orderItem['foodie_id'])
+                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                    @endif
+                                                @endforeach
+                                            </p>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            @else
+                                <li class="collection-item">
+                                    <span>No Paid Orders</span>
                                 </li>
                             @endif
                         </ul>
@@ -170,10 +197,6 @@
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
                                             <p>Plan Name: {{$plan->plan_name}}</p>
-                                            <div class="divider"></div>
-                                            <p>Calories: {{$plan->calories}}</p>
-                                            <div class="divider"></div>
-                                            <p>Price: {{'PHP'.$plan->price}}</p>
                                         </a>
                                     </li>
                                 @endforeach
@@ -205,10 +228,6 @@
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
                                             <p>Name: {{$plan->plan_name}}</p>
-                                            <div class="divider"></div>
-                                            <p>Calories: {{$plan->calories}}</p>
-                                            <div class="divider"></div>
-                                            <p>Price: {{'PHP'.$plan->price}}</p>
                                         </a>
                                     </li>
                                 @endforeach
