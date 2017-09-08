@@ -6,7 +6,7 @@
     </style>
     <script>
         $('div.buyCard').hover(function () {
-            $(this).find('div.buyBtn').toggle();
+            $(this).find('.buyBtn').toggle();
         });
     </script>
     <div class="container">
