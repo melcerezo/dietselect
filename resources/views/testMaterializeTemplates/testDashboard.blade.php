@@ -16,13 +16,13 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m3">
+            <div class="col s12 m2">
                 Delicious Diet
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m2">
                 Wellness Getaway
             </div>
-            <div class="col s12 m3">
+            <div class="col s12 m2">
                 Gourmet Kusina
             </div>
         </div>
