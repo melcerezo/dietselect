@@ -13,6 +13,9 @@
        <div>
            <span>Diet Select</span>
        </div>
+       <div>
+           Cart
+       </div>
    </nav>
    <nav style="height: 25px; line-height: 25px;">
        <ul class="left">
