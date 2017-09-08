@@ -3,7 +3,7 @@
     <style>
         .buyBtn{ display: none;}
         div.buyCard { box-shadow: none !important; }
-        div.buyCard:hover{ border: 1px solid #d1d1d1; }
+        div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
     </style>
     <script>
         $(document).ready(function () {
