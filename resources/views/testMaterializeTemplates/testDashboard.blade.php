@@ -39,7 +39,7 @@
                 <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
-                         <div class="center-align">
+                         <div class="center-align valign-wrapper">
                             <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
                         </div>
                     </div>
@@ -49,7 +49,7 @@
                 <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
-                         <div class="center-align">
+                         <div class="center-align valign-wrapper">
                             <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
                 <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
-                         <div class="center-align">
+                         <div class="center-align valign-wrapper">
                             <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
                         </div>
                     </div>
