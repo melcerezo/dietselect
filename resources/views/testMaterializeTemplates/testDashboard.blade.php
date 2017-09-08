@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <style>
-        .buyBtn{ display: none; }
+        .buyBtn{ visibility: hidden }
         div.buyCard { box-shadow: none !important;  }
         div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
         div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
@@ -9,7 +9,11 @@
     <script>
         $(document).ready(function () {
             $('div.buyCard').hover(function () {
-                $(this).find('.card-content').find('.buyBtn').toggle();
+                if($(this).find('.card-content').find('.buyBtn').css('visibility')=='hidden'){
+                    $(this).find('.card-content').find('.buyBtn').css('visibility','visible');
+                }else{
+                    $(this).find('.card-content').find('.buyBtn').css('visibility','hidden');
+                }
             });
         });
     </script>
