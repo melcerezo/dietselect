@@ -7,12 +7,10 @@
     <script>
         $(document).ready(function () {
             $('div.buyCard').on('mouseenter',function () {
-                $(this).find('.card-content').find('.buyBtn').show();
-                console.log($(this).children('.buyBtn'));
+                $(this).find('.card-content').find('.buyBtn').fadeIn();
             });
             $('div.buyCard').on('mouseleave',function () {
-                $(this).find('.card-content').find('.buyBtn').hide();
-                console.log('stuff');
+                $(this).find('.card-content').find('.buyBtn').fadeOut();
             });
         });
     </script>
