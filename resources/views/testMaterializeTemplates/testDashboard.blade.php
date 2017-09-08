@@ -2,9 +2,12 @@
 @section('content')
     <style>
         .buyBtn{ display: none;}
+
     </style>
     <script>
-
+        $('div.buyCard').hover(function () {
+            $(this).find('div.buyBtn').toggle();
+        });
     </script>
     <div class="container">
         <div class="row">
@@ -34,7 +37,7 @@
         </div>
         <div class="row">
             <div class="col s12 m3">
-                <div class="card">
+                <div class="card buyCard">
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
@@ -55,7 +58,7 @@
                 </div>
             </div>
             <div class="col s12 m3">
-                <div class="card">
+                <div class="card buyCard">
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
@@ -76,7 +79,7 @@
                 </div>
             </div>
             <div class="col s12 m3">
-                <div class="card">
+                <div class="card buyCard">
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
@@ -97,7 +100,7 @@
                 </div>
             </div>
             <div class="col s12 m3">
-                <div class="card">
+                <div class="card buyCard">
                     <div class="card-image">
                         <img src="img/bg.jpg">
                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
