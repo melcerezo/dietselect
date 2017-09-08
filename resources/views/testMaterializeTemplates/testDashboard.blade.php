@@ -40,7 +40,7 @@
                             Diet 1
                         </div>
                         <div>
-                            PHP 1,800.00
+                            Description about this diet.
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                             Diet 2
                         </div>
                         <div>
-                            PHP 1,800.00
+                            Description about this diet.
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
                             Diet 3
                         </div>
                         <div>
-                            PHP 1,800.00
+                            Description about this diet.
                         </div>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             Diet 4
                         </div>
                         <div>
-                            PHP 1,800.00
+                            Description about this diet.
                         </div>
                     </div>
                 </div>
