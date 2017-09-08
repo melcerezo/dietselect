@@ -61,7 +61,7 @@
                                         <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan</div><div>{{$order['plan_name']}}</div>
+                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>
@@ -129,7 +129,7 @@
                                         <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan</div><div>{{$order['plan_name']}}</div>
+                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>
@@ -202,7 +202,7 @@
                                         <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan</div><div>{{$order['plan_name']}}</div>
+                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>
@@ -275,7 +275,7 @@
                                         <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan</div><div>{{$order['plan_name']}}</div>
+                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>
@@ -348,7 +348,7 @@
                                         <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan</div><div>{{$order['plan_name']}}</div>
+                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>
