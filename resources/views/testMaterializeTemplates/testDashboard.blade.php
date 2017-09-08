@@ -6,11 +6,10 @@
     </style>
     <script>
         $(document).ready(function () {
-            $('div.buyCard').on('mouseenter',function () {
-                $(this).find('.card-content').find('.buyBtn').fadeIn();
-            });
-            $('div.buyCard').on('mouseleave',function () {
-                $(this).find('.card-content').find('.buyBtn').fadeOut();
+            $('div.buyCard').hover(function () {
+                $(this).find('.card-content').find('.buyBtn').stop().fadeIn();
+            }, function () {
+                $(this).find('.card-content').find('.buyBtn').stop().fadeOut();
             });
         });
     </script>
