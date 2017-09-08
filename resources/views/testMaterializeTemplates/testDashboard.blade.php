@@ -17,15 +17,18 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m4" >
-                <div class="light-green" style="height: 200px;">
+                <div style="max-width: 200px; max-height: 200px;">
+                    <img class="responsive-img" src="img/bg.jpg">
                 </div>
             </div>
             <div class="col s12 m4">
-                <div class="light-green" style="height: 200px;">
+                <div style="max-width: 200px; max-height: 200px;">
+                    <img class="responsive-img" src="img/bg.jpg">
                 </div>
             </div>
             <div class="col s12 m4">
-                <div class="light-green" style="height: 200px;">
+                <div style="max-width: 200px; max-height: 200px;">
+                    <img class="responsive-img" src="img/bg.jpg">
                 </div>
             </div>
         </div>
