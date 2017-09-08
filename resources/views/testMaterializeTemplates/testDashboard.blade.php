@@ -3,6 +3,7 @@
     <style>
         .buyBtn{ visibility: hidden }
         div.buyCard { box-shadow: none !important;  }
+        div.buyCard div.card-content { padding: 15px; }
         div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
         div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
     </style>
