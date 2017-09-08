@@ -35,7 +35,7 @@ class ChefOrderController extends Controller
         $this->middleware('chef.auth');
     }
 
-    public function getAllOrdersView(){
+    public function getAllOrdersView($from){
 
         $chef = Auth::guard('chef')->user();
 
@@ -77,6 +77,7 @@ class ChefOrderController extends Controller
             'chef'=>$chef,
             'foodies'=>$foodies,
             'orders'=>$orders,
+            'from'=>$from,
             'chats' => $chats,
             'messages'=>$messages,
             'notifications' => $notifications
