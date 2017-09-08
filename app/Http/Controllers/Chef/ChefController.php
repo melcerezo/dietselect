@@ -103,7 +103,7 @@ class ChefController extends Controller
                 $pendingOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
                     'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
                     'address_id'=>$orderItem->order->address_id,'type'=>$type);
-            }else if($orderItem->order->is_paid == 0 && $orderItem->order->is_cancelled!=1){
+            }else if($orderItem->order->is_paid == 1 && $orderItem->order->is_cancelled!=1){
 
                 $planName="";
                 $type="";
