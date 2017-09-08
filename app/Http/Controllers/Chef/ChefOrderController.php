@@ -46,20 +46,23 @@ class ChefOrderController extends Controller
         foreach($orderItems as $orderItem){
             if($orderItem->order_type==0){
                 $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                $orderPlanPic = $orderPlan->picture;
                 $orderPlanName = $orderPlan->plan_name;
                 $orderType="Standard";
             }elseif($orderItem->order_type==1){
                 $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
 //                dd($orderPlan);
+                $orderPlanPic = $orderPlan->plan->picture;
                 $orderPlanName = $orderPlan->plan->plan_name;
                 $orderType="Customized";
             }elseif($orderItem->order_type==2){
                 $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                $orderPlanPic = $orderPlan->plan->picture;
                 $orderPlanName = $orderPlan->plan->plan_name;
                 $orderType="Customized";
             }
             $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,
-                'quantity'=>$orderItem->quantity,'price'=>$orderItem->price,'order_type'=>$orderItem->order_type,'is_paid'=>$orderItem->order->is_paid,
+                'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderItem->order_type,'is_paid'=>$orderItem->order->is_paid,
                 'is_cancelled'=>$orderItem->order->is_cancelled);
         }
 

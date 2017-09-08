@@ -22,6 +22,300 @@
                     </div>
                 </nav>
             </div>
+            <div class="row">
+                <div class="col s6">
+                    <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
+                    <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
+                    <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
+                    <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
+                </div>
+            </div>
+
+            <div id="ordAll">
+                @foreach($orders as $order)
+                    @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    {{--<div class="col s12 m3">--}}
+                                        {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                    {{--</div>--}}
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>{{$order['plan_name']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            Ordered By:
+                                            @foreach($foodies as $foodie)
+                                                @if($order['foodie_id']==$foodie->id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Type:  {{$order['order_type']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Quantity: {{$order['quantity']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Amount: {{$order['price']}}</div>
+                                    </div>
+                                    <div class="col s12 m2">
+                                        <div>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m2">
+                                        <a href="{{route('chef.order.single', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                    </div>
+                                    {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                    {{--</div>--}}
+                                </div>
+                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                        {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                            {{--{{ csrf_field() }}--}}
+                                            {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                        {{--</form>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+                        </div>
+                    @elseif($order['is_paid']==1 && $order['is_cancelled']==0)
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    {{--<div class="col s12 m3">--}}
+                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                    {{--</div>--}}
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>{{$order['plan_name']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            Ordered By:
+                                            @foreach($foodies as $foodie)
+                                                @if($order['foodie_id']==$foodie->id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Type:  {{$order['order_type']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Quantity: {{$order['quantity']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Amount: {{$order['price']}}</div>
+                                    </div>
+                                    <div class="col s12 m2">
+                                        <div>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m2">
+                                        <a href="{{route('chef.order.single', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                    </div>
+                                    {{--<div class="col s12 m2">--}}
+                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                    {{--</div>--}}
+                                </div>
+                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                {{--<div class="modal-content">--}}
+                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                {{--</form>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <div id="ordPend">
+                @foreach($orders as $order)
+                    @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    {{--<div class="col s12 m3">--}}
+                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                    {{--</div>--}}
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>{{$order['plan_name']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            Ordered By:
+                                            @foreach($foodies as $foodie)
+                                                @if($order['foodie_id']==$foodie->id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Type:  {{$order['order_type']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Quantity: {{$order['quantity']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Amount: {{$order['price']}}</div>
+                                    </div>
+                                    <div class="col s12 m2">
+                                        <div>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m2">
+                                        <a href="{{route('chef.order.single', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                    </div>
+                                    {{--<div class="col s12 m2">--}}
+                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                    {{--</div>--}}
+                                </div>
+                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                {{--<div class="modal-content">--}}
+                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                {{--</form>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <div id="ordPaid">
+                @foreach($orders as $order)
+                    @if($order['is_paid']==1 && $order['is_cancelled']==0)
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    {{--<div class="col s12 m3">--}}
+                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                    {{--</div>--}}
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>{{$order['plan_name']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            Ordered By:
+                                            @foreach($foodies as $foodie)
+                                                @if($order['foodie_id']==$foodie->id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Type:  {{$order['order_type']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Quantity: {{$order['quantity']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Amount: {{$order['price']}}</div>
+                                    </div>
+                                    <div class="col s12 m2">
+                                        <div>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col s12 m2">
+                                        <a href="{{route('chef.order.single', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                    </div>
+                                    {{--<div class="col s12 m2">--}}
+                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                    {{--</div>--}}
+                                </div>
+                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                {{--<div class="modal-content">--}}
+                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                {{--</form>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
+            <div id="ordCancel">
+                @foreach($orders as $order)
+                    @if($order['is_cancelled']==1)
+                        <div class="card">
+                            <div class="card-content">
+                                <div class="row">
+                                    {{--<div class="col s12 m3">--}}
+                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                    {{--</div>--}}
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>{{$order['plan_name']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>
+                                            Ordered By:
+                                            @foreach($foodies as $foodie)
+                                                @if($order['foodie_id']==$foodie->id)
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Type:  {{$order['order_type']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Quantity: {{$order['quantity']}}</div>
+                                    </div>
+                                    <div class="col s12 m2" style="font-size: 20px;">
+                                        <div>Amount: {{$order['price']}}</div>
+                                    </div>
+                                    <div class="col s12 m2">
+                                        <div>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    {{--<div class="col s12 m2">--}}
+                                        {{--<a href="{{route('chef.order.single', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col s12 m2">--}}
+                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                    {{--</div>--}}
+                                </div>
+                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                {{--<div class="modal-content">--}}
+                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                {{--{{ csrf_field() }}--}}
+                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                {{--</form>--}}
+                                {{--</div>--}}
+                                {{--</div>--}}
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+            </div>
             @foreach($orders as $order)
                 @if($order['is_cancelled']==0)
                     <div class="row">
