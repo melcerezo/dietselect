@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col s12 m3">
                <div>
-                    <span>Chef</span>
+                    <span style="font-size: 20px;">Chef</span>
                 </div>
                <ul>
                    <li class="chef"><a href="#">Delicious Diet</a></li>
@@ -53,7 +53,7 @@
                 <div class="row">
                     <span style="font-size: 20px;">Plans</span>
                 </div>
-                <div class="row products">
+                <div class="row">
                     <div class="col s12 m4">
                         <div class="card buyCard">
                             <div class="card-image">
