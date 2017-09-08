@@ -37,9 +37,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
-                                    {{--<div class="col s12 m3">--}}
-                                        {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
-                                    {{--</div>--}}
+                                    <div class="col s12 m2">
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                    </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
@@ -85,9 +85,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
-                                    {{--<div class="col s12 m3">--}}
-                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
-                                    {{--</div>--}}
+                                    <div class="col s12 m2">
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                    </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
@@ -138,9 +138,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
-                                    {{--<div class="col s12 m3">--}}
-                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
-                                    {{--</div>--}}
+                                    <div class="col s12 m2">
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                    </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
@@ -191,9 +191,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
-                                    {{--<div class="col s12 m3">--}}
-                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
-                                    {{--</div>--}}
+                                    <div class="col s12 m2">
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                    </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
@@ -244,9 +244,9 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="row">
-                                    {{--<div class="col s12 m3">--}}
-                                    {{--<img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>--}}
-                                    {{--</div>--}}
+                                    <div class="col s12 m2">
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                    </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
                                     </div>
