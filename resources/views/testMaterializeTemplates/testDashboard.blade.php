@@ -12,7 +12,7 @@
         </nav>
     </div>
     <div>
-        <div style="inline">
+        <div style="display: inline;">
             <span>Brand</span>
         </div>
         <div >
