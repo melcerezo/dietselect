@@ -38,7 +38,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
@@ -86,7 +86,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
@@ -139,7 +139,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
@@ -192,7 +192,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
@@ -245,7 +245,7 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:150px;"/>
+                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>{{$order['plan_name']}}</div>
