@@ -45,10 +45,10 @@
         </div>
         <div class="row products">
             <div class="col s12 m3">
+               <div>
+                    <span>By Chef</span>
+                </div>
                <ul class="collection">
-                   <li class="collection-item light-green white-text">
-                       <span class="collection-header">By Chef</span>
-                   </li>
                    <li class="collection-item">Delicious Diet</li>
                    <li class="collection-item">Wellness Gateway</li>
                    <li class="collection-item">Gourmet Kusina</li>
