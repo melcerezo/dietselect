@@ -42,7 +42,7 @@
                                     @endif
                                 @endforeach
                                 <td>{{$orderItem->quantity}}</td>
-                                <td>{{$orderItem->price}}</td>
+                                <td>{{'PHP '.$orderItem->price}}</td>
                             {{--@if($orderItem->order_type==2)--}}
                                 {{--</a>--}}
                             {{--@endif--}}
@@ -96,7 +96,7 @@
                         <span class="collection-header">Total Order:</span>
                     </li>
                     <li class="collection-item">
-                        <span>Total: {{$order->total}}</span>
+                        <span>Total: {{'PHP '.$order->total}}</span>
                     </li>
                     <li class="collection-item">
                         <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
