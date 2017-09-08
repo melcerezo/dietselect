@@ -255,9 +255,9 @@ class ChefController extends Controller
         $notifJson = '[';
         foreach($notification as $note){
             if(++$i<$notification->count()){
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
             }else{
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
             }
         }
         $notifJson .= ']';
