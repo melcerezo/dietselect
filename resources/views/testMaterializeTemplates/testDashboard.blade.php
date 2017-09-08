@@ -42,9 +42,9 @@
                     <span>By Chef</span>
                 </div>
                <ul>
-                   <li><a href="#">Delicious Diet</a></li>
-                   <li><a href="#">Wellness Gateway</a></li>
-                   <li><a href="#">Gourmet Kusina</a></li>
+                   <li class="chef"><a href="#">Delicious Diet</a></li>
+                   <li class="chef"><a href="#">Wellness Gateway</a></li>
+                   <li class="chef"><a href="#">Gourmet Kusina</a></li>
                </ul>
             </div>
 
