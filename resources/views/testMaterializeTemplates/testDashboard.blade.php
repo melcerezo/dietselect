@@ -40,7 +40,7 @@
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
                          <div class="center-align valign-wrapper">
-                            <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
+                            <span class="orange-text" style="font-size: 30px;">Weight Loss</span>
                         </div>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
                          <div class="center-align valign-wrapper">
-                            <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
+                            <span class="orange-text" style="font-size: 30px;">High Protein</span>
                         </div>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                     <img class="responsive-img" src="img/bg.jpg">
                     <div class="category">
                          <div class="center-align valign-wrapper">
-                            <span class="orange-text" style="font-size: 30px;">+Add Photo</span>
+                            <span class="orange-text" style="font-size: 30px;">Vegetarian</span>
                         </div>
                     </div>
                 </div>
