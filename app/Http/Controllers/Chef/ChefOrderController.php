@@ -68,7 +68,7 @@ class ChefOrderController extends Controller
                 $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
             }
             $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
-                'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderItem->order_type,'is_paid'=>$orderItem->order->is_paid,
+                'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
                 'is_cancelled'=>$orderItem->order->is_cancelled);
         }
 
