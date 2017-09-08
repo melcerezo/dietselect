@@ -3,15 +3,15 @@
     <div class="container">
         <div class="row">
             <div class="col s12 m4" >
-                <div class="light-green" style="height: 400px;">
+                <div class="light-green" style="width: 400px;">
                 </div>
             </div>
             <div class="col s12 m4">
-                <div class="light-green" style="height: 400px;">
+                <div class="light-green" style="width: 400px;">
                 </div>
             </div>
             <div class="col s12 m4">
-                <div class="light-green" style="height: 400px;">
+                <div class="light-green" style="width: 400px;">
                 </div>
             </div>
         </div>
