@@ -132,7 +132,7 @@
                                 @foreach($pendingOrders as $orderItem)
                                     <li class="collection-item">
                                         <a href="{{route('chef.order.single',$orderItem['id'])}}">
-                                            <p>Name: <span>{{$orderItem['name']}}</span></p>
+                                            <p>Plan: <span>{{$orderItem['name']}}</span></p>
                                             <div class="divider"></div>
                                             <p>Foodie:
                                                 @foreach($foodies as $foodie)
@@ -163,7 +163,7 @@
                                 @foreach($paidOrders as $orderItem)
                                     <li class="collection-item">
                                         <a href="{{route('chef.order.single',$orderItem['id'])}}">
-                                            <p>Name: <span>{{$orderItem['name']}}</span></p>
+                                            <p>Plan: <span>{{$orderItem['name']}}</span></p>
                                             <div class="divider"></div>
                                             <p>Foodie:
                                                 @foreach($foodies as $foodie)
@@ -196,7 +196,7 @@
                                 @foreach($pendPlans as $plan)
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                            <p>Plan Name: {{$plan->plan_name}}</p>
+                                            <p>Plan: {{$plan->plan_name}}</p>
                                         </a>
                                     </li>
                                 @endforeach
@@ -227,7 +227,7 @@
                                 @foreach($plans as $plan)
                                     <li class="collection-item">
                                         <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
-                                            <p>Name: {{$plan->plan_name}}</p>
+                                            <p>Plan: {{$plan->plan_name}}</p>
                                         </a>
                                     </li>
                                 @endforeach
