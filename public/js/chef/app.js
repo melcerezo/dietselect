@@ -9,19 +9,64 @@ $(document).ready(function() {
         var notifUnreadCount = 0;
         var notifs=response;
         $.each(notifs,function(index){
-            var notifCntnt=
-                '<li id="notif'+notifs[index].id+'" class="collection-item">'+
-                '<a class="msgLink notifLink" href="'+orderAllRoute+'" data-id="'+notifs[index].id+'">'+
-                '<div class="row msCntr">'+
-                '<div class="msMsCnt col s12">'+
-                '<span>'+notifs[index].notification+'</span>'+
-                '<div style="margin-top: 5px; color:cornflowerblue;">' +
-                '<span>'+notifs[index].created_at+'</span>' +
-                '                       </div>'+
-                '</div>'+
-                '</div>'+
-                '</a>'+
-                '</li>';
+            var notifCntnt='';
+            if(notifs[index].notification_type==0){
+                notifCntnt=
+                    '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="'+orderAllRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<div class="row msCntr">'+
+                    '<div class="msMsCnt col s12">'+
+                    '<span>'+notifs[index].notification+'</span>'+
+                    '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                    '<span>'+notifs[index].created_at+'</span>' +
+                    '                       </div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
+            }else if(notifs[index].notification_type==1){
+                notifCntnt=
+                    '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="'+pendRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<div class="row msCntr">'+
+                    '<div class="msMsCnt col s12">'+
+                    '<span>'+notifs[index].notification+'</span>'+
+                    '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                    '<span>'+notifs[index].created_at+'</span>' +
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
+            }else if(notifs[index].notification_type==2){
+                notifCntnt=
+                    '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="'+paidRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<div class="row msCntr">'+
+                    '<div class="msMsCnt col s12">'+
+                    '<span>'+notifs[index].notification+'</span>'+
+                    '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                    '<span>'+notifs[index].created_at+'</span>' +
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
+            }else if(notifs[index].notification_type==3){
+                notifCntnt=
+                    '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="'+cancelRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<div class="row msCntr">'+
+                    '<div class="msMsCnt col s12">'+
+                    '<span>'+notifs[index].notification+'</span>'+
+                    '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                    '<span>'+notifs[index].created_at+'</span>' +
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
+            }
 
             $('#chefNotificationDropdown').append(notifCntnt);
             if(notifs[index].is_read==0){
