@@ -8,7 +8,7 @@
         $(document).ready(function () {
             $('div.buyCard').on('mouseenter',function () {
                 $(this).children('.buyBtn').show();
-                console.log('stuff');
+                console.log($(this).children('.buyBtn'));
             });
             $('div.buyCard').on('mouseleave',function () {
                 $(this).children('.buyBtn').hide();
