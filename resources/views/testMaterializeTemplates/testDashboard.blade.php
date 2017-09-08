@@ -5,13 +5,15 @@
 
     </style>
     <script>
-        $('div.buyCard').on('mouseenter',function () {
-            $(this).children('.buyBtn').show();
-//            console.log('stuff');
-        });
-        $('div.buyCard').on('mouseleave',function () {
-            $(this).children('.buyBtn').hide();
-//            console.log('stuff');
+        $(document).ready(function () {
+            $('div.buyCard').on('mouseenter',function () {
+                $(this).children('.buyBtn').show();
+    //            console.log('stuff');
+            });
+            $('div.buyCard').on('mouseleave',function () {
+                $(this).children('.buyBtn').hide();
+    //            console.log('stuff');
+            });
         });
     </script>
     <div class="container">
