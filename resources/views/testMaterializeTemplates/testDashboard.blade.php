@@ -2,7 +2,7 @@
 @section('content')
     <style>
         .buyBtn{ visibility: hidden }
-        li.chef { padding:0 0 10px 0; }
+        li.chef { padding:0 0 10px 10px; }
         div.buyCard { box-shadow: none !important;  }
         div.buyCard div.card-content { padding: 15px; }
         div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
