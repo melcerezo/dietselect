@@ -16,6 +16,15 @@
             </div>
         </div>
         <div class="row">
+            <div class="col s12 m3">
+                Delicious Diet
+            </div>
+            <div class="col s12 m3">
+                Wellness Getaway
+            </div>
+            <div class="col s12 m3">
+                Gourmet Kusina
+            </div>
         </div>
     </div>
 @endsection
