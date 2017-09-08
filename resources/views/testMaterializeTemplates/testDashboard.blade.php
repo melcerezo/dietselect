@@ -6,7 +6,8 @@
     </style>
     <script>
         $('div.buyCard').hover(function () {
-            $(this).children('.buyBtn').toggle();
+            $(this).children('.buyBtn').show();
+            console.log('stuff');
         });
     </script>
     <div class="container">
