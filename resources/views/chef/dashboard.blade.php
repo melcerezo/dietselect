@@ -151,7 +151,7 @@
                             @endif
                         </ul>
                         <div>
-                            <a href="{{route('chef.order.view')}}">See All</a>
+                            <a href="{{route('chef.order.view', ['from'=>1])}}">See All</a>
                         </div>
                     </div>
                     <div class="col s12 m6">
@@ -182,7 +182,7 @@
                             @endif
                         </ul>
                         <div>
-                            <a href="{{route('chef.order.view')}}">See All</a>
+                            <a href="{{route('chef.order.view', ['from'=>2])}}';}}">See All</a>
                         </div>
                     </div>
                 </div>

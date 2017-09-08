@@ -1,6 +1,11 @@
 @extends('chef.layout')
 @section('page_head')
 @endsection
+    <link rel="stylesheet" href="/css/chef/orderAll.css">
+    <script>
+        from = '{{$from}}'
+    </script>
+    <script src="/js/chef/orderAll.js" defer></script>
 
 @section('page_content')
 

@@ -3,9 +3,10 @@
     <link rel="stylesheet" href="/css/chef/chefMain.css">
     {{--<link rel="stylesheet" href="/css/foodie/app.css">--}}
     <script>
-        {{--var profileRoute="{{route('foodie.profile')}}";--}}
-                {{--var chefRoute="{{route('foodie.chef.show')}}";--}}
-        orderAllRoute ='{{route('chef.order.view')}}';
+        orderAllRoute ='{{route('chef.order.view', ['from'=>0])}}';
+        pendRoute ='{{route('chef.order.view', ['from'=>1])}}';
+        paidRoute ='{{route('chef.order.view', ['from'=>2])}}';
+        cancelRoute ='{{route('chef.order.view', ['from'=>3])}}';
         logoutRoute='{{route('chef.logoutAuto')}}';
     </script>
 
