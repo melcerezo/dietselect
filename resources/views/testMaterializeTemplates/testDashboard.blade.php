@@ -8,11 +8,11 @@
         $(document).ready(function () {
             $('div.buyCard').on('mouseenter',function () {
                 $(this).children('.buyBtn').show();
-    //            console.log('stuff');
+                console.log('stuff');
             });
             $('div.buyCard').on('mouseleave',function () {
                 $(this).children('.buyBtn').hide();
-    //            console.log('stuff');
+                console.log('stuff');
             });
         });
     </script>
