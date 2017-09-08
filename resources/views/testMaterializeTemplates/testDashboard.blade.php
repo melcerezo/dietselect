@@ -42,6 +42,9 @@
                         <div>
                             Description about this diet.
                         </div>
+                        <div class="center-align">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -59,6 +62,9 @@
                         </div>
                         <div>
                             Description about this diet.
+                        </div>
+                        <div class="center-align">
+
                         </div>
                     </div>
                 </div>
@@ -78,6 +84,9 @@
                         <div>
                             Description about this diet.
                         </div>
+                        <div class="center-align">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,6 +104,9 @@
                         </div>
                         <div>
                             Description about this diet.
+                        </div>
+                        <div class="center-align">
+
                         </div>
                     </div>
                 </div>
