@@ -64,16 +64,6 @@
                                         <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            <div>Ordered By:</div>
-                                            <div>@foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:</div><div>{{$order['order_type']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
@@ -130,16 +120,6 @@
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            <div>Ordered By:</div>
-                                            <div>@foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach</div>
-                                        </div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:</div><div>{{$order['order_type']}}</div>
@@ -205,16 +185,6 @@
                                         <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            <div>Ordered By:</div>
-                                            <div>@foreach($foodies as $foodie)
-                                                @if($order['foodie_id']==$foodie->id)
-                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                @endif
-                                            @endforeach</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:</div><div>{{$order['order_type']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
@@ -278,16 +248,6 @@
                                         <div>Plan:</div><div>{{$order['plan_name']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            <div>Ordered By:</div>
-                                            <div>@foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach</div>
-                                        </div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:</div><div>{{$order['order_type']}}</div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
@@ -349,16 +309,6 @@
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>
-                                            <div>Ordered By:</div>
-                                            <div>@foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach</div>
-                                        </div>
                                     </div>
                                     <div class="col s12 m2" style="font-size: 20px;">
                                         <div>Type:</div><div>{{$order['order_type']}}</div>
