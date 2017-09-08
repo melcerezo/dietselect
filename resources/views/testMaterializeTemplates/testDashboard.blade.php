@@ -49,9 +49,9 @@
                    <li class="collection-item light-green white-text">
                        <span class="collection-header">By Chef</span>
                    </li>
-                   <li>Delicious Diet</li>
-                   <li>Wellness Gateway</li>
-                   <li>Gourmet Kusina</li>
+                   <li class="collection-item">Delicious Diet</li>
+                   <li class="collection-item">Wellness Gateway</li>
+                   <li class="collection-item">Gourmet Kusina</li>
                </ul>
             </div>
             <div class="col s12 m3">
