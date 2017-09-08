@@ -29,7 +29,7 @@
                 </div>
             </div>
         </div>
-        <div class="row products">
+        <div class="row">
             <div class="col s12 m4">
                 Delicious Diet
             </div>
@@ -40,7 +40,7 @@
                 Gourmet Kusina
             </div>
         </div>
-        <div class="row">
+        <div class="row products">
             <div class="col s12 m3">
                 <div class="card buyCard">
                     <div class="card-image">
