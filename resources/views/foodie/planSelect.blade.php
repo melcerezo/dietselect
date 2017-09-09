@@ -32,6 +32,17 @@
                 {{--</nav>--}}
             </div>
             <div class="row">
+                <div class="row">
+                    {{--<nav class="light-green lighten-1 white-text">--}}
+                    <div class="left col s12">
+                        <ul>
+                            <li>
+                                <span style="font-size: 20px;">Plans by Category</span>
+                            </li>
+                        </ul>
+                    </div>
+                    {{--</nav>--}}
+                </div>
                 <div class="col s12 m4" >
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 4px 4px 4px #888888;">
                         <img style="max-width: 73%; height: auto; position: absolute;
