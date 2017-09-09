@@ -33,7 +33,7 @@ div.plSlCnt{
     font-size: 16px;
 }
 
-.chefContainer{
+.chefContainer,.categoryContainer{
     display: none;
 }
 

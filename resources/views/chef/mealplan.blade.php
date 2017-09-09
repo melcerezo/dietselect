@@ -154,6 +154,18 @@
                    </div>
                 </div>
                 <div class="row">
+                    <div class="input-field">
+                        <label for="category">Category:</label>
+                        <select name="category" id="category" data-error=".error-description">
+                            <option value="">Select category</option>
+                            <option value="1">Weight Loss</option>
+                            <option value="2">High Protein</option>
+                            <option value="3">Vegetarian</option>
+                        </select>
+                        <div class="error-description err"></div>
+                    </div>
+                </div>
+                <div class="row">
                    <div class="file-field input-field">
                         <label for="planPic" class="active">Picture Upload:</label>
                        <div style="padding-top: 10px;">
