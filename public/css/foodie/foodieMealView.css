@@ -99,7 +99,7 @@
     max-height: 80% !important;
 }
 
-.dayTtl{ font-size: 30px; border-left: 4px solid orange; color: orange }
+.dayTtl{ font-size: 30px; border-left: 4px solid orange; color: orange; margin-bottom: 10px; }
 .mealDay { margin-bottom: 10px; }
 .mealDay a { color: black; }
 .mealDay:hover { border: 1px solid orange; color: orange !important; }
