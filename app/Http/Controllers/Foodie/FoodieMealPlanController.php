@@ -117,7 +117,7 @@ class FoodieMealPlanController extends Controller
 //        $plan->created_at()
         $dt=$plan->created_at;
         $startWeek=$dt->addDay(7)->startOfWeek()->format('F d, Y');
-        dd($startWeek);
+//        dd($startWeek);
         $foodie = Auth::guard('foodie')->user()->id;
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
@@ -172,6 +172,7 @@ class FoodieMealPlanController extends Controller
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
             'chefs' => $chefs,
+            'startWeek'=>$startWeek,
             'mealPlans' => $mealPlans,
             'mealPhotos'=>$mealPhotos,
             'saMeals'=>$saMeals,
