@@ -82,7 +82,7 @@
                 </div>
                 <div id="planContainer" class="col s9">
                     <div id="allContainer">
-                        <div>
+                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">All Plans</span>
                         </div>
                         @if($plans->count()>0)
@@ -122,7 +122,7 @@
                     </div>
                     @foreach($chefCurrent as $chef)
                         <div id="{{$chef->id}}Container" class="chefContainer">
-                            <div>
+                            <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                                 <span style="font-size: 20px;">{{$chef->name}} Plans</span>
                             </div>
                             @if($plans->count()>0)
@@ -164,7 +164,7 @@
                         </div>
                     @endforeach
                     <div id="lossContainer" class="categoryContainer">
-                        <div>
+                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">Weight Loss Plans</span>
                         </div>
                         @if($plans->count()>0)
@@ -205,7 +205,7 @@
                         @endif
                     </div>
                     <div id="protContainer" class="categoryContainer">
-                        <div>
+                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">High Protein Plans</span>
                         </div>
                         @if($plans->count()>0)
@@ -246,7 +246,7 @@
                         @endif
                     </div>
                     <div id="vegeContainer" class="categoryContainer">
-                        <div>
+                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">Vegetarian Plans</span>
                         </div>
                         @if($plans->count()>0)
