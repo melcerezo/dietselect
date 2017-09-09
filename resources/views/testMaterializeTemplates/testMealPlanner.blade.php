@@ -3,7 +3,8 @@
     <style>
         .picSection{ width:100%; height:100%; }
         .planGallery{ padding:0 15px; }
-        .planName { margin: 10px 0; font-size: 30px; }
+        .planName,.planPrice { margin: 10px 0; }
+        .planName { font-size: 30px; }
         .menu { padding: 10px 0; }
         .chef,.category,.description { margin-bottom: 10px; }
         .infoSection{ margin:10px 0; }
@@ -38,6 +39,10 @@
                 <div>
                     <div class="planName">
                         <span>Plan Name</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="planPrice">
+                        <span>Price</span>
                     </div>
                     <div class="divider"></div>
                     <div class="menu">
