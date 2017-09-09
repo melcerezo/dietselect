@@ -354,7 +354,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row mlPlnCnt">
                 <div class="col s12 m4">
                     <div id="thursday" class="calDay">
                         <div class="dayTtl">
