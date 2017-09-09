@@ -49,7 +49,7 @@
                     <div class="menu">
                         <div class="row actionMenu">
                             <div class="col s12 m4 bookingWeek">
-                                Week of: September 21 to September 30
+                                Week of: September 21
                             </div>
                             <div class="col s12 m5">
                                 <button class="btn orange waves-effect waves-light">Customize</button>
