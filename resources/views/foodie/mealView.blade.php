@@ -656,7 +656,7 @@
         <div id="orderCustom" class="modal">
             <div>
                 <div class="left col s12 m5 l5">
-                    <span class="edtMlTtl" style="margin-left:20px; font-size: 40px;">Customize Plan</span>
+                    <span class="edtMlTtl" style="margin:10px 0 0 10px; font-size: 40px;">Customize Plan</span>
                 </div>
             </div>
             <div class="modal-content">
