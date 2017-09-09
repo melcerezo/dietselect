@@ -13,6 +13,10 @@ $(document).ready(function () {
         $('#'+id).show();
 
     });
+    $('.galleryItem').mouseout(function () {
+        $('.imgGall').hide();
+        $('#plPic').show();
+    });
 
 
     // $('.carousel.carousel-slider').carousel({fullWidth: true});
