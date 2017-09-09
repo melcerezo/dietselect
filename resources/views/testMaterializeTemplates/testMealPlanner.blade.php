@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <style>
-        .picSection{ max-width:400px; max-height:400px; }
+        .picSection{ width:400px; height:400px; }
     </style>
     <script>
 
