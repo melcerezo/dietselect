@@ -61,7 +61,9 @@
                                     {{--Week of: {{$startWeek}}--}}
                                 {{--</div>--}}
                                 <div class="col s12 m4 xl3 centered">
-                                    <a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
+                                    {{--<a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>--}}
+                                    <button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger" style="width: 100%;">Customize</button>
+
                                 </div>
                                 <div class="col s12 m3">
                                     <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange waves-effect waves-light">Cart</a>
