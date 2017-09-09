@@ -3,6 +3,7 @@
     <style>
         .picSection{ width:100%; height:100%; }
         .planGallery{ padding:0 15px; }
+        .menu { padding: 10px 0; }
         .galleryItem{ width:100%; height:100%; margin-bottom: 10px; }
     </style>
     <script>
