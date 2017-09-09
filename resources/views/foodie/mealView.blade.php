@@ -33,13 +33,15 @@
                     <div id="plPic" class="imgGall">
                         <img class="responsive-img" src="/img/{{ $plan->picture }}">
                     </div>
-                    @foreach($mealPhotos as $id=>$mealPhoto)
-                        @if($mealPhoto->plan_id==$plan->id)
-                            <div id="img{{$id}}" class="imgGall">
-                                <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
-                            </div>
-                        @endif
-                    @endforeach
+                    @if($mealPhotos->count())
+                        @foreach($mealPhotos as $id=>$mealPhoto)
+                            @if($mealPhoto->plan_id==$plan->id)
+                                <div id="img{{$id}}" class="imgGall">
+                                    <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
                 </div>
             </div>
             <div class="col s12 m7">
