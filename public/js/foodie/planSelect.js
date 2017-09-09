@@ -11,7 +11,8 @@ $(document).ready(function () {
 //    chefs container
     $('.chefName').click(function () {
         var name=$(this).attr('data-chef');
-        console.log(name);
+        console.log('div#'+name+'Container');
+        $('div#'+name+'Container').show();
     });
 
 
