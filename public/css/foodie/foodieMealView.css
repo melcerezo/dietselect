@@ -85,7 +85,7 @@
 #plPic { display: block; }
 .imgGall{ display: none; }
 .planName,.planPrice { margin: 10px 0; }
-.planPrice{ font-size: 18px; }
+.planPrice{ font-size: 25px; }
 .planName { font-size: 30px; }
 .actionMenu { margin:0; }
 .menu { padding: 10px 0; }
