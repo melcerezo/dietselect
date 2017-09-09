@@ -37,7 +37,7 @@ div.plSlCnt{
     display: none;
 }
 
-.chefName { cursor: pointer; }
+.chefName,.allName { cursor: pointer; }
 
 .buyBtn{ visibility: hidden }
 li.chef { padding:0 0 10px 10px; }
