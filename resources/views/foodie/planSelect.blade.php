@@ -181,7 +181,7 @@
                             @foreach($plans->chunk(3) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
-                                        @if($plan->chef_id==$chef->id)
+                                        @if($plan->category==1)
                                             <div class="col s12 m4">
                                                 <div class="card buyCard">
                                                     <div class="card-image">
@@ -222,7 +222,7 @@
                             @foreach($plans->chunk(3) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
-                                        @if($plan->chef_id==$chef->id)
+                                        @if($plan->category==2)
                                             <div class="col s12 m4">
                                                 <div class="card buyCard">
                                                     <div class="card-image">
@@ -263,7 +263,7 @@
                             @foreach($plans->chunk(3) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
-                                        @if($plan->chef_id==$chef->id)
+                                        @if($plan->category==3)
                                             <div class="col s12 m4">
                                                 <div class="card buyCard">
                                                     <div class="card-image">
