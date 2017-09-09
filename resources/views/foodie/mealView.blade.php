@@ -50,7 +50,7 @@
                         </div>
                         <div class="divider"></div>
                         <div class="planPrice">
-                            <span>{{'PHP'.number_format($plan->price, 2,'.',',')}}</span>
+                            <span>{{'PHP '.number_format($plan->price, 2,'.',',')}}</span>
                         </div>
                         <div class="divider"></div>
                         <div class="menu">
