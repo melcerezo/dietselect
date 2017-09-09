@@ -40,7 +40,17 @@
                     </div>
                     <div class="divider"></div>
                     <div class="menu">
-                        <button class="btn orange waves-effect waves-light">Menu</button>
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <button class="btn orange waves-effect waves-light">Menu</button>
+                            </div>
+                            <div class="col s12 m3">
+                                <button class="btn orange waves-effect waves-light">Menu</button>
+                            </div>
+                            <div class="col s12 m3">
+                                <button class="btn orange waves-effect waves-light">Menu</button>
+                            </div>
+                        </div>
                     </div>
                     <div class="divider"></div>
                     <div class="infoSection">
