@@ -12,9 +12,6 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <span style="font-size: 30px;">Plan Name</span>
-        </div>
-        <div class="row">
             <div class="col s12 m2">
                 <div class="planGallery">
                     <div class="galleryItem light-green">
@@ -32,21 +29,25 @@
                 <div class="light-green picSection">
                     <img class="responsive-img" src="/img/loss.png">
                 </div>
-                <div>
-                    <div class="chef">
-                    </div>
-                    <div class="section">
-                    </div>
-                    <div class="Description">
-                    </div>
-                    <div class="menu">
-                    </div>
-                </div>
             </div>
             <div class="col s12 m4">
                 <div>
-
+                    <div>
+                        <span style="font-size: 30px;">Plan Name</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div>
+                        <div class="chef">
+                        </div>
+                        <div class="section">
+                        </div>
+                        <div class="Description">
+                        </div>
+                        <div class="menu">
+                        </div>
+                    </div>
                 </div>
+                <div class="divider"></div>
                 <div>
 
                 </div>
