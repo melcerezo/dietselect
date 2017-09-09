@@ -32,3 +32,24 @@ div.plSlCnt{
 .plSlCntDes{
     font-size: 16px;
 }
+
+.buyBtn{ visibility: hidden }
+li.chef { padding:0 0 10px 10px; }
+div.buyCard { box-shadow: none !important;  }
+div.buyCard div.card-content { padding: 15px; }
+div.products { border: 1px solid #d1d1d1; text-decoration: none; border-radius: 4px; }
+div.buyCard:hover{ border: 1px solid #d1d1d1; text-decoration: none; }
+div.buyCateg { position: relative; }
+div.buyCateg div.category {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+div.buyCateg:hover div.category{
+    display: block;
+    background: rgba(0, 0, 0, .6);
+}

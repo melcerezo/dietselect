@@ -32,6 +32,38 @@
                 {{--</nav>--}}
             </div>
             <div class="row">
+                <div class="col s12 m4" >
+                    <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
+                        <img class="responsive-img" src="img/bg.jpg">
+                        <div class="category">
+                            <div class="center-align valign-wrapper">
+                                <span class="orange-text" style="font-size: 30px;">Weight Loss</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
+                        <img class="responsive-img" src="img/bg.jpg">
+                        <div class="category">
+                            <div class="center-align valign-wrapper">
+                                <span class="orange-text" style="font-size: 30px;">High Protein</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div class="buyCateg" style="max-width: 100%; max-height: 100%;">
+                        <img class="responsive-img" src="img/bg.jpg">
+                        <div class="category">
+                            <div class="center-align valign-wrapper">
+                                <span class="orange-text" style="font-size: 30px;">Vegetarian</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 @if($plans->count()>0)
                     @foreach($plans->chunk(3) as $chunk)
                         <div class="row">
