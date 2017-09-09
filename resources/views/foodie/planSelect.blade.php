@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m3">
-                    <div>
+                    <div class="orange-text" style="border-left: 4px orange;">
                         <span style="font-size: 20px;">PLANS BY CHEF</span>
                     </div>
                     <ul>
