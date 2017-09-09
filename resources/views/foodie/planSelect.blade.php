@@ -34,9 +34,9 @@
             <div class="row">
                 <div class="col s12 m4" >
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
-                        <img style="max-width: 50%; height: auto; position: absolute;
-                             left: 73px;
-                             top: 19px;"
+                        <img style="max-width: 73%; height: auto; position: absolute;
+                             left: 42px;
+                             top: 43px;"
                              src="/img/loss.png">
                         <div class="category">
                             <div class="center-align valign-wrapper">
@@ -57,8 +57,8 @@
                 </div>
                 <div class="col s12 m4">
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
-                        <img style="max-width: 50%; height: auto; position: absolute;
-                             left: 73px;
+                        <img style="max-width: 86%; height: auto; position: absolute;
+                             left: 24px;
                              top: 19px;" src="/img/vege.png">
                         <div class="category">
                             <div class="center-align valign-wrapper">
