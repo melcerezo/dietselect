@@ -33,8 +33,8 @@
             </div>
             <div class="row">
                 <div class="col s12 m4" >
-                    <div class="buyCateg" style="max-width: 400px; max-height: 400px;">
-                        <img class="responsive-img" src="/img/bg.jpg">
+                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
+                        <img class="responsive-img" src="/img/loss.jpg">
                         <div class="category">
                             <div class="center-align valign-wrapper">
                                 <span class="orange-text" style="font-size: 30px;">Weight Loss</span>
@@ -43,8 +43,8 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <div class="buyCateg" style="max-width: 400px; max-height: 400px;">
-                        <img class="responsive-img" src="/img/bg.jpg">
+                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
+                        <img class="responsive-img" src="/img/protein.jpg">
                         <div class="category">
                             <div class="center-align valign-wrapper">
                                 <span class="orange-text" style="font-size: 30px;">High Protein</span>
@@ -53,8 +53,8 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <div class="buyCateg" style="max-width: 400px; max-height: 400px;">
-                        <img class="responsive-img" src="/img/bg.jpg">
+                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
+                        <img class="responsive-img" src="/img/vege.jpg">
                         <div class="category">
                             <div class="center-align valign-wrapper">
                                 <span class="orange-text" style="font-size: 30px;">Vegetarian</span>
