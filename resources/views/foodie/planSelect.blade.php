@@ -74,41 +74,42 @@
                         <li class="chef"><a href="#">Gourmet Kusina</a></li>
                     </ul>
                 </div>
-
-                @if($plans->count()>0)
-                    @foreach($plans->chunk(3) as $chunk)
-                        <div class="row">
-                            @foreach($chunk as $plan)
-                                    <div class="col s12 m4">
-                                        <div class="card buyCard">
-                                            <div class="card-image">
-                                                <img src="/img/{{$plan->picture}}">
-                                                <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                    PHP 1,800.00
-                                                </div>
-                                            </div>
-                                            <div class="card-content">
-                                                <div>
-                                                    <div>{{$plan->plan_name}}</div>
-                                                    <div>
-                                                        <span>By: </span><span>{{$plan->chef->name}}</span>
+                <div class="col s9">
+                    @if($plans->count()>0)
+                        @foreach($plans->chunk(3) as $chunk)
+                            <div class="row">
+                                @foreach($chunk as $plan)
+                                        <div class="col s12 m4">
+                                            <div class="card buyCard">
+                                                <div class="card-image">
+                                                    <img src="/img/{{$plan->picture}}">
+                                                    <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        PHP 1,800.00
                                                     </div>
                                                 </div>
-                                                <div class="buyBtn center-align">
-                                                    <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                       class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                <div class="card-content">
+                                                    <div>
+                                                        <div>{{$plan->plan_name}}</div>
+                                                        <div>
+                                                            <span>By: </span><span>{{$plan->chef->name}}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="buyBtn center-align">
+                                                        <a href="{{route('foodie.plan.standard', $plan->id)}}"
+                                                           class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                            @endforeach
+                                @endforeach
+                            </div>
+                        @endforeach
+                    @else
+                        <div>
+                            <span>No Plans Yet for the coming Week!</span>
                         </div>
-                    @endforeach
-                @else
-                    <div>
-                        <span>No Plans Yet for the coming Week!</span>
-                    </div>
-                @endif
+                    @endif
+                </div>
             </div>
         </div>
     @endif
