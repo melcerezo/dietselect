@@ -56,13 +56,13 @@
                     <div class="divider"></div>
                     <div class="infoSection">
                         <div class="chef">
-                            <div>
+                            <div class="secTtl">
                                 <span>Made By:</span>
                             </div>
                             <div>{{ $plan->chef->name }}</div>
                         </div>
                         <div class="category">
-                            <div>
+                            <div class="secTtl">
                                 <span>Category:</span>
                             </div>
                             <div>
@@ -76,8 +76,8 @@
                             </div>
                         </div>
                         <div class="description">
-                            <div>
-                                <span>Description</span>
+                            <div class="secTtl">
+                                <span>Description:</span>
                             </div>
                             <div>{{$plan->description}}</div>
                         </div>
