@@ -27,7 +27,7 @@
             @endif
             <div class="col s12 m3">
                 <div class="light-green picSection">
-                    <img class="responsive-img" src="/img/loss.png">
+                    <img class="responsive-img" src="/img/{{ $plan->picture }}">
                 </div>
             </div>
             <div class="col s12 m7">
