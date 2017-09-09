@@ -7,7 +7,7 @@ $(document).ready(function () {
         $('.slider').slider('pause');
     });
 
-    $('.galleryItem').on('click',function () {
+    $('.galleryItem').hover(function () {
         var id=$(this).attr('data-galImg');
         $('.imgGall').hide();
         $('#'+id).show();
