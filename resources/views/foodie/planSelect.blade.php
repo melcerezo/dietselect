@@ -86,7 +86,7 @@
                     </div>
                     <ul>
                         @foreach($chefs as $chef)
-                            <li class="chef"><a class="chefName" href="#" data-chef="{{$chef->name}}">{{$chef->name}}</a></li>
+                            <li class="chef"><a class="chefName" href="#" data-chef="{{$chef->id}}">{{$chef->name}}</a></li>
                         @endforeach
                     </ul>
                 </div>
@@ -131,7 +131,7 @@
                         @endif
                     </div>
                     @foreach($chefs as $chef)
-                        <div id="{{$chef->name}}Container" class="chefContainer">
+                        <div id="{{$chef->id}}Container" class="chefContainer">
                             <div>
                                 <span style="font-size: 20px;">{{$chef->name}} Plans</span>
                             </div>
