@@ -2,7 +2,7 @@
 @section('head')
     <style>
         .picSection{ width:400px; height:400px; }
-        .planGallery{ padding: 15px; }
+        .planGallery{ padding:0 15px; }
         .galleryItem{ width:50px; height:50px; margin-bottom: 10px; }
     </style>
     <script>
