@@ -21,17 +21,6 @@
     @else
         <div class="container plSlCntr">
             <div class="row">
-                {{--<nav class="light-green lighten-1 white-text">--}}
-                    <div class="left col s12">
-                        <ul>
-                            <li>
-                                <span style="font-size: 30px;">Plans</span>
-                            </li>
-                        </ul>
-                    </div>
-                {{--</nav>--}}
-            </div>
-            <div class="row">
                 <div class="row">
                     {{--<nav class="light-green lighten-1 white-text">--}}
                     <div class="left col s12">
