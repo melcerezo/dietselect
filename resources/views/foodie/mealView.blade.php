@@ -17,7 +17,7 @@
                     <div class="planGallery">
                         @foreach($mealPhotos as $mealPhoto)
                             @if($mealPhoto->plan_id==$plan->id)
-                                <div class="galleryItem light-green">
+                                <div class="galleryItem">
                                     <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
                                 </div>
                             @endif
