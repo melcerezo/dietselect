@@ -118,7 +118,7 @@
     <div id="menu" class="modal">
         <div class="modal-content">
             <div class="row mlPlnTtl">
-                <span>Meal Plan Menu</span>
+                <span>Menu</span>
             </div>
             <div class="divider"></div>
             <div class="row mlPlnCnt">
