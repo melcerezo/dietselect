@@ -39,8 +39,8 @@
                              top: 43px;"
                              src="/img/loss.png">
                         <div class="category">
-                            <div>
-                                <span class="orange-text" style="font-size: 30px;">Weight Loss</span>
+                            <div style="position: relative;">
+                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">Weight Loss</span>
                             </div>
                         </div>
                     </div>
@@ -49,8 +49,8 @@
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
                         <img class="responsive-img" src="/img/protein.png">
                         <div class="category">
-                            <div>
-                                <span class="orange-text" style="font-size: 30px;">High Protein</span>
+                            <div style="position: relative;">
+                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">High Protein</span>
                             </div>
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                              left: 24px;
                              top: 19px;" src="/img/vege.png">
                         <div class="category">
-                            <div>
-                                <span class="orange-text" style="font-size: 30px;">Vegetarian</span>
+                            <div style="position: relative;">
+                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">Vegetarian</span>
                             </div>
                         </div>
                     </div>
