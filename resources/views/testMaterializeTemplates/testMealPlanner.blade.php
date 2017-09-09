@@ -38,12 +38,16 @@
                     <div class="divider"></div>
                     <div>
                         <div class="chef">
+                            Chef Name
                         </div>
-                        <div class="section">
+                        <div class="category">
+                            Category
                         </div>
                         <div class="Description">
+                            Description of this Item.
                         </div>
                         <div class="menu">
+                            <button class="btn orange">Menu</button>
                         </div>
                     </div>
                 </div>
