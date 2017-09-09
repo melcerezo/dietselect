@@ -16,7 +16,7 @@
                 <div class="col s12 m2">
                     <div class="planGallery">
                         <div class="galleryItem">
-                            <img class="responsive-img" src="/img/meals/{{ $plan->picture }}">
+                            <img class="responsive-img" src="/img/{{ $plan->picture }}">
                         </div>
                         @foreach($mealPhotos as $mealPhoto)
                             @if($mealPhoto->plan_id==$plan->id)
