@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="col s12 m2">
-                <div class="plan gallery">
+                <div class="planGallery valign-wrapper">
                     <div class="galleryItem light-green">
                         <img class="responsive-img" src="/img/loss.png">
                     </div>
