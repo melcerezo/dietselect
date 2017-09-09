@@ -26,8 +26,10 @@
                 </div>
             @endif
             <div class="col s12 m3">
-                <div class="light-green picSection">
-                    <img class="responsive-img" src="/img/{{ $plan->picture }}">
+                <div class="picSection">
+                    <div>
+                        <img class="responsive-img" src="/img/{{ $plan->picture }}">
+                    </div>
                 </div>
             </div>
             <div class="col s12 m7">
