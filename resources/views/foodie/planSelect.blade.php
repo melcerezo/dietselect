@@ -25,7 +25,7 @@
                     {{--<nav class="light-green lighten-1 white-text">--}}
                     <div class="left col s12">
                         <ul>
-                            <li>
+                            <li class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                                 <span style="font-size: 20px;">PLANS BY CATEGORY</span>
                             </li>
                         </ul>
