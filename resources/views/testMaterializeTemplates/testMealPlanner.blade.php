@@ -4,6 +4,7 @@
         .picSection{ width:100%; height:100%; }
         .planGallery{ padding:0 15px; }
         .menu { padding: 10px 0; }
+        .chef,.category,.description { margin-bottom: 10px; }
         .infoSection{ margin:10px 0; }
         .galleryItem{ width:100%; height:100%; margin-bottom: 10px; }
     </style>
@@ -49,7 +50,7 @@
                         <div class="category">
                             Category
                         </div>
-                        <div class="Description">
+                        <div class="description">
                             Description of this Item.
                         </div>
                     </div>
