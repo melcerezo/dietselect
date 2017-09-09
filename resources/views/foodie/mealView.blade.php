@@ -58,7 +58,7 @@
                                 {{--<div class="col s12 m5 xl6 bookingWeek">--}}
                                     {{--Week of: {{$startWeek}}--}}
                                 {{--</div>--}}
-                                <div class="col s12 m5 xl3 centered">
+                                <div class="col s12 m4 xl3 centered">
                                     <a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
                                 </div>
                                 <div class="col s12 m3">
