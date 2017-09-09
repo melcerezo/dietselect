@@ -6,4 +6,13 @@ $(document).ready(function () {
             $(this).find('.card-content').find('.buyBtn').css('visibility','hidden');
         }
     });
+
+
+//    chefs container
+    $('.chefName').click(function () {
+        var name=$(this).attr('data-chef');
+        console.log(name);
+    });
+
+
 });

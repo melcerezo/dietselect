@@ -33,6 +33,10 @@ div.plSlCnt{
     font-size: 16px;
 }
 
+.chefContainer{
+    display: none;
+}
+
 .buyBtn{ visibility: hidden }
 li.chef { padding:0 0 10px 10px; }
 div.buyCard { box-shadow: none !important;  }
