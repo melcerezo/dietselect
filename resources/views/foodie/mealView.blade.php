@@ -56,19 +56,30 @@
                     <div class="divider"></div>
                     <div class="infoSection">
                         <div class="chef">
-                            {{ $plan->chef->name }}
+                            <div>
+                                <span>Made By:</span>
+                            </div>
+                            <div>{{ $plan->chef->name }}</div>
                         </div>
                         <div class="category">
-                            @if($plan->category==1)
-                                <span>Weight Loss</span>
-                            @elseif($plan->category==2)
-                                <span>High Protein</span>
-                            @elseif($plan->category==3)
-                                <span>Vegetarian</span>
-                            @endif
+                            <div>
+                                <span>Category:</span>
+                            </div>
+                            <div>
+                                @if($plan->category==1)
+                                    <span>Weight Loss</span>
+                                @elseif($plan->category==2)
+                                    <span>High Protein</span>
+                                @elseif($plan->category==3)
+                                    <span>Vegetarian</span>
+                                @endif
+                            </div>
                         </div>
                         <div class="description">
-                            {{$plan->description}}
+                            <div>
+                                <span>Description</span>
+                            </div>
+                            <div>{{$plan->description}}</div>
                         </div>
                         <div class="menu">
                             <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
