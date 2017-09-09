@@ -12,22 +12,22 @@
 @section('page_content')
     <div class="container vwMlCntr">
         <div class="row">
-            @if($mealPhotos->count())
                 <div class="col s12 m2">
                     <div class="planGallery">
                         <div class="galleryItem" data-galImg="plPic">
                             <img class="responsive-img" src="/img/{{ $plan->picture }}">
                         </div>
-                        @foreach($mealPhotos as $id=>$mealPhoto)
-                            @if($mealPhoto->plan_id==$plan->id)
-                                <div class="galleryItem" data-galImg="img{{$id}}">
-                                    <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
-                                </div>
-                            @endif
-                        @endforeach
+                        @if($mealPhotos->count())
+                            @foreach($mealPhotos as $id=>$mealPhoto)
+                                @if($mealPhoto->plan_id==$plan->id)
+                                    <div class="galleryItem" data-galImg="img{{$id}}">
+                                        <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                                    </div>
+                                @endif
+                            @endforeach
+                        @endif
                     </div>
                 </div>
-            @endif
             <div class="col s12 m3">
                 <div class="picSection">
                     <div id="plPic" class="imgGall">
