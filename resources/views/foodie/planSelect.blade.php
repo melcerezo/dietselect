@@ -33,7 +33,7 @@
                     {{--</nav>--}}
                 </div>
                 <div class="col s12 m4" >
-                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 4px 4px 4px #888888;">
+                    <div class="buyCateg light-green white-text">
                         <img style="max-width: 73%; height: auto; position: absolute;
                              left: 42px;
                              top: 43px;"
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 4px 4px 4px #888888;">
+                    <div class="buyCateg light-green white-text">
                         <img class="responsive-img" src="/img/protein.png">
                         <div id="protein" data-categ="protCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative; border-radius: 10px;">
@@ -56,7 +56,7 @@
                     </div>
                 </div>
                 <div class="col s12 m4">
-                    <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 4px 4px 4px #888888;">
+                    <div class="buyCateg light-green white-text">
                         <img style="max-width: 86%; height: auto; position: absolute;
                              left: 24px;
                              top: 19px;" src="/img/vege.png">
