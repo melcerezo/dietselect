@@ -81,115 +81,115 @@
     </div>
 
 
-        <div id="photoGallery" class="modal gallery">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Photo Gallery of {{$plan->plan_name}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="modal-content">
-            @if($mealPhotos->count())
-                    <div class="slider">
-                        <ul class="slides">
-                            @foreach($mealPhotos as $mealPhoto)
-                                @if($mealPhoto->plan_id==$plan->id)
-                                    <li>
-                                        <div class="light-green lighten-1 white-text"><span>{{$mealPhoto->description}}</span></div>
-                                        <img style="width:100%;" src="/img/meals/{{ $mealPhoto->image }}">
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
-            @endif
-            </div>
-        </div>
-    
+        {{--<div id="photoGallery" class="modal gallery">--}}
+            {{--<nav class="light-green lighten-1 white-text">--}}
+                {{--<div class="left col s12 m5 l5">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Photo Gallery of {{$plan->plan_name}}</span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</nav>--}}
+            {{--<div class="modal-content">--}}
+            {{--@if($mealPhotos->count())--}}
+                    {{--<div class="slider">--}}
+                        {{--<ul class="slides">--}}
+                            {{--@foreach($mealPhotos as $mealPhoto)--}}
+                                {{--@if($mealPhoto->plan_id==$plan->id)--}}
+                                    {{--<li>--}}
+                                        {{--<div class="light-green lighten-1 white-text"><span>{{$mealPhoto->description}}</span></div>--}}
+                                        {{--<img style="width:100%;" src="/img/meals/{{ $mealPhoto->image }}">--}}
+                                    {{--</li>--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+            {{--@endif--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{----}}
 
-        <div id="orderReview" class="modal" >
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Review Order of {{$plan->plan_name}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col s12 m8 l10 offset-m2 offset-l1">
-                        <ul class="collection">
+        {{--<div id="orderReview" class="modal" >--}}
+            {{--<nav class="light-green lighten-1 white-text">--}}
+                {{--<div class="left col s12 m5 l5">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Review Order of {{$plan->plan_name}}</span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</nav>--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m8 l10 offset-m2 offset-l1">--}}
+                        {{--<ul class="collection">--}}
                             {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
-                            <li class="collection-item">Chef Name: {{$plan->chef->name}}</li>
-                            <li class="collection-item">Plan Name: {{$plan->plan_name}}</li>
-                            <li class="collection-item">Plan Price: {{$plan->price}}</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6 l4 offset-l4 offset-m3">
-                            <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width: 100%;">Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            {{--<li class="collection-item">Chef Name: {{$plan->chef->name}}</li>--}}
+                            {{--<li class="collection-item">Plan Name: {{$plan->plan_name}}</li>--}}
+                            {{--<li class="collection-item">Plan Price: {{$plan->price}}</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6 l4 offset-l4 offset-m3">--}}
+                            {{--<a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width: 100%;">Cart</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
-        <div id="orderCustom" class="modal">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Customize Plan</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <div class="modal-content">
-                <div class="row">
-                    <div class="col s12 m6">
-                        <span>For those who want to customize their plan:</span>
-                    </div>
-                    <div class="col s12 m6">
-                        <span>For those who are more experienced with dieting, and want more customization over their plan: </span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col s12 m6">
-                        <a href="{{route('foodie.plan.simple', $plan->id)}}">
-                            <div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">
-                                <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                    <div class="white-text center-block">
-                                        <i class="fa fa-check-square-o" style="font-size: 80px;"></i>
-                                    </div>
-                                </div>
-                                <div class="white-text center">
-                                    <span>Simple</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col s12 m6">
-                        <a href="{{route('foodie.plan.custom', $plan->id)}}">
-                            <div id="plSlMlCst" class="light-green lighten-1" style="border-radius: 10px;">
-                                <div class="white-text valign-wrapper" style="width: 100%; height: 100px;">
-                                    <div class="white-text center-block">
-                                        <i class="fa fa-cubes" style="font-size: 80px;"></i>
-                                    </div>
-                                </div>
-                                <div class="white-text center">
-                                    <span>In-Depth</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        {{--<div id="orderCustom" class="modal">--}}
+            {{--<nav class="light-green lighten-1 white-text">--}}
+                {{--<div class="left col s12 m5 l5">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Customize Plan</span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</nav>--}}
+            {{--<div class="modal-content">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<span>For those who want to customize their plan:</span>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<span>For those who are more experienced with dieting, and want more customization over their plan: </span>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<a href="{{route('foodie.plan.simple', $plan->id)}}">--}}
+                            {{--<div id="plSmpCst" class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                    {{--<div class="white-text center-block">--}}
+                                        {{--<i class="fa fa-check-square-o" style="font-size: 80px;"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="white-text center">--}}
+                                    {{--<span>Simple</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6">--}}
+                        {{--<a href="{{route('foodie.plan.custom', $plan->id)}}">--}}
+                            {{--<div id="plSlMlCst" class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                {{--<div class="white-text valign-wrapper" style="width: 100%; height: 100px;">--}}
+                                    {{--<div class="white-text center-block">--}}
+                                        {{--<i class="fa fa-cubes" style="font-size: 80px;"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="white-text center">--}}
+                                    {{--<span>In-Depth</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
 
 @endsection
 
