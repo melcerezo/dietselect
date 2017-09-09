@@ -28,12 +28,12 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div class="light-green picSection">
                     <img class="responsive-img" src="/img/loss.png">
                 </div>
             </div>
-            <div class="col s12 m6">
+            <div class="col s12 m7">
                 <div>
                     <div>
                         <span style="font-size: 30px;">Plan Name</span>
