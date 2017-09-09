@@ -94,8 +94,8 @@
                                                     </div>
                                                     <div class="card-content">
                                                         <div>
-                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                            <div style="font-size: 12px;">
+                                                            <div class="truncate" style="font-size: 18px;"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 16px;">
                                                                 <span>By: </span><span>{{$plan->chef->name}}</span>
                                                             </div>
                                                         </div>
@@ -130,13 +130,13 @@
                                                         <div class="card-image">
                                                             <img src="/img/{{$plan->picture}}">
                                                             <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                                PHP 1,800.00
+                                                                {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                             </div>
                                                         </div>
                                                         <div class="card-content">
                                                             <div>
-                                                                <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                                <div style="font-size: 12px;">
+                                                                <div class="truncate" style="font-size: 18px;"><span>{{$plan->plan_name}}</span></div>
+                                                                <div style="font-size: 16px;">
                                                                     <span>By: </span><span>{{$plan->chef->name}}</span>
                                                                 </div>
                                                             </div>
@@ -172,13 +172,13 @@
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
                                                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                            PHP 1,800.00
+                                                            {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
                                                         <div>
-                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                            <div style="font-size: 12px;">
+                                                            <div class="truncate" style="font-size: 18px;"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 16px;">
                                                                 <span>By: </span><span>{{$plan->chef->name}}</span>
                                                             </div>
                                                         </div>
@@ -213,13 +213,13 @@
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
                                                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                            PHP 1,800.00
+                                                            {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
                                                         <div>
-                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                            <div style="font-size: 12px;">
+                                                            <div class="truncate" style="font-size: 18px;"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 16px;">
                                                                 <span>By: </span><span>{{$plan->chef->name}}</span>
                                                             </div>
                                                         </div>
@@ -254,13 +254,13 @@
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
                                                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                            PHP 1,800.00
+                                                            {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
                                                     <div class="card-content">
                                                         <div>
-                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                            <div style="font-size: 12px;">
+                                                            <div class="truncate" style="font-size: 18px;"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 16px;">
                                                                 <span>By: </span><span>{{$plan->chef->name}}</span>
                                                             </div>
                                                         </div>
