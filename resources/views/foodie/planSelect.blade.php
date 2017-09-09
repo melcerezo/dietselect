@@ -25,7 +25,7 @@
                     <div class="left col s12">
                         <ul>
                             <li>
-                                <span style="font-size: 20px;">Plans</span>
+                                <span style="font-size: 30px;">Plans</span>
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col s12 m3">
                     <div>
-                        <span style="font-size: 20px;">Chef</span>
+                        <span style="font-size: 20px;">Plans by Chef</span>
                     </div>
                     <ul>
                         <li class="chef"><a href="#">Delicious Diet</a></li>
