@@ -40,7 +40,7 @@
                     </div>
                     <div class="divider"></div>
                     <div class="menu">
-                        <button class="btn orange">Menu</button>
+                        <button class="btn orange waves-effect waves-light">Menu</button>
                     </div>
                     <div class="divider"></div>
                     <div class="infoSection">
