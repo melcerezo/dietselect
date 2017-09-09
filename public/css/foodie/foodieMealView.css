@@ -102,3 +102,5 @@
 .mealDay a { color: black; }
 .mealDay:hover { border: 1px solid orange; }
 .mealDay:hover a { color: orange !important;}
+.mlTtl { font-size: 20px; }
+.mlCnt { font-size: 18px; padding-left: 5px; }
