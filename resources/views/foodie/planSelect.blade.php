@@ -57,7 +57,7 @@
                 </div>
                 <div class="col s12 m4">
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px;">
-                        <img style="max-width: 50%; height: auto;
+                        <img style="max-width: 50%; height: auto; position: absolute;
                              left: 73px;
                              top: 19px;" src="/img/vege.png">
                         <div class="category">
