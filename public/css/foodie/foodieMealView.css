@@ -94,11 +94,12 @@
 .secTtl{ margin-bottom: 5px; }
 .secCnt{ margin-left: 5px; }
 
+
+
 #menu.modal{
     max-width: 90% !important;
     max-height: 80% !important;
 }
-
 .mlPlnTtl{ font-size: 40px; margin-left: 5px; }
 .mlPlnCnt{ margin-top: 10px; }
 .calDay{ border: 2px dotted #d1d1d1; padding: 5px; }
