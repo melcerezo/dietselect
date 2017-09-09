@@ -47,14 +47,14 @@
                     <div class="divider"></div>
                     <div class="menu">
                         <div class="row">
-                            <div class="col s12 m3 bookingWeek">
+                            <div class="col s12 m4 bookingWeek">
                                 Week of: September 21 to September 30
+                            </div>
+                            <div class="col s12 m3">
+                                <button class="btn orange waves-effect waves-light">Add to Cart</button>
                             </div>
                             <div class="col s12 m5">
                                 <button class="btn orange waves-effect waves-light">Customize</button>
-                            </div>
-                            <div class="col s12 m4">
-                                <button class="btn orange waves-effect waves-light">Add to Cart</button>
                             </div>
                         </div>
                     </div>
