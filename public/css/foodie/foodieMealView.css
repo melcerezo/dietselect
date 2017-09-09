@@ -99,6 +99,8 @@
     max-height: 80% !important;
 }
 
+.mlPlnTtl{ font-size: 40px; }
+.mlPlnCnt{ margin-top: 10px; }
 .calDay{ border: 2px dotted #d1d1d1; padding: 5px; }
 .dayTtl{ font-size: 30px; border-left: 4px solid orange; color: orange; margin-bottom: 10px; }
 .mealDay { margin-bottom: 10px; }

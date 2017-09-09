@@ -117,7 +117,11 @@
 
     <div id="menu" class="modal">
         <div class="modal-content">
-            <div class="row">
+            <div class="row mlPlnTtl">
+                <span>Meal Plan Menu</span>
+            </div>
+            <div class="divider"></div>
+            <div class="row mlPlnCnt">
                 <div class="col s12 m4">
                     <div id="monday" class="calDay">
                         <div class="dayTtl">
