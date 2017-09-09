@@ -26,7 +26,7 @@
                     <div class="left col s12">
                         <ul>
                             <li>
-                                <span style="font-size: 20px;">Plans by Category</span>
+                                <span style="font-size: 20px;">PLANS BY CATEGORY</span>
                             </li>
                         </ul>
                     </div>
@@ -71,7 +71,7 @@
             <div class="row">
                 <div class="col s12 m3">
                     <div>
-                        <span style="font-size: 20px;">Plans by Chef</span>
+                        <span style="font-size: 20px;">PLANS BY CHEF</span>
                     </div>
                     <ul>
                         @foreach($chefCurrent as $chef)
