@@ -12,7 +12,7 @@ $(document).ready(function () {
     $('.chefName').click(function () {
         var name=$(this).attr('data-chef');
         console.log('div#'+name+'Container');
-        $('div#'+name+'Container').show();
+        $('#'+name+'Container').show();
     });
 
 
