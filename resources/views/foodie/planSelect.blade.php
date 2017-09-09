@@ -90,7 +90,7 @@
                                                 <div class="card-content">
                                                     <div>
                                                         <div class="truncate"><span>{{$plan->plan_name}}</span></div>
-                                                        <div>
+                                                        <div style="font-size: 12px;">
                                                             <span>By: </span><span>{{$plan->chef->name}}</span>
                                                         </div>
                                                     </div>
