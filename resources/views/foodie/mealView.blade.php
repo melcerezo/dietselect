@@ -67,6 +67,7 @@
                             <div class="secTtl">
                                 <span>Category:</span>
                             </div>
+                            <div class="divider"></div>
                             <div class="secCnt">
                                 @if($plan->category==1)
                                     <span>Weight Loss</span>
@@ -77,12 +78,15 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="divider"></div>
                         <div class="description">
                             <div class="secTtl">
                                 <span>Description:</span>
                             </div>
                             <div class="secCnt">{{$plan->description}}</div>
                         </div>
+                        <div class="divider"></div>
+
                         <div class="menu">
                             <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
                         </div>
