@@ -41,13 +41,13 @@
                     <div class="divider"></div>
                     <div class="menu">
                         <div class="row">
-                            <div class="col s12 m3">
+                            <div class="col s12 m4">
                                 <button class="btn orange waves-effect waves-light">Menu</button>
                             </div>
-                            <div class="col s12 m3">
+                            <div class="col s12 m4">
                                 <button class="btn orange waves-effect waves-light">Menu</button>
                             </div>
-                            <div class="col s12 m3">
+                            <div class="col s12 m4">
                                 <button class="btn orange waves-effect waves-light">Menu</button>
                             </div>
                         </div>
