@@ -114,6 +114,9 @@ class FoodieMealPlanController extends Controller
 
     public function viewPlanStandard(Plan $plan)
     {
+//        $plan->created_at()
+        $dt=$plan->created_at();
+        $startOfWeek=$dt->addDay(7)->startOfWeek()->format('F d, y');
         $foodie = Auth::guard('foodie')->user()->id;
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
@@ -160,6 +163,7 @@ class FoodieMealPlanController extends Controller
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
+
         return view('foodie.mealView')->with([
             'foodie'=> Auth::guard('foodie')->user(),
             'messages' => $messages,
