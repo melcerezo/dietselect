@@ -21,7 +21,7 @@
     @else
         <div class="container plSlCntr">
             <div class="row">
-                <nav class="light-green lighten-1 white-text">
+                {{--<nav class="light-green lighten-1 white-text">--}}
                     <div class="left col s12">
                         <ul>
                             <li>
@@ -29,7 +29,7 @@
                             </li>
                         </ul>
                     </div>
-                </nav>
+                {{--</nav>--}}
             </div>
             <div class="row">
                 @if($plans->count()>0)
