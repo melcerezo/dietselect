@@ -83,7 +83,7 @@
                 <div id="planContainer" class="col s9">
                     <div id="allContainer">
                         <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                            <span style="font-size: 20px;">All Plans</span>
+                            <span style="font-size: 20px;">ALL PLANS</span>
                         </div>
                         @if($plans->count()>0)
                             @foreach($plans->chunk(3) as $chunk)
@@ -123,7 +123,7 @@
                     @foreach($chefCurrent as $chef)
                         <div id="{{$chef->id}}Container" class="chefContainer">
                             <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                                <span style="font-size: 20px;">{{$chef->name}} Plans</span>
+                                <span style="font-size: 20px;">{{ucwords($chef->name)}} PLANS</span>
                             </div>
                             @if($plans->count()>0)
                                 @foreach($plans->chunk(3) as $chunk)
@@ -165,7 +165,7 @@
                     @endforeach
                     <div id="lossContainer" class="categoryContainer">
                         <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                            <span style="font-size: 20px;">Weight Loss Plans</span>
+                            <span style="font-size: 20px;">WEIGHT LOSS PLANS</span>
                         </div>
                         @if($plans->count()>0)
                             @foreach($plans->chunk(3) as $chunk)
@@ -206,7 +206,7 @@
                     </div>
                     <div id="protContainer" class="categoryContainer">
                         <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                            <span style="font-size: 20px;">High Protein Plans</span>
+                            <span style="font-size: 20px;">HIGH PROTEIN PLANS</span>
                         </div>
                         @if($plans->count()>0)
                             @foreach($plans->chunk(3) as $chunk)
@@ -247,7 +247,7 @@
                     </div>
                     <div id="vegeContainer" class="categoryContainer">
                         <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                            <span style="font-size: 20px;">Vegetarian Plans</span>
+                            <span style="font-size: 20px;">VEGETARIAN PLANS</span>
                         </div>
                         @if($plans->count()>0)
                             @foreach($plans->chunk(3) as $chunk)
