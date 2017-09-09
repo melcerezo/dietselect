@@ -88,8 +88,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="card-content">
-                                                    <div>
-                                                        <div><span style="overflow: hidden">{{$plan->plan_name}}</span></div>
+                                                    <div class="truncate">
+                                                        <div><span>{{$plan->plan_name}}</span></div>
                                                         <div>
                                                             <span>By: </span><span>{{$plan->chef->name}}</span>
                                                         </div>
