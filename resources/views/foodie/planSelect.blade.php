@@ -64,28 +64,43 @@
                 </div>
             </div>
             <div class="row">
+                <div class="col s12 m3">
+                    <div>
+                        <span style="font-size: 20px;">Chef</span>
+                    </div>
+                    <ul>
+                        <li class="chef"><a href="#">Delicious Diet</a></li>
+                        <li class="chef"><a href="#">Wellness Gateway</a></li>
+                        <li class="chef"><a href="#">Gourmet Kusina</a></li>
+                    </ul>
+                </div>
+
                 @if($plans->count()>0)
                     @foreach($plans->chunk(3) as $chunk)
                         <div class="row">
                             @foreach($chunk as $plan)
-                                <a href="{{route('foodie.plan.standard', $plan->id)}}" class="plSlCntA">
                                     <div class="col s12 m4">
-                                        <div>
-                                           <img src="/img/{{$plan->picture}}" class="img-responsive" style="max-width:200px;"/>
-                                        </div>
-                                        <div class="plSlCnt">
-                                            <div class="plSlCntTtl">
-                                                <span>{{$plan->plan_name}}</span>
+                                        <div class="card buyCard">
+                                            <div class="card-image">
+                                                <img src="/img/{{$plan->picture}}">
+                                                <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                    PHP 1,800.00
+                                                </div>
                                             </div>
-                                            <div class="plSlCntChf">
-                                                <span>By: </span><span>{{$plan->chef->name}}</span>
-                                            </div>
-                                            <div class="plSlCntDes">
-                                                <p>{{$plan->description}}</p>
+                                            <div class="card-content">
+                                                <div>
+                                                    <div>{{$plan->plan_name}}</div>
+                                                    <div>
+                                                        <span>By: </span><span>{{$plan->chef->name}}</span>
+                                                    </div>
+                                                </div>
+                                                <div class="buyBtn center-align">
+                                                    <a href="{{route('foodie.plan.standard', $plan->id)}}"
+                                                       class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </a>
                             @endforeach
                         </div>
                     @endforeach
