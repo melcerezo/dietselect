@@ -94,5 +94,8 @@
 .secTtl{ margin-bottom: 5px; }
 .secCnt{ margin-left: 5px; }
 
+#menu.modal{
+    max-width: 60% !important;
+}
 .mealDay { margin-bottom: 10px; }
 .mealDay:hover { border: 2px solid orange; color: orange !important; }
