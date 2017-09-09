@@ -54,10 +54,10 @@
                     <div class="divider"></div>
                     <div class="menu">
                         <div class="row actionMenu">
-                            <div class="col s12 m5 bookingWeek">
+                            <div class="col s12 m6 bookingWeek">
                                 Week of: {{$startWeek}}
                             </div>
-                            <div class="col s12 m4">
+                            <div class="col s12 m3">
                                 <a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
                             </div>
                             <div class="col s12 m3">
