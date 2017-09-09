@@ -63,11 +63,11 @@
                                 <span>{{ $plan->chef->name }}</span>
                             </div>
                         </div>
+                        <div class="divider"></div>
                         <div class="category">
                             <div class="secTtl">
                                 <span>Category:</span>
                             </div>
-                            <div class="divider"></div>
                             <div class="secCnt">
                                 @if($plan->category==1)
                                     <span>Weight Loss</span>
