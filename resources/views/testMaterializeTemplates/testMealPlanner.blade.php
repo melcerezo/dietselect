@@ -5,6 +5,7 @@
         .planGallery{ padding:0 15px; }
         .planName,.planPrice { margin: 10px 0; }
         .planName { font-size: 30px; }
+        .actionMenu { margin:0; }
         .menu { padding: 10px 0; }
         .chef,.category,.description { margin-bottom: 10px; }
         .infoSection{ margin:10px 0; }
@@ -46,7 +47,7 @@
                     </div>
                     <div class="divider"></div>
                     <div class="menu">
-                        <div class="row">
+                        <div class="row actionMenu">
                             <div class="col s12 m4 bookingWeek">
                                 Week of: September 21 to September 30
                             </div>
