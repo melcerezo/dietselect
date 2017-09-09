@@ -81,7 +81,7 @@
 .planGallery { padding:0 15px; height:300px; overflow-y: hidden; -ms-overflow-y: hidden;}
 .planGallery:hover { overflow-y: scroll;}
 .galleryItem{ width:100px; height:auto; margin-bottom: 10px; }
-.galleryItem:hover{ border: 1px solid orange; padding: 1px }
+.galleryItem:hover{ border: 3px solid orange; padding: 1px }
 #plPic { display: block; }
 .imgGall{ display: none; }
 .planName,.planPrice { margin: 10px 0; }
