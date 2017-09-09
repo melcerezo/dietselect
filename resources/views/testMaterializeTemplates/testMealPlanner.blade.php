@@ -51,10 +51,10 @@
                                 Week of: week
                             </div>
                             <div class="col s12 m4">
-                                <button class="btn orange waves-effect waves-light">Menu</button>
+                                <button class="btn orange waves-effect waves-light">Customize</button>
                             </div>
                             <div class="col s12 m4">
-                                <button class="btn orange waves-effect waves-light">Menu</button>
+                                <button class="btn orange waves-effect waves-light">Add to Cart</button>
                             </div>
                         </div>
                     </div>
@@ -68,6 +68,9 @@
                         </div>
                         <div class="description">
                             Description of this Item.
+                        </div>
+                        <div class="menu">
+                            <button class="btn orange waves-effect waves-light">Menu</button>
                         </div>
                     </div>
                 </div>
