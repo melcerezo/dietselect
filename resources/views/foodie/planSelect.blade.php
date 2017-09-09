@@ -123,7 +123,7 @@
                     @foreach($chefCurrent as $chef)
                         <div id="{{$chef->id}}Container" class="chefContainer">
                             <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                                <span style="font-size: 20px;">{{ucwords($chef->name)}} PLANS</span>
+                                <span style="font-size: 20px;">{{strtoupper($chef->name)}} PLANS</span>
                             </div>
                             @if($plans->count()>0)
                                 @foreach($plans->chunk(3) as $chunk)
