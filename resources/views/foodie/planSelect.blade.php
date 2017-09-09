@@ -86,7 +86,7 @@
                     </div>
                     <ul>
                         @foreach($chefs as $chef)
-                            <li class="chef"><a class="chefName" href="#" data-chef="{{$chef->id}}">{{$chef->name}}</a></li>
+                            <li class="chef"><div class="chefName" href="#" data-chef="{{$chef->id}}">{{$chef->name}}</div></li>
                         @endforeach
                     </ul>
                 </div>
