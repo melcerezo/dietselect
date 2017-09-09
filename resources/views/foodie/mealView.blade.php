@@ -55,40 +55,44 @@
                     </div>
                     <div class="divider"></div>
                     <div class="infoSection">
-                        <div class="chef">
-                            <div class="secTtl">
-                                <span>Made By:</span>
-                            </div>
-                            <div class="secCnt">
-                                <span>{{ $plan->chef->name }}</span>
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="category">
-                            <div class="secTtl">
-                                <span>Category:</span>
-                            </div>
-                            <div class="secCnt">
-                                @if($plan->category==1)
-                                    <span>Weight Loss</span>
-                                @elseif($plan->category==2)
-                                    <span>High Protein</span>
-                                @elseif($plan->category==3)
-                                    <span>Vegetarian</span>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="description">
-                            <div class="secTtl">
-                                <span>Description:</span>
-                            </div>
-                            <div class="secCnt">{{$plan->description}}</div>
-                        </div>
-                        <div class="divider"></div>
+                        <div class="row">
+                            <div class="col s12 m6">
+                                <div class="chef">
+                                    <div class="secTtl">
+                                        <span>Made By:</span>
+                                    </div>
+                                    <div class="secCnt">
+                                        <span>{{ $plan->chef->name }}</span>
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="category">
+                                    <div class="secTtl">
+                                        <span>Category:</span>
+                                    </div>
+                                    <div class="secCnt">
+                                        @if($plan->category==1)
+                                            <span>Weight Loss</span>
+                                        @elseif($plan->category==2)
+                                            <span>High Protein</span>
+                                        @elseif($plan->category==3)
+                                            <span>Vegetarian</span>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="divider"></div>
+                                <div class="description">
+                                    <div class="secTtl">
+                                        <span>Description:</span>
+                                    </div>
+                                    <div class="secCnt">{{$plan->description}}</div>
+                                </div>
+                                <div class="divider"></div>
 
-                        <div class="menu">
-                            <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
+                                <div class="menu">
+                                    <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
