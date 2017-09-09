@@ -36,6 +36,10 @@
                         <span style="font-size: 30px;">Plan Name</span>
                     </div>
                     <div class="divider"></div>
+                    <div class="menu">
+                        <button class="btn orange">Menu</button>
+                    </div>
+                    <div class="divider"></div>
                     <div>
                         <div class="chef">
                             Chef Name
@@ -45,9 +49,6 @@
                         </div>
                         <div class="Description">
                             Description of this Item.
-                        </div>
-                        <div class="menu">
-                            <button class="btn orange">Menu</button>
                         </div>
                     </div>
                 </div>
