@@ -39,7 +39,7 @@
                              top: 43px;"
                              src="/img/loss.png">
                         <div class="category">
-                            <div style="position: relative;">
+                            <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px;">
                         <img class="responsive-img" src="/img/protein.png">
                         <div class="category">
-                            <div style="position: relative;">
+                            <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">High Protein</span>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                              left: 24px;
                              top: 19px;" src="/img/vege.png">
                         <div class="category">
-                            <div style="position: relative;">
+                            <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>
                             </div>
                         </div>
