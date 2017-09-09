@@ -115,7 +115,7 @@ class FoodieMealPlanController extends Controller
     public function viewPlanStandard(Plan $plan)
     {
 //        $plan->created_at()
-        $dt=$plan->created_at();
+        $dt=$plan->created_at;
         $startWeek=$dt->addDay(7)->startOfWeek()->format('F d, y');
         dd($startWeek);
         $foodie = Auth::guard('foodie')->user()->id;
