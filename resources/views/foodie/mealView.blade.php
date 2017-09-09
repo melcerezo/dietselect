@@ -120,6 +120,10 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div id="monday" class="calDay">
+                        <div class="dayTtl">
+                            <span>Monday</span>
+                        </div>
+                        <div class="divider"></div>
                         <div id="moBre" class="mealDay">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
@@ -193,6 +197,10 @@
                 </div>
                 <div class="col s12 m4">
                     <div id="tuesday" class="calDay">
+                        <div class="dayTtl">
+                            <span>Tuesday</span>
+                        </div>
+                        <div class="divider"></div>
                         <div id="tuBre" class="mealDay">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
@@ -266,6 +274,10 @@
                 </div>
                 <div class="col s12 m4">
                     <div id="wednesday" class="calDay">
+                        <div class="dayTtl">
+                            <span>Wednesday</span>
+                        </div>
+                        <div class="divider"></div>
                         <div id="weBre" class="mealDay">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
@@ -341,6 +353,10 @@
             <div class="row">
                 <div class="col s12 m4">
                     <div id="thursday" class="calDay">
+                        <div class="dayTtl">
+                            <span>Thursday</span>
+                        </div>
+                        <div class="divider"></div>
                         <div id="thBre" class="mealDay">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
@@ -414,6 +430,10 @@
                 </div>
                 <div class="col s12 m4">
                     <div id="friday" class="calDay">
+                        <div class="dayTtl">
+                            <span>Friday</span>
+                        </div>
+                        <div class="divider"></div>
                         <div id="frBre" class="mealDay">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
@@ -488,6 +508,10 @@
                 @if($saMeals>0)
                     <div class="col s12 m4">
                         <div id="saturday" class="calDay">
+                            <div class="dayTtl">
+                                <span>Saturday</span>
+                            </div>
+                            <div class="divider"></div>
                             <div id="saBre" class="mealDay">
                                 <div class="mlTtl">
                                     <span>Breakfast</span>
