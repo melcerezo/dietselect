@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('head')
     <style>
-        .picSection{ width:400px; height:400px; }
+        .picSection{ width:350px; height:350px; }
         .planGallery{ padding:0 15px; }
         .galleryItem{ width:50px; height:50px; margin-bottom: 10px; }
     </style>
