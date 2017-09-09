@@ -12,19 +12,19 @@
 @section('page_content')
     <div class="container vwMlCntr">
         <div class="row">
-            <div class="col s12 m2">
-                <div class="planGallery">
-                    <div class="galleryItem light-green">
-                        <img class="responsive-img" src="/img/loss.png">
-                    </div>
-                    <div class="galleryItem light-green">
-                        <img class="responsive-img" src="/img/loss.png">
-                    </div>
-                    <div class="galleryItem light-green">
-                        <img class="responsive-img" src="/img/loss.png">
+            @if($mealPhotos->count())
+                <div class="col s12 m2">
+                    <div class="planGallery">
+                        @foreach($mealPhotos as $mealPhoto)
+                            @if($mealPhoto->plan_id==$plan->id)
+                                <div class="galleryItem light-green">
+                                    <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                                </div>
+                            @endif
+                        @endforeach
                     </div>
                 </div>
-            </div>
+            @endif
             <div class="col s12 m3">
                 <div class="light-green picSection">
                     <img class="responsive-img" src="/img/loss.png">
@@ -95,7 +95,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="divider"></div>
             </div>
         </div>
     </div>
