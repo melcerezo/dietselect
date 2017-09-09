@@ -12,6 +12,9 @@ $(document).ready(function () {
             description:{
                 required:true
             },
+            category:{
+                required:true
+            },
             planPic:{
                 required:true
             },
@@ -31,6 +34,9 @@ $(document).ready(function () {
             },
             description:{
                 required: 'Please enter a description!'
+            },
+            category:{
+                required: 'Please select a category!'
             },
             planPic:{
                 required: 'Please upload picture for the plan!'
