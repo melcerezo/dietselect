@@ -40,7 +40,7 @@
                              src="/img/loss.png">
                         <div class="category">
                             <div style="position: relative;">
-                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">Weight Loss</span>
+                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@
                         <img class="responsive-img" src="/img/protein.png">
                         <div class="category">
                             <div style="position: relative;">
-                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">High Protein</span>
+                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">High Protein</span>
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                              top: 19px;" src="/img/vege.png">
                         <div class="category">
                             <div style="position: relative;">
-                                <span class="orange-text" style="position: absolute; top: 0; left: 0; font-size: 30px;">Vegetarian</span>
+                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>
                             </div>
                         </div>
                     </div>
