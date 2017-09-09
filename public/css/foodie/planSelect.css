@@ -84,4 +84,7 @@ div.buyCateg:hover div.category{
         width: 250px;
         height: 250px;
     }
+    .lossPlan{
+        left: 36px;
+    }
 }
