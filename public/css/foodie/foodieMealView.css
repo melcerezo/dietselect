@@ -96,6 +96,7 @@
 
 #menu.modal{
     max-width: 60% !important;
+    max-height: 60% !important;
 }
 .mealDay { margin-bottom: 10px; }
-.mealDay:hover { border: 2px solid orange; color: orange !important; }
+.mealDay:hover { border: 1px solid orange; color: orange !important; }
