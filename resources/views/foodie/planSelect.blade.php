@@ -75,9 +75,9 @@
                     </div>
                     <ul>
                         @foreach($chefCurrent as $chef)
-                            <li class="chef"><div class="chefName" href="#" data-chef="{{$chef->id}}">{{$chef->name}}</div></li>
+                            <li class="chef valign-wrapper"><div class="chefName" href="#" data-chef="{{$chef->id}}">{{$chef->name}}</div></li>
                         @endforeach
-                        <li class="chef"><div class="allName" href="#">All</div></li>
+                        <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
                 </div>
                 <div id="planContainer" class="col s9">
