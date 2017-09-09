@@ -65,7 +65,7 @@ class FoodieMealPlanController extends Controller
             'messages' => $messages,
             'plans' => $plans,
             'chats' => $chats,
-            'chefCurrent','=',$chefCurrent,
+            'chefCurrent'=>$chefCurrent,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications
         ]);
