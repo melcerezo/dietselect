@@ -9,7 +9,8 @@ $(document).ready(function () {
 
     $('.galleryItem').on('click',function () {
         var id=$(this).attr('data-galImg');
-        $('#plPic')
+        $('.imgGall').hide();
+        $('#'+id).show();
 
     });
 

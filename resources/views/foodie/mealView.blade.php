@@ -113,6 +113,39 @@
         </div>
     </div>
 
+    <div id="menu" class="modal">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 m4">
+                    <div id="monday" class="calDay">
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div id="tuesday" class="calDay">
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div id="wednesday" class="calDay">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12 m4">
+                    <div id="thursday" class="calDay">
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div id="friday" class="calDay">
+                    </div>
+                </div>
+                <div class="col s12 m4">
+                    <div id="saturday" class="calDay">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
         {{--<div id="photoGallery" class="modal gallery">--}}
             {{--<nav class="light-green lighten-1 white-text">--}}
