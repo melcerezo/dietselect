@@ -7,6 +7,11 @@ $(document).ready(function () {
         $('.slider').slider('pause');
     });
 
+    $('.galleryItem').on('click',function () {
+        var id=$(this).attr('data-galImg');
+        $('#plPic')
+
+    });
 
 
     // $('.carousel.carousel-slider').carousel({fullWidth: true});

@@ -90,4 +90,6 @@
 .galleryItem{ width:100px; height:auto; margin-bottom: 10px; }
 .secTtl{ margin-bottom: 5px; }
 .secCnt{ margin-left: 5px; }
+#plPic { display: block; }
+.imgGall{ display: none; }
 

@@ -15,12 +15,12 @@
             @if($mealPhotos->count())
                 <div class="col s12 m2">
                     <div class="planGallery">
-                        <div class="galleryItem">
+                        <div class="galleryItem" data-galImg="plPic">
                             <img class="responsive-img" src="/img/{{ $plan->picture }}">
                         </div>
-                        @foreach($mealPhotos as $mealPhoto)
+                        @foreach($mealPhotos as $id=>$mealPhoto)
                             @if($mealPhoto->plan_id==$plan->id)
-                                <div class="galleryItem">
+                                <div class="galleryItem" data-galImg="img{{$id}}">
                                     <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
                                 </div>
                             @endif
@@ -30,9 +30,16 @@
             @endif
             <div class="col s12 m3">
                 <div class="picSection">
-                    <div>
+                    <div id="plPic" class="imgGall">
                         <img class="responsive-img" src="/img/{{ $plan->picture }}">
                     </div>
+                    @foreach($mealPhotos as $id=>$mealPhoto)
+                        @if($mealPhoto->plan_id==$plan->id)
+                            <div id="img{{$id}}" class="imgGall">
+                                <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                            </div>
+                        @endif
+                    @endforeach
                 </div>
             </div>
             <div class="col s12 m7">
