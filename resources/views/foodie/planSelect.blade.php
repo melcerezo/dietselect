@@ -34,10 +34,7 @@
                 </div>
                 <div class="col s12 m4" >
                     <div class="buyCateg light-green white-text">
-                        <img style="max-width: 73%; height: auto; position: absolute;
-                             left: 42px;
-                             top: 43px;"
-                             src="/img/loss.png">
+                        <img class="lossPlan" src="/img/loss.png">
                         <div id="loss" data-categ="weightCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>
@@ -57,9 +54,7 @@
                 </div>
                 <div class="col s12 m4">
                     <div class="buyCateg light-green white-text">
-                        <img style="max-width: 86%; height: auto; position: absolute;
-                             left: 24px;
-                             top: 19px;" src="/img/vege.png">
+                        <img class="vegePlan" src="/img/vege.png">
                         <div id="vege" data-categ="vegeCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>

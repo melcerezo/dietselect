@@ -63,6 +63,22 @@ div.buyCateg:hover div.category{
     background: rgba(0, 0, 0, .6);
 }
 
+.lossPlan{
+    max-width: 73%;
+    height: auto;
+    position: absolute;
+    left: 42px;
+    top: 43px;
+}
+
+.vegePlan{
+    max-width: 86%;
+    height: auto;
+    position: absolute;
+    left: 24px;
+    top: 19px;
+}
+
 @media only screen and (max-width: 1024px){
     div.buyCateg {
         width: 250px;
