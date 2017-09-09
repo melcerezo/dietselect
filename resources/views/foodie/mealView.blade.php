@@ -87,7 +87,6 @@
                                     </div>
                                     <div class="secCnt">{{$plan->description}}</div>
                                 </div>
-                                <div class="divider"></div>
 
                                 <div class="menu">
                                     <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
