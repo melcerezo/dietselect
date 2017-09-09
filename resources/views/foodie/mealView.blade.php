@@ -43,65 +43,67 @@
                 </div>
             </div>
             <div class="col s12 m7">
-                <div>
-                    <div class="planName">
-                        <span>{{$plan->plan_name}}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="planPrice">
-                        <span>{{$plan->price}}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="menu">
-                        <div class="row actionMenu">
-                            <div class="col s12 m5 xl6 bookingWeek">
-                                Week of: {{$startWeek}}
-                            </div>
-                            <div class="col s12 m4 xl3">
-                                <a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
-                            </div>
-                            <div class="col s12 m3">
-                                <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange waves-effect waves-light">Cart</a>
+                <div class="row">
+                    <div class="col s12 m10">
+                        <div class="planName">
+                            <span>{{$plan->plan_name}}</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="planPrice">
+                            <span>{{$plan->price}}</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="menu">
+                            <div class="row actionMenu">
+                                <div class="col s12 m5 xl6 bookingWeek">
+                                    Week of: {{$startWeek}}
+                                </div>
+                                <div class="col s12 m4 xl3">
+                                    <a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
+                                </div>
+                                <div class="col s12 m3">
+                                    <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange waves-effect waves-light">Cart</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="infoSection">
-                        <div class="row">
-                            <div class="col s12 m6">
-                                <div class="chef">
-                                    <div class="secTtl">
-                                        <span>Made By:</span>
+                        <div class="divider"></div>
+                        <div class="infoSection">
+                            <div class="row">
+                                <div class="col s12 m6">
+                                    <div class="chef">
+                                        <div class="secTtl">
+                                            <span>Made By:</span>
+                                        </div>
+                                        <div class="secCnt">
+                                            <span>{{ $plan->chef->name }}</span>
+                                        </div>
                                     </div>
-                                    <div class="secCnt">
-                                        <span>{{ $plan->chef->name }}</span>
+                                    <div class="divider"></div>
+                                    <div class="category">
+                                        <div class="secTtl">
+                                            <span>Category:</span>
+                                        </div>
+                                        <div class="secCnt">
+                                            @if($plan->category==1)
+                                                <span>Weight Loss</span>
+                                            @elseif($plan->category==2)
+                                                <span>High Protein</span>
+                                            @elseif($plan->category==3)
+                                                <span>Vegetarian</span>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="category">
-                                    <div class="secTtl">
-                                        <span>Category:</span>
+                                    <div class="divider"></div>
+                                    <div class="description">
+                                        <div class="secTtl">
+                                            <span>Description:</span>
+                                        </div>
+                                        <div class="secCnt">{{$plan->description}}</div>
                                     </div>
-                                    <div class="secCnt">
-                                        @if($plan->category==1)
-                                            <span>Weight Loss</span>
-                                        @elseif($plan->category==2)
-                                            <span>High Protein</span>
-                                        @elseif($plan->category==3)
-                                            <span>Vegetarian</span>
-                                        @endif
-                                    </div>
-                                </div>
-                                <div class="divider"></div>
-                                <div class="description">
-                                    <div class="secTtl">
-                                        <span>Description:</span>
-                                    </div>
-                                    <div class="secCnt">{{$plan->description}}</div>
-                                </div>
 
-                                <div class="menu">
-                                    <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
+                                    <div class="menu">
+                                        <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
