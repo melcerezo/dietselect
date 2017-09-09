@@ -7,6 +7,12 @@ $(document).ready(function () {
         }
     });
 
+//    all container
+    $('.allName').click(function () {
+        $('.chefContainer').hide();
+        $('.categoryContainer').hide();
+        $('#allContainer').show();
+    });
 
 //    chefs container
     $('.chefName').click(function () {
