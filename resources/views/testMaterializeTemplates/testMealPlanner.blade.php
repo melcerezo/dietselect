@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col s12 m6">
                 <div class="light-green picSection">
-                    <img src="/img/loss.png">
+                    <img class="responsive-img" src="/img/loss.png">
                 </div>
                 <div>
 
