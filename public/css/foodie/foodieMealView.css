@@ -95,3 +95,4 @@
 .secCnt{ margin-left: 5px; }
 
 .mealDay { margin-bottom: 10px; }
+.mealDay:hover { border: 2px solid orange; color: orange !important; }
