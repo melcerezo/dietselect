@@ -59,13 +59,15 @@
                             <div class="secTtl">
                                 <span>Made By:</span>
                             </div>
-                            <div>{{ $plan->chef->name }}</div>
+                            <div class="secCnt">
+                                <span>{{ $plan->chef->name }}</span>
+                            </div>
                         </div>
                         <div class="category">
                             <div class="secTtl">
                                 <span>Category:</span>
                             </div>
-                            <div>
+                            <div class="secCnt">
                                 @if($plan->category==1)
                                     <span>Weight Loss</span>
                                 @elseif($plan->category==2)
@@ -79,7 +81,7 @@
                             <div class="secTtl">
                                 <span>Description:</span>
                             </div>
-                            <div>{{$plan->description}}</div>
+                            <div class="secCnt">{{$plan->description}}</div>
                         </div>
                         <div class="menu">
                             <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
