@@ -99,5 +99,5 @@
     max-height: 80% !important;
 }
 .mealDay { margin-bottom: 10px; }
-.mealDay:hover { border: 1px solid orange; color: orange !important; }
+.mealDay:hover { border: 1px solid orange; }
 .mealDay:hover a { color: orange !important;}
