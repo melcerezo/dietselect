@@ -49,7 +49,7 @@
                              left: 42px;
                              top: 43px;"
                              src="/img/loss.png">
-                        <div class="category" style="border-radius: 10px;">
+                        <div id="loss" data-categ="weightCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>
                             </div>
@@ -59,7 +59,7 @@
                 <div class="col s12 m4">
                     <div class="buyCateg light-green white-text" style="width: 300px; height: 300px; border-radius: 10px; box-shadow: 4px 4px 4px #888888;">
                         <img class="responsive-img" src="/img/protein.png">
-                        <div class="category" style="border-radius: 10px;">
+                        <div id="protein" data-categ="protCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">High Protein</span>
                             </div>
@@ -71,7 +71,7 @@
                         <img style="max-width: 86%; height: auto; position: absolute;
                              left: 24px;
                              top: 19px;" src="/img/vege.png">
-                        <div class="category" style="border-radius: 10px;">
+                        <div id="vege" data-categ="vegeCateg" class="category" style="border-radius: 10px;">
                             <div style="position: relative; border-radius: 10px;">
                                 <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>
                             </div>
@@ -173,6 +173,129 @@
                             @endif
                         </div>
                     @endforeach
+                    <div id="lossContainer" class="categoryContainer">
+                        <div>
+                            <span style="font-size: 20px;">Weight Loss Plans</span>
+                        </div>
+                        @if($plans->count()>0)
+                            @foreach($plans->chunk(3) as $chunk)
+                                <div class="row">
+                                    @foreach($chunk as $plan)
+                                        @if($plan->chef_id==$chef->id)
+                                            <div class="col s12 m4">
+                                                <div class="card buyCard">
+                                                    <div class="card-image">
+                                                        <img src="/img/{{$plan->picture}}">
+                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                            PHP 1,800.00
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div>
+                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 12px;">
+                                                                <span>By: </span><span>{{$plan->chef->name}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="buyBtn center-align">
+                                                            <a href="{{route('foodie.plan.standard', $plan->id)}}"
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        @else
+                            <div>
+                                <span>No Plans for this Category!</span>
+                            </div>
+                        @endif
+                    </div>
+                    <div id="protContainer" class="categoryContainer">
+                        <div>
+                            <span style="font-size: 20px;">High Protein Plans</span>
+                        </div>
+                        @if($plans->count()>0)
+                            @foreach($plans->chunk(3) as $chunk)
+                                <div class="row">
+                                    @foreach($chunk as $plan)
+                                        @if($plan->chef_id==$chef->id)
+                                            <div class="col s12 m4">
+                                                <div class="card buyCard">
+                                                    <div class="card-image">
+                                                        <img src="/img/{{$plan->picture}}">
+                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                            PHP 1,800.00
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div>
+                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 12px;">
+                                                                <span>By: </span><span>{{$plan->chef->name}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="buyBtn center-align">
+                                                            <a href="{{route('foodie.plan.standard', $plan->id)}}"
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        @else
+                            <div>
+                                <span>No Plans for this Category!</span>
+                            </div>
+                        @endif
+                    </div>
+                    <div id="vegeContainer" class="categoryContainer">
+                        <div>
+                            <span style="font-size: 20px;">Vegetarian Plans</span>
+                        </div>
+                        @if($plans->count()>0)
+                            @foreach($plans->chunk(3) as $chunk)
+                                <div class="row">
+                                    @foreach($chunk as $plan)
+                                        @if($plan->chef_id==$chef->id)
+                                            <div class="col s12 m4">
+                                                <div class="card buyCard">
+                                                    <div class="card-image">
+                                                        <img src="/img/{{$plan->picture}}">
+                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                            PHP 1,800.00
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-content">
+                                                        <div>
+                                                            <div class="truncate"><span>{{$plan->plan_name}}</span></div>
+                                                            <div style="font-size: 12px;">
+                                                                <span>By: </span><span>{{$plan->chef->name}}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="buyBtn center-align">
+                                                            <a href="{{route('foodie.plan.standard', $plan->id)}}"
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endforeach
+                        @else
+                            <div>
+                                <span>No Plans for this Category!</span>
+                            </div>
+                        @endif
+                    </div>
 
                 </div>
             </div>
