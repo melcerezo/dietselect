@@ -128,7 +128,7 @@
                             <span>Monday</span>
                         </div>
                         <div class="divider"></div>
-                        <div id="moBre" class="mealDay">
+                        <div id="moBre" class="mealDay brekk">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
@@ -205,7 +205,7 @@
                             <span>Tuesday</span>
                         </div>
                         <div class="divider"></div>
-                        <div id="tuBre" class="mealDay">
+                        <div id="tuBre" class="mealDay brekk">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
@@ -282,7 +282,7 @@
                             <span>Wednesday</span>
                         </div>
                         <div class="divider"></div>
-                        <div id="weBre" class="mealDay">
+                        <div id="weBre" class="mealDay brekk">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
@@ -361,7 +361,7 @@
                             <span>Thursday</span>
                         </div>
                         <div class="divider"></div>
-                        <div id="thBre" class="mealDay">
+                        <div id="thBre" class="mealDay brekk">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
@@ -438,7 +438,7 @@
                             <span>Friday</span>
                         </div>
                         <div class="divider"></div>
-                        <div id="frBre" class="mealDay">
+                        <div id="frBre" class="mealDay brekk">
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
@@ -516,7 +516,7 @@
                                 <span>Saturday</span>
                             </div>
                             <div class="divider"></div>
-                            <div id="saBre" class="mealDay">
+                            <div id="saBre" class="mealDay brekk">
                                 <div class="mlTtl">
                                     <span>Breakfast</span>
                                 </div>
