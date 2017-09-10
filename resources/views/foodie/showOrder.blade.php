@@ -19,12 +19,15 @@
                             <div class="row">
                                 <div data-pay-reveal="bank" class="col s12 m3 payTab">
                                     <span class="bankIcon"><i class="fa fa-bank"></i></span>
+                                    <span class="bankDes">Bank Payment</span>
                                 </div>
                                 <div data-pay-reveal="paypal" class="col s12 m3 payTab">
                                     <span class="payPalIcon"><i class="fa fa-paypal"></i></span>
+                                    <span class="payPalDes">Paypal Payment</span>
                                 </div>
                                 <div data-pay-reveal="gcash" class="col s12 m3 payTab">
-                                    <span class="gcashIcon">Gcash</span>
+                                    <span class="gcashIcon">GCash</span>
+                                    <span class="gcashDes">Gcash Payment</span>
                                 </div>
                             </div>
                         </div>

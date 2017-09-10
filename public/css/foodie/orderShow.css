@@ -10,6 +10,9 @@
 .bankIcon{ position: absolute; top:0; left:0; font-size: 20px; }
 .paypalIcon{ position: absolute; top:0; left:0; font-size: 20px; }
 .gcashIcon{ position: absolute; top:0; left:0; font-size: 20px; }
+.bankDes{ position: absolute; top:0; left:0; font-size: 20px; }
+.payPalDes{ position: absolute; top:0; left:0; font-size: 20px; }
+.gcashDes{ position: absolute; top:0; left:0; font-size: 20px; }
 
 
 
