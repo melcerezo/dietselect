@@ -46,5 +46,10 @@ $(document).ready(function () {
         console.log(phtId);
         $('.plIndSelCls').hide();
         $(phtId).show();
-    })
+    });
+
+    $('#orderButton').on('click',function () {
+        $('#loadWait').show();
+    });
+
 });
