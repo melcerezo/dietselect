@@ -309,7 +309,7 @@ class FoodieMealPlanController extends Controller
                     $detail = SimpleCustomPlanDetail::where([
                         ['simple_custom_plan_id', '=', $simpleCustomPlan->id],
                         ['detail', '=', $key]
-                    ])->count();
+                    ])->first();
                     $detail->delete();
                 }
             }
