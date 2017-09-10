@@ -17,10 +17,10 @@
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
     .payPalIcon{ top:11px; left:63px; }
-    .gcashIcon{ top:25px; left:4px; }
+    .gcashIcon{ top:25px; left:28px; }
     .bankDes{ top:91px; left:64px; font-size: 20px; }
     .payPalDes{ top:90px; left:57px; font-size: 20px; }
-    .gcashDes{ top:90px; left:41px; font-size: 16px; }
+    .gcashDes{ top:91px; left:58px; font-size: 20px; }
 }
 
 
