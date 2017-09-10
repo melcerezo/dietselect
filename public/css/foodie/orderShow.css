@@ -24,6 +24,11 @@
 .payInfo{ margin: 10px 0; }
 
 
+#pickOrderAddressModal .modal-content, #cancelOrderModal .modal-content{
+    padding:16px;
+}
+
+
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
     .payPalIcon{ top:11px; left:63px; }
