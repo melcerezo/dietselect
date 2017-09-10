@@ -836,11 +836,7 @@
             <div class="modal-content">
                 <div class="row">
                     <div class="col s12 m4 calCntr">
-                        <div class="calTtl" style="font-size: 20px;">
-                            <span>Meal Calories</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="calories" style="font-size: 18px;">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</div>
+                        <div class="calories" style="font-size: 18px;"><span style="font-size: 20px;">Calories:</span> {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</div>
                         {{--<li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>--}}
                         {{--<li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>--}}
                         {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
