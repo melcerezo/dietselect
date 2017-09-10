@@ -159,23 +159,23 @@
                 </div>
             </div>
             <div class="col s12 m5">
-                <div>
+                <div class="row">
                     <span>Total Order:</span>
                 </div>
                 <div class="divider"></div>
-                <div>
+                <div class="row">
                     <span>Total: {{'PHP '.number_format($order->total,2,'.',',')}}</span>
                 </div>
                 <div class="divider"></div>
-                <div>
+                <div class="row">
                     <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
                 </div>
                 <div class="divider"></div>
-                <div>
+                <div class="row">
                     <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
                 </div>
                 <div class="divider"></div>
-                <div>
+                <div class="row">
                     <div>
                         <span>Delivery Address:</span>
                     </div>
