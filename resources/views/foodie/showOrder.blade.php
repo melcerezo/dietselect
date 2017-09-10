@@ -18,7 +18,7 @@
                         <div class="payTabs">
                             <div class="row">
                                 <div data-pay-reveal="bank" class="col s12 m3 payTab">
-                                    <span class="bankIcon"><i class="fa fa-bank"></i></span>
+                                    <span class="bankIcon light-green"><i class="fa fa-bank"></i></span>
                                     <span class="bankDes">Bank</span>
                                 </div>
                                 <div data-pay-reveal="paypal" class="col s12 m3 payTab">
