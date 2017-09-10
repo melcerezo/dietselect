@@ -15,7 +15,7 @@
 .payForm{ display: none; padding: 15px;}
 #defaultPay{ display: block; }
 .payForm .row{ margin: 0 !important; }
-.payInfo{ margin-bottom: 10px; }
+.payInfo{ margin: 10px 0; }
 
 
 @media only screen and (min-width: 1200px){
