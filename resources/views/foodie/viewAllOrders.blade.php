@@ -12,17 +12,17 @@
 @section('page_content')
 
     <div class="container" style="width:85%;">
-        <div class="row" style="margin-top: 1rem;">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px;">View Orders</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+        {{--<div class="row" style="margin-top: 1rem;">--}}
+            {{--<nav class="light-green lighten-1 white-text">--}}
+                {{--<div class="left col s12">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span style="font-size: 20px;">View Orders</span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</nav>--}}
+        {{--</div>--}}
     @if($ordersCount>0)
     <div class="row">
         <div class="col s6">
