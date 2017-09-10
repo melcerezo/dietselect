@@ -1,4 +1,7 @@
 $(document).ready(function () {
+
+
+
     $('#datePay').pickadate({
         // Buttons
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
