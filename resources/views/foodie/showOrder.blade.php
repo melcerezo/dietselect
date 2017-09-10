@@ -17,13 +17,13 @@
                     <div class="payTabsContainer">
                         <div class="payTabs">
                             <div class="row">
-                                <div class="col s12 m3 payTab bankTab center">
+                                <div class="col s12 m3 payTab bankTab center valign-wrapper">
                                     <span><i class="fa fa-bank"></i></span>
                                 </div>
-                                <div class="col s12 m3 payTab payPalTab center">
+                                <div class="col s12 m3 payTab payPalTab center valign-wrapper">
                                     <span><i class="fa fa-paypal"></i></span>
                                 </div>
-                                <div class="col s12 m3 payTab gcashTab center">
+                                <div class="col s12 m3 payTab gcashTab center valign-wrapper">
                                     <span>Gcash</span>
                                 </div>
                             </div>
