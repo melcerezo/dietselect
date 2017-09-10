@@ -1,7 +1,7 @@
 .shOrdCntr{ width:85%; margin-top: 0.5rem; }
 .payBox{ border :1px solid #d1d1d1; }
 .payTabs .row{ margin:0; }
-.payMainTitle{ border-bottom: 1px solid #d1d1d1; }
+.payMainTitle, .payInfoCntr{ border-bottom: 1px solid #d1d1d1; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
 .payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
 .bankIcon{ position: absolute; top:8px; left:23px; font-size: 70px; }
@@ -15,6 +15,8 @@
 .payForm{ display: none; padding: 15px;}
 #defaultPay{ display: block; }
 .payForm .row{ margin: 0 !important; }
+.payInfo{ margin-bottom: 10px; }
+
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }

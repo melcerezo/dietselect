@@ -42,12 +42,13 @@
                             <div id="bankPayment" class="payForm">
                                 <div>Please pay your balance with this information :</div>
 
-                                <ul class="collection">
-                                    <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
-                                    <li class="collection-item">BDO Savings Account: 007110023351</li>
-                                    <li class="collection-item">DietSelect</li>
-                                    <li class="collection-item">Total {{$order->total}}</li>
-                                </ul>
+                                <div class="payInfoCntr">
+                                    <div class="payInfo"><span class="collection-header">Order Review</span></div>
+                                    <div class="divider"></div>
+                                    <div class="payInfo">BDO Savings Account: 007110023351</div>
+                                    <div class="divider"></div>
+                                    <div class="payInfo">DietSelect</div>
+                                </div>
                                 <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
                                     <div class="row">
