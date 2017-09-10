@@ -21,7 +21,7 @@
                     <table class="responsive-table" style="table-layout: fixed; width: 100%;">
                         <thead>
                             <tr>
-                                <th>Plan</th>
+                                <th style="width:50%;">Plan</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Remove</th>
