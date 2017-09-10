@@ -83,19 +83,19 @@
                 <div class="row">
                     <div class="col s12 m6 offset-m6">
                         <div class="orderSummary">
-                            <div class="collection-item">
+                            <div style="margin: 10px 0">
                                 <span>Total Quantity: {{$cartCount}}</span>
                             </div>
                             <div class="divider"></div>
-                            <div class="collection-item" style="margin: 10px 0">
+                            <div style="margin: 10px 0">
                                 <span>Week: {{$cartItem->options->date}}</span>
                             </div>
                             <div class="divider"></div>
-                            <div class="collection-item">
+                            <div style="margin: 10px 0">
                                 <span>Total: {{'PHP'.$cartTotal}}</span>
                             </div>
                         </div>
-                        <div style="margin-top: 10px;">
+                        <div style="margin: 10px 0;">
                             <a id="orderButton" style="width: 100%;" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange">Order</a>
                         </div>
                     </div>
