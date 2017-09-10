@@ -195,4 +195,18 @@ $(document).ready(function () {
         //     }
         // });
     });
+
+    var detailsList = JSON.parse(details.replace(/&quot;/g,'"'));
+
+
+    $('input.detailCheckbox:checkbox').each(function () {
+        var $this=$(this);
+        $.each(detailsList,function () {
+            if($this.attr('name')==$(this).attr('detail')){
+                // console.log($(this).attr('allergy'));
+                $this.prop('checked',true);
+            }
+        });
+    });
+
 });

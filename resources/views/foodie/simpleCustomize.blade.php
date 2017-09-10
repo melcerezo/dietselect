@@ -1,6 +1,9 @@
 @extends('foodie.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/foodie/foodieSimpleCustomize.css">
+    <script>
+        details = "{{$detailJson}}";
+    </script>
     <script src="/js/foodie/foodieSimpleCustomize.js" defer></script>
     <script>
         $(document).ready(function () {
@@ -758,27 +761,27 @@
                         </div>
                         <div>
                             <input type="hidden" name="sweet" value="0"/>
-                            <input type="checkbox" id="sweet" name="sweet" value="1"/>
+                            <input type="checkbox" id="sweet" name="sweet" class="detailCheckbox" value="1"/>
                             <label for="sweet">NO Sweet Foods</label>
                         </div>
                         <div>
                             <input type="hidden" name="salty" value="0"/>
-                            <input type="checkbox" id="salty" name="salty" value="1"/>
+                            <input type="checkbox" id="salty" name="salty" class="detailCheckbox" value="1"/>
                             <label for="salty">NO Salty Foods</label>
                         </div>
                         <div>
                             <input type="hidden" name="spicy" value="0"/>
-                            <input type="checkbox" id="spicy" name="spicy" value="1"/>
+                            <input type="checkbox" id="spicy" name="spicy" class="detailCheckbox" value="1"/>
                             <label for="spicy">NO Spicy Foods</label>
                         </div>
                         <div>
                             <input type="hidden" name="bitter" value="0"/>
-                            <input type="checkbox" id="bitter" name="bitter" value="1"/>
+                            <input type="checkbox" id="bitter" name="bitter" class="detailCheckbox" value="1"/>
                             <label for="bitter">NO Bitter Foods</label>
                         </div>
                         <div>
                             <input type="hidden" name="savory" value="0"/>
-                            <input type="checkbox" id="savory" name="savory" value="1"/>
+                            <input type="checkbox" id="savory" name="savory" class="detailCheckbox" value="1"/>
                             <label for="savory">NO Savory Foods</label>
                         </div>
                     </div>
@@ -788,12 +791,12 @@
                         </div>
                         <div>
                             <input type="hidden" name="fried" value="0"/>
-                            <input type="checkbox" id="fried" name="fried" value="1">
+                            <input type="checkbox" id="fried" name="fried" class="detailCheckbox" value="1">
                             <label for="fried">NO Fried Foods</label>
                         </div>
                         <div>
                             <input type="hidden" name="grilled" value="0"/>
-                            <input type="checkbox" id="grilled" name="grilled" value="1">
+                            <input type="checkbox" id="grilled" name="grilled" class="detailCheckbox" value="1">
                             <label for="grilled">NO Grilled Foods</label>
 
                         </div>
@@ -806,17 +809,17 @@
                         </div>
                         <div>
                             <input type="hidden" name="preservatives" value="0"/>
-                            <input type="checkbox" id="preservatives" name="preservatives" value="1">
+                            <input type="checkbox" id="preservatives" name="preservatives" class="detailCheckbox" value="1">
                             <label for="preservatives">NO Preservatives</label>
                         </div>
                         <div>
                             <input type="hidden" name="salt" value="0"/>
-                            <input type="checkbox" id="salt" name="salt" value="1">
+                            <input type="checkbox" id="salt" name="salt" class="detailCheckbox" value="1">
                             <label for="salt">NO Salt</label>
                         </div>
                         <div>
                             <input type="hidden" name="sweeteners" value="0"/>
-                            <input type="checkbox" id="sweeteners" name="sweeteners" value="1">
+                            <input type="checkbox" id="sweeteners" name="sweeteners" class="detailCheckbox" value="1">
                             <label for="sweeteners">NO Sweeteners</label>
                         </div>
                     </div>

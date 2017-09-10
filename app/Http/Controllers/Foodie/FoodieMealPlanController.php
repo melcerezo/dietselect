@@ -227,10 +227,23 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',Auth::guard('foodie')->user()->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
+        $details=$simpleCustomPlan->simple_custom_plan_detail()->get();
+
         $mealPhotos = DB::table('meal_image')
             ->join('chef_customized_meals','chef_customized_meals.meal_id','=','meal_image.meal_id')
             ->join('meal_plans','meal_plans.id','=','chef_customized_meals.mealplan_id')
             ->select('meal_plans.id','meal_plans.plan_id','meal_image.image')->get();
+
+        $detailJson = '[';
+        $i = 0;
+        foreach ($details as $detail) {
+            if (++$i < $details->count()) {
+                $detailJson .= '{"detail": "' . $detail->detail . '"},';
+            } else {
+                $detailJson .= '{"detail": "' . $detail->detail . '"}';
+            }
+        }
+        $detailJson .= ']';
 
         return view('foodie.simpleCustomize')->with([
             'sms_unverified' => $this->smsIsUnverified(),
@@ -245,7 +258,8 @@ class FoodieMealPlanController extends Controller
             'saMeals'=>$saMeals,
             'moSnaMeals'=>$moSnaMeals,
             'aftSnaMeals'=>$aftSnaMeals,
-            'mealPhotos'=>$mealPhotos
+            'mealPhotos'=>$mealPhotos,
+            'detailJson'=>$detailJson
         ]);
     }
 
