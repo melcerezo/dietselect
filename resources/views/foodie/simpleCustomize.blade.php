@@ -22,7 +22,7 @@
         {{--</div>--}}
         {{--<div class="divider"></div>--}}
         <div class="row mlPlnCnt">
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div id="monday" class="calDay">
                     <div class="dayTtl">
                         <span>Monday</span>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div id="tuesday" class="calDay">
                     <div class="dayTtl">
                         <span>Tuesday</span>
@@ -236,7 +236,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div id="wednesday" class="calDay">
                     <div class="dayTtl">
                         <span>Wednesday</span>
@@ -345,7 +345,7 @@
             </div>
         </div>
         <div class="row mlPlnCnt">
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div id="thursday" class="calDay">
                     <div class="dayTtl">
                         <span>Thursday</span>
@@ -452,7 +452,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m4">
+            <div class="col s12 m3">
                 <div id="friday" class="calDay">
                     <div class="dayTtl">
                         <span>Friday</span>
@@ -560,7 +560,7 @@
                 </div>
             </div>
             @if($saMeals>0)
-                <div class="col s12 m4">
+                <div class="col s12 m3">
                     <div id="saturday" class="calDay">
                         <div class="dayTtl">
                             <span>Saturday</span>
