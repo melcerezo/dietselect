@@ -16,3 +16,4 @@
     width: 90px;
     display: block;
 }
+div.shOrdMlTbl table td { border-bottom: 1px solid #d1d1d1; }
