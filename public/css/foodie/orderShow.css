@@ -7,9 +7,9 @@
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
 .payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; }
-.bankIcon{ position: absolute; top:0; left:0; }
-.paypalIcon{ position: absolute; top:0; left:0; }
-.gcashIcon{ position: absolute; top:0; left:0; }
+.bankIcon{ position: absolute; top:0; left:0; font-size: 20px; }
+.paypalIcon{ position: absolute; top:0; left:0; font-size: 20px; }
+.gcashIcon{ position: absolute; top:0; left:0; font-size: 20px; }
 
 
 
