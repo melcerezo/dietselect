@@ -761,7 +761,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -781,7 +781,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -801,7 +801,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -821,7 +821,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -841,7 +841,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -868,7 +868,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -888,7 +888,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -908,7 +908,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -928,7 +928,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -948,7 +948,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -975,7 +975,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -995,7 +995,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1015,7 +1015,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1035,7 +1035,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1055,7 +1055,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1112,7 +1112,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1132,7 +1132,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1152,7 +1152,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1172,7 +1172,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1192,7 +1192,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1219,7 +1219,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1239,7 +1239,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1259,7 +1259,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1279,7 +1279,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1299,7 +1299,7 @@
                                                    class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                 <br />
                                                 <div id="cu{{$id}}">
-                                                    @if($mealPlan->is_customized==1)
+                                                    @if($mealPlan->custom_type==1)
                                                         <p>Customized</p>
                                                     @endif
                                                 </div>
@@ -1327,7 +1327,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1347,7 +1347,7 @@
                                                            class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                         <br />
                                                         <div id="cu{{$id}}">
-                                                            @if($mealPlan->is_customized==1)
+                                                            @if($mealPlan->custom_type==1)
                                                                 <p>Customized</p>
                                                             @endif
                                                         </div>
@@ -1367,7 +1367,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
@@ -1387,7 +1387,7 @@
                                                            class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                         <br />
                                                         <div id="cu{{$id}}">
-                                                            @if($mealPlan->is_customized==1)
+                                                            @if($mealPlan->custom_type==1)
                                                                 <p>Customized</p>
                                                             @endif
                                                         </div>
@@ -1407,7 +1407,7 @@
                                                        class="waves-effect waves-light mealLink modal-trigger" data-id="{{$mealPlan->id}}" data-cust="{{$orderItem->order_type}}" data-mId="m{{$id}}" data-iId="i{{$id}}" data-cId="cu{{$id}}">{{$mealPlan->description}}</a>
                                                     <br />
                                                     <div id="cu{{$id}}">
-                                                        @if($mealPlan->is_customized==1)
+                                                        @if($mealPlan->custom_type==1)
                                                             <p>Customized</p>
                                                         @endif
                                                     </div>
