@@ -43,7 +43,7 @@
                                 <div>Please pay your balance with this information :</div>
 
                                 <div class="payInfoCntr">
-                                    <div class="payInfo"><span style="font-size: 20px;">Order Review</span></div>
+                                    <div class="payInfo"><span style="font-size: 30px;">Order Review</span></div>
                                     <div class="divider"></div>
                                     <div class="payInfo">BDO Savings Account: 007110023351</div>
                                     <div class="divider"></div>
