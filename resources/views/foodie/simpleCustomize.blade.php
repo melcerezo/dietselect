@@ -846,7 +846,7 @@
                     </div>
                 </div>
                 <div class="row ingredFormCntr">
-                    <div class="col s12 m5">
+                    <div class="col s12 m6">
                         <div>
                             <table class="centered" style="table-layout: fixed;">
                                 <thead>
@@ -860,7 +860,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="col s12 m7">
+                    <div class="col s12 m4">
                         <div>
                             @if($simpleCustomMeal->is_customized==0)
                                 <form id="editMeal{{$id}}"
