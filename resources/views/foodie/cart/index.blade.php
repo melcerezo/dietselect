@@ -40,13 +40,15 @@
                                                     {{$cartItem->name}}
                                                 </div>
                                                 <div style="font-size: 18px; margin-bottom: 50px;">
+                                                    <span>Chef: </span>
                                                     @foreach($chefs as $chef)
                                                         @if($chef->id == $cartItem->options->chef)
-                                                            {{$chef->name}}
+                                                            <span>{{$chef->name}}</span>
                                                         @endif
                                                     @endforeach
                                                 </div>
                                                 <div>
+                                                    <span>Type: </span>
                                                     @if($cartItem->options->cust==0)
                                                         <span>Standard</span>
                                                     @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
