@@ -343,6 +343,27 @@
                     </div>
                 </div>
             </div>
+            <div class="col s12 m3">
+                <div style="margin-bottom: 20px;">
+                    <div>
+                        @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
+                            <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
+                        @else
+                            <button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Order</button>
+                        @endif
+                    </div>
+
+                    <div>
+                        <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize Plan</button>
+                    </div>
+
+                    @if($simpleCustomPlan->simple_custom_plan_detail->count())
+                        <div>
+                            <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>
+                        </div>
+                    @endif
+                </div>
+            </div>
         </div>
         <div class="row mlPlnCnt">
             <div class="col s12 m3">
