@@ -843,75 +843,79 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col s12 m5 ingredTable">
-                        <table style="table-layout: fixed;">
-                            <thead>
-                            <tr>
-                                <th>Ingredient</th>
-                                <th>Grams</th>
-                            </tr>
-                            </thead>
-                            <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
-                            </tbody>
-                        </table>
+                    <div class="col s12 m5">
+                        <div class="ingredTable">
+                            <table style="table-layout: fixed;">
+                                <thead>
+                                <tr>
+                                    <th>Ingredient</th>
+                                    <th>Grams</th>
+                                </tr>
+                                </thead>
+                                <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
-                    <div class="col s12 m7 simpMealForm">
-                        @if($simpleCustomMeal->is_customized==0)
-                            <form id="editMeal{{$id}}"
-                                  action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"
-                                  method="post" autocomplete="off" class="editMeal">
-                                {{csrf_field()}}
-                                <div>
-                                    <span style="font-size: 30px;">Meal Customization</span>
-                                </div>
-                                <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
-                                    <div class="meatSection">
+                    <div class="col s12 m7">
+                        <div class="simpMealForm">
+                            @if($simpleCustomMeal->is_customized==0)
+                                <form id="editMeal{{$id}}"
+                                      action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"
+                                      method="post" autocomplete="off" class="editMeal">
+                                    {{csrf_field()}}
+                                    <div>
+                                        <span style="font-size: 30px;">Meal Customization</span>
                                     </div>
-                                    <div class="produceSection">
+                                    <div id="m{{$simpleCustomMeal->chef_customized_meal->id}}">
+                                        <div class="meatSection">
+                                        </div>
+                                        <div class="produceSection">
+                                        </div>
+                                        <div class="dairySection">
+                                        </div>
                                     </div>
-                                    <div class="dairySection">
-                                    </div>
-                                </div>
-                                <button class="btn waves-effect waves-light">Customize</button>
-                            </form>
-                        @elseif($simpleCustomMeal->is_customized==1)
-                            @if($simpleCustomMeal->simple_custom_detail->count())
-                                <ul class="collection">
-                                    <li class="collection-item light-green white-text">
-                                        <span class="collection-header">Customizations</span>
-                                    </li>
-                                    @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
-                                        <li class="collection-item">
-                                            @if($detail->detail=='switchChicken')
-                                                <span>Switch to Chicken</span>
-                                            @elseif($detail->detail=='switchBeef')
-                                                <span>Switch to Beef</span>
-                                            @elseif($detail->detail=='switchPork')
-                                                <span>Switch to Pork</span>
-                                            @elseif($detail->detail=='switchSeafood')
-                                                <span>Switch to Seafood</span>
-                                            @elseif($detail->detail=='switchVegetarian')
-                                                <span>Vegetarian</span>
-                                            @elseif($detail->detail=='noEggs')
-                                                <span>No Eggs</span>
-                                            @elseif($detail->detail=='noDairy')
-                                                <span>No Dairy</span>
-                                            @elseif($detail->detail=='noGluten')
-                                                <span>No Gluten</span>
-                                            @elseif($detail->detail=='wheatOnly')
-                                                <span>Wheat Products Only</span>
-                                            @elseif($detail->detail=='whiteRice')
-                                                <span>White Rice</span>
-                                            @elseif($detail->detail=='brownRice')
-                                                <span>Brown Rice</span>
-                                            @elseif($detail->detail=='noNuts')
-                                                <span>No Nuts/Nut Products</span>
-                                            @endif
+                                    <button class="btn waves-effect waves-light">Customize</button>
+                                </form>
+                            @elseif($simpleCustomMeal->is_customized==1)
+                                @if($simpleCustomMeal->simple_custom_detail->count())
+                                    <ul class="collection">
+                                        <li class="collection-item light-green white-text">
+                                            <span class="collection-header">Customizations</span>
                                         </li>
-                                    @endforeach
-                                </ul>
+                                        @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
+                                            <li class="collection-item">
+                                                @if($detail->detail=='switchChicken')
+                                                    <span>Switch to Chicken</span>
+                                                @elseif($detail->detail=='switchBeef')
+                                                    <span>Switch to Beef</span>
+                                                @elseif($detail->detail=='switchPork')
+                                                    <span>Switch to Pork</span>
+                                                @elseif($detail->detail=='switchSeafood')
+                                                    <span>Switch to Seafood</span>
+                                                @elseif($detail->detail=='switchVegetarian')
+                                                    <span>Vegetarian</span>
+                                                @elseif($detail->detail=='noEggs')
+                                                    <span>No Eggs</span>
+                                                @elseif($detail->detail=='noDairy')
+                                                    <span>No Dairy</span>
+                                                @elseif($detail->detail=='noGluten')
+                                                    <span>No Gluten</span>
+                                                @elseif($detail->detail=='wheatOnly')
+                                                    <span>Wheat Products Only</span>
+                                                @elseif($detail->detail=='whiteRice')
+                                                    <span>White Rice</span>
+                                                @elseif($detail->detail=='brownRice')
+                                                    <span>Brown Rice</span>
+                                                @elseif($detail->detail=='noNuts')
+                                                    <span>No Nuts/Nut Products</span>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             @endif
-                        @endif
+                        </div>
                     </div>
                 </div>
             </div>
