@@ -9,7 +9,7 @@
 
     <div class="container shOrdCntr">
         <div class="row">
-            @if($order->is_cancelled==1)
+            @if($order->is_cancelled!=1)
                 <div class="col s12 m7">
                     <div class="payBox">
                         <div class="payMainTitle">
