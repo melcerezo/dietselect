@@ -10,9 +10,9 @@
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
 .payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
 .cancelTab{ height: 123px; position: relative; cursor: pointer; }
-.bankIcon{ position: absolute; top:8px; left:23px; font-size: 70px; }
-.payPalIcon{ position: absolute; top:11px; left:37px; font-size: 65px; }
-.gcashIcon{ position: absolute; top:25px; left:4px; font-size: 39px; }
+.bankIcon{ color: #8bc34a; position: absolute; top:8px; left:23px; font-size: 70px; }
+.payPalIcon{ color: #2196F3; position: absolute; top:11px; left:37px; font-size: 65px; }
+.gcashIcon{ color: #9c27b0; position: absolute; top:25px; left:4px; font-size: 39px; }
 .cancelIcon{ position: absolute; top:11px; left:34px; font-size: 65px; }
 .bankDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .payPalDes{ position: absolute; top:91px; left:39px; font-size: 15px; }
