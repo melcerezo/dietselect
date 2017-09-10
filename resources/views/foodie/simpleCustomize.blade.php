@@ -886,9 +886,8 @@
                                         <div class="detailTitle" style="margin: 10px 0;">
                                             <span style="font-size: 20px;">Customizations</span>
                                         </div>
-                                        <div class="divider">
-                                        </div>
                                         @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
+                                            <div class="divider"></div>
                                             <div class="detailCnt" style="margin: 10px 0;">
                                                 @if($detail->detail=='switchChicken')
                                                     <span>Switch to Chicken</span>
@@ -916,7 +915,6 @@
                                                     <span>No Nuts/Nut Products</span>
                                                 @endif
                                             </div>
-                                            <div class="divider"></div>
                                         @endforeach
                                     </div>
                                 @endif
