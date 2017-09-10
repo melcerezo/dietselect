@@ -10,17 +10,21 @@
 .bankIcon{ position: absolute; top:8px; left:23px; font-size: 70px; }
 .payPalIcon{ position: absolute; top:11px; left:37px; font-size: 65px; }
 .gcashIcon{ position: absolute; top:25px; left:4px; font-size: 39px; }
+.cancelIcon{ position: absolute; top:11px; left:37px; font-size: 65px; }
 .bankDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .payPalDes{ position: absolute; top:91px; left:39px; font-size: 15px; }
 .gcashDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
+.cancelDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
     .payPalIcon{ top:11px; left:63px; }
     .gcashIcon{ top:25px; left:28px; }
+    .cancelIcon{ top:11px; left:63px; }
     .bankDes{ top:91px; left:64px; font-size: 20px; }
     .payPalDes{ top:90px; left:57px; font-size: 20px; }
     .gcashDes{ top:91px; left:58px; font-size: 20px; }
+    .cancelDes{ top:91px; left:64px; font-size: 20px; }
 }
 
 

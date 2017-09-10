@@ -29,6 +29,10 @@
                                     <span class="gcashIcon">GCash</span>
                                     <span class="gcashDes">Gcash</span>
                                 </div>
+                                <div id="cancelOrder" class="col s12 m3 payTab">
+                                    <span class="cancelIcon"><i class="fa fa-ban"></i></span>
+                                    <span class="cancelDes">Cancel</span>
+                                </div>
                             </div>
                         </div>
                         <div class="payTabsWrapper">
