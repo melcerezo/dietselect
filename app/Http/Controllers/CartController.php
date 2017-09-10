@@ -59,8 +59,16 @@ class CartController extends Controller
 
     public function add($id, $cust){
         $plan = '';
+        $planCategory='';
         if($cust==0){
             $plan = Plan::where('id','=',$id)->first();
+            if($plan->category==1){
+                $planCategory='Weight Loss';
+            }else if($plan->category==2){
+                $planCategory='High Protein';
+            }else if($plan->category==3){
+                $planCategory='Vegetarian';
+            }
         }elseif($cust==1){
             $plan = CustomPlan::where('id','=',$id)->first();
         }elseif($cust==2){
@@ -71,11 +79,11 @@ class CartController extends Controller
         $dt=Carbon::now();
         $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
         if($cust == 0){
-            Cart::add($id, $plan->plan_name,1,$plan->price,['pic'=>$plan->picture,'cust'=>$cust,'chef'=>$plan->chef->id, 'date'=>$startOfNextWeek]);
+            Cart::add($id, $plan->plan_name,1,$plan->price,['categ'=>$planCategory, 'pic'=>$plan->picture,'cust'=>$cust,'chef'=>$plan->chef->id, 'date'=>$startOfNextWeek]);
         }elseif($cust == 1){
-            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['pic'=>$plan->plan->picture,'cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
+            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['categ'=>$planCategory, 'pic'=>$plan->plan->picture,'cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
         }elseif($cust == 2){
-            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['pic'=>$plan->plan->picture,'cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
+            Cart::add($id, $plan->plan->plan_name,1,$plan->plan->price,['categ'=>$planCategory, 'pic'=>$plan->plan->picture,'cust'=>$cust,'chef'=>$plan->plan->chef->id, 'date'=>$startOfNextWeek]);
 //            dd(Cart::content());
         }
 

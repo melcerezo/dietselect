@@ -48,6 +48,10 @@
                                                     @endforeach
                                                 </div>
                                                 <div>
+                                                    <span>Category: </span>
+                                                    <span>{{$cartItem->options->categ}}</span>
+                                                </div>
+                                                <div>
                                                     <span>Type: </span>
                                                     @if($cartItem->options->cust==0)
                                                         <span>Standard</span>
