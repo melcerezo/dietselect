@@ -159,9 +159,57 @@
                 </div>
             </div>
             <div class="col s12 m5">
+                <div>
+                    <span>Total Order:</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <span>Total: {{'PHP '.number_format($order->total,2,'.',',')}}</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
+                </div>
+                <div class="divider"></div>
+                <div>
+                    <div>
+                        <span>Delivery Address:</span>
+                    </div>
+                    @if($orderAddress!=null)
+                        <div>
+                            <span>{{$orderAddress->unit}}</span>
+                            @unless($orderAddress->bldg=='')
+                                <span> {{$orderAddress->bldg}}, </span>
+                            @endunless
+                            <span>{{$orderAddress->street}}, </span>
+                            <span>{{$orderAddress->brgy}}, </span>
+                            <span>{{$orderAddress->city}}</span>
+                        </div>
+                        @if($order->is_paid==0)
+                            <div>
+                                <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
+                            </div>
+                        @endif
+                    @else
+                        <div>
+                            @if(count($foodieAddress)==0)
+                                <a href="{{route('foodie.profile')}}">
+                                    <span>No Address Available. Please add one so we can deliver to you!</span>
+                                </a>
+                            @else
+                                <a href="#pickOrderAddressModal" class="modal-trigger">
+                                    <span>No Order Address Picked. Please add one so we can deliver to you!</span>
+                                </a>
+                            @endif
+                        </div>
+                    @endif
+                </div>
             </div>
         </div>
-    </div>
     {{--<div class="row">--}}
         {{--<div class="col s12 light-green lighten-1 white-text shOrdMnTtl valign-wrapper">--}}
             {{--<span>Order Payment</span>--}}
