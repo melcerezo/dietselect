@@ -345,6 +345,9 @@
             </div>
             <div class="col s12 m3">
                 <div class="custAction">
+                    <div style="font-size: 20px;">
+                        <span>Add to Cart</span>
+                    </div>
                     <div>
                         @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
                             <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>
