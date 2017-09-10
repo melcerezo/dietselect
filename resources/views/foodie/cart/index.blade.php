@@ -22,9 +22,9 @@
                         <thead>
                             <tr>
                                 <th style="width:45%;">Plan</th>
-                                <th>Quantity</th>
-                                <th>Price</th>
-                                <th>Remove</th>
+                                <th style="width:20%">Quantity</th>
+                                <th style="width:25%">Price</th>
+                                <th style="width:10%">Remove</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,12 +50,14 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
-                                            {{ csrf_field() }}
-                                                    <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 30%;"></span>
+                                        <div>
+                                            <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
+                                                {{ csrf_field() }}
+                                                        <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 30%;"></span>
 
-                                                    <span><button type="submit">Update</button></span>
-                                        </form>
+                                                        <span><button type="submit">Update</button></span>
+                                            </form>
+                                        </div>
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
                                     </td>
