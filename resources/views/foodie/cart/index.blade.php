@@ -96,6 +96,9 @@
                                 <span>Total: {{'PHP'.$cartTotal}}</span>
                             </li>
                         </ul>
+                        <div>
+                            <a id="orderButton" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange">Order</a>
+                        </div>
                     </div>
                     {{--<div class="col s12 m2">--}}
                         {{--<a id="orderButton" href="{{route('foodie.order')}}">--}}
