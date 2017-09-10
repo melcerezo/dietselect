@@ -2,7 +2,7 @@
     width:85%;
     margin-top: 0.5rem;
 }
-.paybox{ border:1px solid #d1d1d1; }
+.payBox{ border :1px solid #d1d1d1; }
 .payTabs .row{ margin:0; }
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; padding:20px;}
