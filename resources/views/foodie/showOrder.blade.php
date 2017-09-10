@@ -30,7 +30,7 @@
                                     <span class="gcashDes">Gcash</span>
                                 </div>
                                 <div id="cancelOrder" class="col s12 m3 cancelTab red">
-                                    <a href="" class="modal-trigger white-text">
+                                    <a href="#cancelOrderModal" class="modal-trigger white-text">
                                         <span class="cancelIcon"><i class="fa fa-ban"></i></span>
                                         <span class="cancelDes">Cancel</span>
                                     </a>
