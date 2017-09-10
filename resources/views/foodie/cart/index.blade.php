@@ -33,7 +33,7 @@
                                     <td>
                                         <div class="row">
                                             <div class="col s12 m4">
-                                                <img src="/img/{{$cartItem->pic}}" alt="">
+                                                <img class="responsive-img" src="/img/{{$cartItem->pic}}" alt="">
                                             </div>
                                             <div class="col s12 m8">
                                                 <div style="font-size: 30px;">
