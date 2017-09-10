@@ -12,7 +12,7 @@
             <div class="col s12 m7">
                 <div class="payBox">
                     <div class="payMainTitle">
-                        <span style="font-size: 30px;">Payment Methods</span>
+                        <span style="font-size: 30px; font-weight: bold;">Payment Methods</span>
                     </div>
                     <div class="payTabsContainer">
                         <div class="payTabs">
