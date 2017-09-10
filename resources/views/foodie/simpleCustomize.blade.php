@@ -842,17 +842,19 @@
                         {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
                     </div>
                 </div>
-                <div>
-                    <table style="table-layout: fixed;">
-                        <thead>
-                        <tr>
-                            <th>Ingredient</th>
-                            <th>Grams</th>
-                        </tr>
-                        </thead>
-                        <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
-                        </tbody>
-                    </table>
+                <div class="row">
+                    <div class="col s12 m5 ingredTable">
+                        <table style="table-layout: fixed;">
+                            <thead>
+                            <tr>
+                                <th>Ingredient</th>
+                                <th>Grams</th>
+                            </tr>
+                            </thead>
+                            <tbody id="h{{$simpleCustomMeal->chef_customized_meal->id}}">
+                            </tbody>
+                        </table>
+                    </div>
                     @if($simpleCustomMeal->is_customized==0)
 
                         <form id="editMeal{{$id}}"
