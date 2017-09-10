@@ -738,7 +738,7 @@
                        <li class="collection-item light-green white-text">
                            <span class="collection-header">Taste</span>
                        </li>
-                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                       @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
                            @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
                                $detail->detail== 'bitter' || $detail->detail== 'savory')
                                <li class="collection-item">
@@ -753,7 +753,7 @@
                        <li class="collection-item light-green white-text">
                            <span class="collection-header">Cooking Methods</span>
                        </li>
-                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                       @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
                            @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
                                <li class="collection-item">
                                    <span>{{'NO '.$detail->detail.' food'}}</span>
@@ -767,7 +767,7 @@
                        <li class="collection-item light-green white-text">
                            <span class="collection-header">Dry Goods/Condiments</span>
                        </li>
-                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                       @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
                            @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
                                <li class="collection-item">
                                    <span>{{'NO '.$detail->detail}}</span>
