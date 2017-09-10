@@ -232,11 +232,6 @@
                         </div>
                         <div class="divider"></div>
                         <div class="row">
-                            <span style="font-size: 20px; font-weight: bold;">TOTAL</span>
-                            <span class="right" style="color: orange; font-size: 20px;">{{'PHP '.number_format($order->total,2,'.',',')}}</span>
-                        </div>
-                        <div class="divider"></div>
-                        <div class="row">
                             <span style="font-size: 20px; font-weight: bold;">STATUS</span>
                             <span class="right">{{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
                         </div>
@@ -244,6 +239,11 @@
                         <div class="row">
                             <span style="font-size: 20px; font-weight: bold;">WEEK OF</span>
                             <span class="right">{{$nextWeek.' - '.$nextWeekEnd}}</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <span style="font-size: 20px; font-weight: bold;">TOTAL</span>
+                            <span class="right" style="color: orange; font-size: 20px;">{{'PHP '.number_format($order->total,2,'.',',')}}</span>
                         </div>
                     </div>
                 </div>
