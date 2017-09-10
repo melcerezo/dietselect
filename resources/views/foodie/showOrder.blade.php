@@ -161,7 +161,7 @@
                     <div class="addressInfo">
                         <div class="row">
                             <div>
-                                <span style="font-size: 20px;">Delivery Address:</span>
+                                <span style="font-size: 20px; font-weight: bold;">Delivery Address:</span>
                             </div>
                             <div class="divider" style="margin-bottom: 10px;"></div>
                             @if($orderAddress!=null)
@@ -196,7 +196,7 @@
                     </div>
                     <div class="orderInfo">
                         <div class="row">
-                            <span style="font-size: 20px;">Total Order:</span>
+                            <span style="font-size: 20px; font-weight: bold;">Order Summary</span>
                         </div>
                         <div class="divider"></div>
                         <div class="row">
