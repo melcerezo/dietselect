@@ -118,12 +118,13 @@
                                     <div>
                                         <span>Please send your gcash payment to the number below. Fill out this form with a screenshot of the confirmation text from Globe.</span>
                                     </div>
-                                    <ul class="collection">
-                                        <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
-                                        <li class="collection-item">Gcash Number: 09950893073</li>
-                                        <li class="collection-item">DietSelect</li>
-                                        <li class="collection-item">Total: {{$order->total}}</li>
-                                    </ul>
+                                    <div class="payInfoCntr">
+                                        <div class="payInfo"><span style="font-size: 30px;">Payment Information</span></div>
+                                        <div class="divider"></div>
+                                        <div class="payInfo">Gcash Number: 09950893073</div>
+                                        <div class="divider"></div>
+                                        <div class="payInfo">DietSelect</div>
+                                    </div>
                                     <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
                                         <div>
