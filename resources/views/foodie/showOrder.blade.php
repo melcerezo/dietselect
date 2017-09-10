@@ -159,7 +159,7 @@
                 </div>
                 <div class="col s12 m5 orderInfo">
                     <div class="row">
-                        <span>Total Order:</span>
+                        <span style="font-size: 20px;">Total Order:</span>
                     </div>
                     <div class="divider"></div>
                     <div class="row">
