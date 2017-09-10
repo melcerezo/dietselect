@@ -18,8 +18,8 @@
         <div class="row">
             <div class="col s12" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
-                    <table class="centered" style="table-layout: fixed;">
-                        <thead class="light-green lighten-1 white-text" style="border: none;">
+                    <table class="responsive-table" style="table-layout: fixed; width: 100%;">
+                        <thead>
                             <tr>
                                 <th>Plan</th>
                                 <th>Quantity</th>
