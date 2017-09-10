@@ -14,23 +14,23 @@
                     <div class="payMainTitle">
                         <span style="font-size: 30px;">Payment Methods</span>
                     </div>
-                </div>
-                <div class="payTabsContainer">
-                    <div class="payTabs">
-                        <div class="row">
-                            <div class="col s12 m3 payTab bankTab">
-                                <span><i class="fa fa-bank"></i></span>
-                            </div>
-                            <div class="col s12 m3 payTab payPalTab">
-                                <span><i class="fa fa-paypal"></i></span>
-                            </div>
-                            <div class="col s12 m3 payTab gcashTab">
-                                <span>Gcash</span>
+                    <div class="payTabsContainer">
+                        <div class="payTabs">
+                            <div class="row">
+                                <div class="col s12 m3 payTab bankTab">
+                                    <span><i class="fa fa-bank"></i></span>
+                                </div>
+                                <div class="col s12 m3 payTab payPalTab">
+                                    <span><i class="fa fa-paypal"></i></span>
+                                </div>
+                                <div class="col s12 m3 payTab gcashTab">
+                                    <span>Gcash</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="payTabsWrapper">
-                        <span>This is the pay container</span>
+                        <div class="payTabsWrapper">
+                            <span>This is the pay container</span>
+                        </div>
                     </div>
                 </div>
             </div>
