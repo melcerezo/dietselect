@@ -672,7 +672,6 @@
             </form>
         </div>
     </div>
-</div>
 
     <div id="loadWait" class="valign-wrapper">
         <div id="loadStatus" class="preloader-wrapper active valign">

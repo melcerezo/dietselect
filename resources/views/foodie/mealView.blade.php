@@ -61,8 +61,8 @@
                                     {{--Week of: {{$startWeek}}--}}
                                 {{--</div>--}}
                                 <div class="col s12 m4 xl3 centered">
-                                    {{--<a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>--}}
-                                    <button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger">Customize</button>
+                                    <a id="orderButton" href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
+                                    {{--<button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger">Customize</button>--}}
 
                                 </div>
                                 <div class="col s12 m3">
@@ -696,6 +696,20 @@
                                 </div>
                             </div>
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="loadWait" class="valign-wrapper">
+            <div id="loadStatus" class="preloader-wrapper active valign">
+                <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
                     </div>
                 </div>
             </div>
