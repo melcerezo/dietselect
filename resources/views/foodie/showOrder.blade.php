@@ -102,7 +102,7 @@
                         @endif
                     </li>
                 </ul>
-                <div>
+                <div style="margin: 10px 0 0 0;">
                     <div class="row">
                         <div class="col s12 m6 center">
                             <button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
