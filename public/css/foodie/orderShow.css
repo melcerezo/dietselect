@@ -1,7 +1,4 @@
-.shOrdCntr{
-    width:85%;
-    margin-top: 0.5rem;
-}
+.shOrdCntr{ width:85%; margin-top: 0.5rem; }
 .payBox{ border :1px solid #d1d1d1; }
 .payTabs .row{ margin:0; }
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; }
@@ -15,6 +12,7 @@
 .payPalDes{ position: absolute; top:91px; left:39px; font-size: 15px; }
 .gcashDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .cancelDes{ position: absolute; top:90px; left:37px; font-size: 16px; }
+.bankPayment,.payPalPayment,.gcashPayment{ display: none; }
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
