@@ -1,6 +1,7 @@
 .shOrdCntr{ width:85%; margin-top: 0.5rem; }
 .payBox,.payInfoCntr{ border :1px solid #d1d1d1; }
 .payInfoCntr{ padding: 10px; }
+.orderInfo .row{ margin:0 !important; }
 .payTabs .row{ margin:0; }
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; padding: 15px 10px; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}

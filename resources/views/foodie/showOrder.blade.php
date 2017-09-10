@@ -157,7 +157,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m5 ">
+                <div class="col s12 m5 orderInfo">
                     <div class="row">
                         <span>Total Order:</span>
                     </div>
