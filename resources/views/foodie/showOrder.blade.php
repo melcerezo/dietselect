@@ -167,6 +167,7 @@
                             <thead>
                                 <tr>
                                     <th>Plan</th>
+                                    <th>Chef</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                 </tr>
