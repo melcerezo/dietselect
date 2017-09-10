@@ -842,9 +842,9 @@
                         {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
                     </div>
                 </div>
-                <div class="row">
+                <div class="row ingredFormCntr">
                     <div class="col s12 m5">
-                        <div class="ingredTable">
+                        <div>
                             <table style="table-layout: fixed;">
                                 <thead>
                                 <tr>
@@ -858,7 +858,7 @@
                         </div>
                     </div>
                     <div class="col s12 m7">
-                        <div class="simpMealForm">
+                        <div>
                             @if($simpleCustomMeal->is_customized==0)
                                 <form id="editMeal{{$id}}"
                                       action="{{route('foodie.simpleMeal.custom',$simpleCustomMeal->id)}}"

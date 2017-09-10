@@ -47,7 +47,7 @@
 
 .mlPlnTtl{ font-size: 30px; margin-left: 5px; color: orange; }
 .mlPlnCnt{ margin-top: 10px; }
-.calDay, .calCntr, .ingredTable, .simpMealForm{ border: 2px dotted #d1d1d1; padding: 5px; }
+.calDay,.calCntr,.ingredFormCntr{ border: 2px dotted #d1d1d1; padding: 5px; }
 .dayTtl{ font-size: 20px; border-left: 4px solid orange; color: orange; margin-bottom: 10px; padding-left: 5px; }
 .brekk{ margin-top: 5px; }
 .mealDay { margin-bottom: 10px; }
