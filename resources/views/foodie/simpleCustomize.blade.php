@@ -845,7 +845,7 @@
                 <div class="row ingredFormCntr">
                     <div class="col s12 m5">
                         <div>
-                            <table style="table-layout: fixed;">
+                            <table class="centered" style="table-layout: fixed;">
                                 <thead>
                                 <tr>
                                     <th>Ingredient</th>
