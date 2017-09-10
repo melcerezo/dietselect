@@ -83,7 +83,7 @@
                                 </form>
                             </div>
                             <div id="payPalPayment" class="payForm">
-                               <div style="margin: 10px 0;">
+                               <div style="margin: 10px 0; font-size: 20px;">
                                    Please login to your paypal account to pay.
                                </div>
 
