@@ -7,10 +7,10 @@
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
 .payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; }
-.bankIcon{ position: absolute; top:0; left:0; font-size: 20px; }
+.bankIcon{ position: absolute; top:8px; left:23px; font-size: 70px; }
 .paypalIcon{ position: absolute; top:0; left:0; font-size: 20px; }
 .gcashIcon{ position: absolute; top:0; left:0; font-size: 20px; }
-.bankDes{ position: absolute; top:0; left:0; font-size: 10px; }
+.bankDes{ position: absolute; top:90px; left:11px; font-size: 16px; }
 .payPalDes{ position: absolute; top:0; left:0; font-size: 10px; }
 .gcashDes{ position: absolute; top:0; left:0; font-size: 10px; }
 
