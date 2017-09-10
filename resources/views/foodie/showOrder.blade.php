@@ -102,7 +102,7 @@
                         @endif
                     </li>
                 </ul>
-                <div style="margin: 10px 0 0 0; border: 1px dashed #d1d1d1;">
+                <div style="margin: 10px 0 0 0; border: 1px dashed #d1d1d1; border-radius: 10px; padding: 5px;">
                     <div>
                         <span>Payment Methods</span>
                     </div>
