@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $('.payTab').on('click',function () {
+        $('.payTab').css('color','black');
         $(this).css('color','#FFA500');
         var id = $(this).attr('data-pay-reveal');
        $('.payForm').hide();
