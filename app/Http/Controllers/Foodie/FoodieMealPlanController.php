@@ -216,6 +216,23 @@ class FoodieMealPlanController extends Controller
         $saMeals = $mealPlans->where('day','=','SA')->count();
         $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
         $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
+        $tasteCount=$simpleCustomPlan->simple_custom_plan_detail()
+            ->where('detail','=','sweet')
+            ->orWhere('detail','=','salty')
+            ->orWhere('detail','=','spicy')
+            ->orWhere('detail','=','bitter')
+            ->orWhere('detail','=','savory')
+            ->count();
+        $cookCount = $simpleCustomPlan->simple_custom_plan_detail()
+            ->where('detail','=','fried')
+            ->orWhere('detail','=','grilled')
+            ->count();
+
+        $driedCount = $simpleCustomPlan->simple_custom_plan_detail()
+            ->where('detail','=','preservatives')
+            ->orWhere('detail','=','salt')
+            ->orWhere('detail','=','sweeteners')
+            ->count();
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
@@ -258,6 +275,9 @@ class FoodieMealPlanController extends Controller
             'saMeals'=>$saMeals,
             'moSnaMeals'=>$moSnaMeals,
             'aftSnaMeals'=>$aftSnaMeals,
+            'tasteCount'=>$tasteCount,
+            'cookCount'=>$cookCount,
+            'driedCount'=>$driedCount,
             'mealPhotos'=>$mealPhotos,
             'detailJson'=>$detailJson
         ]);

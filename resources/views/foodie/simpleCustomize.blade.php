@@ -733,16 +733,59 @@
                 <span>{{$simpleCustomPlan->plan->plan_name}} Customization</span>
             </div>
            <div class="modal-content">
-                <ul class="collection">
-                    <li class="collection-item light-green white-text">
-                        <span class="collection-header">Plan Customizations</span>
-                    </li>
-                    @foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)
-                        <li class="collection-item">
-                            <span>{{$detail->detail}}</span>
-                        </li>
-                    @endforeach
-                </ul>
+               @if($tasteCount>0)
+                   <ul class="collection">
+                       <li class="collection-item light-green white-text">
+                           <span class="collection-header">Taste</span>
+                       </li>
+                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                           @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
+                               $detail->detail== 'bitter' || $detail->detail== 'savory')
+                               <li class="collection-item">
+                                   <span>{{'NO '.$detail->detail.' food'}}</span>
+                               </li>
+                           @endif
+                       @endforeach
+                   </ul>
+               @endif
+               @if($cookCount>0)
+                   <ul class="collection">
+                       <li class="collection-item light-green white-text">
+                           <span class="collection-header">Cooking Methods</span>
+                       </li>
+                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                           @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
+                               <li class="collection-item">
+                                   <span>{{'NO '.$detail->detail.' food'}}</span>
+                               </li>
+                           @endif
+                       @endforeach
+                   </ul>
+               @endif
+               @if($driedCount>0)
+                   <ul class="collection">
+                       <li class="collection-item light-green white-text">
+                           <span class="collection-header">Dry Goods/Condiments</span>
+                       </li>
+                       @foreach($orderPlan->simple_custom_plan_detail as $detail)
+                           @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
+                               <li class="collection-item">
+                                   <span>{{'NO '.$detail->detail}}</span>
+                               </li>
+                           @endif
+                       @endforeach
+                   </ul>
+               @endif
+                {{--<ul class="collection">--}}
+                    {{--<li class="collection-item light-green white-text">--}}
+                        {{--<span class="collection-header">Plan Customizations</span>--}}
+                    {{--</li>   --}}
+                    {{--@foreach($simpleCustomPlan->simple_custom_plan_detail as $detail)--}}
+                        {{--<li class="collection-item">--}}
+                            {{--<span>{{$detail->detail}}</span>--}}
+                        {{--</li>--}}
+                    {{--@endforeach--}}
+                {{--</ul>--}}
             </div>
         </div>
     @endif
