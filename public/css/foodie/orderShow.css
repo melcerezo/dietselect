@@ -2,6 +2,7 @@
 .payBox,.payInfoCntr{ border :1px solid #d1d1d1; }
 .payInfoCntr{ padding: 10px; }
 .orderInfo, .addressInfo{ border :1px solid #d1d1d1; }
+.addressInfo{ margin-bottom: 10px; }
 .orderInfo .row, .addressInfo .row{ margin:10px 5px !important; }
 .payTabs .row{ margin:0; }
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; padding: 15px 10px; }
