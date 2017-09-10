@@ -13,7 +13,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col s12" style="padding: 0;">
+            <div class="col s12 m8" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
                 {{--<table class="centered">--}}
                     {{--<thead class="light-green lighten-1 white-text" style="border: none;">--}}
