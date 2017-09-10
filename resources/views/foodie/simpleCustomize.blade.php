@@ -835,13 +835,14 @@
             </div>
             <div class="modal-content">
                 <div class="calCntr">
-                        <div class="calTtl">
-                            <span>Meal Calories</span>
-                        </div>
-                        <div class="calories">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</div>
-                        {{--<li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>--}}
-                        {{--<li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>--}}
-                        {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
+                    <div class="calTtl">
+                        <span>Meal Calories</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="calories">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</div>
+                    {{--<li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>--}}
+                    {{--<li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>--}}
+                    {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
                 </div>
                 <div>
                     <table style="table-layout: fixed;">
