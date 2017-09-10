@@ -22,7 +22,6 @@
                         <thead class="light-green lighten-1 white-text" style="border: none;">
                             <tr>
                                 <th>Plan</th>
-                                <th>Chef</th>
                                 <th>Week</th>
                                 <th>Type</th>
                                 <th>Quantity</th>
@@ -34,28 +33,23 @@
                             @foreach($cartItems as $cartItem)
                                 <tr>
                                     <td>
-                                        {{--@if($cartItem->options->cust==2)--}}
-                                            {{--<a href="{{route('foodie.order.', $cartItem->id)}}">--}}
-                                        {{--@endif--}}
+                                        <div>
                                             {{$cartItem->name}}
-                                        {{--@if($cartItem->options->cust==2)--}}
-                                            {{--</a>--}}
-                                        {{--@endif--}}
-                                    </td>
-                                    <td>
-                                        @foreach($chefs as $chef)
-                                            @if($chef->id == $cartItem->options->chef)
-                                                {{$chef->name}}
+                                        </div>
+                                        <div>
+                                            @foreach($chefs as $chef)
+                                                @if($chef->id == $cartItem->options->chef)
+                                                    {{$chef->name}}
+                                                @endif
+                                            @endforeach
+                                        </div>
+                                        <div>
+                                            @if($cartItem->options->cust==0)
+                                                <span>Standard</span>
+                                            @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
+                                                <span>Customized</span>
                                             @endif
-                                        @endforeach
-                                    </td>
-                                    <td>{{$cartItem->options->date}}</td>
-                                    <td>
-                                        @if($cartItem->options->cust==0)
-                                            <span>Standard</span>
-                                        @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
-                                            <span>Customized</span>
-                                        @endif
+                                        </div>
                                     </td>
                                     <td>
                                         <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
@@ -67,7 +61,7 @@
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
                                     </td>
-                                    <td>{{$cartItem->price}}</td>
+                                    <td>{{'PHP '.number_format($cartItem->price,2,'.',',')}}</td>
                                     <td><a id="removeButton" href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                                 </tr>
                             @endforeach
@@ -86,6 +80,9 @@
                             </li>
                             <li class="collection-item">
                                 <span>Quantity: {{$cartCount}}</span>
+                            </li>
+                            <li class="collection-item">
+                                <span>Week: {{$cartItem->options->date}}</span>
                             </li>
                             <li class="collection-item">
                                 <span>Total: {{'PHP'.$cartTotal}}</span>
