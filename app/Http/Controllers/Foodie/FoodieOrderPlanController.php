@@ -204,7 +204,7 @@ class FoodieOrderPlanController extends Controller
             foreach($mealPlans as $item){
                 $orderMealPlans[]= $item->chefcustomize;
             }
-//            dd($orderMealPlans[0]->mealplans->day);
+            dd($orderMealPlans);
         }elseif($orderItem->order_type==1){
             $orderPlan=CustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
