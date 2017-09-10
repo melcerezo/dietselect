@@ -161,8 +161,9 @@
                     <div class="addressInfo">
                         <div class="row">
                             <div>
-                                <span>Delivery Address:</span>
+                                <span style="font-size: 20px;">Delivery Address:</span>
                             </div>
+                            <div class="divider"></div>
                             @if($orderAddress!=null)
                                 <div>
                                     <span>{{$orderAddress->unit}}</span>
