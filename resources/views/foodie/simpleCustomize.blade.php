@@ -344,7 +344,7 @@
                 </div>
             </div>
             <div class="col s12 m3">
-                <div style="margin-bottom: 20px;">
+                <div class="custAction">
                     <div>
                         @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
                             <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
@@ -691,90 +691,6 @@
             @endif
         </div>
 
-        <div class="row">
-            <div class="col s12 m8 plSlCstMlBtn">
-                <div style="margin-bottom: 20px;">
-                    @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
-                        <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>
-                    @else
-                        <button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Order</button>
-                    @endif
-                    <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize Plan</button>
-                    @if($simpleCustomPlan->simple_custom_plan_detail->count())
-                        <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>
-                    @endif
-                </div>
-
-            </div>
-            <div class="col s12 m4 plSlCstMlInfCnt">
-                <div class="card-panel plSlMlInfDef plSlCstMlInf">
-                    <span>Please click on a Meal to customize it!</span>
-                </div>
-                @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
-                    <div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">
-                        <ul class="collection plSlMlInfCtnt">
-                            <li class="collection-item light-green lighten-1 white-text">
-                                <span class="collection-header">{{$simpleCustomMeal->chef_customized_meal->description}}</span>
-                            </li>
-                            @if($mealPhotos->count())
-                                @foreach($mealPhotos as $mealPhoto)
-                                    @if($mealPhoto->id==$simpleCustomMeal->chef_customized_meal->mealplans->id)
-                                        <li class="collection-item" style="border-bottom: none;">
-                                            <img style="width: 200px; height: auto;" src="/img/meals/{{ $mealPhoto->image }}">
-                                        </li>
-                                    @endif
-                                @endforeach
-                            @endif
-                            <li class="collection-item">
-                                <span>Day: </span>
-                                @if($simpleCustomMeal->chef_customized_meal->mealplans->day=='MO')
-                                    <span>Monday</span>
-                                @elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='TU')
-                                    <span>Tuesday</span>
-                                @elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='WE')
-                                    <span>Wednesday</span>
-                                @elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='TH')
-                                    <span>Thursday</span>
-                                @elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='FR')
-                                    <span>Friday</span>
-                                @elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='SA')
-                                    <span>Saturday</span>
-                                @endif
-                            </li>
-                            <li class="collection-item">
-                                <span>Meal: </span>
-                                <span>
-                                @if($simpleCustomMeal->chef_customized_meal->mealplans->meal_type=='MorningSnack')
-                                        Morning Snack
-                                    @elseif($simpleCustomMeal->chef_customized_meal->mealplans->meal_type=='AfternoonSnack')
-                                        Afternoon Snack
-                                    @else
-                                        {{$simpleCustomMeal->chef_customized_meal->mealplans->meal_type}}
-                                    @endif
-                            </span>
-                            </li>
-                            <li class="collection-item">
-                                <span>Main Ingredient: </span><span>{{ucwords($simpleCustomMeal->chef_customized_meal->main_ingredient)}}</span>
-                            </li>
-                            <li class="collection-item">
-                                <span>Calories: </span><span>{{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</span>
-                            </li>
-                        </ul>
-                        <div class="editButton">
-                            @if($simpleCustomMeal->is_customized==0)
-                            <span>
-                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>
-                            </span>
-                            @elseif($simpleCustomMeal->is_customized==1)
-                            <span>
-                                <button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Customizations</button>
-                            </span>
-                            @endif
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
     </div>
 
     <div id="orderReview" class="modal" >
@@ -890,6 +806,7 @@
                             <input type="hidden" name="grilled" value="0"/>
                             <input type="checkbox" id="grilled" name="grilled" value="1">
                             <label for="grilled">NO Grilled Foods</label>
+
                         </div>
                     </div>
                 </div>
@@ -1023,6 +940,93 @@
         </div>
     @endforeach
 @endsection
+
+{{--<div class="row">--}}
+{{--<div class="col s12 m8 plSlCstMlBtn">--}}
+{{--<div style="margin-bottom: 20px;">--}}
+{{--@if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())--}}
+{{--<button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Order</button>--}}
+{{--@else--}}
+{{--<button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Order</button>--}}
+{{--@endif--}}
+{{--<button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize Plan</button>--}}
+{{--@if($simpleCustomPlan->simple_custom_plan_detail->count())--}}
+{{--<button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>--}}
+{{--@endif--}}
+{{--</div>--}}
+
+{{--</div>--}}
+{{--<div class="col s12 m4 plSlCstMlInfCnt">--}}
+{{--<div class="card-panel plSlMlInfDef plSlCstMlInf">--}}
+{{--<span>Please click on a Meal to customize it!</span>--}}
+{{--</div>--}}
+{{--@foreach($simpleCustomMeals as $id =>$simpleCustomMeal)--}}
+{{--<div id="viewMeal-{{$id}}" class="plSlMlInf card-panel">--}}
+{{--<ul class="collection plSlMlInfCtnt">--}}
+{{--<li class="collection-item light-green lighten-1 white-text">--}}
+{{--<span class="collection-header">{{$simpleCustomMeal->chef_customized_meal->description}}</span>--}}
+{{--</li>--}}
+{{--@if($mealPhotos->count())--}}
+{{--@foreach($mealPhotos as $mealPhoto)--}}
+{{--@if($mealPhoto->id==$simpleCustomMeal->chef_customized_meal->mealplans->id)--}}
+{{--<li class="collection-item" style="border-bottom: none;">--}}
+{{--<img style="width: 200px; height: auto;" src="/img/meals/{{ $mealPhoto->image }}">--}}
+{{--</li>--}}
+{{--@endif--}}
+{{--@endforeach--}}
+{{--@endif--}}
+{{--<li class="collection-item">--}}
+{{--<span>Day: </span>--}}
+{{--@if($simpleCustomMeal->chef_customized_meal->mealplans->day=='MO')--}}
+{{--<span>Monday</span>--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='TU')--}}
+{{--<span>Tuesday</span>--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='WE')--}}
+{{--<span>Wednesday</span>--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='TH')--}}
+{{--<span>Thursday</span>--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='FR')--}}
+{{--<span>Friday</span>--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->day=='SA')--}}
+{{--<span>Saturday</span>--}}
+{{--@endif--}}
+{{--</li>--}}
+{{--<li class="collection-item">--}}
+{{--<span>Meal: </span>--}}
+{{--<span>--}}
+{{--@if($simpleCustomMeal->chef_customized_meal->mealplans->meal_type=='MorningSnack')--}}
+{{--Morning Snack--}}
+{{--@elseif($simpleCustomMeal->chef_customized_meal->mealplans->meal_type=='AfternoonSnack')--}}
+{{--Afternoon Snack--}}
+{{--@else--}}
+{{--{{$simpleCustomMeal->chef_customized_meal->mealplans->meal_type}}--}}
+{{--@endif--}}
+{{--</span>--}}
+{{--</li>--}}
+{{--<li class="collection-item">--}}
+{{--<span>Main Ingredient: </span><span>{{ucwords($simpleCustomMeal->chef_customized_meal->main_ingredient)}}</span>--}}
+{{--</li>--}}
+{{--<li class="collection-item">--}}
+{{--<span>Calories: </span><span>{{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</span>--}}
+{{--</li>--}}
+{{--</ul>--}}
+{{--<div class="editButton">--}}
+{{--@if($simpleCustomMeal->is_customized==0)--}}
+{{--<span>--}}
+{{--<button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Edit</button>--}}
+{{--</span>--}}
+{{--@elseif($simpleCustomMeal->is_customized==1)--}}
+{{--<span>--}}
+{{--<button data-target="editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" class="mealLink btn waves-effect waves-light modal-trigger">Customizations</button>--}}
+{{--</span>--}}
+{{--@endif--}}
+{{--</div>--}}
+{{--</div>--}}
+{{--@endforeach--}}
+{{--</div>--}}
+{{--</div>--}}
+
+
         {{--<div class="row">--}}
             {{--<div class="col s12">--}}
             {{--</div>--}}
