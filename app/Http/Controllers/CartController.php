@@ -27,9 +27,9 @@ class CartController extends Controller
     public function index()
     {
         $dt=Carbon::now();
-        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
+        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
         $ds=Carbon::now();
-        $endOfNextWeek = $ds->startOfWeek()->addDay(7)->addDay(4)->format('F d');
+        $endOfNextWeek = $ds->startOfWeek()->addDay(7)->addDay(4)->format('F d, Y');
 
 
         $foodie= Auth::guard('foodie')->user()->id;
