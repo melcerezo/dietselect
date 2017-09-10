@@ -80,7 +80,7 @@
                                         </div>
                                     </div>
                                     <div class="row" style="margin-bottom: 5px;">
-                                        <button class="btn waves-light waves-light" type="submit">Submit</button>
+                                        <button class="btn waves-light waves-light orange" type="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
@@ -108,7 +108,7 @@
                                         {{ csrf_field() }}
 
                                         <div class="form-group">
-                                            <button type="submit" class="btn btn-primary">
+                                            <button type="submit" class="btn btn-primary waves-effect waves-light orange">
                                                 Pay with Paypal
                                             </button>
                                         </div>
@@ -150,7 +150,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <button class="btn waves-effect waves-light">Submit</button>
+                                                <button class="btn waves-effect waves-light orange">Submit</button>
                                             </div>
                                         </div>
                                     </form>
