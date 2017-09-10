@@ -476,7 +476,7 @@
 
 
     <div id="pickOrderAddressModal" class="modal">
-        <div class="left col s12 m5 l5">
+        <div class="left col s12 m5 l5" style="margin-bottom: 10px;">
             <span style="font-size: 30px; margin-left: 10px;">Choose Order Address</span>
         </div>
         <div class="modal-content">
@@ -501,7 +501,7 @@
         </div>
     </div>
     <div id="cancelOrderModal" class="modal">
-            <div class="left col s12 m5 l5">
+            <div class="left col s12 m5 l5" style="margin-bottom: 10px;">
                 <span style="font-size: 30px; margin-left: 10px;">Cancel Order</span>
             </div>
         <div class="modal-content">
