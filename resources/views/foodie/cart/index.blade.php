@@ -31,22 +31,29 @@
                             @foreach($cartItems as $cartItem)
                                 <tr>
                                     <td>
-                                        <div style="font-size: 30px;">
-                                            {{$cartItem->name}}
-                                        </div>
-                                        <div style="font-size: 18px; margin-bottom: 50px;">
-                                            @foreach($chefs as $chef)
-                                                @if($chef->id == $cartItem->options->chef)
-                                                    {{$chef->name}}
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                        <div>
-                                            @if($cartItem->options->cust==0)
-                                                <span>Standard</span>
-                                            @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
-                                                <span>Customized</span>
-                                            @endif
+                                        <div class="row">
+                                            <div class="col s12 m4">
+                                                <img src="/img/{{$cartItem->pic}}" alt="">
+                                            </div>
+                                            <div class="col s12 m8">
+                                                <div style="font-size: 30px;">
+                                                    {{$cartItem->name}}
+                                                </div>
+                                                <div style="font-size: 18px; margin-bottom: 50px;">
+                                                    @foreach($chefs as $chef)
+                                                        @if($chef->id == $cartItem->options->chef)
+                                                            {{$chef->name}}
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                                <div>
+                                                    @if($cartItem->options->cust==0)
+                                                        <span>Standard</span>
+                                                    @elseif($cartItem->options->cust==1 || $cartItem->options->cust==2)
+                                                        <span>Customized</span>
+                                                    @endif
+                                                </div>
+                                            </div>
                                         </div>
                                     </td>
                                     <td>
