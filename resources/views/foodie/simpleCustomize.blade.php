@@ -701,15 +701,9 @@
     </div>
 
     <div id="orderReview" class="modal" >
-        <nav class="light-green lighten-1 white-text">
-            <div class="left col s12 m5 l5">
-                <ul>
-                    <li>
-                        <span class="edtMlTtl" style="margin-left:20px; font-size: 20px;">Review Order of {{$simpleCustomPlan->plan->plan_name}}</span>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="mlPlnTtl">
+            <span>Review Order of {{$simpleCustomPlan->plan->plan_name}}</span>
+        </div>
         <div class="modal-content">
             <div class="row">
                 <div class="col s12 m8 l10 offset-m2 offset-l1">
