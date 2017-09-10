@@ -62,7 +62,7 @@
                                 {{--</div>--}}
                                 <div class="col s12 m4 xl3 centered">
                                     {{--<a href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>--}}
-                                    <button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger" style="width: 100%;">Customize</button>
+                                    <button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger">Customize</button>
 
                                 </div>
                                 <div class="col s12 m3">
