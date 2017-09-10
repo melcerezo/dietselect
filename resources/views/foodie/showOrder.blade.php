@@ -135,6 +135,9 @@
                     </div>
                 </div>
             @endunless
+        </div>
+    @endunless
+    </div>
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             {{--@if($order->is_paid==0 && count($foodieAddress)>0 && $orderAddress!=null)--}}
@@ -192,7 +195,7 @@
             {{--</div>--}}
         {{--</div>--}}
         {{--@endunless--}}
-    </div>
+
 
     <div id="pickOrderAddressModal" class="modal">
         <nav class="light-green lighten-1 white-text">
