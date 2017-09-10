@@ -102,44 +102,74 @@
                         @endif
                     </li>
                 </ul>
-            </div>
-        </div>
-        @unless($order->is_cancelled==1)
-            <div class="row">
-                @unless($order->is_paid==1 || count($foodieAddress)==0 || $orderAddress==null)
-                    <div class="col s12 m4 offset-m8">
-                        <div class="row">
-                            <div class="col s12 m3 center">
-                                <button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
-                                    <i class="fa fa-bank"></i>
-                                    <span style="font-size: 15px;">Bank</span>
-                                </button>
-                            </div>
-                            <div class="col s12 m3 center">
-                                <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">
-                                        <i class="fa fa-paypal"></i>
-                                        <span style="font-size: 15px;">PayPal</span>
-                                </button>
-                            </div>
-                            <div class="row">
-                                <div class="col s12 m3 center">
-                                    <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
-                                        <span>GCash</span>
-                                    </button>
-                                </div>
-                                <div class="col s12 m3 center">
-                                    <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">
-                                        <i class="fa fa-ban"></i>
-                                        <span style="font-size: 15px;">Cancel</span>
-                                    </button>
-                                </div>
-                            </div>
+                <div>
+                    <div class="row">
+                        <div class="col s12 m3 center">
+                            <button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
+                                <i class="fa fa-bank"></i>
+                                <span style="font-size: 15px;">Bank</span>
+                            </button>
+                        </div>
+                        <div class="col s12 m3 center">
+                            <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">
+                                <i class="fa fa-paypal"></i>
+                                <span style="font-size: 15px;">PayPal</span>
+                            </button>
                         </div>
                     </div>
-                @endunless
+                    <div class="row">
+                        <div class="col s12 m3 center">
+                            <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
+                                <span>GCash</span>
+                            </button>
+                        </div>
+                        <div class="col s12 m3 center">
+                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">
+                                <i class="fa fa-ban"></i>
+                                <span style="font-size: 15px;">Cancel</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        @endunless
+        </div>
+        {{--@unless($order->is_cancelled==1)--}}
+            {{--<div class="row">--}}
+                {{--@unless($order->is_paid==1 || count($foodieAddress)==0 || $orderAddress==null)--}}
+                    {{--<div class="col s12 m4 offset-m8">--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col s12 m3 center">--}}
+                                {{--<button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">--}}
+                                    {{--<i class="fa fa-bank"></i>--}}
+                                    {{--<span style="font-size: 15px;">Bank</span>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                            {{--<div class="col s12 m3 center">--}}
+                                {{--<button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">--}}
+                                        {{--<i class="fa fa-paypal"></i>--}}
+                                        {{--<span style="font-size: 15px;">PayPal</span>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        {{--<div class="row">--}}
+                            {{--<div class="col s12 m3 center">--}}
+                                {{--<button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">--}}
+                                    {{--<span>GCash</span>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                            {{--<div class="col s12 m3 center">--}}
+                                {{--<button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">--}}
+                                    {{--<i class="fa fa-ban"></i>--}}
+                                    {{--<span style="font-size: 15px;">Cancel</span>--}}
+                                {{--</button>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--@endunless--}}
+                {{--</div>--}}
+        {{--@endunless--}}
     </div>
+
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
             {{--@if($order->is_paid==0 && count($foodieAddress)>0 && $orderAddress!=null)--}}
