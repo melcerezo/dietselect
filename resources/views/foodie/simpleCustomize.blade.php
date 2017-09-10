@@ -830,7 +830,7 @@
 
     @foreach($simpleCustomMeals as $id=>$simpleCustomMeal)
         <div id="editMeal-{{$id}}" class="editFoodieCustModal modal">
-            <div class="mlPlnTtl" style="border-left: 4px solid orange; margin: 10px 0 0 10px; padding-left: 5px;">
+            <div class="mlPlnTtl" style="border-left: 4px solid orange; margin: 10px 0 0 10px; padding-left: 24px;">
                 <span>Customize {{$simpleCustomMeal->chef_customized_meal->description}}</span>
             </div>
             <div class="modal-content">
