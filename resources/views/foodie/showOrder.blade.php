@@ -36,7 +36,121 @@
                             </div>
                         </div>
                         <div class="payTabsWrapper">
-                            <span>This is the pay container</span>
+                            <div class="defaultPay">
+                                <span>Choose a method of payment!</span>
+                            </div>
+                            <div class="bankPayment">
+                                <div>Please pay your balance with this information :</div>
+
+                                <ul class="collection">
+                                    <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
+                                    <li class="collection-item">BDO Savings Account: 007110023351</li>
+                                    <li class="collection-item">DietSelect</li>
+                                    <li class="collection-item">Total {{$order->total}}</li>
+                                </ul>
+                                <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
+                                    {{csrf_field()}}
+                                    <div>
+                                        <div><label for="receipt">Receipt Number</label></div>
+                                        <div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>
+                                        <div class="error-recpt err"></div>
+                                    </div>
+                                    <div>
+                                        <div><label for="datePay">Date of Transaction:</label></div>
+                                        <div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>
+                                        <div class="error-date-pay err"></div>
+
+                                    </div>
+                                    <div class="row">
+                                        <div class="file-field">
+                                            <label for="image" class="active">Picture Upload:</label>
+                                            <div style="padding-top: 10px;">
+                                                <div class="btn">
+                                                    <span>File</span>
+                                                    <input type="file" data-error=".error-image" id="image" name="image">
+                                                </div>
+                                                <div class="file-path-wrapper">
+                                                    <input class="file-path validate" type="text" >
+                                                </div>
+                                                <div class="error-image err"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button type="submit">Submit</button>
+                                </form>
+                            </div>
+                            <div class="payPalPayment">
+                                <ul class="collection">
+                                    <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
+                                    <li class="collection-item">Total {{$order->total}}</li>
+                                </ul>
+
+                                @if ($message = Session::get('success'))
+                                    <div class="custom-alerts alert alert-success fade in">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                        {!! $message !!}
+                                    </div>
+                                    <?php Session::forget('success');?>
+                                @endif
+                                @if ($message = Session::get('error'))
+                                    <div class="custom-alerts alert alert-danger fade in">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                        {!! $message !!}
+                                    </div>
+                                    <?php Session::forget('error');?>
+                                @endif
+                                <div>
+                                    <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
+                                        {{ csrf_field() }}
+
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-primary">
+                                                Pay with Paypal
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="gcashPayment">
+                                    <div>
+                                        <span>Please send your gcash payment to the number below. Fill out this form with a screenshot of the confirmation text from Globe.</span>
+                                    </div>
+                                    <ul class="collection">
+                                        <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
+                                        <li class="collection-item">Gcash Number: 09950893073</li>
+                                        <li class="collection-item">DietSelect</li>
+                                        <li class="collection-item">Total: {{$order->total}}</li>
+                                    </ul>
+                                    <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
+                                        {{csrf_field()}}
+                                        <div>
+                                            <div class="row">
+                                                <div><label for="gcDatePay">Date of Transaction:</label></div>
+                                                <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>
+                                                <div class="error-gcdate-pay err"></div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="file-field">
+                                                    <label for="gcPic" class="active">Picture Upload:</label>
+                                                    <div style="padding-top: 10px;">
+                                                        <div class="btn">
+                                                            <span>File</span>
+                                                            <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
+                                                        </div>
+                                                        <div class="file-path-wrapper">
+                                                            <input class="file-path validate" type="text" >
+                                                        </div>
+                                                        <div class="error-gcpic err"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <button class="btn waves-effect waves-light">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
