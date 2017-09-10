@@ -92,7 +92,7 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
-                                <span>Total: {{'PHP'.$cartTotal}}</span>
+                                <span>Total: {{'PHP '.$cartTotal}}</span>
                             </div>
                         </div>
                         <div style="margin: 10px 0;">
