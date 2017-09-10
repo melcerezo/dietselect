@@ -50,12 +50,12 @@
                                 </ul>
                                 <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                                     {{csrf_field()}}
-                                    <div>
+                                    <div class="row">
                                         <div><label for="receipt">Receipt Number</label></div>
                                         <div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>
                                         <div class="error-recpt err"></div>
                                     </div>
-                                    <div>
+                                    <div class="row">
                                         <div><label for="datePay">Date of Transaction:</label></div>
                                         <div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>
                                         <div class="error-date-pay err"></div>
@@ -76,7 +76,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <button type="submit">Submit</button>
+                                    <div class="row">
+                                        <button type="submit">Submit</button>
+                                    </div>
                                 </form>
                             </div>
                             <div id="payPalPayment" class="payForm">
