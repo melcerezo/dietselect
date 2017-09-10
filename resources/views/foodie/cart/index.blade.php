@@ -30,8 +30,8 @@
                         <tbody>
                             @foreach($cartItems as $cartItem)
                                 <tr>
-                                    <td>
-                                        <div class="row" style="border-right: 1px solid #d1d1d1">
+                                    <td style="border-right: 1px solid #d1d1d1">
+                                        <div class="row">
                                             <div class="col s12 m4">
                                                 <img class="responsive-img" src="/img/{{$cartItem->options->pic}}" alt="">
                                             </div>
@@ -58,8 +58,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>
-                                        <div style="border-right: 1px solid #d1d1d1">
+                                    <td style="border-right: 1px solid #d1d1d1">
+                                        <div>
                                             <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                                 {{ csrf_field() }}
                                                         <span><input type="number" name="qty" value="{{$cartItem->qty}}" style="width: 30%;"></span>
@@ -70,7 +70,7 @@
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
                                     </td>
-                                    <td><div style="border-right: 1px solid #d1d1d1">{{'PHP '.number_format($cartItem->price,2,'.',',')}}</div></td>
+                                    <td style="border-right: 1px solid #d1d1d1"><div>{{'PHP '.number_format($cartItem->price,2,'.',',')}}</div></td>
                                     <td><a id="removeButton" href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                                 </tr>
                             @endforeach
