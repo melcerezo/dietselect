@@ -34,7 +34,7 @@
                                                 <div style="font-size: 30px;">
                                                     {{$cartItem->name}}
                                                 </div>
-                                                <div style="font-size: 18px;">
+                                                <div style="font-size: 18px; margin-bottom: 50px;">
                                                     <span>Chef: </span>
                                                     @foreach($chefs as $chef)
                                                         @if($chef->id == $cartItem->options->chef)
@@ -42,10 +42,10 @@
                                                         @endif
                                                     @endforeach
                                                 </div>
-                                                <div style="margin-bottom: 50px;">
-                                                    <span>Category: </span>
-                                                    <span>{{$cartItem->options->categ}}</span>
-                                                </div>
+                                                {{--<div style="margin-bottom: 50px;">--}}
+                                                    {{--<span>Category: </span>--}}
+                                                    {{--<span>{{$cartItem->options->categ}}</span>--}}
+                                                {{--</div>--}}
                                                 <div>
                                                     <span>Type: </span>
                                                     @if($cartItem->options->cust==0)

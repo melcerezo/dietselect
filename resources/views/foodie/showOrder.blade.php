@@ -15,41 +15,43 @@
         <div class="row">
             <div class="col s12" style="padding: 0;">
                 <div class="card-panel shOrdMlTbl">
-                <table class="centered">
-                    <thead class="light-green lighten-1 white-text" style="border: none;">
-                        <tr>
-                            <th>Plan</th>
-                            <th>Chef</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                {{--<table class="centered">--}}
+                    {{--<thead class="light-green lighten-1 white-text" style="border: none;">--}}
+                        {{--<tr>--}}
+                            {{--<th>Plan</th>--}}
+                            {{--<th>Chef</th>--}}
+                            {{--<th>Quantity</th>--}}
+                            {{--<th>Price</th>--}}
+                        {{--</tr>--}}
+                    {{--</thead>--}}
+                    {{--<tbody>--}}
                         @foreach($orderItems as $orderItem)
                             {{--@if($orderItem->order_type==2)--}}
                                 {{--<a href="{{route('foodie.order.simpCust', $orderItem->id)}}">--}}
                             {{--@endif--}}
-                            <tr>
+                            {{--<tr>--}}
+                            <div class="orderItem">
                                 @foreach($orderPlans as $orderPlan)
                                     @if($orderPlan->id == $orderItem->plan_id)
                                         @if($orderItem->order_type==0)
-                                            <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></td>
-                                            <td>{{$orderPlan->chef->name}}</td>
+                                            <div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></div>
+                                            <div>{{$orderPlan->chef->name}}</div>
                                         @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
-                                            <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
-                                            <td>{{$orderPlan->plan->chef->name}}</td>
+                                            <div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></div>
+                                            <div>{{$orderPlan->plan->chef->name}}</div>
                                         @endif
                                     @endif
                                 @endforeach
-                                <td>{{$orderItem->quantity}}</td>
-                                <td>{{'PHP '.$orderItem->price}}</td>
+                                <div>{{$orderItem->quantity}}</div>
+                                <div>{{'PHP '.$orderItem->price}}</div>
+                            </div>
                             {{--@if($orderItem->order_type==2)--}}
                                 {{--</a>--}}
                             {{--@endif--}}
-                            </tr>
+                            {{--</tr>--}}
                         @endforeach
-                    </tbody>
-                </table>
+                    {{--</tbody>--}}
+                {{--</table>--}}
                 </div>
             </div>
         </div>

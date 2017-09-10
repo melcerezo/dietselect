@@ -83,21 +83,21 @@
                                         </div>
                                     </div>
                                     <div class="divider"></div>
-                                    <div class="category">
-                                        <div class="secTtl">
-                                            <span>Category:</span>
-                                        </div>
-                                        <div class="secCnt">
-                                            @if($plan->category==1)
-                                                <span>Weight Loss</span>
-                                            @elseif($plan->category==2)
-                                                <span>High Protein</span>
-                                            @elseif($plan->category==3)
-                                                <span>Vegetarian</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                    <div class="divider"></div>
+                                    {{--<div class="category">--}}
+                                        {{--<div class="secTtl">--}}
+                                            {{--<span>Category:</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="secCnt">--}}
+                                            {{--@if($plan->category==1)--}}
+                                                {{--<span>Weight Loss</span>--}}
+                                            {{--@elseif($plan->category==2)--}}
+                                                {{--<span>High Protein</span>--}}
+                                            {{--@elseif($plan->category==3)--}}
+                                                {{--<span>Vegetarian</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="divider"></div>--}}
                                     <div class="description">
                                         <div class="secTtl">
                                             <span>Description:</span>

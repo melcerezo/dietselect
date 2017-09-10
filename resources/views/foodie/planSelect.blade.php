@@ -20,49 +20,49 @@
         </div>
     @else
         <div class="container plSlCntr">
-            <div class="row">
-                <div class="row">
+            {{--<div class="row">--}}
+                {{--<div class="row">--}}
                     {{--<nav class="light-green lighten-1 white-text">--}}
-                    <div class="left col s12">
-                        <ul>
-                            <li class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
-                                <span style="font-size: 20px;">PLANS BY CATEGORY</span>
-                            </li>
-                        </ul>
-                    </div>
+                    {{--<div class="left col s12">--}}
+                        {{--<ul>--}}
+                            {{--<li class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">--}}
+                                {{--<span style="font-size: 20px;">PLANS BY CATEGORY</span>--}}
+                            {{--</li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
                     {{--</nav>--}}
-                </div>
-                <div class="col s12 m4" >
-                    <div class="buyCateg light-green white-text">
-                        <img class="lossPlan" src="/img/loss.png">
-                        <div id="loss" data-categ="weightCateg" class="category" style="border-radius: 10px;">
-                            <div style="position: relative;">
-                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="buyCateg light-green white-text">
-                        <img class="responsive-img" src="/img/protein.png">
-                        <div id="protein" data-categ="protCateg" class="category" style="border-radius: 10px;">
-                            <div style="position: relative; border-radius: 10px;">
-                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">High Protein</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m4">
-                    <div class="buyCateg light-green white-text">
-                        <img class="vegePlan" src="/img/vege.png">
-                        <div id="vege" data-categ="vegeCateg" class="category" style="border-radius: 10px;">
-                            <div style="position: relative; border-radius: 10px;">
-                                <span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+                {{--</div>--}}
+                {{--<div class="col s12 m4" >--}}
+                    {{--<div class="buyCateg light-green white-text">--}}
+                        {{--<img class="lossPlan" src="/img/loss.png">--}}
+                        {{--<div id="loss" data-categ="weightCateg" class="category" style="border-radius: 10px;">--}}
+                            {{--<div style="position: relative;">--}}
+                                {{--<span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Weight Loss</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m4">--}}
+                    {{--<div class="buyCateg light-green white-text">--}}
+                        {{--<img class="responsive-img" src="/img/protein.png">--}}
+                        {{--<div id="protein" data-categ="protCateg" class="category" style="border-radius: 10px;">--}}
+                            {{--<div style="position: relative; border-radius: 10px;">--}}
+                                {{--<span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">High Protein</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m4">--}}
+                    {{--<div class="buyCateg light-green white-text">--}}
+                        {{--<img class="vegePlan" src="/img/vege.png">--}}
+                        {{--<div id="vege" data-categ="vegeCateg" class="category" style="border-radius: 10px;">--}}
+                            {{--<div style="position: relative; border-radius: 10px;">--}}
+                                {{--<span class="orange-text" style="position: absolute; top: 128px; left: 62px; font-size: 30px;">Vegetarian</span>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
             <div class="row">
                 <div class="col s12 m3">
                     <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
