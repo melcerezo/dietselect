@@ -20,11 +20,11 @@
     .bankIcon{ top:8px; left:50px; }
     .payPalIcon{ top:11px; left:63px; }
     .gcashIcon{ top:25px; left:28px; }
-    .cancelIcon{ top:11px; left:63px; }
+    .cancelIcon{ top:11px; left:61px; }
     .bankDes{ top:91px; left:64px; font-size: 20px; }
     .payPalDes{ top:90px; left:57px; font-size: 20px; }
     .gcashDes{ top:91px; left:58px; font-size: 20px; }
-    .cancelDes{ top:91px; left:64px; font-size: 20px; }
+    .cancelDes{ top:91px; left:58px; font-size: 20px; }
 }
 
 
