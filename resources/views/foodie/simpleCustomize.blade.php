@@ -834,17 +834,14 @@
                 <span>Customize {{$simpleCustomMeal->chef_customized_meal->description}}</span>
             </div>
             <div class="modal-content">
-                <div>
-                    <ul class="collection">
-                        <li class="collection-item light-green white-text">
-                            {{--<span class="collection-header">Meal Stats</span>--}}
-                            <span class="collection-header">Meal Calories</span>
-                        </li>
-                        <li class="collection-item">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</li>
+                <div class="calCntr">
+                        <div class="calTtl">
+                            <span>Meal Calories</span>
+                        </div>
+                        <div class="calories">Calories: {{round($simpleCustomMeal->chef_customized_meal->calories,2)}}</div>
                         {{--<li class="collection-item">Carbohydrates: {{round($simpleCustomMeal->chef_customized_meal->carbohydrates,2)}}g</li>--}}
                         {{--<li class="collection-item">Protein: {{round($simpleCustomMeal->chef_customized_meal->protein,2)}}g</li>--}}
                         {{--<li class="collection-item">Fat: {{round($simpleCustomMeal->chef_customized_meal->fat,2)}}g</li>--}}
-                    </ul>
                 </div>
                 <div>
                     <table style="table-layout: fixed;">
