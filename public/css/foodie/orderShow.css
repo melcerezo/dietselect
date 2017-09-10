@@ -1,7 +1,7 @@
 .shOrdCntr{ width:85%; margin-top: 0.5rem; }
 .payBox,.payInfoCntr{ border :1px solid #d1d1d1; }
 .payInfoCntr{ padding: 10px; }
-.orderInfo, .addressInfo{ border :1px solid #d1d1d1; }
+.orderInfo, .addressInfo{ border :1px solid #d1d1d1; padding: 10px; }
 .addressInfo{ margin-bottom: 10px; }
 .orderInfo .row{ margin:10px 5px !important; }
 .addressInfo .row{ margin:10px 5px !important; }
