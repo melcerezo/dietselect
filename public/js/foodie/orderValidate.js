@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $('.payTab').on('click',function () {
+        $('.payTab').css('background-color','');
         $('.payTab').css('color','');
         $(this).css('color','white');
         $(this).css('background-color','orange');
