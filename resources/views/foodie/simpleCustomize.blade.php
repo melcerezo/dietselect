@@ -726,15 +726,9 @@
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
         <div id="detailCust" class="modal">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">{{$simpleCustomPlan->plan->plan_name}} Customization</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div class="mlPlnTtl">
+                <span>{{$simpleCustomPlan->plan->plan_name}} Customization</span>
+            </div>
            <div class="modal-content">
                 <ul class="collection">
                     <li class="collection-item light-green white-text">
@@ -751,15 +745,9 @@
     @endif
 
     <div id="planCust" class="modal">
-        <nav class="light-green lighten-1 white-text">
-            <div class="left col s12 m5 l5">
-                <ul>
-                    <li>
-                        <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">Customize {{$simpleCustomPlan->plan->plan_name}}</span>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="mlPlnTtl">
+            <span>Customize {{$simpleCustomPlan->plan->plan_name}}</span>
+        </div>
         <div class="modal-content">
             <form action="{{route('foodie.simple.custom', $simpleCustomPlan->id)}}" method="post">
                 {{ csrf_field() }}
@@ -842,15 +830,9 @@
 
     @foreach($simpleCustomMeals as $id=>$simpleCustomMeal)
         <div id="editMeal-{{$id}}" class="editFoodieCustModal modal">
-            <nav class="light-green lighten-1 white-text">
-                <div class="left col s12 m5 l5">
-                    <ul>
-                        <li>
-                            <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">Customize {{$simpleCustomMeal->chef_customized_meal->description}}</span>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            <div class="mlPlnTtl">
+                <span class="edtMlTtl" style="font-size: 20px; margin-left: 20px;">Customize {{$simpleCustomMeal->chef_customized_meal->description}}</span>
+            </div>
             <div class="modal-content">
                 <div>
                     <ul class="collection">
