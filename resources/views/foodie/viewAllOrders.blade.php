@@ -11,7 +11,7 @@
 
 @section('page_content')
 
-    <div class="container" style="width:85%;">
+    <div class="container" style="width:85%; margin-bottom: 1rem;">
         {{--<div class="row" style="margin-top: 1rem;">--}}
             {{--<nav class="light-green lighten-1 white-text">--}}
                 {{--<div class="left col s12">--}}
