@@ -54,6 +54,55 @@
                 {{--</table>--}}
                 </div>
             </div>
+            <div class="col s12 m4">
+                <ul class="collection" style="margin: 0;">
+                    <li class="collection-item light-green lighten-1 white-text">
+                        <span class="collection-header">Total Order:</span>
+                    </li>
+                    <li class="collection-item">
+                        <span>Total: {{'PHP '.$order->total}}</span>
+                    </li>
+                    <li class="collection-item">
+                        <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
+                    </li>
+                    <li class="collection-item">
+                        <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
+                    </li>
+                    <li class="collection-item">
+                        <div>
+                            <span>Delivery Address:</span>
+                        </div>
+                        @if($orderAddress!=null)
+                            <div>
+                                <span>{{$orderAddress->unit}}</span>
+                                @unless($orderAddress->bldg=='')
+                                    <span> {{$orderAddress->bldg}}, </span>
+                                @endunless
+                                <span>{{$orderAddress->street}}, </span>
+                                <span>{{$orderAddress->brgy}}, </span>
+                                <span>{{$orderAddress->city}}</span>
+                            </div>
+                            @if($order->is_paid==0)
+                                <div>
+                                    <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
+                                </div>
+                            @endif
+                        @else
+                            <div>
+                                @if(count($foodieAddress)==0)
+                                    <a href="{{route('foodie.profile')}}">
+                                        <span>No Address Available. Please add one so we can deliver to you!</span>
+                                    </a>
+                                @else
+                                    <a href="#pickOrderAddressModal" class="modal-trigger">
+                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
+                                    </a>
+                                @endif
+                            </div>
+                        @endif
+                    </li>
+                </ul>
+            </div>
         </div>
         @unless($order->is_cancelled==1)
         <div class="row">
