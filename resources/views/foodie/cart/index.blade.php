@@ -9,11 +9,6 @@
 @section('page_content')
 
     <div class="container shOrdCntr">
-        <div class="row">
-            <div class="col s12 light-green lighten-1 white-text shOrdMnTtl valign-wrapper">
-                <span>Order Payment</span>
-            </div>
-        </div>
         @if(Cart::count()>0)
         <div class="row">
             <div class="col s12" style="padding: 0;">
