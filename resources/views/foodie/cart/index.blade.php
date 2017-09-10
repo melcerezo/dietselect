@@ -31,7 +31,7 @@
                             @foreach($cartItems as $cartItem)
                                 <tr>
                                     <td>
-                                        <div>
+                                        <div style="font-size: 30px;">
                                             {{$cartItem->name}}
                                         </div>
                                         <div>
