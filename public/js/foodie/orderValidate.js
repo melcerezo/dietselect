@@ -1,6 +1,7 @@
 $(document).ready(function () {
 
     $('.payTab').on('click',function () {
+        $(this).css('color','orange');
         var id = $(this).attr('data-pay-reveal');
        $('.payForm').hide();
         if(id=='bank'){
