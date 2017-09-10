@@ -30,7 +30,7 @@
                         <tbody>
                             @foreach($cartItems as $cartItem)
                                 <tr>
-                                    <td style="border-right: 1px solid #d1d1d1">
+                                    <td>
                                         <div class="row">
                                             <div class="col s12 m4">
                                                 <img class="responsive-img" src="/img/{{$cartItem->options->pic}}" alt="">
@@ -58,7 +58,7 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td style="border-right: 1px solid #d1d1d1">
+                                    <td>
                                         <div>
                                             <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                                 {{ csrf_field() }}
@@ -70,7 +70,7 @@
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
 
                                     </td>
-                                    <td style="border-right: 1px solid #d1d1d1"><div>{{'PHP '.number_format($cartItem->price,2,'.',',')}}</div></td>
+                                    <td><div>{{'PHP '.number_format($cartItem->price,2,'.',',')}}</div></td>
                                     <td><a id="removeButton" href="{{route('cart.remove',$cartItem->rowId)}}"><i class="material-icons">delete</i></a></td>
                                 </tr>
                             @endforeach
