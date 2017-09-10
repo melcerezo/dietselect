@@ -137,62 +137,62 @@
             @endunless
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}
-            @if($order->is_paid==0 && count($foodieAddress)>0 && $orderAddress!=null)
-                <div class="col s12 offset-m2 m4">
-            @else
-                <div class="col s12 m4 offset-m8 right">
-            @endif
-                <ul class="collection" style="margin: 0;">
-                    <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Total Order:</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Total: {{'PHP '.$order->total}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <div>
-                            <span>Delivery Address:</span>
-                        </div>
-                        @if($orderAddress!=null)
-                            <div>
-                                <span>{{$orderAddress->unit}}</span>
-                                @unless($orderAddress->bldg=='')
-                                    <span> {{$orderAddress->bldg}}, </span>
-                                @endunless
-                                <span>{{$orderAddress->street}}, </span>
-                                <span>{{$orderAddress->brgy}}, </span>
-                                <span>{{$orderAddress->city}}</span>
-                            </div>
-                            @if($order->is_paid==0)
-                                <div>
-                                    <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
-                                </div>
-                            @endif
-                        @else
-                            <div>
-                                @if(count($foodieAddress)==0)
-                                    <a href="{{route('foodie.profile')}}">
-                                        <span>No Address Available. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @else
-                                    <a href="#pickOrderAddressModal" class="modal-trigger">
-                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @endif
-                            </div>
-                        @endif
-                    </li>
-                </ul>
-            </div>
-        </div>
-        @endunless
-    </div>
+            {{--@if($order->is_paid==0 && count($foodieAddress)>0 && $orderAddress!=null)--}}
+                {{--<div class="col s12 offset-m2 m4">--}}
+            {{--@else--}}
+                {{--<div class="col s12 m4 offset-m8 right">--}}
+            {{--@endif--}}
+                {{--<ul class="collection" style="margin: 0;">--}}
+                    {{--<li class="collection-item light-green lighten-1 white-text">--}}
+                        {{--<span class="collection-header">Total Order:</span>--}}
+                    {{--</li>--}}
+                    {{--<li class="collection-item">--}}
+                        {{--<span>Total: {{'PHP '.$order->total}}</span>--}}
+                    {{--</li>--}}
+                    {{--<li class="collection-item">--}}
+                        {{--<span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>--}}
+                    {{--</li>--}}
+                    {{--<li class="collection-item">--}}
+                        {{--<span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>--}}
+                    {{--</li>--}}
+                    {{--<li class="collection-item">--}}
+                        {{--<div>--}}
+                            {{--<span>Delivery Address:</span>--}}
+                        {{--</div>--}}
+                        {{--@if($orderAddress!=null)--}}
+                            {{--<div>--}}
+                                {{--<span>{{$orderAddress->unit}}</span>--}}
+                                {{--@unless($orderAddress->bldg=='')--}}
+                                    {{--<span> {{$orderAddress->bldg}}, </span>--}}
+                                {{--@endunless--}}
+                                {{--<span>{{$orderAddress->street}}, </span>--}}
+                                {{--<span>{{$orderAddress->brgy}}, </span>--}}
+                                {{--<span>{{$orderAddress->city}}</span>--}}
+                            {{--</div>--}}
+                            {{--@if($order->is_paid==0)--}}
+                                {{--<div>--}}
+                                    {{--<a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>--}}
+                                {{--</div>--}}
+                            {{--@endif--}}
+                        {{--@else--}}
+                            {{--<div>--}}
+                                {{--@if(count($foodieAddress)==0)--}}
+                                    {{--<a href="{{route('foodie.profile')}}">--}}
+                                        {{--<span>No Address Available. Please add one so we can deliver to you!</span>--}}
+                                    {{--</a>--}}
+                                {{--@else--}}
+                                    {{--<a href="#pickOrderAddressModal" class="modal-trigger">--}}
+                                        {{--<span>No Order Address Picked. Please add one so we can deliver to you!</span>--}}
+                                    {{--</a>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                    {{--</li>--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--@endunless--}}
+    {{--</div>--}}
 
     <div id="pickOrderAddressModal" class="modal">
         <nav class="light-green lighten-1 white-text">
