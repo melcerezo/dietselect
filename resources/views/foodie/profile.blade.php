@@ -11,11 +11,11 @@
 
 @section('page_content')
     <div class="container prfMnCnt">
-        <div class="row prfMnTtl">
-            <div class="col s12 light-green lighten-1 white-text">
-                <span>Edit Profile</span>
-            </div>
-        </div>
+        {{--<div class="row prfMnTtl">--}}
+            {{--<div class="col s12 light-green lighten-1 white-text">--}}
+                {{--<span>Edit Profile</span>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         <div class="row prfMnCntDv">
 
             <div class="col s12 m4 l4">
