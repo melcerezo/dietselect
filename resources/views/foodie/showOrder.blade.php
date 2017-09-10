@@ -163,6 +163,37 @@
                     </div>
                     <div class="divider"></div>
                     <div class="row">
+                        <table class="centered">
+                            <thead>
+                                <tr>
+                                    <th>Plan</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($orderItems as $orderItem)
+                                <tr>
+                                    @foreach($orderPlans as $orderPlan)
+                                        @if($orderPlan->id == $orderItem->plan_id)
+                                            @if($orderItem->order_type==0)
+                                                <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></td>
+                                                <td>{{$orderPlan->chef->name}}</td>
+                                            @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
+                                                <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
+                                                <td>{{$orderPlan->plan->chef->name}}</td>
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                    <td>x{{$orderItem->quantity}}</td>
+                                    <td>{{'PHP '.number_format($orderItem->price,2,'.',',')}}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
                         <span>Total: {{'PHP '.number_format($order->total,2,'.',',')}}</span>
                     </div>
                     <div class="divider"></div>
