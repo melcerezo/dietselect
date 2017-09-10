@@ -476,15 +476,9 @@
 
 
     <div id="pickOrderAddressModal" class="modal">
-        <nav class="light-green lighten-1 white-text">
-            <div class="left col s12 m5 l5">
-                <ul>
-                    <li>
-                        <span style="margin-left: 20px;">Choose Order Address</span>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <div class="left col s12 m5 l5">
+            <span style="margin-left: 30px;">Choose Order Address</span>
+        </div>
         <div class="modal-content">
             <div class="row">
                 <span>Please choose an address for us to deliver.</span>
@@ -502,27 +496,21 @@
                     </select>
                     <div></div>
                 </div>
-                <input type="submit" class="btn waves-effect waves-light"/>
+                <input type="submit" class="btn waves-effect waves-light orange"/>
             </form>
         </div>
     </div>
     <div id="cancelOrderModal" class="modal">
-        <nav class="light-green lighten-1 white-text">
             <div class="left col s12 m5 l5">
-                <ul>
-                    <li>
-                        <span style="margin-left: 20px;">Cancel Order</span>
-                    </li>
-                </ul>
+                <span style="margin-left: 30px;">Cancel Order</span>
             </div>
-        </nav>
         <div class="modal-content">
             <div class="row">
                 <span>Do you want to cancel your order?</span>
             </div>
             <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">
                 {{ csrf_field() }}
-                <input type="submit" class="btn waves-effect waves-light" />
+                <input type="submit" class="btn waves-effect waves-light orange" />
             </form>
         </div>
     </div>
