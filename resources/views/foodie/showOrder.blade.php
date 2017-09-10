@@ -192,7 +192,7 @@
             {{--</div>--}}
         {{--</div>--}}
         {{--@endunless--}}
-    {{--</div>--}}
+    </div>
 
     <div id="pickOrderAddressModal" class="modal">
         <nav class="light-green lighten-1 white-text">
