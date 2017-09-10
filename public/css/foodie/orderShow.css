@@ -12,9 +12,9 @@
 .payPalDes{ position: absolute; top:91px; left:39px; font-size: 15px; }
 .gcashDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .cancelDes{ position: absolute; top:90px; left:37px; font-size: 16px; }
-.payForm{ display: none; }
+.payForm{ display: none; padding: 15px;}
 #defaultPay{ display: block; }
-.payForm .row{ margin: 0 10px !important; }
+.payForm .row{ margin: 0 !important; }
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
