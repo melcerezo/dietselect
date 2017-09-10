@@ -345,7 +345,7 @@
             </div>
             <div class="col s12 m3">
                 <div class="custAction">
-                    <div style="font-size: 20px;">
+                    <div style="font-size: 20px; margin: 10px 0;">
                         <span>Add to Cart</span>
                     </div>
                     <div>
