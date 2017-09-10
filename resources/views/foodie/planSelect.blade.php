@@ -101,7 +101,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -142,7 +142,7 @@
                                                             </div>
                                                             <div class="buyBtn center-align">
                                                                 <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                                   class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                                   class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -184,7 +184,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,7 +225,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -266,7 +266,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Buy Now</a>
+                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
