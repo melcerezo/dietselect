@@ -77,7 +77,7 @@
                                         </div>
                                     </div>
                                     <div class="row">
-                                        <button type="submit">Submit</button>
+                                        <button class="btn waves-light waves-light" type="submit">Submit</button>
                                     </div>
                                 </form>
                             </div>
