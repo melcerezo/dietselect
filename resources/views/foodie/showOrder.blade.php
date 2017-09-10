@@ -83,10 +83,9 @@
                                 </form>
                             </div>
                             <div id="payPalPayment" class="payForm">
-                                <ul class="collection">
-                                    <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
-                                    <li class="collection-item">Total {{$order->total}}</li>
-                                </ul>
+                               <div style="margin: 10px 0;">
+                                   Please login to your paypal account to pay.
+                               </div>
 
                                 @if ($message = Session::get('success'))
                                     <div class="custom-alerts alert alert-success fade in">
