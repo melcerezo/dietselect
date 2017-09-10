@@ -88,7 +88,12 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
-                                <span>Week: {{$nextWeek.'-'.$endNextWeek}}</span>
+                                <div>
+                                    <span>Week:</span>
+                                </div>
+                                <div>
+                                    <span>{{$nextWeek.' - '.$endNextWeek}}</span>
+                                </div>
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
