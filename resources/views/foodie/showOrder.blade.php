@@ -9,156 +9,162 @@
 
     <div class="container shOrdCntr">
         <div class="row">
-            <div class="col s12 m7">
-                <div class="payBox">
-                    <div class="payMainTitle">
-                        <span style="font-size: 30px; font-weight: bold;">Payment Methods</span>
-                    </div>
-                    <div class="payTabsContainer">
-                        <div class="payTabs">
-                            <div class="row">
-                                <div data-pay-reveal="bank" class="col s12 m3 payTab">
-                                    <span class="bankIcon"><i class="fa fa-bank"></i></span>
-                                    <span class="bankDes">Bank</span>
-                                </div>
-                                <div data-pay-reveal="paypal" class="col s12 m3 payTab">
-                                    <span class="payPalIcon"><i class="fa fa-paypal"></i></span>
-                                    <span class="payPalDes">Paypal</span>
-                                </div>
-                                <div data-pay-reveal="gcash" class="col s12 m3 payTab">
-                                    <span class="gcashIcon">GCash</span>
-                                    <span class="gcashDes">Gcash</span>
-                                </div>
-                                <div id="cancelOrder" class="col s12 m3 cancelTab red">
-                                    <a href="#cancelOrderModal" class="modal-trigger white-text">
-                                        <span class="cancelIcon"><i class="fa fa-ban"></i></span>
-                                        <span class="cancelDes">Cancel</span>
-                                    </a>
-                                </div>
-                            </div>
+            @if($order->is_cancelled==1)
+                <div class="col s12 m7">
+                    <div class="payBox">
+                        <div class="payMainTitle">
+                            <span style="font-size: 30px; font-weight: bold;">Payment Methods</span>
                         </div>
-                        <div class="payTabsWrapper">
-                            <div id="defaultPay" class="payForm" style="height: 100px;">
-                                <span>Choose a method of payment!</span>
-                            </div>
-                            <div id="bankPayment" class="payForm">
-                                <div>Please pay your balance with this information :</div>
-
-                                <div class="payInfoCntr">
-                                    <div class="payInfo"><span style="font-size: 30px;">Payment Information</span></div>
-                                    <div class="divider"></div>
-                                    <div class="payInfo">BDO Savings Account: 007110023351</div>
-                                    <div class="divider"></div>
-                                    <div class="payInfo">DietSelect</div>
-                                </div>
-                                <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
-                                    {{csrf_field()}}
-                                    <div class="row">
-                                        <div><label for="receipt">Receipt Number</label></div>
-                                        <div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>
-                                        <div class="error-recpt err"></div>
+                        <div class="payTabsContainer">
+                            <div class="payTabs">
+                                <div class="row">
+                                    <div data-pay-reveal="bank" class="col s12 m3 payTab">
+                                        <span class="bankIcon"><i class="fa fa-bank"></i></span>
+                                        <span class="bankDes">Bank</span>
                                     </div>
-                                    <div class="row">
-                                        <div><label for="datePay">Date of Transaction:</label></div>
-                                        <div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>
-                                        <div class="error-date-pay err"></div>
-
+                                    <div data-pay-reveal="paypal" class="col s12 m3 payTab">
+                                        <span class="payPalIcon"><i class="fa fa-paypal"></i></span>
+                                        <span class="payPalDes">Paypal</span>
                                     </div>
-                                    <div class="row">
-                                        <div class="file-field">
-                                            <label for="image" class="active">Picture Upload:</label>
-                                            <div style="padding-top: 10px;">
-                                                <div class="btn">
-                                                    <span>File</span>
-                                                    <input type="file" data-error=".error-image" id="image" name="image">
-                                                </div>
-                                                <div class="file-path-wrapper">
-                                                    <input class="file-path validate" type="text" >
-                                                </div>
-                                                <div class="error-image err"></div>
-                                            </div>
-                                        </div>
+                                    <div data-pay-reveal="gcash" class="col s12 m3 payTab">
+                                        <span class="gcashIcon">GCash</span>
+                                        <span class="gcashDes">Gcash</span>
                                     </div>
-                                    <div class="row" style="margin-bottom: 5px;">
-                                        <button class="btn waves-light waves-light orange" type="submit">Submit</button>
+                                    <div id="cancelOrder" class="col s12 m3 cancelTab red">
+                                        <a href="#cancelOrderModal" class="modal-trigger white-text">
+                                            <span class="cancelIcon"><i class="fa fa-ban"></i></span>
+                                            <span class="cancelDes">Cancel</span>
+                                        </a>
                                     </div>
-                                </form>
-                            </div>
-                            <div id="payPalPayment" class="payForm">
-                               <div style="margin: 10px 0; font-size: 20px;">
-                                   Please login to your paypal account to pay.
-                               </div>
-
-                                @if ($message = Session::get('success'))
-                                    <div class="custom-alerts alert alert-success fade in">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                        {!! $message !!}
-                                    </div>
-                                    <?php Session::forget('success');?>
-                                @endif
-                                @if ($message = Session::get('error'))
-                                    <div class="custom-alerts alert alert-danger fade in">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                        {!! $message !!}
-                                    </div>
-                                    <?php Session::forget('error');?>
-                                @endif
-                                <div>
-                                    <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
-                                        {{ csrf_field() }}
-
-                                        <div class="form-group">
-                                            <button type="submit" class="btn btn-primary waves-effect waves-light orange">
-                                                Pay with Paypal
-                                            </button>
-                                        </div>
-                                    </form>
                                 </div>
                             </div>
-                            <div id="gcashPayment" class="payForm">
-                                    <div>
-                                        <span>Please send your gcash payment to the number below. Fill out this form with a screenshot of the confirmation text from Globe.</span>
-                                    </div>
+                            <div class="payTabsWrapper">
+                                <div id="defaultPay" class="payForm" style="height: 100px;">
+                                    <span>Choose a method of payment!</span>
+                                </div>
+                                <div id="bankPayment" class="payForm">
+                                    <div>Please pay your balance with this information :</div>
+
                                     <div class="payInfoCntr">
                                         <div class="payInfo"><span style="font-size: 30px;">Payment Information</span></div>
                                         <div class="divider"></div>
-                                        <div class="payInfo">Gcash Number: 09950893073</div>
+                                        <div class="payInfo">BDO Savings Account: 007110023351</div>
                                         <div class="divider"></div>
                                         <div class="payInfo">DietSelect</div>
                                     </div>
-                                    <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
+                                    <form id="bankPayForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
                                         {{csrf_field()}}
-                                        <div>
-                                            <div class="row">
-                                                <div><label for="gcDatePay">Date of Transaction:</label></div>
-                                                <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>
-                                                <div class="error-gcdate-pay err"></div>
-                                            </div>
-                                            <div class="row">
-                                                <div class="file-field">
-                                                    <label for="gcPic" class="active">Picture Upload:</label>
-                                                    <div style="padding-top: 10px;">
-                                                        <div class="btn">
-                                                            <span>File</span>
-                                                            <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
-                                                        </div>
-                                                        <div class="file-path-wrapper">
-                                                            <input class="file-path validate" type="text" >
-                                                        </div>
-                                                        <div class="error-gcpic err"></div>
+                                        <div class="row">
+                                            <div><label for="receipt">Receipt Number</label></div>
+                                            <div><input type="text" id="receipt" data-error=".error-recpt" name="receipt_number"></div>
+                                            <div class="error-recpt err"></div>
+                                        </div>
+                                        <div class="row">
+                                            <div><label for="datePay">Date of Transaction:</label></div>
+                                            <div><input id="datePay" name="datePay" data-error=".error-date-pay" type="text" class="datepicker"></div>
+                                            <div class="error-date-pay err"></div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div class="file-field">
+                                                <label for="image" class="active">Picture Upload:</label>
+                                                <div style="padding-top: 10px;">
+                                                    <div class="btn">
+                                                        <span>File</span>
+                                                        <input type="file" data-error=".error-image" id="image" name="image">
                                                     </div>
+                                                    <div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" >
+                                                    </div>
+                                                    <div class="error-image err"></div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <button class="btn waves-effect waves-light orange">Submit</button>
-                                            </div>
+                                        </div>
+                                        <div class="row" style="margin-bottom: 5px;">
+                                            <button class="btn waves-light waves-light orange" type="submit">Submit</button>
                                         </div>
                                     </form>
+                                </div>
+                                <div id="payPalPayment" class="payForm">
+                                   <div style="margin: 10px 0; font-size: 20px;">
+                                       Please login to your paypal account to pay.
+                                   </div>
+
+                                    @if ($message = Session::get('success'))
+                                        <div class="custom-alerts alert alert-success fade in">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                            {!! $message !!}
+                                        </div>
+                                        <?php Session::forget('success');?>
+                                    @endif
+                                    @if ($message = Session::get('error'))
+                                        <div class="custom-alerts alert alert-danger fade in">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                            {!! $message !!}
+                                        </div>
+                                        <?php Session::forget('error');?>
+                                    @endif
+                                    <div>
+                                        <form method="POST" id="payment-form" role="form" action="{{route('addmoney.paypal', compact('order'))}}" >
+                                            {{ csrf_field() }}
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light orange">
+                                                    Pay with Paypal
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div id="gcashPayment" class="payForm">
+                                        <div>
+                                            <span>Please send your gcash payment to the number below. Fill out this form with a screenshot of the confirmation text from Globe.</span>
+                                        </div>
+                                        <div class="payInfoCntr">
+                                            <div class="payInfo"><span style="font-size: 30px;">Payment Information</span></div>
+                                            <div class="divider"></div>
+                                            <div class="payInfo">Gcash Number: 09950893073</div>
+                                            <div class="divider"></div>
+                                            <div class="payInfo">DietSelect</div>
+                                        </div>
+                                        <form id="gcPayForm" action="{{route('deposit.gcash', $order->id)}}" method="post" enctype="multipart/form-data">
+                                            {{csrf_field()}}
+                                            <div>
+                                                <div class="row">
+                                                    <div><label for="gcDatePay">Date of Transaction:</label></div>
+                                                    <div><input id="gcDatePay" name="gcDatePay" data-error=".error-gcdate-pay" type="text" class="datepicker"></div>
+                                                    <div class="error-gcdate-pay err"></div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="file-field">
+                                                        <label for="gcPic" class="active">Picture Upload:</label>
+                                                        <div style="padding-top: 10px;">
+                                                            <div class="btn">
+                                                                <span>File</span>
+                                                                <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
+                                                            </div>
+                                                            <div class="file-path-wrapper">
+                                                                <input class="file-path validate" type="text" >
+                                                            </div>
+                                                            <div class="error-gcpic err"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <button class="btn waves-effect waves-light orange">Submit</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                @else
+                    <div class="col s12 m7">
+                        <span style="font-size: 60px">THIS ORDER HAS BEEN CANCELLED</span>
+                    </div>
+                @endif
                 <div class="col s12 m5">
                     <div class="addressInfo">
                         <div class="row">
