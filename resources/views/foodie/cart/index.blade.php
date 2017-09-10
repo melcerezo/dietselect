@@ -22,8 +22,6 @@
                         <thead class="light-green lighten-1 white-text" style="border: none;">
                             <tr>
                                 <th>Plan</th>
-                                <th>Week</th>
-                                <th>Type</th>
                                 <th>Quantity</th>
                                 <th>Price</th>
                                 <th>Remove</th>
