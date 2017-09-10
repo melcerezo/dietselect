@@ -1,6 +1,17 @@
 $(document).ready(function () {
 
+    $('.payTab').on('click',function () {
+        var id = $(this).attr('data-pay-reveal');
+       $('.payForm').hide();
+        if(id=='bank'){
+            $('#bankPayment').show();
+        }else if(id=='paypal'){
+            $('#payPalPayment').show();
+        }else if(id=='gcash'){
+            $('#gcashPayment').show();
+        }
 
+    });
 
     $('#datePay').pickadate({
         // Buttons

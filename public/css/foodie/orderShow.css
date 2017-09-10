@@ -3,7 +3,7 @@
 .payTabs .row{ margin:0; }
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
-.payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; }
+.payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
 .bankIcon{ position: absolute; top:8px; left:23px; font-size: 70px; }
 .payPalIcon{ position: absolute; top:11px; left:37px; font-size: 65px; }
 .gcashIcon{ position: absolute; top:25px; left:4px; font-size: 39px; }

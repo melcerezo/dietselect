@@ -39,7 +39,7 @@
                             <div id="defaultPay" class="payForm" style="height: 100px;">
                                 <span>Choose a method of payment!</span>
                             </div>
-                            <div class="bankPayment payForm">
+                            <div id="bankPayment" class="payForm">
                                 <div>Please pay your balance with this information :</div>
 
                                 <ul class="collection">
@@ -79,7 +79,7 @@
                                     <button type="submit">Submit</button>
                                 </form>
                             </div>
-                            <div class="payPalPayment payForm">
+                            <div id="payPalPayment" class="payForm">
                                 <ul class="collection">
                                     <li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>
                                     <li class="collection-item">Total {{$order->total}}</li>
@@ -111,7 +111,7 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="gcashPayment payForm">
+                            <div id="gcashPayment" class="payForm">
                                     <div>
                                         <span>Please send your gcash payment to the number below. Fill out this form with a screenshot of the confirmation text from Globe.</span>
                                     </div>
