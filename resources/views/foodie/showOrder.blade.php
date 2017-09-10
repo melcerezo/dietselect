@@ -1,141 +1,171 @@
 @extends('foodie.layout')
 @section('page_head')
     <script src="/js/foodie/orderValidate.js" defer></script>
-    <link rel="stylesheet" href="/css/foodie/order.css">
+    {{--<link rel="stylesheet" href="/css/foodie/order.css">--}}
+    <link rel="stylesheet" href="/css/foodie/orderShow.css">
 
 @endsection
 @section('page_content')
 
     <div class="container shOrdCntr">
         <div class="row">
-            <div class="col s12 light-green lighten-1 white-text shOrdMnTtl valign-wrapper">
-                <span>Order Payment</span>
+            <div class="col s12 m7">
+                <div class="payBox">
+                    <div class="payMainTitle">
+                        <span style="font-size: 30px;">Payment Methods</span>
+                    </div>
+                </div>
+                <div class="payTabsContainer">
+                    <div class="payTabs">
+                        <div class="row">
+                            <div class="col s12 m3 payTab bankTab">
+                                <span><i class="fa fa-bank"></i></span>
+                            </div>
+                            <div class="col s12 m3 payTab payPalTab">
+                                <span><i class="fa fa-paypal"></i></span>
+                            </div>
+                            <div class="col s12 m3 payTab gcashTab">
+                                <span>Gcash</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="payTabsWrapper">
+                        <span>This is the pay container</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m5">
             </div>
         </div>
-        <div class="row">
-            <div class="col s12 m8" style="padding: 0;">
-                <div class="card-panel shOrdMlTbl">
-                {{--<table class="centered">--}}
-                    {{--<thead class="light-green lighten-1 white-text" style="border: none;">--}}
+    </div>
+    {{--<div class="row">--}}
+        {{--<div class="col s12 light-green lighten-1 white-text shOrdMnTtl valign-wrapper">--}}
+            {{--<span>Order Payment</span>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--<div class="row">--}}
+        {{--<div class="col s12 m8" style="padding: 0;">--}}
+            {{--<div class="card-panel shOrdMlTbl">--}}
+            {{--<table class="centered">--}}
+                {{--<thead class="light-green lighten-1 white-text" style="border: none;">--}}
+                    {{--<tr>--}}
+                        {{--<th>Plan</th>--}}
+                        {{--<th>Chef</th>--}}
+                        {{--<th>Quantity</th>--}}
+                        {{--<th>Price</th>--}}
+                    {{--</tr>--}}
+                {{--</thead>--}}
+                {{--<tbody>--}}
+                    {{--@foreach($orderItems as $orderItem)--}}
+                        {{--@if($orderItem->order_type==2)--}}
+                            {{--<a href="{{route('foodie.order.simpCust', $orderItem->id)}}">--}}
+                        {{--@endif--}}
                         {{--<tr>--}}
-                            {{--<th>Plan</th>--}}
-                            {{--<th>Chef</th>--}}
-                            {{--<th>Quantity</th>--}}
-                            {{--<th>Price</th>--}}
+                        {{--<div class="orderItem">--}}
+                            {{--@foreach($orderPlans as $orderPlan)--}}
+                                {{--@if($orderPlan->id == $orderItem->plan_id)--}}
+                                    {{--@if($orderItem->order_type==0)--}}
+                                        {{--<div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></div>--}}
+                                        {{--<div>{{$orderPlan->chef->name}}</div>--}}
+                                    {{--@elseif($orderItem->order_type==1 || $orderItem->order_type==2)--}}
+                                        {{--<div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></div>--}}
+                                        {{--<div>{{$orderPlan->plan->chef->name}}</div>--}}
+                                    {{--@endif--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                            {{--<div>{{$orderItem->quantity}}</div>--}}
+                            {{--<div>{{'PHP '.$orderItem->price}}</div>--}}
+                        {{--</div>--}}
+                        {{--@if($orderItem->order_type==2)--}}
+                            {{--</a>--}}
+                        {{--@endif--}}
                         {{--</tr>--}}
-                    {{--</thead>--}}
-                    {{--<tbody>--}}
-                        @foreach($orderItems as $orderItem)
-                            {{--@if($orderItem->order_type==2)--}}
-                                {{--<a href="{{route('foodie.order.simpCust', $orderItem->id)}}">--}}
-                            {{--@endif--}}
-                            {{--<tr>--}}
-                            <div class="orderItem">
-                                @foreach($orderPlans as $orderPlan)
-                                    @if($orderPlan->id == $orderItem->plan_id)
-                                        @if($orderItem->order_type==0)
-                                            <div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan_name}}</a></div>
-                                            <div>{{$orderPlan->chef->name}}</div>
-                                        @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
-                                            <div><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></div>
-                                            <div>{{$orderPlan->plan->chef->name}}</div>
-                                        @endif
-                                    @endif
-                                @endforeach
-                                <div>{{$orderItem->quantity}}</div>
-                                <div>{{'PHP '.$orderItem->price}}</div>
-                            </div>
-                            {{--@if($orderItem->order_type==2)--}}
+                    {{--@endforeach--}}
+                {{--</tbody>--}}
+            {{--</table>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="col s12 m4">--}}
+            {{--<ul class="collection" style="margin: 0;">--}}
+                {{--<li class="collection-item light-green lighten-1 white-text">--}}
+                    {{--<span class="collection-header">Total Order:</span>--}}
+                {{--</li>--}}
+                {{--<li class="collection-item">--}}
+                    {{--<span>Total: {{'PHP '.$order->total}}</span>--}}
+                {{--</li>--}}
+                {{--<li class="collection-item">--}}
+                    {{--<span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>--}}
+                {{--</li>--}}
+                {{--<li class="collection-item">--}}
+                    {{--<span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>--}}
+                {{--</li>--}}
+                {{--<li class="collection-item">--}}
+                    {{--<div>--}}
+                        {{--<span>Delivery Address:</span>--}}
+                    {{--</div>--}}
+                    {{--@if($orderAddress!=null)--}}
+                        {{--<div>--}}
+                            {{--<span>{{$orderAddress->unit}}</span>--}}
+                            {{--@unless($orderAddress->bldg=='')--}}
+                                {{--<span> {{$orderAddress->bldg}}, </span>--}}
+                            {{--@endunless--}}
+                            {{--<span>{{$orderAddress->street}}, </span>--}}
+                            {{--<span>{{$orderAddress->brgy}}, </span>--}}
+                            {{--<span>{{$orderAddress->city}}</span>--}}
+                        {{--</div>--}}
+                        {{--@if($order->is_paid==0)--}}
+                            {{--<div>--}}
+                                {{--<a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                    {{--@else--}}
+                        {{--<div>--}}
+                            {{--@if(count($foodieAddress)==0)--}}
+                                {{--<a href="{{route('foodie.profile')}}">--}}
+                                    {{--<span>No Address Available. Please add one so we can deliver to you!</span>--}}
+                                {{--</a>--}}
+                            {{--@else--}}
+                                {{--<a href="#pickOrderAddressModal" class="modal-trigger">--}}
+                                    {{--<span>No Order Address Picked. Please add one so we can deliver to you!</span>--}}
                                 {{--</a>--}}
                             {{--@endif--}}
-                            {{--</tr>--}}
-                        @endforeach
-                    {{--</tbody>--}}
-                {{--</table>--}}
-                </div>
-            </div>
-            <div class="col s12 m4">
-                <ul class="collection" style="margin: 0;">
-                    <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">Total Order:</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Total: {{'PHP '.$order->total}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
-                    </li>
-                    <li class="collection-item">
-                        <div>
-                            <span>Delivery Address:</span>
-                        </div>
-                        @if($orderAddress!=null)
-                            <div>
-                                <span>{{$orderAddress->unit}}</span>
-                                @unless($orderAddress->bldg=='')
-                                    <span> {{$orderAddress->bldg}}, </span>
-                                @endunless
-                                <span>{{$orderAddress->street}}, </span>
-                                <span>{{$orderAddress->brgy}}, </span>
-                                <span>{{$orderAddress->city}}</span>
-                            </div>
-                            @if($order->is_paid==0)
-                                <div>
-                                    <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
-                                </div>
-                            @endif
-                        @else
-                            <div>
-                                @if(count($foodieAddress)==0)
-                                    <a href="{{route('foodie.profile')}}">
-                                        <span>No Address Available. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @else
-                                    <a href="#pickOrderAddressModal" class="modal-trigger">
-                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @endif
-                            </div>
-                        @endif
-                    </li>
-                </ul>
-                <div style="margin: 10px 0 0 0; border: 1px dashed #d1d1d1; border-radius: 10px; padding: 5px;">
-                    <div>
-                        <span>Payment Methods</span>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m6 center">
-                            <button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
-                                <i class="fa fa-bank"></i>
-                                <span style="font-size: 15px;">Bank</span>
-                            </button>
-                        </div>
-                        <div class="col s12 m6 center">
-                            <button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">
-                                <i class="fa fa-paypal"></i>
-                                <span style="font-size: 15px;">PayPal</span>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m6 center">
-                            <button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">
-                                <span>GCash</span>
-                            </button>
-                        </div>
-                        <div class="col s12 m6 center">
-                            <button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">
-                                <i class="fa fa-ban"></i>
-                                <span style="font-size: 15px;">Cancel</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--</li>--}}
+            {{--</ul>--}}
+            {{--<div style="margin: 10px 0 0 0; border: 1px dashed #d1d1d1; border-radius: 10px; padding: 5px;">--}}
+                {{--<div>--}}
+                    {{--<span>Payment Methods</span>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6 center">--}}
+                        {{--<button data-target="bankPay" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">--}}
+                            {{--<i class="fa fa-bank"></i>--}}
+                            {{--<span style="font-size: 15px;">Bank</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6 center">--}}
+                        {{--<button data-target="paypalPay" class="modal-trigger btn waves-light waves-effect" style="padding: 0; width:100%;">--}}
+                            {{--<i class="fa fa-paypal"></i>--}}
+                            {{--<span style="font-size: 15px;">PayPal</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col s12 m6 center">--}}
+                        {{--<button data-target="gcashModal" class="modal-trigger btn waves-effect waves-light" style="padding: 0; width:100%;">--}}
+                            {{--<span>GCash</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                    {{--<div class="col s12 m6 center">--}}
+                        {{--<button data-target="cancelOrderModal" class="modal-trigger btn waves-effect waves-light red" style="padding: 0; width:100%;">--}}
+                            {{--<i class="fa fa-ban"></i>--}}
+                            {{--<span style="font-size: 15px;">Cancel</span>--}}
+                        {{--</button>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
         {{--@unless($order->is_cancelled==1)--}}
             {{--<div class="row">--}}
                 {{--@unless($order->is_paid==1 || count($foodieAddress)==0 || $orderAddress==null)--}}
@@ -171,7 +201,7 @@
                 {{--@endunless--}}
                 {{--</div>--}}
         {{--@endunless--}}
-    </div>
+    {{--</div>--}}
 
                 {{--<div style="margin-top: 20px;"><button data-target="paypalPay" class="modal-trigger btn">Paypal</button></div>--}}
                 {{--<div style="margin-top: 20px;"><button data-target="gcashModal" class="modal-trigger btn">G-Cash</button></div>--}}

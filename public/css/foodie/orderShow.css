@@ -1,0 +1,8 @@
+.shOrdCntr{
+    width:85%;
+    margin-top: 0.5rem;
+}
+.paybox{ border:1px solid #d1d1d1; }
+.payMainTitle{ border-bottom: 1px solid #d1d1d1; }
+.payTabsWrapper{ border-top: 1px solid #d1d1d1; padding:20px;}
+.payTab{ border-right: 1px solid #d1d1d1; padding:10px; }
