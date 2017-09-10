@@ -17,7 +17,7 @@
         @if(Cart::count()>0)
         <div class="row">
             <div class="col s12" style="padding: 0;">
-                <div class="card-panel shOrdMlTbl">
+                <div class="shOrdMlTbl">
                     <table class="responsive-table" style="table-layout: fixed; width: 100%;">
                         <thead>
                             <tr>
