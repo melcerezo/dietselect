@@ -11,7 +11,7 @@
 
 @section('page_content')
 
-    <div class="container" style="width:85%; margin-bottom: 1rem;">
+    <div class="container" style="width:85%;">
         {{--<div class="row" style="margin-top: 1rem;">--}}
             {{--<nav class="light-green lighten-1 white-text">--}}
                 {{--<div class="left col s12">--}}
@@ -24,7 +24,7 @@
             {{--</nav>--}}
         {{--</div>--}}
     @if($ordersCount>0)
-    <div class="row">
+    <div class="row" style="margin-top: 1rem;">
         <div class="col s6">
             <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
             <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
