@@ -32,10 +32,10 @@
                                 <tr>
                                     <td>
                                         <div class="row">
-                                            <div class="col s12 m4">
+                                            <div class="col s12 m5">
                                                 <img class="responsive-img" src="/img/{{$cartItem->options->pic}}" alt="">
                                             </div>
-                                            <div class="col s12 m8">
+                                            <div class="col s12 m7">
                                                 <div style="font-size: 30px;">
                                                     {{$cartItem->name}}
                                                 </div>
