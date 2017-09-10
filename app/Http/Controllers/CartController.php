@@ -40,7 +40,7 @@ class CartController extends Controller
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
-        dd($cartItems;
+        dd($cartItems);
 
         return view('foodie.cart.index')->with([
             'cartItems' =>$cartItems,
