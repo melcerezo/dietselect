@@ -357,7 +357,7 @@
                     </div>
                     <div class="divider">
                     </div>
-                    <div style="font-size: 20px;">
+                    <div style="font-size: 20px; margin-top: 10px;">
                         <span>Customize Plan</span>
                     </div>
                     <div>
