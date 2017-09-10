@@ -265,14 +265,33 @@ class FoodieMealPlanController extends Controller
 
     public function simpleMake(SimpleCustomPlan $simpleCustomPlan, Request $request)
     {
-
         foreach($request->all() as $key=>$value){
 //            dd($request);
             if($value == "1"){
-                $detail = new SimpleCustomPlanDetail();
-                $detail->simple_custom_plan_id = $simpleCustomPlan->id;
-                $detail->detail = $key;
-                $detail->save();
+
+                if (SimpleCustomPlanDetail::where([
+                        ['simple_custom_plan_id', '=', $simpleCustomPlan->id],
+                        ['detail', '=', $key]
+                    ])->count() == 0
+                ){
+                    $detail = new SimpleCustomPlanDetail();
+                    $detail->simple_custom_plan_id = $simpleCustomPlan->id;
+                    $detail->detail = $key;
+                    $detail->save();
+                }
+
+            }else{
+                if (SimpleCustomPlanDetail::where([
+                        ['simple_custom_plan_id', '=', $simpleCustomPlan->id],
+                        ['detail', '=', $key]
+                    ])->count() > 0
+                ){
+                    $detail = SimpleCustomPlanDetail::where([
+                        ['simple_custom_plan_id', '=', $simpleCustomPlan->id],
+                        ['detail', '=', $key]
+                    ])->count();
+                    $detail->delete();
+                }
             }
         }
 

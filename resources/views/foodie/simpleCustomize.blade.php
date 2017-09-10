@@ -882,12 +882,14 @@
                                 </form>
                             @elseif($simpleCustomMeal->is_customized==1)
                                 @if($simpleCustomMeal->simple_custom_detail->count())
-                                    <ul class="collection">
-                                        <li class="collection-item light-green white-text">
-                                            <span class="collection-header">Customizations</span>
-                                        </li>
+                                    <div class="detailCntr">
+                                        <div class="detailTitle" style="margin: 10px 0;">
+                                            <span style="font-size: 20px;">Customizations</span>
+                                        </div>
+                                        <div class="divider">
+                                        </div>
                                         @foreach($simpleCustomMeal->simple_custom_detail()->get() as $detail)
-                                            <li class="collection-item">
+                                            <div class="detailCnt" style="margin: 10px 0;">
                                                 @if($detail->detail=='switchChicken')
                                                     <span>Switch to Chicken</span>
                                                 @elseif($detail->detail=='switchBeef')
@@ -913,9 +915,10 @@
                                                 @elseif($detail->detail=='noNuts')
                                                     <span>No Nuts/Nut Products</span>
                                                 @endif
-                                            </li>
+                                            </div>
+                                            <div class="divider"></div>
                                         @endforeach
-                                    </ul>
+                                    </div>
                                 @endif
                             @endif
                         </div>
