@@ -36,7 +36,7 @@
                             </div>
                         </div>
                         <div class="payTabsWrapper">
-                            <div class="defaultPay" style="width: 100px;">
+                            <div class="defaultPay" style="height: 100px;">
                                 <span>Choose a method of payment!</span>
                             </div>
                             <div class="bankPayment">
