@@ -34,7 +34,7 @@
                                         <div style="font-size: 30px;">
                                             {{$cartItem->name}}
                                         </div>
-                                        <div style="font-size: 18px;">
+                                        <div style="font-size: 18px; margin-bottom: 10px;">
                                             @foreach($chefs as $chef)
                                                 @if($chef->id == $cartItem->options->chef)
                                                     {{$chef->name}}
