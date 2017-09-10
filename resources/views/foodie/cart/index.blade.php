@@ -81,7 +81,7 @@
         <div class="row">
             <div class="col s12 m6 offset-m6">
                 <div class="row">
-                    <div class="col s12 m4 offset-m6">
+                    <div class="col s12 m6 offset-m6">
                         <ul class="collection" style="margin: 0;">
                            <li class="collection-item light-green lighten-1 white-text">
                                 <span class="collection-header">Total Order:</span>
@@ -97,20 +97,20 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="col s12 m2">
-                        <a id="orderButton" href="{{route('foodie.order')}}">
-                            <div class="light-green lighten-1" style="border-radius: 10px;">
-                                <div class="white-text valign-wrapper" style="width: 100%; height: auto;">
-                                    <div class="white-text center-block">
-                                        <i class="fa fa-shopping-bag" style="font-size: 30px;"></i>
-                                    </div>
-                                </div>
-                                <div class="white-text center">
-                                    <span>Order</span>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    {{--<div class="col s12 m2">--}}
+                        {{--<a id="orderButton" href="{{route('foodie.order')}}">--}}
+                            {{--<div class="light-green lighten-1" style="border-radius: 10px;">--}}
+                                {{--<div class="white-text valign-wrapper" style="width: 100%; height: auto;">--}}
+                                    {{--<div class="white-text center-block">--}}
+                                        {{--<i class="fa fa-shopping-bag" style="font-size: 30px;"></i>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div class="white-text center">--}}
+                                    {{--<span>Order</span>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
                 </div>
             </div>
         </div>
