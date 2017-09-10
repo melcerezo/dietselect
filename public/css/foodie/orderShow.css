@@ -14,6 +14,7 @@
 .cancelDes{ position: absolute; top:90px; left:37px; font-size: 16px; }
 .payForm{ display: none; }
 #defaultPay{ display: block; }
+.payForm .row{ margin: 0 !important; }
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
