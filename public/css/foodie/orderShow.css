@@ -12,7 +12,8 @@
 .payPalDes{ position: absolute; top:91px; left:39px; font-size: 15px; }
 .gcashDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .cancelDes{ position: absolute; top:90px; left:37px; font-size: 16px; }
-.bankPayment,.payPalPayment,.gcashPayment{ display: none; }
+.payForm{ display: none; }
+#defaultPay{ display: block };
 
 @media only screen and (min-width: 1200px){
     .bankIcon{ top:8px; left:50px; }
