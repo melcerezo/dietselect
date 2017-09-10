@@ -711,7 +711,7 @@
                         {{--<li class="collection-item light-green lighten-1 white-text"><span class="collection-header">Order Review</span></li>--}}
                         <li class="collection-item">Chef Name: {{$simpleCustomPlan->plan->chef->name}}</li>
                         <li class="collection-item">Plan Name: {{$simpleCustomPlan->plan->plan_name}}</li>
-                        <li class="collection-item">Plan Price: {{$simpleCustomPlan->plan->price}}</li>
+                        <li class="collection-item">Plan Price: {{'PHP '.number_format($simpleCustomPlan->plan->price,2,'.',',')}}</li>
                     </ul>
                 </div>
             </div>
