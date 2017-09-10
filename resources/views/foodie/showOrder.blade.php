@@ -157,87 +157,90 @@
                         </div>
                     </div>
                 </div>
-                <div class="col s12 m5 orderInfo">
-                    <div class="row">
-                        <span style="font-size: 20px;">Total Order:</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <table class="centered">
-                            <thead>
-                                <tr>
-                                    <th>Plan</th>
-                                    <th>Chef</th>
-                                    <th>Quantity</th>
-                                    <th>Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($orderItems as $orderItem)
-                                <tr>
-                                    @foreach($orderPlans as $orderPlan)
-                                        @if($orderPlan->id == $orderItem->plan_id)
-                                            @if($orderItem->order_type==0)
-                                                <td>{{$orderPlan->plan_name}}</td>
-                                                <td>{{$orderPlan->chef->name}}</td>
-                                            @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
-                                                <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
-                                                <td>{{$orderPlan->plan->chef->name}}</td>
-                                            @endif
-                                        @endif
-                                    @endforeach
-                                    <td>x{{$orderItem->quantity}}</td>
-                                    <td>{{'PHP '.number_format($orderItem->price,2,'.',',')}}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <span>Total: {{'PHP '.number_format($order->total,2,'.',',')}}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="row">
-                        <div>
-                            <span>Delivery Address:</span>
-                        </div>
-                        @if($orderAddress!=null)
+                <div class="col s12 m5">
+                    <div class="addressInfo">
+                        <div class="row">
                             <div>
-                                <span>{{$orderAddress->unit}}</span>
-                                @unless($orderAddress->bldg=='')
-                                    <span> {{$orderAddress->bldg}}, </span>
-                                @endunless
-                                <span>{{$orderAddress->street}}, </span>
-                                <span>{{$orderAddress->brgy}}, </span>
-                                <span>{{$orderAddress->city}}</span>
+                                <span>Delivery Address:</span>
                             </div>
-                            @if($order->is_paid==0)
+                            @if($orderAddress!=null)
                                 <div>
-                                    <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
+                                    <span>{{$orderAddress->unit}}</span>
+                                    @unless($orderAddress->bldg=='')
+                                        <span> {{$orderAddress->bldg}}, </span>
+                                    @endunless
+                                    <span>{{$orderAddress->street}}, </span>
+                                    <span>{{$orderAddress->brgy}}, </span>
+                                    <span>{{$orderAddress->city}}</span>
+                                </div>
+                                @if($order->is_paid==0)
+                                    <div>
+                                        <a href="#pickOrderAddressModal" class="modal-trigger"><span>Change Address</span></a>
+                                    </div>
+                                @endif
+                            @else
+                                <div>
+                                    @if(count($foodieAddress)==0)
+                                        <a href="{{route('foodie.profile')}}">
+                                            <span>No Address Available. Please add one so we can deliver to you!</span>
+                                        </a>
+                                    @else
+                                        <a href="#pickOrderAddressModal" class="modal-trigger">
+                                            <span>No Order Address Picked. Please add one so we can deliver to you!</span>
+                                        </a>
+                                    @endif
                                 </div>
                             @endif
-                        @else
-                            <div>
-                                @if(count($foodieAddress)==0)
-                                    <a href="{{route('foodie.profile')}}">
-                                        <span>No Address Available. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @else
-                                    <a href="#pickOrderAddressModal" class="modal-trigger">
-                                        <span>No Order Address Picked. Please add one so we can deliver to you!</span>
-                                    </a>
-                                @endif
-                            </div>
-                        @endif
+                        </div>
+                    </div>
+                    <div class="orderInfo">
+                        <div class="row">
+                            <span style="font-size: 20px;">Total Order:</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <table class="centered">
+                                <thead>
+                                    <tr>
+                                        <th>Plan</th>
+                                        <th>Chef</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($orderItems as $orderItem)
+                                    <tr>
+                                        @foreach($orderPlans as $orderPlan)
+                                            @if($orderPlan->id == $orderItem->plan_id)
+                                                @if($orderItem->order_type==0)
+                                                    <td>{{$orderPlan->plan_name}}</td>
+                                                    <td>{{$orderPlan->chef->name}}</td>
+                                                @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
+                                                    <td><a href="{{route('foodie.order.single', $orderItem->id)}}">{{$orderPlan->plan->plan_name}}</a></td>
+                                                    <td>{{$orderPlan->plan->chef->name}}</td>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                        <td>x{{$orderItem->quantity}}</td>
+                                        <td>{{'PHP '.number_format($orderItem->price,2,'.',',')}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <span>Total: {{'PHP '.number_format($order->total,2,'.',',')}}</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <span>Status: {{$order->is_paid == 1 ? 'Paid' : 'Pending'}}</span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="row">
+                            <span>Week of: {{$nextWeek.' - '.$nextWeekEnd}}</span>
+                        </div>
                     </div>
                 </div>
             </div>
