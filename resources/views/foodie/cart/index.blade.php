@@ -88,7 +88,7 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
-                                <span>Week: {{$cartItem->options->date}}</span>
+                                <span>Week: {{$nextWeek.'-'.$endNextWeek}}</span>
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">

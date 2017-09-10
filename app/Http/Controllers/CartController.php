@@ -26,6 +26,12 @@ class CartController extends Controller
 
     public function index()
     {
+        $dt=Carbon::now();
+        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
+        $ds=Carbon::now();
+        $endOfNextWeek = $ds->startOfWeek()->addDay(7)->addDay(4)->format('F d');
+
+
         $foodie= Auth::guard('foodie')->user()->id;
         $cartItems=Cart::content();
         $cartCount=Cart::count();
@@ -51,6 +57,8 @@ class CartController extends Controller
             'unreadNotifications'=> $unreadNotifications,
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie'=>Auth::guard('foodie')->user(),
+            'nextWeek'=>$startOfNextWeek,
+            'endNextWeek'=>$endOfNextWeek,
             'chats' => $chats,
             'chefs' => $chefs,
 
