@@ -17,10 +17,10 @@
 @section('page_content')
     <div class="container" style="margin-top: 0.5rem;">
 
-        <div class="row mlPlnTtl">
-            <span>Menu</span>
-        </div>
-        <div class="divider"></div>
+        {{--<div class="row mlPlnTtl">--}}
+            {{--<span>Menu</span>--}}
+        {{--</div>--}}
+        {{--<div class="divider"></div>--}}
         <div class="row mlPlnCnt">
             <div class="col s12 m4">
                 <div id="monday" class="calDay">
