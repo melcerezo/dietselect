@@ -15,17 +15,11 @@
     @else
 
         <div class="container" style="width:85%; margin-top: 0.5rem;">
-            {{--<div class="row">--}}
-                {{--<nav class="light-green lighten-1 white-text">--}}
-                    {{--<div class="left col s12">--}}
-                        {{--<ul>--}}
-                            {{--<li>--}}
-                                {{--<span style="font-size: 20px;">{{$planName}}</span>--}}
-                            {{--</li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</nav>--}}
-            {{--</div>--}}
+            <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
+                <span style="font-size: 30px;">{{$planName}}</span>
+            </div>
+            <div class="divider">
+            </div>
             <div class="row">
                     @if($orderItem->order_type==0)
 
