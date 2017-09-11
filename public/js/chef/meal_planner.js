@@ -22,12 +22,8 @@ $(document).ready(function () {
                 $(this).append('<a href="#chooseModal' + day + mealType + '" class="chooseModalLink modal-trigger">+Add Meal</a>');
                 $(this).append('<div id="chooseModal' + day + mealType + '" class="chooseModalCls modal">' +
                     '<div class="modal-content">' +
-                    '<div class="chseMdlBtnCnt">' +
-                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="orange darken-1 createMealLink modal-trigger btn waves-effect waves-light">Create</button>' +
-                    '</div>' +
-                    '<div class="chseMdlBtnCnt">' +
+                    '<span style="margin-right: 10px;"><button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="orange darken-1 createMealLink modal-trigger btn waves-effect waves-light">Create</button></span>' +
                     '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="chooseMeal" class="orange darken-1 chooseMealLink modal-trigger btn waves-effect waves-light">Choose</button>' +
-                    '</div>' +
                     '</div>' +
                     '</div>');
             }

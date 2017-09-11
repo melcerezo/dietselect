@@ -127,7 +127,7 @@
 .mlTtl { font-size: 20px; color: #f57c00; margin-bottom: 10px; }
 .mlCnt { font-size: 18px; padding-left: 10px; }
 .custAction{ border: 2px dotted #d1d1d1; padding: 5px; }
-.chooseModalCls{ max-width: 50% !important; max-height: 50% !important; }
+.chooseModalCls{ max-width: 40% !important; max-height: 50% !important; }
 
 #loadWait{
     display: none;
