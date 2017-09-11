@@ -2007,32 +2007,27 @@
                 @if($orderItem->order_type==1 || $orderItem->order_type==2)
                     @foreach($mealPlans as $id=>$mealPlan)
                         <div id="meal{{$id}}" class="modal">
-                            <nav class="light-green lighten-1 white-text">
-                                <div class="left col s12 m5 l5">
-                                    <ul>
-                                        <li>
-                                            @if($orderItem->order_type==1)
-                                                <span>{{$mealPlan->description}}</span>
-                                            @elseif($orderItem->order_type==2)
-                                                <span>{{$mealPlan->chef_customized_meal->description}}</span>
-                                            @endif
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
+                            <div class="orange-text text-darken-2" style="margin: 10px; border-left:4px solid #f57c00;">
+                                @if($orderItem->order_type==1)
+                                    <span style="font-size: 30px;">{{$mealPlan->description}}</span>
+                                @elseif($orderItem->order_type==2)
+                                    <span style="font-size: 30px;">{{$mealPlan->chef_customized_meal->description}}</span>
+                                @endif
+                            </div>
+                            <div class="divider" style="margin:0 5px;"></div>
                             <div class="modal-content">
                                 <div>
                                     <ul class="collection">
-                                        <li class="collection-item light-green lighten-1 white-text">
+                                        <li class="collection-item">
                                             <span class="collection-header">Meal Information</span>
                                         </li>
                                         @if($orderItem->order_type==1)
                                             <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
                                         @elseif($orderItem->order_type==2)
                                             <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->chef_customized_meal->calories,2)}}</span></li>
-                                        {{--<li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>--}}
-                                        {{--<li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>--}}
-                                        {{--<li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>--}}
+                                            {{--<li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>--}}
+                                            {{--<li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>--}}
+                                            {{--<li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>--}}
                                         @endif
                                     </ul>
                                 </div>
@@ -2040,11 +2035,11 @@
                                     <table>
                                         <thead>
                                         @if($orderItem->order_type==1)
-                                        <tr>
-                                            <th>Ingredient</th>
-                                            <th>Grams</th>
-                                            <th>Customized</th>
-                                        </tr>
+                                            <tr>
+                                                <th>Ingredient</th>
+                                                <th>Grams</th>
+                                                <th>Customized</th>
+                                            </tr>
                                         @elseif($orderItem->order_type==2)
                                             <tr>
                                                 <th>Ingredient</th>
@@ -2064,7 +2059,7 @@
                                 @if($orderItem->order_type==2)
                                     @if($mealPlan->simple_custom_detail->count())
                                         <ul class="collection">
-                                            <li class="collection-item light-green white-text">
+                                            <li class="collection-item">
                                                 <span class="collection-header">Customizations</span>
                                             </li>
                                             @foreach($mealPlan->simple_custom_detail()->get() as $detail)
