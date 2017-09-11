@@ -14,7 +14,7 @@ $(document).ready(function () {
     });
 
 
-    $('.tdCell').each(function () {
+    $('.mlCnt').each(function () {
         if(lockPlan==0){
             var day = $(this).attr('data-day');
             var mealType = $(this).attr('data-meal-type');
