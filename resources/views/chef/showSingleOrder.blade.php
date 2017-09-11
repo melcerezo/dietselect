@@ -3290,7 +3290,7 @@
                         @if($cookCount>0)
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <span class="collection-header" style="font-size: 20px>Cooking Methods</span>
+                                    <span class="collection-header" style="font-size: 20px">Cooking Methods</span>
                                 </li>
                                 @foreach($orderPlan->simple_custom_plan_detail as $detail)
                                     @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
