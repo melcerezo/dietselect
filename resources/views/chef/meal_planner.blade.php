@@ -311,7 +311,7 @@
                             <div class="mlCnt" data-day="TH" data-meal-type="AfternoonSnack">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$i}}" data-meal-active="#viewMeal-{{$id}}"
+                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
                                            class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
                                     @endif
                                 @endforeach
