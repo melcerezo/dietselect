@@ -1,0 +1,11 @@
+.mlPlnTtl{ font-size: 40px; margin-left: 5px; color: orange; }
+.mlPlnCnt{ margin-top: 10px; }
+.calDay{ border: 2px dotted #d1d1d1; padding: 5px; }
+.dayTtl{ font-size: 30px; border-left: 4px solid orange; color: orange; margin-bottom: 10px; }
+.brekk{ margin-top: 5px; }
+.mealDay { margin-bottom: 10px; }
+.mealDay a { color: black; }
+.mealDay:hover { border: 1px solid orange; color: orange !important; }
+.mealDay:hover a { color: orange !important;}
+.mlTtl { font-size: 20px; }
+.mlCnt { font-size: 18px; padding-left: 10px; }
