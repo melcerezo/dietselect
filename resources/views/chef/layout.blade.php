@@ -213,7 +213,7 @@
                 </a>
             </li>
             <li class="collection-item"><a href="{{url('foodie/order/view')}}">Order History</a></li>
-            <li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>
+            {{--<li class="collection-item"><a href="{{route('chef.rating')}}">Rating</a></li>--}}
             {{--<li class="collection-item"><a id="viewChefs" href="#!">View Chefs</a></li>--}}
         </ul>
 
