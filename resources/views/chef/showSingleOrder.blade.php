@@ -1886,7 +1886,7 @@
                 @endif
                 @endif
             </div>
-            <div class="row">
+            {{--<div class="row">--}}
                 {{--@if($orderItem->order->is_paid==0 && $orderItem->order->is_cancelled==0)--}}
                     {{--<a href="{{route('order.show',$orderItem->order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Back to Order</a>--}}
                 {{--@elseif($orderItem->order->is_paid==1 && $orderItem->order->is_cancelled==0)--}}
@@ -1894,13 +1894,13 @@
                 {{--@elseif($orderItem->order->is_cancelled==1)--}}
                     {{--<a href="{{route('foodie.order.view', ['from'=>0])}}" class="btn waves-effect waves-light" style="font-weight: 100">Order History</a>--}}
                 {{--@endif--}}
-                @if($orderItem->order_type==2)
-                    @if($orderPlan->simple_custom_plan_detail->count())
-                        <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
-                    @endif
-                @endif
+                {{--@if($orderItem->order_type==2)--}}
+                    {{--@if($orderPlan->simple_custom_plan_detail->count())--}}
+                        {{--<button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>--}}
+                    {{--@endif--}}
+                {{--@endif--}}
 
-            </div>
+            {{--</div>--}}
         </div>
             {{--<div class="row">--}}
                 {{--<div class="card-panel" style="padding: 0;">--}}
