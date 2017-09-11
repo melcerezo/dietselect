@@ -1,0 +1,10 @@
+.ratingTab{
+    display: none;
+}
+#finishedRating{
+    display: block;
+}
+.activeRate{
+    border-bottom: 4px solid orange;
+    color: orange;
+}

@@ -18,11 +18,18 @@
                 <div class="divider"></div>
                 <div class="row">
                     <ul class="collection">
-                        <li class="collection-item">Order History</li>
-                        <li class="collection-item">Browse Plans</li>
-                        <li class="collection-item">Profile</li>
-                        <li class="collection-item">Messages</li>
-                        <li class="collection-item">Ratings</li>
+                        <li class="collection-item">
+                            <a href="{{route("foodie.order.view", ['id'=> 0])}}">Order History</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('foodie.plan.show')}}">Browse Plans</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('foodie.profile')}}">Profile</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('chef.rating', ['from'=> 1])}}">Ratings</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -97,7 +104,7 @@
                     @if(count($ordersRatingPlans)>0)
                         @foreach($ordersRatingPlans as $rating)
                             <li class="collection-item">
-                                <a href="{{route('chef.rating')}}">
+                                <a href="{{route('chef.rating', ['from'=> 0])}}">
                                     <i class="material-icons">stars</i>
                                     {{$rating['plan_name'].'-'.$rating['type']}}<br>
                                 </a>

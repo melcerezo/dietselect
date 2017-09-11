@@ -11,6 +11,7 @@ use App\Order;
 use App\OrderItem;
 use App\Plan;
 use App\Rating;
+use App\SimpleCustomPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -27,7 +28,7 @@ class RatingsController extends Controller
         $this->middleware('foodie.auth');
     }
 
-    public function getRatingPage()
+    public function getRatingPage($from)
     {
         $foodie = Auth::guard('foodie')->user();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
@@ -38,6 +39,7 @@ class RatingsController extends Controller
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
         $ordersRatingChef = [];
+        $ordersRatingsFinished =[];
         foreach($orders as $order){
             $orderItems = $order->order_item()->get();
             foreach($orderItems as $orderItem){
@@ -57,10 +59,38 @@ class RatingsController extends Controller
                             $planName = $orderPlan->plan->plan_name;
                             $chefName = $orderPlan->plan->chef->name;
                             $orderType = "Customized";
+                        }elseif ($orderItem->order_type == 2) {
+                            $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan->plan_name;
+                            $chefName = $orderPlan->plan->chef->name;
+                            $orderType = "Customized";
                         }
 
                         $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
                             'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                    }else if($rating->is_rated==1){
+                        $planName = "";
+                        $chefName = "";
+                        $orderType = "";
+                        if ($orderItem->order_type == 0) {
+                            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan_name;
+                            $chefName = $orderPlan->chef->name;
+                            $orderType = "Standard";
+                        } elseif ($orderItem->order_type == 1) {
+                            $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan->plan_name;
+                            $chefName = $orderPlan->plan->chef->name;
+                            $orderType = "Customized";
+                        }elseif ($orderItem->order_type == 2) {
+                            $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            $planName = $orderPlan->plan->plan_name;
+                            $chefName = $orderPlan->plan->chef->name;
+                            $orderType = "Customized";
+                        }
+
+                        $ordersRatingFinished[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id, 'rating' => $rating->rating,
+                            'feedback'=>$rating->feedback,'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
                     }
                 }
             }
@@ -75,8 +105,10 @@ class RatingsController extends Controller
             'messages'=>$messages,
             'orders'=>$orders,
             'ordersRatingChef'=>$ordersRatingChef,
+            'ordersRatingsFinished'=>$ordersRatingsFinished,
             'notifications'=>$notifications,
-            'unreadNotifications'=>$unreadNotifications
+            'unreadNotifications'=>$unreadNotifications,
+            'from'=>$from
         ]);
     }
 

@@ -108,7 +108,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('gcash/pay/{order}', 'DepositController@gcash')->name('deposit.gcash');
 
     // Rating
-    Route::get('foodie/rating', 'RatingsController@getRatingPage')->name('chef.rating');
+    Route::get('foodie/rating/{from}', 'RatingsController@getRatingPage')->name('chef.rating');
     Route::post('rate/chef/{orderItem}/{id}', 'RatingsController@rateChef')->name('rate.chef');
 
     // Cart
