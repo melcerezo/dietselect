@@ -3274,7 +3274,7 @@
                     <div class="modal-content">
                         @if($tasteCount>0)
                         <ul class="collection">
-                            <li class="collection-item light-green white-text">
+                            <li class="collection-item">
                                 <span class="collection-header">Taste</span>
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
@@ -3289,7 +3289,7 @@
                         @endif
                         @if($cookCount>0)
                             <ul class="collection">
-                                <li class="collection-item light-green white-text">
+                                <li class="collection-item">
                                     <span class="collection-header">Cooking Methods</span>
                                 </li>
                                 @foreach($orderPlan->simple_custom_plan_detail as $detail)
@@ -3303,7 +3303,7 @@
                         @endif
                         @if($driedCount>0)
                             <ul class="collection">
-                                <li class="collection-item light-green white-text">
+                                <li class="collection-item">
                                     <span class="collection-header">Dry Goods/Condiments</span>
                                 </li>
                                 @foreach($orderPlan->simple_custom_plan_detail as $detail)
