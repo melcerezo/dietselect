@@ -21,7 +21,7 @@ $(document).ready(function () {
             if ($(this).text().trim() == "") {
                 $(this).append('<a href="#chooseModal' + day + mealType + '" class="chooseModalLink modal-trigger">+Add Meal</a>');
                 $(this).append('<div id="chooseModal' + day + mealType + '" class="chooseModalCls modal">' +
-                    '<div class="orange-text darken-1" style="margin-top: 10px; font-size: 30px;">Create Meal or Choose Existing</div>' +
+                    '<div class="orange-text darken-1" style="margin: 10px 0 0 10px; font-size: 30px;">Create Meal or Choose Existing</div>' +
                     '<div class="divider" style="margin: 10px 5px;"></div>' +
                     '<div class="modal-content center">' +
                     '<span style="margin-right: 10px;"><button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="orange darken-1 createMealLink modal-trigger btn waves-effect waves-light">Create</button></span>' +
