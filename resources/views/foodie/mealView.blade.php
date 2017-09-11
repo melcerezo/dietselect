@@ -65,7 +65,7 @@
                                     {{--<button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger">Customize</button>--}}
 
                                 </div>
-                                <div class="col s12 m3">
+                                <div class="col s12 m4">
                                     <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange darken-2  waves-effect waves-light">Cart</a>
                                 </div>
                             </div>
