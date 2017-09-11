@@ -28,7 +28,7 @@
                             <a href="{{route('foodie.profile')}}">Profile</a>
                         </li>
                         <li class="collection-item">
-                            <a href="{{route('chef.rating', ['fromRate'=>1])}}">Ratings</a>
+                            <a href="{{route('chef.rating', ['id'=>1])}}">Ratings</a>
                         </li>
                     </ul>
                 </div>
@@ -104,7 +104,7 @@
                     @if(count($ordersRatingPlans)>0)
                         @foreach($ordersRatingPlans as $rating)
                             <li class="collection-item">
-                                <a href="{{route('chef.rating', ['fromRate'=>0])}}">
+                                <a href="{{route('chef.rating', ['id'=>0])}}">
                                     <i class="material-icons">stars</i>
                                     {{$rating['plan_name'].'-'.$rating['type']}}<br>
                                 </a>
