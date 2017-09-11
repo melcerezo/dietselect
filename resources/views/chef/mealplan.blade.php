@@ -294,7 +294,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field">
-                        <label for="category">Category:</label>
+                        <label for="category" class="active">Category:</label>
                         <select name="category" id="category" data-error=".error-description">
                             <option value="">Select category</option>
                             <option value="1">Weight Loss</option>
