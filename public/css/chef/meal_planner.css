@@ -129,6 +129,10 @@
 .custAction{ border: 2px dotted #d1d1d1; padding: 5px; }
 .chooseModalCls{ max-width: 50% !important; max-height: 50% !important; }
 
+@media only screen and (min-width: 1200px){
+    .chooseModalCls{ max-width: 40% !important; max-height: 50% !important; }
+}
+
 #loadWait{
     display: none;
     position: fixed;
