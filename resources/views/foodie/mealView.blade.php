@@ -134,6 +134,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
@@ -148,6 +149,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
@@ -162,6 +164,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
@@ -176,6 +179,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -190,6 +194,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
@@ -211,6 +216,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
@@ -225,6 +231,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
@@ -239,6 +246,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
@@ -253,6 +261,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -267,6 +276,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
@@ -288,6 +298,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
@@ -302,6 +313,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
@@ -316,6 +328,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
@@ -330,6 +343,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -344,6 +358,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
@@ -367,6 +382,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Breakfast')
@@ -381,6 +397,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
@@ -395,6 +412,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Lunch')
@@ -409,6 +427,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -423,6 +442,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'Dinner')
@@ -444,6 +464,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Breakfast')
@@ -458,6 +479,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
@@ -472,6 +494,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Lunch')
@@ -486,6 +509,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -500,6 +524,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'Dinner')
@@ -522,6 +547,7 @@
                                 <div class="mlTtl">
                                     <span>Breakfast</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
@@ -536,6 +562,7 @@
                                     <div class="mlTtl">
                                         <span>Morning Snack</span>
                                     </div>
+                                    <div class="divider" style="margin: 0 5px;"></div>
                                     <div class="mlCnt">
                                         @foreach($mealPlans as $id =>$mealPlan)
                                             @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
@@ -550,6 +577,7 @@
                                 <div class="mlTtl">
                                     <span>Lunch</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
@@ -564,6 +592,7 @@
                                     <div class="mlTtl">
                                         <span>Afternoon Snack</span>
                                     </div>
+                                    <div class="divider" style="margin: 0 5px;"></div>
                                     <div class="mlCnt">
                                         @foreach($mealPlans as $id =>$mealPlan)
                                             @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
@@ -578,6 +607,7 @@
                                 <div class="mlTtl">
                                     <span>Dinner</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
