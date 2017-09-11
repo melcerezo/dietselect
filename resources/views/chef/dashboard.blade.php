@@ -22,6 +22,9 @@
                     </li>
                     <li class="collection-item">
                         <a href="{{route('chef.message.index')}}">Messages</a>
+                        @if($messages->count()>0)
+                            <span class="new badge red">{{$messages->count()}}</span>
+                        @endif
                     </li>
                     <li class="collection-item">
                         <a href="{{route('chef.ratings')}}">Ratings</a>
