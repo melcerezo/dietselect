@@ -3262,11 +3262,11 @@
                                 @endif
                             </div>
                         </div>
-                    {{--@endforeach--}}
-                {{--@endif--}}
-            {{--@endunless--}}
+                    @endforeach
+                @endif
+            @endunless
 
-        {{--</div>--}}
+        </div>
 
         @if($orderItem->order_type==2)
             @if($orderPlan->simple_custom_plan_detail->count())
