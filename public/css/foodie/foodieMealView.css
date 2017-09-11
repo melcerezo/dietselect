@@ -81,7 +81,7 @@
 .planGallery { padding:0 15px; height:300px; overflow-y: hidden; -ms-overflow-y: hidden;}
 .planGallery:hover { overflow-y: scroll;}
 .galleryItem{ width:100px; height:auto; margin-bottom: 10px; }
-.galleryItem:hover{ border: 3px solid orange; padding: 1px }
+.galleryItem:hover{ border: 3px solid #f57c00; padding: 1px }
 #plPic { display: block; }
 .imgGall{ display: none; }
 .planName,.planPrice { margin: 10px 0; }
@@ -101,15 +101,15 @@
     max-width: 90% !important;
     max-height: 80% !important;
 }
-.mlPlnTtl{ font-size: 40px; margin-left: 5px; color: orange; }
+.mlPlnTtl{ font-size: 40px; margin-left: 5px; color: #f57c00; }
 .mlPlnCnt{ margin-top: 10px; }
 .calDay{ border: 2px dotted #d1d1d1; padding: 5px; }
-.dayTtl{ font-size: 30px; border-left: 4px solid orange; color: orange; margin-bottom: 10px; }
+.dayTtl{ font-size: 30px; border-left: 4px solid #f57c00; color: #f57c00; margin-bottom: 10px; }
 .brekk{ margin-top: 5px; }
 .mealDay { margin-bottom: 10px; }
 .mealDay a { color: black; }
-.mealDay:hover { border: 1px solid orange; color: orange !important; }
-.mealDay:hover a { color: orange !important;}
+.mealDay:hover { border: 1px solid #f57c00; color: #f57c00 !important; }
+.mealDay:hover a { color: #f57c00 !important;}
 .mlTtl { font-size: 20px; }
 .mlCnt { font-size: 18px; padding-left: 10px; }
 

@@ -60,13 +60,13 @@
                                 {{--<div class="col s12 m5 xl6 bookingWeek">--}}
                                     {{--Week of: {{$startWeek}}--}}
                                 {{--</div>--}}
-                                <div class="col s12 m4 xl3 centered">
-                                    <a id="orderButton" href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange waves-effect waves-light" style="font-weight: 100;">Customize</a>
+                                <div class="col s12 m4 l3 centered">
+                                    <a id="orderButton" href="{{route('foodie.plan.simple', $plan->id)}}" class="btn orange darken-2 waves-effect waves-light" style="font-weight: 100;">Customize</a>
                                     {{--<button data-target="orderCustom" class="btn orange waves-effect waves-light modal-trigger">Customize</button>--}}
 
                                 </div>
                                 <div class="col s12 m3">
-                                    <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange waves-effect waves-light">Cart</a>
+                                    <a href="{{route('cart.add', ['id' => $plan->id,'cust' => 0])}}" class="btn orange darken-2  waves-effect waves-light">Cart</a>
                                 </div>
                             </div>
                         </div>
@@ -106,7 +106,7 @@
                                     </div>
 
                                     <div class="menu">
-                                        <button data-target="menu" class="btn orange waves-effect waves-light modal-trigger">Menu</button>
+                                        <button data-target="menu" class="btn orange darken-2 waves-effect waves-light modal-trigger">Menu</button>
                                     </div>
                                 </div>
                             </div>
