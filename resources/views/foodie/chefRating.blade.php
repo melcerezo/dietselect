@@ -114,6 +114,7 @@
                                     <div id="rateYoFinish{{$key}}"></div>
                                     <script>
                                         $(function () {
+                                            $("#rateYoFinish{{$key}}").rateYo('destroy');
                                             $("#rateYoFinish{{$key}}").rateYo({
                                                 rating: '{{$order['rating']}}',
 //                                                fullStar: true,
