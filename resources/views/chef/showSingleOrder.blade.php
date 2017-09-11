@@ -250,6 +250,19 @@
                                     </span>
                                 </li>
                                 <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
+
+                                <li class="collection-item">Address:
+                                    @unless($orderAddress==null)
+                                        <div>
+                                            <span>{{$orderAddress->unit}}</span>
+                                            @unless($orderAddress->bldg=='')
+                                                <span> {{$orderAddress->bldg}}, </span>
+                                            @endunless
+                                            <span>{{$orderAddress->street}}, </span>
+                                            <span>{{$orderAddress->city}}</span>
+                                        </div>
+                                    @endunless
+                                </li>
                                 <li class="collection-item">Allergies:
                                     <div>
                                         @if($allergies->count()>0)
@@ -260,25 +273,7 @@
                                     </div>
 
                                 </li>
-                                <li class="collection-item">Address:
-                                    @unless($orderAddress==null)
-                                        <div>
-                                            <span>{{$orderAddress->unit}}</span>
-                                            @unless($orderAddress->bldg=='')
-                                                <span> {{$orderAddress->bldg}}, </span>
-                                            @endunless
-                                            <span>{{$orderAddress->street}}, </span>
-                                            <span>{{$orderAddress->brgy}}, </span>
-                                            <span>{{$orderAddress->city}}</span>
-                                        </div>
-                                    @endunless
-                                </li>
                             </ul>
-                            @if($orderItem->order_type==2)
-                                @if($orderPlan->simple_custom_plan_detail->count())
-                                    <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
-                                @endif
-                            @endif
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
@@ -835,16 +830,6 @@
                                     </span>
                                 </li>
                                 <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
-                                <li class="collection-item">Allergies:
-                                    <div>
-                                        @if($allergies->count()>0)
-                                            <button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>
-                                        @else
-                                            <span>No Allergies</span>
-                                        @endif
-                                    </div>
-
-                                </li>
                                 <li class="collection-item">Address:
                                     @unless($orderAddress==null)
                                         <div>
@@ -858,12 +843,17 @@
                                         </div>
                                     @endunless
                                 </li>
+                                <li class="collection-item">Allergies:
+                                    <div>
+                                        @if($allergies->count()>0)
+                                            <button data-target="allergiesModal" class="orange darken-1 btn waves-effect waves-light modal-trigger">View Allergies</button>
+                                        @else
+                                            <span>No Allergies</span>
+                                        @endif
+                                    </div>
+
+                                </li>
                             </ul>
-                            @if($orderItem->order_type==2)
-                                @if($orderPlan->simple_custom_plan_detail->count())
-                                    <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
-                                @endif
-                            @endif
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
@@ -1525,16 +1515,6 @@
                                     </span>
                                 </li>
                                 <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
-                                <li class="collection-item">Allergies:
-                                    <div>
-                                        @if($allergies->count()>0)
-                                            <button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>
-                                        @else
-                                            <span>No Allergies</span>
-                                        @endif
-                                    </div>
-
-                                </li>
                                 <li class="collection-item">Address:
                                     @unless($orderAddress==null)
                                         <div>
@@ -1548,10 +1528,19 @@
                                         </div>
                                     @endunless
                                 </li>
+                                <li class="collection-item">Allergies:
+                                    <div>
+                                        @if($allergies->count()>0)
+                                            <button data-target="allergiesModal" class="orange darken-1 btn waves-effect waves-light modal-trigger">View Allergies</button>
+                                        @else
+                                            <span>No Allergies</span>
+                                        @endif
+                                    </div>
+                                </li>
                             </ul>
                             @if($orderItem->order_type==2)
                                 @if($orderPlan->simple_custom_plan_detail->count())
-                                    <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
+                                    <button data-target="planCustomization" class="orange darken-1 btn waves-effect waves-light modal-trigger">See Customization</button>
                                 @endif
                             @endif
                         </div>
