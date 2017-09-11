@@ -111,11 +111,10 @@
                                 <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
                             <div class="card-content">
-
-                                    <div id="rateYoFinish{{$key}}"></div>
+                                    <div id="rate{{$key}}"></div>
                                     <script>
                                         $(function () {
-                                            $("#rateYoFinish{{$key}}").rateYo({
+                                            $("#rate{{$key}}").rateYo({
                                                 rating: '{{$order['rating']}}',
                                                 fullStar: true,
                                                 readOnly: true
