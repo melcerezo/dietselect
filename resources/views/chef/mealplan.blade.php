@@ -6,7 +6,7 @@
     <script src="/js/chef/planValidate.js" defer></script>
 @endsection
 @section('page_content')
-<div class="container" style="width:85%;">
+<div class="container" style="width:85%; margin-top: 1rem;">
     @if($chef->bank_account)
             @if($planCount==0)
                 <div class="row" style="margin-top:10px;">
