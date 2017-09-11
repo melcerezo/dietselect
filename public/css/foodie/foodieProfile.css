@@ -51,7 +51,7 @@
 .activePrfLink{
     /*background: #e1f5fe;*/
     color: #f57c00;
-    border-left: 4px solid #f57c00;
+    border: 1px solid #f57c00;
 }
 .col.addressEdit{
     padding-right:0;
