@@ -89,7 +89,7 @@ class RatingsController extends Controller
                             $orderType = "Customized";
                         }
 
-                        $ordersRatingFinished[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id, 'rating' => $rating->rating,
+                        $ordersRatingsFinished[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id, 'rating' => $rating->rating,
                             'feedback'=>$rating->feedback,'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
                     }
                 }
