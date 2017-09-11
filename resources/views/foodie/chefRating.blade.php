@@ -111,17 +111,16 @@
                                 <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
                             <div class="card-panel">
-                                    <div id="rateYoFinish{{$key}}"></div>
-                                    <script>
-                                        $(function () {
-                                            $("#rateYoFinish{{$key}}").rateYo('destroy');
-                                            $("#rateYoFinish{{$key}}").rateYo({
-                                                rating: '{{$order['rating']}}',
-//                                                fullStar: true,
-                                                readOnly: true
-                                            });
-                                        });
-                                    </script>
+                                    {{--<div id="rateYoFinish{{$key}}"></div>--}}
+                                    {{--<script>--}}
+                                        {{--$(function () {--}}
+                                            {{--$("#rateYoFinish{{$key}}").rateYo({--}}
+                                                {{--rating: '{{$order['rating']}}',--}}
+                                                {{--fullStar: true,--}}
+                                                {{--readOnly: true--}}
+                                            {{--});--}}
+                                        {{--});--}}
+                                    {{--</script>--}}
                                     <div class="row">
                                         @if($order['feedback']!=null)
                                             <p>Comment: {{$order['feedback']}}</p>
