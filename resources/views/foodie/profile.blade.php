@@ -90,7 +90,7 @@
                         </div>
                     </div>
                     <div class="prfCntBtn">
-                        <button data-target="basic-profile-modal" class="btn modal-trigger">Edit Basic Profile</button>
+                        <button data-target="basic-profile-modal" class="orange darken-2 btn modal-trigger">Edit</button>
                     </div>
                 </div>
 
@@ -255,14 +255,14 @@
                                     delete button
                                     <form action="{{route('foodie.address.delete', $address->id)}}" method="post">
                                         {{csrf_field()}}
-                                        <input type="submit" class="btn" value="delete">
+                                        <input type="submit" class="orange darken-2 btn" value="delete">
                                     </form>
                                 </div>
                             </div>
                         @endforeach
                     @endif
                     <div class="prfCntBtn">
-                        <button data-target="address-modal" class="btn modal-trigger">Add Delivery Address</button>
+                        <button data-target="address-modal" class="orange darken-2 btn modal-trigger">Add</button>
                     </div>
                 </div>
 
@@ -290,7 +290,7 @@
                             @endforeach
                         </ul>
                     <div>
-                        <button data-target="allergies-modal" class="btn modal-trigger">Edit Allergies</button>
+                        <button data-target="allergies-modal" class="orange darken-2 btn modal-trigger">Edit Allergies</button>
                     </div>
                 </div>
 
@@ -312,7 +312,7 @@
                         </div>
                     @endif
                     <div class="prfCntBtn">
-                        <button data-target="food-preference-modal" class="btn modal-trigger">Edit Food Preferences</button>
+                        <button data-target="food-preference-modal" class="orange darken-2 btn modal-trigger">Edit</button>
                     </div>
                 </div>
 

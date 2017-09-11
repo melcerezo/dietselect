@@ -104,7 +104,7 @@
                         </div>
                     </div>
                     <div class="prfCntBtn">
-                        <button data-target="basic-profile-modal" class="btn modal-trigger">Edit Basic Profile</button>
+                        <button data-target="basic-profile-modal" class="orange darken-2 btn modal-trigger">Edit</button>
                     </div>
                 </div>
             </div>
