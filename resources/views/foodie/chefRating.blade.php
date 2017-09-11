@@ -40,26 +40,26 @@
                                     {{csrf_field()}}
 
                                     <input type="hidden" name="rating" id="rate{{$key}}" data-error=".error{{$key}}" value=""/>
-                                    {{--<div id="rateYo{{$key}}"></div>--}}
-                                    {{--<div class="error{{$key}} err">--}}
-                                    {{--</div>--}}
-                                    {{--<script>--}}
-                                        {{--$(function () {--}}
-                                            {{--$("#rateYo{{$key}}").rateYo({--}}
-                                                {{--rating: 1,--}}
-                                                {{--fullStar: true--}}
-                                            {{--});--}}
+                                    <div id="rateYo{{$key}}"></div>
+                                    <div class="error{{$key}} err">
+                                    </div>
+                                    <script>
+                                        $(function () {
+                                            $("#rateYo{{$key}}").rateYo({
+                                                rating: 1,
+                                                fullStar: true
+                                            });
 
-                                            {{--$("#rateYo{{$key}}").rateYo()--}}
-                                                    {{--.on("rateyo.set", function (e, data) {--}}
-                                                        {{--var $rate = data.rating;--}}
+                                            $("#rateYo{{$key}}").rateYo()
+                                                    .on("rateyo.set", function (e, data) {
+                                                        var $rate = data.rating;
 
-                                                        {{--$('input#rate{{$key}}').val($rate);--}}
-                                                        {{--window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");--}}
-                                                    {{--});--}}
+                                                        $('input#rate{{$key}}').val($rate);
+                                                        window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");
+                                                    });
 
-                                        {{--});--}}
-                                    {{--</script>--}}
+                                        });
+                                    </script>
 
                                     {{--<span class="starRating">--}}
                                         {{--<input name="rate{{$key}}" type="radio" id="test1{{$key}}" value="1" checked/>--}}
@@ -115,7 +115,7 @@
                                 <script>
                                     $(function () {
                                         $("#rateYoFinish{{$key}}").rateYo({
-                                            rating: '{{$order['rating']}}',
+                                            rating: '5',
                                             fullStar: true,
                                             readOnly: true
                                         });
