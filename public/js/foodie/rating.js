@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('.ratingTab').hide();
         $('#pendingRating').show();
     }else if(from == 1){
-        $('#finished').addClass('activeRating');
+        $('#finished').addClass('activeRate');
         $('.ratingTab').hide();
         $('#finishedRating').show();
     }
@@ -13,21 +13,21 @@ $(document).ready(function () {
     $('#pending').on('click',function () {
 
         // hide other tabs
-        $('#finished').removeClass('activeRating');
+        $('#finished').removeClass('activeRate');
         $('.ratingTab').hide();
 
         // show pending tab
-        $('#pending').addClass('activeRating');
+        $('#pending').addClass('activeRate');
         $('#pendingRating').show();
     });
     $('#finished').on('click',function () {
 
         // hide other tabs
-        $('#pending').removeClass('activeRating');
+        $('#pending').removeClass('activeRate');
         $('.ratingTab').hide();
 
         // show pending tab
-        $('#finished').addClass('activeRating');
+        $('#finished').addClass('activeRate');
         $('#finishedRating').show();
     });
 
