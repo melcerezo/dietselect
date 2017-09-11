@@ -45,7 +45,7 @@
                         @foreach($orderArray as $orderItem)
                             @if($orderItem['id'] == $order->id)
                         <div class="card-title" style="font-size: 18px;">
-                            <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                            <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                 {{--<div class="col s12 m1">--}}
                                     {{--<div>ID</div>--}}
                                     {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
@@ -70,6 +70,8 @@
                         </div>
                             @endif
                         @endforeach
+                        <div class="divider" style="margin: 0 5px;">
+                        </div>
                         <div class="card-content">
                             @foreach($orderItemArray as $orderItemItem)
                                 @if($orderItemItem['order_id']==$order->id)
@@ -115,7 +117,7 @@
                     @foreach($orderArray as $orderItem)
                         @if($orderItem['id'] == $order->id)
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     {{--<div class="col s12 m1">--}}
                                         {{--<div>ID</div>--}}
                                         {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
@@ -140,6 +142,8 @@
                             </div>
                         @endif
                     @endforeach
+                    <div class="divider" style="margin: 0 5px;">
+                    </div>
                     <div class="card-content">
                         @foreach($orderItemArray as $orderItemItem)
                             @if($orderItemItem['order_id']==$order->id)
@@ -173,7 +177,7 @@
                         @foreach($orderArray as $orderItem)
                             @if($orderItem['id'] == $order->id)
                                 <div class="card-title" style="font-size: 18px;">
-                                    <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                         {{--<div class="col s12 m1">--}}
                                             {{--<div>ID</div>--}}
                                             {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
@@ -198,6 +202,8 @@
                                 </div>
                             @endif
                         @endforeach
+                        <div class="divider" style="margin: 0 5px;">
+                        </div>
                         <div class="card-content">
                             @foreach($orderItemArray as $orderItemItem)
                                 @if($orderItemItem['order_id']==$order->id)
@@ -250,7 +256,7 @@
                             @foreach($orderArray as $orderItem)
                                 @if($orderItem['id'] == $order->id)
                                     <div class="card-title" style="font-size: 18px;">
-                                        <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                             {{--<div class="col s12 m1">--}}
                                                 {{--<div>ID</div>--}}
                                                 {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
@@ -275,6 +281,8 @@
                                     </div>
                                 @endif
                             @endforeach
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
                                 <div class="card-content">
                                     @foreach($orderItemArray as $orderItemItem)
                                         @if($orderItemItem['order_id']==$order->id)
@@ -369,7 +377,7 @@
                             @foreach($orderArray as $orderItem)
                                 @if($orderItem['id'] == $order->id)
                                     <div class="card-title" style="font-size: 18px;">
-                                        <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                             {{--<div class="col s12 m1">--}}
                                                 {{--<div>ID</div>--}}
                                                 {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
@@ -394,6 +402,8 @@
                                     </div>
                                 @endif
                             @endforeach
+                            <div class="divider" style="margin: 0 5px;">
+                            </div>
                             <div class="card-content">
                                 @foreach($orderItemArray as $orderItemItem)
                                     @if($orderItemItem['order_id']==$order->id)
