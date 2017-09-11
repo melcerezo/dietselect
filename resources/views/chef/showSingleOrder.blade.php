@@ -3143,7 +3143,7 @@
                 <div class="orange-text darken-1"style="margin:10px; border-left:4px solid darkorange">
                     <span style="font-size: 30px;">Allergies</span>
                 </div>
-                <div class="divider"></div>
+                <div class="divider" style="margin: 0 5px;"></div>
                 <div class="modal-content">
                     <ul>
                         @foreach($allergies as $allergy)
@@ -3177,7 +3177,7 @@
                                     <span style="font-size: 30px;">{{$mealPlan->chef_customized_meal->description}}</span>
                                 @endif
                             </div>
-                        <div class="divider" style="padding:0 5px;"></div>
+                        <div class="divider" style="margin:0 5px;"></div>
                         <div class="modal-content">
                             <div>
                                 <ul class="collection">
