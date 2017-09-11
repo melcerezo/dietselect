@@ -874,7 +874,7 @@
             <div class="left col s12 m5 l5">
                 <ul>
                     <li>
-                        <span class="edtMlTtl">Unlock and Edit {{$plan->plan_name}}?</span>
+                        <span class="edtMlTtl">Unlock {{$plan->plan_name}}?</span>
                     </li>
                 </ul>
             </div>

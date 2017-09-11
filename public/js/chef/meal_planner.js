@@ -23,10 +23,10 @@ $(document).ready(function () {
                 $(this).append('<div id="chooseModal' + day + mealType + '" class="chooseModalCls modal">' +
                     '<div class="modal-content">' +
                     '<div class="chseMdlBtnCnt">' +
-                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="createMealLink modal-trigger btn waves-effect waves-light">Create New Meal</button>' +
+                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="createMeal" class="orange darken-1 createMealLink modal-trigger btn waves-effect waves-light">Create</button>' +
                     '</div>' +
                     '<div class="chseMdlBtnCnt">' +
-                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="chooseMeal" class="chooseMealLink modal-trigger btn waves-effect waves-light">Pick From Existing Meals</button>' +
+                    '<button data-day="' + day + '" data-meal-type="' + mealType + '" data-target="chooseMeal" class="orange darken-1 chooseMealLink modal-trigger btn waves-effect waves-light">Choose</button>' +
                     '</div>' +
                     '</div>' +
                     '</div>');
