@@ -31,8 +31,8 @@
                         <span style="font-size: 20px;">YOUR PLANS</span>
                     </div>
                     <ul>
-                        <li class="chef valign-wrapper"><div class="currentName" href="#">Current Plans</div></li>
                         <li class="chef valign-wrapper"><div class="upcomingName" href="#">Upcoming Plans</div></li>
+                        <li class="chef valign-wrapper"><div class="currentName" href="#">Current Plans</div></li>
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
                 </div>
