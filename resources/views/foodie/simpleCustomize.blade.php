@@ -35,6 +35,7 @@
                         <div class="mlTtl">
                             <span>Breakfast</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -55,6 +56,7 @@
                             <div class="mlTtl">
                                 <span>Morning Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -75,6 +77,7 @@
                         <div class="mlTtl">
                             <span>Lunch</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -95,6 +98,7 @@
                             <div class="mlTtl">
                                 <span>Afternoon Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -115,6 +119,7 @@
                         <div class="mlTtl">
                             <span>Dinner</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
@@ -142,6 +147,7 @@
                         <div class="mlTtl">
                             <span>Breakfast</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -162,6 +168,7 @@
                             <div class="mlTtl">
                                 <span>Morning Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -182,6 +189,7 @@
                         <div class="mlTtl">
                             <span>Lunch</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -202,6 +210,7 @@
                             <div class="mlTtl">
                                 <span>Afternoon Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -222,6 +231,7 @@
                         <div class="mlTtl">
                             <span>Dinner</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
@@ -249,6 +259,7 @@
                         <div class="mlTtl">
                             <span>Breakfast</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -269,6 +280,7 @@
                             <div class="mlTtl">
                                 <span>Morning Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -289,6 +301,7 @@
                         <div class="mlTtl">
                             <span>Lunch</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -309,6 +322,7 @@
                             <div class="mlTtl">
                                 <span>Afternoon Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -329,6 +343,7 @@
                         <div class="mlTtl">
                             <span>Dinner</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
@@ -386,6 +401,7 @@
                         <div class="mlTtl">
                             <span>Breakfast</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -406,6 +422,7 @@
                             <div class="mlTtl">
                                 <span>Morning Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -426,6 +443,7 @@
                         <div class="mlTtl">
                             <span>Lunch</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -446,6 +464,7 @@
                             <div class="mlTtl">
                                 <span>Afternoon Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -466,6 +485,7 @@
                         <div class="mlTtl">
                             <span>Dinner</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
@@ -493,6 +513,7 @@
                         <div class="mlTtl">
                             <span>Breakfast</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -513,6 +534,7 @@
                             <div class="mlTtl">
                                 <span>Morning Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -533,6 +555,7 @@
                         <div class="mlTtl">
                             <span>Lunch</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -553,6 +576,7 @@
                             <div class="mlTtl">
                                 <span>Afternoon Snack</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -573,6 +597,7 @@
                         <div class="mlTtl">
                             <span>Dinner</span>
                         </div>
+                        <div class="divider" style="margin: 0 5px;"></div>
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
@@ -601,6 +626,7 @@
                             <div class="mlTtl">
                                 <span>Breakfast</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
@@ -621,6 +647,7 @@
                                 <div class="mlTtl">
                                     <span>Morning Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                         @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
@@ -641,6 +668,7 @@
                             <div class="mlTtl">
                                 <span>Lunch</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
@@ -661,6 +689,7 @@
                                 <div class="mlTtl">
                                     <span>Afternoon Snack</span>
                                 </div>
+                                <div class="divider" style="margin: 0 5px;"></div>
                                 <div class="mlCnt">
                                     @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                         @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
@@ -681,6 +710,7 @@
                             <div class="mlTtl">
                                 <span>Dinner</span>
                             </div>
+                            <div class="divider" style="margin: 0 5px;"></div>
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
