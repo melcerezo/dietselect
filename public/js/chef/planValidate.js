@@ -1,4 +1,30 @@
 $(document).ready(function () {
+
+    $('div.buyCard').hover(function () {
+        if($(this).find('.card-content').find('.buyBtn').css('visibility')=='hidden'){
+            $(this).find('.card-content').find('.buyBtn').css('visibility','visible');
+        }else{
+            $(this).find('.card-content').find('.buyBtn').css('visibility','hidden');
+        }
+    });
+
+    $('.allName').click(function () {
+        $('#currentContainer').hide();
+        $('#upcomingContainer').hide();
+        $('#allContainer').show();
+    });
+    $('.currentName').click(function () {
+        $('#allContainer').hide();
+        $('#upcomingContainer').hide();
+        $('#currentContainer').show();
+    });
+    $('.upcomingName').click(function () {
+        $('#allContainer').hide();
+        $('#currentContainer').hide();
+        $('#upcomingContainer').show();
+    });
+
+
     $('form#createPlanForm').validate({
         rules:{
             plan_name:{

@@ -89,7 +89,7 @@
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
                                                         <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
-                                                            PHP 1,800.00
+                                                            {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
                                                     <div class="card-content">

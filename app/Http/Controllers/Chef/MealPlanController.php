@@ -54,10 +54,8 @@ class MealPlanController extends Controller
          * Get ALL the plans WHERE updated_at is LESS THAN twoWeeksAGO
          */
 
-        $pastPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
-            ->where('created_at', '<=', $lastTwoWeeks)
+        $allPlans = Plan::where('chef_id', Auth::guard('chef')->user()->id)
             ->where('is_banned','=',0)
-            ->limit(5)
             ->get();
 
         /* CURRENT PLANS
@@ -113,7 +111,7 @@ class MealPlanController extends Controller
             'plan' => $plan,
             'messages'=>$messages,
             'chats' => $chats,
-            'pastPlans' => $pastPlans, // PAST PLANS
+            'allPlans' => $allPlans, // all plans
             'plans' => $plans, //get data of meal plan
             'futurePlans' => $futurePlans, // FUTURE PLANS
             'notifications' => $notifications
