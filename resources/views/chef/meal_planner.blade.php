@@ -246,16 +246,16 @@
                 <div>
                     @if($plan->lockPlan==0)
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
+                            <button id="fnshEdt" data-target="finishEdit" class="orange darken-1 btn waves-effect waves-light modal-trigger">Finish</button>
                         </div>
                     @else
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="unlckPln" data-target="unlckPlnMdl" class="btn waves-effect waves-light modal-trigger">Unlock</button>
+                            <button id="unlckPln" data-target="unlckPlnMdl" class="orange darken-1 btn waves-effect waves-light modal-trigger">Unlock</button>
                         </div>
                         <div class="divider">
                         </div>
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="backPln" data-target="bckPlnMdl" class="btn waves-effect waves-light modal-trigger">Back to Plans</button>
+                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-1 btn waves-effect waves-light modal-trigger">Back to Plans</button>
                         </div>
                     @endif
                 </div>
