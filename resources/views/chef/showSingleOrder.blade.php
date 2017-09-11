@@ -3140,11 +3140,10 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div id="allergiesModal" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div>
-                        <span style="font-size: 20px; margin-left: 5px;">Allergies</span>
-                    </div>
-                </nav>
+                <div class="orange-text darken-1">
+                    <span style="font-size: 30px; margin-left: 5px;">Allergies</span>
+                </div>
+                <div class="divider"></div>
                 <div class="modal-content">
                     <ul>
                         @foreach($allergies as $allergy)
@@ -3171,19 +3170,13 @@
             @if($orderItem->order_type==1 || $orderItem->order_type==2)
                 @foreach($mealPlans as $id=>$mealPlan)
                     <div id="meal{{$id}}" class="modal">
-                        <nav class="light-green lighten-1 white-text">
-                            <div class="left col s12 m5 l5">
-                                <ul>
-                                    <li>
-                                        @if($orderItem->order_type==1)
-                                            <span>{{$mealPlan->description}}</span>
-                                        @elseif($orderItem->order_type==2)
-                                            <span>{{$mealPlan->chef_customized_meal->description}}</span>
-                                        @endif
-                                    </li>
-                                </ul>
+                            <div class="orange-text darken-1" style="border-left:4px solid darkorange">
+                                @if($orderItem->order_type==1)
+                                    <span>{{$mealPlan->description}}</span>
+                                @elseif($orderItem->order_type==2)
+                                    <span>{{$mealPlan->chef_customized_meal->description}}</span>
+                                @endif
                             </div>
-                        </nav>
                         <div class="modal-content">
                             <div>
                                 <ul class="collection">
