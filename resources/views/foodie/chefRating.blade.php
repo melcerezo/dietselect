@@ -110,7 +110,7 @@
                             <div style="margin-bottom: 10px;">
                                 <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
-                            <div id="rateYoFinish{{$key}}" style="margin-bottom: 20px;"></div>
+                            <div id="rateYoFinish{{$key}}" style="margin-bottom: 60px;"></div>
                             <script>
                                 $(function () {
                                     $("#rateYoFinish{{$key}}").rateYo({
