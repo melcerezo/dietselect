@@ -104,7 +104,7 @@
         </div>
         <div id="finishedRating" class="row ratingTab">
             @if(count($ordersRatingsFinished)>0)
-                @foreach($ordersRatingFinished as $key=>$order)
+                @foreach($ordersRatingsFinished as $key=>$order)
                     <div class="row">
                         <div class="card">
                             <div class="left col s12">
