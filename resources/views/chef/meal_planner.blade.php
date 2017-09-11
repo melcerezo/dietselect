@@ -1088,17 +1088,22 @@
 
 
     <div id="chooseMeal" class="modal chooseMdlTbl">
-        <nav class="light-green lighten-1 white-text">
-            <div class="nav-wrapper">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px; margin-left: 20px;">Choose Meal For <span id="dayNameChoose"></span> on <span id="mealTypeChoose"></span></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="orange-text darken-1" style="margin-top: 10px">
+            <span class="edtMlTtl" style="font-size: 30px;">Choose Meal For <span id="dayNameChoose"></span> on <span id="mealTypeChoose"></span></span>
+        </div>
+        <div class="divider" style="margin: 10px;">
+        </div>
+        {{--<nav class="light-green lighten-1 white-text">--}}
+            {{--<div class="nav-wrapper">--}}
+                {{--<div class="left col s12">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span style="font-size: 20px; margin-left: 20px;">Choose Meal For <span id="dayNameChoose"></span> on <span id="mealTypeChoose"></span></span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</nav>--}}
         <div class="modal-content">
             <div>
                 <table id="mealsContainer" class="centered">
@@ -1130,10 +1135,6 @@
             @if($meals->count()>0)
                     <button type="submit" class="btn waves-effect waves-light">Choose</button>
             @endif
-                    {{--<label for="mealChoiceSelect">Select Meal</label>--}}
-                    {{--<select id="mealChoiceSelect" name="mealChoiceSelect" class="selectRequired">--}}
-                        {{--<option selected value="">Choose Meal</option>--}}
-                    {{--</select>--}}
                 </form>
         </div>
     </div>

@@ -111,7 +111,8 @@
     font-weight: 100;
 }
 .chosen{
-    background-color: lightskyblue ;
+    border: 1px solid #f57c00; color: #f57c00 !important;
+    /*background-color: lightskyblue ;*/
 }
 
 .mlPlnTtl{ font-size: 40px; margin-left: 5px; color: #f57c00; }
