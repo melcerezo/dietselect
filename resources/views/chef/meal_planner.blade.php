@@ -910,8 +910,8 @@
             </div>
         </nav>
         <div class="modal-content">
-            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Lock Plan</a>
-            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Exit</a>
+            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light orange darken-1" style="color: white; font-weight:100;">Lock Plan</a>
+            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light orange darken-1" style="color: white; font-weight:100;">Exit</a>
         </div>
     </div>
 
