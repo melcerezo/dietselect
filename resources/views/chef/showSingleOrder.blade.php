@@ -3139,33 +3139,33 @@
 
                 {{--</div>--}}
             {{--</div>--}}
-            {{--<div id="allergiesModal" class="modal">--}}
-                {{--<nav class="light-green lighten-1 white-text">--}}
-                    {{--<div>--}}
-                        {{--<span style="font-size: 20px; margin-left: 5px;">Allergies</span>--}}
-                    {{--</div>--}}
-                {{--</nav>--}}
-                {{--<div class="modal-content">--}}
-                    {{--<ul>--}}
-                        {{--@foreach($allergies as $allergy)--}}
-                            {{--<li>--}}
-                                {{--<div class="divider"></div>--}}
-                                {{--<div>--}}
-                                    {{--<div class="row">--}}
-                                        {{--<div class="col s12">--}}
-                                            {{--@if($allergy->allergy=='shrimp')--}}
-                                                {{--<span>Squid, Shrimp and Crab</span>--}}
-                                            {{--@else--}}
-                                                {{--<span>{{ ucfirst($allergy->allergy) }}</span>--}}
-                                            {{--@endif--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                {{--</div>--}}
-                            {{--</li>--}}
-                        {{--@endforeach--}}
-                    {{--</ul>--}}
-                {{--</div>--}}
-            {{--</div>--}}
+            <div id="allergiesModal" class="modal">
+                <nav class="light-green lighten-1 white-text">
+                    <div>
+                        <span style="font-size: 20px; margin-left: 5px;">Allergies</span>
+                    </div>
+                </nav>
+                <div class="modal-content">
+                    <ul>
+                        @foreach($allergies as $allergy)
+                            <li>
+                                <div class="divider"></div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col s12">
+                                            @if($allergy->allergy=='shrimp')
+                                                <span>Squid, Shrimp and Crab</span>
+                                            @else
+                                                <span>{{ ucfirst($allergy->allergy) }}</span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
 
         @unless(count($mealPlans)==0)
             @if($orderItem->order_type==1 || $orderItem->order_type==2)
