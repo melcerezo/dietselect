@@ -1935,7 +1935,7 @@
                     @endif
                     @if($orderItem->order_type==2)
                         @if($orderPlan->simple_custom_plan_detail->count())
-                            <button data-target="planCustom" class="btn waves-effect waves-light modal-trigger" style="margin-left: 10px;">See Customizations</button>
+                            <button data-target="planCustom" class="orange darken-2 btn waves-effect waves-light modal-trigger" style="margin-left: 10px;">See Customizations</button>
                         @endif
                     @endif
 
