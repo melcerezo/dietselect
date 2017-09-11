@@ -13,7 +13,7 @@
         </div>
     @else
         <div class="container" style="width:85%; margin-top: 0.5rem;">
-            <div class="orange-text darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
+            <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
                 <span style="font-size: 30px;">{{$planName}}</span>
             </div>
             <div class="divider">
@@ -519,7 +519,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -539,7 +539,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -559,7 +559,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -579,7 +579,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -599,7 +599,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -626,7 +626,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -646,7 +646,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -666,7 +666,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -686,7 +686,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -706,7 +706,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -733,7 +733,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -753,7 +753,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -773,7 +773,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -793,7 +793,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -813,7 +813,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -875,7 +875,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -895,7 +895,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -915,7 +915,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -935,7 +935,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -955,7 +955,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -982,7 +982,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1002,7 +1002,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1022,7 +1022,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1042,7 +1042,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1062,7 +1062,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->custom_type==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1090,7 +1090,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1110,7 +1110,7 @@
                                                         <br />
                                                         <div id="cu{{$id}}">
                                                             @if($mealPlan->custom_type==1)
-                                                                <p class="orange-text darken-2">Customized</p>
+                                                                <p class="orange-text text-darken-2">Customized</p>
                                                             @endif
                                                         </div>
                                                     @endif
@@ -1130,7 +1130,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1150,7 +1150,7 @@
                                                         <br />
                                                         <div id="cu{{$id}}">
                                                             @if($mealPlan->custom_type==1)
-                                                                <p class="orange-text darken-2">Customized</p>
+                                                                <p class="orange-text text-darken-2">Customized</p>
                                                             @endif
                                                         </div>
                                                     @endif
@@ -1170,7 +1170,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->custom_type==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1204,7 +1204,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1224,7 +1224,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1244,7 +1244,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1264,7 +1264,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1284,7 +1284,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1311,7 +1311,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1331,7 +1331,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1351,7 +1351,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1371,7 +1371,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1391,7 +1391,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1418,7 +1418,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1438,7 +1438,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1458,7 +1458,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1478,7 +1478,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1498,7 +1498,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1564,7 +1564,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1584,7 +1584,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1604,7 +1604,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1624,7 +1624,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1644,7 +1644,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1671,7 +1671,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1691,7 +1691,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1711,7 +1711,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1731,7 +1731,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1751,7 +1751,7 @@
                                                 <br />
                                                 <div id="cu{{$id}}">
                                                     @if($mealPlan->is_customized==1)
-                                                        <p class="orange-text darken-2">Customized</p>
+                                                        <p class="orange-text text-darken-2">Customized</p>
                                                     @endif
                                                 </div>
                                             @endif
@@ -1779,7 +1779,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1799,7 +1799,7 @@
                                                         <br />
                                                         <div id="cu{{$id}}">
                                                             @if($mealPlan->is_customized==1)
-                                                                <p class="orange-text darken-2">Customized</p>
+                                                                <p class="orange-text text-darken-2">Customized</p>
                                                             @endif
                                                         </div>
                                                     @endif
@@ -1819,7 +1819,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -1839,7 +1839,7 @@
                                                         <br />
                                                         <div id="cu{{$id}}">
                                                             @if($mealPlan->is_customized==1)
-                                                                <p class="orange-text darken-2">Customized</p>
+                                                                <p class="orange-text text-darken-2">Customized</p>
                                                             @endif
                                                         </div>
                                                     @endif
@@ -1859,7 +1859,7 @@
                                                     <br />
                                                     <div id="cu{{$id}}">
                                                         @if($mealPlan->is_customized==1)
-                                                            <p class="orange-text darken-2">Customized</p>
+                                                            <p class="orange-text text-darken-2">Customized</p>
                                                         @endif
                                                     </div>
                                                 @endif
@@ -3140,7 +3140,7 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div id="allergiesModal" class="modal">
-                <div class="orange-text darken-2" style="margin:10px; border-left:4px solid #f57c00">
+                <div class="orange-text text-darken-2" style="margin:10px; border-left:4px solid #f57c00">
                     <span style="font-size: 30px;">Allergies</span>
                 </div>
                 <div class="divider" style="margin: 0 5px;"></div>
@@ -3170,7 +3170,7 @@
             @if($orderItem->order_type==1 || $orderItem->order_type==2)
                 @foreach($mealPlans as $id=>$mealPlan)
                     <div id="meal{{$id}}" class="modal">
-                            <div class="orange-text darken-2" style="margin: 10px; border-left:4px solid #f57c00;">
+                            <div class="orange-text text-darken-2" style="margin: 10px; border-left:4px solid #f57c00;">
                                 @if($orderItem->order_type==1)
                                     <span style="font-size: 30px;">{{$mealPlan->description}}</span>
                                 @elseif($orderItem->order_type==2)
@@ -3267,7 +3267,7 @@
         @if($orderItem->order_type==2)
             @if($orderPlan->simple_custom_plan_detail->count())
                 <div id="planCustomization" class="modal">
-                    <div class="orange-text darken-2" style="margin:10px; border-left:4px solid #f57c00">
+                    <div class="orange-text text-darken-2" style="margin:10px; border-left:4px solid #f57c00">
                         <span style="font-size: 30px;">{{$planName}} Customization</span>
                     </div>
                     <div class="divider" style="margin: 0 5px;"></div>
