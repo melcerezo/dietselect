@@ -13,15 +13,7 @@
             <h2>This Meal Plan is Empty!</h2>
         </div>
     @else
-        <nav>
-            <div class="nav-wrapper">
-                <div class="col s12">
-                    <a href="#!" class="breadcrumb">First</a>
-                    <a href="#!" class="breadcrumb">Second</a>
-                    <a href="#!" class="breadcrumb">Third</a>
-                </div>
-            </div>
-        </nav>
+
         <div class="container" style="width:85%; margin-top: 0.5rem;">
             {{--<div class="row">--}}
                 {{--<nav class="light-green lighten-1 white-text">--}}
