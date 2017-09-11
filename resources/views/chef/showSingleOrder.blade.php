@@ -3267,15 +3267,10 @@
         @if($orderItem->order_type==2)
             @if($orderPlan->simple_custom_plan_detail->count())
                 <div id="planCustomization" class="modal">
-                    <nav class="light-green lighten-1 white-text">
-                        <div class="left col s12 m5 l5">
-                            <ul>
-                                <li>
-                                    <span>{{$planName}} Customization</span>
-                                </li>
-                            </ul>
-                        </div>
-                    </nav>
+                    <div class="orange-text darken-1"style="margin:10px; border-left:4px solid darkorange">
+                        <span style="font-size: 30px;">{{$planName}} Customization</span>
+                    </div>
+                    <div class="divider" style="margin: 0 5px;"></div>
                     <div class="modal-content">
                         @if($tasteCount>0)
                         <ul class="collection">
