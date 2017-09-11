@@ -107,9 +107,9 @@
                 @foreach($ordersRatingsFinished as $key=>$order)
                     <div class="row">
                         <div class="card">
-                            {{--<div class="left col s12">--}}
-                                {{--<span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>--}}
-                            {{--</div>--}}
+                            <div class="col s12">
+                                <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
+                            </div>
                             <div class="card-content">
                                 <div id="rateYoFinish{{$key}}"></div>
                                 <script>
