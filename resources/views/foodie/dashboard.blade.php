@@ -87,6 +87,7 @@
                             </li>
                         @endif
                     </ul>
+                </div>
             </div>
             <div class="col s12 m3">
                 <ul class="collection">
