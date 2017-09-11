@@ -120,7 +120,7 @@
                                     });
                                 });
                             </script>
-                            <div class="row">
+                            <div>
                                 @if($order['feedback']!=null)
                                     <p>Comment: {{$order['feedback']}}</p>
                                 @endif
