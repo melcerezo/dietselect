@@ -3177,6 +3177,7 @@
                                     <span style="font-size: 30px;">{{$mealPlan->chef_customized_meal->description}}</span>
                                 @endif
                             </div>
+                        <div class="divider"></div>
                         <div class="modal-content">
                             <div>
                                 <ul class="collection">
