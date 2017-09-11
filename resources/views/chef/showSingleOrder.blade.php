@@ -1,7 +1,6 @@
 @extends('chef.layout')
 @section('page_head')
     <link rel="stylesheet" href="/css/chef/chefMealCustomize.css">
-    <script src="/js/foodie/foodieIngredientAutocomplete.js"></script>
     <script src="/js/foodie/mealPlanValidate.js"></script>
     <script src="/js/chef/mealPlanShow.js"></script>
 
