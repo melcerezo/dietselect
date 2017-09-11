@@ -245,11 +245,11 @@
             <div class="col s12 m3 custAction">
                 <div>
                     @if($plan->lockPlan==0)
-                        <div>
+                        <div style="font-size: 20px; margin: 10px 0;">
                             <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
                         </div>
                     @else
-                        <div>
+                        <div style="font-size: 20px; margin: 10px 0;">
                             <button id="unlckPln" data-target="unlckPlnMdl" class="btn waves-effect waves-light modal-trigger">Unlock</button>
                         </div>
                         <div class="divider">
