@@ -106,26 +106,24 @@
             @if(count($ordersRatingsFinished)>0)
                 @foreach($ordersRatingsFinished as $key=>$order)
                     <div class="row">
-                        <div class="card">
-                            <div class="col s12">
+                        <div class="card-panel">
+                            <div>
                                 <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
-                            <div class="card-content">
-                                <div id="rateYoFinish{{$key}}"></div>
-                                <script>
-                                    $(function () {
-                                        $("#rateYoFinish{{$key}}").rateYo({
-                                            rating: '{{$order['rating']}}',
-                                            fullStar: true,
-                                            readOnly: true
-                                        });
+                            <div id="rateYoFinish{{$key}}"></div>
+                            <script>
+                                $(function () {
+                                    $("#rateYoFinish{{$key}}").rateYo({
+                                        rating: '{{$order['rating']}}',
+                                        fullStar: true,
+                                        readOnly: true
                                     });
-                                </script>
-                                <div class="row">
-                                    @if($order['feedback']!=null)
-                                        <p>Comment: {{$order['feedback']}}</p>
-                                    @endif
-                                </div>
+                                });
+                            </script>
+                            <div class="row">
+                                @if($order['feedback']!=null)
+                                    <p>Comment: {{$order['feedback']}}</p>
+                                @endif
                             </div>
                         </div>
                     </div>
