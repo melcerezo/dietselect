@@ -103,6 +103,42 @@
             @endif
         </div>
         <div id="finishedRating" class="row ratingTab">
+            @if(count($ordersRatingsFinished)>0)
+                @foreach($ordersRatingFinished as $key=>$order)
+                    <div class="row">
+                        <div class="card">
+                            <div class="left col s12">
+                                <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
+                            </div>
+                            <div class="card-content">
+
+                                    <div id="rateYoFinish{{$key}}"></div>
+                                    </div>
+                                    <script>
+                                        $(function () {
+                                            $("#rateYoFinish{{$key}}").rateYo({
+                                                rating: '{{$order['rating']}}',
+                                                fullStar: true,
+                                                readOnly: true
+                                            });
+                                        });
+                                    </script>
+                                    <div class="row">
+                                        @if($order['feedback']!=null)
+                                            <p>Comment: {{$order['feedback']}}</p>
+                                        @endif
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <div class="row">
+                    <div class="card-panel">
+                        <p>No Ratings!</p>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 @endsection
