@@ -125,6 +125,7 @@
 .mealDay:hover a { color: #f57c00 !important;}
 .mlTtl { font-size: 20px; color: #f57c00; margin-bottom: 10px; }
 .mlCnt { font-size: 18px; padding-left: 10px; }
+.custAction{ border: 2px dotted #d1d1d1; padding: 5px; }
 
 
 #loadWait{
