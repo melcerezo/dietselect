@@ -9,6 +9,111 @@
 @section('page_content')
     <div class="container dshMnCnt">
         <div class="row">
+            <div class="col s12 m6 l2">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <a href="{{route("chef.order.view", ['id'=> 0])}}">Order History</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.plan')}}">View Your Plans</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.profile')}}">Profile</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.ratings')}}">Ratings</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col s12 m6 l3">
+                <div class="card">
+                    <div class="card-image dshPrfCrdCnt">
+                        @if($chef->cover==null)
+                            <a id="coverLinkPhoto" href="#addCover" class="modal-trigger">
+                                <span class="fa fa-camera grey-text lighten-3" style="position: absolute; top:12px; left: 0; display: block; font-size: 8em; margin: 0.15em auto; width: 100%; text-align: center;"></span>
+                                <div id="addCoverPhotoLink">
+                                    <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                                        <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                                    </div>
+                                </div>
+                            </a>
+                        @else
+                            <a href="#addCover" class="modal-trigger">
+                                <img class="dshPrfCrdImgBan" src="/img/{{ $chef->cover }}">
+                                <div id="addCoverPhotoLink">
+                                    <div style="padding-top:15%; margin: 0 auto; width: 50%;">
+                                        <span class="orange-text" style="font-size: 40px;">+Add Photo</span>
+                                    </div>
+                                </div>
+                            </a>
+                        @endif
+                    </div>
+                    <div class="card-content">
+                        <img src="/img/{{ $chef->avatar }}" class="circle dshPrfCrdImgUs">
+                        <span class="card-title">{{$chef->name}}</span>
+                        <div class="divider dshPrfCrdDvd"></div>
+                        <div class="dshPrfCrdInf">
+                            <p>Email: {{$chef->email}}</p>
+                            <p>Phone Number: {{'0'.$chef->mobile_number}}</p>
+                        </div>
+                        <div>
+                            <a href="{{route('chef.profile')}}">Edit Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col s12 m6 l3">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <div class="collection-header">Paid Order</div>
+                    </li>
+                    @if(count($paidOrders)>0)
+                        @foreach($paidOrders as $orderItem)
+                            <li class="collection-item">
+                                <a href="{{route('chef.order.single',$orderItem['id'])}}">
+                                    <p>Plan: <span>{{$orderItem['name']}}</span></p>
+                                    <div class="divider"></div>
+                                    <p>Foodie:
+                                        @foreach($foodies as $foodie)
+                                            @if($foodie->id == $orderItem['foodie_id'])
+                                                <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                            @endif
+                                        @endforeach
+                                    </p>
+                                </a>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="collection-item">
+                            <span>No Paid Orders</span>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+            <div class="col s12 m6 l3">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <span class="collection-header">Upcoming Plans</span>
+                    </li>
+                    @if($pendPlans->count()>0)
+                        @foreach($pendPlans as $plan)
+                            <li class="collection-item">
+                                <a href="{{ route('chef.plan.table',['plan'=>$plan->id]) }}">
+                                    <p>Plan: {{$plan->plan_name}}</p>
+                                </a>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="collection-item">
+                            <div style="margin: 5px;">
+                                <span>No Pending Plans</span>
+                            </div>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+        <div class="row">
             <div class="col s12 m6 l4">
                 <div class="card">
                     <div class="card-image dshPrfCrdCnt">
