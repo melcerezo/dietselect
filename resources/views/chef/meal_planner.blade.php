@@ -1196,7 +1196,7 @@
                 </div>
                 <div id="ingredError"></div>
                 <div id="formError"></div>
-                <div><button class="createB btn" type="submit">Create</button></div>
+                <div><button class="orange darken-1 createB btn" type="submit">Create</button></div>
             </form>
         </div>
     </div>
