@@ -123,7 +123,7 @@
 .mealDay a { color: black; }
 .mealDay:hover { border: 1px solid orange; color: orange !important; }
 .mealDay:hover a { color: orange !important;}
-.mlTtl { font-size: 20px; }
+.mlTtl { font-size: 20px; color: orange; }
 .mlCnt { font-size: 18px; padding-left: 10px; }
 
 
