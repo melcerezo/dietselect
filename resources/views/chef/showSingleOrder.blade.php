@@ -14,7 +14,7 @@
         </div>
     @else
         <div class="container" style="width:85%; margin-top: 0.5rem;">
-            <div class="orange-text darken-1" style="border-left: 4px solid orange; margin: 10px 5px;">
+            <div class="orange-text darken-1" style="border-left: 4px solid orange; margin: 10px 0;">
                 <span style="font-size: 30px;">{{$planName}}</span>
             </div>
             <div class="divider">
