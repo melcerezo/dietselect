@@ -14,18 +14,13 @@
         </div>
     @else
         <div class="container" style="width:85%; margin-top: 0.5rem;">
-            <div class="row">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12">
-                        <ul>
-                            <li>
-                                <span style="font-size: 20px;">{{$planName}}</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
+            <div class="orange-text darken-1">
+                <ul>
+                    <li>
+                        <span style="font-size: 20px;">{{$planName}}</span>
+                    </li>
+                </ul>
             </div>
-
             <div class="row">
                 @if($orderItem->order_type==0)
 
