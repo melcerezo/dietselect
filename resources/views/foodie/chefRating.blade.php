@@ -113,7 +113,6 @@
                             <div class="card-content">
 
                                     <div id="rateYoFinish{{$key}}"></div>
-                                    </div>
                                     <script>
                                         $(function () {
                                             $("#rateYoFinish{{$key}}").rateYo({
