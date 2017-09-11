@@ -110,7 +110,7 @@
                             <div class="left col s12">
                                 <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
-                            <div class="card-content">
+                            <div class="card-panel">
                                     <div id="rateYoFinish{{$key}}"></div>
                                     <script>
                                         $(function () {
