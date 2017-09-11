@@ -77,7 +77,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                     </div>
                                     {{--<div class="col s12 m2">--}}
                                     {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                     </div>
                                     {{--<div class="col s12 m2">--}}
                                     {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
@@ -202,7 +202,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                     </div>
                                     {{--<div class="col s12 m2">--}}
                                     {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
@@ -267,7 +267,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                     </div>
                                     {{--<div class="col s12 m2">--}}
                                     {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
@@ -332,7 +332,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                     </div>
                                     {{--<div class="col s12 m2">--}}
                                     {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}

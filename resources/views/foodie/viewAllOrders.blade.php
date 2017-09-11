@@ -88,7 +88,7 @@
                                 </div>
                                 <div class="col s12 offset-m2 m2">
                                     <div>
-                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +96,7 @@
                         @endforeach
                         <div class="row">
                             <div class="col s12 m2">
-                                <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
+                                <a href="{{route('order.show', $order->id)}}" class="orange darken-2btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                             </div>
                             <div class="col s12 m2">
                                 <button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>
@@ -104,9 +104,12 @@
                         </div>
                         <div id="cancelAllModal{{$order->id}}" class="modal">
                             <div class="modal-content">
+                                <div>
+                                    <span>Are you sure you want to cancel your order?</span>
+                                </div>
                                 <form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">
                                     {{ csrf_field() }}
-                                    <button class="btn waves-effect waves-light">Cancel Order?</button>
+                                    <button class="red btn waves-effect waves-light">Cancel</button>
                                 </form>
                             </div>
                         </div>
@@ -159,7 +162,7 @@
                                         <div>Amount: {{$orderItemItem['price']}}</div>
                                     </div>
                                     <div class="col s12 offset-m2 m2">
-                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                     </div>
                                 </div>
                             @endif
@@ -219,14 +222,14 @@
                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                         </div>
                                         <div class="col s12 offset-m2 m2">
-                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                         </div>
                                     </div>
                                 @endif
                             @endforeach
                             <div class="row">
                                 <div class="col s12 m2">
-                                    <a href="{{route('order.show', $order->id)}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
+                                    <a href="{{route('order.show', $order->id)}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                                 </div>
                                 <div class="col s12 m2">
                                     <button data-target="cancelPendModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>
@@ -234,9 +237,12 @@
                             </div>
                             <div id="cancelPendModal{{$order->id}}" class="modal">
                                 <div class="modal-content">
+                                    <div>
+                                        <span>Are you sure you want to cancel your order?</span>
+                                    </div>
                                     <form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">
                                         {{csrf_field()}}
-                                        <button class="btn waves-effect waves-light">Cancel Order?</button>
+                                        <button class="btn waves-effect waves-light">Cancel</button>
                                     </form>
                                 </div>
                             </div>
@@ -298,7 +304,7 @@
                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                         </div>
                                         <div class="col s12 offset-m2 m2">
-                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                         </div>
                                     </div>
                                     @endif
@@ -419,7 +425,7 @@
                                                 <div>Amount: {{$orderItemItem['price']}}</div>
                                             </div>
                                             <div class="col s12 offset-m2 m2">
-                                                <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                                <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
                                             </div>
                                         </div>
                                     @endif
