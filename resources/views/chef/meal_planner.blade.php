@@ -248,11 +248,7 @@
                         <span>Add to Cart</span>
                     </div>
                     <div>
-                        @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
-                            <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>
-                        @else
-                            <button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Cart</button>
-                        @endif
+                        <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>
                     </div>
                     <div class="divider">
                     </div>
@@ -262,12 +258,6 @@
                     <div>
                         <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize</button>
                     </div>
-
-                    @if($simpleCustomPlan->simple_custom_plan_detail->count())
-                        <div>
-                            <button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>
-                        </div>
-                    @endif
                 </div>
             </div>
         </div>
