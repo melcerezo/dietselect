@@ -35,8 +35,12 @@
                         <li class="chef valign-wrapper"><div class="currentName" href="#">Current Plans</div></li>
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
+                    <div>
+                        <button data-target="createPlan" class="btn orange waves-effect waves-light modal-trigger">Add Plan</button>
+                    </div>
+
                 </div>
-                <div id="planContainer" class="col s9">
+                <div id="planContainer" class="col s12 m9">
                     <div id="allContainer">
                         <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">ALL PLANS</span>
