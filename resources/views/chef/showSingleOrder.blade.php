@@ -3275,7 +3275,7 @@
                         @if($tasteCount>0)
                         <ul class="collection">
                             <li class="collection-item">
-                                <span class="collection-header">Taste</span>
+                                <span class="collection-header" style="font-size: 20px">Taste</span>
                             </li>
                             @foreach($orderPlan->simple_custom_plan_detail as $detail)
                                 @if($detail->detail== 'sweet' || $detail->detail== 'salty' ||  $detail->detail== 'spicy' ||
@@ -3290,7 +3290,7 @@
                         @if($cookCount>0)
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <span class="collection-header">Cooking Methods</span>
+                                    <span class="collection-header" style="font-size: 20px>Cooking Methods</span>
                                 </li>
                                 @foreach($orderPlan->simple_custom_plan_detail as $detail)
                                     @if($detail->detail== 'fried' || $detail->detail== 'grilled' )
@@ -3304,7 +3304,7 @@
                         @if($driedCount>0)
                             <ul class="collection">
                                 <li class="collection-item">
-                                    <span class="collection-header">Dry Goods/Condiments</span>
+                                    <span class="collection-header" style="font-size: 20px;">Dry Goods/Condiments</span>
                                 </li>
                                 @foreach($orderPlan->simple_custom_plan_detail as $detail)
                                     @if($detail->detail== 'preservatives' || $detail->detail== 'salt' ||  $detail->detail== 'sweeteners')
