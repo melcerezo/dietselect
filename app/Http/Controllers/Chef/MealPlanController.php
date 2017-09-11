@@ -124,7 +124,7 @@ class MealPlanController extends Controller
             'plan_name' => 'required|max:100',
             'calories' =>'required',
             'description'=>'required|max:255',
-            'category'=>'required',
+//            'category'=>'required',
             'planPic'=>'required',
             'price' =>'required'
         ])->validate();
@@ -140,7 +140,7 @@ class MealPlanController extends Controller
             $plan->plan_name = $request['plan_name'];
             $plan->calories = (int)$request['calories'];
             $plan->description = $request['description'];
-            $plan->category = $request['category'];
+//            $plan->category = $request['category'];
             $plan->picture=$filename;
             $plan->price = (float)$request['price'];
             $plan->save();
