@@ -13,6 +13,8 @@
                 <span>Edit Profile</span>
             </div>
         </div>
+        <div class="divider">
+        </div>
         <div class="row prfMnCntDv">
 
             <div class="col s12 m4 l4">
