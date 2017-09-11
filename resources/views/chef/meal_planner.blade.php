@@ -244,20 +244,20 @@
             </div>
             <div class="col s12 m3 custAction">
                 <div>
-                    <div style="font-size: 20px; margin: 10px 0;">
-                        <span>Add to Cart</span>
-                    </div>
-                    <div>
-                        <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>
-                    </div>
-                    <div class="divider">
-                    </div>
-                    <div style="font-size: 20px; margin: 10px 0;">
-                        <span>Customize Plan</span>
-                    </div>
-                    <div>
-                        <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize</button>
-                    </div>
+                    @if($plan->lockPlan==0)
+                        <div>
+                            <button id="fnshEdt" data-target="finishEdit" class="btn waves-effect waves-light modal-trigger">Finish</button>
+                        </div>
+                    @else
+                        <div>
+                            <button id="unlckPln" data-target="unlckPlnMdl" class="btn waves-effect waves-light modal-trigger">Unlock</button>
+                        </div>
+                        <div class="divider">
+                        </div>
+                        <div style="font-size: 20px; margin: 10px 0;">
+                            <button id="backPln" data-target="bckPlnMdl" class="btn waves-effect waves-light modal-trigger">Back to Plans</button>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
