@@ -28,7 +28,7 @@ class RatingsController extends Controller
         $this->middleware('foodie.auth');
     }
 
-    public function getRatingPage($from)
+    public function getRatingPage($fromRate)
     {
         $foodie = Auth::guard('foodie')->user();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
@@ -108,7 +108,7 @@ class RatingsController extends Controller
             'ordersRatingsFinished'=>$ordersRatingsFinished,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
-            'from'=>$from
+            'from'=>$fromRate
         ]);
     }
 
