@@ -72,24 +72,28 @@ class RatingsController extends Controller
                         $planName = "";
                         $chefName = "";
                         $orderType = "";
+                        $planPic="";
                         if ($orderItem->order_type == 0) {
                             $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
                             $planName = $orderPlan->plan_name;
                             $chefName = $orderPlan->chef->name;
+                            $planPic=$orderPlan->picture;
                             $orderType = "Standard";
                         } elseif ($orderItem->order_type == 1) {
                             $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
                             $planName = $orderPlan->plan->plan_name;
                             $chefName = $orderPlan->plan->chef->name;
+                            $planPic=$orderPlan->plan->picture;
                             $orderType = "Customized";
                         }elseif ($orderItem->order_type == 2) {
                             $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                             $planName = $orderPlan->plan->plan_name;
                             $chefName = $orderPlan->plan->chef->name;
+                            $planPic=$orderPlan->plan->picture;
                             $orderType = "Customized";
                         }
 
-                        $ordersRatingsFinished[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id, 'rating' => $rating->rating,
+                        $ordersRatingsFinished[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id, 'rating' => $rating->rating,'picture'=>$planPic ,
                             'feedback'=>$rating->feedback,'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
                     }
                 }
