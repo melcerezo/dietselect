@@ -3181,7 +3181,7 @@
                         <div class="modal-content">
                             <div>
                                 <ul class="collection">
-                                    <li class="collection-item light-green lighten-1 white-text">
+                                    <li class="collection-item">
                                         <span class="collection-header">Meal Information</span>
                                     </li>
                                     @if($orderItem->order_type==1)
@@ -3222,7 +3222,7 @@
                             @if($orderItem->order_type==2)
                                 @if($mealPlan->simple_custom_detail->count())
                                     <ul class="collection">
-                                        <li class="collection-item light-green white-text">
+                                        <li class="collection-item">
                                             <span class="collection-header">Customizations</span>
                                         </li>
                                         @foreach($mealPlan->simple_custom_detail()->get() as $detail)
