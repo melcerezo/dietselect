@@ -23,6 +23,11 @@
     padding:17px 25px;
 }
 
+.prfMnLink:hover{
+    color:white;
+    background: #ffb74d;
+}
+
 .prfMnLinkTxt{
     font-size: 20px;
     cursor: pointer;
