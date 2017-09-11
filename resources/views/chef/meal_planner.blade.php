@@ -941,15 +941,9 @@
         @for($i=0;$i<count($mealPlans);$i++)
             <div id="editMeal-{{$i}}" class="modal editFormModal">
                 <i data-meal-id="{{$mealPlans[$i]->chefcustomize->id}}"></i>
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12 m5 l5">
-                        <ul>
-                            <li>
-                                <span class="edtMlTtl">Update Meal: {{$mealPlans[$i]->chefcustomize->description}}</span>
-                            </li>
-                        </ul>
+                    <div class="row orange darken-1">
+                        <span class="edtMlTtl">Update Meal: {{$mealPlans[$i]->chefcustomize->description}}</span>
                     </div>
-                </nav>
                 <div class="modal-content">
                     <div class="row">
                         <div class="col s4">
