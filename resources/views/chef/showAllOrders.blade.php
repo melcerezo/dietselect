@@ -36,7 +36,7 @@
                     @if($order['is_paid']==0 && $order['is_cancelled']==0)
                         <div class="card">
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     <div class="col s12 m2">
                                         <div>For Week Of</div>
                                         <div style="font-size: 22px;">{{$order['week']}}</div>
@@ -54,6 +54,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="divider" style="margin: 0 5px;">
                             </div>
                             <div class="card-content">
                                 <div class="row">
@@ -94,7 +96,7 @@
                     @elseif($order['is_paid']==1 && $order['is_cancelled']==0)
                         <div class="card">
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     <div class="col s12 m2">
                                         <div>For Week Of</div>
                                         <div style="font-size: 22px;">{{$order['week']}}</div>
@@ -112,6 +114,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="divider" style="margin: 0 5px;">
                             </div>
                             <div class="card-content">
                                 <div class="row">
@@ -157,7 +161,7 @@
                     @if($order['is_paid']==0 && $order['is_cancelled']==0)
                         <div class="card">
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     <div class="col s12 m2">
                                         <div>For Week Of</div>
                                         <div style="font-size: 22px;">{{$order['week']}}</div>
@@ -175,6 +179,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="divider" style="margin: 0 5px;">
                             </div>
                             <div class="card-content">
                                 <div class="row">
@@ -220,7 +226,7 @@
                     @if($order['is_paid']==1 && $order['is_cancelled']==0)
                         <div class="card">
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     <div class="col s12 m2">
                                         <div>For Week Of</div>
                                         <div style="font-size: 22px;">{{$order['week']}}</div>
@@ -238,6 +244,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="divider" style="margin: 0 5px;">
                             </div>
                             <div class="card-content">
                                 <div class="row">
@@ -283,7 +291,7 @@
                     @if($order['is_cancelled']==1)
                         <div class="card">
                             <div class="card-title" style="font-size: 18px;">
-                                <div class="row light-green lighten-1 white-text" style="margin: 0 0 20px 0; padding: 5px;">
+                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                     <div class="col s12 m2">
                                         <div>For Week Of</div>
                                         <div style="font-size: 22px;">{{$order['week']}}</div>
@@ -301,6 +309,8 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div>
+                            <div class="divider" style="margin: 0 5px;">
                             </div>
                             <div class="card-content">
                                 <div class="row">
