@@ -26,7 +26,7 @@
                     </div>
                     <div class="divider"></div>
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="monday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Monday</span>
@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="tuesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Tuesday</span>
@@ -170,7 +170,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="wednesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Wednesday</span>
@@ -244,7 +244,7 @@
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="thursday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Thursday</span>
@@ -316,7 +316,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="friday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Friday</span>
@@ -389,7 +389,7 @@
                             </div>
                         </div>
                         @if($saMeals>0)
-                            <div class="col s12 m4">
+                            <div class="col s12 m3">
                                 <div id="saturday" class="calDay">
                                     <div class="dayTtl">
                                         <span>Saturday</span>
@@ -468,7 +468,7 @@
                 @elseif($orderItem->order_type==1)
 
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="monday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Monday</span>
@@ -575,7 +575,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="tuesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Tuesday</span>
@@ -682,7 +682,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="wednesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Wednesday</span>
@@ -819,7 +819,7 @@
                         {{--</div>--}}
                     </div>
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="thursday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Thursday</span>
@@ -926,7 +926,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="friday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Friday</span>
@@ -1034,7 +1034,7 @@
                             </div>
                         </div>
                         @if($saMeals>0)
-                            <div class="col s12 m4">
+                            <div class="col s12 m3">
                                 <div id="saturday" class="calDay">
                                     <div class="dayTtl">
                                         <span>Saturday</span>
@@ -1148,7 +1148,7 @@
                 @elseif($orderItem->order_type==2)
 
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="monday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Monday</span>
@@ -1255,7 +1255,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="tuesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Tuesday</span>
@@ -1362,7 +1362,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="wednesday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Wednesday</span>
@@ -1469,37 +1469,47 @@
                                 </div>
                             </div>
                         </div>
-                        {{--<div class="col s12 m3 custAction">--}}
-                        {{--<div>--}}
-                        {{--<div style="font-size: 20px; margin: 10px 0;">--}}
-                        {{--<span>Add to Cart</span>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                        {{--@if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())--}}
-                        {{--<button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>--}}
-                        {{--@else--}}
-                        {{--<button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Cart</button>--}}
-                        {{--@endif--}}
-                        {{--</div>--}}
-                        {{--<div class="divider">--}}
-                        {{--</div>--}}
-                        {{--<div style="font-size: 20px; margin: 10px 0;">--}}
-                        {{--<span>Customize Plan</span>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                        {{--<button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize</button>--}}
-                        {{--</div>--}}
+                        <div class="col s12 m3 custAction">
+                            <ul class="collection">
+                                <li class="collection-item">
+                                    <span class="collection-header">
+                                        Order Details
+                                    </span>
+                                </li>
+                                <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
+                                <li class="collection-item">Allergies:
+                                    <div>
+                                        @if($allergies->count()>0)
+                                            <button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>
+                                        @else
+                                            <span>No Allergies</span>
+                                        @endif
+                                    </div>
 
-                        {{--@if($simpleCustomPlan->simple_custom_plan_detail->count())--}}
-                        {{--<div>--}}
-                        {{--<button type="button" data-target="detailCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">View Details</button>--}}
-                        {{--</div>--}}
-                        {{--@endif--}}
-                        {{--</div>--}}
-                        {{--</div>--}}
+                                </li>
+                                <li class="collection-item">Address:
+                                    @unless($orderAddress==null)
+                                        <div>
+                                            <span>{{$orderAddress->unit}}</span>
+                                            @unless($orderAddress->bldg=='')
+                                                <span> {{$orderAddress->bldg}}, </span>
+                                            @endunless
+                                            <span>{{$orderAddress->street}}, </span>
+                                            <span>{{$orderAddress->brgy}}, </span>
+                                            <span>{{$orderAddress->city}}</span>
+                                        </div>
+                                    @endunless
+                                </li>
+                            </ul>
+                            @if($orderItem->order_type==2)
+                                @if($orderPlan->simple_custom_plan_detail->count())
+                                    <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
+                                @endif
+                            @endif
+                        </div>
                     </div>
                     <div class="row mlPlnCnt">
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="thursday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Thursday</span>
@@ -1606,7 +1616,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col s12 m4">
+                        <div class="col s12 m3">
                             <div id="friday" class="calDay">
                                 <div class="dayTtl">
                                     <span>Friday</span>
@@ -1714,7 +1724,7 @@
                             </div>
                         </div>
                         @if($saMeals>0)
-                            <div class="col s12 m4">
+                            <div class="col s12 m3">
                                 <div id="saturday" class="calDay">
                                     <div class="dayTtl">
                                         <span>Saturday</span>
@@ -3088,45 +3098,8 @@
                 {{--</div>--}}
             {{--</div>--}}
             {{--<div class="row">--}}
-                {{--<div class="col s12 m3 offset-m3">--}}
-                    {{--@if($orderItem->order_type==2)--}}
-                        {{--@if($orderPlan->simple_custom_plan_detail->count())--}}
-                            {{--<button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>--}}
-                        {{--@endif--}}
-                    {{--@endif--}}
-                {{--</div>--}}
                 {{--<div class="col s12 m6">--}}
-                    {{--<ul class="collection">--}}
-                        {{--<li class="collection-item light-green white-text">--}}
-                            {{--<span class="collection-header">--}}
-                                {{--Order Details--}}
-                            {{--</span>--}}
-                        {{--</li>--}}
-                        {{--<li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>--}}
-                        {{--<li class="collection-item">Allergies:--}}
-                            {{--<div>--}}
-                                {{--@if($allergies->count()>0)--}}
-                                    {{--<button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>--}}
-                                {{--@else--}}
-                                    {{--<span>No Allergies</span>--}}
-                                {{--@endif--}}
-                            {{--</div>--}}
 
-                        {{--</li>--}}
-                        {{--<li class="collection-item">Address:--}}
-                            {{--@unless($orderAddress==null)--}}
-                                {{--<div>--}}
-                                    {{--<span>{{$orderAddress->unit}}</span>--}}
-                                    {{--@unless($orderAddress->bldg=='')--}}
-                                        {{--<span> {{$orderAddress->bldg}}, </span>--}}
-                                    {{--@endunless--}}
-                                    {{--<span>{{$orderAddress->street}}, </span>--}}
-                                    {{--<span>{{$orderAddress->brgy}}, </span>--}}
-                                    {{--<span>{{$orderAddress->city}}</span>--}}
-                                {{--</div>--}}
-                            {{--@endunless--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
                 {{--</div>--}}
             {{--</div>--}}
             {{--<div id="allergiesModal" class="modal">--}}
