@@ -17,7 +17,7 @@ $(document).ready(function () {
         $('.ratingTab').hide();
 
         // show pending tab
-        $('#finished').addClass('activeRating');
+        $('#pending').addClass('activeRating');
         $('#pendingRating').show();
     });
     $('#finished').on('click',function () {
