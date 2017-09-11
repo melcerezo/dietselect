@@ -3140,7 +3140,7 @@
                 {{--</div>--}}
             {{--</div>--}}
             <div id="allergiesModal" class="modal">
-                <div class="orange-text darken-1">
+                <div class="orange-text darken-1"style="margin:10px; border-left:4px solid darkorange">
                     <span style="font-size: 30px; margin-left: 5px;">Allergies</span>
                 </div>
                 <div class="divider"></div>
