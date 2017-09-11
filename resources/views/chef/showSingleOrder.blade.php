@@ -3095,178 +3095,178 @@
                 {{--@endif--}}
                 {{--</div>--}}
             {{--</div>--}}
-            <div class="row">
-                <div class="col s12 m3 offset-m3">
-                    @if($orderItem->order_type==2)
-                        @if($orderPlan->simple_custom_plan_detail->count())
-                            <button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>
-                        @endif
-                    @endif
-                </div>
-                <div class="col s12 m6">
-                    <ul class="collection">
-                        <li class="collection-item light-green white-text">
-                            <span class="collection-header">
-                                Order Details
-                            </span>
-                        </li>
-                        <li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>
-                        <li class="collection-item">Allergies:
+            {{--<div class="row">--}}
+                {{--<div class="col s12 m3 offset-m3">--}}
+                    {{--@if($orderItem->order_type==2)--}}
+                        {{--@if($orderPlan->simple_custom_plan_detail->count())--}}
+                            {{--<button data-target="planCustomization" class="btn waves-effect waves-light modal-trigger">See Customization</button>--}}
+                        {{--@endif--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+                {{--<div class="col s12 m6">--}}
+                    {{--<ul class="collection">--}}
+                        {{--<li class="collection-item light-green white-text">--}}
+                            {{--<span class="collection-header">--}}
+                                {{--Order Details--}}
+                            {{--</span>--}}
+                        {{--</li>--}}
+                        {{--<li class="collection-item">Name: {{$foodie->first_name.' '.$foodie->last_name}}</li>--}}
+                        {{--<li class="collection-item">Allergies:--}}
+                            {{--<div>--}}
+                                {{--@if($allergies->count()>0)--}}
+                                    {{--<button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>--}}
+                                {{--@else--}}
+                                    {{--<span>No Allergies</span>--}}
+                                {{--@endif--}}
+                            {{--</div>--}}
+
+                        {{--</li>--}}
+                        {{--<li class="collection-item">Address:--}}
+                            {{--@unless($orderAddress==null)--}}
+                                {{--<div>--}}
+                                    {{--<span>{{$orderAddress->unit}}</span>--}}
+                                    {{--@unless($orderAddress->bldg=='')--}}
+                                        {{--<span> {{$orderAddress->bldg}}, </span>--}}
+                                    {{--@endunless--}}
+                                    {{--<span>{{$orderAddress->street}}, </span>--}}
+                                    {{--<span>{{$orderAddress->brgy}}, </span>--}}
+                                    {{--<span>{{$orderAddress->city}}</span>--}}
+                                {{--</div>--}}
+                            {{--@endunless--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div id="allergiesModal" class="modal">--}}
+                {{--<nav class="light-green lighten-1 white-text">--}}
+                    {{--<div>--}}
+                        {{--<span style="font-size: 20px; margin-left: 5px;">Allergies</span>--}}
+                    {{--</div>--}}
+                {{--</nav>--}}
+                {{--<div class="modal-content">--}}
+                    {{--<ul>--}}
+                        {{--@foreach($allergies as $allergy)--}}
+                            {{--<li>--}}
+                                {{--<div class="divider"></div>--}}
+                                {{--<div>--}}
+                                    {{--<div class="row">--}}
+                                        {{--<div class="col s12">--}}
+                                            {{--@if($allergy->allergy=='shrimp')--}}
+                                                {{--<span>Squid, Shrimp and Crab</span>--}}
+                                            {{--@else--}}
+                                                {{--<span>{{ ucfirst($allergy->allergy) }}</span>--}}
+                                            {{--@endif--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                            {{--</li>--}}
+                        {{--@endforeach--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+
+        @unless(count($mealPlans)==0)
+            @if($orderItem->order_type==1 || $orderItem->order_type==2)
+                @foreach($mealPlans as $id=>$mealPlan)
+                    <div id="meal{{$id}}" class="modal">
+                        <nav class="light-green lighten-1 white-text">
+                            <div class="left col s12 m5 l5">
+                                <ul>
+                                    <li>
+                                        @if($orderItem->order_type==1)
+                                            <span>{{$mealPlan->description}}</span>
+                                        @elseif($orderItem->order_type==2)
+                                            <span>{{$mealPlan->chef_customized_meal->description}}</span>
+                                        @endif
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                        <div class="modal-content">
                             <div>
-                                @if($allergies->count()>0)
-                                    <button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>
-                                @else
-                                    <span>No Allergies</span>
-                                @endif
-                            </div>
-
-                        </li>
-                        <li class="collection-item">Address:
-                            @unless($orderAddress==null)
-                                <div>
-                                    <span>{{$orderAddress->unit}}</span>
-                                    @unless($orderAddress->bldg=='')
-                                        <span> {{$orderAddress->bldg}}, </span>
-                                    @endunless
-                                    <span>{{$orderAddress->street}}, </span>
-                                    <span>{{$orderAddress->brgy}}, </span>
-                                    <span>{{$orderAddress->city}}</span>
-                                </div>
-                            @endunless
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div id="allergiesModal" class="modal">
-                <nav class="light-green lighten-1 white-text">
-                    <div>
-                        <span style="font-size: 20px; margin-left: 5px;">Allergies</span>
-                    </div>
-                </nav>
-                <div class="modal-content">
-                    <ul>
-                        @foreach($allergies as $allergy)
-                            <li>
-                                <div class="divider"></div>
-                                <div>
-                                    <div class="row">
-                                        <div class="col s12">
-                                            @if($allergy->allergy=='shrimp')
-                                                <span>Squid, Shrimp and Crab</span>
-                                            @else
-                                                <span>{{ ucfirst($allergy->allergy) }}</span>
-                                            @endif
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            @unless(count($mealPlans)==0)
-                @if($orderItem->order_type==1 || $orderItem->order_type==2)
-                    @foreach($mealPlans as $id=>$mealPlan)
-                        <div id="meal{{$id}}" class="modal">
-                            <nav class="light-green lighten-1 white-text">
-                                <div class="left col s12 m5 l5">
-                                    <ul>
-                                        <li>
-                                            @if($orderItem->order_type==1)
-                                                <span>{{$mealPlan->description}}</span>
-                                            @elseif($orderItem->order_type==2)
-                                                <span>{{$mealPlan->chef_customized_meal->description}}</span>
-                                            @endif
-                                        </li>
-                                    </ul>
-                                </div>
-                            </nav>
-                            <div class="modal-content">
-                                <div>
-                                    <ul class="collection">
-                                        <li class="collection-item light-green lighten-1 white-text">
-                                            <span class="collection-header">Meal Information</span>
-                                        </li>
-                                        @if($orderItem->order_type==1)
-                                            <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
-                                        @elseif($orderItem->order_type==2)
-                                            <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->chef_customized_meal->calories,2)}}</span></li>
-                                            {{--<li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>--}}
-                                            {{--<li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>--}}
-                                            {{--<li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>--}}
-                                        @endif
-                                    </ul>
-                                </div>
-                                <div>
-                                    <table>
-                                        <thead>
-                                        @if($orderItem->order_type==1)
-                                            <tr>
-                                                <th>Ingredient</th>
-                                                <th>Grams</th>
-                                                <th>Customized</th>
-                                            </tr>
-                                        @elseif($orderItem->order_type==2)
-                                            <tr>
-                                                <th>Ingredient</th>
-                                                <th>Grams</th>
-                                            </tr>
-                                        @endif
-                                        </thead>
-                                        @if($orderItem->order_type==1)
-                                            <tbody id="m{{$mealPlan->id}}">
-                                            </tbody>
-                                        @elseif($orderItem->order_type==2)
-                                            <tbody id="m{{$mealPlan->chef_customized_meal->id}}">
-                                            </tbody>
-                                        @endif
-                                    </table>
-                                </div>
-                                @if($orderItem->order_type==2)
-                                    @if($mealPlan->simple_custom_detail->count())
-                                        <ul class="collection">
-                                            <li class="collection-item light-green white-text">
-                                                <span class="collection-header">Customizations</span>
-                                            </li>
-                                            @foreach($mealPlan->simple_custom_detail()->get() as $detail)
-                                                <li class="collection-item">
-                                                    @if($detail->detail=='switchChicken')
-                                                        <span>Switch to Chicken</span>
-                                                    @elseif($detail->detail=='switchBeef')
-                                                        <span>Switch to Beef</span>
-                                                    @elseif($detail->detail=='switchPork')
-                                                        <span>Switch to Pork</span>
-                                                    @elseif($detail->detail=='switchSeafood')
-                                                        <span>Switch to Seafood</span>
-                                                    @elseif($detail->detail=='switchVegetarian')
-                                                        <span>Vegetarian</span>
-                                                    @elseif($detail->detail=='noEggs')
-                                                        <span>No Eggs</span>
-                                                    @elseif($detail->detail=='noDairy')
-                                                        <span>No Dairy</span>
-                                                    @elseif($detail->detail=='noGluten')
-                                                        <span>No Gluten</span>
-                                                    @elseif($detail->detail=='wheatOnly')
-                                                        <span>Wheat Products Only</span>
-                                                    @elseif($detail->detail=='whiteRice')
-                                                        <span>White Rice</span>
-                                                    @elseif($detail->detail=='brownRice')
-                                                        <span>Brown Rice</span>
-                                                    @elseif($detail->detail=='noNuts')
-                                                        <span>No Nuts/Nut Products</span>
-                                                    @endif
-                                                </li>
-                                            @endforeach
-                                        </ul>
+                                <ul class="collection">
+                                    <li class="collection-item light-green lighten-1 white-text">
+                                        <span class="collection-header">Meal Information</span>
+                                    </li>
+                                    @if($orderItem->order_type==1)
+                                        <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
+                                    @elseif($orderItem->order_type==2)
+                                        <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->chef_customized_meal->calories,2)}}</span></li>
+                                        {{--<li class="collection-item"><span>Carbohydrates:</span><span>{{round($mealPlan->carbohydrates,2)}}</span></li>--}}
+                                        {{--<li class="collection-item"><span>Protein:</span><span>{{round($mealPlan->protein,2)}}</span></li>--}}
+                                        {{--<li class="collection-item"><span>Fat:</span><span>{{round($mealPlan->fat,2)}}</span></li>--}}
                                     @endif
-                                @endif
+                                </ul>
                             </div>
+                            <div>
+                                <table>
+                                    <thead>
+                                    @if($orderItem->order_type==1)
+                                        <tr>
+                                            <th>Ingredient</th>
+                                            <th>Grams</th>
+                                            <th>Customized</th>
+                                        </tr>
+                                    @elseif($orderItem->order_type==2)
+                                        <tr>
+                                            <th>Ingredient</th>
+                                            <th>Grams</th>
+                                        </tr>
+                                    @endif
+                                    </thead>
+                                    @if($orderItem->order_type==1)
+                                        <tbody id="m{{$mealPlan->id}}">
+                                        </tbody>
+                                    @elseif($orderItem->order_type==2)
+                                        <tbody id="m{{$mealPlan->chef_customized_meal->id}}">
+                                        </tbody>
+                                    @endif
+                                </table>
+                            </div>
+                            @if($orderItem->order_type==2)
+                                @if($mealPlan->simple_custom_detail->count())
+                                    <ul class="collection">
+                                        <li class="collection-item light-green white-text">
+                                            <span class="collection-header">Customizations</span>
+                                        </li>
+                                        @foreach($mealPlan->simple_custom_detail()->get() as $detail)
+                                            <li class="collection-item">
+                                                @if($detail->detail=='switchChicken')
+                                                    <span>Switch to Chicken</span>
+                                                @elseif($detail->detail=='switchBeef')
+                                                    <span>Switch to Beef</span>
+                                                @elseif($detail->detail=='switchPork')
+                                                    <span>Switch to Pork</span>
+                                                @elseif($detail->detail=='switchSeafood')
+                                                    <span>Switch to Seafood</span>
+                                                @elseif($detail->detail=='switchVegetarian')
+                                                    <span>Vegetarian</span>
+                                                @elseif($detail->detail=='noEggs')
+                                                    <span>No Eggs</span>
+                                                @elseif($detail->detail=='noDairy')
+                                                    <span>No Dairy</span>
+                                                @elseif($detail->detail=='noGluten')
+                                                    <span>No Gluten</span>
+                                                @elseif($detail->detail=='wheatOnly')
+                                                    <span>Wheat Products Only</span>
+                                                @elseif($detail->detail=='whiteRice')
+                                                    <span>White Rice</span>
+                                                @elseif($detail->detail=='brownRice')
+                                                    <span>Brown Rice</span>
+                                                @elseif($detail->detail=='noNuts')
+                                                    <span>No Nuts/Nut Products</span>
+                                                @endif
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            @endif
                         </div>
-                    @endforeach
-                @endif
-            @endunless
+                    </div>
+                @endforeach
+            @endif
+        @endunless
 
-        </div>
 
         @if($orderItem->order_type==2)
             @if($orderPlan->simple_custom_plan_detail->count())
