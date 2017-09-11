@@ -42,21 +42,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($moSnaMeals>0)
-                        <div id="moMS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Morning Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="MO" data-meal-type="MorningSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="moMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="MO" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="moLun" class="mealDay">
                         <div class="mlTtl">
                             <span>Lunch</span>
@@ -70,21 +68,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($aftSnaMeals>0)
-                        <div id="moAS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Afternoon Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="MO" data-meal-type="AfternoonSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="moAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="MO" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="moDin" class="mealDay">
                         <div class="mlTtl">
                             <span>Dinner</span>
@@ -119,21 +115,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($moSnaMeals>0)
-                        <div id="tuMS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Morning Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="TU" data-meal-type="MorningSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="tuMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="TU" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="tuLun" class="mealDay">
                         <div class="mlTtl">
                             <span>Lunch</span>
@@ -147,21 +141,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($aftSnaMeals>0)
-                        <div id="tuAS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Afternoon Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="TU" data-meal-type="AfternoonSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="tuAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="TU" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="tuDin" class="mealDay">
                         <div class="mlTtl">
                             <span>Dinner</span>
@@ -196,21 +188,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($moSnaMeals>0)
-                        <div id="weMS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Morning Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="WE" data-meal-type="MorningSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="weMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="WE" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="weLun" class="mealDay">
                         <div class="mlTtl">
                             <span>Lunch</span>
@@ -224,21 +214,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($aftSnaMeals>0)
-                        <div id="weAS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Afternoon Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="WE" data-meal-type="AfternoonSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="weAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="WE" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="weDin" class="mealDay">
                         <div class="mlTtl">
                             <span>Dinner</span>
@@ -275,21 +263,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($moSnaMeals>0)
-                        <div id="thMS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Morning Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="TH" data-meal-type="MorningSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="thMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="TH" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="thLun" class="mealDay">
                         <div class="mlTtl">
                             <span>Lunch</span>
@@ -303,21 +289,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($aftSnaMeals>0)
-                        <div id="thAS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Afternoon Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="TH" data-meal-type="AfternoonSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="thAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="TH" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'TH' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="thDin" class="mealDay">
                         <div class="mlTtl">
                             <span>Dinner</span>
@@ -352,21 +336,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($moSnaMeals>0)
-                        <div id="frMS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Morning Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="FR" data-meal-type="MorningSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="frMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="FR" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="frLun" class="mealDay">
                         <div class="mlTtl">
                             <span>Lunch</span>
@@ -380,21 +362,19 @@
                             @endforeach
                         </div>
                     </div>
-                    @if($aftSnaMeals>0)
-                        <div id="frAS" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Afternoon Snack</span>
-                            </div>
-                            <div class="mlCnt" data-day="FR" data-meal-type="AfternoonSnack">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    <div id="frAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
                         </div>
-                    @endif
+                        <div class="mlCnt" data-day="FR" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'FR' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
                     <div id="frDin" class="mealDay">
                         <div class="mlTtl">
                             <span>Dinner</span>
@@ -410,85 +390,79 @@
                     </div>
                 </div>
             </div>
-            @if($saMeals>0)
-                <div class="col s12 m4">
-                    <div id="saturday" class="calDay">
-                        <div class="dayTtl">
-                            <span>Saturday</span>
+            <div class="col s12 m4">
+                <div id="saturday" class="calDay">
+                    <div class="dayTtl">
+                        <span>Saturday</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div id="saBre" class="mealDay brekk">
+                        <div class="mlTtl">
+                            <span>Breakfast</span>
                         </div>
-                        <div class="divider"></div>
-                        <div id="saBre" class="mealDay brekk">
-                            <div class="mlTtl">
-                                <span>Breakfast</span>
-                            </div>
-                            <div class="mlCnt" data-day="SA" data-meal-type="Breakfast">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                        <div class="mlCnt" data-day="SA" data-meal-type="Breakfast">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Breakfast')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
                         </div>
-                        @if($moSnaMeals>0)
-                            <div id="saMS" class="mealDay">
-                                <div class="mlTtl">
-                                    <span>Morning Snack</span>
-                                </div>
-                                <div class="mlCnt" data-day="SA" data-meal-type="MorningSnack">
-                                    @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
-                                            <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                        <div id="saLun" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Lunch</span>
-                            </div>
-                            <div class="mlCnt" data-day="SA" data-meal-type="Lunch">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                    </div>
+                    <div id="saMS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Morning Snack</span>
                         </div>
-                        @if($aftSnaMeals>0)
-                            <div id="saAS" class="mealDay">
-                                <div class="mlTtl">
-                                    <span>Afternoon Snack</span>
-                                </div>
-                                <div class="mlCnt" data-day="SA" data-meal-type="AfternoonSnack">
-                                    @foreach($mealPlans as $id =>$mealPlan)
-                                        @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-                        <div id="saDin" class="mealDay">
-                            <div class="mlTtl">
-                                <span>Dinner</span>
-                            </div>
-                            <div class="mlCnt" data-day="SA" data-meal-type="Dinner">
-                                @foreach($mealPlans as $id =>$mealPlan)
-                                    @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
-                                        <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
-                                    @endif
-                                @endforeach
-                            </div>
+                        <div class="mlCnt" data-day="SA" data-meal-type="MorningSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'MorningSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div id="saLun" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Lunch</span>
+                        </div>
+                        <div class="mlCnt" data-day="SA" data-meal-type="Lunch">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Lunch')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div id="saAS" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Afternoon Snack</span>
+                        </div>
+                        <div class="mlCnt" data-day="SA" data-meal-type="AfternoonSnack">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'AfternoonSnack')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
+                        </div>
+                    </div>
+                    <div id="saDin" class="mealDay">
+                        <div class="mlTtl">
+                            <span>Dinner</span>
+                        </div>
+                        <div class="mlCnt" data-day="SA" data-meal-type="Dinner">
+                            @foreach($mealPlans as $id =>$mealPlan)
+                                @if($mealPlan->day == 'SA' && $mealPlan->meal_type == 'Dinner')
+                                    <a href="#editMeal-{{$id}}" data-meal-active="#viewMeal-{{$id}}"
+                                       class="waves-effect waves-light modal-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>
-            @endif
+            </div>
         </div>
     </div>
 
