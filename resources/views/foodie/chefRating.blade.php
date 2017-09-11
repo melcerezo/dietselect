@@ -128,6 +128,7 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
                 @endforeach
             @else
                 <div class="row">
@@ -137,6 +138,5 @@
                 </div>
             @endif
         </div>
-    </div>
 </div>
 @endsection
