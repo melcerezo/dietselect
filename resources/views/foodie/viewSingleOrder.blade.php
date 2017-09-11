@@ -2019,7 +2019,7 @@
                                 <div>
                                     <ul class="collection">
                                         <li class="collection-item">
-                                            <span class="collection-header">Meal Information</span>
+                                            <span class="collection-header" style="font-size: 20px;">Meal Information</span>
                                         </li>
                                         @if($orderItem->order_type==1)
                                             <li class="collection-item"><span>Calories:</span><span>{{round($mealPlan->calories,2)}}</span></li>
@@ -2060,7 +2060,7 @@
                                     @if($mealPlan->simple_custom_detail->count())
                                         <ul class="collection">
                                             <li class="collection-item">
-                                                <span class="collection-header">Customizations</span>
+                                                <span class="collection-header" style="font-size: 20px;">Customizations</span>
                                             </li>
                                             @foreach($mealPlan->simple_custom_detail()->get() as $detail)
                                                 <li class="collection-item">
