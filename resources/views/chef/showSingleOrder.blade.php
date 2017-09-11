@@ -3170,11 +3170,11 @@
             @if($orderItem->order_type==1 || $orderItem->order_type==2)
                 @foreach($mealPlans as $id=>$mealPlan)
                     <div id="meal{{$id}}" class="modal">
-                            <div class="orange-text darken-1" style="border-left:4px solid darkorange">
+                            <div class="orange-text darken-1" style="margin: 10px; border-left:4px solid darkorange;">
                                 @if($orderItem->order_type==1)
-                                    <span>{{$mealPlan->description}}</span>
+                                    <span style="font-size: 30px;">{{$mealPlan->description}}</span>
                                 @elseif($orderItem->order_type==2)
-                                    <span>{{$mealPlan->chef_customized_meal->description}}</span>
+                                    <span style="font-size: 30px;">{{$mealPlan->chef_customized_meal->description}}</span>
                                 @endif
                             </div>
                         <div class="modal-content">
