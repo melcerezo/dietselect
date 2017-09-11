@@ -17,6 +17,14 @@
         <div class="container" style="width:85%; margin-top: 0.5rem;">
             <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
                 <span style="font-size: 30px;">{{$planName}}</span>
+                <span style="font-size: 30px;"> - </span>
+                <span style="font-size: 30px;">
+                    @if($orderItem->order_type==0)
+                        Standard
+                    @elseif($orderItem->order_type==1 || $orderItem->order_type==2)
+                        Customized
+                    @endif
+                </span>
             </div>
             <div class="divider">
             </div>
