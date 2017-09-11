@@ -1140,17 +1140,22 @@
     </div>
 
     <div id="createMeal" class="modal">
-        <nav class="light-green lighten-1 white-text">
-            <div class="nav-wrapper">
-                <div class="left col s12">
-                    <ul>
-                        <li>
-                            <span style="font-size: 20px; margin-left: 20px;">Create <span id="createMealTypeName"></span> for <span id="dayName"></span></span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <div class="orange-text darken-1" style="margin-top: 10px">
+            <span class="edtMlTtl" style="font-size: 30px;">Create <span id="createMealTypeName"></span> for <span id="dayName"></span></span>
+        </div>
+        <div class="divider" style="margin: 10px;">
+        </div>
+        {{--<nav class="light-green lighten-1 white-text">--}}
+            {{--<div class="nav-wrapper">--}}
+                {{--<div class="left col s12">--}}
+                    {{--<ul>--}}
+                        {{--<li>--}}
+                            {{--<span style="font-size: 20px; margin-left: 20px;">Create <span id="createMealTypeName"></span> for <span id="dayName"></span></span>--}}
+                        {{--</li>--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</nav>--}}
         <div class="modal-content">
             {{--<h4>Create <span id="createMealTypeName"></span> for <span id="dayName"></span></h4>--}}
             <form id="createMealForm" action="{{route('chef.meal.create', $plan->id)}}" method="post" autocomplete="off" enctype="multipart/form-data">
