@@ -1068,9 +1068,11 @@
                                 @endif
                             @endfor
                         @endfor
-                            <button class="btn" type="submit">Update</button>
                             <span>
-                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete Planned Meal</button>
+                                <button class="btn" type="submit">Update</button>
+                            </span>
+                            <span>
+                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete</button>
                             </span>
                         </div>
                     </form>
