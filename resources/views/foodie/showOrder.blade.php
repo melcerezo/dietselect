@@ -251,7 +251,7 @@
                         <div class="divider"></div>
                         <div class="row">
                             <span style="font-size: 30px; font-weight: bold;">TOTAL</span>
-                            <span class="right" style="color: orange; font-size: 30px;">{{'PHP '.number_format($order->total,2,'.',',')}}</span>
+                            <span class="right" style="color: #f57c00; font-size: 30px;">{{'PHP '.number_format($order->total,2,'.',',')}}</span>
                         </div>
                     </div>
                 </div>
