@@ -12,7 +12,7 @@
     @if(count($orders)>0)
         <div class="container" style="width: 85%;">
             <div class="row">
-                <div class="col s6">
+                <div class="col offset-m2 s6">
                     <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
                     <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
                     <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
@@ -48,7 +48,6 @@
                         </li>
                     </ul>
                 </div>
-            </div>
             <div class="col s12 m10">
                 <div id="ordAll">
                     @foreach($orders as $order)
@@ -412,6 +411,7 @@
                     @endif
                 @endforeach
             </div>
+        </div>
             {{--@foreach($orders as $order)--}}
                 {{--@if($order['is_cancelled']==0)--}}
                     {{--<div class="row">--}}
