@@ -207,15 +207,15 @@
     </div>
 
     <div id="crtMsg" class="modal">
-        <nav class="light-green lighten-1 white-text">
+        <nav class="white">
             <div class="left col s12 m5 l5">
                 <ul>
                     <li>
-                        <a id="msgCmpsCls" href="#!">
+                        <a id="msgCmpsCls" class="black-text" href="#!">
                             <i class="material-icons">close</i>
                         </a>
                     </li>
-                    <li>
+                    <li class="black-text">
                         <span>Compose</span>
                     </li>
                 </ul>
@@ -258,15 +258,15 @@
         </div>
     </div>
     <div id="rplMsg" class="modal">
-        <nav class="light-green lighten-1 white-text">
+        <nav class="white">
             <div class="left col s12 m5 l5">
                 <ul>
                     <li>
-                        <a id="msgRplCls" href="#!">
+                        <a id="msgRplCls" class="black-text" href="#!">
                             <i class="material-icons">close</i>
                         </a>
                     </li>
-                    <li>
+                    <li class="black-text">
                         <span>Reply to <span id="replyRecName"></span></span>
                     </li>
                 </ul>
