@@ -16,8 +16,35 @@
     <div class="container msgCntr">
         <div class="msgApp">
             <div class="row">
-                <div class="col s12">
-                    <nav class="light-green lighten-1">
+                <div class="col s12 m2">
+                    <div class="row">
+                        <div>
+                            EDIT PROFILE
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="row">
+                        <ul class="collection">
+                            <li class="collection-item">
+                                <a href="{{route("foodie.order.view", ['id'=> 0])}}">Order History</a>
+                            </li>
+                            <li class="collection-item">
+                                <a href="{{route('foodie.plan.show')}}">Browse Plans</a>
+                            </li>
+                            <li class="collection-item">
+                                <a href="{{route('foodie.profile')}}">Profile</a>
+                            </li>
+                            <li class="collection-item" style="border: 1px solid #f57c00;">
+                                <a href="{{route('foodie.message.index')}}" style="color: #f57c00;">Messages</a>
+                            </li>
+                            <li class="collection-item">
+                                <a href="{{route('chef.rating', ['id'=>1])}}">Ratings</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col s12 m10">
+                    <nav class="white">
                         <div class="nav-wrapper">
                             <div class="left col s12 m5 l5">
                                 <ul>
