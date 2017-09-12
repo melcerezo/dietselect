@@ -65,8 +65,10 @@
                         <span class="card-title">{{$chef->name}}</span>
                         <div class="divider dshPrfCrdDvd"></div>
                         <div class="dshPrfCrdInf">
-                            <p class="truncate">Email: {{$chef->email}}</p>
-                            <p>Phone Number: {{'0'.$chef->mobile_number}}</p>
+                            <p>Email:</p>
+                            <p class="truncate">{{$chef->email}}</p>
+                            <p>Phone Number:</p>
+                            <p>{{'0'.$chef->mobile_number}}</p>
                         </div>
                         <div>
                             <a href="{{route('chef.profile')}}">Edit Profile</a>
