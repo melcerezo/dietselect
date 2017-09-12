@@ -31,7 +31,7 @@
                 @foreach($ordersRatingChef as $key=>$order)
                     <div class="row">
                         <div class="card">
-                            <div class="left col s12">
+                            <div class="left col s12" style="margin: 10px 5px;">
                                 <span style="font-size: 20px;">{{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
                             <div class="card-content">
@@ -107,7 +107,7 @@
                 @foreach($ordersRatingsFinished as $key=>$order)
                     <div class="row">
                         <div class="card-panel">
-                            <div style="margin-bottom: 10px;">
+                            <div style="margin: 10px 5px;">
                                 <span style="font-size: 20px;"><img style="width: 100px;" src="/img/{{ $order['picture'] }}"><span style="margin-left: 10px;">{{ $order['plan'].' '.$order['type'] }}</span></span>
                             </div>
                             <div>
