@@ -16,7 +16,7 @@
     <div class="container msgCntr">
         <div class="msgApp">
             <div class="row">
-                <div class="col s12 m2">
+                <div class="col s12 m2" style="padding: 0">
                     <div class="row">
                         <div>
                             EDIT PROFILE
