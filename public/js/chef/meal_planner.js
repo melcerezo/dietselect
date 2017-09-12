@@ -29,6 +29,12 @@ $(document).ready(function () {
                     '</div>' +
                     '</div>');
             }
+        }else if(lockPlan==1){
+            var day = $(this).attr('data-day');
+            var mealType = $(this).attr('data-meal-type');
+            if ($(this).text().trim() == "") {
+                $(this).append('<span style="margin-bottom: 10px; ">None</span>');
+            }
         }
     });
 
