@@ -98,7 +98,7 @@
                                             <div>Quantity:</div><div>{{$order['quantity']}}</div>
                                         </div>
                                         <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -155,7 +155,7 @@
                                             <div>Quantity:</div><div>{{$order['quantity']}}</div>
                                         </div>
                                         <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -220,7 +220,7 @@
                                             <div>Quantity:</div><div>{{$order['quantity']}}</div>
                                         </div>
                                         <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -282,7 +282,7 @@
                                             <div>Quantity:</div><div>{{$order['quantity']}}</div>
                                         </div>
                                         <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
                                         </div>
                                     </div>
                                     <div class="row">
@@ -347,7 +347,7 @@
                                             <div>Quantity:</div><div>{{$order['quantity']}}</div>
                                         </div>
                                         <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
                                         </div>
                                     </div>
                                     <div class="row">
