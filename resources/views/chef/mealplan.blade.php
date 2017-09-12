@@ -27,7 +27,7 @@
 
             <div class="row">
                 <div class="col s12 m3">
-                    <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                    <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                         <span style="font-size: 20px;">YOUR PLANS</span>
                     </div>
                     <ul>
@@ -36,13 +36,13 @@
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
                     <div>
-                        <button data-target="createPlan" class="btn orange waves-effect waves-light modal-trigger">Add Plan</button>
+                        <button data-target="createPlan" class="btn orange darken-2 waves-effect waves-light modal-trigger">Add Plan</button>
                     </div>
 
                 </div>
                 <div id="planContainer" class="col s12 m9">
                     <div id="allContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">ALL PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -53,7 +53,7 @@
                                             <div class="card buyCard">
                                                 <div class="card-image">
                                                     <img src="/img/{{$plan->picture}}">
-                                                    <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                    <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                         {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                     </div>
                                                 </div>
@@ -66,7 +66,7 @@
                                                     </div>
                                                     <div class="buyBtn center-align">
                                                         <a href="{{route('chef.plan.table',['plan'=>$plan->id])}}"
-                                                           class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
+                                                           class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -81,7 +81,7 @@
                         @endif
                     </div>
                     <div id="currentContainer" class="categoryContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">CURRENT PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -92,7 +92,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -105,7 +105,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('chef.plan.table',['plan'=>$plan->id])}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -120,7 +120,7 @@
                         @endif
                     </div>
                     <div id="upcomingContainer" class="categoryContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">UPCOMING PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -131,7 +131,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -144,7 +144,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('chef.plan.table',['plan'=>$plan->id])}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -267,6 +267,11 @@
 
 
     <div id="createPlan" class="modal">
+        <div style="font-size: 30px; border-left: 4px solid #f57c00; margin: 24px 0 0 24px; padding-left: 5px;">
+            <span>Create Plan</span>
+        </div>
+        <div class="divider">
+        </div>
         <form id="createPlanForm" action="{{route('chef.plan.create')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
             <div class="modal-content">
