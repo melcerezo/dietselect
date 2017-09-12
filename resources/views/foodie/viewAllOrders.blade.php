@@ -88,7 +88,7 @@
                                                 </div>
                                                 <div class="col s12 m2" style="margin-right: 30px;">
                                                     <div>Total</div>
-                                                    <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                    <div style="font-size: 22px;">{{'PHP '.number_format($orderItem['total'],2,'.',',')}}</div>
                                                 </div>
                                                 <div class="col s12 m4">
                                                     <div>Address</div>
@@ -116,7 +116,7 @@
                                                     <div>Made By: {{$orderItemItem['chef']}}</div>
                                                     <div>Type:  {{$orderItemItem['type']}}</div>
                                                     <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                    <div>Amount: {{$orderItemItem['price']}}</div>
+                                                    <div>Amount: {{'PHP '.number_format($orderItemItem['price'],2,'.',',')}}</div>
                                                 </div>
                                                 <div class="col s12 offset-m2 m2">
                                                     <div>
@@ -163,7 +163,7 @@
                                                     </div>
                                                     <div class="col s12 m2" style="margin-right: 30px;">
                                                         <div>Total</div>
-                                                        <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                        <div style="font-size: 22px;">{{'PHP '.number_format($orderItem['total'],'.',',')}}</div>
                                                     </div>
                                                     <div class="col s12 m4">
                                                         <div>Address</div>
@@ -191,7 +191,7 @@
                                                         <div>Made By: {{$orderItemItem['chef']}}</div>
                                                         <div>Type:  {{$orderItemItem['type']}}</div>
                                                         <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                        <div>Amount: {{$orderItemItem['price']}}</div>
+                                                        <div>Amount: {{'PHP '.number_format($orderItemItem['price'],2,'.',',')}}</div>
                                                     </div>
                                                     <div class="col s12 offset-m2 m2">
                                                         <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
@@ -223,7 +223,7 @@
                                                         </div>
                                                         <div class="col s12 m2" style="margin-right: 30px;">
                                                             <div>Total</div>
-                                                            <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                            <div style="font-size: 22px;">{{'PHP '.number_format($orderItem['total'],2,'.',',')}}</div>
                                                         </div>
                                                         <div class="col s12 m4">
                                                             <div>Address</div>
@@ -251,7 +251,7 @@
                                                             <div>Made By: {{$orderItemItem['chef']}}</div>
                                                             <div>Type:  {{$orderItemItem['type']}}</div>
                                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{$orderItemItem['price']}}</div>
+                                                            <div>Amount: {{'PHP '.number_format($orderItemItem['price'],2,'.',',')}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
                                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
@@ -305,7 +305,7 @@
                                                             </div>
                                                             <div class="col s12 m2" style="margin-right: 30px;">
                                                                 <div>Total</div>
-                                                                <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                                <div style="font-size: 22px;">{{'PHP '.number_format($orderItem['total'],2,'.',',')}}</div>
                                                             </div>
                                                             <div class="col s12 m4">
                                                                 <div>Address</div>
@@ -333,7 +333,7 @@
                                                             <div>Made By: {{$orderItemItem['chef']}}</div>
                                                             <div>Type:  {{$orderItemItem['type']}}</div>
                                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{$orderItemItem['price']}}</div>
+                                                            <div>Amount: {{'PHP '.number_format($orderItemItem['price'],2,'.',',')}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
                                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; ">View</a>
@@ -454,7 +454,7 @@
                                                             <div>Made By: {{$orderItemItem['chef']}}</div>
                                                             <div>Type:  {{$orderItemItem['type']}}</div>
                                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{$orderItemItem['price']}}</div>
+                                                            <div>Amount: {{'PHP '.number_format($orderItemItem['price'],2,'.',',')}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
                                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
