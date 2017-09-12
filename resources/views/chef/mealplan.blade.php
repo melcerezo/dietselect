@@ -270,7 +270,7 @@
         <div style="font-size: 30px; border-left: 4px solid #f57c00; margin: 24px 0 10px 24px; padding-left: 5px;">
             <span>Create Plan</span>
         </div>
-        <div class="divider">
+        <div class="divider" style="margin: 0 5px;">
         </div>
         <form id="createPlanForm" action="{{route('chef.plan.create')}}" method="post" enctype="multipart/form-data">
             {{csrf_field()}}
