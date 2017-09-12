@@ -39,7 +39,7 @@ div.plSlCnt{
 
 .chefName,.allName { cursor: pointer; }
 
-.chef:hover{ border: 1px solid orange; color: orange;}
+.chef:hover{ border: 1px solid #f57c00; color: #f57c00;}
 
 
 .buyBtn{ visibility: hidden }
