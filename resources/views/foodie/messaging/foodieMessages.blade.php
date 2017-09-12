@@ -252,7 +252,7 @@
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
                 </div>
             </form>
         </div>
@@ -293,7 +293,7 @@
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="btn btn-primary"></div>
+                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
                 </div>
             </form>
         </div>
@@ -306,7 +306,7 @@
             <form action="{{route('foodie.chat.delete',$chatId)}}" method="post">
                 {{csrf_field()}}
                 <div>
-                    <div><input type="submit" value="Delete" class="btn btn-primary"></div>
+                    <div><input type="submit" value="Delete" class="orange darken-2 btn btn-primary"></div>
                 </div>
             </form>
         </div>
