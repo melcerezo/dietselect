@@ -73,7 +73,7 @@
                         <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">ALL PLANS</span>
                         </div>
-                        @if($plans->count()>0)
+                        @if($allPlans->count()>0)
                             @foreach($allPlans->chunk(2) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
@@ -151,7 +151,7 @@
                         <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">UPCOMING PLANS</span>
                         </div>
-                        @if($plans->count()>0)
+                        @if($futurePlans->count()>0)
                             @foreach($futurePlans->chunk(3) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
