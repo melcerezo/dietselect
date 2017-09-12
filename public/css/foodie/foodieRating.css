@@ -1,6 +1,9 @@
 .ratingTab{
     display: none;
 }
+.ratingTab .row{
+    margin:0;
+}
 .activeRate{
     border-bottom: 4px solid orange;
     color: orange;
