@@ -44,31 +44,29 @@
                     </div>
                 </div>
                 <div class="col s12 m10">
-                    <nav class="white" style="box-shadow: none; border: 1px solid #d1d1d1">
-                        <div class="nav-wrapper black-text">
-                            <div class="left col s12 m5 l5">
-                                <ul>
-                                    <li>
-                                        <span>Messages</span>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="left col s12 m7 l7 hide-on-med-and-down">
-                                <ul class="right">
-                                    <li>
-                                        <a href="#crtMsg" class="modal-trigger black-text"><i class="material-icons">edit</i></a>
-                                    </li>
-                                    <li>
-                                        @if($chatId!=null)
-                                            <a href="#dltCht" class="modal-trigger black-text"><i class="material-icons">delete</i></a>
-                                        @else
-                                            <a href="#!"><i class="material-icons grey-text">delete</i></a>
-                                        @endif
-                                    </li>
-                                </ul>
-                            </div>
+                    <div class="row" style="height: 64px; line-height:64px; border: 1px solid #d1d1d1">
+                        <div class="col s12 m5">
+                            <ul>
+                                <li>
+                                    <span>Messages</span>
+                                </li>
+                            </ul>
                         </div>
-                    </nav>
+                        <div class="col s12 offset-m3 m4 hide-on-med-and-down">
+                            <ul>
+                                <li style="float: left;">
+                                    <a href="#crtMsg" class="modal-trigger black-text"><i class="material-icons">edit</i></a>
+                                </li>
+                                <li style="float: left;">
+                                    @if($chatId!=null)
+                                        <a href="#dltCht" class="modal-trigger black-text"><i class="material-icons">delete</i></a>
+                                    @else
+                                        <a href="#!"><i class="material-icons grey-text">delete</i></a>
+                                    @endif
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1;">
                         <ul class="collection msgListItem" style="border: none; border-bottom: 1px solid #d1d1d1">
                             @if($chats->count() > 0)
