@@ -86,9 +86,9 @@
                                                     <div>For Week Of</div>
                                                     <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                 </div>
-                                                <div class="col s12 m2" style="margin-right: 10px;">
+                                                <div class="col s12 m2" style="margin-right: 20px;">
                                                     <div>Total</div>
-                                                    <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                    <div style="font-size: 22px;" style="margin-right: 20px;">{{'PHP'.$orderItem['total']}}</div>
                                                 </div>
                                                 <div class="col s12 m4">
                                                     <div>Address</div>
@@ -161,9 +161,9 @@
                                                         <div>For Week Of</div>
                                                         <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                     </div>
-                                                    <div class="col s12 m2" style="margin-right: 10px;">
+                                                    <div class="col s12 m2" style="margin-right: 20px;">
                                                         <div>Total</div>
-                                                        <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                        <div class="col s12 m2" style="margin-right: 20px;">{{'PHP'.$orderItem['total']}}</div>
                                                     </div>
                                                     <div class="col s12 m4">
                                                         <div>Address</div>
@@ -223,7 +223,7 @@
                                                         </div>
                                                         <div class="col s12 m2">
                                                             <div>Total</div>
-                                                            <div style="font-size: 22px;" style="margin-right: 10px;">{{'PHP'.$orderItem['total']}}</div>
+                                                            <div style="font-size: 22px;" style="margin-right: 20px;">{{'PHP'.$orderItem['total']}}</div>
                                                         </div>
                                                         <div class="col s12 m4">
                                                             <div>Address</div>
@@ -305,7 +305,7 @@
                                                             </div>
                                                             <div class="col s12 m2">
                                                                 <div>Total</div>
-                                                                <div style="font-size: 22px;" style="margin-right: 10px;">{{'PHP'.$orderItem['total']}}</div>
+                                                                <div style="font-size: 22px;" style="margin-right: 20px;">{{'PHP'.$orderItem['total']}}</div>
                                                             </div>
                                                             <div class="col s12 m4">
                                                                 <div>Address</div>
