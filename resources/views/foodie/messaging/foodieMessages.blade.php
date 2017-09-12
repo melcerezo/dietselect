@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col s12 m10">
-                    <div class="row" style="height: 64px; line-height:64px; border: 1px solid #d1d1d1; margin: 0;">
+                    <div class="row" style="border: 1px solid #d1d1d1; margin: 0;">
                         <div class="col s12 m5">
                             <ul>
                                 <li>
