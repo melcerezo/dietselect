@@ -74,7 +74,7 @@
                             @if($chats->count() > 0)
                                 @foreach($chats as $chat)
                                     @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
-                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" style="border: none; border-bottom: 1px solid #d1d1d1;">
+                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" >
                                             <a href="{{route('foodie.message.message', $chat->id)}}">
                                                 <div>
                                                     @foreach($chefs as $chef)
