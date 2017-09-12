@@ -45,7 +45,7 @@
     font-size: 20px;
 }
 
-.mlPlnTtl{ font-size: 30px; margin-left: 5px; color: #f57c00; }
+.mlPlnTtl{ font-size: 30px; margin-left: 5px; }
 .mlPlnCnt{ margin-top: 10px; }
 .calDay,.calCntr,.ingredFormCntr{ border: 2px dotted #d1d1d1; padding: 5px; }
 .dayTtl{ font-size: 20px; border-left: 4px solid #f57c00; color: #f57c00; margin-bottom: 10px; padding-left: 5px; }
