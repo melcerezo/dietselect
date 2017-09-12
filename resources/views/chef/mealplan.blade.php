@@ -332,9 +332,7 @@
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <input type="submit" value="Submit" class="btn btn-primary">
-            </div>
+                <input type="submit" value="Submit" class="btn orange darken-2 btn-primary">
         </form>
 
 
