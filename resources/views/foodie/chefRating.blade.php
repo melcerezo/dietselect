@@ -16,10 +16,10 @@
         {{--</div>--}}
 
     <div class="row">
-        <div id="pending" class="col s12 offset-m2 m2">
+        <div id="pending" class="col s12 offset-m2 m2 center">
             <span class="pending tabRating">Pending</span>
         </div>
-        <div id="finished" class="col s12 m2">
+        <div id="finished" class="col s12 m2 center">
             <span class="finished tabRating">Finished</span>
         </div>
     </div>
