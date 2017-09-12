@@ -68,7 +68,7 @@
                         </div>
                     </div>
                     <div class="row" style="margin: 0">
-                        <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1;">
+                        <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1; border-right: none;">
                             <ul class="collection msgListItem" style="border: none; border-bottom: 1px solid #d1d1d1">
                                 @if($chats->count() > 0)
                                     @foreach($chats as $chat)
