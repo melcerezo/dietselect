@@ -267,7 +267,7 @@
 
 
     <div id="createPlan" class="modal">
-        <div style="font-size: 30px; border-left: 4px solid #f57c00; margin: 24px 0 0 24px; padding-left: 5px;">
+        <div style="font-size: 30px; border-left: 4px solid #f57c00; margin: 24px 0 10px 24px; padding-left: 5px;">
             <span>Create Plan</span>
         </div>
         <div class="divider">
