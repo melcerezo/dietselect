@@ -72,6 +72,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div>Status:</div>
+                                                <div>
+                                                   Pending
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="divider" style="margin: 0 5px;">
@@ -129,6 +137,14 @@
                                                             <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
                                                         @endif
                                                     @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div>Status:</div>
+                                                <div>
+                                                    Paid
                                                 </div>
                                             </div>
                                         </div>
@@ -197,6 +213,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div>Status:</div>
+                                                <div>
+                                                    Pending
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="divider" style="margin: 0 5px;">
@@ -262,6 +286,14 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div>Status:</div>
+                                                <div>
+                                                    Paid
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="divider" style="margin: 0 5px;">
@@ -324,6 +356,14 @@
                                                             <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
                                                         @endif
                                                     @endforeach
+                                                </div>
+                                            </div>
+                                            <div class="col s12 m3" style="font-size: 20px;">
+                                                <div>
+                                                    <div>Status:</div>
+                                                    <div>
+                                                        Cancelled
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
