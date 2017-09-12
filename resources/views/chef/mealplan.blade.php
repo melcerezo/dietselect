@@ -312,7 +312,7 @@
                            <div class="file-field input-field">
                                 <label for="planPic" class="active">Picture Upload:</label>
                                <div style="padding-top: 10px;">
-                                   <div class="btn">
+                                   <div class="btn orange darken-2">
                                        <span>File</span>
                                        <input type="file" data-error=".error-pic" id="planPic" name="planPic">
                                    </div>
