@@ -32,7 +32,7 @@
                     <div class="row">
                         <div class="card">
                             <div class="left col s12">
-                                <span style="font-size: 20px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span>
+                                <span style="font-size: 20px;">{{ $order['plan'].' '.$order['type'] }}</span>
                             </div>
                             <div class="card-content">
                                 <div>Please Rate the Plan!</div>
@@ -108,7 +108,7 @@
                     <div class="row">
                         <div class="card-panel">
                             <div style="margin-bottom: 10px;">
-                                <span style="font-size: 20px;"><img style="width: 100px;" src="/img/{{ $order['picture'] }}"><span style="margin-left: 10px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span></span>
+                                <span style="font-size: 20px;"><img style="width: 100px;" src="/img/{{ $order['picture'] }}"><span style="margin-left: 10px;">{{ $order['plan'].' '.$order['type'] }}</span></span>
                             </div>
                             <div>
                                 <span>Rating:</span>
