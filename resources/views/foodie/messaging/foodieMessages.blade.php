@@ -69,7 +69,7 @@
                             </div>
                         </div>
                     </nav>
-                    <div class="col s12 m3 l3 card-panel msgList">
+                    <div class="col s12 m3 l3 card-panel msgList" style="box-shadow: none; border: 1px solid #d1d1d1;">
                         <ul class="collection msgListItem">
                             @if($chats->count() > 0)
                                 @foreach($chats as $chat)
@@ -129,7 +129,7 @@
                             @endif
                         </ul>
                     </div>
-                    <div class="col s12 m9 l9 card-panel msgDtl">
+                    <div class="col s12 m9 l9 card-panel msgDtl" style="box-shadow: none; border: 1px solid #d1d1d1;">
                         @foreach($chats as $chat)
                             <div id="chat-{{$chat->id}}" class="msgMsg">
                             @foreach($chat->message()->latest()->get() as $message)
