@@ -1,6 +1,8 @@
 .activeTab{
-    color: #f57c00;
     border-bottom: 4px solid #f57c00;
+}
+.activeTab a{
+    color: #f57c00;
 }
 div#ordAll,div#ordPend,div#ordPaid,div#ordCancel{
     display: none;
