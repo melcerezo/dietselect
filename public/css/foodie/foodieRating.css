@@ -5,6 +5,6 @@
     margin:0;
 }
 .activeRate{
-    border-bottom: 4px solid orange;
-    color: orange;
+    border-bottom: 4px solid #f57c00;
+    color: #f57c00;
 }
