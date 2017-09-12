@@ -272,68 +272,67 @@
         </div>
         <div class="divider" style="margin: 0 5px;">
         </div>
-        <form id="createPlanForm" action="{{route('chef.plan.create')}}" method="post" enctype="multipart/form-data">
-            {{csrf_field()}}
             <div class="modal-content">
-
-                <div class="row">
-                    <div class="input-field">
-                        <label for="plan_name">Plan Name:</label>
-                        <input type="text" name="plan_name" id="plan_name" data-error=".error-plan-name" class="form-control">
-                        <div class="error-plan-name err"></div>
-                    </div>
-                </div>
-               <div class="row">
-                   <div class="input-field">
-                        <label for="calories">Total Calories:</label>
-                        <input type="text" name="calories" id="calories" data-error=".error-calories" class="form-control">
-                        <div class="error-calories err"></div>
-                   </div>
-                </div>
-                <div class="row">
-                   <div class="input-field">
-                        <label for="description">Description:</label>
-                        <textarea id="description" name="description" data-error=".error-description" class="materialize-textarea" length="255" value=""></textarea>
-                        <div class="error-description err"></div>
-                   </div>
-                </div>
-                {{--<div class="row">--}}
-                    {{--<div class="input-field">--}}
-                        {{--<label for="category" class="active">Category:</label>--}}
-                        {{--<select name="category" id="category" data-error=".error-description">--}}
-                            {{--<option value="">Select category</option>--}}
-                            {{--<option value="1">Weight Loss</option>--}}
-                            {{--<option value="2">High Protein</option>--}}
-                            {{--<option value="3">Vegetarian</option>--}}
-                        {{--</select>--}}
-                        {{--<div class="error-description err"></div>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
-                <div class="row">
-                   <div class="file-field input-field">
-                        <label for="planPic" class="active">Picture Upload:</label>
-                       <div style="padding-top: 10px;">
-                           <div class="btn">
-                               <span>File</span>
-                               <input type="file" data-error=".error-pic" id="planPic" name="planPic">
+                <form id="createPlanForm" action="{{route('chef.plan.create')}}" method="post" enctype="multipart/form-data">
+                    {{csrf_field()}}
+                        <div class="row">
+                            <div class="input-field">
+                                <label for="plan_name">Plan Name:</label>
+                                <input type="text" name="plan_name" id="plan_name" data-error=".error-plan-name" class="form-control">
+                                <div class="error-plan-name err"></div>
+                            </div>
+                        </div>
+                       <div class="row">
+                           <div class="input-field">
+                                <label for="calories">Total Calories:</label>
+                                <input type="text" name="calories" id="calories" data-error=".error-calories" class="form-control">
+                                <div class="error-calories err"></div>
                            </div>
-                           <div class="file-path-wrapper">
-                               <input class="file-path validate" type="text" >
+                        </div>
+                        <div class="row">
+                           <div class="input-field">
+                                <label for="description">Description:</label>
+                                <textarea id="description" name="description" data-error=".error-description" class="materialize-textarea" length="255" value=""></textarea>
+                                <div class="error-description err"></div>
                            </div>
-                            <div class="error-pic err"></div>
-                       </div>
-                   </div>
-                </div>
-                <div class="row">
-                    <div class="input-field">
-                        <label for="price">Price:</label>
-                        <input type="text" name="price" id="price" data-error=".error-price" class="form-control">
-                        <div class="error-price err"></div>
-                    </div>
-                </div>
-            </div>
-                <input type="submit" value="Submit" class="btn orange darken-2 btn-primary">
-        </form>
+                        </div>
+                        {{--<div class="row">--}}
+                            {{--<div class="input-field">--}}
+                                {{--<label for="category" class="active">Category:</label>--}}
+                                {{--<select name="category" id="category" data-error=".error-description">--}}
+                                    {{--<option value="">Select category</option>--}}
+                                    {{--<option value="1">Weight Loss</option>--}}
+                                    {{--<option value="2">High Protein</option>--}}
+                                    {{--<option value="3">Vegetarian</option>--}}
+                                {{--</select>--}}
+                                {{--<div class="error-description err"></div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                        <div class="row">
+                           <div class="file-field input-field">
+                                <label for="planPic" class="active">Picture Upload:</label>
+                               <div style="padding-top: 10px;">
+                                   <div class="btn">
+                                       <span>File</span>
+                                       <input type="file" data-error=".error-pic" id="planPic" name="planPic">
+                                   </div>
+                                   <div class="file-path-wrapper">
+                                       <input class="file-path validate" type="text" >
+                                   </div>
+                                    <div class="error-pic err"></div>
+                               </div>
+                           </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field">
+                                <label for="price">Price:</label>
+                                <input type="text" name="price" id="price" data-error=".error-price" class="form-control">
+                                <div class="error-price err"></div>
+                            </div>
+                        </div>
+                        <input type="submit" value="Submit" class="btn orange darken-2 btn-primary">
+                </form>
+        </div>
 
 
     </div>
