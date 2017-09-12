@@ -108,8 +108,8 @@
 .brekk{ margin-top: 5px; }
 .mealDay { margin-bottom: 10px; }
 .mealDay a { color: black; }
-.mealDay:hover { border: 1px solid #f57c00; color: #f57c00 !important; }
-.mealDay:hover a { color: #f57c00 !important;}
+/*.mealDay:hover { border: 1px solid #f57c00; color: #f57c00 !important; }*/
+/*.mealDay:hover a { color: #f57c00 !important;}*/
 .mlTtl { font-size: 20px; }
 .mlCnt { font-size: 18px; padding-left: 10px; }
 
