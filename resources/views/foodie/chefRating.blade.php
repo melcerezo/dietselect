@@ -42,11 +42,11 @@
                     <li class="collection-item">
                         <a href="{{route('foodie.profile')}}">Profile</a>
                     </li>
-                    <li class="collection-item" style="border: 1px solid #f57c00;">
-                        <a href="{{route('foodie.message.index')}}" style="color: #f57c00;">Messages</a>
-                    </li>
                     <li class="collection-item">
-                        <a href="{{route('chef.rating', ['id'=>1])}}">Ratings</a>
+                        <a href="{{route('foodie.message.index')}}">Messages</a>
+                    </li>
+                    <li class="collection-item" style="border: 1px solid #f57c00;">
+                        <a href="{{route('chef.rating', ['id'=>1])}}" style="color: #f57c00;">Ratings</a>
                     </li>
                 </ul>
             </div>
