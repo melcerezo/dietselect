@@ -67,8 +67,10 @@
                         <span class="card-title">{{$foodie->first_name.' '.$foodie->last_name}}</span>
                         <div class="divider dshPrfCrdDvd"></div>
                         <div class="dshPrfCrdInf">
-                            <p class="truncate">Birthday: {{$foodie->birthday}}</p>
-                            <p class="truncate">Email: {{$foodie->email}}</p>
+                            <p>Birthday:</p>
+                            <p class="truncate">{{$foodie->birthday}}</p>
+                            <p>Email:</p>
+                            <p class="truncate">{{$foodie->email}}</p>
                         </div>
                         <div>
                             <a href="{{route('foodie.profile')}}">Edit Profile</a>
