@@ -108,7 +108,7 @@ class FoodieOrderPlanController extends Controller
             }
 
 
-            $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>$order->total,
+            $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
                 'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek);
 
             $orderItems = $order->order_item()->get();
@@ -138,7 +138,7 @@ class FoodieOrderPlanController extends Controller
                 }
 
                 $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
-                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP'.$orderItem->price);
+                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
             }
 
         }
