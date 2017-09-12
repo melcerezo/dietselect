@@ -45,7 +45,7 @@
                 </div>
                 <div class="col s12 m10">
                     <nav class="white">
-                        <div class="nav-wrapper">
+                        <div class="nav-wrapper black-text">
                             <div class="left col s12 m5 l5">
                                 <ul>
                                     <li>
