@@ -15,7 +15,7 @@
             <div class="col s12 m2">
                 <div class="row">
                     <div>
-                        ORDER HISTORY
+                        EDIT PROFILE
                     </div>
                 </div>
                 <div class="divider"></div>
@@ -27,8 +27,8 @@
                         <li class="collection-item">
                             <a href="{{route('foodie.plan.show')}}">Browse Plans</a>
                         </li>
-                        <li class="collection-item">
-                            <a href="{{route('foodie.profile')}}">Profile</a>
+                        <li class="collection-item" style="border: 1px solid #f57c00;">
+                            <a href="{{route('foodie.profile')}}" style="color: #f57c00;">Profile</a>
                         </li>
                         <li class="collection-item">
                             <a href="{{route('foodie.message.index')}}">Messages</a>
