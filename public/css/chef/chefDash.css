@@ -12,7 +12,7 @@ div.dshPrfCrdCnt{
     width: 70px;
     position: absolute;
     right:20px;
-    bottom:144px;
+    bottom:192px;
 }
 div.dshPrfCrdDvd{
     margin-bottom:10px;
@@ -46,4 +46,16 @@ div.card-image.dshPrfCrdCnt div#addCoverPhotoLink{
 div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
     display: block;
     background: rgba(0, 0, 0, .6);
+}
+
+@media only screen and (min-width:1024px){
+    .dshPrfCrdImgUs{
+        bottom: 231px;
+    }
+}
+@media only screen and (min-width:1200px) {
+    .dshPrfCrdImgUs{
+        right: 11px;
+        bottom: 169px;
+    }
 }
