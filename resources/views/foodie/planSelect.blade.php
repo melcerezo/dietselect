@@ -67,7 +67,7 @@
                 <div class="col s12 m2">
                     <div class="row">
                         <div>
-                            ACCOUNT DASHBOARD
+                            PLANS
                         </div>
                     </div>
                     <div class="divider"></div>
