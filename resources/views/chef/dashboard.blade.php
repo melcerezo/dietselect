@@ -10,6 +10,12 @@
     <div class="container dshMnCnt">
         <div class="row">
             <div class="col s12 m6 l2">
+                <div class="row">
+                    <div>
+                        ACCOUNT DASHBOARD
+                    </div>
+                </div>
+                <div class="divider"></div>
                 <ul class="collection">
                     <li class="collection-item">
                         <a href="{{route("chef.order.view", ['id'=> 0])}}">Orders</a>
