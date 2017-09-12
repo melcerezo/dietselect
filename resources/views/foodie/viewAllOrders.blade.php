@@ -86,7 +86,7 @@
                                                     <div>For Week Of</div>
                                                     <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                 </div>
-                                                <div class="col s12 m2">
+                                                <div class="col s12 m2" style="margin-right: 10px;">
                                                     <div>Total</div>
                                                     <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                 </div>
