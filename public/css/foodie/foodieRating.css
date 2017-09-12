@@ -6,5 +6,7 @@
 }
 .activeRate{
     border-bottom: 4px solid #f57c00;
+}
+.activeRate a{
     color: #f57c00;
 }

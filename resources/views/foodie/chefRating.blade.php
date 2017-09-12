@@ -17,10 +17,10 @@
 
     <div class="row">
         <div id="pending" class="col s12 offset-m2 m2 center">
-            <span class="pending tabRating">Pending</span>
+            <a href="#!" class="pending tabRating">Pending</a>
         </div>
         <div id="finished" class="col s12 m2 center">
-            <span class="finished tabRating">Finished</span>
+            <a href="#!" class="finished tabRating">Finished</a>
         </div>
     </div>
     <div class="row">
