@@ -298,7 +298,7 @@
                         @endif
                     @endforeach
                 </div>
-                <div id="ordPaid">
+                <div id="ordCancel">
                     @foreach($orders as $order)
                         @if($order['is_cancelled']==1)
                             <div class="card">
