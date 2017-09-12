@@ -8,7 +8,7 @@
 @section('page_content')
     @if($sms_unverified && $foodie->birthday==null)
         <div style="margin-top: 10px;">
-            Please verify your phone number and birthday before ordering any plans.
+            Please verify your phone number and go to your <a href="{{route('foodie.profile')}}">Profile</a> and birthday before ordering any plans.
         </div>
     @elseif($sms_unverified)
         <div style="margin-top: 10px;">
@@ -16,7 +16,7 @@
         </div>
     @elseif($foodie->birthday==null)
         <div style="margin-top: 10px;">
-            Please verify your birthday before ordering any plans.
+            Please go to your <a href="{{route('foodie.profile')}}">Profile</a> and verify your birthday before ordering any plans.
         </div>
     @else
         <div class="container plSlCntr">
