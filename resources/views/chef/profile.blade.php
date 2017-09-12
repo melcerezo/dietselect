@@ -8,107 +8,132 @@
 
 @section('page_content')
     <div class="container prfMnCnt">
-        <div class="row prfMnTtl">
-            <div class="col s12">
-                <span>Edit Profile</span>
+        <div class="col s12 m2">
+            <div class="row">
+                <div>
+                    ACCOUNT DASHBOARD
+                </div>
             </div>
+            <div class="divider"></div>
+            <ul class="collection">
+                <li class="collection-item" style="border: 1px solid #f57c00;">
+                    <a href="{{route("chef.order.view", ['id'=> 0])}}" style="color: #f57c00;" >Orders</a>
+                </li>
+                <li class="collection-item">
+                    <a href="{{route('chef.plan')}}">View Your Plans</a>
+                </li>
+                <li class="collection-item">
+                    <a href="{{route('chef.profile')}}">Profile</a>
+                </li>
+                <li class="collection-item">
+                    <a href="{{route('chef.message.index')}}">Messages</a>
+                    @if($messages->count()>0)
+                        <span class="new badge red">{{$messages->count()}}</span>
+                    @endif
+                </li>
+                <li class="collection-item" >
+                    <a href="{{route('chef.ratings')}}">Ratings</a>
+                </li>
+            </ul>
         </div>
-        <div class="divider">
-        </div>
-        <div class="row prfMnCntDv">
+        <div class="col s12 m10" style="border: 1px solid #e0e0e0;">
 
-            <div class="col s12 m4 l4">
-                <ul>
-                    <li id="basicProfileLinkContainer" class="prfMnLink">
-                        <span id="basicProfileLink" class="prfMnLinkTxt">Basic Profile</span>
-                    </li>
-                </ul>
-            </div>
-            <div class="col s12 m8 l8 prfLfBrd">
-                <div id="basic-profile-container">
-                    <div class="prfCntTtl">
-                        <span>
-                            CHEF PROFILE
-                        </span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="prfCntInf">
-                        <div class="row prfCntRw">
-                            <div class="col s4 m4 l4">
-                                <span>Name:</span>
-                            </div>
-                            <div class="col s8 m8 l8">
-                                <span>{{$chef->name}}</span>
-                            </div>
+            <div class="row prfMnCntDv">
+
+                <div class="col s12 m4 l4">
+                    <ul>
+                        <li id="basicProfileLinkContainer" class="prfMnLink">
+                            <span id="basicProfileLink" class="prfMnLinkTxt">Basic Profile</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col s12 m8 l8 prfLfBrd">
+                    <div id="basic-profile-container">
+                        <div class="prfCntTtl">
+                            <span>
+                                CHEF PROFILE
+                            </span>
                         </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="prfCntInf">
-                        <div class="row prfCntRw">
-                            <div class="col s4 m4 l4">
-                                <span>Email:</span>
-                            </div>
-                            <div class="col s8 m8 l8">
-                                <span>{{$chef->email}}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="divider"></div>
+                        <div class="divider"></div>
                         <div class="prfCntInf">
                             <div class="row prfCntRw">
                                 <div class="col s4 m4 l4">
-                                    <span>Website:</span>
+                                    <span>Name:</span>
                                 </div>
                                 <div class="col s8 m8 l8">
-                                    <span>{{ $chef->website}}</span>
+                                    <span>{{$chef->name}}</span>
                                 </div>
                             </div>
                         </div>
-                    <div class="prfCntTtl" style="margin-top: 15px;">
-                        <span>
-                            BANK ACCOUNT
-                        </span>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="prfCntInf">
-                        <div class="row prfCntRw">
-                            <div class="col s4 m4 l4">
-                                <span>Bank:</span>
-                            </div>
-                            <div class="col s8 m8 l8">
-                                @if($chef->bank_account!=null)
-                                    <span>{{$chef->bank_account->bank}}</span>
-                                @else
-                                    <span>N/A</span>
-                                @endif
+                        <div class="divider"></div>
+                        <div class="prfCntInf">
+                            <div class="row prfCntRw">
+                                <div class="col s4 m4 l4">
+                                    <span>Email:</span>
+                                </div>
+                                <div class="col s8 m8 l8">
+                                    <span>{{$chef->email}}</span>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="divider"></div>
-                    <div class="prfCntInf">
-                        <div class="row prfCntRw">
-                            <div class="col s4 m4 l4">
-                                <span>Account Number:</span>
+                        <div class="divider"></div>
+                            <div class="prfCntInf">
+                                <div class="row prfCntRw">
+                                    <div class="col s4 m4 l4">
+                                        <span>Website:</span>
+                                    </div>
+                                    <div class="col s8 m8 l8">
+                                        <span>{{ $chef->website}}</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col s8 m8 l8">
-                                @if($chef->bank_account!=null)
-                                    @if($chef->bank_account->bank=="BDO")
-                                        <span>{{'00'.$chef->bank_account->account}}</span>
+                        <div class="prfCntTtl" style="margin-top: 15px;">
+                            <span>
+                                BANK ACCOUNT
+                            </span>
+                        </div>
+                        <div class="divider"></div>
+                        <div class="prfCntInf">
+                            <div class="row prfCntRw">
+                                <div class="col s4 m4 l4">
+                                    <span>Bank:</span>
+                                </div>
+                                <div class="col s8 m8 l8">
+                                    @if($chef->bank_account!=null)
+                                        <span>{{$chef->bank_account->bank}}</span>
                                     @else
-                                        <span>{{$chef->bank_account->account}}</span>
+                                        <span>N/A</span>
                                     @endif
-                                @else
-                                    <span>N/A</span>
-                                @endif
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="prfCntBtn">
-                        <button data-target="basic-profile-modal" class="orange darken-2 btn modal-trigger">Edit</button>
+                        <div class="divider"></div>
+                        <div class="prfCntInf">
+                            <div class="row prfCntRw">
+                                <div class="col s4 m4 l4">
+                                    <span>Account Number:</span>
+                                </div>
+                                <div class="col s8 m8 l8">
+                                    @if($chef->bank_account!=null)
+                                        @if($chef->bank_account->bank=="BDO")
+                                            <span>{{'00'.$chef->bank_account->account}}</span>
+                                        @else
+                                            <span>{{$chef->bank_account->account}}</span>
+                                        @endif
+                                    @else
+                                        <span>N/A</span>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        <div class="prfCntBtn">
+                            <button data-target="basic-profile-modal" class="orange darken-2 btn modal-trigger">Edit</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
         <!-- Basic Profile Form Modal -->
         <div id="basic-profile-modal" class="modal">
             <nav class="light-green lighten-1 white-text">

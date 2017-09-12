@@ -26,6 +26,34 @@
             @else
 
             <div class="row">
+                <div class="col s12 m2">
+                    <div class="row">
+                        <div>
+                            ACCOUNT DASHBOARD
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <ul class="collection">
+                        <li class="collection-item" style="border: 1px solid #f57c00;">
+                            <a href="{{route("chef.order.view", ['id'=> 0])}}" style="color: #f57c00;" >Orders</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('chef.plan')}}">View Your Plans</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('chef.profile')}}">Profile</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('chef.message.index')}}">Messages</a>
+                            @if($messages->count()>0)
+                                <span class="new badge red">{{$messages->count()}}</span>
+                            @endif
+                        </li>
+                        <li class="collection-item" >
+                            <a href="{{route('chef.ratings')}}">Ratings</a>
+                        </li>
+                    </ul>
+                </div>
                 <div class="col s12 m3">
                     <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                         <span style="font-size: 20px;">YOUR PLANS</span>
@@ -40,13 +68,13 @@
                     </div>
 
                 </div>
-                <div id="planContainer" class="col s12 m9">
+                <div id="planContainer" class="col s12 m7">
                     <div id="allContainer">
                         <div class="orange-text text-darken-2" style="border-left: 4px solid orange; padding-left: 5px;">
                             <span style="font-size: 20px;">ALL PLANS</span>
                         </div>
                         @if($plans->count()>0)
-                            @foreach($allPlans->chunk(3) as $chunk)
+                            @foreach($allPlans->chunk(2) as $chunk)
                                 <div class="row">
                                     @foreach($chunk as $plan)
                                         <div class="col s12 m4">
