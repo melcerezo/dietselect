@@ -67,137 +67,139 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1;">
-                        <ul class="collection msgListItem" style="border: none; border-bottom: 1px solid #d1d1d1">
-                            @if($chats->count() > 0)
-                                @foreach($chats as $chat)
-                                    @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
-                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
-                                            <a href="{{route('foodie.message.message', $chat->id)}}">
-                                                <div>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $chat->chef_id)
-                                                            <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                            <div class="msgUserName">{{$chef->name}}</div>
-                                                            <p class="truncate grey-text">
-                                                                @if($chat->message()->latest()->first()->receiver_type=='f')
-                                                                    <span>{{$chef->name.': '}}</span>
-                                                                @else
-                                                                    <span>Me: </span>
-                                                                @endif
-                                                                {{$chat->message()->latest()->first()->message}}
-                                                            </p>
-                                                        @endif
-                                                    @endforeach
-                                                    {{--@foreach($chat->message as $message)--}}
+                    <div class="row">
+                        <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1;">
+                            <ul class="collection msgListItem" style="border: none; border-bottom: 1px solid #d1d1d1">
+                                @if($chats->count() > 0)
+                                    @foreach($chats as $chat)
+                                        @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
+                                            <li id="chtItem-{{$chat->id}}" class="collection-item msgItem">
+                                                <a href="{{route('foodie.message.message', $chat->id)}}">
+                                                    <div>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $chat->chef_id)
+                                                                <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                <div class="msgUserName">{{$chef->name}}</div>
+                                                                <p class="truncate grey-text">
+                                                                    @if($chat->message()->latest()->first()->receiver_type=='f')
+                                                                        <span>{{$chef->name.': '}}</span>
+                                                                    @else
+                                                                        <span>Me: </span>
+                                                                    @endif
+                                                                    {{$chat->message()->latest()->first()->message}}
+                                                                </p>
+                                                            @endif
+                                                        @endforeach
+                                                        {{--@foreach($chat->message as $message)--}}
+                                                            <a href="#!" class="secondary-content msgListTime">
+                                                                <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
+                                                            </a>
+                                                        {{--@endforeach--}}
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        @else
+                                            <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" style="background-color: #00e5ff;">
+                                                <a href="{{route('foodie.message.message', $chat->id)}}">
+                                                    <div>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $chat->chef_id)
+                                                                <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                <div class="msgUserName">{{$chef->name}}</div>
+                                                            @endif
+                                                        @endforeach
+                                                        {{--@foreach($chat->message as $message)--}}
+                                                        <p class="truncate grey-text">
+                                                            {{$chat->message()->latest()->first()->message}}
+                                                        </p>
                                                         <a href="#!" class="secondary-content msgListTime">
                                                             <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
                                                         </a>
-                                                    {{--@endforeach--}}
-                                                </div>
-                                            </a>
-                                        </li>
-                                    @else
-                                        <li id="chtItem-{{$chat->id}}" class="collection-item msgItem" style="background-color: #00e5ff;">
-                                            <a href="{{route('foodie.message.message', $chat->id)}}">
-                                                <div>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $chat->chef_id)
-                                                            <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                            <div class="msgUserName">{{$chef->name}}</div>
-                                                        @endif
-                                                    @endforeach
-                                                    {{--@foreach($chat->message as $message)--}}
-                                                    <p class="truncate grey-text">
-                                                        {{$chat->message()->latest()->first()->message}}
-                                                    </p>
-                                                    <a href="#!" class="secondary-content msgListTime">
-                                                        <span class="blue-text">{{$chat->message()->latest()->first()->created_at->format('g:ia')}}</span>
-                                                    </a>
-                                                    {{--@endforeach--}}
-                                                </div>
-                                            </a>
-                                        </li>
-                                    @endif
-                                @endforeach
-                            @else
-                                <li>
-                                    <span>No Messages Yet!</span>
-                                </li>
-                            @endif
-                        </ul>
-                    </div>
-                    <div class="col s12 m9 l9 msgDtl" style="border: 1px solid #d1d1d1;">
-                        @foreach($chats as $chat)
-                            <div id="chat-{{$chat->id}}" class="msgMsg">
-                            @foreach($chat->message()->latest()->get() as $message)
-                                <div class="msgBody">
-                                    <p class="email-subject truncate">{{$message->subject}}</p>
-                                    <hr class="grey-text text-lighten-2">
-                                    <div class="email-content-wrap">
-                                        <div class="row">
-                                            <div class="col s10 m10 l10">
-                                                <ul class="collection msgMta">
-                                                    <li class="collection-item">
-                                                        @foreach($chefs as $chef)
-                                                            @if($message->receiver_type=='f')
-                                                                @if($chef->id == $chat->chef_id)
-                                                                    <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
-                                                                    <span class="email-title"> From {{$chef->name}}</span>
-                                                                    <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
-                                                                @endif
-                                                            @else
-                                                                @if($chef->id == $chat->chef_id)
-                                                                    <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
-                                                                    <span class="email-title">From Me, {{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                                    <p class="grey-text ">To {{$chef->name}}</p>
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                        <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            @foreach($chefs as $chef)
-                                                @if($chef->id == $chat->chef_id)
-                                                    <div class="col s2 m2 l2 email-actions msgRply">
-                                                        <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rpl-sub="{{$message->subject}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                                        {{--@endforeach--}}
                                                     </div>
-                                                @endif
-                                            @endforeach
-                                            {{--<div>--}}
-                                                {{--<a href="#dltMsg{{$message->id}}" class="modal-trigger"><i class="material-icons">delete</i></a>--}}
-                                            {{--</div>--}}
-                                            {{--<div id="dltMsg{{$message->id}}" class="modal">--}}
-                                                {{--<div class="modal-content">--}}
-                                                    {{--<div>--}}
-                                                        {{--<span>Do you want to delete this message?</span>--}}
-                                                    {{--</div>--}}
-                                                    {{--<form action="{{route('foodie.message.delete',$message->id)}}" method="post">--}}
-                                                        {{--{{csrf_field()}}--}}
-                                                        {{--<div>--}}
-                                                            {{--<div><input type="submit" value="Delete" class="btn btn-primary"></div>--}}
-                                                        {{--</div>--}}
-                                                    {{--</form>--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                        </div>
-                                        <div class="msgCnt">
-                                            <p>{{$message->message}}</p>
-                                            <div>
-                                                @unless($message->receipt_name=='')
-                                                <div>
-                                                    <img src="/img/{{$message->receipt_name}}" alt="User Image">
+                                                </a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+                                @else
+                                    <li>
+                                        <span>No Messages Yet!</span>
+                                    </li>
+                                @endif
+                            </ul>
+                        </div>
+                        <div class="col s12 m9 l9 msgDtl" style="border: 1px solid #d1d1d1;">
+                            @foreach($chats as $chat)
+                                <div id="chat-{{$chat->id}}" class="msgMsg">
+                                @foreach($chat->message()->latest()->get() as $message)
+                                    <div class="msgBody">
+                                        <p class="email-subject truncate">{{$message->subject}}</p>
+                                        <hr class="grey-text text-lighten-2">
+                                        <div class="email-content-wrap">
+                                            <div class="row">
+                                                <div class="col s10 m10 l10">
+                                                    <ul class="collection msgMta">
+                                                        <li class="collection-item">
+                                                            @foreach($chefs as $chef)
+                                                                @if($message->receiver_type=='f')
+                                                                    @if($chef->id == $chat->chef_id)
+                                                                        <img class="circle msgImg" src="/img/{{ $chef->avatar }}">
+                                                                        <span class="email-title"> From {{$chef->name}}</span>
+                                                                        <p class="grey-text ">To me, {{$foodie->first_name.' '.$foodie->last_name}}</p>
+                                                                    @endif
+                                                                @else
+                                                                    @if($chef->id == $chat->chef_id)
+                                                                        <img class="circle msgImg" src="/img/{{ $foodie->avatar }}">
+                                                                        <span class="email-title">From Me, {{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                                        <p class="grey-text ">To {{$chef->name}}</p>
+                                                                    @endif
+                                                                @endif
+                                                            @endforeach
+                                                            <p class="grey-text">{{$message->created_at->format('F d, Y, g:ia')}}</p>
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                                @endunless
+                                                @foreach($chefs as $chef)
+                                                    @if($chef->id == $chat->chef_id)
+                                                        <div class="col s2 m2 l2 email-actions msgRply">
+                                                            <a class="rplBtn modal-trigger" href="#rplMsg" data-rec-name="{{$chef->name}}" data-rpl-sub="{{$message->subject}}" data-rec="{{$chef->id}}" data-chat-id="{{$chat->id}}"><span><i class="material-icons">reply</i></span></a>
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                                {{--<div>--}}
+                                                    {{--<a href="#dltMsg{{$message->id}}" class="modal-trigger"><i class="material-icons">delete</i></a>--}}
+                                                {{--</div>--}}
+                                                {{--<div id="dltMsg{{$message->id}}" class="modal">--}}
+                                                    {{--<div class="modal-content">--}}
+                                                        {{--<div>--}}
+                                                            {{--<span>Do you want to delete this message?</span>--}}
+                                                        {{--</div>--}}
+                                                        {{--<form action="{{route('foodie.message.delete',$message->id)}}" method="post">--}}
+                                                            {{--{{csrf_field()}}--}}
+                                                            {{--<div>--}}
+                                                                {{--<div><input type="submit" value="Delete" class="btn btn-primary"></div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</form>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
                                             </div>
+                                            <div class="msgCnt">
+                                                <p>{{$message->message}}</p>
+                                                <div>
+                                                    @unless($message->receipt_name=='')
+                                                    <div>
+                                                        <img src="/img/{{$message->receipt_name}}" alt="User Image">
+                                                    </div>
+                                                    @endunless
+                                                </div>
+                                            </div>
+                                        <div class="divider"></div>
                                         </div>
-                                    <div class="divider"></div>
                                     </div>
-                                </div>
+                                @endforeach
+                            </div>
                             @endforeach
                         </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
