@@ -86,7 +86,7 @@
                                                     <div>For Week Of</div>
                                                     <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                 </div>
-                                                <div class="col s12 m2" style="margin-right: 20px;">
+                                                <div class="col s12 m2" style="margin-right: 30px;">
                                                     <div>Total</div>
                                                     <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                 </div>
@@ -161,9 +161,9 @@
                                                         <div>For Week Of</div>
                                                         <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                     </div>
-                                                    <div class="col s12 m2" style="margin-right: 20px;">
+                                                    <div class="col s12 m2" style="margin-right: 30px;">
                                                         <div>Total</div>
-                                                        <div class="col s12 m2" style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                        <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                     </div>
                                                     <div class="col s12 m4">
                                                         <div>Address</div>
@@ -221,7 +221,7 @@
                                                             <div>For Week Of</div>
                                                             <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                         </div>
-                                                        <div class="col s12 m2" style="margin-right: 20px;">
+                                                        <div class="col s12 m2" style="margin-right: 30px;">
                                                             <div>Total</div>
                                                             <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                         </div>
@@ -303,7 +303,7 @@
                                                                 <div>For Week Of</div>
                                                                 <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                             </div>
-                                                            <div class="col s12 m2" style="margin-right: 20px;">
+                                                            <div class="col s12 m2" style="margin-right: 30px;">
                                                                 <div>Total</div>
                                                                 <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                             </div>
@@ -424,7 +424,7 @@
                                                             <div>For Week Of</div>
                                                             <div style="font-size: 22px;">{{$orderItem['week']}}</div>
                                                         </div>
-                                                        <div class="col s12 m2" style="margin-right: 20px;">
+                                                        <div class="col s12 m2" style="margin-right: 30px;">
                                                             <div>Total</div>
                                                             <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
                                                         </div>
