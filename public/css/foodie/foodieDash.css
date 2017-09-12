@@ -11,15 +11,10 @@ div.dshPrfCrdCnt{
 .dshPrfCrdImgUs{
     width: 70px;
     position: absolute;
-    right:6px;
-    bottom:236px;
+    right:5px;
+    top: 163px;
 }
-@media only screen and (min-width: 1200px){
-    .dshPrfCrdImgUs{
-        right:8px;
-        bottom:187px;
-    }
-}
+
 
 div.dshPrfCrdDvd{
     margin-bottom:10px;
