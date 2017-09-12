@@ -153,7 +153,7 @@ $(document).ready(function () {
                    produceType.append('<div id="nut'+id+'">' +
                        '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
                        '<input type="checkbox" name="nuts" value="noNuts" class="filled-in" id="nuts'+id+'" data-error=""/>' +
-                       '<label for="nuts'+id+'">No Nuts</label><br/>' +
+                       '<label for="nuts'+id+'">No Nuts/Nuts Products</label><br/>' +
                        '</div>');
                }
 
