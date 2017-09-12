@@ -194,7 +194,7 @@
                                                         <div>Amount: {{$orderItemItem['price']}}</div>
                                                     </div>
                                                     <div class="col s12 offset-m2 m2">
-                                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                                        <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                     </div>
                                                 </div>
                                             @endif
@@ -254,7 +254,7 @@
                                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                         </div>
                                                     </div>
                                                 @endif
@@ -336,7 +336,7 @@
                                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; ">View</a>
                                                         </div>
                                                     </div>
                                                     @endif
@@ -457,7 +457,7 @@
                                                             <div>Amount: {{$orderItemItem['price']}}</div>
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>
+                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
                                                         </div>
                                                     </div>
                                                 @endif
