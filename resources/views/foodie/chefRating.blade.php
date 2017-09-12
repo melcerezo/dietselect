@@ -53,10 +53,10 @@
         </div>
         <div class="col s12 m10">
             <div id="pendingRating" class="row ratingTab">
-                @if(count($ordersRatingChef)>0)
-                    @foreach($ordersRatingChef as $key=>$order)
-                        <div class="row">
-                            <div class="card">
+                <ul class="collection">
+                    @if(count($ordersRatingChef)>0)
+                        @foreach($ordersRatingChef as $key=>$order)
+                            <li class="collection-item">
                                 <div class="left col s12" style="margin: 10px 5px;">
                                     <span style="font-size: 20px;">{{ $order['plan'].' '.$order['type'] }}</span>
                                 </div>
@@ -117,16 +117,16 @@
                                         <span>Thank you for Rating!</span>
                                     </div>
                                 </div>
+                            </li>
+                        @endforeach
+                    @else
+                        <li class="collection-item">
+                            <div class="card-panel">
+                                <p>No pending ratings!</p>
                             </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="row">
-                        <div class="card-panel">
-                            <p>No pending ratings!</p>
-                        </div>
-                    </div>
-                @endif
+                        </li>
+                    @endif
+                </ul>
             </div>
             <div id="finishedRating" class="row ratingTab">
                 @if(count($ordersRatingsFinished)>0)
