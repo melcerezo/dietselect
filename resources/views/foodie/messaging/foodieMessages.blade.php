@@ -44,7 +44,7 @@
                     </div>
                 </div>
                 <div class="col s12 m10">
-                    <nav class="white">
+                    <nav class="white" style="box-shadow: none; border: 1px solid #d1d1d1">
                         <div class="nav-wrapper black-text">
                             <div class="left col s12 m5 l5">
                                 <ul>
