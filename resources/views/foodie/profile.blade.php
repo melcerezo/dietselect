@@ -42,9 +42,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col s12 m10">
-                    <div class="divider">
-                    </div>
+            <div class="col s12 m10" style="border: 1px solid #e0e0e0;">
                     <div class="row prfMnCntDv">
 
                         <div class="col s12 m4 l4">
