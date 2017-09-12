@@ -138,8 +138,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Breakfast')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -153,8 +153,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'MorningSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -168,8 +168,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Lunch')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -183,8 +183,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -198,8 +198,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'MO' && $mealPlan->meal_type == 'Dinner')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -220,8 +220,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Breakfast')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -235,8 +235,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'MorningSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -250,8 +250,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Lunch')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -265,8 +265,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -280,8 +280,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'TU' && $mealPlan->meal_type == 'Dinner')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -302,8 +302,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Breakfast')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -317,8 +317,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'MorningSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -332,8 +332,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Lunch')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
@@ -347,8 +347,8 @@
                                 <div class="mlCnt">
                                     @foreach($mealPlans as $id =>$mealPlan)
                                         @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'AfternoonSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}"
-                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                            <span data-meal-active="#viewMeal-{{$id}}"
+                                               class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                         @endif
                                     @endforeach
                                 </div>
@@ -362,8 +362,8 @@
                             <div class="mlCnt">
                                 @foreach($mealPlans as $id =>$mealPlan)
                                     @if($mealPlan->day == 'WE' && $mealPlan->meal_type == 'Dinner')
-                                        <a data-meal-active="#viewMeal-{{$id}}"
-                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</a><br>
+                                        <span data-meal-active="#viewMeal-{{$id}}"
+                                           class="waves-effect waves-light data-trigger">{{$mealPlan->chefcustomize->description}}</span><br>
                                     @endif
                                 @endforeach
                             </div>
