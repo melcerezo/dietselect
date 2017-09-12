@@ -53,7 +53,7 @@
                             </ul>
                         </div>
                         <div class="col s12 offset-m3 m4 hide-on-med-and-down">
-                            <ul>
+                            <ul style="float: right;">
                                 <li style="float: left;">
                                     <a href="#crtMsg" class="modal-trigger black-text"><i class="material-icons">edit</i></a>
                                 </li>
