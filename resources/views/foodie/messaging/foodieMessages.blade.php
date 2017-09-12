@@ -70,7 +70,7 @@
                         </div>
                     </nav>
                     <div class="col s12 m3 l3 msgList" style="border: 1px solid #d1d1d1;">
-                        <ul class="collection msgListItem">
+                        <ul class="collection msgListItem" style="border: none">
                             @if($chats->count() > 0)
                                 @foreach($chats as $chat)
                                     @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
