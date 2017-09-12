@@ -149,11 +149,11 @@ $(document).ready(function () {
 
 
                if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
-                   || valData[j].ingredient_group=='~1200~') && !produceType.find('#nut'+id).length){
+                   || valData[j].ingredient_group=='~1200~') && !produceType.find('#nuts'+id).length){
                    produceType.append('<div id="nut'+id+'">' +
-                       '<div ><span style="font-size: 20px;">Nuts</span></div>' +
-                       '<input type="checkbox" name="nut" value="noNuts" class="filled-in" id="nut'+id+'" data-error=""/>' +
-                       '<label for="nut'+id+'">No Nut/Nut Products</label><br/>' +
+                       '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                       '<input type="checkbox" name="nuts" value="noNuts" class="filled-in" id="nuts'+id+'" data-error=""/>' +
+                       '<label for="nuts'+id+'">No Nuts</label><br/>' +
                        '</div>');
                }
 
