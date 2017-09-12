@@ -65,7 +65,7 @@
             {{--</div>--}}
             <div class="row">
                 <div class="col s12 m3">
-                    <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                    <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                         <span style="font-size: 20px;">PLANS BY CHEF</span>
                     </div>
                     <ul>
@@ -77,7 +77,7 @@
                 </div>
                 <div id="planContainer" class="col s9">
                     <div id="allContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                             <span style="font-size: 20px;">ALL PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -88,7 +88,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -101,7 +101,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -117,7 +117,7 @@
                     </div>
                     @foreach($chefCurrent as $chef)
                         <div id="{{$chef->id}}Container" class="chefContainer">
-                            <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                            <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                                 <span style="font-size: 20px;">{{strtoupper($chef->name)}} PLANS</span>
                             </div>
                             @if($plans->count()>0)
@@ -129,7 +129,7 @@
                                                     <div class="card buyCard">
                                                         <div class="card-image">
                                                             <img src="/img/{{$plan->picture}}">
-                                                            <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                            <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                                 {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                             </div>
                                                         </div>
@@ -142,7 +142,7 @@
                                                             </div>
                                                             <div class="buyBtn center-align">
                                                                 <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                                   class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
+                                                                   class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -159,7 +159,7 @@
                         </div>
                     @endforeach
                     <div id="lossContainer" class="categoryContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                             <span style="font-size: 20px;">WEIGHT LOSS PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -171,7 +171,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -184,7 +184,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -200,7 +200,7 @@
                         @endif
                     </div>
                     <div id="protContainer" class="categoryContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                             <span style="font-size: 20px;">HIGH PROTEIN PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -212,7 +212,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -225,7 +225,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -241,7 +241,7 @@
                         @endif
                     </div>
                     <div id="vegeContainer" class="categoryContainer">
-                        <div class="orange-text" style="border-left: 4px solid orange; padding-left: 5px;">
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
                             <span style="font-size: 20px;">VEGETARIAN PLANS</span>
                         </div>
                         @if($plans->count()>0)
@@ -253,7 +253,7 @@
                                                 <div class="card buyCard">
                                                     <div class="card-image">
                                                         <img src="/img/{{$plan->picture}}">
-                                                        <div class="orange white-text" style="position: absolute; left: 5px; top: 5px;">
+                                                        <div class="orange darken-2 white-text" style="position: absolute; left: 5px; top: 5px;">
                                                             {{'PHP '.number_format($plan->price, 2,'.',',')}}
                                                         </div>
                                                     </div>
@@ -266,7 +266,7 @@
                                                         </div>
                                                         <div class="buyBtn center-align">
                                                             <a href="{{route('foodie.plan.standard', $plan->id)}}"
-                                                               class="orange btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
+                                                               class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Order</a>
                                                         </div>
                                                     </div>
                                                 </div>
