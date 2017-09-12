@@ -110,6 +110,9 @@
                             <div style="margin-bottom: 10px;">
                                 <span style="font-size: 20px;"><img style="width: 100px;" src="/img/{{ $order['picture'] }}"><span style="margin-left: 10px;">Rating: {{ $order['plan'].' '.$order['type'] }}</span></span>
                             </div>
+                            <div>
+                                <span>Rating:</span>
+                            </div>
                             <div id="rateYoFinish{{$key}}" style="margin-bottom: 60px;"></div>
                             <script>
                                 $(function () {
