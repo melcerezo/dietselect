@@ -426,7 +426,7 @@
                                                         </div>
                                                         <div class="col s12 m2" style="margin-right: 30px;">
                                                             <div>Total</div>
-                                                            <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
+                                                            <div style="font-size: 22px;">{{'PHP'.number_format($orderItem['total'],2,'.',',')}}</div>
                                                         </div>
                                                         <div class="col s12 m4">
                                                             <div>Address</div>
