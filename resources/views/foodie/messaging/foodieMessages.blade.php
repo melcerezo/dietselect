@@ -23,7 +23,7 @@
                         </div>
                     </div>
                     <div class="divider"></div>
-                    <div class="row">
+                    <div class="row" style="margin: 0;">
                         <ul class="collection">
                             <li class="collection-item">
                                 <a href="{{route("foodie.order.view", ['id'=> 0])}}">Order History</a>
