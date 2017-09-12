@@ -298,7 +298,7 @@
                         @endif
                     @endforeach
                 </div>
-                <div id="ordCancel">
+                <div id="ordPaid">
                     @foreach($orders as $order)
                         @if($order['is_cancelled']==1)
                             <div class="card">
@@ -354,16 +354,16 @@
                                         <div class="col s12 m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                         </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
-                         </div>
-                    @endif
-                @endforeach
-            @else
-                No Cancelled Orders
-            @endif
-            </div>
+                        @endif
+                    @endforeach
+                </div>
+
         </div>
     </div>
     @else
