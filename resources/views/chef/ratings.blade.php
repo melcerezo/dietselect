@@ -8,7 +8,7 @@
             <div class="col s12 m2">
                 <div class="row">
                     <div>
-                        MESSAGES
+                        RATINGS
                     </div>
                 </div>
                 <div class="divider"></div>
