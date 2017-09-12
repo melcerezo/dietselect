@@ -58,6 +58,7 @@ class MealPlanController extends Controller
             ->where('is_banned','=',0)
             ->get();
 
+        dd($allPlans);
         /* CURRENT PLANS
          *  Get ALL the plans WHERE updated_at is GREATER THAN 2 WEEKS AGO AND
          *  WHERE updated_at is LESS THAN lastSaturday
