@@ -49,7 +49,7 @@
                             <div class="left col s12 m5 l5">
                                 <ul>
                                     <li>
-                                        <span style="font-size: 20px;">Messages</span>
+                                        <span>Messages</span>
                                     </li>
                                 </ul>
                             </div>
