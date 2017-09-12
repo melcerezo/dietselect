@@ -10,7 +10,7 @@
 @section('page_content')
 
     @if(count($orders)>0)
-        <div class="container" style="width: 85%;">
+        <div class="container" style="width: 85%; margin-top: 1rem;">
             <div class="row">
                 <div class="col offset-m2 s6">
                     <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
