@@ -65,7 +65,7 @@
                         <span class="card-title">{{$chef->name}}</span>
                         <div class="divider dshPrfCrdDvd"></div>
                         <div class="dshPrfCrdInf">
-                            <p>Email: {{$chef->email}}</p>
+                            <p class="truncate">Email: {{$chef->email}}</p>
                             <p>Phone Number: {{'0'.$chef->mobile_number}}</p>
                         </div>
                         <div>
