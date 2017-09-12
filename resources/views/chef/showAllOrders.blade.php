@@ -23,7 +23,7 @@
                 <div class="col s12 m2">
                     <div class="row">
                         <div>
-                            RATINGS
+                           ORDERS
                         </div>
                     </div>
                     <div class="divider"></div>
