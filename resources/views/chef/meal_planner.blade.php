@@ -270,7 +270,7 @@
                         <div class="divider">
                         </div>
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Back to Plans</button>
+                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Plans</button>
                         </div>
                     @endif
                 </div>
