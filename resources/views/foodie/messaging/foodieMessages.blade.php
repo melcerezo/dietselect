@@ -56,11 +56,11 @@
                             <div class="left col s12 m7 l7 hide-on-med-and-down">
                                 <ul class="right">
                                     <li>
-                                        <a href="#crtMsg" class="modal-trigger"><i class="material-icons">edit</i></a>
+                                        <a href="#crtMsg" class="modal-trigger black-text"><i class="material-icons">edit</i></a>
                                     </li>
                                     <li>
                                         @if($chatId!=null)
-                                            <a href="#dltCht" class="modal-trigger"><i class="material-icons">delete</i></a>
+                                            <a href="#dltCht" class="modal-trigger black-text"><i class="material-icons">delete</i></a>
                                         @else
                                             <a href="#!"><i class="material-icons grey-text">delete</i></a>
                                         @endif
