@@ -11,17 +11,6 @@
 
     @if(count($orders)>0)
         <div class="container" style="width: 85%;">
-            <div class="row" style="margin-top: 1rem;">
-                <nav class="light-green lighten-1 white-text">
-                    <div class="left col s12">
-                        <ul>
-                            <li>
-                                <span style="font-size: 20px;">View Orders</span>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
             <div class="row">
                 <div class="col s6">
                     <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
@@ -30,324 +19,356 @@
                     <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col s12 m2">
+                    <div class="row">
+                        <div>
+                            RATINGS
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <ul class="collection">
+                        <li class="collection-item" style="border: 1px solid #f57c00;">
+                            <a href="{{route("chef.order.view", ['id'=> 0])}}" style="color: #f57c00;" >Orders</a>
+                        </li>
+                        <li class="collection-item" >
+                            <a href="{{route('chef.plan')}}" >View Your Plans</a>
+                        </li>
+                        <li class="collection-item">
+                            <a href="{{route('chef.profile')}}">Profile</a>
+                        </li>
+                        <li class="collection-item" >
+                            <a href="{{route('chef.message.index')}}" >Messages</a>
+                            @if($messages->count()>0)
+                                <span class="new badge red">{{$messages->count()}}</span>
+                            @endif
+                        </li>
+                        <li class="collection-item" >
+                            <a href="{{route('chef.ratings')}}" >Ratings</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col s12 m10">
+                <div id="ordAll">
+                    @foreach($orders as $order)
+                        @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                            <div class="card">
+                                <div class="card-title" style="font-size: 18px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="col s12 m2">
+                                            <div>For Week Of</div>
+                                            <div style="font-size: 22px;">{{$order['week']}}</div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div> Ordered By:</div>
+                                                <div>
+                                                    @foreach($foodies as $foodie)
+                                                        @if($order['foodie_id']==$foodie->id)
+                                                            <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                    {{--</form>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                            </div>
+                        @elseif($order['is_paid']==1 && $order['is_cancelled']==0)
+                            <div class="card">
+                                <div class="card-title" style="font-size: 18px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="col s12 m2">
+                                            <div>For Week Of</div>
+                                            <div style="font-size: 22px;">{{$order['week']}}</div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div> Ordered By:</div>
+                                                <div>
+                                                    @foreach($foodies as $foodie)
+                                                        @if($order['foodie_id']==$foodie->id)
+                                                            <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                    {{--</form>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div id="ordPend">
+                    @foreach($orders as $order)
+                        @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                            <div class="card">
+                                <div class="card-title" style="font-size: 18px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="col s12 m2">
+                                            <div>For Week Of</div>
+                                            <div style="font-size: 22px;">{{$order['week']}}</div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div> Ordered By:</div>
+                                                <div>
+                                                    @foreach($foodies as $foodie)
+                                                        @if($order['foodie_id']==$foodie->id)
+                                                            <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                    {{--</form>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div id="ordPaid">
+                    @foreach($orders as $order)
+                        @if($order['is_paid']==1 && $order['is_cancelled']==0)
+                            <div class="card">
+                                <div class="card-title" style="font-size: 18px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="col s12 m2">
+                                            <div>For Week Of</div>
+                                            <div style="font-size: 22px;">{{$order['week']}}</div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div> Ordered By:</div>
+                                                <div>
+                                                    @foreach($foodies as $foodie)
+                                                        @if($order['foodie_id']==$foodie->id)
+                                                            <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                    {{--</form>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                </div>
+                <div id="ordCancel">
+                    @foreach($orders as $order)
+                        @if($order['is_cancelled']==1)
+                            <div class="card">
+                                <div class="card-title" style="font-size: 18px;">
+                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                                        <div class="col s12 m2">
+                                            <div>For Week Of</div>
+                                            <div style="font-size: 22px;">{{$order['week']}}</div>
+                                        </div>
+                                        <div class="col s12 m3" style="font-size: 20px;">
+                                            <div>
+                                                <div> Ordered By:</div>
+                                                <div>
+                                                    @foreach($foodies as $foodie)
+                                                        @if($order['foodie_id']==$foodie->id)
+                                                            <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
+                                                        @endif
+                                                    @endforeach
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="divider" style="margin: 0 5px;">
+                                </div>
+                                <div class="card-content">
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>Amount:</div><div>{{$order['price']}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s12 m2">
+                                            <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
+                                        </div>
+                                        {{--<div class="col s12 m2">--}}
+                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                        {{--</div>--}}
+                                    </div>
+                                    {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
+                                    {{--<div class="modal-content">--}}
+                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                    {{--{{ csrf_field() }}--}}
+                                    {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
+                                    {{--</form>--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                </div>
+                            </div>
+                         </div>
 
-            <div id="ordAll">
-                @foreach($orders as $order)
-                    @if($order['is_paid']==0 && $order['is_cancelled']==0)
-                        <div class="card">
-                            <div class="card-title" style="font-size: 18px;">
-                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                    <div class="col s12 m2">
-                                        <div>For Week Of</div>
-                                        <div style="font-size: 22px;">{{$order['week']}}</div>
-                                    </div>
-                                    <div class="col s12 m3" style="font-size: 20px;">
-                                        <div>
-                                            <div> Ordered By:</div>
-                                            <div>
-                                                @foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider" style="margin: 0 5px;">
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Type:</div><div>{{$order['order_type']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Amount:</div><div>{{$order['price']}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
-                                    </div>
-                                    {{--<div class="col s12 m2">--}}
-                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                    {{--</div>--}}
-                                </div>
-                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
-                    @elseif($order['is_paid']==1 && $order['is_cancelled']==0)
-                        <div class="card">
-                            <div class="card-title" style="font-size: 18px;">
-                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                    <div class="col s12 m2">
-                                        <div>For Week Of</div>
-                                        <div style="font-size: 22px;">{{$order['week']}}</div>
-                                    </div>
-                                    <div class="col s12 m3" style="font-size: 20px;">
-                                        <div>
-                                            <div> Ordered By:</div>
-                                            <div>
-                                                @foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider" style="margin: 0 5px;">
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Type:</div><div>{{$order['order_type']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Amount:</div><div>{{$order['price']}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
-                                    </div>
-                                    {{--<div class="col s12 m2">--}}
-                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                    {{--</div>--}}
-                                </div>
-                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-            <div id="ordPend">
-                @foreach($orders as $order)
-                    @if($order['is_paid']==0 && $order['is_cancelled']==0)
-                        <div class="card">
-                            <div class="card-title" style="font-size: 18px;">
-                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                    <div class="col s12 m2">
-                                        <div>For Week Of</div>
-                                        <div style="font-size: 22px;">{{$order['week']}}</div>
-                                    </div>
-                                    <div class="col s12 m3" style="font-size: 20px;">
-                                        <div>
-                                            <div> Ordered By:</div>
-                                            <div>
-                                                @foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider" style="margin: 0 5px;">
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Type:</div><div>{{$order['order_type']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Amount:</div><div>{{$order['price']}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
-                                    </div>
-                                    {{--<div class="col s12 m2">--}}
-                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                    {{--</div>--}}
-                                </div>
-                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-            <div id="ordPaid">
-                @foreach($orders as $order)
-                    @if($order['is_paid']==1 && $order['is_cancelled']==0)
-                        <div class="card">
-                            <div class="card-title" style="font-size: 18px;">
-                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                    <div class="col s12 m2">
-                                        <div>For Week Of</div>
-                                        <div style="font-size: 22px;">{{$order['week']}}</div>
-                                    </div>
-                                    <div class="col s12 m3" style="font-size: 20px;">
-                                        <div>
-                                            <div> Ordered By:</div>
-                                            <div>
-                                                @foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider" style="margin: 0 5px;">
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Type:</div><div>{{$order['order_type']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Amount:</div><div>{{$order['price']}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
-                                    </div>
-                                    {{--<div class="col s12 m2">--}}
-                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                    {{--</div>--}}
-                                </div>
-                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
-                    @endif
-                @endforeach
-            </div>
-            <div id="ordCancel">
-                @foreach($orders as $order)
-                    @if($order['is_cancelled']==1)
-                        <div class="card">
-                            <div class="card-title" style="font-size: 18px;">
-                                <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                    <div class="col s12 m2">
-                                        <div>For Week Of</div>
-                                        <div style="font-size: 22px;">{{$order['week']}}</div>
-                                    </div>
-                                    <div class="col s12 m3" style="font-size: 20px;">
-                                        <div>
-                                            <div> Ordered By:</div>
-                                            <div>
-                                                @foreach($foodies as $foodie)
-                                                    @if($order['foodie_id']==$foodie->id)
-                                                        <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
-                                                    @endif
-                                                @endforeach
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="divider" style="margin: 0 5px;">
-                            </div>
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Plan:</div><div>{{$order['plan_name']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Type:</div><div>{{$order['order_type']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                    </div>
-                                    <div class="col s12 m2" style="font-size: 20px;">
-                                        <div>Amount:</div><div>{{$order['price']}}</div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col s12 m2">
-                                        <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
-                                    </div>
-                                    {{--<div class="col s12 m2">--}}
-                                    {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                    {{--</div>--}}
-                                </div>
-                                {{--<div id="cancelAllModal{{$order->id}}" class="modal">--}}
-                                {{--<div class="modal-content">--}}
-                                {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
-                                {{--{{ csrf_field() }}--}}
-                                {{--<button class="btn waves-effect waves-light">Cancel Order?</button>--}}
-                                {{--</form>--}}
-                                {{--</div>--}}
-                                {{--</div>--}}
-                            </div>
-                        </div>
                     @endif
                 @endforeach
             </div>
