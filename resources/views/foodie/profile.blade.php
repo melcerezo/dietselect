@@ -21,8 +21,8 @@
                 <div class="divider"></div>
                 <div class="row">
                     <ul class="collection">
-                        <li class="collection-item" style="border: 1px solid #f57c00;">
-                            <a href="{{route("foodie.order.view", ['id'=> 0])}}" style="color: #f57c00;">Order History</a>
+                        <li class="collection-item">
+                            <a href="{{route("foodie.order.view", ['id'=> 0])}}">Order History</a>
                         </li>
                         <li class="collection-item">
                             <a href="{{route('foodie.plan.show')}}">Browse Plans</a>
