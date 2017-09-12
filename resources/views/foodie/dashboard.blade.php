@@ -30,7 +30,7 @@
                         <li class="collection-item">
                             <a href="{{route('foodie.message.index')}}">Messages</a>
                             @if($messages->count()>0)
-                                <span class="badge red">{{$messages->count()}}</span>
+                                <span class="new badge red">{{$messages->count()}}</span>
                             @endif
                         </li>
                         <li class="collection-item">
