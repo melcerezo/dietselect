@@ -8,7 +8,7 @@
 @endsection
 @section('page_content')
 
-    <div class="container" style="margin-top: 10px;">
+    <div class="container" style="width: 85%; margin-top: 10px;">
        {{----}}
         {{--<div class="row">--}}
             {{--<span style="font-size: 20px;">Ratings</span>--}}
