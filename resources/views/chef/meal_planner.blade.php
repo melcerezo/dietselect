@@ -261,16 +261,16 @@
                 <div>
                     @if($plan->lockPlan==0)
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="fnshEdt" data-target="finishEdit" class="orange darken-1 btn waves-effect waves-light modal-trigger">Finish</button>
+                            <button id="fnshEdt" data-target="finishEdit" class="orange darken-2 btn waves-effect waves-light modal-trigger">Finish</button>
                         </div>
                     @else
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="unlckPln" data-target="unlckPlnMdl" class="orange darken-1 btn waves-effect waves-light modal-trigger">Unlock</button>
+                            <button id="unlckPln" data-target="unlckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Unlock</button>
                         </div>
                         <div class="divider">
                         </div>
                         <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-1 btn waves-effect waves-light modal-trigger">Back to Plans</button>
+                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Back to Plans</button>
                         </div>
                     @endif
                 </div>
@@ -910,7 +910,7 @@
             </div>
         </nav>
             <div class="modal-content">
-                <a href="{{route('chef.plan.unlock',$plan->id)}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Unlock</a>
+                <a href="{{route('chef.plan.unlock',$plan->id)}}" class="orange darken-2 btn waves-effect waves-light" style="color: white; font-weight:100;">Unlock</a>
             </div>
     </div>
 
@@ -925,7 +925,7 @@
             </div>
         </nav>
         <div class="modal-content">
-            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light" style="color: white; font-weight:100;">Back</a>
+            <a href="{{route('chef.plan')}}" class="orange darken-2 btn waves-effect waves-light" style="color: white; font-weight:100;">Back</a>
         </div>
     </div>
 
@@ -940,8 +940,8 @@
             </div>
         </nav>
         <div class="modal-content">
-            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light orange darken-1" style="color: white; font-weight:100;">Lock Plan</a>
-            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light orange darken-1" style="color: white; font-weight:100;">Exit</a>
+            <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light orange darken-2" style="color: white; font-weight:100;">Lock Plan</a>
+            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light orange darken-2" style="color: white; font-weight:100;">Exit</a>
         </div>
     </div>
 
@@ -961,7 +961,7 @@
                 {{csrf_field()}}
                 <input id="deleteMealPlanId" name="deleteMealPlanId" type="hidden" value="">
 
-                <button type="submit" class="btn waves-effect waves-light">Delete Planned Meal</button>
+                <button type="submit" class="orange darken-2 btn waves-effect waves-light">Delete Planned Meal</button>
             </form>
 
         </div>
@@ -971,7 +971,7 @@
         @for($i=0;$i<count($mealPlans);$i++)
             <div id="editMeal-{{$i}}" class="modal editFormModal">
                 <i data-meal-id="{{$mealPlans[$i]->chefcustomize->id}}"></i>
-                    <div class="orange-text darken-1" style="margin-top: 10px">
+                    <div class="orange-text text-darken-2" style="margin-top: 10px">
                         <span class="edtMlTtl" style="font-size: 30px;">Update Meal: {{$mealPlans[$i]->chefcustomize->description}}</span>
                     </div>
                     <div class="divider" style="margin: 10px;">
@@ -1095,10 +1095,10 @@
                             @endfor
                         @endfor
                             <span>
-                                <button class="btn orange darken-1" type="submit">Update</button>
+                                <button class="btn orange darken-2" type="submit">Update</button>
                             </span>
                             <span>
-                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="orange darken-1 deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete</button>
+                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="orange darken-2 deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete</button>
                             </span>
                         </div>
                     </form>
@@ -1118,7 +1118,7 @@
 
 
     <div id="chooseMeal" class="modal chooseMdlTbl">
-        <div class="orange-text darken-1" style="margin-top: 10px">
+        <div class="orange-text text-darken-2" style="margin-top: 10px">
             <span class="edtMlTtl" style="font-size: 30px;">Choose Meal For <span id="dayNameChoose"></span> on <span id="mealTypeChoose"></span></span>
         </div>
         <div class="divider" style="margin: 10px;">
@@ -1163,14 +1163,14 @@
                     <input type="hidden" id="meal_typeChoose" name="meal_typeChoose" value="">
                     <input type="hidden" id="meal_idChoose" name="meal_idChoose" value="">
             @if($meals->count()>0)
-                    <button type="submit" class="btn waves-effect waves-light">Choose</button>
+                    <button type="submit" class="orange darken-2 btn waves-effect waves-light">Choose</button>
             @endif
                 </form>
         </div>
     </div>
 
     <div id="createMeal" class="modal">
-        <div class="orange-text darken-1" style="margin-top: 10px">
+        <div class="orange-text text-darken-2" style="margin-top: 10px">
             <span class="edtMlTtl" style="font-size: 30px;">Create <span id="createMealTypeName"></span> for <span id="dayName"></span></span>
         </div>
         <div class="divider" style="margin: 10px;">
@@ -1210,7 +1210,7 @@
                 <div class="file-field input-field">
                     <label for="mealPic" class="active">Picture Upload:</label>
                     <div style="padding-top: 10px;">
-                        <div class="btn">
+                        <div class="btn orange darken-2">
                             <span>File</span>
                             <input type="file" data-error=".error-pic" id="mealPic" name="mealPic">
                         </div>
@@ -1226,7 +1226,7 @@
                 </div>
                 <div id="ingredError"></div>
                 <div id="formError"></div>
-                <div><button class="orange darken-1 createB btn" type="submit">Create</button></div>
+                <div><button class="orange darken-2 createB btn" type="submit">Create</button></div>
             </form>
         </div>
     </div>
