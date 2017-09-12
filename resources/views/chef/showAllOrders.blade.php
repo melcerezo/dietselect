@@ -360,6 +360,9 @@
                          </div>
                     @endif
                 @endforeach
+            @else
+                No Cancelled Orders
+            @endif
             </div>
         </div>
     </div>
