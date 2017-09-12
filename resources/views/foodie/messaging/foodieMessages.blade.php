@@ -48,7 +48,7 @@
                         <div class="col s12 m5">
                             <ul>
                                 <li>
-                                    <span>Messages</span>
+                                    <span style="font-size: 20px;">Inbox</span>
                                 </li>
                             </ul>
                         </div>
