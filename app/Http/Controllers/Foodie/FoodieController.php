@@ -469,7 +469,7 @@ class FoodieController extends Controller
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
-            'username' => 'max:20'
+            'username' => 'max:20|unique:foodies,username'
         ])->validate();
 
 
@@ -491,7 +491,11 @@ class FoodieController extends Controller
 
 
         $foodie->birthday = $request['birthday'];
-        $foodie->username = $request['username'];
+        if($request['username']==""){
+            $foodie->username = null;
+        }else{
+            $foodie->username = $request['username'];
+        }
         $foodie->save();
 
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
