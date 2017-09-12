@@ -25,7 +25,7 @@
         {{--</div>--}}
     @if($ordersCount>0)
     <div class="row" style="margin-top: 1rem;">
-        <div class="col s6">
+        <div class="col s6 offset-m2">
             <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
             <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
             <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
