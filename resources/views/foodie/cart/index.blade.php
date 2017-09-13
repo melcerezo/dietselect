@@ -100,7 +100,7 @@
                                     <span>Week:</span>
                                 </div>
                                 <div>
-                                    <span>{{$nextWeek.' - '.$endNextWeek}}</span>
+                                    <span>Week: {{$nextWeek.' - '.$endNextWeek}}</span>
                                 </div>
                             </div>
                             <div class="divider"></div>
