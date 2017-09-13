@@ -69,7 +69,7 @@
                                             <div class="file-field">
                                                 <label for="image" class="active">Picture Upload:</label>
                                                 <div style="padding-top: 10px;">
-                                                    <div class="btn">
+                                                    <div class="btn orange darken-2">
                                                         <span>File</span>
                                                         <input type="file" data-error=".error-image" id="image" name="image">
                                                     </div>
@@ -81,7 +81,7 @@
                                             </div>
                                         </div>
                                         <div class="row" style="margin-bottom: 5px;">
-                                            <button class="btn waves-light waves-light orange" type="submit">Submit</button>
+                                            <button class="btn waves-light waves-light orange darken-2" type="submit">Submit</button>
                                         </div>
                                     </form>
                                 </div>
@@ -109,7 +109,7 @@
                                             {{ csrf_field() }}
 
                                             <div class="form-group">
-                                                <button type="submit" class="btn btn-primary waves-effect waves-light orange">
+                                                <button type="submit" class="btn btn-primary waves-effect waves-light orange darken-2">
                                                     Pay with Paypal
                                                 </button>
                                             </div>
@@ -139,7 +139,7 @@
                                                     <div class="file-field">
                                                         <label for="gcPic" class="active">Picture Upload:</label>
                                                         <div style="padding-top: 10px;">
-                                                            <div class="btn">
+                                                            <div class="btn orange darken-2">
                                                                 <span>File</span>
                                                                 <input type="file" data-error=".error-gcpic" id="gcPic" name="gcPic">
                                                             </div>
@@ -151,7 +151,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <button class="btn waves-effect waves-light orange">Submit</button>
+                                                    <button class="btn waves-effect waves-light orange darken-2">Submit</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -502,7 +502,7 @@
                     </select>
                     <div></div>
                 </div>
-                <input type="submit" class="btn waves-effect waves-light orange"/>
+                <input type="submit" class="btn waves-effect waves-light orange darken-2"/>
             </form>
         </div>
     </div>
@@ -516,7 +516,7 @@
             </div>
             <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">
                 {{ csrf_field() }}
-                <input type="submit" class="btn waves-effect waves-light orange" />
+                <input type="submit" class="btn waves-effect waves-light orange darken-2" />
             </form>
         </div>
     </div>
