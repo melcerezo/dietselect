@@ -9,7 +9,7 @@
 @section('page_content')
 
     <div class="container shOrdCntr">
-        <div class="orange-text text-darken-2" style="font-size: 30px; border: 4px solid #f57c00;">
+        <div class="orange-text text-darken-2" style="font-size: 30px; border-left: 4px solid #f57c00;">
             Cart
         </div>
         @if(Cart::count()>0)
