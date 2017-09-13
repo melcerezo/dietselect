@@ -384,7 +384,7 @@
                                     <label for="gender">Gender</label>
                                 </div>
                                 <div class="input-field col m6 s12">
-                                    <input id="birthday" name="birthday" type="text" class="validate datepicker" value="{{ $foodie->birthday }}">
+                                    <input id="birthday" name="birthday" type="text" class="validate datepicker" value="{{ date('F j, Y',strtotime($foodie->birthday)) }}">
                                     <label for="birthday">Birthday</label>
                                 </div>
                             </div>
