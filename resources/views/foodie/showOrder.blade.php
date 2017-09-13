@@ -8,6 +8,9 @@
 @section('page_content')
 
     <div class="container shOrdCntr">
+        <div>
+            <a href="{{route('foodie.order.view', ['from'=>1])}}" class="orange-text text-darken-2"><-Back to Order History</a>
+        </div>
         <div class="row">
             @if($order->is_cancelled!=1)
                 <div class="col s12 m7">
