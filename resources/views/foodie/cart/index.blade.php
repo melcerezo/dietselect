@@ -97,6 +97,9 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
+                                <div style="font-size: 22px; font-weight: bold;">
+                                    Total:
+                                </div>
                                 <span style="font-size: 22px; font-weight: bold;">Total: {{'PHP '.$cartTotal}}</span>
                             </div>
                         </div>
