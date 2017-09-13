@@ -128,7 +128,7 @@
                                         @endforeach
                                         <div class="row">
                                             <div class="col s12 m2">
-                                                <a href="{{route('order.show', $order->id)}}" class="orange darken-2btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
+                                                <a href="{{route('order.show', $order->id)}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
                                             </div>
                                             <div class="col s12 m2">
                                                 <button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>
