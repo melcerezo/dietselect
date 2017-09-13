@@ -734,7 +734,7 @@
     </div>
 
     <div id="orderReview" class="modal" >
-        <div class="mlPlnTtl" style="border-left: 4px solid #f57c00; margin: 24px 0 0 24px; padding-left: 5px;">
+        <div class="mlPlnTtl" style="margin: 24px 0 0 24px; padding-left: 5px;">
             <span>Review Order of {{$simpleCustomPlan->plan->plan_name}}</span>
         </div>
         <div class="modal-content">
@@ -759,7 +759,7 @@
 
     @if($simpleCustomPlan->simple_custom_plan_detail->count())
         <div id="detailCust" class="modal">
-            <div class="mlPlnTtl" style="border-left: 4px solid #f57c00; margin: 24px 0 0 24px; padding-left: 5px;">
+            <div class="mlPlnTtl" style="margin: 24px 0 0 24px; padding-left: 5px;">
                 <span>{{$simpleCustomPlan->plan->plan_name}} Customization</span>
             </div>
            <div class="modal-content">
@@ -821,7 +821,7 @@
     @endif
 
     <div id="planCust" class="modal">
-        <div class="mlPlnTtl" style="border-left: 4px solid #f57c00; margin: 24px 0 0 24px; padding-left: 5px;">
+        <div class="mlPlnTtl" style="margin: 24px 0 0 24px; padding-left: 5px;">
             <span>Customize {{$simpleCustomPlan->plan->plan_name}}</span>
         </div>
         <div class="modal-content">
@@ -951,7 +951,7 @@
                                                 <div class="dairySection">
                                                 </div>
                                             </div>
-                                            <button class="btn waves-effect waves-light">Customize</button>
+                                            <button class="btn orange darken-2 waves-effect waves-light">Customize</button>
                                         </form>
                                     </div>
                                 </div>
