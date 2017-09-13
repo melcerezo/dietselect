@@ -68,7 +68,7 @@
                         <div class="divider dshPrfCrdDvd"></div>
                         <div class="dshPrfCrdInf">
                             <p>Birthday:</p>
-                            <p class="truncate">{{date('F j, Y',strtotime($foodie->birthday))}}</p>
+                            <p class="truncate" style="margin: 0 0 10px 0;">{{date('F j, Y',strtotime($foodie->birthday))}}</p>
                             <p>Email:</p>
                             <p class="truncate">{{$foodie->email}}</p>
                         </div>
