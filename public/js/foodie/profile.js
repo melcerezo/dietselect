@@ -37,7 +37,10 @@ $(document).ready(function() {
         close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
 
         //Formats
-        format: 'yyyy-mm-dd',
+        format: 'mmm d, yyyy',
+        formatSubmit: 'yyyy-mm-dd',
+        hiddenName: true,
+        // format: 'yyyy-mm-dd',
 
         //Date limits
         max: new Date(now.getFullYear()-18,now.getMonth(),now.getDay()),
