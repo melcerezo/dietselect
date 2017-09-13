@@ -236,7 +236,9 @@ class FoodieMealPlanController extends Controller
             ->where('detail','=','preservatives')
             ->orWhere('detail','=','salt')
             ->orWhere('detail','=','sweeteners')
-            ->count();
+            ->get();
+
+        dd($driedCount);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
