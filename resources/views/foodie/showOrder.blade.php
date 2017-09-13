@@ -8,7 +8,7 @@
 @section('page_content')
 
     <div class="container shOrdCntr">
-        <div>
+        <div class="row">
             <a href="{{route('foodie.order.view', ['from'=>1])}}" class="orange-text text-darken-2"><-Back to Order History</a>
         </div>
         <div class="row">

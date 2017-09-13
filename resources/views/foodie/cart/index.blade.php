@@ -9,7 +9,7 @@
 @section('page_content')
 
     <div class="container shOrdCntr">
-        <div>
+        <div class="row">
             <a class="orange-text text-darken-2" href="{{route('foodie.plan.show')}}">View More Plans</a>
         </div>
         <div class="orange-text text-darken-2" style="font-size: 30px; border-left: 4px solid #f57c00;">
