@@ -207,8 +207,8 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
-        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
-        dd($incomplete);
+//        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
+//        dd($incomplete);
 
         $mealPlans = $simpleCustomPlan->plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
