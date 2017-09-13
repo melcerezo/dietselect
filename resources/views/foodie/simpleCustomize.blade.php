@@ -951,7 +951,9 @@
                                                 <div class="dairySection">
                                                 </div>
                                             </div>
-                                            <button class="btn orange darken-2 waves-effect waves-light">Customize</button>
+                                            <div style="margin-top: 10px;">
+                                                <button class="btn orange darken-2 waves-effect waves-light">Customize</button>
+                                            </div>
                                         </form>
                                     </div>
                                 </div>
