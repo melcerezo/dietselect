@@ -240,7 +240,7 @@ class FoodieController extends Controller
                     $orderType = "Customized";
                 }
                 $orderItemArray[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
-                    'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                    'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . number_format($orderItem->price,2,'.',','));
             }
         }
             $paidOrderUpcoming = Order::where('foodie_id', '=', Auth::guard('foodie')->user()->id)->where('is_paid', '=', 1)
@@ -276,7 +276,7 @@ class FoodieController extends Controller
                     }
 
                     $orderItemArrayUpcoming[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
-                        'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
+                        'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . number_format($orderItem->price,2,'.',','));
                 }
             }
 //        dd($paidOrderCount);
