@@ -35,9 +35,9 @@
                         </li>
                         <li class="collection-item" style="border: 1px solid #f57c00;">
                             <a href="{{route('chef.message.index')}}" style="color: #f57c00;">Messages</a>
-                            @if($messages->count()>0)
-                                <span class="new badge red">{{$messages->count()}}</span>
-                            @endif
+                            {{--@if($messages->count()>0)--}}
+                                {{--<span class="new badge red">{{$messages->count()}}</span>--}}
+                            {{--@endif--}}
                         </li>
                         <li class="collection-item" >
                             <a href="{{route('chef.ratings')}}">Ratings</a>
