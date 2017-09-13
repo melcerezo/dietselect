@@ -110,7 +110,7 @@
                                             <span>Birthday:</span>
                                         </div>
                                         <div class="col s8 m8 l8">
-                                            <span>{{ $foodie->birthday }}</span>
+                                            <span>{{ date('F j, Y',strtotime($foodie->birthday)) }}</span>
                                         </div>
                                     </div>
                                 </div>
