@@ -234,8 +234,11 @@ class FoodieMealPlanController extends Controller
 //        ])->get());
         $driedCount = $simpleCustomPlan->simple_custom_plan_detail()
             ->where('detail','=','preservatives')
-            ->orWhere('detail','salt')
-            ->orWhere('detail','sweeteners')
+            ->orWhere(function($query)
+            {
+                $query->where('detail', 'salt')
+                    ->where('detail','sweeteners');
+            })
             ->get();
 
         dd($driedCount);
