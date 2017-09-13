@@ -461,7 +461,7 @@ class FoodieController extends Controller
      */
     public function saveProfileBasic(Request $request)
     {
-        dd($request['birthday_submit']);
+//        dd($request['birthday_submit']);
 
         // You can use the print_r() function to just print out the data that a variable has.
         // End it with the die(); statement to end the execution of the method.
