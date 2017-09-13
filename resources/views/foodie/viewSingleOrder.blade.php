@@ -21,7 +21,7 @@
                 @elseif($orderItem->order->is_paid==1 && $orderItem->order->is_cancelled==0)
                     <a href="{{route('foodie.order.view', ['from'=>2])}}" class="orange-text text-darken-2">< Back to Order History</a>
                 @elseif($orderItem->order->is_cancelled==1)
-                    <a href="{{route('foodie.order.view', ['from'=>3])}}" class="orange-text text-darken-2">< Back To Cancelled Orders</a>
+                    <a href="{{route('foodie.order.view', ['from'=>3])}}" class="orange-text text-darken-2">< Back To Order History</a>
                 @endif
             </div>
             <div>
