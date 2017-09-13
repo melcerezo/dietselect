@@ -108,7 +108,7 @@
                                 <div style="font-size: 22px; font-weight: bold;">
                                     Total:
                                 </div>
-                                <span style="font-size: 22px; font-weight: bold;">Total: {{'PHP '.$cartTotal}}</span>
+                                <span style="font-size: 22px; font-weight: bold;">{{'PHP '.$cartTotal}}</span>
                             </div>
                         </div>
                         <div style="margin: 10px 0;">
