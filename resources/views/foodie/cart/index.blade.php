@@ -10,7 +10,9 @@
 
     <div class="container shOrdCntr">
         <div class="orange-text text-darken-2" style="font-size: 30px; border-left: 4px solid #f57c00;">
-            Cart
+            <span style="margin-left: 5px;">My Shopping Cart</span>
+        </div>
+        <div class="divider" style="margin: 10px 5px;">
         </div>
         @if(Cart::count()>0)
         <div class="row">
