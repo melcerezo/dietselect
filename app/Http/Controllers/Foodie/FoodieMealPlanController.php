@@ -217,7 +217,7 @@ class FoodieMealPlanController extends Controller
         $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
         $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
         $tasteCount=$simpleCustomPlan->simple_custom_plan_detail()
-            ->orWhere(function($query)
+            ->where(function($query)
             {
                 $query->where('detail','sweet')
                     ->where('detail', 'salty')
@@ -227,8 +227,11 @@ class FoodieMealPlanController extends Controller
             })
             ->count();
         $cookCount = $simpleCustomPlan->simple_custom_plan_detail()
-            ->where('detail','=','fried')
-            ->orWhere('detail','=','grilled')
+            ->where(function($query)
+            {
+                $query->where('detail','fried')
+                    ->orWhere('detail','grilled');
+            })
             ->count();
 
 //        dd($simpleCustomPlan->simple_custom_plan_detail()->where([
