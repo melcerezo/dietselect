@@ -226,7 +226,6 @@ class FoodieMealPlanController extends Controller
                     ->orWhere('detail','savory');
             })
             ->count();
-        dd($tasteCount);
         $cookCount = $simpleCustomPlan->simple_custom_plan_detail()
             ->where('detail','=','fried')
             ->orWhere('detail','=','grilled')
@@ -241,10 +240,11 @@ class FoodieMealPlanController extends Controller
             ->orWhere(function($query)
             {
                 $query->where('detail', 'salt')
-                    ->where('detail','sweeteners');
+                    ->orWhere('detail','sweeteners');
             })
             ->count();
 
+        dd($tasteCount);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
