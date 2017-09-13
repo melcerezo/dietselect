@@ -17,7 +17,7 @@
         <div class="container" style="width:85%; margin-top: 0.5rem;">
             <div class="row">
                 @if($orderItem->order->is_paid==0 && $orderItem->order->is_cancelled==0)
-                    <a href="{{route('order.show',$orderItem->order->id)}}" class="orange-text text-darken-2">< Back to Order</a>
+                    <a href="{{route('foodie.order.view', ['from'=>1])}}" class="orange-text text-darken-2">< Back to Order History</a>
                 @elseif($orderItem->order->is_paid==1 && $orderItem->order->is_cancelled==0)
                     <a href="{{route('foodie.order.view', ['from'=>2])}}" class="orange-text text-darken-2">< Back to Order History</a>
                 @elseif($orderItem->order->is_cancelled==1)
