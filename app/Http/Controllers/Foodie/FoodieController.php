@@ -341,7 +341,7 @@ class FoodieController extends Controller
             $notifications = Notification::where('receiver_id', '=', $foodie)->where('receiver_type', '=', 'f')->get();
             $unreadNotifications = Notification::where('receiver_id', '=', $foodie)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
 
-            $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->where('created_at','>',$lastSaturday)->take(3)->get();
+            $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->latest()->take(3)->get();
             $orders = Order::where('foodie_id','=',$foodie)->get();
 
             $incompArray = [];
