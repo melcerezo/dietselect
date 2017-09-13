@@ -24,7 +24,7 @@
                     <a href="{{route('foodie.order.view', ['from'=>3])}}" class="orange-text text-darken-2">< Back To Cancelled Orders</a>
                 @endif
             </div>
-            <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
+            <div>
                 <span style="font-size: 30px;">{{$planName}}</span>
                 <span style="font-size: 30px;"> - </span>
                 <span style="font-size: 30px;">
