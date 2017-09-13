@@ -4,7 +4,7 @@ $(document).ready(function () {
         $('.payTab').css('background-color','');
         $('.payTab').find('span').css('color','');
         $(this).find('span').css('color','white');
-        $(this).css('background-color','orange');
+        $(this).css('background-color','#f57c00');
         var id = $(this).attr('data-pay-reveal');
        $('.payForm').hide();
         if(id=='bank'){
