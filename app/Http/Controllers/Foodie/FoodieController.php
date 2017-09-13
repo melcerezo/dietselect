@@ -358,7 +358,7 @@ class FoodieController extends Controller
                 }
             }
 
-            dd($incomplete);
+            dd($incompArray);
 
             return view('foodie.dashboard')->with([
 
