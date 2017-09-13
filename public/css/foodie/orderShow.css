@@ -30,7 +30,7 @@
     padding:16px;
 }
 
-@media only screen and (min-width: 1440px){
+@media only screen and (min-width: 1366px){
     .bankIcon{ top:8px; left:47px; }
     .payPalIcon{ top:11px; left:60px; }
     .gcashIcon{ top:25px; left:25px; }
