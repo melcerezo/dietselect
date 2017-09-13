@@ -253,23 +253,35 @@ class FoodieOrderPlanController extends Controller
                 }
             }
             $tasteCount=$orderPlan->simple_custom_plan_detail()
-                ->where('detail','=','sweet')
-                ->orWhere('detail','=','salty')
-                ->orWhere('detail','=','spicy')
-                ->orWhere('detail','=','bitter')
-                ->orWhere('detail','=','savory')
+                ->where(function($query)
+                {
+                    $query->where('detail','sweet')
+                        ->where('detail', 'salty')
+                        ->orWhere('detail','spicy')
+                        ->orWhere('detail','bitter')
+                        ->orWhere('detail','savory');
+                })
                 ->count();
             $cookCount = $orderPlan->simple_custom_plan_detail()
-                ->where('detail','=','fried')
-                ->orWhere('detail','=','grilled')
+                ->where(function($query)
+                {
+                    $query->where('detail','fried')
+                        ->orWhere('detail','grilled');
+                })
                 ->count();
 
+//        dd($simpleCustomPlan->simple_custom_plan_detail()->where([
+//            ['detail','=','fried'],
+//            ['detail','=','grilled']
+//        ])->get());
             $driedCount = $orderPlan->simple_custom_plan_detail()
-                ->where('detail','=','preservatives')
-                ->orWhere('detail','=','salt')
-                ->orWhere('detail','=','sweeteners')
+                ->where(function($query)
+                {
+                    $query->where('detail','preservatives')
+                        ->orWhere('detail', 'salt')
+                        ->orWhere('detail','sweeteners');
+                })
                 ->count();
-
         }
 //        dd($orderItem);
 
