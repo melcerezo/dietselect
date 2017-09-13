@@ -9,7 +9,7 @@
 .payMainTitle{ border-bottom: 1px solid #d1d1d1; padding: 15px 10px; }
 .payTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto;}
 .payTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
-.payTab:hover{ background-color: orange; }
+.payTab:hover{ background-color: #f57c00; }
 .payTab:hover span{ color: white; }
 .cancelTab{ height: 123px; position: relative; cursor: pointer; }
 .bankIcon{ color: #8bc34a; position: absolute; top:8px; left:23px; font-size: 70px; }
