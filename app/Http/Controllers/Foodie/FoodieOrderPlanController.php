@@ -237,7 +237,6 @@ class FoodieOrderPlanController extends Controller
 
                 }
             }
-            dd($orderMealPlans);
         }
         elseif($orderItem->order_type==2){
             $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
@@ -272,7 +271,7 @@ class FoodieOrderPlanController extends Controller
                 ->count();
 
         }
-//        dd($ingredientMealData);
+        dd($orderMealPlans);
 
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
