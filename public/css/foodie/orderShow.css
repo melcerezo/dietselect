@@ -30,8 +30,18 @@
     padding:16px;
 }
 
+@media only screen and (min-width: 1440px){
+    .bankIcon{ top:8px; left:47px; }
+    .payPalIcon{ top:11px; left:60px; }
+    .gcashIcon{ top:25px; left:25px; }
+    .cancelIcon{ top:11px; left:58px; }
+    .bankDes{ top:91px; left:61px; font-size: 20px; }
+    .payPalDes{ top:90px; left:54px; font-size: 20px; }
+    .gcashDes{ top:91px; left:55px; font-size: 20px; }
+    .cancelDes{ top:91px; left:55px; font-size: 20px; }
+}
 
-@media only screen and (min-width: 1200px){
+@media only screen and (min-width: 1440px){
     .bankIcon{ top:8px; left:50px; }
     .payPalIcon{ top:11px; left:63px; }
     .gcashIcon{ top:25px; left:28px; }
