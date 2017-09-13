@@ -307,9 +307,9 @@
         @endif
     </main>
     <footer>
-        <div class="light-green lighten-1" style="height:100px;">
-            Hello
-        </div>
+        {{--<div class="light-green lighten-1" style="height:100px;">--}}
+            {{--Hello--}}
+        {{--</div>--}}
     </footer>
 @endsection
 
