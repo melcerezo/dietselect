@@ -461,7 +461,6 @@ class FoodieController extends Controller
      */
     public function saveProfileBasic(Request $request)
     {
-//        dd($request['birthday_submit']);
 
         // You can use the print_r() function to just print out the data that a variable has.
         // End it with the die(); statement to end the execution of the method.
@@ -473,6 +472,7 @@ class FoodieController extends Controller
             'username' => 'max:20|unique:foodies,username'
         ])->validate();
 
+        dd($request['birthday_submit']);
 
         $foodie = Auth::guard('foodie')->user();
         $foodie->first_name = $request['first_name'];
