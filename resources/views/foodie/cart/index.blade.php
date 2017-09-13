@@ -12,7 +12,7 @@
         <div class="row">
             <a class="orange-text text-darken-2" href="{{route('foodie.plan.show')}}">< View More Plans</a>
         </div>
-        <div class="orange-text text-darken-2" style="font-size: 30px; border-left: 4px solid #f57c00;">
+        <div style="font-size: 30px;">
             <span style="margin-left: 5px;">My Shopping Cart</span>
         </div>
         <div class="divider" style="margin: 10px 5px;">
