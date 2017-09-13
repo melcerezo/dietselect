@@ -12,6 +12,9 @@
 @section('page_content')
     <div class="container vwMlCntr">
         <div class="row">
+            <a href="{{route('foodie.plan.show')}}">Back to Plans</a>
+        </div>
+        <div class="row">
                 <div class="col s12 m2">
                     <div class="planGallery">
                         {{--<div class="galleryItem" data-galImg="plPic">--}}
