@@ -105,10 +105,10 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
-                                <div style="font-size: 22px; font-weight: bold;">
+                                <span style="font-size: 22px; font-weight: bold;">
                                     Total:
-                                </div>
-                                <span style="font-size: 22px; font-weight: bold;">{{'PHP '.$cartTotal}}</span>
+                                </span>
+                                <span class="right" style="font-size: 22px; font-weight: bold;">{{'PHP '.$cartTotal}}</span>
                             </div>
                         </div>
                         <div style="margin: 10px 0;">
