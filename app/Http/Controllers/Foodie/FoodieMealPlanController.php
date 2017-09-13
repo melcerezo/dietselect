@@ -244,7 +244,7 @@ class FoodieMealPlanController extends Controller
             })
             ->count();
 
-        dd($driedCount);
+        dd($tasteCount);
 
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
             ->where('receiver_type', '=', 'f')
