@@ -368,7 +368,7 @@
                     </div>
                     <div>
                         @if($simpleCustomMeals->where('is_customized','=',1)->count() || $simpleCustomPlan->simple_custom_plan_detail->count())
-                            <button type="button" data-target="orderReview" class="modal-trigger btn" style="margin:0 10px 10px 0;">Cart</button>
+                            <button type="button" data-target="orderReview" class="modal-trigger btn orange darken-2" style="margin:0 10px 10px 0;">Cart</button>
                         @else
                             <button type="button" data-target="orderReview" class="modal-trigger btn disabled" style="margin:0 10px 10px 0;">Cart</button>
                         @endif
@@ -379,7 +379,7 @@
                         <span>Customize Plan</span>
                     </div>
                     <div>
-                        <button type="button" data-target="planCust" class="modal-trigger btn" style="margin:0 10px 10px 0;">Customize</button>
+                        <button type="button" data-target="planCust" class="modal-trigger btn orange darken-2" style="margin:0 10px 10px 0;">Customize</button>
                     </div>
 
                     @if($simpleCustomPlan->simple_custom_plan_detail->count())
