@@ -89,7 +89,7 @@
         <div class="row">
             <div class="col s12 m6 offset-m6">
                 <div class="row">
-                    <div class="col s12 m7 offset-m5">
+                    <div class="col s12 m6 offset-m6">
                         <div class="orderSummary">
                             <div style="margin: 10px 0">
                                 <span>Total Quantity: {{$cartCount}}</span>
