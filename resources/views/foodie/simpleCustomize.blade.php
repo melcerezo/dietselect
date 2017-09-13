@@ -898,7 +898,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                    <button type="submit" class="btn orange darken-2 btn-primary waves-effect waves-light">Submit</button>
                 </div>
             </form>
         </div>
