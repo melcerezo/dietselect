@@ -39,7 +39,6 @@ $(document).ready(function() {
         //Formats
         format: 'mmmm d, yyyy',
         formatSubmit: 'yyyy-mm-dd',
-        hiddenName: true,
         // format: 'yyyy-mm-dd',
 
         //Date limits
