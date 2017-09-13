@@ -466,11 +466,11 @@ class FoodieController extends Controller
         // End it with the die(); statement to end the execution of the method.
         // print_r($request->all());die();
 
-        Validator::make($request->all(), [
-            'last_name' => 'required|max:100',
-            'first_name' => 'required|max:100',
-            'username' => 'max:20|unique:foodies,username'
-        ])->validate();
+//        Validator::make($request->all(), [
+//            'last_name' => 'required|max:100',
+//            'first_name' => 'required|max:100',
+//            'username' => 'max:20|unique:foodies,username'
+//        ])->validate();
 
         dd($request['birthday_submit']);
 
