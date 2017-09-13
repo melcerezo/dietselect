@@ -205,7 +205,7 @@ class FoodieController extends Controller
                 $oAdd='';
             }
 
-            $orderArray[] = array('id' => $order->id, 'address' => $oAdd, 'quantity' => $orderQuantity, 'total' => $order->total,
+            $orderArray[] = array('id' => $order->id, 'address' => $oAdd, 'quantity' => $orderQuantity, 'total' => 'PHP '.number_format($order->total,2,'.',','),
                 'week' => $startOfWeek);
         }
 
