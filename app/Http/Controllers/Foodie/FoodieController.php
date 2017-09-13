@@ -490,6 +490,7 @@ class FoodieController extends Controller
         // die("We just finished setting the gender of the foodie.");
 
 
+        dd($request['birthday_submit']);
         $foodie->birthday = $request['birthday_submit'];
         if($request['username']==""){
             $foodie->username = null;
