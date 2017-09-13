@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
 
-                                        <input type="submit" value="Submit" class="btn waves-effect waves-light">
+                                        <input type="submit" value="Submit" class="btn orange darken-2 waves-effect waves-light">
                                     </form>
                                     <div style="margin-top: 20px;">
                                         <span>Thank you for Rating!</span>
