@@ -221,9 +221,9 @@ class FoodieMealPlanController extends Controller
             ->orWhere(function($query)
             {
                 $query->where('detail', 'salty')
-                    ->where('detail','spicy')
-                    ->where('detail','bitter')
-                    ->where('detail','savory');
+                    ->orWhere('detail','spicy')
+                    ->orWhere('detail','bitter')
+                    ->orWhere('detail','savory');
             })
             ->count();
         dd($tasteCount);
