@@ -14,6 +14,7 @@ use App\Chef;
 use App\IngredientMeal;
 use App\Meal;
 use App\MealPlan;
+use App\OrderItem;
 use App\Plan;
 use App\Message;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
@@ -206,6 +207,9 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
+        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
+        dd($incomplete);
+
         $mealPlans = $simpleCustomPlan->plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
