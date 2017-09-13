@@ -50,17 +50,17 @@
                 <div class="dsBrLo">
                     <a href="{{route('chef.dashboard')}}" class="brand-logo">Diet Select</a>
                 </div>
-                <ul id="nav-mobile" class="left">
-                    {{--<li class="hide-on-med-and-down">--}}
-                        {{--<a href="{{route('chef.plan')}}">--}}
-                                {{--<span class="valign-wrapper">--}}
-                                {{--<i class="nvIc material-icons">dashboard</i>--}}
-                                {{--<span class="nvItTx">--}}
-                                    {{--View Plans--}}
-                                {{--</span>--}}
-                            {{--</span>--}}
-                        {{--</a>--}}
-                    {{--</li>--}}
+                <ul id="nav-mobile" class="right">
+                    <li class="hide-on-med-and-down">
+                        <a href="{{route('chef.plan')}}">
+                                <span class="valign-wrapper">
+                                <i class="nvIc material-icons">dashboard</i>
+                                <span class="nvItTx">
+                                    View Plans
+                                </span>
+                            </span>
+                        </a>
+                    </li>
                     <li class="hide-on-med-and-down">
                         <a class="dropdown-button" href="#" data-activates='chefMessageDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
@@ -89,22 +89,6 @@
                         <a class="dropdown-button" href="#" data-activates='chef-dropdown' data-beloworigin="true" data-constrainwidth="true">
                             <img class="circle nvUsPrPc" src="/img/{{ $chef->avatar }}">
                             <span class="nvItTx hide-on-med-and-down">{{$chef->name}}</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        <nav>
-            <div class="nav-wrapper light-green lighten-1">
-                <ul id="nav-mobile" class="right">
-                    <li class="hide-on-med-and-down">
-                        <a href="{{route('chef.plan')}}">
-                                <span class="valign-wrapper">
-                                <i class="nvIc material-icons">dashboard</i>
-                                <span class="nvItTx">
-                                    View Plans
-                                </span>
-                            </span>
                         </a>
                     </li>
                 </ul>

@@ -56,6 +56,29 @@
                     </div>
                     <ul id="nav-mobile" class="right">
                         <li class="hide-on-med-and-down">
+                            <a href="{{route('foodie.plan.show')}}">
+                                <span class="valign-wrapper">
+                                <i class="nvIc material-icons">dashboard</i>
+                                <span class="nvItTx">
+                                    View Plans
+                                </span>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="hide-on-med-and-down">
+                            <a href="{{route('cart.index')}}">
+                            <span class="valign-wrapper">
+                                <i class="nvIc material-icons">shopping_cart</i>
+                                <span class="nvItTx">
+                                    Cart
+                                    @if(Cart::count()>0)
+                                        <span class="badge red white-text" style="font-weight: 100;">{{Cart::count()}}</span>
+                                    @endif
+                                </span>
+                            </span>
+                            </a>
+                        </li>
+                        <li class="hide-on-med-and-down">
                             <a class="dropdown-button" href="#" data-activates='foodieMessageDropdown' data-beloworigin="true" data-constrainwidth="false">
                             <span class="valign-wrapper">
                                 <i class="nvIc material-icons">email</i>
@@ -85,35 +108,6 @@
                                 @unless($foodie->username==null)
                                     <span class="nvItTx hide-on-med-and-down">{{$foodie->username}}</span>
                                 @endunless
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-            <nav>
-                <div class="nav-wrapper light-green lighten-1">
-                    <ul id="nav-mobile" class="left">
-                        <li class="hide-on-med-and-down">
-                            <a href="{{route('foodie.plan.show')}}">
-                                <span class="valign-wrapper">
-                                <i class="nvIc material-icons">dashboard</i>
-                                <span class="nvItTx">
-                                    Plans
-                                </span>
-                            </span>
-                            </a>
-                        </li>
-                        <li class="hide-on-med-and-down">
-                            <a href="{{route('cart.index')}}">
-                            <span class="valign-wrapper">
-                                <i class="nvIc material-icons">shopping_cart</i>
-                                <span class="nvItTx">
-                                    Cart
-                                    @if(Cart::count()>0)
-                                        <span class="badge red white-text" style="font-weight: 100;">{{Cart::count()}}</span>
-                                    @endif
-                                </span>
-                            </span>
                             </a>
                         </li>
                     </ul>
