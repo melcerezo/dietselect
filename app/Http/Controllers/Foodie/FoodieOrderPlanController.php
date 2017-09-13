@@ -237,7 +237,7 @@ class FoodieOrderPlanController extends Controller
 
                 }
             }
-//            dd($ingredientMeals);
+            dd($orderMealPlans);
         }
         elseif($orderItem->order_type==2){
             $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
