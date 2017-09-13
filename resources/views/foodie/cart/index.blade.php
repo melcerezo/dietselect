@@ -92,7 +92,7 @@
                     <div class="col s12 m7 offset-m5">
                         <div class="orderSummary">
                             <div style="margin: 10px 0">
-                                <span>Total Quantity: {{$cartCount}}</span>
+                                <span>Total Quantity:</span><span class="right">{{$cartCount}}</span>
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
