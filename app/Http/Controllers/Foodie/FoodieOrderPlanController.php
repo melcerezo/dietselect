@@ -271,7 +271,7 @@ class FoodieOrderPlanController extends Controller
                 ->count();
 
         }
-        dd($orderItem);
+//        dd($orderItem);
 
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
