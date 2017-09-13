@@ -97,11 +97,11 @@
                             </div>
                             <div class="divider"></div>
                             <div style="margin: 10px 0">
-                                <span style="font-size: 30px; font-weight: bold;">Total: {{'PHP '.$cartTotal}}</span>
+                                <span style="font-size: 22px; font-weight: bold;">Total: {{'PHP '.$cartTotal}}</span>
                             </div>
                         </div>
                         <div style="margin: 10px 0;">
-                            <a id="orderButton" style="width: 100%;" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange">Order</a>
+                            <a id="orderButton" style="width: 100%;" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange darken-2">Order</a>
                         </div>
                     </div>
                     {{--<div class="col s12 m2">--}}
