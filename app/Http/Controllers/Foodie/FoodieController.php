@@ -353,7 +353,7 @@ class FoodieController extends Controller
                     $orderItemsCount=$order->order_item()
                     ->where('plan_id','=',$item->id)
                     ->where('order_type','=',2)->count();
-                    echo($orderItemsCount." ");
+//                    echo($orderItemsCount." ");
                     break;
                 }
                 if($orderItemsCount){
@@ -367,7 +367,7 @@ class FoodieController extends Controller
                 }
             }
 
-            dd($incompArray);
+//            dd($incompArray);
 
             return view('foodie.dashboard')->with([
 
