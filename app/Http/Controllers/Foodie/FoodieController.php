@@ -362,7 +362,7 @@ class FoodieController extends Controller
                 }
             }
 
-            dd($incompArray);
+//            dd($incompArray);
 
             return view('foodie.dashboard')->with([
 
@@ -388,7 +388,8 @@ class FoodieController extends Controller
                 'foodieAddress' => $foodieAddress,
                 'suggested' => $suggested,
                 'paidOrder' => $paidOrder,
-                'paidOrderUpcoming' => $paidOrderUpcoming
+                'paidOrderUpcoming' => $paidOrderUpcoming,
+                'incompArray'=>$incompArray
             ]);
 
         }

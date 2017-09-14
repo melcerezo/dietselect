@@ -126,6 +126,20 @@
                 </ul>
             </div>
         </div>
+        <div class="row">
+            @if(count($incompArray)>0)
+                <div class="col s12 m3 offset-m5">
+                    <ul class="collection">
+                        <li class="collection-item">Finish Customizations</li>
+                        @foreach($incompArray as $item)
+                            <li class="collection-item">
+                                <a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
     </div>
 
 
