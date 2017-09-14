@@ -357,6 +357,7 @@ class FoodieController extends Controller
                             'id'=>$item->id,
                             'name'=>$item->plan->plan_name,
                         ];
+                        break;
                     }
                 }
             }
