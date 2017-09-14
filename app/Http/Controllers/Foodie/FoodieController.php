@@ -348,8 +348,8 @@ class FoodieController extends Controller
 
             foreach($incomplete as $item){
                 foreach($orders as $order){
-                    $orderItemsCount=$order->order_item()->where('plan_id','=',34)->where('order_type','=',2)->get();
-                    echo $orderItemsCount;
+                    $orderItemsCount=$order->order_item()->where('plan_id','=',34)->where('order_type','=',2)->count();
+//                    echo $orderItemsCount;
                     if(!($orderItemsCount)){
                         $incompArray = [
                             'id'=>$item->id,
