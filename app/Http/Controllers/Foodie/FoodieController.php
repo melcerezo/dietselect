@@ -342,7 +342,7 @@ class FoodieController extends Controller
             $unreadNotifications = Notification::where('receiver_id', '=', $foodie)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
 
             $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->latest()->take(3)->get();
-            $orders = Order::where('foodie_id','=',$foodie)->latest()->take(5)->get();
+            $orders = Order::where('foodie_id','=',$foodie)->latest()->take(3)->get();
 
             $incompArray = [];
 
@@ -350,9 +350,10 @@ class FoodieController extends Controller
                 foreach($orders as $order){
                     $orderItemsCount=$order->order_item()
                     ->where('plan_id','=',$item->id)
+                    ->where('order_type','=',2)
                         ->count();
-//                    echo $orderItemsCount;
                     if(($orderItemsCount<1)){
+                        echo $orderItemsCount;
                         $incompArray[]= [
                             'id'=>$item->id,
                             'name'=>$item->plan->plan_name,
@@ -362,7 +363,7 @@ class FoodieController extends Controller
                 }
             }
 
-            dd($incomplete);
+            dd($incompArray);
 
             return view('foodie.dashboard')->with([
 
