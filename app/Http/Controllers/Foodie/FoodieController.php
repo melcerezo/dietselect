@@ -344,6 +344,11 @@ class FoodieController extends Controller
             $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->latest()->take(3)->get();
             $orders = Order::where('foodie_id','=',$foodie)->latest()->take(3)->get();
 
+            foreach($orders as $order){
+                $orderItemsCount=$order->order_item()
+                    ->where('order_type','=',2)->get();
+            }
+            dd($orderItemsCount);
             $incompArray = [];
 
             foreach($orders as $order){
