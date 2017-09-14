@@ -351,7 +351,7 @@ class FoodieController extends Controller
                     $orderItemsCount=$order->order_item()
                     ->where('plan_id','=',$item->id)
                         ->count();
-//                    echo $orderItemsCount1;
+//                    echo $orderItemsCount;
                     if(($orderItemsCount<1)){
                         $incompArray = [
                             'id'=>$item->id,
@@ -361,7 +361,7 @@ class FoodieController extends Controller
                 }
             }
 
-            dd($incomplete);
+            dd($incompArray);
 
             return view('foodie.dashboard')->with([
 
