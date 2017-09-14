@@ -362,7 +362,7 @@ class FoodieController extends Controller
                 }
             }
 
-//            dd($incompArray);
+            dd($orders);
 
             return view('foodie.dashboard')->with([
 
