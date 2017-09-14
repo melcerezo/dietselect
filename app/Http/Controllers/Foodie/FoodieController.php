@@ -351,8 +351,8 @@ class FoodieController extends Controller
                     $orderItemsCount=$order->order_item()
                     ->where('plan_id','=',$item->id)
                     ->where('order_type','=',2)->count();
-                    if($orderItemsCount>1){
-                        print_r($orderItemsCount);
+                    if($orderItemsCount>0){
+                        echo($orderItemsCount);
                         $incompArray[]= [
                             'id'=>$item->id,
                             'name'=>$item->plan->plan_name,
