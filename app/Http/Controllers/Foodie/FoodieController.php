@@ -354,13 +354,13 @@ class FoodieController extends Controller
                     ->where('order_type','=',2)->count();
                     echo($orderItemsCount);
                     if($orderItemsCount){
-                        break;
+//                        break;
                     }else{
                         $incompArray[]= [
                             'id'=>$item->id,
                             'name'=>$item->plan->plan_name,
                         ];
-                        break;
+//                        break;
                     }
                 }
             }
