@@ -352,8 +352,8 @@ class FoodieController extends Controller
                         ->where(function($query) use ($item)
                         {
 
-                            $query->where('plan_id',$item->id)
-                                ->where('order_type',2);
+                            $query->where('plan_id',$item->id);
+
                         })
                         ->count();
 //                    echo $orderItemsCount;
