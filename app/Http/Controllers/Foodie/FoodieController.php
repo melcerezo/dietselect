@@ -356,8 +356,8 @@ class FoodieController extends Controller
 
                         })
                         ->count();
-//                    echo $orderItemsCount;
-                    if(($orderItemsCount)){
+                    echo $orderItemsCount<1;
+                    if(($orderItemsCount<1)){
                         $incompArray = [
                             'id'=>$item->id,
                             'name'=>$item->plan->plan_name,
