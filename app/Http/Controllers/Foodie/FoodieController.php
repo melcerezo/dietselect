@@ -359,6 +359,7 @@ class FoodieController extends Controller
                         ];
                     }
                 }
+                echo $incompArray;
             }
 
             dd($incompArray);
