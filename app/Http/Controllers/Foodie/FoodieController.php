@@ -353,8 +353,9 @@ class FoodieController extends Controller
                     $orderItemsCount=$order->order_item()
                     ->where('plan_id','=',$item->id)
                     ->where('order_type','=',2)->count();
-//                    echo($orderItemsCount." ");
-                    break;
+                    if($orderItemsCount){
+                        break;
+                    }
                 }
                 if($orderItemsCount){
 //                        break;
