@@ -345,7 +345,7 @@ class FoodieController extends Controller
             $orders = Order::where('foodie_id','=',$foodie)->latest()->take(3)->get();
 
             foreach($orders as $order){
-                $orderItemsCount=$order->order_item()
+                $orderItemsCount[]=$order->order_item()
                     ->where('order_type','=',2)->get();
             }
             dd($orderItemsCount);
