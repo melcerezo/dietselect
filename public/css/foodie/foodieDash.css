@@ -50,3 +50,10 @@ div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
 .deleteSimpleLink{
     visibility: hidden;
 }
+.simpleLink:hover{
+    border: 1px solid #f57c00;
+    color: #f57c00;
+}
+.simpleLink:hover a{
+    color: #f57c00;
+}
