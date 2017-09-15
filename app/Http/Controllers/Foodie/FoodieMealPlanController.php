@@ -60,32 +60,32 @@ class FoodieMealPlanController extends Controller
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->where('is_read','=',0)->count();
 
-        $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->where('created_at','>',$lastSaturday)->latest()->take(3)->get();
-        $orders = Order::where('foodie_id','=',$foodie)->latest()->take(3)->get();
-
-
-        $incompArray = [];
-
-        foreach($incomplete as $item){
-            $orderItemsCount=0;
-            foreach($orders as $order){
-                $orderItemsCount=$order->order_item()
-                    ->where('plan_id','=',$item->id)
-                    ->where('order_type','=',2)->count();
-                if($orderItemsCount){
-                    break;
-                }
-            }
-            if($orderItemsCount){
-//                        break;
-            }else{
-                $incompArray[]= [
-                    'id'=>$item->id,
-                    'name'=>$item->plan->plan_name,
-                ];
-//                        break;
-            }
-        }
+//        $incomplete=SimpleCustomPlan::where('foodie_id','=',$foodie)->where('created_at','>',$lastSaturday)->latest()->take(3)->get();
+//        $orders = Order::where('foodie_id','=',$foodie)->latest()->take(3)->get();
+//
+//
+//        $incompArray = [];
+//
+//        foreach($incomplete as $item){
+//            $orderItemsCount=0;
+//            foreach($orders as $order){
+//                $orderItemsCount=$order->order_item()
+//                    ->where('plan_id','=',$item->id)
+//                    ->where('order_type','=',2)->count();
+//                if($orderItemsCount){
+//                    break;
+//                }
+//            }
+//            if($orderItemsCount){
+////                        break;
+//            }else{
+//                $incompArray[]= [
+//                    'id'=>$item->id,
+//                    'name'=>$item->plan->plan_name,
+//                ];
+////                        break;
+//            }
+//        }
 
 
         return view('foodie.planSelect')->with([

@@ -104,23 +104,23 @@
                         @endforeach
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
-                    <div class="row">
-                        @if(count($incompArray)>0)
-                            <div>
-                                <ul class="collection">
-                                    <li class="collection-item">Finish Customization</li>
-                                    @foreach($incompArray as $item)
-                                        <li class="collection-item simpleLink">
-                                            <div style="width: 100%;">
-                                                <span style="max-width: 60%;"><a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a></span>
-                                                <a href="{{route('foodie.plan.simpleDelete', $item['id'])}}" class="right deleteSimpleLink"><i class="fa fa-times" aria-hidden="true"></i></a>
-                                            </div>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        @endif
-                    </div>
+                    {{--<div class="row">--}}
+                        {{--@if(count($incompArray)>0)--}}
+                            {{--<div>--}}
+                                {{--<ul class="collection">--}}
+                                    {{--<li class="collection-item">Finish Customization</li>--}}
+                                    {{--@foreach($incompArray as $item)--}}
+                                        {{--<li class="collection-item simpleLink">--}}
+                                            {{--<div style="width: 100%;">--}}
+                                                {{--<span style="max-width: 60%;"><a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a></span>--}}
+                                                {{--<a href="{{route('foodie.plan.simpleDelete', $item['id'])}}" class="right deleteSimpleLink"><i class="fa fa-times" aria-hidden="true"></i></a>--}}
+                                            {{--</div>--}}
+                                        {{--</li>--}}
+                                    {{--@endforeach--}}
+                                {{--</ul>--}}
+                            {{--</div>--}}
+                        {{--@endif--}}
+                    {{--</div>--}}
                 </div>
                 <div id="planContainer" class="col s7">
                     <div id="allContainer">
