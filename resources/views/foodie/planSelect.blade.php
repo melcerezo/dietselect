@@ -111,8 +111,10 @@
                                     <li class="collection-item">Finish Customization</li>
                                     @foreach($incompArray as $item)
                                         <li class="collection-item simpleLink">
-                                            <span style="max-width: 60%;"><a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a></span>
-                                            <a href="{{route('foodie.plan.simpleDelete', $item['id'])}}" class="right deleteSimpleLink"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            <div style="width: 100%;">
+                                                <span style="max-width: 60%;"><a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a></span>
+                                                <a href="{{route('foodie.plan.simpleDelete', $item['id'])}}" class="right deleteSimpleLink"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                            </div>
                                         </li>
                                     @endforeach
                                 </ul>
