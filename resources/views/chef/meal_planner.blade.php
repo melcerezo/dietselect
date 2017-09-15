@@ -13,14 +13,14 @@
 @section('page_content')
     <div class="container" style="margin-top: 0.5rem;">
         <div class="row">
-            <a class="orange-text text-darken-2" href="{{route('chef.plan')}}">< View More Plans</a>
+            <a class="orange-text text-darken-2" href="{{route('chef.plan')}}">< Back to Plans</a>
         </div>
         <div class="row mlPlnTtl">
             <span>{{$plan->plan_name}}</span>
             @if($plan->lockPlan==1)
-                <span><i class="material-icons" style="display: inline;">lock_outline</i></span>
+                <span><i class="material-icons" style="display: inline; color: #f57c00;">lock_outline</i></span>
             @else
-                <span><i class="material-icons" style="display: inline;">lock_open</i></span>
+                <span><i class="material-icons" style="display: inline; color: #f57c00;">lock_open</i></span>
             @endif
         </div>
         <div class="divider"></div>
