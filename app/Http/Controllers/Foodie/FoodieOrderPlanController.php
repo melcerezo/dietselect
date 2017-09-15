@@ -131,14 +131,17 @@ class FoodieOrderPlanController extends Controller
                     }elseif($orderItem->order_type==2){
                         $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
                     }
-                    $planPic=$orderPlan->plan->picture;
-                    $planName = $orderPlan->plan->plan_name;
-                    $chefName = $orderPlan->plan->chef->name;
-                    $orderType = "Customized";
+                    if($orderPlan->count()){
+                        $planPic=$orderPlan->plan->picture;
+                        $planName = $orderPlan->plan->plan_name;
+                        $chefName = $orderPlan->plan->chef->name;
+                        $orderType = "Customized";
+                    }
                 }
-
-                $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
-                    'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
+                if($orderPlan->count()){
+                    $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
+                        'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
+                }
             }
 
         }
