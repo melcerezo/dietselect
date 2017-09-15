@@ -1,5 +1,9 @@
 $(document).ready(function () {
    $('.simpleLink').hover(function () {
-       $('.deleteSimpleLink').show();
+       if($(this).find('.deleteSimpleLink').css('visibility')=='hidden'){
+           $(this).find('.deleteSimpleLink').css('visibility','visible');
+       }else{
+           $(this).find('.deleteSimpleLink').css('visibility','hidden');
+       }
    })
 });

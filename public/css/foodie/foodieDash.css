@@ -48,5 +48,5 @@ div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
 }
 
 .deleteSimpleLink{
-    display: none;
+    visibility: hidden;
 }
