@@ -128,7 +128,7 @@
         </div>
         <div class="row">
             @if(count($incompArray)>0)
-                <div class="col s12 m3 offset-m5">
+                <div class="col s12 m4 offset-m5">
                     <ul class="collection">
                         <li class="collection-item">Finish Customizations</li>
                         @foreach($incompArray as $item)
