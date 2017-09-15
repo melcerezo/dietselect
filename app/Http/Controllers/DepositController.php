@@ -97,7 +97,7 @@ class DepositController extends Controller
             $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through bank deposit. Thank you!';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
             $paramFoodie = array(
                 'http' => array(
                     'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -210,7 +210,7 @@ class DepositController extends Controller
                 $message.='.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $url = 'https://www.itexmo.com/php_api/api.php';
-                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
+                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
                 $param = array(
                     'http' => array(
                         'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -290,7 +290,7 @@ class DepositController extends Controller
             $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through gcash payment. Thank you!';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'ST-DIETS656642_77ZA3');
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
             $paramFoodie = array(
                 'http' => array(
                     'header' => "Content-type: application/x-www-form-urlencoded\r\n",
@@ -396,7 +396,7 @@ class DepositController extends Controller
                 $message.='.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $url = 'https://www.itexmo.com/php_api/api.php';
-                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'ST-DIETS656642_77ZA3');
+                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
                 $param = array(
                     'http' => array(
                         'header' => "Content-type: application/x-www-form-urlencoded\r\n",
