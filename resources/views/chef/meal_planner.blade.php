@@ -12,7 +12,9 @@
 
 @section('page_content')
     <div class="container" style="margin-top: 0.5rem;">
-
+        <div class="row">
+            <a class="orange-text text-darken-2" href="{{route('chef.plan')}}">< View More Plans</a>
+        </div>
         <div class="row mlPlnTtl">
             <span>{{$plan->plan_name}}</span>
             @if($plan->lockPlan==1)
@@ -268,9 +270,6 @@
                             <button id="unlckPln" data-target="unlckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Unlock</button>
                         </div>
                         <div class="divider">
-                        </div>
-                        <div style="font-size: 20px; margin: 10px 0;">
-                            <button id="backPln" data-target="bckPlnMdl" class="orange darken-2 btn waves-effect waves-light modal-trigger">Plans</button>
                         </div>
                     @endif
                 </div>
@@ -941,7 +940,7 @@
         </nav>
         <div class="modal-content">
             <a href="{{route('chef.plan.final',$plan->id)}}" class="btn waves-effect waves-light orange darken-2" style="color: white; font-weight:100;">Lock Plan</a>
-            <a href="{{route('chef.plan')}}" class="btn waves-effect waves-light orange darken-2" style="color: white; font-weight:100;">Exit</a>
+            {{--<a href="{{route('chef.plan')}}" class="btn waves-effect waves-light orange darken-2" style="color: white; font-weight:100;">Exit</a>--}}
         </div>
     </div>
 
