@@ -51,17 +51,17 @@ div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
     visibility: hidden;
 }
 .simpleLink:hover{
-    border: 1px solid #f57c00;
+    border: 1px solid #f57c00 !important;
 }
 .simpleLink:hover a{
-    color: #f57c00;
+    color: #f57c00 !important;
 }
 
 .ratingItem:hover{
-    border: 1px solid #f57c00;
+    border: 1px solid #f57c00 !important;
 }
 .ratingItem:hover a{
-    color: #f57c00;
+    color: #f57c00 !important;
 }
 
 .pendingItem:hover{
