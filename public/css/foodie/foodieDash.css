@@ -65,8 +65,8 @@ div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
 }
 
 .pendingItem:hover{
-    border: 1px solid #f57c00;
+    border: 1px solid #f57c00 !important;
 }
 .pendingItem:hover a{
-    color: #f57c00;
+    color: #f57c00 !important;
 }
