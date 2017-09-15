@@ -88,7 +88,7 @@
                         @if($orders->count()>0)
                             @foreach($orderArray as $order)
 
-                                <li class="collection-item">
+                                <li class="collection-item pendingItem">
                                     <a href="{{route('order.show',$order['id'])}}">
                                         <p>For Week Of: {{$order['week']}}</p>
                                         <div class="divider"></div>
@@ -111,7 +111,7 @@
                     </li>
                     @if(count($ordersRatingPlans)>0)
                         @foreach($ordersRatingPlans as $rating)
-                            <li class="collection-item">
+                            <li class="collection-item ratingItem">
                                 <a href="{{route('chef.rating', ['id'=>0])}}">
                                     <i class="material-icons">stars</i>
                                     {{$rating['plan_name'].'-'.$rating['type']}}<br>
