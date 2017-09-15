@@ -13,6 +13,15 @@
         </div>
     @else
         <div class="container" style="width:85%; margin-top: 0.5rem;">
+            <div class="row">
+                @if($orderItem->order->is_paid==0 && $orderItem->order->is_cancelled==0)
+                    <a href="{{route('chef.order.view', ['from'=>1])}}" class="orange-text text-darken-2">< Back to Order History</a>
+                @elseif($orderItem->order->is_paid==1 && $orderItem->order->is_cancelled==0)
+                    <a href="{{route('chef.order.view', ['from'=>2])}}" class="orange-text text-darken-2">< Back to Order History</a>
+                @elseif($orderItem->order->is_cancelled==1)
+                    <a href="{{route('chef.order.view', ['from'=>3])}}" class="orange-text text-darken-2">< Back To Order History</a>
+                @endif
+            </div>
             <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; margin: 10px 0;">
                 <span style="font-size: 30px;">{{$planName}}</span>
                 <span style="font-size: 30px;"> - </span>
