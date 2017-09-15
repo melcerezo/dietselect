@@ -108,7 +108,7 @@
                         @if(count($incompArray)>0)
                             <div>
                                 <ul class="collection">
-                                    <li class="collection-item">Finish Customizations</li>
+                                    <li class="collection-item">Finish Customization</li>
                                     @foreach($incompArray as $item)
                                         <li class="collection-item simpleLink">
                                             <a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a>
