@@ -366,6 +366,12 @@ class FoodieMealPlanController extends Controller
 //        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
     }
 
+    public function simpleCustomDelete(SimpleCustomPlan $simpleCustomPlan)
+    {
+        $simpleCustomPlan->delete();
+        return back()->with([ 'status'=>'Deleted the Customized Plan!' ]);
+    }
+
     public function viewChefsMeals(Plan $plan, Request $request)
     {
 

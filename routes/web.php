@@ -63,6 +63,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::get('plans/standard/{plan}', 'Foodie\FoodieMealPlanController@viewPlanStandard')->name('foodie.plan.standard');
     Route::get('plans/simple/{plan}', 'Foodie\FoodieMealPlanController@viewSimpleCustomize')->name('foodie.plan.simple');
     Route::get('plans/simpleView/{simpleCustomPlan}', 'Foodie\FoodieMealPlanController@simpleCustomView')->name('foodie.plan.simpleView');
+    Route::get('plans/simpleView/delete/{simpleCustomPlan}', 'Foodie\FoodieMealPlanController@simpleCustomDelete')->name('foodie.plan.simpleDelete');
     Route::get('ingredMeal/{chefCustomizedMeal}/get', 'Foodie\FoodieMealPlanController@getIngred');
     Route::get('plans/custom/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.plan.custom');
     Route::get('chefs', 'Foodie\FoodieMealPlanController@viewChefs')->name('foodie.chef.show');

@@ -46,3 +46,7 @@ div.card-image.dshPrfCrdCnt:hover div#addCoverPhotoLink{
     display: block;
     background: rgba(0, 0, 0, .6);
 }
+
+.deleteSimpleLink{
+    display: none;
+}
