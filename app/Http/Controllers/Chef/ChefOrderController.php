@@ -55,22 +55,29 @@ class ChefOrderController extends Controller
             }elseif($orderItem->order_type==1){
                 $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
 //                dd($orderPlan);
-                $orderPlanPic = $orderPlan->plan->picture;
-                $orderPlanName = $orderPlan->plan->plan_name;
-                $orderType="Customized";
-                $dt = new Carbon($orderItem->order->created_at);
-                $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                if($orderPlan!=null) {
+                    $orderPlanPic = $orderPlan->plan->picture;
+                    $orderPlanName = $orderPlan->plan->plan_name;
+                    $orderType = "Customized";
+                    $dt = new Carbon($orderItem->order->created_at);
+                    $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                }
             }elseif($orderItem->order_type==2){
                 $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
-                $orderPlanPic = $orderPlan->plan->picture;
-                $orderPlanName = $orderPlan->plan->plan_name;
-                $orderType="Customized";
-                $dt = new Carbon($orderItem->order->created_at);
-                $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                if($orderPlan!=null) {
+                    $orderPlanPic = $orderPlan->plan->picture;
+                    $orderPlanName = $orderPlan->plan->plan_name;
+                    $orderType = "Customized";
+                    $dt = new Carbon($orderItem->order->created_at);
+                    $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                }
             }
-            $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
-                'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
-                'is_cancelled'=>$orderItem->order->is_cancelled);
+            if($orderPlan!=null){
+                $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
+                    'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
+                    'is_cancelled'=>$orderItem->order->is_cancelled);
+            }
+
         }
 
 //        dd($orders);
