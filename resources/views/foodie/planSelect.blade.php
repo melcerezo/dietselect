@@ -104,6 +104,21 @@
                         @endforeach
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
+                    <div class="row">
+                        @if(count($incompArray)>0)
+                            <div class="col s12 m4 offset-m5">
+                                <ul class="collection">
+                                    <li class="collection-item">Finish Customizations</li>
+                                    @foreach($incompArray as $item)
+                                        <li class="collection-item simpleLink">
+                                            <a href="{{route('foodie.plan.simpleView',$item['id'])}}">{{$item['name']}}</a>
+                                            <a href="{{route('foodie.plan.simpleDelete', $item['id'])}}" class="right deleteSimpleLink"><i class="fa fa-times" aria-hidden="true"></i></a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                    </div>
                 </div>
                 <div id="planContainer" class="col s7">
                     <div id="allContainer">
