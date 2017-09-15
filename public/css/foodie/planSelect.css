@@ -42,6 +42,7 @@ div.plSlCnt{
 .chef:hover{ border: 1px solid #f57c00; color: #f57c00;}
 .simpleLink:hover{ border: 1px solid #f57c00 !important;  }
 .simpleLink:hover a{ color: #f57c00; }
+.deleteSimpleLink{ visibility: hidden; }
 
 
 .buyBtn{ visibility: hidden }

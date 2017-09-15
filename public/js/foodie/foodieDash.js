@@ -5,5 +5,5 @@ $(document).ready(function () {
        }else{
            $(this).find('.deleteSimpleLink').css('visibility','hidden');
        }
-   })
+   });
 });
