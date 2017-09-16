@@ -98,7 +98,6 @@ class FoodieMealPlanController extends Controller
             'chefCurrent'=>$chefCurrent,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
-            'incompArray'=>$incompArray
         ]);
     }
 
