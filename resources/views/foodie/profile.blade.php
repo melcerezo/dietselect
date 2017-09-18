@@ -401,7 +401,7 @@
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="username" name="username" type="text" class="validate" value="{{ $foodie->username }}">
-                                    <label for="username">Username</label>
+                                    <label for="username" class="active">Username</label>
                                 </div>
                             </div>
                         </div>
@@ -446,7 +446,7 @@
                                         <option value="Taguig">Taguig</option>
                                         <option value="Valenzuela">Valenzuela</option>
                                     </select>
-                                    <label for="address-city">City</label>
+                                    <label for="address-city" class="active">City</label>
                                     <small class="notes"><span class="flame-text">*</span> Please take note that we only cover Metro Manila as of the moment.</small>
                                     <div class="error-city err">
 
@@ -456,13 +456,13 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input id="address-unit" name="unit" type="text" class="validate" data-error=".error-unit" value="">
-                                    <label for="address-unit">Unit No.<span class="flame-text">*</span></label>
+                                    <label for="address-unit" class="active">Unit No.<span class="flame-text">*</span></label>
                                     <div class="error-unit err">
                                     </div>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="address-street" name="street" type="text" class="validate" data-error=".error-street" value="">
-                                    <label for="address-street">Street<span class="flame-text">*</span></label>
+                                    <label for="address-street" class="active">Street<span class="flame-text">*</span></label>
                                     <div class="error-street err">
                                     </div>
                                 </div>
@@ -470,11 +470,11 @@
                             <div class="row">
                                 <div class="input-field col s6">
                                     <input id="address-bldg" name="bldg" type="text" class="validate" value="">
-                                    <label for="address-bldg">Building</label>
+                                    <label for="address-bldg" class="active">Building</label>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="address-brgy" name="brgy" type="text" class="validate" data-error=".error-brgy" value="">
-                                    <label for="address-brgy">Barangay/Village<span class="flame-text">*</span></label>
+                                    <label for="address-brgy" class="active">Barangay/Village<span class="flame-text">*</span></label>
                                     <div class="error-brgy err">
                                     </div>
                                 </div>
@@ -492,25 +492,25 @@
                                         <option value="R">Residential</option>
                                         <option value="O">Office</option>
                                     </select>
-                                    <label for="address-type">Address Type<span class="flame-text">*</span></label>
+                                    <label for="address-type" class="active">Address Type<span class="flame-text">*</span></label>
                                     <div class="error-type err">
                                     </div>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="address-company" name="company" type="text" class="validate" value="">
-                                    <label for="address-company">Company</label>
+                                    <label for="address-company" class="active">Company</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <input id="address-landmark" name="landmark" type="text" class="validate" value="">
-                                    <label for="address-landmark">Landmark</label>
+                                    <label for="address-landmark" class="active">Landmark</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
                                     <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value=""></textarea>
-                                    <label for="address-remarks">Address Remarks</label>
+                                    <label for="address-remarks" class="active">Address Remarks</label>
                                 </div>
                             </div>
                         </div>
