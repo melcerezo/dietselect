@@ -102,6 +102,11 @@
                             </li>
                         @endif
                     </ul>
+                    @if($orders->count()>0)
+                        <div>
+                            <a href="{{route('foodie.order.view', 2)}}">See All</a>
+                        </div>
+                    @endif
                 </div>
             </div>
             <div class="col s12 m3">
@@ -124,6 +129,11 @@
                         </li>
                     @endif
                 </ul>
+                @if(count($ordersRatingPlans)>0)
+                    <div>
+                        <a href="{{route('chef.rating', ['id'=>0])}}">See All</a>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="row">
