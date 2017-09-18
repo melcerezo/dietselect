@@ -365,11 +365,11 @@
                                 </div>
                                 <div class="input-field col s4">
                                     <input id="firstname" name="first_name" type="text" class="validate" value="{{ $foodie->first_name }}">
-                                    <label for="firstname">First Name</label>
+                                    <label for="firstname" class="active">First Name</label>
                                 </div>
                                 <div class="input-field col s4">
                                     <input id="lastname" name="last_name" type="text" class="validate" value="{{ $foodie->last_name }}">
-                                    <label for="lastname">Last Name</label>
+                                    <label for="lastname" class="active">Last Name</label>
                                 </div>
                             </div>
                             <div class="row">
@@ -394,7 +394,7 @@
                                                 {{ date('F j, Y',strtotime($foodie->birthday)) }}
                                                @endunless
                                                ">
-                                    <label for="birthday">Birthday</label>
+                                    <label for="birthday" class="active">Birthday</label>
                                     <small class="notes"><span class="flame-text">*</span> You must 18 years or older to order meal plans.</small>
                                 </div>
                             </div>
