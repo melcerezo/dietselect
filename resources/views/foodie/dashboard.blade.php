@@ -85,7 +85,7 @@
                         <li class="collection-item">
                             <div class="collection-header">Pending Orders</div>
                         </li>
-                        @if($orders->count()>0)
+                        @if(count($orderArray)>0)
                             @foreach($orderArray as $order)
 
                                 <li class="collection-item pendingItem">
