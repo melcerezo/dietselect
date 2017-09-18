@@ -89,18 +89,18 @@
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
                                         <div class="col s12 m4">
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Plan:</span><span>{{$order['plan_name']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Type:</span><span>{{$order['order_type']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Quantity:</span><span>{{$order['quantity']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            <div style="font-size: 20px;">
+                                                <span>Plan:</span><span>{{$order['plan_name']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Type:</span><span>{{$order['order_type']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Quantity:</span><span>{{$order['quantity']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            </div>
                                         </div>
                                         <div class="col s12 m2 offset-m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
@@ -146,18 +146,18 @@
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
                                         <div class="col s12 m4">
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Plan:</span><span>{{$order['plan_name']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Type:</span><span>{{$order['order_type']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Quantity:</span><span>{{$order['quantity']}}</span>
-                                        </div>
-                                        <div style="font-size: 20px;">
-                                            <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            <div style="font-size: 20px;">
+                                                <span>Plan:</span><span>{{$order['plan_name']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Type:</span><span>{{$order['order_type']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Quantity:</span><span>{{$order['quantity']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            </div>
                                         </div>
                                         <div class="col s12 m2 offset-m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
