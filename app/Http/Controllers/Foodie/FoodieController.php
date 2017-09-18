@@ -296,7 +296,7 @@ class FoodieController extends Controller
                 ->where('created_at', '<', $lastTwoWeeks)
 //                ->where('created_at', '>=', $lastTwoWeeks)
 //                ->where('created_at', '<', $lastSaturday)
-                ->latest($column = 'created_at')
+                ->latest($column = 'created_at')->take(3)
                 ->get();
 
 //            dd($ordersRating);
