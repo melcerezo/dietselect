@@ -226,7 +226,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="n-reg-read-user-agrmnt" class="filled-in" name="user_agreement" type="checkbox" value="true" data-error=".error-msg-read-user-agrmnt" required/>
-                            <label for="n-reg-read-user-agrmnt"><small>I have read the <a href="#">User Agreement & Privacy Statement</a>, I give my consent to Diet Select Inc. to use these information, and I agree to the terms of the agreement.</small></label>
+                            <label for="n-reg-read-user-agrmnt"><small>I hereby signify that I am at least 18 yearsl old, and have read the <a href="#">User Agreement & Privacy Statement</a>, I give my consent to Diet Select Inc. to use these information, and I agree to the terms of the agreement.</small></label>
                             <div class="error-msg-read-user-agrmnt">
                                 @if ($errors->has('user_agreement'))
                                     {{ $errors->first('user_agreement') }}

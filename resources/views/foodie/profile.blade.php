@@ -395,6 +395,7 @@
                                                @endunless
                                                ">
                                     <label for="birthday">Birthday</label>
+                                    <small class="notes"><span class="flame-text">*</span> You must 18 years or older to order meal plans.</small>
                                 </div>
                             </div>
                             <div class="row">
