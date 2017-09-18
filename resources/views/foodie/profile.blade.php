@@ -110,7 +110,11 @@
                                             <span>Birthday:</span>
                                         </div>
                                         <div class="col s8 m8 l8">
-                                            <span>{{ date('F j, Y',strtotime($foodie->birthday)) }}</span>
+                                            @if($foodie->birthday!=null)
+                                                <span>{{ date('F j, Y',strtotime($foodie->birthday)) }}</span>
+                                            @else
+                                                <span>N/A</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -384,7 +388,12 @@
                                     <label for="gender">Gender</label>
                                 </div>
                                 <div class="input-field col m6 s12">
-                                    <input id="birthday" name="birthday" type="text" class="validate datepicker" value="{{ date('F j, Y',strtotime($foodie->birthday)) }}">
+                                    <input id="birthday" name="birthday" type="text" class="validate datepicker"
+                                           value="
+                                                @unless($foodie->birthday==null)
+                                                {{ date('F j, Y',strtotime($foodie->birthday)) }}
+                                               @endunless
+                                               ">
                                     <label for="birthday">Birthday</label>
                                 </div>
                             </div>
