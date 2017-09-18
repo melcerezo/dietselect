@@ -88,17 +88,17 @@
                                         <div class="col s12 m2">
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        <div style="font-size: 20px;">
+                                            <span>Plan:</span><span>{{$order['plan_name']}}</span>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Type:</div><div>{{$order['order_type']}}</div>
+                                        <div style="font-size: 20px;">
+                                            <span>Type:</span><span>{{$order['order_type']}}</span>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
+                                        <div style="font-size: 20px;">
+                                            <span>Quantity:</span><span>{{$order['quantity']}}</span>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
+                                        <div style="font-size: 20px;">
+                                            <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
                                         </div>
                                     </div>
                                     <div class="row">
