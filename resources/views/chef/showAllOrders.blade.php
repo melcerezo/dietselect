@@ -90,16 +90,16 @@
                                         </div>
                                         <div class="col s12 m4">
                                             <div style="font-size: 20px;">
-                                                <span>Plan:</span><span>{{$order['plan_name']}}</span>
+                                                <span>Plan: </span><span>{{$order['plan_name']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Type:</span><span>{{$order['order_type']}}</span>
+                                                <span>Type: </span><span>{{$order['order_type']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Quantity:</span><span>{{$order['quantity']}}</span>
+                                                <span>Quantity: </span><span>{{$order['quantity']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                                <span>Amount: </span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
                                             </div>
                                         </div>
                                         <div class="col s12 m2 offset-m2">
@@ -147,16 +147,16 @@
                                         </div>
                                         <div class="col s12 m4">
                                             <div style="font-size: 20px;">
-                                                <span>Plan:</span><span>{{$order['plan_name']}}</span>
+                                                <span>Plan: </span><span>{{$order['plan_name']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Type:</span><span>{{$order['order_type']}}</span>
+                                                <span>Type: </span><span>{{$order['order_type']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Quantity:</span><span>{{$order['quantity']}}</span>
+                                                <span>Quantity: </span><span>{{$order['quantity']}}</span>
                                             </div>
                                             <div style="font-size: 20px;">
-                                                <span>Amount:</span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                                <span>Amount: </span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
                                             </div>
                                         </div>
                                         <div class="col s12 m2 offset-m2">
@@ -207,21 +207,21 @@
                                         <div class="col s12 m2">
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        <div class="col s12 m4">
+                                            <div style="font-size: 20px;">
+                                                <span>Plan: </span><span>{{$order['plan_name']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Type: </span><span>{{$order['order_type']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Quantity: </span><span>{{$order['quantity']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Amount: </span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            </div>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Type:</div><div>{{$order['order_type']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m2">
+                                        <div class="col s12 m2 offset-m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                         </div>
                                     </div>
@@ -269,26 +269,23 @@
                                         <div class="col s12 m2">
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        <div class="col s12 m4">
+                                            <div style="font-size: 20px;">
+                                                <span>Plan: </span><span>{{$order['plan_name']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Type: </span><span>{{$order['order_type']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Quantity: </span><span>{{$order['quantity']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Amount: </span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            </div>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Type:</div><div>{{$order['order_type']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m2">
+                                        <div class="col s12 m2 offset-m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                         </div>
-                                        {{--<div class="col s12 m2">--}}
-                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
@@ -334,26 +331,23 @@
                                         <div class="col s12 m2">
                                             <img src="/img/{{$order['picture']}}" class="img-responsive" style="max-width:100px;"/>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Plan:</div><div>{{$order['plan_name']}}</div>
+                                        <div class="col s12 m4">
+                                            <div style="font-size: 20px;">
+                                                <span>Plan: </span><span>{{$order['plan_name']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Type: </span><span>{{$order['order_type']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Quantity: </span><span>{{$order['quantity']}}</span>
+                                            </div>
+                                            <div style="font-size: 20px;">
+                                                <span>Amount: </span><span>{{'PHP '.number_format($order['price'],2,'.',',')}}</span>
+                                            </div>
                                         </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Type:</div><div>{{$order['order_type']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Quantity:</div><div>{{$order['quantity']}}</div>
-                                        </div>
-                                        <div class="col s12 m2" style="font-size: 20px;">
-                                            <div>Amount:</div><div>{{'PHP '.number_format($order['price'],2,'.',',')}}</div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col s12 m2">
+                                        <div class="col s12 m2 offset-m2">
                                             <a href="{{route('chef.order.single', $order['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Details</a>
                                         </div>
-                                        {{--<div class="col s12 m2">--}}
-                                        {{--<button data-target="cancelAllModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
-                                        {{--</div>--}}
                                     </div>
                                 </div>
                             </div>
