@@ -298,7 +298,7 @@
                                 <li class="collection-item">Allergies:
                                     <div>
                                         @if($allergies->count()>0)
-                                            <button data-target="allergiesModal" class="btn waves-effect waves-light modal-trigger">View Allergies</button>
+                                            <button data-target="allergiesModal" class="btn orange darken-2 waves-effect waves-light modal-trigger">View Allergies</button>
                                         @else
                                             <span>No Allergies</span>
                                         @endif
