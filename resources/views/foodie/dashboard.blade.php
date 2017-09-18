@@ -102,7 +102,7 @@
                             </li>
                         @endif
                     </ul>
-                    @if($orders->count()>0)
+                    @if(count($orderArray)>0)
                         <div>
                             <a href="{{route('foodie.order.view', 2)}}">See All</a>
                         </div>
