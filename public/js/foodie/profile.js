@@ -29,7 +29,7 @@ $(document).ready(function() {
 
     date=new Date();
     minus18=date.setFullYear(date.getFullYear()-18);
-    console.log(minus18.getFullYear());
+    console.log(date.getFullYear());
     $('#birthday').pickadate({
         // Buttons
         // Buttons
