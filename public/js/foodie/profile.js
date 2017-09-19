@@ -247,21 +247,36 @@ $(document).ready(function() {
             url: '/foodie/username/'+name
         });
     }
-    // $('#mobile-num').blur(function () {
-    //     var mobile = mobileAjax($(this).val());
-    //     mobile.done(
-    //         function (response) {
-    //             if(response=="true"){
-    //                 $('.error-msg-mobile-num').empty();
-    //                 $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
-    //                 console.log(response);
-    //             }else{
-    //                 $('.error-msg-mobile-num').empty();
-    //                 console.log(response);
-    //             }
-    //         }
-    //     );
-    // });
+    $('#mobile-num').on('keydown keyup', function(e){
+        if ($(this).val().length >= 10
+            && e.keyCode != 46 // delete
+            && e.keyCode != 8 // backspace
+            && e.keyCode != 9 // tab
+        ) {
+            e.preventDefault();
+            // $(this).val(100);
+        }else{
+            if(e.shiftKey && ((e.keyCode >=48 && e.keyCode <=57)
+                || (e.keyCode >=186 &&  e.keyCode <=222))){
+                // Ensure that it is a number and stop the Special chars
+                e.preventDefault();
+            }
+            else if ((e.shiftKey || e.ctrlKey) && (e.keyCode > 34 && e.keyCode < 40)){
+                // let it happen, don't do anything
+            }
+            else{
+                // Allow only backspace , delete, numbers
+                if (e.keyCode == 9 || e.keyCode == 46 || e.keyCode == 8 || e.keyCode == 39 ||e.keyCode == 37
+                    || (e.keyCode >=48 && e.keyCode <=57)) {
+                    // let it happen, don't do anything
+                }
+                else {
+                    // Ensure that it is a number and stop the key press
+                    e.preventDefault();
+                }
+            }
+        }
+    });
 
     $('#prfSvBtn').on('click',function () {
         if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
