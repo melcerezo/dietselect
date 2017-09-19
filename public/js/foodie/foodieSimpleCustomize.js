@@ -11,7 +11,7 @@ $(document).ready(function () {
     for(var a=0,b=allergiesList.length;a<b;a++){
         allergyArray.push(allergiesList[a].attr('allergy'));
     }
-    console.log(allergyArray);
+    console.log(allergiesList);
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
         var ingreds = ingredAjax(id);
