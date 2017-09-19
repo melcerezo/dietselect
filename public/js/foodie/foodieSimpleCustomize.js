@@ -6,18 +6,18 @@ function ingredAjax(id) {
 }
 
 $(document).ready(function () {
+    var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
+    var allergyArray =[];
+    for(var a=0,b=valData.length;a<b;a++){
+        allergyArray.push(allergiesList[a].attr('allergy'));
+    }
+    console.log(allergyArray);
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
         var ingreds = ingredAjax(id);
 
         // ingreds.fail(console.log(ingreds.statusCode()));
 
-        var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
-        var allergyArray =[];
-        for(var a=0,b=valData.length;a<b;a++){
-            allergyArray.push(allergiesList[a].attr('allergy'));
-        }
-        console.log(allergies);
 
         ingreds.done(function(response) {
             var valData = response;

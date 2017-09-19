@@ -4,7 +4,7 @@
     <script>
         details = "{{$detailJson}}";
         allergies = "{{$allergyJson}}";
-        console.log(allergies);
+//        console.log(allergies);
     </script>
     <script src="/js/foodie/foodieSimpleCustomize.js" defer></script>
     <script>
