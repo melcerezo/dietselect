@@ -45,7 +45,7 @@ class DepositController extends Controller
         $this->validate($request, [
             'receipt_number' => 'required',
             'datePay' => 'required',
-            'image' => 'required'
+            'image' => 'required|image'
         ]);
 
         $image = $request['image'];

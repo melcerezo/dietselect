@@ -393,7 +393,7 @@
                                                 @if($foodie->birthday==null)
                                                 {{ date('F j, Y',strtotime($foodie->birthday)) }}
                                                @else
-
+                                                   N/A
                                                @endif
                                                ">
                                     <label for="birthday" class="active">Birthday</label>
