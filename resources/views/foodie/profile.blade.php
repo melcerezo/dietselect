@@ -391,7 +391,7 @@
                                     <input id="birthday" name="birthday" type="text" class="validate datepicker"
                                            value="
                                                 {{--@if($foodie->birthday==null)--}}
-                                                {{ date('F j, Y',strtotime($foodie->birthday)) }}
+                                                {{$foodie->birthday}}
                                                {{--@else--}}
                                                    {{--N/A--}}
                                                {{--@endif--}}
