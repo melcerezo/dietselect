@@ -251,6 +251,51 @@
         <!-- End of foodie-reg-form-modal -->
     @endif
 
+            <div id="client-type-modal" class="modal">
+                <div class="modal-content">
+                    <h3>Login</h3>
+                    <div class="row">
+                        <div class="col s12 m6">
+                            <!-- Foodie Client -->
+                            <div class="card sticky-action hoverable">
+                                <div class="card-image waves-effect waves-block waves-asparagus">
+                                    <img class="activator n-client-type-icon" src="/img/user_icon.svg">
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="card-title activator grey-text text-darken-4 no-pad-bot">Foodie</h2>
+                                </div>
+                                <div class="card-action flame center">
+                                    <a id="foodie-card-select" class=" n-select-btn" href="{{ route('foodie.login.show') }}">LOGIN</a>
+                                </div>
+                                <div class="card-reveal mindaro">
+                                    <span class="card-title grey-text text-darken-4">Foodie on a Diet<i class="material-icons right">close</i></span>
+                                    <p>You've recently just decided to start going on a diet, or you're looking around for better selections for your diet. And good for you! Register here to get started on our awesome services to find you the diet meal plan that best fits you!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s12 m6">
+                            <!-- Chef Client -->
+                            <div class="card sticky-action hoverable">
+                                <div class="card-image waves-effect waves-block waves-asparagus">
+                                    <img class="activator n-client-type-icon" src="/img/vendor_icon.svg">
+                                </div>
+                                <div class="card-content">
+                                    <h2 class="card-title activator grey-text text-darken-4 no-pad-bot">Chef</h2>
+                                </div>
+                                <div class="card-action flame center">
+                                    <a id="diet-prvdr-card-select" class="papaya-whip-text n-select-btn" href="{{ route('chef.login.show') }}">LOGIN</a>
+                                </div>
+                                <div class="card-reveal mindaro">
+                                    <span class="card-title grey-text text-darken-4">Chef for Health<i class="material-icons right">close</i></span>
+                                    <p>Your advocacy is to help people out with their diet plans, and it has reached the point of wanting to prepare and plan out the delivery of their meal plans yourself. And for that, we think you're awesome! Let us help you get the clientelle that your advocacy needs!</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
     @if ($from == 'login')
         <!-- Login Modal -->
         <div id="login-modal" class="modal modal-fixed-footer">
@@ -296,7 +341,7 @@
                 <div class="modal-footer">
                     <input type="submit" class="hidden"/>
                     <a href="javascript:void(0)" class="modal-action btn-flat n-btn-link n-submit-btn"><i class="fa fa-paper-plane-o"></i><span class="hide-on-small-only n-modal-form-btn-text"> Submit</span></a>
-                    <a href="{{route('chef.login.show')}}" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-cutlery"></i> <span class="hide-on-small-only n-modal-form-btn-text">Chef Login</span></a>
+                    {{--<a href="{{route('chef.login.show')}}" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-cutlery"></i> <span class="hide-on-small-only n-modal-form-btn-text">Chef Login</span></a>--}}
                     <a href="javascript:void(0)" class="modal-action modal-close btn-flat right-align n-btn-link"><i class="fa fa-times-circle"></i> <span class="hide-on-small-only n-modal-form-btn-text">Close</span></a>
                 </div>
             </form>
