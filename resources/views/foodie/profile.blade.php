@@ -390,9 +390,9 @@
                                 <div class="input-field col m6 s12">
                                     <input id="birthday" name="birthday" type="text" class="validate datepicker"
                                            value="
-                                                @unless($foodie->birthday==null)
+                                                {{--@unless($foodie->birthday==null)--}}
                                                 {{ date('F j, Y',strtotime($foodie->birthday)) }}
-                                               @endunless
+                                               {{--@endunless--}}
                                                ">
                                     <label for="birthday" class="active">Birthday</label>
                                     <small class="notes"><span class="flame-text">*</span> You must 18 years or older to order meal plans.</small>
