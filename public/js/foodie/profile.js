@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
 
     date=new Date();
-    minus18=date.setFullYear(date.getFullYear()-18);
+    // minus18=date.setFullYear(date.getFullYear()-18);
     console.log(date.getFullYear()+'/'+date.getMonth()+'/'+date.getDate());
     $('#birthday').pickadate({
         // Buttons
@@ -41,7 +41,7 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd',
 
         //Date limits
-        max: [date.getFullYear()-18,date.getMonth(),date.getDate()],
+        max: [date.getFullYear()-18,date.getMonth(),date.getDay()],
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
