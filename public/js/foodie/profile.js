@@ -248,7 +248,7 @@ $(document).ready(function() {
             function (response) {
                 if(response=="true"){
                     $('.error-msg-mobile-num').empty();
-                    $('.error-msg-mobile-num').append('This mobile number exists already.');
+                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
                     console.log(response);
                 }else{
                     $('.error-msg-mobile-num').empty();
@@ -257,6 +257,15 @@ $(document).ready(function() {
             }
         );
     });
+
+    $('#basic-profile').submit(function (e) {
+           if($('.error-msg-mobile-num').children().length > 0 && !($('#basic-profile').valid())){
+               e.preventDefault();
+           }
+        }
+    );
+
+
         // $('input.allergyCheckbox:checkbox').each(function (){
         //     if($(this).attr('name')!=$this.attr('allergy')){
         //         $('#allrg-others').val($('#allrg-others').val()+$(this).attr('name'));
