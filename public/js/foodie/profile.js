@@ -317,7 +317,7 @@ $(document).ready(function() {
                     } else if (response == "false" && $('#basic-profile').valid()) {
                         $('.error-msg-mobile-num').empty();
                         console.log($('#mobile-num').val());
-                        // $('#basic-profile').unbind('submit').submit();
+                        $('#basic-profile').unbind('submit').submit();
                     }
                 }
             );

@@ -515,7 +515,7 @@ class FoodieController extends Controller
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
-            'username' => 'max:20|unique:foodies',
+//            'username' => 'max:20|unique:foodies',
 //            'mobile' => 'required|digits:10|unique:foodies',
         ])->validate();
 
