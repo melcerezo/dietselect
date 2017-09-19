@@ -8,10 +8,10 @@ function ingredAjax(id) {
 $(document).ready(function () {
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
     var allergyArray =[];
-    for(var a=0,b=allergiesList.length;a<b;a++){
-        allergyArray.push(allergiesList[a].attr('allergy'));
-    }
     console.log(allergiesList);
+    // for(var a=0,b=allergiesList.length;a<b;a++){
+    //     allergyArray.push(allergiesList[a].attr('allergy'));
+    // }
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
         var ingreds = ingredAjax(id);
