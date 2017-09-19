@@ -627,7 +627,8 @@ class MealPlanController extends Controller
                 break;
         }
 
-        $mealPlan->delete();
+        $mealPlan->is_deleted=1;
+        $mealPlan->save();
         return back()->with(['status'=>'Successfully deleted '.$mealTypeDisplay.' for '.$day.'!']);
     }
 
