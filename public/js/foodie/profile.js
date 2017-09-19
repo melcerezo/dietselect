@@ -259,20 +259,26 @@ $(document).ready(function() {
     });
 
     $('#prfSvBtn').on('click',function () {
-        var mobile = mobileAjax($('#mobile-num').val());
-        mobile.done(
-            function (response) {
-                if(response=="true"){
-                    $('.error-msg-mobile-num').empty();
-                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
-                    console.log(response);
-                }else if(response == "false" && $('#basic-profile').valid()){
-                    $('.error-msg-mobile-num').empty();
-                    console.log($('#mobile-num').val());
-                    // $('#basic-profile').unbind('submit').submit();
+        if($('#mobile-num').val()!=foodiePhone){
+            var mobile = mobileAjax($('#mobile-num').val());
+            mobile.done(
+                function (response) {
+                    if(response=="true"){
+                        $('.error-msg-mobile-num').empty();
+                        $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
+                        console.log(response);
+                    }else if(response == "false" && $('#basic-profile').valid()){
+                        $('.error-msg-mobile-num').empty();
+                        console.log($('#mobile-num').val());
+                        $('#basic-profile').unbind('submit').submit();
+                    }
                 }
+            );
+        }else{
+            if($('#basic-profile').valid()){
+                $('#basic-profile').submit();
             }
-        );
+        }
        // if($('.error-msg-mobile-num').children().length > 0 && !($('#basic-profile').valid())){
        //     e.preventDefault();
        // }

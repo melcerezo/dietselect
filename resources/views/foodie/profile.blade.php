@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="/css/foodie/foodieProfile.css">
     <script>
         var allergies = "{{$allergyJson}}";
+        foodiePhone = "{{$foodie->mobile_number}}";
     </script>
     <script src="/js/foodie/profile.js" defer></script>
 @endsection
