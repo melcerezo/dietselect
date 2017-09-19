@@ -331,7 +331,7 @@ $(document).ready(function() {
                 }
             );
         }else if($('#username').val()!=username){
-            if($('#username').val()==null){
+            if($('#username').val()==""){
                 var name = nameAjax('n');
             }else{
                 var name = nameAjax($('#username').val());
