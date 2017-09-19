@@ -242,6 +242,11 @@ $(document).ready(function() {
             url:'/foodie/mobile/'+mobile
         });
     }
+    function nameAjax(name){
+        return $.ajax({
+            url: 'foodie/name'+name
+        });
+    }
     // $('#mobile-num').blur(function () {
     //     var mobile = mobileAjax($(this).val());
     //     mobile.done(
@@ -259,17 +264,59 @@ $(document).ready(function() {
     // });
 
     $('#prfSvBtn').on('click',function () {
-        if($('#mobile-num').val()!=foodiePhone){
+        if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
+            var mobile = mobileAjax($('#mobile-num').val());
+            var name = nameAjax($('#username').val());
+            $.when(
+                mobile.done(function (response) {
+                    mobiletruth = response;
+                }),
+                name.done(function (response) {
+                    nametruth = response;
+                })
+            ).then(function () {
+                if (mobiletruth == "true" && nametruth == "true") {
+                    $('.error-msg-mobile-num').empty();
+                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
+                    $('.error-username').empty();
+                    $('.error-username').append('<span>This username exists already.</span>');
+                } else if (mobiletruth == "true") {
+                    $('.error-msg-mobile-num').empty();
+                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
+                } else if (nametruth == "true") {
+                    $('.error-username').empty();
+                    $('.error-username').append('<span>This username exists already.</span>');
+                } else {
+                    $('#basic-profile').unbind('submit').submit();
+                }
+
+            });
+        }else if($('#mobile-num').val()!=foodiePhone){
             var mobile = mobileAjax($('#mobile-num').val());
             mobile.done(
                 function (response) {
-                    if(response=="true"){
+                    if (response == "true") {
                         $('.error-msg-mobile-num').empty();
                         $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
                         console.log(response);
-                    }else if(response == "false" && $('#basic-profile').valid()){
+                    } else if (response == "false" && $('#basic-profile').valid()) {
                         $('.error-msg-mobile-num').empty();
                         console.log($('#mobile-num').val());
+                        $('#basic-profile').unbind('submit').submit();
+                    }
+                }
+            );
+        }else if($('#username').val()!=username){
+            var name = nameAjax($('#username').val());
+            name.done(
+                function (response) {
+                    if (response == "true") {
+                        $('.error-username').empty();
+                        $('.error-username').append('<span>This mobile number exists already.</span>');
+                        // console.log(response);
+                    } else if (response == "false" && $('#basic-profile').valid()) {
+                        $('.error-username').empty();
+                        // console.log($('#mobile-num').val());
                         $('#basic-profile').unbind('submit').submit();
                     }
                 }

@@ -6,6 +6,7 @@
     <script>
         var allergies = "{{$allergyJson}}";
         foodiePhone = "{{$foodie->mobile_number}}";
+        username="{{$foodie->username}}";
     </script>
     <script src="/js/foodie/profile.js" defer></script>
 @endsection
@@ -397,8 +398,11 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="username" name="username" type="text" class="validate" value="{{ $foodie->username }}">
+                                    <input id="username" name="username" data-error=".error-username" type="text" class="validate" value="{{ $foodie->username }}">
                                     <label for="username" class="active">Username</label>
+                                    <div class="error-username err">
+
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

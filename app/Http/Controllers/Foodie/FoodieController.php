@@ -515,7 +515,7 @@ class FoodieController extends Controller
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
-            'username' => 'max:20',
+            'username' => 'max:20|unique:foodies',
 //            'mobile' => 'required|digits:10|unique:foodies',
         ])->validate();
 
@@ -538,12 +538,12 @@ class FoodieController extends Controller
         // You should place meaningful end messages, so you could easily
         // know when which part you have reached.
         // die("We just finished setting the gender of the foodie.");
-
+        $foodieCount=Foodie::where('username','=',$foodie->username)->count();
 
         $foodie->birthday = $request['birthday'];
         if($request['username']==""){
             $foodie->username = null;
-        }else{
+        }else if($request['username']!=$foodie->username){
             $foodie->username = $request['username'];
         }
         $foodie->save();
@@ -584,6 +584,15 @@ class FoodieController extends Controller
 
         ]);
         return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+    }
+
+    public function getUserName($name)
+    {
+        $foodieCount=Foodie::select('username')->where('username','=',$name)->count();
+        if($foodieCount){
+            return "true";
+        }
+        return "false";
     }
 
     public function updateProfileAddress(Request $request, $id)
