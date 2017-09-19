@@ -12,17 +12,18 @@ $(document).ready(function () {
 
         // ingreds.fail(console.log(ingreds.statusCode()));
 
+        var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
+        var allergyArray =[];
+        for(var a=0,b=valData.length;a<b;a++){
+            allergyArray.push(allergiesList[a].attr('allergy'));
+        }
+        console.log(allergyArray);
 
         ingreds.done(function(response) {
             var valData = response;
             // console.log(valData);
             var groupArray = [];
-            var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
-            var allergyArray =[];
-            for(var a=0,b=valData.length;a<b;a++){
-                allergyArray.push(allergiesList[a].attr('allergy'));
-            }
-            console.log(allergyArray);
+
             $('#h'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
                 groupArray.push(valData[i].ingredient_group);
