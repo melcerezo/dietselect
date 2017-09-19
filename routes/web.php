@@ -75,6 +75,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('chefs/customize/simpleDetailDelete/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleCustomDetailDelete')->name('foodie.simpleMeal.delete');
     Route::get('{type}/getIngredJson', 'Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
     Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
+    Route::get('/mobile/{mobile}','Foodie\FoodieController@getMobile');
 
     Route::get('order/plan/{plan}', 'Foodie\FoodieOrderPlanController@index')->name('foodie.order.review');
     Route::post('order/cancel/{order}', 'Foodie\FoodieOrderPlanController@cancelOrder')->name('foodie.order.cancel');
