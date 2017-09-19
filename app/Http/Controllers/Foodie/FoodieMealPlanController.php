@@ -385,11 +385,6 @@ class FoodieMealPlanController extends Controller
 
     public function simpleMealMake(SimpleCustomMeal $simpleCustomMeal, Request $request)
     {
-
-
-//        dd($request->all());
-
-
         foreach($request->except(['_token']) as $value){
 //            dd($request);
             $detail = new SimpleCustomDetail();
@@ -413,6 +408,13 @@ class FoodieMealPlanController extends Controller
     {
         $simpleCustomPlan->delete();
         return back()->with([ 'status'=>'Deleted the Customized Plan!' ]);
+    }
+
+    public function simpleCustomDetailDelete(SimpleCustomMeal $simpleCustomMeal)
+    {
+        dd($simpleCustomMeal->simple_custom_detail()->get());
+        $simpleCustomMeal->is_customized=0;
+        return back()->with(['status'=>"Undid the Simple Custom Meal!"]);
     }
 
     public function viewChefsMeals(Plan $plan, Request $request)
