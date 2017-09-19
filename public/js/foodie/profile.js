@@ -31,23 +31,20 @@ $(document).ready(function() {
     // console.log(date.getFullYear()-18);
     $('#birthday').pickadate({
         // Buttons
+        // Buttons
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
         clear: 'Clear',
         close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
 
         //Formats
-        format: 'mmmm d, yyyy',
-        formatSubmit: 'yyyy-mm-dd',
-        // format: 'yyyy-mm-dd',
+        format: 'yyyy-mm-dd',
 
         //Date limits
         max: Date.now(),
-        // onStart: function () {
-        //   this.set('select',[now.getFullYear()-18,now.getMonth(),now.getDay()]);
-        // },
+
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 50// Creates a dropdown of 15 years to control year
+        selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
     $('form#basic-profile').validate({
