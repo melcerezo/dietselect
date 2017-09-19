@@ -118,7 +118,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('cart/{id}','CartController@remove')->name('cart.remove');
 });
 
-Route::group(['prefix' => 'chef'], function () {
+Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function () {
 
     Route::get('/', 'Chef\ChefController@index')->name('chef');
     Route::get('dashboard', 'Chef\ChefController@index')->name('chef.dashboard');
