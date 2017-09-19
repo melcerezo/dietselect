@@ -17,7 +17,7 @@ $(document).ready(function () {
         for(var a=0,b=valData.length;a<b;a++){
             allergyArray.push(allergiesList[a].attr('allergy'));
         }
-        console.log(allergiesList);
+        console.log(allergies);
 
         ingreds.done(function(response) {
             var valData = response;
