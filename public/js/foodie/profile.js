@@ -43,9 +43,9 @@ $(document).ready(function() {
 
         //Date limits
         max: Date.now(),
-        onStart: function () {
-          this.set('select',[now.getFullYear()-18,now.getMonth(),now.getDay()]);
-        },
+        // onStart: function () {
+        //   this.set('select',[now.getFullYear()-18,now.getMonth(),now.getDay()]);
+        // },
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 50// Creates a dropdown of 15 years to control year
