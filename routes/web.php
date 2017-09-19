@@ -72,6 +72,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::post('chefs/customize/{customize}', 'Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
     Route::post('chefs/customize/simple/{simpleCustomPlan}','Foodie\FoodieMealPlanController@simpleMake')->name('foodie.simple.custom');
     Route::post('chefs/customize/simpleMeal/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleMealMake')->name('foodie.simpleMeal.custom');
+    Route::get('chefs/customize/simpleDetailDelete/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleCustomDetailDeleteDelete')->name('foodie.simpleMeal.delete');
     Route::get('{type}/getIngredJson', 'Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
     Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');
 

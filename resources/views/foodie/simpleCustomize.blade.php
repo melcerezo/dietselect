@@ -998,6 +998,10 @@
                                                 @endforeach
                                             </div>
                                         </div>
+                                        <div>
+                                            <a href="{{route('foodie.simpleMeal.delete', $simpleCustomMeal->id)}}"
+                                               class="btn orange darken-2 waves-effect waves-light" style="font-weight: 100;">Undo</a>
+                                        </div>
                                     </div>
                                 @endif
                             @endif
