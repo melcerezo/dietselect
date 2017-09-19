@@ -46,7 +46,7 @@ $(document).ready(function() {
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 30 // Creates a dropdown of 15 years to control year
+        selectYears: 50 // Creates a dropdown of 15 years to control year
     });
 
     $('form#basic-profile').validate({
