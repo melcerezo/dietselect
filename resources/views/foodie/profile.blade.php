@@ -389,13 +389,7 @@
                                 </div>
                                 <div class="input-field col m6 s12">
                                     <input id="birthday" name="birthday" type="text" class="validate datepicker"
-                                           value="
-                                                {{--@if($foodie->birthday==null)--}}
-                                                {{$foodie->birthday}}
-                                               {{--@else--}}
-                                                   {{--N/A--}}
-                                               {{--@endif--}}
-                                               ">
+                                           value="{{$foodie->birthday}}">
                                     <label for="birthday" class="active">Birthday</label>
                                     <small class="notes"><span class="flame-text">*</span> You must 18 years or older to order meal plans.</small>
                                 </div>
@@ -585,6 +579,9 @@
                             <p>Now let us know the food that you prefer to have in your meals.</p>
                             <div class="row">
                                 <div class="input-field col l4 s12">
+                                    {{--@if($allergies->where('allergy','=',''))--}}
+                                    {{--@elseif()--}}
+                                    {{--@endif--}}
                                     <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
                                     <label for="pref-none">No Preference</label><br/>
                                     <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>

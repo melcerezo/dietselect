@@ -417,6 +417,7 @@ class FoodieController extends Controller
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
         $addresses = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
         $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
+        dd($allergies->where('allergy','=','chicken')->count());
         $preference = FoodiePreference::where('foodie_id', Auth::guard('foodie')->user()->id)->first();
         $chefs = Chef::all();
         $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
