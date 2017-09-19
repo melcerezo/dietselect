@@ -189,7 +189,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
     Route::get('rating', 'ChefRatingsController@viewRatings')->name('chef.ratings');
 });
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function () {
     Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     Route::get('/', 'Admin\AdminController@index')->name('admin');
