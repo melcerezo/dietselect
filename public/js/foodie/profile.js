@@ -286,7 +286,7 @@ $(document).ready(function() {
     $('#prfSvBtn').on('click',function () {
         if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
             var mobile = mobileAjax($('#mobile-num').val());
-            if($('#username').val()==""){
+            if($('#username').val()==null){
                 var name = nameAjax('n');
             }else{
                 var name = nameAjax($('#username').val());
