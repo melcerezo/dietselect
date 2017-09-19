@@ -246,12 +246,13 @@ $(document).ready(function() {
         var mobile = mobileAjax($(this).val());
         mobile.done(
             function (response) {
-                if(response){
+                if(response=="true"){
                     $('.error-msg-mobile-num').empty();
                     $('.error-msg-mobile-num').append('This mobile number exists already.');
                     console.log(response);
-                }else if(!response){
+                }else{
                     $('.error-msg-mobile-num').empty();
+                    console.log(response);
                 }
             }
         );
