@@ -414,6 +414,7 @@ class FoodieMealPlanController extends Controller
     {
 //        dd($simpleCustomMeal->simple_custom_detail()->get());
         $simpleCustomMeal->is_customized=0;
+        $simpleCustomMeal->save();
         $simpleDetails=$simpleCustomMeal->simple_custom_detail()->get();
         foreach($simpleDetails as $simpleDetail){
             $simpleDetail->delete();
