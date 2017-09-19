@@ -243,7 +243,7 @@ $(document).ready(function() {
         });
     }
     $('#mobile-num').blur(function () {
-        var mobile = mobileAjax($(this).value());
+        var mobile = mobileAjax($(this).val());
         console.log(mobile);
     });
         // $('input.allergyCheckbox:checkbox').each(function (){
