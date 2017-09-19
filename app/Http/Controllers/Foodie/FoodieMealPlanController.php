@@ -420,7 +420,7 @@ class FoodieMealPlanController extends Controller
             $simpleDetail->delete();
         }
 
-        return back()->with(['status'=>"Undid the Simple Custom Meal!"]);
+        return back()->with(['status'=>"Undid customization for ".$simpleCustomMeal->chef_customized_meal->description."!"]);
     }
 
     public function viewChefsMeals(Plan $plan, Request $request)
