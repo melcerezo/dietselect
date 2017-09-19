@@ -43,10 +43,12 @@ $(document).ready(function() {
 
         //Date limits
         max: new Date(now.getFullYear()-18,now.getMonth(),now.getDay()),
-
+        onStart: function () {
+          this.setDate(now.getFullYear()-18,now.getMonth(),now.getDay())
+        },
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 50 // Creates a dropdown of 15 years to control year
+        selectYears: 15 // Creates a dropdown of 15 years to control year
     });
 
     $('form#basic-profile').validate({
