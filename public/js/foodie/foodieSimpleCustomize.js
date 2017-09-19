@@ -8,7 +8,7 @@ function ingredAjax(id) {
 $(document).ready(function () {
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
     var allergyArray =[];
-    for(var a=0,b=valData.length;a<b;a++){
+    for(var a=0,b=allergiesList.length;a<b;a++){
         allergyArray.push(allergiesList[a].attr('allergy'));
     }
     console.log(allergyArray);
