@@ -25,7 +25,7 @@ Route::get('/about', 'PagesController@about')->name('about');
 
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
 
-Route::group(['prefix' => 'foodie'], function () {
+Route::group(['prefix' => 'foodie','middleware'=>'ValidateBackHistory'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('notifClear','Foodie\FoodieController@clearNotif')->name('foodie.clearNotif');
     Route::get('notifGet', 'Foodie\FoodieController@getNotif')->name('foodie.getNotif');

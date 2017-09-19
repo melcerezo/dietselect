@@ -116,7 +116,6 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-
         $successMsg = "Successfully logged out! Come back soon!";
         return redirect('/')->with(['status' => $successMsg]);
     }
