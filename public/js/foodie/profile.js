@@ -237,6 +237,15 @@ $(document).ready(function() {
             $('#allrg-others').val($('#allrg-others').val()+element);
         }
     });
+    function mobileAjax(mobile) {
+        return $.ajax({
+            url:'/foodie/mobile/'+mobile
+        });
+    }
+    $('#mobile-num').blur(function () {
+        var mobile = mobileAjax($(this).value());
+        console.log(mobile);
+    });
         // $('input.allergyCheckbox:checkbox').each(function (){
         //     if($(this).attr('name')!=$this.attr('allergy')){
         //         $('#allrg-others').val($('#allrg-others').val()+$(this).attr('name'));

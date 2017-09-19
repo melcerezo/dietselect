@@ -409,6 +409,9 @@
                                         <label for="mobile-num">Mobile Number</label>
                                         <input id="mobile-num" name="mobile" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ $foodie->mobile_number }}"/>
                                     </div>
+                                    <div class="error-msg-mobile-num err">
+
+                                    </div>
                                 </div>
                             </div>
                         </div>

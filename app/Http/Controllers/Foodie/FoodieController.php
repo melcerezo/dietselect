@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Foodie;
 use App\Chat;
 use App\CustomizedMeal;
 use App\CustomPlan;
+use App\Foodie;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Foodie\Auth\VerifiesSms;
 use App\Chef;
@@ -460,6 +461,15 @@ class FoodieController extends Controller
         return Auth::guard($this->guard)->user()->id;
     }
 
+    public function getMobile($mobile)
+    {
+        $mobileNum=Foodie::select('mobile_number')->where('mobile_number','=',$mobile)->count();
+        if($mobileNum){
+            return true;
+        }
+        return false;
+    }
+    
     public function saveProfileCoverPhoto(Request $request)
     {
 //        dd($request->file('cover'));
@@ -505,7 +515,8 @@ class FoodieController extends Controller
         Validator::make($request->all(), [
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
-            'username' => 'max:20'
+            'username' => 'max:20',
+            'mobile_number' => 'required|digits:10|unique:foodies',
         ])->validate();
 
 //        dd($request['birthday_submit']);
