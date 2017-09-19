@@ -312,7 +312,7 @@ $(document).ready(function() {
                 function (response) {
                     if (response == "true") {
                         $('.error-username').empty();
-                        $('.error-username').append('<span>This mobile number exists already.</span>');
+                        $('.error-username').append('<span>This username exists already.</span>');
                         // console.log(response);
                     } else if (response == "false" && $('#basic-profile').valid()) {
                         $('.error-username').empty();
