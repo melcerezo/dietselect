@@ -114,7 +114,7 @@ $(document).ready(function () {
             },
             image:{
                 required: 'Please upload your proof of payment!',
-                extensions: 'png|jpg|jpeg'
+                extension: 'png|jpg|jpeg'
             }
         },
         errorElement : 'div',
