@@ -249,6 +249,7 @@ $(document).ready(function() {
                 if(response){
                     $('.error-msg-mobile-num').empty();
                     $('.error-msg-mobile-num').append('This mobile number exists already.');
+                    console.log(response);
                 }else if(!response){
                     $('.error-msg-mobile-num').empty();
                 }
