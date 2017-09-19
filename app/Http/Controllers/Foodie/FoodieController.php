@@ -516,7 +516,7 @@ class FoodieController extends Controller
             'last_name' => 'required|max:100',
             'first_name' => 'required|max:100',
             'username' => 'max:20',
-            'mobile_number' => 'required|digits:10|unique:foodies',
+//            'mobile' => 'required|digits:10|unique:foodies',
         ])->validate();
 
 //        dd($request['birthday_submit']);
@@ -525,7 +525,9 @@ class FoodieController extends Controller
         $foodie->first_name = $request['first_name'];
         $foodie->last_name = $request['last_name'];
         $foodie->gender = $request['gender'];
-
+        if($request['mobile']!=$foodie->mobile_number){
+            $foodie->mobile_number=$request['mobile'];
+        }
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
