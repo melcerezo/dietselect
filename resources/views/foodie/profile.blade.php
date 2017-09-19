@@ -528,12 +528,12 @@
                                     <input type="hidden" name="seafood" value="0"/>
                                     <input type="checkbox" name="seafood" value="1" class="filled-in  allergyCheckbox" id="allrg-sea"/>
                                     <label for="allrg-sea">Seafood</label><br/>
-                                    <input type="hidden" name="squid" value="0"/>
-                                    <input type="checkbox" name="squid" value="1" class="filled-in allergyCheckbox" id="allrg-squid"/>
-                                    <label for="allrg-squid">Squid, Shrimp, and Crab</label><br/>
-                                    <input type="hidden" name="fish" value="0"/>
-                                    <input type="checkbox" name="fish" value="1" class="filled-in allergyCheckbox" id="allrg-fish"/>
-                                    <label for="allrg-fish">Fish</label><br/>
+                                    {{--<input type="hidden" name="squid" value="0"/>--}}
+                                    {{--<input type="checkbox" name="squid" value="1" class="filled-in allergyCheckbox" id="allrg-squid"/>--}}
+                                    {{--<label for="allrg-squid">Squid, Shrimp, and Crab</label><br/>--}}
+                                    {{--<input type="hidden" name="fish" value="0"/>--}}
+                                    {{--<input type="checkbox" name="fish" value="1" class="filled-in allergyCheckbox" id="allrg-fish"/>--}}
+                                    {{--<label for="allrg-fish">Fish</label><br/>--}}
                                 </div>
                                 <div class="input-field col l4 s12">
                                     <input type="hidden" name="nuts" value="0"/>
@@ -612,8 +612,7 @@
                                         <label for="pref-sea">Seafood-based</label><br/>
                                         <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
                                         <label for="pref-beef">Vegetarian</label><br/>
-                                    @elseif($allergies->where('allergy','=','fish')->count() || $allergies->where('allergy','=','squid')->count()
-                                    || $allergies->where('allergy','=','seafood')->count())
+                                    @elseif($allergies->where('allergy','=','seafood')->count())
                                         <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
                                         <label for="pref-none">No Preference</label><br/>
                                         <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
@@ -625,8 +624,7 @@
                                         <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
                                         <label for="pref-beef">Vegetarian</label><br/>
                                     @elseif($allergies->where('allergy','=','chicken')->count() && $allergies->where('allergy','=','beef')->count()
-                                    && $allergies->where('allergy','=','pork')->count() && ($allergies->where('allergy','=','fish')->count() || $allergies->where('allergy','=','squid')->count()
-                                    || $allergies->where('allergy','=','seafood')->count()))
+                                    && $allergies->where('allergy','=','pork')->count() && $allergies->where('allergy','=','seafood')->count())
                                         <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
                                         <label for="pref-none">No Preference</label><br/>
                                         <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
