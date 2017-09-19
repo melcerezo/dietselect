@@ -242,21 +242,21 @@ $(document).ready(function() {
             url:'/foodie/mobile/'+mobile
         });
     }
-    $('#mobile-num').blur(function () {
-        var mobile = mobileAjax($(this).val());
-        mobile.done(
-            function (response) {
-                if(response=="true"){
-                    $('.error-msg-mobile-num').empty();
-                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
-                    console.log(response);
-                }else{
-                    $('.error-msg-mobile-num').empty();
-                    console.log(response);
-                }
-            }
-        );
-    });
+    // $('#mobile-num').blur(function () {
+    //     var mobile = mobileAjax($(this).val());
+    //     mobile.done(
+    //         function (response) {
+    //             if(response=="true"){
+    //                 $('.error-msg-mobile-num').empty();
+    //                 $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
+    //                 console.log(response);
+    //             }else{
+    //                 $('.error-msg-mobile-num').empty();
+    //                 console.log(response);
+    //             }
+    //         }
+    //     );
+    // });
 
     $('#prfSvBtn').on('click',function () {
         if($('#mobile-num').val()!=foodiePhone){
