@@ -519,7 +519,7 @@ class FoodieController extends Controller
 //            'mobile' => 'required|digits:10|unique:foodies',
         ])->validate();
 
-        dd($request['mobile']);
+//        dd($request['mobile']);
 
         $foodie = Auth::guard('foodie')->user();
         $foodie->first_name = $request['first_name'];
