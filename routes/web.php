@@ -26,7 +26,7 @@ Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
 
 Route::group(['prefix' => 'foodie'], function () {
-    Route::get('/', array('before'=>'auth', function(){
+    Route::get('/', array('middleware'=>'auth', function(){
         return redirect()->route('foodie.dashboard');
     }) )->name('foodie');
     Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
