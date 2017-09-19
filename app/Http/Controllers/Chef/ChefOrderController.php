@@ -198,7 +198,6 @@ class ChefOrderController extends Controller
             $orderPlan=SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
             $orderMealPlans=$orderPlan->simple_custom_meal()->get();
-            dd($orderMealPlans);
             foreach($orderMealPlans as $orderMealPlan){
                 if($orderMealPlan->chef_customized_meal->mealplans->day=='SA'){
                     $saMeals+=1;
