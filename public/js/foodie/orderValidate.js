@@ -113,7 +113,8 @@ $(document).ready(function () {
                 required: 'Please enter the date you paid!'
             },
             image:{
-                required: 'Please upload your proof of payment!'
+                required: 'Please upload your proof of payment!',
+                extensions: 'png|jpg|jpeg'
             }
         },
         errorElement : 'div',
