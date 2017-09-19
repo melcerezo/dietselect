@@ -84,7 +84,7 @@ img.n-client-type-icon {
     height: 75%;
 }
 
-#client-type-modal{
+#client-type-modal,#client-login-modal{
     max-height: 85%;
     min-height: 75%;
     overflow-y: hidden;
