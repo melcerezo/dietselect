@@ -465,9 +465,9 @@ class FoodieController extends Controller
     {
         $mobileNum=Foodie::select('mobile_number')->where('mobile_number','=',$mobile)->count();
         if($mobileNum){
-            return true;
+            return "true";
         }
-        return false;
+        return "false";
     }
     
     public function saveProfileCoverPhoto(Request $request)
