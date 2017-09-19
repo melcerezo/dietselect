@@ -259,7 +259,7 @@ $(document).ready(function() {
     });
 
     $('#prfSvBtn').on('click',function () {
-        var mobile = mobileAjax($(this).val($('#mobile-num').val()));
+        var mobile = mobileAjax($('#mobile-num').val());
         mobile.done(
             function (response) {
                 if(response=="true"){
@@ -268,7 +268,7 @@ $(document).ready(function() {
                     console.log(response);
                 }else if(response == "false" && $('#basic-profile').valid()){
                     $('.error-msg-mobile-num').empty();
-                    console.log(response);
+                    console.log($('#mobile-num').val());
                     // $('#basic-profile').unbind('submit').submit();
                 }
             }
