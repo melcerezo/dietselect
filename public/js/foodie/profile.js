@@ -258,7 +258,7 @@ $(document).ready(function() {
     //     );
     // });
 
-    $('.prfSvBtn').on('click',function () {
+    $('#prfSvBtn').on('click',function () {
         var mobile = mobileAjax($(this).val($('#mobile-num').val()));
         mobile.done(
             function (response) {
