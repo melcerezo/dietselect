@@ -1094,10 +1094,17 @@
                             @endfor
                         @endfor
                             <span>
-                                <button class="btn orange darken-2" type="submit">Update</button>
+                                @if($plan->lockPlan==0)
+                                    <button class="btn orange darken-2" type="submit">Update</button>
+                                @elseif($plan->lockPlan==1)
+                                    <button class="btn orange darken-2 disabled" type="submit">Update</button>
+                                @endif
                             </span>
                             <span>
-                                <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="orange darken-2 deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete</button>
+                                @if($plan->lockPlan==0)
+                                    <button data-target="deleteMealPlan" data-mealplan-id="{{$mealPlans[$i]->id}}" data-day="{{$mealPlans[$i]->day}}" data-meal-type="{{$mealPlans[$i]->meal_type}}" class="orange darken-2 deleteMealPlanButton btn waves-effect waves-light modal-trigger">Delete</button>
+                                @elseif($plan->lockPlan==1)
+                                @endif
                             </span>
                         </div>
                     </form>
