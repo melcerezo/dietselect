@@ -44,7 +44,7 @@ $(document).ready(function() {
         //Date limits
         max: new Date(now.getFullYear()-18,now.getMonth(),now.getDay()),
         onStart: function () {
-          this.set(now.getFullYear()-18,now.getMonth(),now.getDay())
+          this.set('select',[now.getFullYear()-18,now.getMonth(),now.getDay()]);
         },
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
