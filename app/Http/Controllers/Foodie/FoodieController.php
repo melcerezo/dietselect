@@ -525,9 +525,9 @@ class FoodieController extends Controller
         $foodie->first_name = $request['first_name'];
         $foodie->last_name = $request['last_name'];
         $foodie->gender = $request['gender'];
-//        if($request['mobile']!=$foodie->mobile_number){
+        if($request['mobile']!=null){
         $foodie->mobile_number=$request['mobile'];
-//        }
+        }
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
