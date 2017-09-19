@@ -258,11 +258,24 @@ $(document).ready(function() {
         );
     });
 
-    $('#basic-profile').submit(function (e) {
-           if($('.error-msg-mobile-num').children().length > 0 && !($('#basic-profile').valid())){
-               e.preventDefault();
-           }
-        }
+    $('.prfSvBtn').on('click',function () {
+        var mobile = mobileAjax($(this).val());
+        mobile.done(
+            function (response) {
+                if(response=="true"){
+                    $('.error-msg-mobile-num').empty();
+                    $('.error-msg-mobile-num').append('<span>This mobile number exists already.</span>');
+                    console.log(response);
+                }else if(response == "false" && $('#basic-profile').valid()){
+                    $('.error-msg-mobile-num').empty();
+                    console.log(response);
+                }
+            }
+        );
+       // if($('.error-msg-mobile-num').children().length > 0 && !($('#basic-profile').valid())){
+       //     e.preventDefault();
+       // }
+    }
     );
 
 
