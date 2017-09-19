@@ -244,7 +244,11 @@ $(document).ready(function() {
     }
     $('#mobile-num').blur(function () {
         var mobile = mobileAjax($(this).val());
-        console.log(mobile);
+        mobile.done(
+            function (response) {
+                console.log(response);
+            }
+        );
     });
         // $('input.allergyCheckbox:checkbox').each(function (){
         //     if($(this).attr('name')!=$this.attr('allergy')){
