@@ -588,6 +588,9 @@ class FoodieController extends Controller
 
     public function getUserName($name)
     {
+        if($name=='n'){
+            return "false";
+        }
         $foodieCount=Foodie::select('username')->where('username','=',$name)->count();
         if($foodieCount){
             return "true";
