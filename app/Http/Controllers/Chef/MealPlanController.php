@@ -634,7 +634,7 @@ class MealPlanController extends Controller
 
     public function deleteMeal(ChefCustomizedMeal $chefCustomizedMeal)
     {
-        dd($chefCustomizedMeal);
+//        dd($chefCustomizedMeal);
         $mealPlan= $chefCustomizedMeal->mealplan->first();
         $ingredient_mealDeletes= $chefCustomizedMeal->customized_ingredient_meal()->get();
 

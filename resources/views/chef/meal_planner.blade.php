@@ -983,19 +983,19 @@
                             </div>
 
                             <div>
-                                <span>Calories: {{$mealPlans[$i]->chefcustomize->calories}}</span>
+                                <span>Calories: {{round($mealPlans[$i]->chefcustomize->calories,2)}}</span>
                             </div>
 
                             <div>
-                                <span>Carbohydrates: {{$mealPlans[$i]->chefcustomize->carbohydrates}}g</span>
+                                <span>Carbohydrates: {{round($mealPlans[$i]->chefcustomize->carbohydrates,2)}}g</span>
                             </div>
 
                             <div>
-                                <span>Protein: {{$mealPlans[$i]->chefcustomize->protein}}g</span>
+                                <span>Protein: {{round($mealPlans[$i]->chefcustomize->protein,2)}}g</span>
                             </div>
 
                             <div>
-                                <span>Fat: {{$mealPlans[$i]->chefcustomize->fat}}g</span>
+                                <span>Fat: {{round($mealPlans[$i]->chefcustomize->fat,2)}}g</span>
                             </div>
                         </div>
                     </div>
