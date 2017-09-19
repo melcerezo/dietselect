@@ -400,6 +400,17 @@
                                     <label for="username" class="active">Username</label>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="input-field col s12">
+                                    <div class="col s1 light-green lighten-1 valign-wrapper center" style="height: 2rem; margin-top: 10px;">
+                                        <span>+63</span>
+                                    </div>
+                                    <div class="col s11">
+                                        <label for="mobile-num">Mobile Number</label>
+                                        <input id="mobile-num" name="mobile" type="text" placeholder="i.e. 9159876543" data-error=".error-msg-mobile-num" value="{{ $foodie->mobile_number }}"/>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <input type="submit" class="hidden"/>
