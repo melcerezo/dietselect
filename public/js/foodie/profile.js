@@ -41,7 +41,7 @@ $(document).ready(function() {
         format: 'yyyy-mm-dd',
 
         //Date limits
-        max: date.setFullYear(date.getFullYear()-18),
+        max: [date.getFullYear()-18,date.getMonth(),date.getDate()],
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
