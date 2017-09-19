@@ -29,7 +29,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('notifClear','Foodie\FoodieController@clearNotif')->name('foodie.clearNotif');
     Route::get('notifGet', 'Foodie\FoodieController@getNotif')->name('foodie.getNotif');
-    Route::get('login', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
+    Route::get('login/show', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
     Route::post('login', 'Foodie\Auth\LoginController@login')->name('foodie.login');
     Route::post('logout', 'Foodie\Auth\LoginController@logout')->name('foodie.logout');
     Route::get('logoutAuto', 'Foodie\Auth\LoginController@logoutAuto')->name('foodie.logoutAuto');
