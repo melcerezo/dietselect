@@ -26,11 +26,7 @@ Route::get('/about', 'PagesController@about')->name('about');
 Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
 
 Route::group(['prefix' => 'foodie'], function () {
-    Route::get('/', array('middleware'=>'RedirectIfFoodie', function(){
-        return redirect()->route('foodie.dashboard');
-    }) )->name('foodie');
-    Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
-
+    Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('notifClear','Foodie\FoodieController@clearNotif')->name('foodie.clearNotif');
     Route::get('notifGet', 'Foodie\FoodieController@getNotif')->name('foodie.getNotif');
     Route::get('login', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
@@ -44,6 +40,7 @@ Route::group(['prefix' => 'foodie'], function () {
     Route::post('password/reset', 'Foodie\Auth\ResetPasswordController@reset')->name('foodie.reset');
     Route::get('password/reset/{token}', 'Foodie\Auth\ResetPasswordController@showResetForm')->name('foodie.reset.password');
 
+    Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
     Route::post('profile/coverPhoto', 'Foodie\FoodieController@saveProfileCoverPhoto')->name('foodie.profile.coverPhoto');
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasic')->name('foodie.profile.basic');

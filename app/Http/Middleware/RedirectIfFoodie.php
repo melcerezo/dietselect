@@ -19,8 +19,6 @@ class RedirectIfFoodie
     {
         if (Auth::guard($guard)->check()) {
             return redirect()->route('foodie.dashboard');
-        }else if(!Auth::guard($guard)->check()){
-            return redirect('/');
         }
 
         return $next($request);
