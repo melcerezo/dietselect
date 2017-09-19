@@ -100,7 +100,8 @@ $(document).ready(function () {
                 required:true
             },
             image:{
-                required:true
+                required:true,
+                extension: true
             }
         },
         messages: {
@@ -114,7 +115,7 @@ $(document).ready(function () {
             },
             image:{
                 required: 'Please upload your proof of payment!',
-                extension: 'png|jpg|jpeg'
+                extension: 'Images only!'
             }
         },
         errorElement : 'div',
@@ -138,7 +139,8 @@ $(document).ready(function () {
                 required:true
             },
             gcPic:{
-                required:true
+                required:true,
+                extension:true
             }
         },
         messages: {
@@ -151,7 +153,8 @@ $(document).ready(function () {
                 required: 'Please enter the date you paid!'
             },
             gcPic:{
-                required: 'Please upload your proof of payment!'
+                required: 'Please upload your proof of payment!',
+                extension: 'Images Only!'
             }
         },
         errorElement : 'div',

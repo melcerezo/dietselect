@@ -18,6 +18,9 @@ $(document).ready(function () {
             },
             main_ingredient: {
                 required: true
+            },
+            mealPic:{
+                extension: true,
             }
         },
         messages:{
@@ -26,6 +29,9 @@ $(document).ready(function () {
             },
             main_ingredient: {
                 required: "Please enter a main ingredient!"
+            },
+            mealPic: {
+                extension: 'Images only!'
             }
         },
         errorElement : 'div',

@@ -42,7 +42,8 @@ $(document).ready(function () {
                 required:true
             },
             planPic:{
-                required:true
+                required:true,
+                extension:true
             },
             price:{
                 required:true,
@@ -65,7 +66,8 @@ $(document).ready(function () {
                 required: 'Please select a category!'
             },
             planPic:{
-                required: 'Please upload picture for the plan!'
+                required: 'Please upload picture for the plan!',
+                extension: 'Images only!'
             },
             price:{
                 required: "Enter a price, please!"
