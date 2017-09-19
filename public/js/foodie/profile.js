@@ -28,7 +28,7 @@ $(document).ready(function() {
     });
 
     date=new Date();
-    // console.log(date.getFullYear()-18);
+    console.log(date.setFullYear(date.getFullYear()-18));
     $('#birthday').pickadate({
         // Buttons
         // Buttons
