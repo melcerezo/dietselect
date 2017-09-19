@@ -254,11 +254,19 @@ $(document).ready(function () {
 
             for(var j=0,m=valData.length;j<m;j++){
                if(valData[j].ingredient_group=='~0100~'&&valData[j].ingredient.indexOf("Egg")>=0&& !dairyType.find('#egg'+id).length){
-                   dairyType.append('<div id="egg'+id+'">' +
-                       '<div ><span style="font-size: 20px;">Eggs</span></div>' +
-                       '<input type="checkbox" name="eggs" value="noEggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
-                       '<label for="eggs'+id+'">No Eggs</label><br/>' +
-                       '</div>');
+                   if($.inArray('egg',allergyArray)!=-1){
+                       dairyType.append('<div id="egg'+id+'">' +
+                           '<div ><span style="font-size: 20px;">Eggs</span></div>' +
+                           '<input type="checkbox" name="eggs" value="noEggs" class="filled-in" id="eggs'+id+'" data-error="" checked onclick="return false;"/>' +
+                           '<label for="eggs'+id+'">No Eggs</label><br/>' +
+                           '</div>');
+                   }else{
+                       dairyType.append('<div id="egg'+id+'">' +
+                           '<div ><span style="font-size: 20px;">Eggs</span></div>' +
+                           '<input type="checkbox" name="eggs" value="noEggs" class="filled-in" id="eggs'+id+'" data-error=""/>' +
+                           '<label for="eggs'+id+'">No Eggs</label><br/>' +
+                           '</div>');
+                   }
                }
                if( valData[j].ingredient_group!='~1500~' &&  ((valData[j].ingredient.indexOf("milk")>=0
                    || valData[j].ingredient.indexOf("Milk")>=0
@@ -266,11 +274,19 @@ $(document).ready(function () {
                    || (valData[j].ingredient_group=='~0100~' && valData[j].ingredient.indexOf("Egg")<0))
                    )
                    && !dairyType.find('#dairy'+id).length){
-                   dairyType.append('<div id="dairy'+id+'">' +
-                       '<div><span style="font-size: 20px;">Dairy</span></div>' +
-                       '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairyCheck'+id+'" data-error=""/>' +
-                       '<label for="dairyCheck'+id+'">No Dairy/Dairy Products</label><br/>' +
-                       '</div>');
+                   if($.inArray('dairy',allergyArray)!=-1){
+                       dairyType.append('<div id="dairy'+id+'">' +
+                           '<div><span style="font-size: 20px;">Dairy</span></div>' +
+                           '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairyCheck'+id+'" data-error="" checked onclick="return false;"/>' +
+                           '<label for="dairyCheck'+id+'">No Dairy/Dairy Products</label><br/>' +
+                           '</div>');
+                   }else{
+                       dairyType.append('<div id="dairy'+id+'">' +
+                           '<div><span style="font-size: 20px;">Dairy</span></div>' +
+                           '<input type="checkbox" name="dairy" value="noDairy" class="filled-in" id="dairyCheck'+id+'" data-error=""/>' +
+                           '<label for="dairyCheck'+id+'">No Dairy/Dairy Products</label><br/>' +
+                           '</div>');
+                   }
                }
                 // console.log(
                 //     (valData[j].ingredient.indexOf("milk")>=0
@@ -312,11 +328,19 @@ $(document).ready(function () {
 
                if((valData[j].ingredient.indexOf("Peanut")>=0 || valData[j].ingredient.indexOf("peanut")>=0
                    || valData[j].ingredient_group=='~1200~') && !produceType.find('#nuts'+id).length){
-                   produceType.append('<div id="nut'+id+'">' +
-                       '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
-                       '<input type="checkbox" name="nuts" value="noNuts" class="filled-in" id="nuts'+id+'" data-error=""/>' +
-                       '<label for="nuts'+id+'">No Nuts/Nuts Products</label><br/>' +
-                       '</div>');
+                   if($.inArray('nuts',allergyArray)!=-1){
+                       produceType.append('<div id="nut'+id+'">' +
+                           '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                           '<input type="checkbox" name="nuts" value="noNuts" class="filled-in" id="nuts'+id+'" data-error="" checked onclick="return false;"/>' +
+                           '<label for="nuts'+id+'">No Nuts/Nuts Products</label><br/>' +
+                           '</div>');
+                   }else{
+                       produceType.append('<div id="nut'+id+'">' +
+                           '<div ><span style="font-size: 20px;">Carbohydrates</span></div>' +
+                           '<input type="checkbox" name="nuts" value="noNuts" class="filled-in" id="nuts'+id+'" data-error=""/>' +
+                           '<label for="nuts'+id+'">No Nuts/Nuts Products</label><br/>' +
+                           '</div>');
+                   }
                }
 
             }
