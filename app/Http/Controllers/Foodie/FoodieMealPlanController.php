@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Foodie;
 
+use App\Allergy;
 use App\Chat;
 use App\ChefCustomizedIngredientMeal;
 use App\ChefCustomizedMeal;
@@ -267,6 +268,18 @@ class FoodieMealPlanController extends Controller
             })
             ->count();
 
+        $allergies = Allergy::where('foodie_id', Auth::guard('foodie')->user()->id)->select('allergy')->get();
+        $allergyJson = '[';
+        $i = 0;
+        foreach ($allergies as $allergy) {
+            if (++$i < $allergies->count()) {
+                $allergyJson .= '{"allergy": "' . $allergy->allergy . '"},';
+            } else {
+                $allergyJson .= '{"allergy": "' . $allergy->allergy . '"}';
+            }
+        }
+        $allergyJson .= ']';
+
 //        dd($simpleCustomPlan->simple_custom_plan_detail()->where([
 //            ['detail','=','fried'],
 //            ['detail','=','grilled']
@@ -327,7 +340,8 @@ class FoodieMealPlanController extends Controller
             'cookCount'=>$cookCount,
             'driedCount'=>$driedCount,
             'mealPhotos'=>$mealPhotos,
-            'detailJson'=>$detailJson
+            'detailJson'=>$detailJson,
+            'allergyJson'=>$allergyJson
         ]);
     }
 

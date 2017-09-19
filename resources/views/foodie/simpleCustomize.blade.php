@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="/css/foodie/foodieSimpleCustomize.css">
     <script>
         details = "{{$detailJson}}";
+        allergies = "{{$allergyJson}}";
     </script>
     <script src="/js/foodie/foodieSimpleCustomize.js" defer></script>
     <script>
