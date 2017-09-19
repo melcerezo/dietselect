@@ -279,7 +279,7 @@ class FoodieMealPlanController extends Controller
             }
         }
         $allergyJson .= ']';
-        dd($allergyJson);
+//        dd($allergyJson);
 //        dd($simpleCustomPlan->simple_custom_plan_detail()->where([
 //            ['detail','=','fried'],
 //            ['detail','=','grilled']
