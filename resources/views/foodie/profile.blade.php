@@ -579,9 +579,59 @@
                             <p>Now let us know the food that you prefer to have in your meals.</p>
                             <div class="row">
                                 <div class="input-field col l4 s12">
-                                    {{--@if($allergies->where('allergy','=',''))--}}
-                                    {{--@elseif()--}}
-                                    {{--@endif--}}
+                                    @if($allergies->where('allergy','=','chicken')->count())
+                                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                                        <label for="pref-none">No Preference</label><br/>
+                                        <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Beef-based</label><br/>
+                                        <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork" data-error=".error-pref"/>
+                                        <label for="pref-pork">Pork-based</label><br/>
+                                        <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea" data-error=".error-pref"/>
+                                        <label for="pref-sea">Seafood-based</label><br/>
+                                        <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Vegetarian</label><br/>
+                                    @elseif($allergies->where('allergy','=','beef')->count())
+                                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                                        <label for="pref-none">No Preference</label><br/>
+                                        <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork" data-error=".error-pref"/>
+                                        <label for="pref-pork">Pork-based</label><br/>
+                                        <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick" data-error=".error-pref"/>
+                                        <label for="pref-chick">Chicken-based</label><br/>
+                                        <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea" data-error=".error-pref"/>
+                                        <label for="pref-sea">Seafood-based</label><br/>
+                                        <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Vegetarian</label><br/>
+                                    @elseif($allergies->where('allergy','=','pork')->count())
+                                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                                        <label for="pref-none">No Preference</label><br/>
+                                        <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Beef-based</label><br/>
+                                        <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick" data-error=".error-pref"/>
+                                        <label for="pref-chick">Chicken-based</label><br/>
+                                        <input type="radio" name="foodPref" value="seafood" class="filled-in" id="pref-sea" data-error=".error-pref"/>
+                                        <label for="pref-sea">Seafood-based</label><br/>
+                                        <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Vegetarian</label><br/>
+                                    @elseif($allergies->where('allergy','=','fish')->count() || $allergies->where('allergy','=','squid')->count()
+                                    || $allergies->where('allergy','=','seafood')->count())
+                                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                                        <label for="pref-none">No Preference</label><br/>
+                                        <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Beef-based</label><br/>
+                                        <input type="radio" name="foodPref" value="pork" class="filled-in" id="pref-pork" data-error=".error-pref"/>
+                                        <label for="pref-pork">Pork-based</label><br/>
+                                        <input type="radio" name="foodPref" value="chicken" class="filled-in" id="pref-chick" data-error=".error-pref"/>
+                                        <label for="pref-chick">Chicken-based</label><br/>
+                                        <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Vegetarian</label><br/>
+                                    @elseif($allergies->where('allergy','=','chicken')->count() && $allergies->where('allergy','=','beef')->count()
+                                    && $allergies->where('allergy','=','pork')->count() && ($allergies->where('allergy','=','fish')->count() || $allergies->where('allergy','=','squid')->count()
+                                    || $allergies->where('allergy','=','seafood')->count()))
+                                        <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                                        <label for="pref-none">No Preference</label><br/>
+                                        <input type="radio" name="foodPref" value="vegetable" class="filled-in" id="pref-beef" data-error=".error-pref"/>
+                                        <label for="pref-beef">Vegetarian</label><br/>
+                                    @endif
                                     <input type="radio" name="foodPref" value="none" class="filled-in" id="pref-none" data-error=".error-pref"/>
                                     <label for="pref-none">No Preference</label><br/>
                                     <input type="radio" name="foodPref" value="beef" class="filled-in" id="pref-beef" data-error=".error-pref"/>
