@@ -60,8 +60,10 @@ $(document).ready(function() {
             },
             birthday: {
                 required: true
+            },
+            avatar:{
+              extension: true
             }
-
         },
         //For custom messages
         messages: {
@@ -75,6 +77,9 @@ $(document).ready(function() {
             },
             birthday: {
                 required: "Enter your birthday, please!"
+            },
+            avatar:{
+                extension: "Images only!"
             }
 
         },
