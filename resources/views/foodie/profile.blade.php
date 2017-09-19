@@ -619,7 +619,7 @@
                         </div>
                         <div class="modal-footer">
                             {{--<input type="submit" class="hidden"/>--}}
-                            <a href="javascript:void(0)" class="prfSvBtn modal-action right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </a>
+                            <button class="prfSvBtn modal-action right-aligned right"><i class="fa fa-save" aria-hidden="true"></i> </button>
                         </div>
                     </form> <!-- End of preferences form -->
                 </div>
