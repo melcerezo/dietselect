@@ -412,8 +412,13 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomDetailDelete(SimpleCustomMeal $simpleCustomMeal)
     {
-        dd($simpleCustomMeal->simple_custom_detail()->get());
+//        dd($simpleCustomMeal->simple_custom_detail()->get());
         $simpleCustomMeal->is_customized=0;
+        $simpleDetails=$simpleCustomMeal->simple_custom_detail()->get();
+        foreach($simpleDetails as $simpleDetail){
+            $simpleDetail->delete();
+        }
+
         return back()->with(['status'=>"Undid the Simple Custom Meal!"]);
     }
 
