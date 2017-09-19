@@ -244,7 +244,7 @@ $(document).ready(function() {
     }
     function nameAjax(name){
         return $.ajax({
-            url: 'foodie/username/'+name
+            url: '/foodie/username/'+name
         });
     }
     // $('#mobile-num').blur(function () {
