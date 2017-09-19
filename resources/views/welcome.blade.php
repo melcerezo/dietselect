@@ -45,7 +45,7 @@
         <!-- Menu for Register & Login -->
         <div id="n-menu" class="right-align">
             <a id="n-menu-btn-reg" class="n-btn-link n-menu-btn modal-trigger" href="#client-type-modal"><i class="fa fa-user-plus"></i><span class="hide-on-small-only"> Register</span></a>
-            <a id="n-menu-btn-login" class="n-btn-link n-menu-btn" href="{{ route('foodie.login.show') }}"><i class="fa fa-sign-in"></i><span class="hide-on-small-only"> Log In</span></a>
+            <a id="n-menu-btn-login" class="n-btn-link n-menu-btn modal-trigger" href="#client-login-modal"><i class="fa fa-sign-in"></i><span class="hide-on-small-only"> Log In</span></a>
         </div>
     </header>
     <main>
@@ -251,7 +251,7 @@
         <!-- End of foodie-reg-form-modal -->
     @endif
 
-            <div id="client-type-modal" class="modal">
+            <div id="client-login-modal" class="modal">
                 <div class="modal-content">
                     <h3>Login</h3>
                     <div class="row">
