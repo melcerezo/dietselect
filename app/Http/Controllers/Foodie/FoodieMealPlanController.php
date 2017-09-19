@@ -150,7 +150,7 @@ class FoodieMealPlanController extends Controller
         $startWeek=$dt->addDay(7)->startOfWeek()->format('F d, Y');
 //        dd($startWeek);
         $foodie = Auth::guard('foodie')->user()->id;
-        $mealPlans = $plan->mealplans()
+        $mealPlans = $plan->mealplans()->where('is_deleted','=',0)
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 
@@ -221,7 +221,7 @@ class FoodieMealPlanController extends Controller
         $simpleCustomPlan->plan_id=$plan->id;
         $simpleCustomPlan->save();
 
-        $mealPlans = $plan->mealplans()
+        $mealPlans = $plan->mealplans()->where('is_deleted','=',0)
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
 

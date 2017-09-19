@@ -157,7 +157,7 @@ class MealPlanController extends Controller
         $chef=Auth::guard('chef')->user();
         $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
-        $mealPlans=$plan->mealplans()->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
+        $mealPlans=$plan->mealplans()->where('is_deleted','=',0)->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')->get();
 //        dd($mealPlans);
         $meals= Meal::where('chef_id','=', $chef->id);
         $mealPhotos = DB::table('meal_image')
@@ -638,10 +638,13 @@ class MealPlanController extends Controller
         $ingredient_mealDeletes= $chefCustomizedMeal->customized_ingredient_meal()->get();
 
         foreach ($ingredient_mealDeletes as $mealDelete){
-            $mealDelete->where('meal_id','=',$chefCustomizedMeal->id)->delete();
+            $mealDelete->where('meal_id','=',$chefCustomizedMeal->id)->is_deleted=1;
+            $mealDelete->save();
         }
-        $chefCustomizedMeal->delete();
-        $mealPlan->delete();
+        $chefCustomizedMeal->is_deleted=1;
+        $chefCustomizedMeal->save();
+        $mealPlan->is_deleted=1;
+        $mealPlan->save();
         return back()->with(['status'=>'Successfully deleted the meal!']);
     }
 
