@@ -53,9 +53,15 @@ $(document).ready(function () {
 
     $('#bankPayForm').submit(function () {
         $('#loadWait').show();
+        if(!$('#bankPayForm').valid()){
+            $('#loadWait').hide();
+        }
     });
     $('#gcPayForm').submit(function () {
         $('#loadWait').show();
+        if($('#gcPayForm').valid()){
+            $('#loadWait').hide();
+        }
     });
 
     $('#receipt').on('keydown keyup', function(e){
