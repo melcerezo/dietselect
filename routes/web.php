@@ -103,7 +103,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
 
 
     Route::get('paywithpaypal/{order}', array('as' => 'addmoney.paywithpaypal', 'uses' => 'AddMoneyController@payWithPaypal',));
-    Route::post('paypal/{order}', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
+    Route::post('paypal/{id}', array('as' => 'addmoney.paypal', 'uses' => 'AddMoneyController@postPaymentWithpaypal',));
     Route::get('paypal/{order}', array('as' => 'payment.status', 'uses' => 'AddMoneyController@getPaymentStatus',));
 
     // Bank Deposit

@@ -72,7 +72,12 @@ class AddMoneyController extends Controller{
      * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function postPaymentWithpaypal(Request $request, Order $order){
+    public function postPaymentWithpaypal(Request $request, $id){
+
+        $order= Order::where('id','=',$id)->first();
+        if($order->is_paid==1){
+            return Redirect::route('foodie.order.view',['from'=>2])->with(['status'=>'Order has already been paid!']);
+        }
 
 //        dd('Hello');
         $payer = new Payer();
