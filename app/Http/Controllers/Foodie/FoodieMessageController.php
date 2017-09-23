@@ -61,7 +61,7 @@ class FoodieMessageController extends Controller
         $selectedChat= $chats->where('id', $id)->first();
 
         if($selectedChat===null){
-            dd('does not exist');
+            return redirect()->route('foodie.message.index')->with(['status'=>'Message does not exist!']);
         }
 
             foreach($selectedChat->message()->where('receiver_type','f')->latest()->get() as $message){
@@ -126,6 +126,11 @@ class FoodieMessageController extends Controller
         $chtId = $request['chtId'];
 
         $replyChat = Chat::where('id','=',$chtId)->first();
+
+        if($replyChat===null){
+            return redirect()->route('foodie.message.index')->with(['status'=>'Message thread does not exist!']);
+        }
+
         $replyChat->chef_can_see=1;
         $replyChat->updated_at= Carbon::now();
         $replyChat->save();
@@ -147,6 +152,10 @@ class FoodieMessageController extends Controller
 
     public function deleteChat($id){
         $chat = Chat::where('id','=', $id)->first();
+
+        if($chat===null){
+            return redirect()->route('foodie.message.index')->with(['status'=>'Message thread does not exist!']);
+        }
 //        $messages= $chat->message()->get();
 //        foreach($messages as $message){
 //            $message->foodie_can_see=0;
