@@ -52,7 +52,7 @@ class ChefMessageController extends Controller{
         $chef=Auth::guard('chef')->user();
         $foodies = Foodie::all();
         $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
-        $selectedChat= $chats->where('id', $id)->first();
+        $selectedChat= $chats->where('id', $id)->where('chef_id','=',$chef->id)->first();
 //        dd($chats);
 
         if($selectedChat===null){
@@ -123,7 +123,7 @@ class ChefMessageController extends Controller{
 
         $chtId = $request['chtId'];
 
-        $replyChat = Chat::where('id','=',$chtId)->first();
+        $replyChat = Chat::where('id','=',$chtId)->where('chef_id','=',Auth::guard('chef')->user()->id)->first();
 
         if($replyChat===null){
             return redirect()->route('chef.message.index')->with(['status'=>'Message thread does not exist!']);
@@ -146,7 +146,7 @@ class ChefMessageController extends Controller{
     }
 
     public function deleteChat($id){
-        $chat = Chat::where('id','=', $id)->first();
+        $chat = Chat::where('id','=', $id)->where('chef_id','=', Auth::guard('chef')->user()->id)->first();
 
         if($chat===null){
             return redirect()->route('chef.message.index')->with(['status'=>'Message thread does not exist!']);
