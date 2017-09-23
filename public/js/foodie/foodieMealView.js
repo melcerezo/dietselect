@@ -7,16 +7,16 @@ $(document).ready(function () {
         $('.slider').slider('pause');
     });
 
-    $('.galleryItem').mouseover(function () {
+    $('.galleryItem').click(function () {
         var id=$(this).attr('data-galImg');
         $('.imgGall').hide();
         $('#'+id).show();
 
     });
-    $('.galleryItem').mouseout(function () {
-        $('.imgGall').hide();
-        $('#plPic').show();
-    });
+    // $('.galleryItem').mouseout(function () {
+    //     $('.imgGall').hide();
+    //     $('#plPic').show();
+    // });
 
 
     // $('.carousel.carousel-slider').carousel({fullWidth: true});

@@ -17,9 +17,9 @@
         <div class="row">
                 <div class="col s12 m2">
                     <div class="planGallery">
-                        {{--<div class="galleryItem" data-galImg="plPic">--}}
-                            {{--<img class="responsive-img" src="/img/{{ $plan->picture }}">--}}
-                        {{--</div>--}}
+                        <div class="galleryItem" data-galImg="plPic">
+                            <img class="responsive-img" src="/img/{{ $plan->picture }}">
+                        </div>
                         @if($mealPhotos->count())
                             @foreach($mealPhotos as $id=>$mealPhoto)
                                 @if($mealPhoto->plan_id==$plan->id)
