@@ -250,7 +250,7 @@ class FoodieMealPlanController extends Controller
         if($simpleCustomPlan===null){
             return back()->with(['status'=>'Plan does not exist']);
         }
-        $orders=Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+        $orders=Order::all();
         foreach($orders as $order){
             $orderItemsCount=$order->order_item()
                 ->where('plan_id','=',$simpleCustomPlan->id)
