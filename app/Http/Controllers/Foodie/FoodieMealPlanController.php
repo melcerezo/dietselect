@@ -246,7 +246,7 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView($id)
     {
-        $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id)->first();
+        $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id)->where('foodie_id','=',Auth::guard('foodie')->user()->id)->first();
         if($simpleCustomPlan===null){
             return back()->with(['status'=>'Plan does not exist']);
         }
