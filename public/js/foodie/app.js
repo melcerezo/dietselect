@@ -113,7 +113,7 @@ $(document).ready(function() {
            var clearNotifs= clearAllNotif();
             clearNotifs.done(function () {
                 $.each(notifs,function(index) {
-                    $("notif"+notifs[index].id).removeClass('activeNotif');
+                    $('#foodieNotificationDropdown').children().removeClass('activeNotif');
                 });
                 $('#notifBadge').remove();
             });
