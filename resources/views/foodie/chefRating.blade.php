@@ -81,7 +81,7 @@
                                                             var $rate = data.rating;
 
                                                             $('input#rate{{$key}}').val($rate);
-                                                            window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");
+                                                            {{--window.alert("Its " + $('input#rate{{$key}}').val() + " Yo!");--}}
                                                         });
 
                                             });

@@ -133,6 +133,6 @@ class RatingsController extends Controller
         $rating->is_rated = true;
         $orderItem->rating()->save($rating);
 //        dd($rating);
-        return back();
+        return redirect()->route('chef.rating', ['id'=>1])->with([ 'status'=> 'Successfully rated the plan!']);
     }
 }
