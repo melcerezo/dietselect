@@ -55,6 +55,10 @@ class ChefMessageController extends Controller{
         $selectedChat= $chats->where('id', $id)->first();
 //        dd($chats);
 
+        if($selectedChat===null){
+            return redirect()->route('chef.message.index')->with(['status'=>'Message does not exist!']);
+        }
+
         foreach($selectedChat->message()->where('receiver_type','c')->latest()->get() as $message){
             if($message->is_read==0){
                 $message->is_read=1;
@@ -120,6 +124,11 @@ class ChefMessageController extends Controller{
         $chtId = $request['chtId'];
 
         $replyChat = Chat::where('id','=',$chtId)->first();
+
+        if($replyChat===null){
+            return redirect()->route('chef.message.index')->with(['status'=>'Message thread does not exist!']);
+        }
+
         $replyChat->foodie_can_see=1;
         $replyChat->updated_at= Carbon::now();
         $replyChat->save();
@@ -138,6 +147,11 @@ class ChefMessageController extends Controller{
 
     public function deleteChat($id){
         $chat = Chat::where('id','=', $id)->first();
+
+        if($chat===null){
+            return redirect()->route('chef.message.index')->with(['status'=>'Message thread does not exist!']);
+        }
+
 //        $messages= $chat->message()->get();
 //        foreach($messages as $message){
 //            $message->chef_can_see=0;
