@@ -250,6 +250,17 @@ class FoodieMealPlanController extends Controller
         if($simpleCustomPlan===null){
             return back()->with(['status'=>'Plan does not exist']);
         }
+        $orders=Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->get();
+        foreach($orders as $order){
+            $orderItemsCount=$order->order_item()
+                ->where('plan_id','=',$simpleCustomPlan->id)
+                ->where('order_type','=',2)->count();
+            if($orderItemsCount){
+                return redirect()->route('foodie.dashboard')->with(['status'=>'Customized plan has already been ordered']);
+                break;
+            }
+        }
+
 //        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
 //        dd($incomplete);
 
