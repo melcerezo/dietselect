@@ -37,8 +37,14 @@ class DepositController extends Controller
         $this->middleware('foodie.auth');
     }
 
-    public function deposit(Request $request, Order $order, mailer\Mailer $mailer){
+    public function deposit(Request $request, $id, mailer\Mailer $mailer){
         $user = Auth::guard('foodie')->user();
+
+        $order=Order::where('id','=',$id)->first();
+        if($order->is_paid==1){
+            return redirect()->route("foodie.order.view", ['id'=> 0])->with(['status'=>'Order is already paid!']);
+        }
+
 //        dd($user->email);
         $foodieName = $user->first_name.' '.$user->last_name;
 
@@ -232,8 +238,13 @@ class DepositController extends Controller
 
     }
 
-    public function gcash(Request $request,Order $order,mailer\Mailer $mailer)
+    public function gcash(Request $request,$id,mailer\Mailer $mailer)
     {
+        $order=Order::where('id','=',$id)->first();
+        if($order->is_paid==1){
+            return redirect()->route("foodie.order.view", ['id'=> 0])->with(['status'=>'Order is already paid!']);
+        }
+
         $user = Auth::guard('foodie')->user();
         $foodieName = $user->first_name.' '.$user->last_name;
 
