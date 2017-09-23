@@ -60,6 +60,9 @@ class FoodieMessageController extends Controller
         $chats= Chat::where('foodie_id','=',$foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $selectedChat= $chats->where('id', $id)->first();
 
+        if($selectedChat===null){
+            dd('does not exist');
+        }
 
             foreach($selectedChat->message()->where('receiver_type','f')->latest()->get() as $message){
                 if($message->is_read==0){

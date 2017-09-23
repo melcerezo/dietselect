@@ -779,6 +779,10 @@ class FoodieOrderPlanController extends Controller
 
     public function show(Order $order){
 
+        if($order->is_paid==1){
+            return redirect()->route('');
+        }
+
         $dt=$order->created_at;
         $nextWeekString = $dt->addDay(7)->startOfWeek()->format('F d');
         $ds=$order->created_at;
