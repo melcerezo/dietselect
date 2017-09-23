@@ -30,6 +30,12 @@ class RatingsController extends Controller
 
     public function getRatingPage($id)
     {
+        if($id==0 || $id==1){
+            $from=$id;
+        }else{
+            $from=0;
+        }
+
         $foodie = Auth::guard('foodie')->user();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $lastTwoWeeks = Carbon::parse("previous week Saturday 15:00:00")->subDays(7)->format('Y-m-d H:i:s');
@@ -112,7 +118,7 @@ class RatingsController extends Controller
             'ordersRatingsFinished'=>$ordersRatingsFinished,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
-            'from'=>$id
+            'from'=>$from
         ]);
     }
 
