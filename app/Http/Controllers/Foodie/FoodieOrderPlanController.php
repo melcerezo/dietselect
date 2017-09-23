@@ -780,7 +780,7 @@ class FoodieOrderPlanController extends Controller
     public function show(Order $order){
 
         if($order->is_paid==1){
-            return redirect()->route('');
+            return redirect()->route('foodie.dashboard')->with(['status'=>'Order has been paid already']);
         }
 
         $dt=$order->created_at;
