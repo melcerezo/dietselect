@@ -34,13 +34,23 @@
             <div class="col s12 m3">
                 <div class="picSection">
                     <div id="plPic" class="imgGall">
-                        <img class="responsive-img" src="/img/{{ $plan->picture }}">
+                        <a href="#planPicture" class="modal-trigger"><img class="responsive-img" src="/img/{{ $plan->picture }}"></a>
+                    </div>
+                    <div id="planPicture" class="modal">
+                        <div class="modal-content">
+                            <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                        </div>
                     </div>
                     @if($mealPhotos->count())
                         @foreach($mealPhotos as $id=>$mealPhoto)
                             @if($mealPhoto->plan_id==$plan->id)
                                 <div id="img{{$id}}" class="imgGall">
-                                    <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                                    <a href="#pic{{$id}}" class="modal-trigger"><img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}"></a>
+                                </div>
+                                <div id="pic{{$id}}" class="modal">
+                                    <div class="modal-content">
+                                        <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                                    </div>
                                 </div>
                             @endif
                         @endforeach
