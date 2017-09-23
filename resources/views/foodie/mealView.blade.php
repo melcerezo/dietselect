@@ -38,7 +38,7 @@
                     </div>
                     <div id="planPicture" class="modal">
                         <div class="modal-content">
-                            <img class="responsive-img" src="/img/meals/{{ $mealPhoto->image }}">
+                            <img class="responsive-img" src="/img/meals/{{ $plan->picture }}">
                         </div>
                     </div>
                     @if($mealPhotos->count())
