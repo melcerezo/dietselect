@@ -113,7 +113,7 @@ $(document).ready(function() {
            var clearNotifs= clearAllNotif();
             clearNotifs.done(function () {
                 $.each(notifs,function(index) {
-                    notifs[index].removeClass('activeNotif');
+                    $("notif"+notifs[index].id).removeClass('activeNotif');
                 });
                 $('#notifBadge').remove();
             });
