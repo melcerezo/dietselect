@@ -59,9 +59,9 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::post('verify/send', 'Foodie\Auth\VerificationController@sendNewVerificationCode')->name('foodie.verify.send');
 
     Route::get('plans','Foodie\FoodieMealPlanController@viewPlans')->name('foodie.plan.show');
-    Route::get('plans/standard/{plan}', 'Foodie\FoodieMealPlanController@viewPlanStandard')->name('foodie.plan.standard');
-    Route::get('plans/simple/{plan}', 'Foodie\FoodieMealPlanController@viewSimpleCustomize')->name('foodie.plan.simple');
-    Route::get('plans/simpleView/{simpleCustomPlan}', 'Foodie\FoodieMealPlanController@simpleCustomView')->name('foodie.plan.simpleView');
+    Route::get('plans/standard/{id}', 'Foodie\FoodieMealPlanController@viewPlanStandard')->name('foodie.plan.standard');
+    Route::get('plans/simple/{id}', 'Foodie\FoodieMealPlanController@viewSimpleCustomize')->name('foodie.plan.simple');
+    Route::get('plans/simpleView/{id}', 'Foodie\FoodieMealPlanController@simpleCustomView')->name('foodie.plan.simpleView');
     Route::get('plans/simpleView/delete/{simpleCustomPlan}', 'Foodie\FoodieMealPlanController@simpleCustomDelete')->name('foodie.plan.simpleDelete');
     Route::get('ingredMeal/{chefCustomizedMeal}/get', 'Foodie\FoodieMealPlanController@getIngred');
     Route::get('plans/custom/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.plan.custom');
@@ -70,8 +70,8 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('chefs/meal/{plan}', 'Foodie\FoodieMealPlanController@viewChefsMeals')->name('foodie.chef.meal');
     Route::get('chef/meal/{plan}/{id}/{customPlan}', 'Foodie\FoodieMealPlanController@viewMeal')->name('foodie.meal');
     Route::post('chefs/customize/{customize}', 'Foodie\FoodieMealPlanController@customizeChefsMeals')->name('foodie.meal.custom');
-    Route::post('chefs/customize/simple/{simpleCustomPlan}','Foodie\FoodieMealPlanController@simpleMake')->name('foodie.simple.custom');
-    Route::post('chefs/customize/simpleMeal/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleMealMake')->name('foodie.simpleMeal.custom');
+    Route::post('chefs/customize/simple/{id}','Foodie\FoodieMealPlanController@simpleMake')->name('foodie.simple.custom');
+    Route::post('chefs/customize/simpleMeal/{id}','Foodie\FoodieMealPlanController@simpleMealMake')->name('foodie.simpleMeal.custom');
     Route::get('chefs/customize/simpleDetailDelete/{simpleCustomMeal}','Foodie\FoodieMealPlanController@simpleCustomDetailDelete')->name('foodie.simpleMeal.delete');
     Route::get('{type}/getIngredJson', 'Foodie\FoodieMealPlanController@getIngredJson')->name('foodie.meal.autocomplete');
     Route::get('{type}/validateIngredJson', 'Foodie\FoodieMealPlanController@validateIngredJson')->name('foodie.meal.validate');

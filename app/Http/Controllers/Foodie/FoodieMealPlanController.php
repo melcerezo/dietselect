@@ -143,8 +143,9 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
-    public function viewPlanStandard(Plan $plan)
+    public function viewPlanStandard($id)
     {
+        $plan=Plan::where('id','=',$id)->first();
         if($plan===null){
             return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
         }
@@ -217,8 +218,9 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
-    public function viewSimpleCustomize(Plan $plan)
+    public function viewSimpleCustomize($id)
     {
+        $plan=Plan::where('id','=',$id)->first();
         if($plan===null){
             return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
         }
@@ -242,8 +244,9 @@ class FoodieMealPlanController extends Controller
         return redirect()->route('foodie.plan.simpleView', $simpleCustomPlan->id);
     }
 
-    public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
+    public function simpleCustomView($id)
     {
+        $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id)->first();
         if($simpleCustomPlan===null){
             return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
         }
@@ -355,8 +358,9 @@ class FoodieMealPlanController extends Controller
         ]);
     }
 
-    public function simpleMake(SimpleCustomPlan $simpleCustomPlan, Request $request)
+    public function simpleMake($id, Request $request)
     {
+        $simpleCustomPlan= SimpleCustomPlan::where('id','=',$id)->first();
         if($simpleCustomPlan===null){
             return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
         }
@@ -397,8 +401,17 @@ class FoodieMealPlanController extends Controller
 //        return redirect()->route('cart.add', ['id' => $simpleCustom->id,'cust' => 2]);
     }
 
-    public function simpleMealMake(SimpleCustomMeal $simpleCustomMeal, Request $request)
+    public function simpleMealMake($id, Request $request)
     {
+        $simpleCustomMeal=SimpleCustomMeal::where('id','=',$id)->first();
+
+        if($simpleCustomMeal===null){
+//            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+            return back()->with([
+                'status'=>'Meal does not exist!'
+            ]);
+        }
+
         foreach($request->except(['_token']) as $value){
 //            dd($request);
             $detail = new SimpleCustomDetail();
