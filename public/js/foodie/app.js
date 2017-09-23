@@ -109,6 +109,16 @@ $(document).ready(function() {
             $('#notifBadge').append(notifBdge);
         }
 
+        $('#clearAll').click(function () {
+           var clearNotifs= clearAllNotif();
+            clearNotifs.done(function () {
+                $.each(notifs,function(index) {
+                    notifs[index].removeClass('activeNotif');
+                });
+                $('#notifBadge').remove();
+            });
+        });
+
         $('.notifLink').on('click', function(){
             var notifId=$(this).attr("data-id");
             console.log(notifId);
@@ -183,4 +193,10 @@ function clearNotif(id){
         data: {id:id}
     });
 
+}
+
+function clearAllNotif(){
+    return $.ajax({
+        url: '/foodie/notifClearAll'
+    });
 }

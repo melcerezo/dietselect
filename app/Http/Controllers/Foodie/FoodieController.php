@@ -867,6 +867,17 @@ class FoodieController extends Controller
         return $notifJson;
     }
 
+    public function clearNotifAll()
+    {
+        $foodie = Auth::guard('foodie')->user()->id;
+        $notifications = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        foreach($notifications as $notification){
+            $notification->is_read=1;
+            $notification->save();
+        }
+        return null;
+    }
+
     public function clearNotif()
     {
         $clearId = $_GET['id'];

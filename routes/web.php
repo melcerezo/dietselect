@@ -28,6 +28,7 @@ Route::get('/disclaimer', 'PagesController@disclaimer')->name('disclaimer');
 Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], function () {
     Route::get('/', 'Foodie\FoodieController@index')->name('foodie');
     Route::get('notifClear','Foodie\FoodieController@clearNotif')->name('foodie.clearNotif');
+    Route::get('notifClearAll','Foodie\FoodieController@clearNotifAll')->name('foodie.clearNotifAll');
     Route::get('notifGet', 'Foodie\FoodieController@getNotif')->name('foodie.getNotif');
     Route::get('login/show', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
     Route::post('login', 'Foodie\Auth\LoginController@login')->name('foodie.login');
