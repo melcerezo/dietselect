@@ -116,7 +116,8 @@
 
             {{-- Foodie Notification Dropdown --}}
             <ul id="foodieNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
-                @unless($notifications->count()>0)
+                <li class="collection-item"><a id="clearAll" href="#">Mark All Read</a></li>
+            @unless($notifications->count()>0)
                     <li class="collection-item">
                         <span>No notifications</span>
                     </li>
@@ -154,7 +155,6 @@
             {{-- Foodie Message Dropdown --}}
             <ul id="foodieMessageDropdown" class="msgCollct dropdown-content collection">
                 @if($chats->count()>0)
-                    <li class="collection-item"><a id="clearAll" href="#">Mark All Read</a></li>
                 @foreach($chats->take(5) as $chat)
                     @if($chat->message->where('is_read',0)->where('receiver_type','f')->count()==0)
                         <li class="collection-item msgCol">
