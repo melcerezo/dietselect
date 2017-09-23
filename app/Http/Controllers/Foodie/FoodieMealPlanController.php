@@ -145,6 +145,9 @@ class FoodieMealPlanController extends Controller
 
     public function viewPlanStandard(Plan $plan)
     {
+        if($plan===null){
+            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+        }
 //        $plan->created_at()
         $dt=$plan->created_at;
         $startWeek=$dt->addDay(7)->startOfWeek()->format('F d, Y');
@@ -216,6 +219,10 @@ class FoodieMealPlanController extends Controller
 
     public function viewSimpleCustomize(Plan $plan)
     {
+        if($plan===null){
+            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+        }
+
         $simpleCustomPlan=new SimpleCustomPlan();
         $simpleCustomPlan->foodie_id=Auth::guard('foodie')->user()->id;
         $simpleCustomPlan->plan_id=$plan->id;
@@ -237,6 +244,9 @@ class FoodieMealPlanController extends Controller
 
     public function simpleCustomView(SimpleCustomPlan $simpleCustomPlan)
     {
+        if($simpleCustomPlan===null){
+            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+        }
 //        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
 //        dd($incomplete);
 
@@ -347,6 +357,10 @@ class FoodieMealPlanController extends Controller
 
     public function simpleMake(SimpleCustomPlan $simpleCustomPlan, Request $request)
     {
+        if($simpleCustomPlan===null){
+            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+        }
+
         foreach($request->all() as $key=>$value){
 //            dd($request);
             if($value == "1"){
@@ -407,7 +421,7 @@ class FoodieMealPlanController extends Controller
     public function simpleCustomDelete(SimpleCustomPlan $simpleCustomPlan)
     {
         $simpleCustomPlan->delete();
-        return back()->with([ 'status'=>'Deleted the Customized Plan!' ]);
+        return redirect()->route('foodie.dashboard')->with([ 'status'=>'Deleted the Customized Plan!' ]);
     }
 
     public function simpleCustomDetailDelete(SimpleCustomMeal $simpleCustomMeal)
@@ -420,7 +434,7 @@ class FoodieMealPlanController extends Controller
             $simpleDetail->delete();
         }
 
-        return back()->with(['status'=>"Undid customization for ".$simpleCustomMeal->chef_customized_meal->description."!"]);
+        return redirect()->route('foodie.plan.simpleView', $simpleCustomMeal->simple_custom_plan->id)->with(['status'=>"Undid customization for ".$simpleCustomMeal->chef_customized_meal->description."!"]);
     }
 
     public function viewChefsMeals(Plan $plan, Request $request)
