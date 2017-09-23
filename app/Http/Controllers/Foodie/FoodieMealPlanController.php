@@ -248,7 +248,7 @@ class FoodieMealPlanController extends Controller
     {
         $simpleCustomPlan = SimpleCustomPlan::where('id','=',$id)->first();
         if($simpleCustomPlan===null){
-            return redirect()->route('foodie.plan.show')->with(['status'=>'Plan does not exist']);
+            return back()->with(['status'=>'Plan does not exist']);
         }
 //        $incomplete=OrderItem::where('order_type','=',2)->where('plan_id','=',$simpleCustomPlan->id)->count();
 //        dd($incomplete);
