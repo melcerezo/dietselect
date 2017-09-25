@@ -6,6 +6,10 @@
     <script>
         chatId='{{$chatId}}';
     </script>
+    @else
+        <script>
+            chatId=null;
+        </script>
     @endif
     <script src="/js/messaging.js"></script>
     <script src="/js/foodie/foodieMessageValidate.js"></script>
