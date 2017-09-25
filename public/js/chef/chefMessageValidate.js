@@ -28,6 +28,23 @@ $(document).ready(function () {
         }
     });
 
+    $('#createSubmit').click(function () {
+        var msgVal = $('#chefMessage').val();
+        // console.log(msgVal);
+        // console.log($.trim(msgVal));
+
+        if($.trim(msgVal).length==0){
+            $('div.error-message').empty();
+            $('div.error-message').append(
+                '<span>' +
+                'Enter a message, please!' +
+                '</span>');
+        }else if($.trim(msgVal).length>0 && $('#chefMessageSend').valid()){
+            $('div.error-message').empty();
+            $('form#chefMessageSend').submit();
+        }
+    });
+
     $('form.replyForm').each(function () {
         $(this).validate({
             errorElement : 'div',

@@ -41,7 +41,7 @@ $(document).ready(function () {
                 '<span>' +
                     'Enter a message, please!' +
                 '</span>');
-        }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
+        }else if($.trim(msgVal).length>0 && $('#foodieMessageSend').valid()){
             $('div.error-message').empty();
             $('form#foodieMessageSend').submit();
         }

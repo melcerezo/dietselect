@@ -226,20 +226,20 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s6">
-                            <label for="foodieSubject" class="active">Subject</label>
+                            <label for="chefSubject" class="active">Subject</label>
                             <input placeholder="subject" id="chefSubject" name="chefSubject" data-error=".error-message" type="text" class="validate">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <label for="foodieMessage" class="active">Message</label>
+                            <label for="chefMessage" class="active">Message</label>
                             <input placeholder="message" id="chefMessage" name="chefMessage" type="text" data-error=".error-message" class="validate">
                             <div class="error-message err"></div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
+                    <div><button id="createSubmit" type="button" value="Submit" class="orange darken-2 btn btn-primary">Submit</button></div>
                 </div>
             </form>
         </div>
