@@ -39,7 +39,7 @@ $(document).ready(function () {
             $('div.error-message').empty();
             $('div.error-message').append(
                 '<span>' +
-                    'Enter a message please!' +
+                    'Enter a message, please!' +
                 '</span>');
         }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
             $('div.error-message').empty();
