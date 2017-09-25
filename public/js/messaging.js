@@ -28,10 +28,6 @@ $(document).ready(function(){
     });
 
 
-
-
-
-
 });
 
 function RevealMessage(mId){
