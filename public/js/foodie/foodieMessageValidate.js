@@ -33,18 +33,18 @@ $(document).ready(function () {
     $('#createSubmit').click(function () {
         var msgVal = $('#foodieMessage').val();
         // console.log(msgVal);
-        console.log($.trim(msgVal));
+        // console.log($.trim(msgVal));
 
-        // if($.trim('msgVal').length==0){
-        //     $('div.error-message').empty();
-        //     $('div.error-message').append(
-        //         '<span>' +
-        //             'Message is all spaces!' +
-        //         '</span>');
-        // }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
-        //     $('div.error-message').empty();
-        //     $('form#foodieMessageSend').submit();
-        // }
+        if($.trim(msgVal).length==0){
+            $('div.error-message').empty();
+            $('div.error-message').append(
+                '<span>' +
+                    'Message is all spaces!' +
+                '</span>');
+        }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
+            $('div.error-message').empty();
+            $('form#foodieMessageSend').submit();
+        }
     });
 
     $('form.replyForm').each(function () {
