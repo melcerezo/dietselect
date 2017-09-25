@@ -380,7 +380,7 @@
                 {{csrf_field()}}
                 <div class="row">
                     <div class="file-field input-field">
-                        <label for="planPic" class="active">Picture Upload:</label>
+                        <label for="cover" class="active">Picture Upload:</label>
                         <div style="padding-top: 10px;">
                             <div class="btn">
                                 <span>File</span>

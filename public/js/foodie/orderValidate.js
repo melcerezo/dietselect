@@ -107,7 +107,7 @@ $(document).ready(function () {
             },
             image:{
                 required:true,
-                extension: true
+                accept: true
             }
         },
         messages: {
@@ -121,7 +121,7 @@ $(document).ready(function () {
             },
             image:{
                 required: 'Please upload your proof of payment!',
-                extension: 'Images only!'
+                accept: 'Images only!'
             }
         },
         errorElement : 'div',
@@ -146,7 +146,7 @@ $(document).ready(function () {
             },
             gcPic:{
                 required:true,
-                extension:true
+                accept:true
             }
         },
         messages: {
@@ -160,7 +160,7 @@ $(document).ready(function () {
             },
             gcPic:{
                 required: 'Please upload your proof of payment!',
-                extension: 'Images Only!'
+                accept: 'Images Only!'
             }
         },
         errorElement : 'div',

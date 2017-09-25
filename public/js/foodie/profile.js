@@ -62,7 +62,7 @@ $(document).ready(function() {
                 required: true
             },
             avatar:{
-              extension: true
+              accept: true
             }
         },
         //For custom messages
@@ -79,7 +79,7 @@ $(document).ready(function() {
                 required: "Enter your birthday, please!"
             },
             avatar:{
-                extension: "Images only!"
+                accept: "Images only!"
             }
 
         },

@@ -38,6 +38,9 @@ $(document).ready(function() {
             website: {
                 url: true,
                 minlength: 10
+            },
+            avatar:{
+                accept: true
             }
 
         },
@@ -60,6 +63,9 @@ $(document).ready(function() {
             website: {
                 url: "Enter a valid website link, please!",
                 minlength: "Sorry, website link must be at least 10 characters."
+            },
+            avatar:{
+                accept: "Images only!"
             }
 
         },

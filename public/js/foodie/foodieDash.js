@@ -11,13 +11,13 @@ $(document).ready(function () {
         rules: {
             cover:{
                 required:true,
-                extension:true
+                accept:true
             }
         },
         messages: {
             cover:{
                 required: 'Please choose a cover photo!',
-                extension: 'Images Only!'
+                accept: 'Images Only!'
             }
         },
         errorElement : 'div',
