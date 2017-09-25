@@ -6,6 +6,8 @@ function ingredAjax(id) {
 }
 
 $(document).ready(function () {
+
+    $('#custButton').attr('disabled', true);
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
     allergyArray =[];
     $.each(allergiesList,function () {
@@ -23,7 +25,7 @@ $(document).ready(function () {
             var valData = response;
             // console.log(valData);
             var groupArray = [];
-
+            $('#custButton').attr('disabled', false);
             $('#h'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
                 groupArray.push(valData[i].ingredient_group);
