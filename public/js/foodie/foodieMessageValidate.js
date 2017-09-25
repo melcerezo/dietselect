@@ -30,8 +30,8 @@ $(document).ready(function () {
 
     $('#foodieMessageSend').submit(function (event) {
         var msgVal = $('#foodieMessage').val();
-        console.log(msgVal);
         if($.trim('msgVal').length==0){
+        console.log(msgVal);
             $('div.error-message').empty();
             $('div.error-message').append(
                 '<span>' +
