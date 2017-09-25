@@ -7,7 +7,8 @@ function ingredAjax(id) {
 
 $(document).ready(function () {
 
-    $('#custButton').attr('disabled', true);
+    $('button.custButton').attr('disabled', true);
+    $('button.custButton').addClass('disabled');
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
     allergyArray =[];
     $.each(allergiesList,function () {

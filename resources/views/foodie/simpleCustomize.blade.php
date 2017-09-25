@@ -953,7 +953,7 @@
                                                 </div>
                                             </div>
                                             <div style="margin-top: 10px;">
-                                                <button id="custButton" class="btn orange darken-2 waves-effect waves-light">Customize</button>
+                                                <button class="custButton btn orange darken-2 waves-effect waves-light">Customize</button>
                                             </div>
                                         </form>
                                     </div>
