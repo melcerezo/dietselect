@@ -32,8 +32,8 @@ $(document).ready(function () {
 
     $('#createSubmit').click(function () {
         var msgVal = $('#foodieMessage').val();
-        console.log(msgVal);
-        // console.log($.trim('msgVal').length);
+        // console.log(msgVal);
+        console.log($.trim('msgVal'));
 
         // if($.trim('msgVal').length==0){
         //     $('div.error-message').empty();
