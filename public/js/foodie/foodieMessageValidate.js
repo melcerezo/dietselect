@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     $('#createSubmit').click(function () {
         var msgVal = $('#foodieMessage').val();
-        console.log(msgVal);
+        console.log($.trim('msgVal').length);
 
         // if($.trim('msgVal').length==0){
         //     $('div.error-message').empty();
