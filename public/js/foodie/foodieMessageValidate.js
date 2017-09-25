@@ -30,6 +30,7 @@ $(document).ready(function () {
 
     $('#foodieMessageSend').submit(function (event) {
         var msgVal = $('#foodieMessage').val();
+        console.log(msgVal);
         if($.trim('msgVal').length==0){
             return false;
             $('div.error-message').empty();
