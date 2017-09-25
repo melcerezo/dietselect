@@ -29,10 +29,10 @@ $(document).ready(function () {
     });
 
     $('#foodieMessageSend').submit(function (event) {
-        event.preventDefault();
         var msgVal = $('#foodieMessage').val();
         console.log(msgVal);
         if($.trim('msgVal').length==0){
+            // event.preventDefault();
             $('div.error-message').empty();
             $('div.error-message').append(
                 '<span>' +
