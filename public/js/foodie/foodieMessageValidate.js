@@ -28,6 +28,21 @@ $(document).ready(function () {
         }
     });
 
+    $('#foodieMessageSend').submit(function (e) {
+        var msgVal = $('#foodieMessage').val();
+        if($.trim('msgVal').length==0){
+            e.preventDefault();
+            $('div.error-message').empty();
+            $('div.error-message').append(
+                '<span>' +
+                'Message is all spaces!' +
+                '</span>');
+        }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
+            $('div.error-message').empty();
+            $('form#foodieMessageSend').submit();
+        }
+    });
+
     $('form.replyForm').each(function () {
         $(this).validate({
             errorElement : 'div',
