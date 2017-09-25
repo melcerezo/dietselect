@@ -32,7 +32,7 @@ $(document).ready(function () {
         var msgVal = $('#foodieMessage').val();
         console.log(msgVal);
         if($.trim('msgVal').length==0){
-            return false;
+            event.preventDefault();
             $('div.error-message').empty();
             $('div.error-message').append(
                 '<span>' +
