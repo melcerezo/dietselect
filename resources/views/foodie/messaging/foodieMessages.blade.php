@@ -257,7 +257,7 @@
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
+                    <div><button id="createSubmit" type="button" class="orange darken-2 btn btn-primary">Submit</button></div>
                 </div>
             </form>
         </div>

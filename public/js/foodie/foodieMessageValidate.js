@@ -28,7 +28,9 @@ $(document).ready(function () {
         }
     });
 
-    $('#foodieMessageSend').submit(function (event) {
+
+
+    $('#createSubmit').click(function () {
         var msgVal = $('#foodieMessage').val();
         if($.trim('msgVal').length==0){
         console.log(msgVal);
@@ -37,7 +39,6 @@ $(document).ready(function () {
                 '<span>' +
                     'Message is all spaces!' +
                 '</span>');
-            return false;
         }else if($.trim('msgVal').length>0 && $('#foodieMessageSend').valid()){
             $('div.error-message').empty();
             $('form#foodieMessageSend').submit();
