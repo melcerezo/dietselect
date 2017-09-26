@@ -52,7 +52,7 @@ $(document).ready(function () {
         var file = this.files[0];
 
         if (file.type.match(/image\/.*/)) {
-            $submitBtn.attr('disabled', true);
+            // $submitBtn.attr('disabled', true);
 
             var reader = new FileReader();
 
@@ -68,7 +68,7 @@ $(document).ready(function () {
                     } else {
                         $img.css({ width: '200px', height: '200px' });
                     }
-                    $submitBtn.attr('disabled', false);
+                    // $submitBtn.attr('disabled', false);
 
                     validator.element($photoInput);
                 });
