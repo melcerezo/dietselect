@@ -45,7 +45,7 @@ $(document).ready(function () {
                 '<span>' +
                 'Enter a message, please!' +
                 '</span>');
-            $('form#chefMessageSend').validate();
+            $('form#chefMessageSend').valid();
         }else if($.trim(msgVal).length>0 && $('#chefMessageSend').valid()){
             $('div.error-message').empty();
             $('form#chefMessageSend').submit();
