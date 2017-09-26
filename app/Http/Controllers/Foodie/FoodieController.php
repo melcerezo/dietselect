@@ -474,7 +474,7 @@ class FoodieController extends Controller
     {
 //        dd($request->hasFile('cover'));
         $validator = Validator::make($request->all(), [
-            'cover' => 'required|mimes:jpeg,jpg,png,bmp',
+            'cover' => 'required|image|mimes:jpeg,jpg,png,bmp',
         ]);
         $validator->validate();
         if($validator->fails()){
