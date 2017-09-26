@@ -1214,9 +1214,9 @@
                     <option value="Fruits">Fruits</option>
                 </select>
                 <div class="errorMainIngredient err"></div>
+                <div id="imgContainer">
+                </div>
                 <div class="file-field input-field">
-                    <div id="imgContainer">
-                    </div>
                     <label for="mealPic" class="active">Picture Upload:</label>
                     <div style="padding-top: 10px;">
                         <div class="btn orange darken-2">
