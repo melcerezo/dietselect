@@ -11,7 +11,7 @@ $(document).ready(function () {
         rules: {
             cover:{
                 required:true,
-                accept:true
+                accept:"image/jpg,image/jpeg,image/png,image/gif"
             }
         },
         messages: {
