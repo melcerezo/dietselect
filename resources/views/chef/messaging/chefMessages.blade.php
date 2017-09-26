@@ -227,7 +227,8 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <label for="chefSubject" class="active">Subject</label>
-                            <input placeholder="subject" id="chefSubject" name="chefSubject" data-error=".error-message" type="text" class="validate">
+                            <input placeholder="subject" id="chefSubject" name="chefSubject" data-error=".error-subject" type="text" class="validate">
+                            <div class="error-subject err"></div>
                         </div>
                     </div>
                     <div class="row">
