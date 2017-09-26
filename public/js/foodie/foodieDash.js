@@ -42,10 +42,10 @@ $(document).ready(function () {
     });
 
     var $submitBtn = $('#coverPhoto').find('input:submit'),
-        $photoInput = $('#cover'),
+        $photoInput = $('#avatar'),
         $imgContainer = $('#imgContainer');
 
-    $('#cover').change(function() {
+    $('#avatar').change(function() {
         $photoInput.removeData('imageWidth');
         $imgContainer.hide().empty();
 
