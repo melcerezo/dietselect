@@ -294,48 +294,48 @@ $(document).ready(function() {
     });
 
 
+    $('#avatar').change(function() {
+        $photoInput.removeData('imageWidth');
+        $imgContainer.hide().empty();
+
+        var file = this.files[0];
+
+        if (file.type.match(/image\/.*/)) {
+            // $submitBtn.attr('disabled', true);
+
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var $img = $('<img />').attr({ src: reader.result });
+
+                $img.on('load', function() {
+                    $imgContainer.append($img).show();
+                    var imageWidth = $img.width();
+                    $photoInput.data('imageWidth', imageWidth);
+                    if (imageWidth < 200) {
+                        $('#avatarBefore').show();
+                        $imgContainer.hide();
+                    } else {
+                        $('#avatarBefore').hide();
+                        $img.css({ width: '200px', height: '200px' });
+                    }
+                    // $submitBtn.attr('disabled', false);
+
+                    validator.element($photoInput);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            validator.element($photoInput);
+        }
+    });
     $('#prfSvBtn').on('click',function () {
         var fileInput = $('#basic-profile').find("input[type=file]")[0],
             file = fileInput.files && fileInput.files[0];
         if(!(file)){
             $('#avatar').rules('remove','minImageWidth');
         }
-            $('#avatar').change(function() {
-                $photoInput.removeData('imageWidth');
-                $imgContainer.hide().empty();
-
-                var file = this.files[0];
-
-                if (file.type.match(/image\/.*/)) {
-                    // $submitBtn.attr('disabled', true);
-
-                    var reader = new FileReader();
-
-                    reader.onload = function() {
-                        var $img = $('<img />').attr({ src: reader.result });
-
-                        $img.on('load', function() {
-                            $imgContainer.append($img).show();
-                            var imageWidth = $img.width();
-                            $photoInput.data('imageWidth', imageWidth);
-                            if (imageWidth < 200) {
-                                $('#avatarBefore').show();
-                                $imgContainer.hide();
-                            } else {
-                                $('#avatarBefore').hide();
-                                $img.css({ width: '200px', height: '200px' });
-                            }
-                            // $submitBtn.attr('disabled', false);
-
-                            validator.element($photoInput);
-                        });
-                    };
-
-                    reader.readAsDataURL(file);
-                } else {
-                    validator.element($photoInput);
-                }
-            });
         if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
             var mobile = mobileAjax($('#mobile-num').val());
             if($('#username').val()==null){
