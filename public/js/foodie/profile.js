@@ -297,6 +297,9 @@ $(document).ready(function() {
     $('#prfSvBtn').on('click',function () {
         var fileInput = $('#basic-profile').find("input[type=file]")[0],
             file = fileInput.files && fileInput.files[0];
+        if(!(file)){
+            $('#avatar').rules('remove','minImageWidth');
+        }
         if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
             var mobile = mobileAjax($('#mobile-num').val());
             if($('#username').val()==null){
@@ -324,10 +327,6 @@ $(document).ready(function() {
                     $('.error-username').empty();
                     $('.error-username').append('<span>This username exists already.</span>');
                 } else {
-                    if(!(file)){
-                        $('#avatar').rules('remove','minImageWidth');
-                    }
-
                     $('#basic-profile').unbind('submit').submit();
                 }
 
