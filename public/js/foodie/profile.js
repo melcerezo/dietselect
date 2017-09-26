@@ -71,8 +71,8 @@ $(document).ready(function() {
                 required: true
             },
             avatar:{
-              accept: "image/jpg,image/jpeg,image/png,image/gif",
-              minImageWidth:200
+                accept: "image/jpg,image/jpeg,image/png,image/gif",
+                minImageWidth:200
             }
         },
         //For custom messages
@@ -101,45 +101,6 @@ $(document).ready(function() {
             } else {
                 error.insertAfter(element);
             }
-        }
-    });
-
-    var $photoInput = $('#avatar'),
-        $imgContainer = $('#imgContainer');
-
-    $('#avatar').change(function() {
-        $photoInput.removeData('imageWidth');
-        $imgContainer.hide().empty();
-
-        var file = this.files[0];
-
-        if (file.type.match(/image\/.*/)) {
-            // $submitBtn.attr('disabled', true);
-
-            var reader = new FileReader();
-
-            reader.onload = function() {
-                var $img = $('<img />').attr({ src: reader.result });
-
-                $img.on('load', function() {
-                    $imgContainer.append($img).show();
-                    var imageWidth = $img.width();
-                    $photoInput.data('imageWidth', imageWidth);
-                    if (imageWidth < 500) {
-                        $imgContainer.hide();
-                    } else {
-                        $('#avatarBefore').hide();
-                        $img.css({ width: '200px', height: '200px' });
-                    }
-                    // $submitBtn.attr('disabled', false);
-
-                    validator.element($photoInput);
-                });
-            };
-
-            reader.readAsDataURL(file);
-        } else {
-            validator.element($photoInput);
         }
     });
 
@@ -332,7 +293,10 @@ $(document).ready(function() {
         }
     });
 
+
     $('#prfSvBtn').on('click',function () {
+        var fileInput = $('#basic-profile').find("input[type=file]")[0],
+            file = fileInput.files && fileInput.files[0];
         if($('#mobile-num').val()!=foodiePhone && $('#username').val()!=username) {
             var mobile = mobileAjax($('#mobile-num').val());
             if($('#username').val()==null){
@@ -360,6 +324,10 @@ $(document).ready(function() {
                     $('.error-username').empty();
                     $('.error-username').append('<span>This username exists already.</span>');
                 } else {
+                    if(!(file)){
+                        $('#avatar').rules('remove','minImageWidth');
+                    }
+
                     $('#basic-profile').unbind('submit').submit();
                 }
 
