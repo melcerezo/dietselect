@@ -59,7 +59,7 @@ $(document).ready(function () {
     });
     $('#gcPayForm').submit(function () {
         $('#loadWait').show();
-        if($('#gcPayForm').valid()){
+        if(!$('#gcPayForm').valid()){
             $('#loadWait').hide();
         }
     });
@@ -95,6 +95,15 @@ $(document).ready(function () {
         }
     });
 
+    $.validator.addMethod('minImageWidth', function(value, element, minWidth) {
+        return ($(element).data('imageWidth') || 0) > minWidth;
+    }, function(minWidth, element) {
+        var imageWidth = $(element).data('imageWidth');
+        return (imageWidth)
+            ? ("Your image's width must be greater than " + minWidth + "px")
+            : "Selected file is not an image.";
+    });
+
     $('form#bankPayForm').validate({
         rules: {
             receipt_number: {
@@ -107,7 +116,8 @@ $(document).ready(function () {
             },
             image:{
                 required:true,
-                accept: true
+                accept: true,
+                minImageWidth: 200
             }
         },
         messages: {
@@ -134,6 +144,45 @@ $(document).ready(function () {
             }
         }
     });
+
+    var $photoInput = $('#image'),
+        $imgContainer = $('#bankContainer');
+
+    $('#image').change(function() {
+        $photoInput.removeData('imageWidth');
+        $imgContainer.hide().empty();
+
+        var file = this.files[0];
+
+        if (file.type.match(/image\/.*/)) {
+            // $submitBtn.attr('disabled', true);
+
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var $img = $('<img />').attr({ src: reader.result });
+
+                $img.on('load', function() {
+                    $imgContainer.append($img).show();
+                    var imageWidth = $img.width();
+                    $photoInput.data('imageWidth', imageWidth);
+                    if (imageWidth < 500) {
+                        $imgContainer.hide();
+                    } else {
+                        $img.css({ width: '200px', height: '200px' });
+                    }
+                    // $submitBtn.attr('disabled', false);
+
+                    validator.element($photoInput);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            validator.element($photoInput);
+        }
+    });
+
     $('form#gcPayForm').validate({
         rules: {
             gcRefNmbr: {
@@ -146,7 +195,8 @@ $(document).ready(function () {
             },
             gcPic:{
                 required:true,
-                accept:true
+                accept:true,
+                minImageWidth: 200
             }
         },
         messages: {
@@ -173,4 +223,43 @@ $(document).ready(function () {
             }
         }
     });
+
+    var $gcashInput = $('#gcPic'),
+        $gcashContainer = $('#gcashContainer');
+
+    $('#gcPic').change(function() {
+        $gcashInput.removeData('imageWidth');
+        $gcashContainer.hide().empty();
+
+        var file = this.files[0];
+
+        if (file.type.match(/image\/.*/)) {
+            // $submitBtn.attr('disabled', true);
+
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var $img = $('<img />').attr({ src: reader.result });
+
+                $img.on('load', function() {
+                    $gcashContainer.append($img).show();
+                    var imageWidth = $img.width();
+                    $gcashInput.data('imageWidth', imageWidth);
+                    if (imageWidth < 500) {
+                        $gcashContainer.hide();
+                    } else {
+                        $img.css({ width: '200px', height: '200px' });
+                    }
+                    // $submitBtn.attr('disabled', false);
+
+                    validator.element($gcashInput);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            validator.element($gcashInput);
+        }
+    });
+
 });

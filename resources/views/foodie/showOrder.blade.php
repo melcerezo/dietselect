@@ -70,6 +70,8 @@
                                         </div>
                                         <div class="row">
                                             <div class="file-field">
+                                                <div id="bankContainer">
+                                                </div>
                                                 <label for="image" class="active">Picture Upload:</label>
                                                 <div style="padding-top: 10px;">
                                                     <div class="btn orange darken-2">
@@ -124,6 +126,8 @@
                                                     <div class="error-gcdate-pay err"></div>
                                                 </div>
                                                 <div class="row">
+                                                    <div id="gcashContainer">
+                                                    </div>
                                                     <div class="file-field">
                                                         <label for="gcPic" class="active">Picture Upload:</label>
                                                         <div style="padding-top: 10px;">
