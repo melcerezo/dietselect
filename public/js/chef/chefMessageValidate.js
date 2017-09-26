@@ -45,6 +45,7 @@ $(document).ready(function () {
                 '<span>' +
                 'Enter a message, please!' +
                 '</span>');
+            $('#chefMessage').rules('remove','required');
             $('form#chefMessageSend').valid();
         }else if($.trim(msgVal).length>0 && $('#chefMessageSend').valid()){
             $('div.error-message').empty();
