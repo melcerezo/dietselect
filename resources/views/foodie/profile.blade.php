@@ -359,13 +359,14 @@
 
                             <div class="row">
                                 <div class="col s4">
-                                    <div>
+                                    <div id="avatarBefore">
                                         <img src="/img/{{ $foodie->avatar }}" class="prfFrmImg img img-thumbnail">
                                     </div>
+                                    <div id="imgContainer">
+                                    </div>
                                     <label for="profile" style="margin-left: 30px;">Update Profile Image</label>
-                                    <input type="file" name="avatar" data-error=".img-error">
+                                    <input type="file" id="avatar" name="avatar" data-error=".img-error">
                                     <div class="img-error err">
-
                                     </div>
                                 </div>
                                 <div class="input-field col s4">
