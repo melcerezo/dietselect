@@ -473,10 +473,13 @@ class FoodieController extends Controller
     public function saveProfileCoverPhoto(Request $request)
     {
 //        dd($request->hasFile('cover'));
-        Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'cover' => 'required|mimes:jpeg,jpg,png,bmp',
-        ])->validate();
-        dd($request->file('cover'));
+        ]);
+        $validator->validate();
+        if($validator->fails()){
+            return back()->with(['status'=>'File format is not valid! Please try another photo!']);
+        }
 
         $foodie=Auth::guard('foodie')->user();
         if($request->hasFile('cover')){
