@@ -293,6 +293,8 @@ $(document).ready(function() {
         }
     });
 
+    var $photoInput = $('#cover'),
+        $imgContainer = $('#imgContainer');
 
     $('#avatar').change(function() {
         $photoInput.removeData('imageWidth');
