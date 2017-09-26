@@ -478,6 +478,7 @@ class FoodieController extends Controller
         ]);
         $validator->validate();
 
+        return back()->withErrors($validator);
 
         $foodie=Auth::guard('foodie')->user();
         if($request->hasFile('cover')){
@@ -495,7 +496,6 @@ class FoodieController extends Controller
                 return back()->with(['status'=>'File format is not valid! Please try another photo!']);
             }
 
-            return back()->withErrors($validator);
         }
     }
 
