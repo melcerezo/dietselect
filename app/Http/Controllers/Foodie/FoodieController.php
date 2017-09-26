@@ -472,7 +472,7 @@ class FoodieController extends Controller
     
     public function saveProfileCoverPhoto(Request $request)
     {
-        dd($request->file('cover')->isValid());
+//        dd($request->file('cover')->isValid());
         $validator = Validator::make($request->all(), [
             'cover' => 'required|image|mimes:jpeg,jpg,png,bmp',
         ]);
@@ -495,6 +495,7 @@ class FoodieController extends Controller
                 return back()->with(['status'=>'File format is not valid! Please try another photo!']);
             }
 
+            return back()->withErrors($validator);
         }
     }
 
