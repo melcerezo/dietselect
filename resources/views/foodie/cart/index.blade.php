@@ -31,7 +31,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($cartItems as $cartItem)
+                            @foreach($cartItems as $id=>$cartItem)
                                 <tr>
                                     <td>
                                         <div class="row">
@@ -69,9 +69,9 @@
                                         <div>
                                             <form class="updateQtyForm" method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                                 {{ csrf_field() }}
-                                                        <span><input type="number" name="qty" value="{{$cartItem->qty}}" data-error=".error-cart" style="width: 30%;"></span>
+                                                        <span><input type="number" name="qty" value="{{$cartItem->qty}}" data-error=".error-cart{{$id}}" style="width: 30%;"></span>
                                                         <span><button type="submit" class="updateQty">Update</button></span>
-                                                        <div class="error-cart err"></div>
+                                                        <div class="error-cart{{$id}} err"></div>
                                             </form>
                                         </div>
                                         {{--<a href="{{route('cart.update', $cartItem->rowId)}}" class="btn btn-primary waves-light waves-effect">ADD</a>--}}
