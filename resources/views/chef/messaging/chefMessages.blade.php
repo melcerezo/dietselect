@@ -268,7 +268,7 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <label for="replySubject" class="active">Subject</label>
-                            <input placeholder="subject" id="replySubject" name="replySubject" data-error=".error-message" type="text" class="validate">
+                            <input placeholder="subject" id="replySubject" disabled name="replySubject" data-error=".error-message" type="text" class="validate">
                         </div>
                     </div>
                     <div class="row">
@@ -280,7 +280,7 @@
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
+                    <div><button type="button" class="replySubmit orange darken-2 btn btn-primary">Submit</button></div>
                 </div>
             </form>
         </div>

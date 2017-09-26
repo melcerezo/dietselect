@@ -286,19 +286,19 @@
                     <div class="row">
                         <div class="input-field col s6">
                             <label for="replySubject" class="active">Subject</label>
-                            <input placeholder="subject" id="replySubject" name="replySubject" data-error=".error-message" type="text" class="validate">
+                            <input placeholder="subject" id="replySubject" disabled name="replySubject" data-error=".error-message" type="text" class="validate">
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
                             <label for="replyMessage" class="active">Message</label>
-                            <input placeholder="message" id="replyMessage" name="replyMessage" type="text" data-error=".error-message" class="validate">
-                            <div class="error-message err"></div>
+                            <input placeholder="message" id="replyMessage" name="replyMessage" type="text" data-error=".error-reply-message" class="validate">
+                            <div class="error-reply-message err"></div>
                         </div>
                     </div>
                 </div>
                 <div>
-                    <div><input type="submit" value="Submit" class="orange darken-2 btn btn-primary"></div>
+                    <div><button type="button" class="replySubmit orange darken-2 btn btn-primary"></button></div>
                 </div>
             </form>
         </div>

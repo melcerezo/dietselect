@@ -5,6 +5,9 @@ $(document).ready(function () {
             foodieMessageSelect:{
                 required:true
             },
+            foodieSubject:{
+                required:true
+            },
             foodieMessage:{
                 required:true
             }
@@ -12,6 +15,9 @@ $(document).ready(function () {
         messages:{
             foodieMessageSelect:{
                 required: "Enter a name for the receiver, please!"
+            },
+            foodieSubject:{
+                required: "Enter a subject, please!"
             },
             foodieMessage:{
                 required: "Enter a message, please!"
@@ -47,8 +53,17 @@ $(document).ready(function () {
         }
     });
 
-    $('form.replyForm').each(function () {
-        $(this).validate({
+    $('form#foodieMessageReply').validate({
+            rules:{
+                replyMessage:{
+                    required:true
+                }
+            },
+            messages:{
+                replyMessage:{
+                    required: "Enter a message, please!"
+                }
+            },
             errorElement : 'div',
             errorPlacement: function(error, element) {
                 var placement = $(element).data('error');
@@ -59,5 +74,22 @@ $(document).ready(function () {
                 }
             }
         });
+
+    $('.replySubmit').click(function () {
+        var msgVal = $('#replyMessage').val();
+        // console.log(msgVal);
+        // console.log($.trim(msgVal));
+
+        if($.trim(msgVal).length==0){
+            $('div.error-reply-message').empty();
+            $('div.error-reply-message').append(
+                '<span>' +
+                    'Enter a message, please!' +
+                '</span>');
+        }else if($.trim(msgVal).length>0 && $('#foodieMessageReply').valid()){
+            $('div.error-reply-message').empty();
+            $('form#foodieMessageReply').submit();
+        }
     });
+
 });

@@ -45,17 +45,42 @@ $(document).ready(function () {
         }
     });
 
-    $('form.replyForm').each(function () {
-        $(this).validate({
-            errorElement : 'div',
-            errorPlacement: function(error, element) {
-                var placement = $(element).data('error');
-                if (placement) {
-                    $(placement).append(error);
-                } else {
-                    error.insertAfter(element);
-                }
+    $('form#chefMessageReply').validate({
+        rules:{
+            replyMessage:{
+                required:true
             }
-        });
+        },
+        messages:{
+            replyMessage:{
+                required: "Enter a message, please!"
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    $('.replySubmit').click(function () {
+        var msgVal = $('#replyMessage').val();
+        // console.log(msgVal);
+        // console.log($.trim(msgVal));
+
+        if($.trim(msgVal).length==0){
+            $('div.error-reply-message').empty();
+            $('div.error-reply-message').append(
+                '<span>' +
+                'Enter a message, please!' +
+                '</span>');
+        }else if($.trim(msgVal).length>0 && $('#foodieMessageReply').valid()){
+            $('div.error-reply-message').empty();
+            $('form#foodieMessageReply').submit();
+        }
     });
 });
