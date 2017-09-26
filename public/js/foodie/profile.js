@@ -300,7 +300,7 @@ $(document).ready(function() {
         if(!(file)){
             $('#avatar').rules('remove','minImageWidth');
         }
-            $('#cover').change(function() {
+            $('#avatar').change(function() {
                 $photoInput.removeData('imageWidth');
                 $imgContainer.hide().empty();
 
@@ -318,9 +318,11 @@ $(document).ready(function() {
                             $imgContainer.append($img).show();
                             var imageWidth = $img.width();
                             $photoInput.data('imageWidth', imageWidth);
-                            if (imageWidth < 500) {
+                            if (imageWidth < 200) {
+                                $('#avatarBefore').show();
                                 $imgContainer.hide();
                             } else {
+                                $('#avatarBefore').hide();
                                 $img.css({ width: '200px', height: '200px' });
                             }
                             // $submitBtn.attr('disabled', false);
