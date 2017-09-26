@@ -472,7 +472,7 @@ class FoodieController extends Controller
     
     public function saveProfileCoverPhoto(Request $request)
     {
-//        dd($request->file('cover'));
+        dd($request->file('cover'));
 //        dd($request->hasFile('cover'));
         Validator::make($request->all(), [
             'cover' => 'required|mimes:jpeg,jpg,png,bmp',
