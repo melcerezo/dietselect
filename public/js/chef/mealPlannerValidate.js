@@ -76,7 +76,7 @@ $(document).ready(function () {
                     $imgContainer.append($img).show();
                     var imageWidth = $img.width();
                     $photoInput.data('imageWidth', imageWidth);
-                    if (imageWidth < 500) {
+                    if (imageWidth < 200) {
                         $imgContainer.hide();
                     } else {
                         $img.css({ width: '200px', height: '200px' });
