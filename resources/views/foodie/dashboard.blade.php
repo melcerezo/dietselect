@@ -158,6 +158,8 @@
                 <div class="row">
                     <div class="file-field input-field">
                         <label for="planPic" class="active">Picture Upload:</label>
+                        <div id="imgContainer">
+                        </div>
                         <div style="padding-top: 10px;">
                             <div class="btn orange darken-2">
                                 <span>File</span>
