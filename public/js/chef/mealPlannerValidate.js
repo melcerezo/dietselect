@@ -11,6 +11,15 @@ $(document).ready(function () {
     $('select#main_ingredient').css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
     $("select.ingredChefAdd").css({display: "block", height: 0, padding: 0, width: 0, position: 'absolute'});
 
+    $.validator.addMethod('minImageWidth', function(value, element, minWidth) {
+        return ($(element).data('imageWidth') || 0) > minWidth;
+    }, function(minWidth, element) {
+        var imageWidth = $(element).data('imageWidth');
+        return (imageWidth)
+            ? ("Your image's width must be greater than " + minWidth + "px")
+            : "Selected file is not an image.";
+    });
+
     $('form#createMealForm').validate({
         rules:{
             description: {
@@ -21,6 +30,7 @@ $(document).ready(function () {
             },
             mealPic:{
                 extension: true,
+                minImageWidth:200
             }
         },
         messages:{
@@ -45,6 +55,44 @@ $(document).ready(function () {
         }
     });
 
+    var $photoInput = $('#mealPic'),
+        $imgContainer = $('#imgContainer');
+
+    $('#mealPic').change(function() {
+        $photoInput.removeData('imageWidth');
+        $imgContainer.hide().empty();
+
+        var file = this.files[0];
+
+        if (file.type.match(/image\/.*/)) {
+            // $submitBtn.attr('disabled', true);
+
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var $img = $('<img />').attr({ src: reader.result });
+
+                $img.on('load', function() {
+                    $imgContainer.append($img).show();
+                    var imageWidth = $img.width();
+                    $photoInput.data('imageWidth', imageWidth);
+                    if (imageWidth < 500) {
+                        $imgContainer.hide();
+                    } else {
+                        $img.css({ width: '200px', height: '200px' });
+                    }
+                    // $submitBtn.attr('disabled', false);
+
+                    validator.element($photoInput);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            validator.element($photoInput);
+        }
+    });
+
     $('#ingredAdd').on('click', function () {
         $('#ingredError').empty();
     });
@@ -53,6 +101,12 @@ $(document).ready(function () {
     $('form#createMealForm').submit(function (event) {
         event.preventDefault();
         var form=$(this).closest("form");
+        var fileInput = form.find("input[type=file]")[0],
+            file = fileInput.files && fileInput.files[0];
+        if(!(file)){
+            $('#mealPic').rules('remove','minImageWidth');
+        }
+
         var ingredSelect=form.find("#ingredientContainer").children();
         var ingredFind=ingredSelect.children('.ingredients');
         console.log(ingredFind);
@@ -121,7 +175,7 @@ $(document).ready(function () {
     });
 
     $('form.editMeal').each(function () {
-        console.log($(this).attr('id'));
+        // console.log($(this).attr('id'));
         $(this).validate({
             rules: {
                 description: {
