@@ -293,7 +293,7 @@ $(document).ready(function() {
         }
     });
 
-    var $photoInput = $('#cover'),
+    var $photoInput = $('#avatar'),
         $imgContainer = $('#imgContainer');
 
     $('#avatar').change(function() {
