@@ -67,10 +67,10 @@
                                     </td>
                                     <td>
                                         <div>
-                                            <form method="post" action="{{route('cart.update', $cartItem->rowId)}}">
+                                            <form class="updateQtyForm" method="post" action="{{route('cart.update', $cartItem->rowId)}}">
                                                 {{ csrf_field() }}
                                                         <span><input type="number" name="qty" value="{{$cartItem->qty}}" data-error=".error-cart" style="width: 30%;"></span>
-                                                        <span><button type="submit">Update</button></span>
+                                                        <span><button type="submit" class="updateQty">Update</button></span>
                                                         <div class="error-cart err"></div>
                                             </form>
                                         </div>

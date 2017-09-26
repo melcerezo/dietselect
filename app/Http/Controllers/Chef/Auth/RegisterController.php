@@ -77,11 +77,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $website='';
+        if($data['website']=='http://'){
+            $website='';
+        }else{
+            $website=$data['website'];
+        }
+
         return Chef::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'mobile_number' => $data['mobile_number'],
-            'website' => $data['website'],
+            'website' => $website,
             'url_name' => $data['url_name'],
             'password' => bcrypt($data['password']),
         ]);
