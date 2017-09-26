@@ -5,6 +5,9 @@ $(document).ready(function () {
             chefMessageSelect:{
                 required:true
             },
+            chefSubject:{
+                required:true
+            },
             chefMessage:{
                 required:true
             }
@@ -12,6 +15,9 @@ $(document).ready(function () {
         messages:{
             chefMessageSelect:{
                 required: "Enter a name for the receiver, please!"
+            },
+            chefSubject:{
+                required: "Please enter a message subject"
             },
             chefMessage:{
                 required: "Enter a message, please!"
