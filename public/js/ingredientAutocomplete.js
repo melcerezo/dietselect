@@ -69,8 +69,10 @@ $(document).ready(function () {
 
                 $('#grams'+count).rules('add', {
                     required: true,
+                    min:1,
                     messages: {
-                        required: "Please specify number of grams."
+                        required: "Please specify number of grams.",
+                        min: "Number must be a positive integer"
                     }
                 });
                 $('.addSelectIngred').on('change','select',function (){

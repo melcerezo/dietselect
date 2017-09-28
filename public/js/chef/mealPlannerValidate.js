@@ -153,14 +153,20 @@ $(document).ready(function () {
                     $ingredientAuto.done(function(response){
                         // console.log('This is in ajax');
                         var valData=response;
+                        var contain = false;
                         for(var i = 0,l=valData.length;i<l;i++){
                             var ingred= valData[i].name;
                             if($thisVal==ingred){
                                 matchData+=1;
+                                contain = true;
                                 $errorContainer.empty();
+                                break;
                             }
                         }
-                        if(!matchData){
+                        if(!form.valid()){
+                            $('#loadWait').hide();
+                        }
+                        if(!contain){
                             $('#loadWait').hide();
                             $errorContainer.empty();
                             $errorContainer.append("The listed ingredient is not found");
