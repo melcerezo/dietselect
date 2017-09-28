@@ -1089,6 +1089,17 @@
                                         <div class="ingredGramsAdd"><div class="gramLabel"><label for="grams[]">Grams</label></div>
                                             <input type="number" value="{{$ingredientsMeal[$j]->grams}}" name="grams[{{$j}}]" id="grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}" data-error=".error-updateGram{{$j}}" class="required gramsAuto inputBehind"></div>
                                         <div class="error-updateGram{{$j}} err"></div>
+                                        <script>
+                                            $(document).ready(function () {
+
+                                                $('#grams{{$mealPlans[$i]->chefcustomize->id}}{{$j}}').rules('add', {
+                                                    min:1,
+                                                    messages: {
+                                                        min: "Number must be a positive integer"
+                                                    }
+                                                });
+                                            })
+                                        </script>
                                     </div>
                                 @endif
                             @endfor
