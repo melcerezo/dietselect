@@ -336,7 +336,10 @@
                                 {{--<div class="error-description err"></div>--}}
                             {{--</div>--}}
                         {{--</div>--}}
+
                         <div class="row">
+                            <div id="imgContainer">
+                            </div>
                            <div class="file-field input-field">
                                 <label for="planPic" class="active">Picture Upload:</label>
                                <div style="padding-top: 10px;">
