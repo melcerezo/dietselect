@@ -97,7 +97,7 @@ $(document).ready(function () {
     var $photoInput = $('#planPic'),
         $imgContainer = $('#imgContainer');
 
-    $('#mealPic').change(function() {
+    $('#planPic').change(function() {
         $photoInput.removeData('imageWidth');
         $imgContainer.hide().empty();
 
