@@ -38,7 +38,7 @@ class MealPlanController extends Controller
         $this->middleware('chef.auth');
     }
 
-    public function getMealPlanPage(Plan $plan)
+    public function getMealPlanPage()
     {
         $chef= Auth::guard('chef')->user()->id;
         $foodies=Foodie::all();
@@ -109,7 +109,7 @@ class MealPlanController extends Controller
             'chef' => Auth::guard('chef')->user(),
             'foodies' => $foodies,
             'planCount'=>$planCount,
-            'plan' => $plan,
+//            'plan' => $plan,
             'messages'=>$messages,
             'chats' => $chats,
             'allPlans' => $allPlans, // all plans
@@ -145,7 +145,7 @@ class MealPlanController extends Controller
             $plan->picture=$filename;
             $plan->price = (float)$request['price'];
             $plan->save();
-            return redirect($this->redirectTo)->with(['status' => 'Successfully created plan: ' . $plan->plan_name . '']);
+            return redirect()->route('chef.plan')->with(['status' => 'Successfully created plan: ' . $plan->plan_name . '']);
         }
 
         // DONE!
