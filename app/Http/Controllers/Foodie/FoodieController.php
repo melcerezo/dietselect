@@ -722,9 +722,9 @@ class FoodieController extends Controller
                     $allergy->allergy = $key;
                     $allergy->save();
 
-                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
+                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->select('ingredient')->first();
 //                    dd($pref);
-                    if($pref){
+                    if($pref->count() && ($pref!=null || $pref!="")){
                         if($key=='chicken' && $pref=='chicken'){
                             $pref->delete();
                         }else if($key=='beef' && $pref=='beef'){
