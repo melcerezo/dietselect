@@ -728,7 +728,7 @@ class FoodieController extends Controller
                         if($key=='chicken' && $pref->ingredient=='chicken'){
                             $pref->delete();
                         }else if($key=='beef' && $pref->ingredient=='beef'){
-                            dd('beef');
+//                            dd('beef');
                             $pref->delete();
                         }else if($key=='pork' && $pref->ingredient=='pork'){
                             $pref->delete();
