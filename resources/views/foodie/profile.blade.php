@@ -584,7 +584,7 @@
                                     <input id="allrg-others" name="others" type="text" class="validate">
                                     <label for="allrg-others">Other Allergies</label>
                                 </div>
-                                <small class="notes"><span class="flame-text">*</span> If multiple other food allergies, please separate each allergy with a comma (,).</small>
+                                <small class="notes"><span class="flame-text">*</span> If multiple other food allergies, please separate each allergy with a comma,no spaces (,).</small>
                             </div>
                         </div>
                         <div class="modal-footer">
