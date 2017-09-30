@@ -682,19 +682,19 @@ class FoodieController extends Controller
                     $allergy->allergy = $allrgVal;
                     $allergy->save();
 
-                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
-
-                    if($pref->count()){
-                        if($allrgVal=='chicken' && $pref=='chicken'){
-                            $pref->delete();
-                        }else if($allrgVal=='beef' && $pref=='beef'){
-                            $pref->delete();
-                        }else if($allrgVal=='pork' && $pref=='pork'){
-                            $pref->delete();
-                        }else if($allrgVal=='seafood' && $pref=='seafood'){
-                            $pref->delete();
-                        }
-                    }
+//                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
+//
+//                    if($pref->count()){
+//                        if($allrgVal=='chicken' && $pref=='chicken'){
+//                            $pref->delete();
+//                        }else if($allrgVal=='beef' && $pref=='beef'){
+//                            $pref->delete();
+//                        }else if($allrgVal=='pork' && $pref=='pork'){
+//                            $pref->delete();
+//                        }else if($allrgVal=='seafood' && $pref=='seafood'){
+//                            $pref->delete();
+//                        }
+//                    }
 
 
                     //print_r($allergy);die('set the allergy model');
