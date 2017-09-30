@@ -724,7 +724,7 @@ class FoodieController extends Controller
 
                     $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
 //                    dd($pref);
-                    if($pref->count() && ($pref->ingredient!=null || $pref->ingredient!="")){
+                    if($pref!= null && ($pref->ingredient!=null || $pref->ingredient!="")){
                         if($key=='chicken' && $pref->ingredient=='chicken'){
                             $pref->delete();
                         }else if($key=='beef' && $pref->ingredient=='beef'){
