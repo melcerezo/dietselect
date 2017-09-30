@@ -304,7 +304,7 @@ $(document).ready(function() {
     });
     $('#allrg-others').on('keydown keyup', function(e) {
         if ($(this).val().length >= 255
-            && e.keyCode != 32 // space
+            || e.keyCode == 32 // space
         ) {
             e.preventDefault();
             // $(this).val(100);
