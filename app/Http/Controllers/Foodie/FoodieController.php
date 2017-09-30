@@ -668,6 +668,7 @@ class FoodieController extends Controller
             foreach ($otherAllergiesArray as $key => $value) {
 
                 $allrgVal=strtolower($value);
+                dd($allrgVal);
                 /*~~~ eloquent model method for checking existence ~~~*/
                 if (Allergy::where([
                         ['foodie_id', '=', Auth::guard('foodie')->user()->id],
