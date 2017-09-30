@@ -722,17 +722,17 @@ class FoodieController extends Controller
                     $allergy->allergy = $key;
                     $allergy->save();
 
-                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->select('ingredient')->first();
+                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
 //                    dd($pref);
-                    if($pref->count() && ($pref!=null || $pref!="")){
-                        if($key=='chicken' && $pref=='chicken'){
+                    if($pref->count() && ($pref->ingredient!=null || $pref->ingredient!="")){
+                        if($key=='chicken' && $pref->ingredient=='chicken'){
                             $pref->delete();
-                        }else if($key=='beef' && $pref=='beef'){
+                        }else if($key=='beef' && $pref->ingredient=='beef'){
                             dd('beef');
                             $pref->delete();
-                        }else if($key=='pork' && $pref=='pork'){
+                        }else if($key=='pork' && $pref->ingredient=='pork'){
                             $pref->delete();
-                        }else if($key=='seafood' && $pref=='seafood'){
+                        }else if($key=='seafood' && $pref->ingredient=='seafood'){
                             $pref->delete();
                         }
                     }
