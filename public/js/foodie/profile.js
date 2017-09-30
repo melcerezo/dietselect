@@ -302,7 +302,7 @@ $(document).ready(function() {
             // $(this).val(100);
         }
     });
-    $('#address-remarks').on('keydown keyup', function(e) {
+    $('#allrg-others').on('keydown keyup', function(e) {
         if ($(this).val().length >= 255
             && e.keyCode != 32 // space
         ) {
