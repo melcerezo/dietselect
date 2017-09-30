@@ -293,8 +293,13 @@ $(document).ready(function() {
         }
     });
     $('#address-remarks').on('keydown keyup', function(e) {
-        if ($(this).val().length >= 255) {
+        if ($(this).val().length >= 255
+            && e.keyCode != 46 // delete
+            && e.keyCode != 8 // backspace
+            && e.keyCode != 9 // tab
+        ) {
             e.preventDefault();
+            // $(this).val(100);
         }
     });
 
