@@ -667,18 +667,34 @@ class FoodieController extends Controller
 
             foreach ($otherAllergiesArray as $key => $value) {
 
+                $allrgVal=strtolower($value);
                 /*~~~ eloquent model method for checking existence ~~~*/
                 if (Allergy::where([
                         ['foodie_id', '=', Auth::guard('foodie')->user()->id],
-                        ['allergy', '=', $value]
+                        ['allergy', '=', $allrgVal]
                     ])->count() == 0
                 ) {
 
                     /*~~~ eloquent model method for getting allergies ~~~*/
                     $allergy = new Allergy;
                     $allergy->foodie_id = Auth::guard('foodie')->user()->id;
-                    $allergy->allergy = $value;
+                    $allergy->allergy = $allrgVal;
                     $allergy->save();
+
+                    $pref = FoodiePreference::where('foodie_id','=', Auth::guard('foodie')->user()->id)->first();
+
+                    if($pref->count()){
+                        if($allrgVal=='chicken' && $pref=='chicken'){
+                            $pref->delete();
+                        }else if($allrgVal=='beef' && $pref=='beef'){
+                            $pref->delete();
+                        }else if($allrgVal=='pork' && $pref=='pork'){
+                            $pref->delete();
+                        }else if($allrgVal=='seafood' && $pref=='seafood'){
+                            $pref->delete();
+                        }
+                    }
+
 
                     //print_r($allergy);die('set the allergy model');
                 }
@@ -701,6 +717,7 @@ class FoodieController extends Controller
                     $allergy->foodie_id = Auth::guard('foodie')->user()->id;
                     $allergy->allergy = $key;
                     $allergy->save();
+
 
                     //print_r($allergy);die('set the allergy model');
                 }
