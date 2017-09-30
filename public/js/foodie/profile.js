@@ -292,6 +292,11 @@ $(document).ready(function() {
             }
         }
     });
+    $('#address-remarks').on('keydown keyup', function(e) {
+        if ($(this).val().length >= 255) {
+            e.preventDefault();
+        }
+    });
 
     var $photoInput = $('#avatar'),
         $imgContainer = $('#imgContainer');
