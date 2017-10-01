@@ -26,8 +26,6 @@ $(document).ready(function () {
             var valData = response;
             // console.log(valData);
             var groupArray = [];
-            $('button.custButton').attr('disabled', false);
-            $('button.custButton').removeClass('disabled');
             $('#h'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
                 groupArray.push(valData[i].ingredient_group);
