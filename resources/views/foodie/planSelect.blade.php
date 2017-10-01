@@ -110,7 +110,9 @@
                         </div>
                         <ul>
                             @foreach($suggested as $sug)
-                                <li>{{$sug['name']}}</li>
+                                <li class="sugLink">
+                                    <a href="{{route('foodie.plan.standard', $sug['id'])}}">{{$sug['name']}}</a>
+                                </li>
                             @endforeach
                         </ul>
                     @endif
