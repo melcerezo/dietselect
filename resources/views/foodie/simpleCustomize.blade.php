@@ -958,7 +958,7 @@
                                             <script>
                                                 $(document).ready(function () {
                                                     var validate = false;
-                                                    $('#editMeal{{$id}} :input').each(function () {
+                                                    $('#editMeal{{$id}} input').each(function () {
                                                         if($(this).attr('checked')){
                                                             validate = true;
                                                         }
