@@ -10,7 +10,7 @@ $(document).ready(function () {
     $('button.custButton').attr('disabled', true);
     $('button.custButton').addClass('disabled');
     var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
-    allergyArray =[];
+    var allergyArray =[];
     $.each(allergiesList,function () {
         allergyArray.push($(this).attr('allergy'));
     });
@@ -25,6 +25,16 @@ $(document).ready(function () {
         ingreds.done(function(response) {
             var valData = response;
             // console.log(valData);
+            var validate = false;
+            $('#editMeal'+id+':input').each(function () {
+                if($(this).attr('checked')){
+                    validate = true;
+                }
+            });
+            if(validate){
+                $('#editMeal'+id).find('button.custButton').attr('disabled', false);
+                $('#editMeal'+id).find('button.custButton').removeClass('disabled');
+            }
             var groupArray = [];
             $('#h'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
@@ -349,16 +359,7 @@ $(document).ready(function () {
 
 
 
-            var validate = false;
-            $('#editMeal'+id+' :input').each(function () {
-                if($(this).attr('checked')){
-                    validate = true;
-                }
-            });
-            if(validate){
-                $('#editMeal'+id).find('button.custButton').attr('disabled', false);
-                $('#editMeal'+id).find('button.custButton').removeClass('disabled');
-            }
+
 
             // if($.inArray("~0100~",groupArray)!=-1 && dairyType.has('div').length==0){
             //     meatType.append('<div>' +
