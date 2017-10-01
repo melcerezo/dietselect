@@ -7,6 +7,7 @@ use App\Chat;
 use App\ChefCustomizedIngredientMeal;
 use App\ChefCustomizedMeal;
 use App\CustomPlan;
+use App\FoodiePreference;
 use App\Notification;
 use App\CustomizedIngredientMeal;
 use App\CustomizedMeal;
@@ -56,6 +57,60 @@ class FoodieMealPlanController extends Controller
         $plans = Plan::where('created_at','>',$lastSaturday)->where('lockPlan','=',1)->where('is_banned','=',0)->get();
         $chats= Chat::where('foodie_id','=',$foodie)->where('foodie_can_see','=',1)->latest($column = 'updated_at')->get();
 
+        $suggested = array();
+        $foodiePreferenceCount = FoodiePreference::where('foodie_id', '=', $foodie)->count();
+        $foodiePreference = '';
+        if ($foodiePreferenceCount > 0) {
+            $foodiePreference = FoodiePreference::where('foodie_id', '=', $foodie)->first()->ingredient;
+        }
+
+        foreach ($plans as $plan) {
+            $chicken = 0;
+            $beef = 0;
+            $pork = 0;
+            $seafood = 0;
+
+            $mealPlans = MealPlan::where('plan_id', '=', $plan->id)->get();
+            foreach ($mealPlans as $mealPlan) {
+                $mainIngredient = Str::lower($mealPlan->chefcustomize->main_ingredient);
+
+//                echo $mainIngredient . ' ';
+
+                switch ($mainIngredient) {
+                    case 'chicken':
+                        $chicken += 1;
+                        break;
+                    case 'beef':
+                        $beef += 1;
+                        break;
+                    case 'pork':
+                        $pork += 1;
+                        break;
+                    case 'seafood':
+                        $seafood += 1;
+                        break;
+                }
+            }
+
+            if ($chicken > $beef && $chicken > $pork && $chicken > $seafood) {
+                if ($foodiePreference == 'chicken') {
+                    $suggested[] = array('id' => $plan->id, 'name' => $plan->plan_name);
+                }
+            } else if ($beef > $chicken && $beef > $pork && $beef > $seafood) {
+                if ($foodiePreference == 'beef') {
+                    $suggested[] = array('id' => $plan->id, 'name' => $plan->plan_name);
+                }
+            } else if ($pork > $beef && $pork > $chicken && $pork > $seafood) {
+                if ($foodiePreference == 'pork') {
+                    $suggested[] = array('id' => $plan->id, 'name' => $plan->plan_name);
+                }
+            } else if ($seafood > $beef && $seafood > $pork && $seafood > $chicken) {
+                if ($foodiePreference == 'seafood') {
+                    $suggested[] = array('id' => $plan->id, 'name' => $plan->plan_name);
+                }
+            }
+        } // END OF DEADLINE SATURDAY @ 3 PM
+
 //        dd($this->smsIsUnverified());
 
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
@@ -99,6 +154,7 @@ class FoodieMealPlanController extends Controller
             'chefCurrent'=>$chefCurrent,
             'notifications'=>$notifications,
             'unreadNotifications'=>$unreadNotifications,
+            'suggested'=>$suggested
         ]);
     }
 

@@ -104,6 +104,11 @@
                         @endforeach
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
+                    <ul>
+                        @foreach($suggested as $sug)
+                            <li>{{$sug->name}}</li>
+                        @endforeach
+                    </ul>
                     {{--<div class="row">--}}
                         {{--@if(count($incompArray)>0)--}}
                             {{--<div>--}}
