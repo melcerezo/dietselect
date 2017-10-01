@@ -365,6 +365,9 @@ $(document).ready(function () {
                     {
                         $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
                         $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
+                    }else if($("#editMeal"+formId+" :input:checked").length < 1){
+                        ('#editMeal'+formId).find('button.custButton').attr('disabled', true);
+                        $('#editMeal'+formId).find('button.custButton').addClass('disabled');
                     }
                 });
             }
