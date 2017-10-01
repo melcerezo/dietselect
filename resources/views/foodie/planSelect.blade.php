@@ -105,6 +105,9 @@
                         <li class="chef valign-wrapper"><div class="allName" href="#">All</div></li>
                     </ul>
                     @if(count($suggested)>0)
+                        <div class="orange-text text-darken-2" style="border-left: 4px solid #f57c00; padding-left: 5px;">
+                            <span style="font-size: 20px;">SUGGESTED PLANS</span>
+                        </div>
                         <ul>
                             @foreach($suggested as $sug)
                                 <li>{{$sug['name']}}</li>
