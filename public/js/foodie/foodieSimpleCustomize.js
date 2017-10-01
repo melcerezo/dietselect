@@ -351,7 +351,7 @@ $(document).ready(function () {
 
             var validate = false;
             $('#editMeal'+formId+' :input').each(function () {
-                console.log($(this).attr('name'));
+                // console.log($(this).attr('name'));
                 if($(this).attr('checked')){
                     validate = true;
                 }
@@ -359,6 +359,14 @@ $(document).ready(function () {
             if(validate){
                 $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
                 $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
+            }else{
+                $("#editMeal"+formId+" :input").change(function () {
+                    if ($("#editMeal"+formId+" :input:checked").length > 0)
+                    {
+                        $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
+                        $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
+                    }
+                });
             }
 
 
