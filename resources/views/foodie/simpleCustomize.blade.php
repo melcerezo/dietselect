@@ -40,7 +40,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -61,7 +61,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -82,7 +82,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -103,7 +103,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -124,7 +124,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'MO' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -152,7 +152,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -173,7 +173,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -194,7 +194,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -215,7 +215,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -236,7 +236,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TU' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -264,7 +264,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -285,7 +285,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -306,7 +306,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -327,7 +327,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -348,7 +348,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'WE' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -406,7 +406,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -427,7 +427,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -448,7 +448,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -469,7 +469,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -490,7 +490,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'TH' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -518,7 +518,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -539,7 +539,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -560,7 +560,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -581,7 +581,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -602,7 +602,7 @@
                         <div class="mlCnt">
                             @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                 @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'FR' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                    <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                        class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                     <br />
                                     <div id="cu{{$id}}">
@@ -631,7 +631,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Breakfast')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -652,7 +652,7 @@
                                 <div class="mlCnt">
                                     @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                         @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'MorningSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                            <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                                class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                             <br />
                                             <div id="cu{{$id}}">
@@ -673,7 +673,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Lunch')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">
@@ -694,7 +694,7 @@
                                 <div class="mlCnt">
                                     @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                         @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'AfternoonSnack')
-                                            <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                            <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                                class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                             <br />
                                             <div id="cu{{$id}}">
@@ -715,7 +715,7 @@
                             <div class="mlCnt">
                                 @foreach($simpleCustomMeals as $id =>$simpleCustomMeal)
                                     @if($simpleCustomMeal->chef_customized_meal->mealplans->day == 'SA' && $simpleCustomMeal->chef_customized_meal->mealplans->meal_type == 'Dinner')
-                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}"
+                                        <a data-meal-active="#viewMeal-{{$id}}" href="#editMeal-{{$id}}" data-id="{{$simpleCustomMeal->chef_customized_meal->id}}" data-form-id="{{$id}}"
                                            class="mealLink waves-effect waves-light modal-trigger" data-cId="cu{{$id}}">{{$simpleCustomMeal->chef_customized_meal->description}}</a>
                                         <br />
                                         <div id="cu{{$id}}">

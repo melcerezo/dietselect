@@ -17,6 +17,7 @@ $(document).ready(function () {
     console.log(allergyArray);
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
+        var formId = $(this).attr('data-form-id');
         var ingreds = ingredAjax(id);
 
         // ingreds.fail(console.log(ingreds.statusCode()));
@@ -26,15 +27,15 @@ $(document).ready(function () {
             var valData = response;
             // console.log(valData);
             var validate = false;
-            $('#editMeal'+id+':input').each(function () {
+            $('#editMeal'+formId+':input').each(function () {
                 console.log($(this).attr('name'));
                 if($(this).attr('checked')){
                     validate = true;
                 }
             });
             if(validate){
-                $('#editMeal'+id).find('button.custButton').attr('disabled', false);
-                $('#editMeal'+id).find('button.custButton').removeClass('disabled');
+                $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
+                $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
             }
             var groupArray = [];
             $('#h'+id).empty();
