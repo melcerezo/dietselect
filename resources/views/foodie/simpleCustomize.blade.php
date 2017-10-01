@@ -963,7 +963,7 @@
                                                             validate = true;
                                                         }
                                                     });
-                                                    if(!validate){
+                                                    if(validate){
                                                         $('#editMeal{{$id}}').find('button.custButton').attr('disabled', false);
                                                         $('#editMeal{{$id}}').find('button.custButton').removeClass('disabled');
                                                     }
