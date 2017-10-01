@@ -273,6 +273,18 @@
                                                             <label for="address-remarks{{$address->id}}">Address Remarks</label>
                                                         </div>
                                                     </div>
+                                                    <script>
+                                                        $('#address-remarks{{$address->id}}').on('keydown keyup', function(e) {
+                                                            if ($(this).val().length >= 255
+                                                                    && e.keyCode != 46 // delete
+                                                                    && e.keyCode != 8 // backspace
+                                                                    && e.keyCode != 9 // tab
+                                                            ) {
+                                                                e.preventDefault();
+                                                                // $(this).val(100);
+                                                            }
+                                                        });
+                                                    </script>
                                                 </div>
                                                 <div class="modal-footer">
                                                     <input type="submit" class="hidden"/>
