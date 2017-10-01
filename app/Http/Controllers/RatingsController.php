@@ -72,7 +72,7 @@ class RatingsController extends Controller
                             $orderType = "Customized";
                         }
 
-                        $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,
+                        $ordersRatingChef[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'plan_id' => $orderItem->plan_id,'created_at'=>$orderItem->created_at,
                             'plan' => $planName, 'chef' => $chefName, 'type' => $orderType, 'quantity' => $orderItem->quantity, 'price' => 'PHP' . $orderItem->price);
                     }else if($rating->is_rated==1){
                         $planName = "";
