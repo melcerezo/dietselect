@@ -26,17 +26,7 @@ $(document).ready(function () {
         ingreds.done(function(response) {
             var valData = response;
             // console.log(valData);
-            var validate = false;
-            $('#editMeal'+formId+' :input').each(function () {
-                console.log($(this).attr('name'));
-                if($(this).attr('checked')){
-                    validate = true;
-                }
-            });
-            if(validate){
-                $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
-                $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
-            }
+
             var groupArray = [];
             $('#h'+id).empty();
             for(var i=0,l=valData.length;i<l;i++){
@@ -359,7 +349,17 @@ $(document).ready(function () {
 
             }
 
-
+            var validate = false;
+            $('#editMeal'+formId+' :input').each(function () {
+                console.log($(this).attr('name'));
+                if($(this).attr('checked')){
+                    validate = true;
+                }
+            });
+            if(validate){
+                $('#editMeal'+formId).find('button.custButton').attr('disabled', false);
+                $('#editMeal'+formId).find('button.custButton').removeClass('disabled');
+            }
 
 
 
