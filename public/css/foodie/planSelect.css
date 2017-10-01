@@ -39,9 +39,11 @@ div.plSlCnt{
 
 .chefName,.allName { cursor: pointer; }
 
-.chef:hover,.sugLink:hover{ border: 1px solid #f57c00; color: #f57c00;}
+.chef:hover{ border: 1px solid #f57c00; color: #f57c00;}
+.sugLink:hover{ border: 1px solid #f57c00; color: #f57c00; }
 .simpleLink:hover{ border: 1px solid #f57c00 !important;  }
-.simpleLink:hover a,.sugLink:hover a{ color: #f57c00; }
+.simpleLink:hover a{ color: #f57c00; }
+.sugLink:hover a{ color: #f57c00; }
 .deleteSimpleLink{ visibility: hidden; }
 
 
