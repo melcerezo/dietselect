@@ -107,7 +107,7 @@
                     @if(count($suggested)>0)
                         <ul>
                             @foreach($suggested as $sug)
-                                <li>{{$sug->name}}</li>
+                                <li>{{$sug['name']}}</li>
                             @endforeach
                         </ul>
                     @endif
