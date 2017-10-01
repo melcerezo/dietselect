@@ -955,20 +955,20 @@
                                             <div style="margin-top: 10px;">
                                                 <button class="custButton btn orange darken-2 waves-effect waves-light">Customize</button>
                                             </div>
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var validate = false;
-                                                    $('#editMeal{{$id}} input').each(function () {
-                                                        if($(this).attr('checked')){
-                                                            validate = true;
-                                                        }
-                                                    });
-                                                    if(validate){
-                                                        $('#editMeal{{$id}}').find('button.custButton').attr('disabled', false);
-                                                        $('#editMeal{{$id}}').find('button.custButton').removeClass('disabled');
-                                                    }
-                                                });
-                                            </script>
+                                            {{--<script>--}}
+                                                {{--$(document).ready(function () {--}}
+                                                    {{--var validate = false;--}}
+                                                    {{--$('#editMeal{{$id}} input').each(function () {--}}
+                                                        {{--if($(this).attr('checked')){--}}
+                                                            {{--validate = true;--}}
+                                                        {{--}--}}
+                                                    {{--});--}}
+                                                    {{--if(validate){--}}
+                                                        {{--$('#editMeal{{$id}}').find('button.custButton').attr('disabled', false);--}}
+                                                        {{--$('#editMeal{{$id}}').find('button.custButton').removeClass('disabled');--}}
+                                                    {{--}--}}
+                                                {{--});--}}
+                                            {{--</script>--}}
                                         </form>
                                     </div>
                                 </div>

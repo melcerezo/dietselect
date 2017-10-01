@@ -349,6 +349,16 @@ $(document).ready(function () {
 
 
 
+            var validate = false;
+            $('#editMeal'+id+' :input').each(function () {
+                if($(this).attr('checked')){
+                    validate = true;
+                }
+            });
+            if(validate){
+                $('#editMeal'+id).find('button.custButton').attr('disabled', false);
+                $('#editMeal'+id).find('button.custButton').removeClass('disabled');
+            }
 
             // if($.inArray("~0100~",groupArray)!=-1 && dairyType.has('div').length==0){
             //     meatType.append('<div>' +
