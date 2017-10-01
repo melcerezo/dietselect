@@ -27,7 +27,7 @@ $(document).ready(function () {
             var valData = response;
             // console.log(valData);
             var validate = false;
-            $('#editMeal'+formId+':input').each(function () {
+            $('#editMeal'+formId+' :input').each(function () {
                 console.log($(this).attr('name'));
                 if($(this).attr('checked')){
                     validate = true;
