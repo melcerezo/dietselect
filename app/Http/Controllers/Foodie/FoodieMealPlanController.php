@@ -112,7 +112,7 @@ class FoodieMealPlanController extends Controller
             }
         } // END OF DEADLINE SATURDAY @ 3 PM
 
-        dd($foodiePreference);
+//        dd($foodiePreference);
 //        dd($this->smsIsUnverified());
 
         $notifications=Notification::where('receiver_id','=',$foodie)->where('receiver_type','=','f')->get();
