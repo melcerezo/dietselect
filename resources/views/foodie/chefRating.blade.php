@@ -59,7 +59,7 @@
                             <li class="collection-item">
                                 <div class="left col s12" style="margin: 10px 5px;">
                                     <span style="font-size: 20px;">{{ $order['plan'].' '.$order['type'] }}</span>
-                                    <span class="grey-text lighten-1" style="margin-left: 5px;">{{date_format($order['created_at'],'m/d/Y')}}</span>
+                                    <span class="grey-text lighten-1" style="margin-left: 5px; font-size: 14px;">{{date_format($order['created_at'],'m/d/Y')}}</span>
                                 </div>
                                 <div class="card-content">
                                     <div>Please Rate the Plan!</div>
