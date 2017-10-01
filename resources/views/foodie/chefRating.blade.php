@@ -136,6 +136,7 @@
                             <div class="card-panel">
                                 <div style="margin: 10px 5px;">
                                     <span style="font-size: 20px;"><img style="width: 100px;" src="/img/{{ $order['picture'] }}"><span style="margin-left: 10px;">{{ $order['plan'].' '.$order['type'] }}</span></span>
+                                    <span class="grey-text lighten-1" style="margin-left: 5px; font-size: 14px;">{{date_format($order['created_at'],'m/d/Y')}}</span>
                                 </div>
                                 <div>
                                     <span>Rating:</span>
