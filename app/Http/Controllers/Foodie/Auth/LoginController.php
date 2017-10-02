@@ -99,7 +99,7 @@ class LoginController extends Controller
 
     public function getLogin()
     {
-        return redirect('/');
+        return redirect()->route('foodie.dashboard');
     }
 
     /**
