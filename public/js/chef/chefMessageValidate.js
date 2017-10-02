@@ -88,7 +88,7 @@ $(document).ready(function () {
                 '</span>');
         }else if($.trim(msgVal).length>0 && $('#foodieMessageReply').valid()){
             $('div.error-reply-message').empty();
-            $('form#foodieMessageReply').submit();
+            $('form#chefMessageReply').submit();
         }
     });
 });
