@@ -75,7 +75,7 @@ $(document).ready(function () {
         }
     });
 
-    $('#replyMessage').change(function () {
+    $('#replyMessage').on('keyup keydown',function () {
         var msgVal = $('#replyMessage').val();
         if($.trim(msgVal).length==0){
             $('div.error-reply-message').empty();
