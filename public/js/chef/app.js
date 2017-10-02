@@ -99,6 +99,7 @@ $(document).ready(function() {
                     $('#notifBadge').append(notifBdge);
                 }
                 $('#clearAll').click(function () {
+                    console.log('clearing');
                     var clearNotifs= clearAllNotif();
                     clearNotifs.done(function () {
                         console.log('cleared');
