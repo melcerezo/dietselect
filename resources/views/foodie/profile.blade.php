@@ -136,7 +136,7 @@
                                         <span>{{'No Addresses Added'}}</span>
                                     </div>
                                 @else
-                                    @foreach($addresses as $address)
+                                    @foreach($addresses as $id=>$address)
                                         <div class="divider"></div>
                                         <div class="prfCntInf">
                                             <div class="row prfCntRw">
@@ -269,9 +269,9 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <textarea id="address-remarks{{$address->id}}" name="remarks" class="materialize-textarea" data-error=".error-remarks" length="255">{{$address->remarks}}</textarea>
+                                                            <textarea id="address-remarks{{$address->id}}" name="remarks" class="materialize-textarea" data-error=".error-remarks{{$address->id}}" length="255">{{$address->remarks}}</textarea>
                                                             <label for="address-remarks{{$address->id}}">Address Remarks</label>
-                                                            <div class="error-remarks err">
+                                                            <div class="error-remarks{{$address->id}} err">
                                                             </div>
                                                         </div>
                                                     </div>
