@@ -51,7 +51,6 @@ $(document).ready(function () {
             $('form#foodieMessageSend').valid();
         }else if($.trim(msgVal).length>0 && $('#foodieMessageSend').valid()){
             $('div.error-message').empty();
-            $('#replySubject').prop('disabled', false);
             $('form#foodieMessageSend').submit();
         }
     });
@@ -91,6 +90,7 @@ $(document).ready(function () {
                 '</span>');
         }else if($.trim(msgVal).length>0 && $('#foodieMessageReply').valid()){
             $('div.error-reply-message').empty();
+            $('#replySubject').prop('disabled', false);
             $('form#foodieMessageReply').submit();
         }
     });
