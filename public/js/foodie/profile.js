@@ -120,6 +120,9 @@ $(document).ready(function() {
             },
             type: {
                 required: true
+            },
+            remarks:{
+                maxlength: 255
             }
         },
         messages: {
@@ -137,6 +140,9 @@ $(document).ready(function() {
             },
             type: {
                 required: "Please select an address type."
+            },
+            remarks: {
+                maxlength:"No more than 255 characters please."
             }
         },
         errorElement : 'div',

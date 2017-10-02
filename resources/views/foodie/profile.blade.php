@@ -269,8 +269,10 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <textarea id="address-remarks{{$address->id}}" name="remarks" class="materialize-textarea" length="255">{{$address->remarks}}</textarea>
+                                                            <textarea id="address-remarks{{$address->id}}" name="remarks" class="materialize-textarea" data-error=".error-remarks" length="255">{{$address->remarks}}</textarea>
                                                             <label for="address-remarks{{$address->id}}">Address Remarks</label>
+                                                            <div class="error-remarks err">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <script>
@@ -540,8 +542,10 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <textarea id="address-remarks" name="remarks" class="materialize-textarea" length="255" value=""></textarea>
+                                    <textarea id="address-remarks" name="remarks" class="materialize-textarea" data-error=".error-remarks" length="255" value=""></textarea>
                                     <label for="address-remarks" class="active">Address Remarks</label>
+                                    <div class="error-remarks err">
+                                    </div>
                                 </div>
                             </div>
                         </div>
