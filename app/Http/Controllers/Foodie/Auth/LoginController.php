@@ -97,6 +97,11 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+    public function getLogin()
+    {
+        return redirect('/');
+    }
+
     /**
      * Send the response after the user was authenticated.
      *
