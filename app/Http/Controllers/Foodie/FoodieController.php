@@ -550,7 +550,7 @@ class FoodieController extends Controller
         }
         $foodie->save();
 
-        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully updated the info!']);
 
     }
 
@@ -585,7 +585,7 @@ class FoodieController extends Controller
 
 
         ]);
-        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully updated the info!']);
     }
 
     public function getUserName($name)
@@ -630,7 +630,7 @@ class FoodieController extends Controller
                 ]
             );
 
-        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully updated the info!']);
 
 
     }
@@ -640,7 +640,7 @@ class FoodieController extends Controller
         DB::table('foodie_address')
             ->where('id', '=', $id)
             ->delete();
-        return redirect($this->redirectTo)->with(['status' => 'Successfully deleted the address!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully deleted the address!']);
 
     }
 
@@ -757,7 +757,7 @@ class FoodieController extends Controller
         }
 
 
-        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully updated the info!']);
     }
 
     public function saveProfilePreferences(Request $request)
@@ -784,7 +784,7 @@ class FoodieController extends Controller
         }
         $preference->save();
 
-        return redirect($this->redirectTo)->with(['status' => 'Successfully updated the info!']);
+        return redirect()->route('foodie.profile')->with(['status' => 'Successfully updated the info!']);
     }
 
     /**
