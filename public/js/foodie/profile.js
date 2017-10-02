@@ -114,6 +114,9 @@ $(document).ready(function() {
                 required: true,
                 maxlength: 255
             },
+            bldg: {
+                maxlength: 255
+            },
             street: {
                 required: true,
                 maxlength: 255
@@ -126,6 +129,12 @@ $(document).ready(function() {
                 required: true,
                 maxlength: 255
             },
+            company: {
+                maxlength: 255
+            },
+            landmark: {
+                maxlength: 255
+            },
             remarks:{
                 maxlength: 255
             }
@@ -134,6 +143,9 @@ $(document).ready(function() {
             city: {
                 required: "Please select your city.",
                 maxlength:"No more than 255 characters please."
+            },
+            bldg: {
+              maxlength:"No more than 255 characters please."
             },
             unit: {
                 required: "Please enter the condo/apartment unit number or house street number.",
@@ -149,6 +161,12 @@ $(document).ready(function() {
             },
             type: {
                 required: "Please select an address type.",
+                maxlength:"No more than 255 characters please."
+            },
+            company: {
+                maxlength:"No more than 255 characters please."
+            },
+            landmark: {
                 maxlength:"No more than 255 characters please."
             },
             remarks: {
@@ -170,19 +188,33 @@ $(document).ready(function() {
         $(this).validate({
             rules: {
                 city: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 unit: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 street: {
-                    required: true
+                    required: true,
+                    maxlength: 255
+                },
+                bldg: {
+                    maxlength: 255
                 },
                 brgy: {
-                    required: true
+                    required: true,
+                    maxlength: 255
                 },
                 type: {
-                    required: true
+                    required: true,
+                    maxlength: 255
+                },
+                company: {
+                    maxlength: 255
+                },
+                landmark: {
+                    maxlength: 255
                 },
                 remarks:{
                     maxlength: 255
@@ -190,19 +222,33 @@ $(document).ready(function() {
             },
             messages: {
                 city: {
-                    required: "Please select your city."
+                    required: "Please select your city.",
+                    maxlength:"No more than 255 characters please."
                 },
                 unit: {
-                    required: "Please enter the condo/apartment unit number or house street number."
+                    required: "Please enter the condo/apartment unit number or house street number.",
+                    maxlength:"No more than 255 characters please."
                 },
                 street: {
-                    required: "Please enter your street."
+                    required: "Please enter your street.",
+                    maxlength:"No more than 255 characters please."
+                },
+                bldg: {
+                    maxlength:"No more than 255 characters please."
                 },
                 brgy: {
-                    required: "Please enter your Barangay/Village."
+                    required: "Please enter your Barangay/Village.",
+                    maxlength:"No more than 255 characters please."
                 },
                 type: {
-                    required: "Please select an address type."
+                    required: "Please select an address type.",
+                    maxlength:"No more than 255 characters please."
+                },
+                company: {
+                    maxlength:"No more than 255 characters please."
+                },
+                landmark: {
+                    maxlength:"No more than 255 characters please."
                 },
                 remarks: {
                     maxlength:"No more than 255 characters please."
