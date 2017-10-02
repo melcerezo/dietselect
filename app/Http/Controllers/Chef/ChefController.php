@@ -285,4 +285,9 @@ class ChefController extends Controller
 
         return null;
     }
+
+    public function notSave()
+    {
+        return redirect()->route('chef.profile');
+    }
 }

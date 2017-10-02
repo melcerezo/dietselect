@@ -925,5 +925,10 @@ class FoodieController extends Controller
 
         return null;
     }
+
+    public function notSave()
+    {
+        return redirect()->route('foodie.profile');
+    }
 }
 

@@ -46,6 +46,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('dashboard', 'Foodie\FoodieController@index')->name('foodie.dashboard');
     Route::get('profile', 'Foodie\FoodieController@profile')->name('foodie.profile');
     Route::post('profile/coverPhoto', 'Foodie\FoodieController@saveProfileCoverPhoto')->name('foodie.profile.coverPhoto');
+    Route::get('profile/save', 'Foodie\FoodieController@notSave');
     Route::post('profile/save', 'Foodie\FoodieController@saveProfileBasic')->name('foodie.profile.basic');
     Route::post('profile/address', 'Foodie\FoodieController@saveProfileAddress')->name('foodie.profile.address');
     Route::post('profile/address/update/{id}', 'Foodie\FoodieController@updateProfileAddress')->name('foodie.address.update');
@@ -152,6 +153,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
 
     Route::get('profile', 'Chef\ChefController@profile')->name('chef.profile');
     Route::post('profile/coverPhoto', 'Chef\ChefController@saveProfileCoverPhoto')->name('chef.profile.coverPhoto');
+    Route::get('profile/save', 'Chef\ChefController@notSave');
     Route::post('profile/save', 'Chef\ChefController@saveProfileBasic')->name('chef.profile.basic');
 
     Route::get('verify', 'Chef\Auth\VerificationController@verifyEmail')->name('chef.verify');
