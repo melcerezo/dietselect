@@ -88,6 +88,7 @@ $(document).ready(function () {
                 '</span>');
         }else if($.trim(msgVal).length>0 && $('#chefMessageReply').valid()){
             $('div.error-reply-message').empty();
+            $('#replySubject').prop('disabled', false);
             $('form#chefMessageReply').submit();
         }
     });
