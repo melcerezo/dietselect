@@ -80,6 +80,18 @@ $(document).ready(function() {
             $('#notifBadge').append(notifBdge);
         }
 
+        $('#clearAll').click(function () {
+            console.log('clearing');
+            var clearNotifs= clearAllNotif();
+            clearNotifs.done(function () {
+                console.log('cleared');
+                $.each(notifs,function(index) {
+                    $('#chefNotificationDropdown').children().removeClass('activeNotif');
+                });
+                $('#notifBadge').remove();
+            });
+        });
+
         $('.notifLink').on('click', function(){
             var notifId=$(this).attr("data-id");
             console.log(notifId);
@@ -98,17 +110,6 @@ $(document).ready(function() {
                 if(notifCount>0){
                     $('#notifBadge').append(notifBdge);
                 }
-                $('#clearAll').click(function () {
-                    console.log('clearing');
-                    var clearNotifs= clearAllNotif();
-                    clearNotifs.done(function () {
-                        console.log('cleared');
-                        $.each(notifs,function(index) {
-                            $('#chefNotificationDropdown').children().removeClass('activeNotif');
-                        });
-                        $('#notifBadge').remove();
-                    });
-                });
             });
         });
 
