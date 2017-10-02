@@ -19,6 +19,16 @@ $(document).ready(function() {
             $('#website').val('');
         }
     });
+
+    $.validator.addMethod('minImageWidth', function(value, element, minWidth) {
+        return ($(element).data('imageWidth') || 0) > minWidth;
+    }, function(minWidth, element) {
+        var imageWidth = $(element).data('imageWidth');
+        return (imageWidth)
+            ? ("Your image's width must be greater than " + minWidth + "px")
+            : "Selected file is not an image.";
+    });
+
     $('form#basic-profile').validate({
         rules: {
             company_name: {
@@ -40,7 +50,8 @@ $(document).ready(function() {
                 minlength: 10
             },
             avatar:{
-                accept: true
+                accept: true,
+                minImageWidth:200
             }
 
         },
@@ -80,36 +91,57 @@ $(document).ready(function() {
         }
     });
 
-    // var allergiesList = JSON.parse(allergies.replace(/&quot;/g,'"'));
-    // var checkboxValues = [];
+    var $photoInput = $('#avatar'),
+        $imgContainer = $('#imgContainer');
 
+    $('#avatar').change(function() {
+        $photoInput.removeData('imageWidth');
+        $imgContainer.hide().empty();
 
-    // $('input.allergyCheckbox:checkbox').each(function () {
-    //     var $this=$(this);
-    //     checkboxValues.push($(this).attr('name'));
-    //     $.each(allergiesList,function () {
-    //         if($this.attr('name')==$(this).attr('allergy')){
-    //             // console.log($(this).attr('allergy'));
-    //             $this.prop('checked',true);
-    //         }
-    //     });
-    // });
-    // console.log(checkboxValues);
-    // var otherValues=[];
-    // $.each(allergiesList, function () {
-    //     // console.log($(this).attr('allergy'));
-    //     if($.inArray($(this).attr('allergy'), checkboxValues) === -1){
-    //         otherValues.push($(this).attr('allergy'));
-    //     }
-    // });
-    // console.log(otherValues);
-    // var lengthOtherValues = otherValues.length;
-    // $.each(otherValues, function (index,element) {
-    //     console.log(element);
-    //     if(index != (lengthOtherValues - 1)){
-    //         $('#allrg-others').val($('#allrg-others').val()+element+ ',');
-    //     }else{
-    //         $('#allrg-others').val($('#allrg-others').val()+element);
-    //     }
-    // });
+        var file = this.files[0];
+
+        if (file.type.match(/image\/.*/)) {
+            // $submitBtn.attr('disabled', true);
+
+            var reader = new FileReader();
+
+            reader.onload = function() {
+                var $img = $('<img />').attr({ src: reader.result });
+
+                $img.on('load', function() {
+                    $imgContainer.append($img).show();
+                    var imageWidth = $img.width();
+                    $photoInput.data('imageWidth', imageWidth);
+                    if (imageWidth < 200) {
+                        $('#avatarBefore').show();
+                        $imgContainer.hide();
+                    } else {
+                        $('#avatarBefore').hide();
+                        $img.css({ width: '200px', height: '200px' });
+                    }
+                    // $submitBtn.attr('disabled', false);
+
+                    validator.element($photoInput);
+                });
+            };
+
+            reader.readAsDataURL(file);
+        } else {
+            validator.element($photoInput);
+        }
+    });
+
+    $('#prfSvBtn').on('click',function () {
+        var fileInput = $('#basic-profile').find("input[type=file]")[0],
+            file = fileInput.files && fileInput.files[0];
+        if (!(file)) {
+            $('#avatar').rules('remove', 'minImageWidth');
+        }
+
+        if($('#basic-profile').valid()){
+            $('#basic-profile').submit();
+        }
+
+    });
+
 });
