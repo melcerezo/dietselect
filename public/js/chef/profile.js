@@ -134,6 +134,7 @@ $(document).ready(function() {
     $('#prfSvBtn').on('click',function () {
         var fileInput = $('#basic-profile').find("input[type=file]")[0],
             file = fileInput.files && fileInput.files[0];
+        console.log(file);
         if (!(file)) {
             $('#avatar').rules('remove', 'minImageWidth');
         }
