@@ -56,6 +56,7 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
+        dd('post route');
         if(!($request->has('_token'))){
             dd('no request');
         }
