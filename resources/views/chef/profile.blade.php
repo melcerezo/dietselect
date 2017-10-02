@@ -156,11 +156,12 @@
                 <p>Edit your Company Profile to let your foodies get to know you!</p>
 
                     <div class="row">
-                            <div id="avatarBefore" class="col s4">
-                                <img src="/img/{{ $chef->avatar }}"
-                                style="width:200px; height:200px; float:left; margin-right: 25px;"
-                                class="img img-thumbnail">
-                                <br>
+                            <div  class="col s4">
+                                <div id="avatarBefore">
+                                    <img src="/img/{{ $chef->avatar }}"
+                                    style="width:200px; height:200px; float:left; margin-right: 25px;"
+                                    class="img img-thumbnail">
+                                </div>
                                 <div id="imgContainer">
                                 </div>
                                 <label for="profile" style="margin-left: 30px;">Update Profile Image</label>
