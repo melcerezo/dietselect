@@ -86,7 +86,7 @@ $(document).ready(function () {
                 '<span>' +
                 'Enter a message, please!' +
                 '</span>');
-        }else if($.trim(msgVal).length>0 && $('#foodieMessageReply').valid()){
+        }else if($.trim(msgVal).length>0 && $('#chefMessageReply').valid()){
             $('div.error-reply-message').empty();
             $('form#chefMessageReply').submit();
         }
