@@ -51,6 +51,7 @@ $(document).ready(function () {
             $('form#foodieMessageSend').valid();
         }else if($.trim(msgVal).length>0 && $('#foodieMessageSend').valid()){
             $('div.error-message').empty();
+            $('#replySubject').prop('disabled', false);
             $('form#foodieMessageSend').submit();
         }
     });
