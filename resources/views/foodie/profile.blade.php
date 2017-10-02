@@ -218,8 +218,10 @@
 
                                                         </div>
                                                         <div class="input-field col s6">
-                                                            <input id="address-street{{$address->id}}" name="street" type="text" class="validate" data-error=".error-street{{$address->id}}" value="{{$address->street}}">
+                                                            <input id="address-street{{$address->id}}" name="street" type="text" data-error=".error-add{{$address->id}}" class="validate" data-error=".error-street{{$address->id}}" value="{{$address->street}}">
                                                             <label for="address-street{{$address->id}}">Street<span class="flame-text">*</span></label>
+                                                            <div class="error-add{{$address->id}} err">
+                                                            </div>
                                                         </div>
                                                         <div class="error-street{{$address->id}} err">
 
@@ -227,8 +229,10 @@
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s6">
-                                                            <input id="address-bldg{{$address->id}}" name="bldg" type="text" class="validate" value="{{$address->bldg}}">
+                                                            <input id="address-bldg{{$address->id}}" name="bldg" type="text" data-error=".error-bldg{{$address->id}}" class="validate" value="{{$address->bldg}}">
                                                             <label for="address-bldg{{$address->id}}">Building</label>
+                                                            <div class="error-bldg{{$address->id}} err">
+                                                            </div>
                                                         </div>
                                                         <div class="input-field col s6">
                                                             <input id="address-brgy{{$address->id}}" data-error=".error-brgy{{$address->id}}" name="brgy" type="text" class="validate" value="{{$address->brgy}}">
@@ -257,14 +261,18 @@
                                                             </div>
                                                         </div>
                                                         <div class="input-field col s6">
-                                                            <input id="address-company{{$address->id}}" name="company" type="text" class="validate" value="{{$address->company}}">
+                                                            <input id="address-company{{$address->id}}" name="company" type="text" data-error=".error-company{{$address->id}}" class="validate" value="{{$address->company}}">
                                                             <label for="address-company{{$address->id}}">Company</label>
+                                                            <div class="error-company{{$address->id}} err">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
                                                         <div class="input-field col s12">
-                                                            <input id="address-landmark{{$address->id}}" name="landmark" type="text" class="validate" value="{{$address->landmark}}">
+                                                            <input id="address-landmark{{$address->id}}" name="landmark" type="text" class="validate" data-error=".error-land{{$address->id}}" value="{{$address->landmark}}">
                                                             <label for="address-landmark{{$address->id}}">Landmark</label>
+                                                            <div class="error-land{{$address->id}} err">
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row">
@@ -275,18 +283,18 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <script>
-                                                        $('#address-remarks{{$address->id}}').on('keydown keyup', function(e) {
-                                                            if ($(this).val().length >= 255
-                                                                    && e.keyCode != 46 // delete
-                                                                    && e.keyCode != 8 // backspace
-                                                                    && e.keyCode != 9 // tab
-                                                            ) {
-                                                                e.preventDefault();
-                                                                // $(this).val(100);
-                                                            }
-                                                        });
-                                                    </script>
+                                                    {{--<script>--}}
+                                                        {{--$('#address-remarks{{$address->id}}').on('keydown keyup', function(e) {--}}
+                                                            {{--if ($(this).val().length >= 255--}}
+                                                                    {{--&& e.keyCode != 46 // delete--}}
+                                                                    {{--&& e.keyCode != 8 // backspace--}}
+                                                                    {{--&& e.keyCode != 9 // tab--}}
+                                                            {{--) {--}}
+                                                                {{--e.preventDefault();--}}
+                                                                {{--// $(this).val(100);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--</script>--}}
                                                 </div>
                                                 <div class="modal-footer">
                                                     <input type="submit" class="hidden"/>
@@ -502,8 +510,10 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s6">
-                                    <input id="address-bldg" name="bldg" type="text" class="validate" value="">
+                                    <input id="address-bldg" name="bldg" type="text" data-error=".error-bldg" class="validate" value="">
                                     <label for="address-bldg" class="active">Building</label>
+                                    <div class="error-bldg err">
+                                    </div>
                                 </div>
                                 <div class="input-field col s6">
                                     <input id="address-brgy" name="brgy" type="text" class="validate" data-error=".error-brgy" value="">
@@ -530,14 +540,18 @@
                                     </div>
                                 </div>
                                 <div class="input-field col s6">
-                                    <input id="address-company" name="company" type="text" class="validate" value="">
+                                    <input id="address-company" name="company" type="text" data-error=".error-comp" class="validate" value="">
                                     <label for="address-company" class="active">Company</label>
+                                    <div class="error-comp err">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="address-landmark" name="landmark" type="text" class="validate" value="">
+                                    <input id="address-landmark" name="landmark" type="text" data-error=".error-landmark" class="validate" value="">
                                     <label for="address-landmark" class="active">Landmark</label>
+                                    <div class="error-landmark err">
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">

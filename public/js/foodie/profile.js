@@ -107,19 +107,24 @@ $(document).ready(function() {
     $('form#address').validate({
         rules: {
             city: {
-                required: true
+                required: true,
+                maxlength: 255
             },
             unit: {
-                required: true
+                required: true,
+                maxlength: 255
             },
             street: {
-                required: true
+                required: true,
+                maxlength: 255
             },
             brgy: {
-                required: true
+                required: true,
+                maxlength: 255
             },
             type: {
-                required: true
+                required: true,
+                maxlength: 255
             },
             remarks:{
                 maxlength: 255
@@ -127,19 +132,24 @@ $(document).ready(function() {
         },
         messages: {
             city: {
-                required: "Please select your city."
+                required: "Please select your city.",
+                maxlength:"No more than 255 characters please."
             },
             unit: {
-                required: "Please enter the condo/apartment unit number or house street number."
+                required: "Please enter the condo/apartment unit number or house street number.",
+                maxlength:"No more than 255 characters please."
             },
             street: {
-                required: "Please enter your street."
+                required: "Please enter your street.",
+                maxlength:"No more than 255 characters please."
             },
             brgy: {
-                required: "Please enter your Barangay/Village."
+                required: "Please enter your Barangay/Village.",
+                maxlength:"No more than 255 characters please."
             },
             type: {
-                required: "Please select an address type."
+                required: "Please select an address type.",
+                maxlength:"No more than 255 characters please."
             },
             remarks: {
                 maxlength:"No more than 255 characters please."
@@ -304,16 +314,16 @@ $(document).ready(function() {
             }
         }
     });
-    $('#address-remarks').on('keydown keyup', function(e) {
-        if ($(this).val().length >= 255
-            && e.keyCode != 46 // delete
-            && e.keyCode != 8 // backspace
-            && e.keyCode != 9 // tab
-        ) {
-            e.preventDefault();
-            // $(this).val(100);
-        }
-    });
+    // $('#address-remarks').on('keydown keyup', function(e) {
+    //     if ($(this).val().length >= 255
+    //         && e.keyCode != 46 // delete
+    //         && e.keyCode != 8 // backspace
+    //         && e.keyCode != 9 // tab
+    //     ) {
+    //         e.preventDefault();
+    //         // $(this).val(100);
+    //     }
+    // });
     $('#allrg-others').on('keydown keyup', function(e) {
         if ($(this).val().length >= 255
             || e.keyCode == 32 // space
