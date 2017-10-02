@@ -165,7 +165,7 @@
                                 <div id="imgContainer">
                                 </div>
                                 <label for="profile" style="margin-left: 30px;">Update Profile Image</label>
-                                <input type="file" name="avatar">
+                                <input type="file" id="avatar" name="avatar">
                             </div>
                         <div class="input-field col s12">
                             <input id="company_name" name="company_name" type="text" class="validate" value="{{ $chef->name }}">
