@@ -95,6 +95,7 @@ $(document).ready(function () {
 
         if($.trim(msgVal).length==0){
             $('div.error-reply-message').empty();
+            $('#replySubject').val('');
             $('div.error-reply-message').append(
                 '<span>' +
                 'Enter a message, please!' +
