@@ -98,20 +98,20 @@ $(document).ready(function() {
                 if(notifCount>0){
                     $('#notifBadge').append(notifBdge);
                 }
+                $('#clearAll').click(function () {
+                    var clearNotifs= clearAllNotif();
+                    clearNotifs.done(function () {
+                        $.each(notifs,function(index) {
+                            $('#chefNotificationDropdown').children().removeClass('activeNotif');
+                        });
+                        $('#notifBadge').remove();
+                    });
+                });
             });
         });
 
     });
 
-    $('#clearAll').click(function () {
-        var clearNotifs= clearAllNotif();
-        clearNotifs.done(function () {
-            $.each(notifs,function(index) {
-                $('#chefNotificationDropdown').children().removeClass('activeNotif');
-            });
-            $('#notifBadge').remove();
-        });
-    });
 
     //Increment the idle time counter every minute.
     var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
