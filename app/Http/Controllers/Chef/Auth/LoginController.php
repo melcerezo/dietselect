@@ -98,6 +98,12 @@ class LoginController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
+
+    public function getLogin()
+    {
+        return redirect()->route('chef.dashboard');
+    }
+
     /**
      * Send the response after the user was authenticated.
      *
