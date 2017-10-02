@@ -101,6 +101,7 @@ $(document).ready(function() {
                 $('#clearAll').click(function () {
                     var clearNotifs= clearAllNotif();
                     clearNotifs.done(function () {
+                        console.log('cleared');
                         $.each(notifs,function(index) {
                             $('#chefNotificationDropdown').children().removeClass('activeNotif');
                         });
