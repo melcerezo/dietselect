@@ -129,6 +129,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
 
     Route::get('notifClear','Chef\ChefController@clearNotif')->name('chef.clearNotif');
     Route::get('notifGet', 'Chef\ChefController@getNotif')->name('chef.getNotif');
+    Route::get('notifClearAll','Chef\ChefController@clearNotifAll')->name('chef.clearNotifAll');
     Route::get('login/show', 'Chef\Auth\LoginController@showLoginForm')->name('chef.login.show');
     Route::post('login', 'Chef\Auth\LoginController@login')->name('chef.login');
     Route::post('logout', 'Chef\Auth\LoginController@logout')->name('chef.logout');

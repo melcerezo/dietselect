@@ -265,6 +265,17 @@ class ChefController extends Controller
         return $notifJson;
     }
 
+    public function clearNotifAll()
+    {
+        $chef = Auth::guard('chef')->user()->id;
+        $notifications = Notification::where('receiver_id','=', $chef)->where('receiver_type','=','c')->latest($column='created_at')->take(5)->get();
+        foreach($notifications as $notification){
+            $notification->is_read=1;
+            $notification->save();
+        }
+        return null;
+    }
+
     public function clearNotif()
     {
         $clearId = $_GET['id'];

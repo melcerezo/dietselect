@@ -97,6 +97,7 @@
 
         {{-- Chef Notification Dropdown --}}
         <ul id="chefNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+            <li class="collection-item"><a id="clearAll" href="#">Mark All Read</a></li>
             @unless($notifications->count()>0)
                 <li class="collection-item">
                     <span>No notifications</span>
