@@ -33,6 +33,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('login/show', 'Foodie\Auth\LoginController@showLoginForm')->name('foodie.login.show');
     Route::get('login', 'Foodie\Auth\LoginController@getLogin');
     Route::post('login', 'Foodie\Auth\LoginController@login')->name('foodie.login');
+    Route::get('logout', 'Foodie\Auth\LoginController@getLogin');
     Route::post('logout', 'Foodie\Auth\LoginController@logout')->name('foodie.logout');
     Route::get('logoutAuto', 'Foodie\Auth\LoginController@logoutAuto')->name('foodie.logoutAuto');
 
