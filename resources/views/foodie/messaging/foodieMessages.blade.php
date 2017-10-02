@@ -298,7 +298,7 @@
                     </div>
                 </div>
                 <div>
-                    <div><button type="button" class="replySubmit orange darken-2 btn btn-primary"></button></div>
+                    <div><button type="button" class="replySubmit orange darken-2 btn btn-primary">Reply</button></div>
                 </div>
             </form>
         </div>
