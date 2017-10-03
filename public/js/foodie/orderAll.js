@@ -138,7 +138,10 @@ $(document).ready(function () {
             var id = $(this).attr('data-id');
             $.ajax({
                 url:'/foodie/order/viewSingle/'+ id
+            }).success(function () {
+                window.location.href= url;
             });
+
         });
 });
 
