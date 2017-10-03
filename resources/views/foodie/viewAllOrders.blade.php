@@ -81,7 +81,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div id="dayPick">
+                        <div id="dayPick" class="row">
 
                         </div>
                         <div class="row" id="ordAllContent">
