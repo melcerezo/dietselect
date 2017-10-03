@@ -1085,12 +1085,12 @@ class FoodieOrderPlanController extends Controller
                         } else {
                             $thisInput .= '}';
                         }
-                        $thisInput .= ']';
-                        if (++$i < $orders->count()) {
-                            $thisInput .= '},';
-                        } else {
-                            $thisInput .= '}';
-                        }
+                    }
+                    $thisInput .= ']';
+                    if (++$i < $orders->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
                     }
                 }
                 $thisInput .= ']';
@@ -1182,12 +1182,12 @@ class FoodieOrderPlanController extends Controller
                         } else {
                             $thisInput .= '}';
                         }
-                        $thisInput .= ']';
-                        if (++$i < $orders->count()) {
-                            $thisInput .= '},';
-                        } else {
-                            $thisInput .= '}';
-                        }
+                    }
+                    $thisInput .= ']';
+                    if (++$i < $orders->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
                     }
                 }
                 $thisInput .= ']';
@@ -1279,12 +1279,12 @@ class FoodieOrderPlanController extends Controller
                         } else {
                             $thisInput .= '}';
                         }
-                        $thisInput .= ']';
-                        if (++$i < $orders->count()) {
-                            $thisInput .= '},';
-                        } else {
-                            $thisInput .= '}';
-                        }
+                    }
+                    $thisInput .= ']';
+                    if (++$i < $orders->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
                     }
                 }
                 $thisInput .= ']';
@@ -1376,12 +1376,12 @@ class FoodieOrderPlanController extends Controller
                         } else {
                             $thisInput .= '}';
                         }
-                        $thisInput .= ']';
-                        if (++$i < $orders->count()) {
-                            $thisInput .= '},';
-                        } else {
-                            $thisInput .= '}';
-                        }
+                    }
+                    $thisInput .= ']';
+                    if (++$i < $orders->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
                     }
                 }
                 $thisInput .= ']';
