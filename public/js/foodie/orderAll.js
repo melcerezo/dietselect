@@ -71,7 +71,7 @@ $(document).ready(function () {
         $('#ordCancel').show();
     });
 
-    $('div#datepick').pickadate({
+    $('#datepick').pickadate({
 
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
         clear: 'Clear',
