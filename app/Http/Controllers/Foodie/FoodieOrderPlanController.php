@@ -1001,7 +1001,7 @@ class FoodieOrderPlanController extends Controller
 
         $foodieAddress = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->get();
 
-        $thisInput = '';
+        $thisInput = null;
         if ($type == 1) {
             $i = 0;
             $orders = Order::where('created_at', '>=', $thisDay)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
