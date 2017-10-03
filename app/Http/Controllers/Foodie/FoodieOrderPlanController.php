@@ -994,6 +994,11 @@ class FoodieOrderPlanController extends Controller
         $dr = Carbon::now();
         $endOfMonth = $dr->endOfMonth();
 
+        $dt = Carbon::now();
+        $startOfYear=$ds->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dr->endOfYear();
+
         $foodieAddress = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->get();
 
         $thisInput = '';
@@ -1193,6 +1198,103 @@ class FoodieOrderPlanController extends Controller
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfMonth)
                 ->where('created_at', '<', $endOfMonth)
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+            if ($orders->count() > 0) {
+                $thisInput = '[';
+                foreach ($orders as $order) {
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $order->id . ', ';
+
+                    $orderAddress = '';
+                    if ($order->address_id != null) {
+                        foreach ($foodieAddress as $fAdd) {
+                            if ($fAdd->id == $order->address_id) {
+                                $orderAddress = $fAdd->unit;
+                                if ($fAdd->bldg != '') {
+                                    $orderAddress .= ' ' . $fAdd->bldg . ', ';
+                                }
+                                $orderAddress .= ' ' . $fAdd->street;
+                                $orderAddress .= ', ' . $fAdd->brgy;
+                                $orderAddress .= ' ' . $fAdd->city;
+                            }
+                        }
+                    }
+                    $thisInput .= '"address":"' . $orderAddress . '", ';
+                    $thisInput .= '"total":"PHP ' . number_format($order->total, 2, '.', ',') . '", ';
+                    $is_paid = "";
+                    if ($order->is_paid == 0) {
+                        $is_paid = "Pending";
+                    } elseif ($order->is_paid == 1) {
+                        $is_paid = "Paid";
+                    }
+                    $thisInput .= '"is_paid":"' . $is_paid . '", ';
+                    $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    $dt = new Carbon($order->created_at);
+                    $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $orderItems = $order->order_item()->get();
+                    $thisInput .= '"items": [';
+                    $j = 0;
+//        $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
+//            'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'cust'=>$orderItem->order_type,'quantity'=>$orderItem->quantity,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
+                    foreach ($orderItems as $orderItem) {
+//                        $orderPlan = "";
+//                        $planPic = "";
+//                        $planName = "";
+//                        $chefName = "";
+//                        $orderType = "";
+                        if ($orderItem->order_type == 0) {
+                            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                            //                    dd($orderPlan->picture);
+                            $planPic = $orderPlan->picture;
+                            $planName = $orderPlan->plan_name;
+                            $chefName = $orderPlan->chef->name;
+                            $orderType = "Standard";
+                        } elseif ($orderItem->order_type == 1 || $orderItem->order_type == 2) {
+                            if ($orderItem->order_type == 1) {
+                                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            } elseif ($orderItem->order_type == 2) {
+                                $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                            }
+                            if ($orderPlan != null) {
+                                $planPic = $orderPlan->plan->picture;
+                                $planName = $orderPlan->plan->plan_name;
+                                $chefName = $orderPlan->plan->chef->name;
+                                $orderType = "Customized";
+                            }
+                        }
+                        $thisInput .= '{';
+                        $thisInput .= '"id":' . $orderItem->id . ', ';
+                        $thisInput .= '"order_id":' . $orderItem->order_id . ', ';
+                        $thisInput .= '"plan":"' . $planName . '", ';
+                        $thisInput .= '"planPic":"' . $planPic . '", ';
+                        $thisInput .= '"chef":"' . $chefName . '", ';
+                        $thisInput .= '"type":"' . $orderType . '", ';
+                        $thisInput .= '"cust":' . $orderItem->order_type . ', ';
+                        $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                        $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                        if (++$j < $orderItems->count()) {
+                            $thisInput .= '},';
+                        } else {
+                            $thisInput .= '}';
+                        }
+                        $thisInput .= ']';
+                        if (++$i < $orders->count()) {
+                            $thisInput .= '},';
+                        } else {
+                            $thisInput .= '}';
+                        }
+                    }
+                }
+                $thisInput .= ']';
+
+                return $thisInput;
+            }
+        }else if($type==4){
+            $i = 0;
+            $orders = Order::where('created_at', '>', $startOfYear)
+                ->where('created_at', '<', $endOfYear)
                 ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
