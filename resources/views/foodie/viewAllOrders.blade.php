@@ -74,10 +74,10 @@
                         <div class="row">
                             <div class="col s12 m2">
                                 <select id="orderFilter">
-                                    <option value="today">Today</option>
-                                    <option value="thisWeek">This Week</option>
-                                    <option value="thisMonth">This Month</option>
-                                    <option value="thisYear">This Year</option>
+                                    <option value="1">Today</option>
+                                    <option value="2">This Week</option>
+                                    <option value="3">This Month</option>
+                                    <option value="4">This Year</option>
                                 </select>
                             </div>
                         </div>

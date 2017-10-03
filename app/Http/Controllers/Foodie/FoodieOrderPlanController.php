@@ -981,4 +981,9 @@ class FoodieOrderPlanController extends Controller
 //        $address = DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('id','=', $id)->select('id','city','unit','street','brgy','bldg','type')->first();
         return back()->with(['status'=>'Added delivery address!']);
     }
+
+    public function dateChange()
+    {
+
+    }
 }
