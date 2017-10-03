@@ -139,6 +139,7 @@ $(document).ready(function () {
 
         var dateChange = dateChoose(val);
         dateChange.done(function (response) {
+            console.log(response);
             $('div#dayPick').empty();
             if(response=''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
