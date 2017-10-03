@@ -1400,7 +1400,7 @@ class FoodieOrderPlanController extends Controller
 
     public function dayChange($date)
     {
-        $dt = Carbon::createFromFormat('Y-m-d H:i:s', $date);
+        $dt = Carbon::createFromFormat('Y-m-d', $date);
         $thisDay=$dt->startOfDay();
 
         return $thisDay;
