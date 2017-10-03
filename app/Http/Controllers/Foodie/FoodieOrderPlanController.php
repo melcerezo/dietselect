@@ -110,7 +110,7 @@ class FoodieOrderPlanController extends Controller
 
 
                 $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
-                    'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek);
+                    'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek,'created_at'=>$order->created_at);
 
                 $orderItems = $order->order_item()->get();
                 foreach($orderItems as $orderItem){
@@ -448,8 +448,8 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type=1;
         $foodnotif->save();
 
-        $messageFoodie = 'Greetings from DietSelect! Your order has been placed. Please pay your balance of: PHP';
-        $messageFoodie.= $order->total.' before '. $thisSaturday;
+        $messageFoodie = 'Greetings from DietSelect! Your order has been placed on '.$order->created_at.'. Please pay your balance of: PHP ';
+        $messageFoodie.= number_format($order->total,2,'.',',').' before '. $thisSaturday;
         $foodiePhoneNumber = '0'.$foodie->mobile_number;
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
         $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
@@ -549,6 +549,7 @@ class FoodieOrderPlanController extends Controller
             foreach($planName as $pName){
                 $message.= $pName.' ';
             }
+            $message.=' on '.$order->created_at;
             $message.='.';
             $chefPhoneNumber = '0'.$phoneChef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
