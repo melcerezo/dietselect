@@ -142,7 +142,8 @@ $(document).ready(function () {
             $('div#dayPick').empty();
             if(response=''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
-            }
+            }else{
+
             var valData = JSON.parse(response);
             // console.log(JSON.parse(response));
             // console.log(response);
@@ -197,6 +198,7 @@ $(document).ready(function () {
                 x+= '</div>';
                 $('div#dayPick').append(x);
                 }
+            }
 
             });
         });
