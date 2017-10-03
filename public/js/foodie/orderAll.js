@@ -72,14 +72,18 @@ $(document).ready(function () {
     });
 
     $('#orderFilter').change(function () {
-        console.log($('select#orderFilter option:selected').val());
+        var val = $('select#orderFilter option:selected').val();
+        var dateChange = dateChoose(val);
+        dateChange.done(function (response) {
+            console.log(response);
+        });
     });
 
 });
 
 function dateChoose($val){
     return $.ajax({
-        url: '/foodie/orderChange' + $valType,
+        url: '/order/dateChange' + $val,
         dataType:'json'
     });
 }
