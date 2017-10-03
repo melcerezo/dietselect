@@ -409,6 +409,7 @@ class FoodieOrderPlanController extends Controller
                         $orderItem->quantity+=$cartItem->qty;
                         $orderItem->save();
                         $pendingOrder->total+=$cartItem->price;
+                        $pendingOrder->save();
 //                        dd($orderItem);
 //                        break;
                     }
