@@ -398,7 +398,7 @@ class FoodieOrderPlanController extends Controller
 
         //pending orders
         $found=false;
-        $pendingOrders = Order::where('is_paid','=',0)->where('foodie_id','=',$foodie->id)->where('created_at','>', $lastSaturday)->latest()->get();
+        $pendingOrders = Order::where('is_paid','=',0)->where('is_cancelled','=',0)->where('foodie_id','=',$foodie->id)->where('created_at','>', $lastSaturday)->latest()->get();
         foreach($pendingOrders as $pendingOrder){
             $orderItems = $pendingOrder->order_item()->get();
             foreach($orderItems as $orderItem){
