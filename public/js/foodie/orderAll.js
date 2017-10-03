@@ -90,8 +90,11 @@ $(document).ready(function () {
     });
 
     $('#datepick').change(function () {
-        console.log($(this).val());
-
+        var dayVal=$(this).val();
+        var dayChange = dayChoose(dayVal);
+        dayChange.done(function (response) {
+            console.log(response);
+        });
     });
 
     var startVal = $('select#orderFilter option:selected').val();
@@ -244,6 +247,12 @@ $(document).ready(function () {
 function dateChoose($val){
     return $.ajax({
         url: '/foodie/order/dateChange/' + $val
+
+    });
+}
+function dayChoose($val){
+    return $.ajax({
+        url: '/foodie/order/dayChange/' + $val
 
     });
 }
