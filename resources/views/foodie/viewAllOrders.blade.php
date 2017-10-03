@@ -180,6 +180,12 @@
                                                         <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
                                                     </div>
                                                 </div>
+                                                <div class="row">
+                                                    <div class="col s12 m2">
+                                                        <div>Order Date</div>
+                                                        <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         @endif
                                     @endforeach
@@ -238,6 +244,12 @@
                                                         <div class="col s12 m3">
                                                             <div>Status</div>
                                                             <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col s12 m2">
+                                                            <div>Order Date</div>
+                                                            <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -320,6 +332,12 @@
                                                             <div class="col s12 m3">
                                                                 <div>Status</div>
                                                                 <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col s12 m2">
+                                                                <div>Order Date</div>
+                                                                <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -441,6 +459,12 @@
                                                         <div class="col s12 m3">
                                                             <div>Status</div>
                                                             <div style="font-size: 22px;">Cancelled</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col s12 m2">
+                                                            <div>Order Date</div>
+                                                            <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
                                                         </div>
                                                     </div>
                                                 </div>
