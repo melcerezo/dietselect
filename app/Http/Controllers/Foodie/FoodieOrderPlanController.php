@@ -64,7 +64,8 @@ class FoodieOrderPlanController extends Controller
         $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->select('created_at')->get();
         $timeArray = [];
         foreach($orderTime as $item){
-            $timeArray[]=array("time"=>date('Y-m-d H:i:s',strtotime($item->created_at)));
+            $time = $item->created_at->format('Y-m-d');
+            $timeArray[]=array("time"=>date('Y-m-d H:i:s',$time));
         }
         dd($timeArray);
         $thisDay = Carbon::today();
