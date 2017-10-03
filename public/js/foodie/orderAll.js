@@ -75,7 +75,7 @@ $(document).ready(function () {
         var val = $('select#orderFilter option:selected').val();
         var dateChange = dateChoose(val);
         dateChange.done(function (response) {
-            console.log(response);
+            console.log(JSON.parse(response));
         });
     });
 
@@ -84,6 +84,6 @@ $(document).ready(function () {
 function dateChoose($val){
     return $.ajax({
         url: '/foodie/order/dateChange/' + $val,
-        dataType:'json'
+
     });
 }
