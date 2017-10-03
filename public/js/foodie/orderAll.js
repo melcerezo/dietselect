@@ -72,7 +72,7 @@ $(document).ready(function () {
     });
 
     $('#orderFilter').change(function () {
-        console.log($(this +'option:selected').val());
+        console.log($('select#orderFilter option:selected').val());
     });
 
 });
