@@ -1004,7 +1004,8 @@ class FoodieOrderPlanController extends Controller
         $thisInput = null;
         if ($type == 1) {
             $i = 0;
-            $orders = Order::where('created_at', '>=', $thisDay)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+            $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->latest()->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
@@ -1101,7 +1102,7 @@ class FoodieOrderPlanController extends Controller
         }else if($type==2){
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfWeek)
-                ->where('created_at', '<', $endOfWeek)
+                ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)
                 ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->latest()->get();
             if ($orders->count() > 0) {
@@ -1199,7 +1200,7 @@ class FoodieOrderPlanController extends Controller
         }else if($type==3){
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfMonth)
-                ->where('created_at', '<', $endOfMonth)
+                ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)
                 ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->latest()->get();
             if ($orders->count() > 0) {
@@ -1297,7 +1298,7 @@ class FoodieOrderPlanController extends Controller
         }else if($type==4){
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfYear)
-                ->where('created_at', '<', $endOfYear)
+                ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',0)
                 ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->latest()->get();
             if ($orders->count() > 0) {
