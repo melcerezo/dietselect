@@ -76,6 +76,7 @@ $(document).ready(function () {
 
         var dateChange = dateChoose(val);
         dateChange.done(function (response) {
+            $('div#dayPick').empty();
             var valData = JSON.parse(response);
             // console.log(JSON.parse(response));
             // console.log(response);
