@@ -995,9 +995,9 @@ class FoodieOrderPlanController extends Controller
         $endOfMonth = $dr->endOfMonth();
 
         $dt = Carbon::now();
-        $startOfYear=$ds->startOfYear();
+        $startOfYear=$dt->startOfYear();
         $dm = Carbon::now();
-        $endOfYear = $dr->endOfYear();
+        $endOfYear = $dm->endOfYear();
 
         $foodieAddress = DB::table('foodie_address')->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->get();
 
