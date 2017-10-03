@@ -139,7 +139,7 @@ $(document).ready(function () {
             $.ajax({
                 url:'/foodie/order/viewSingle/'+ id
             }).success(function () {
-                window.location.href= url;
+                window.location.href= this.url;
             });
 
         });
