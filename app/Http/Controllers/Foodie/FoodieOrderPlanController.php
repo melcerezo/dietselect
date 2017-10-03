@@ -1012,20 +1012,20 @@ class FoodieOrderPlanController extends Controller
                             }
                         }
                     }
-                    $thisInput .= '"address":' . $orderAddress . ', ';
-                    $thisInput .= '"total":' . number_format($order->total, 2, '.', ',') . ', ';
+                    $thisInput .= '"address":"' . $orderAddress . '", ';
+                    $thisInput .= '"total":"PHP ' . number_format($order->total, 2, '.', ',') . '", ';
                     $is_paid = "";
                     if ($order->is_paid == 0) {
                         $is_paid = "Pending";
                     } elseif ($order->is_paid == 1) {
                         $is_paid = "Paid";
                     }
-                    $thisInput .= '"is_paid":' . $is_paid . ', ';
+                    $thisInput .= '"is_paid":"' . $is_paid . '", ';
                     $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
-                    $thisInput .= '"week":' . $startOfWeek . ', ';
-                    $thisInput .= '"created_at":' . $order->created_at . ', ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
@@ -1059,13 +1059,13 @@ class FoodieOrderPlanController extends Controller
                             $thisInput .= '{';
                             $thisInput .= '"id":' . $orderItem->id . ', ';
                             $thisInput .= '"order_id":' . $orderItem->order_id . ', ';
-                            $thisInput .= '"plan":' . $planName . ', ';
-                            $thisInput .= '"planPic":' . $planPic . ', ';
-                            $thisInput .= '"chef":' . $chefName . ', ';
-                            $thisInput .= '"type":' . $orderType . ', ';
+                            $thisInput .= '"plan":"' . $planName . '", ';
+                            $thisInput .= '"planPic":"' . $planPic . '", ';
+                            $thisInput .= '"chef":"' . $chefName . '", ';
+                            $thisInput .= '"type":"' . $orderType . '", ';
                             $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                             $thisInput .= '"quantity":' . $orderItem->order_type . ', ';
-                            $thisInput .= '"price":' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . ', ';
+                            $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                             if (++$j < $orderItems->count()) {
                                 $thisInput .= '},';
                             } else {
