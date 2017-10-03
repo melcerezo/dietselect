@@ -99,7 +99,7 @@
                                                     <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
                                                 </div>
                                             </div>
-                                            <div class="row">
+                                            <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                                 <div class="col s12 m2">
                                                     <div>Order Date</div>
                                                     <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
@@ -181,7 +181,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col s12 m2">
+                                                    <div class="col s12 m2" style="margin: 0 0 20px 0; padding: 5px;">
                                                         <div>Order Date</div>
                                                         <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
                                                     </div>
@@ -246,7 +246,7 @@
                                                             <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                                         <div class="col s12 m2">
                                                             <div>Order Date</div>
                                                             <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
@@ -334,7 +334,7 @@
                                                                 <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
                                                             </div>
                                                         </div>
-                                                        <div class="row">
+                                                        <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                                             <div class="col s12 m2">
                                                                 <div>Order Date</div>
                                                                 <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
@@ -461,7 +461,7 @@
                                                             <div style="font-size: 22px;">Cancelled</div>
                                                         </div>
                                                     </div>
-                                                    <div class="row">
+                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
                                                         <div class="col s12 m2">
                                                             <div>Order Date</div>
                                                             <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
