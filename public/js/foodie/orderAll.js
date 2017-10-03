@@ -71,5 +71,8 @@ $(document).ready(function () {
         $('#ordCancel').show();
     });
 
+    $('#orderFilter').change(function () {
+
+    });
 
 });

@@ -73,14 +73,16 @@
                     <div id="ordAll">
                         <div class="row">
                             <div class="col s12 m2">
-                                <input type="text" id="allDatePick" value="Pick a date">
+                                <select id="orderFilter">
+                                    <option value="today">Today</option>
+                                    <option value="thisWeek">This Week</option>
+                                    <option value="thisMonth">This Month</option>
+                                    <option value="thisYear">This Year</option>
+                                </select>
                             </div>
                         </div>
                         <div id="dayPick">
-                            <div class="pendOrd">
-                            </div>
-                            <div class="paidOrd">
-                            </div>
+
                         </div>
                         <div class="row" id="ordAllContent">
                             @foreach($orders as $order)
