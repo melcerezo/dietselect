@@ -1630,6 +1630,7 @@
                                 <li class="collection-item">
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
+                                        <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
                                     @elseif($orderItem->is_delivered==1)
                                         <span>Delivered</span>
                                     @endif

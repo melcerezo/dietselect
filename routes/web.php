@@ -192,6 +192,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
     Route::get('order/view/{from}', 'Chef\ChefOrderController@getAllOrdersView')->name('chef.order.view');
     Route::get('ingred/{id}/get/{cust}', 'Chef\ChefOrderController@getIngred');
     Route::get('order/viewSingle/{orderItem}', 'Chef\ChefOrderController@getOneOrderDetails')->name('chef.order.single');
+    Route::get('order/deliver/{id}', 'Chef\ChefOrderController@updateDelivery')->name('chef.order.deliver');
 
     // Chef Rating
     Route::get('rating', 'ChefRatingsController@viewRatings')->name('chef.ratings');

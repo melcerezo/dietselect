@@ -254,4 +254,13 @@ class ChefOrderController extends Controller
             'notifications' => $notifications
         ]);
     }
+
+    public function updateDelivery($id)
+    {
+        $orderItem = OrderItem::where('id','=',$id)->first();
+        $orderItem->is_delivered=1;
+        $orderItem->save();
+
+        return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
+    }
 }
