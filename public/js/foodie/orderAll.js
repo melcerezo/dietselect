@@ -75,7 +75,8 @@ $(document).ready(function () {
         var val = $('select#orderFilter option:selected').val();
         var dateChange = dateChoose(val);
         dateChange.done(function (response) {
-            console.log(JSON.parse(response));
+            // console.log(JSON.parse(response));
+            console.log(response);
         });
     });
 
