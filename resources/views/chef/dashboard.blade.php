@@ -79,7 +79,7 @@
             <div class="col s12 m6 l3">
                 <ul class="collection">
                     <li class="collection-item">
-                        <div class="collection-header">Paid Order</div>
+                        <div class="collection-header">Pending Delivery</div>
                     </li>
                     @if(count($paidOrders)>0)
                         @foreach($paidOrders as $orderItem)
@@ -107,7 +107,7 @@
                         @endforeach
                     @else
                         <li class="collection-item">
-                            <span>No Paid Orders</span>
+                            <span>No Pending Delivery</span>
                         </li>
                     @endif
                 </ul>
