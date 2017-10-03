@@ -200,9 +200,9 @@ class ChefController extends Controller
 //            dd($foodie->cover);
             $chef->save();
 
-            return back()->with(['status'=>'Successfully updated the cover photo']);
+            return redirect()->route('chef.dashboard')->with(['status'=>'Successfully updated the cover photo']);
         }
-            return back()->with(['status'=>'File Format is not supported! Please try another photo!']);
+            return redirect()->route('chef.dashboard')->with(['status'=>'File Format is not supported! Please try another photo!']);
     }
 
     public function saveProfileBasic(Request $request)
@@ -243,7 +243,7 @@ class ChefController extends Controller
             $bank->save();
         }
 
-        return redirect($this->redirectTo)->with(['status'=>'Successfully updated the info!']);
+        return redirect()->route('chef.profile')->with(['status'=>'Successfully updated the info!']);
 
     }
 

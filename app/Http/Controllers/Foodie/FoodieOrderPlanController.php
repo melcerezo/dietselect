@@ -380,6 +380,7 @@ class FoodieOrderPlanController extends Controller
 
     public function order(mailer\Mailer $mailer)
     {
+        $lastSaturday = Carbon::parse("last saturday 15:01:00")->format('Y-m-d H:i:s');
 
 //        >where('type','=','R')
         $foodie = Auth::guard('foodie')->user();
@@ -395,6 +396,28 @@ class FoodieOrderPlanController extends Controller
             ->where('is_read','=',0)
             ->get();
 
+        //pending orders
+        $found=false;
+        $pendingOrders = Order::where('is_paid','=',0)->where('foodie_id','=',$foodie->id)->where('created_at','>', $lastSaturday)->latest()->get();
+        foreach($pendingOrders as $pendingOrder){
+            $orderItems = $pendingOrder->order_item()->get();
+            foreach($orderItems as $orderItem){
+                foreach($cartItems as $cartItem){
+                    if($cartItem->id == $orderItem->plan_id){
+                        $found=true;
+                        $pendId=$pendingOrder->id;
+                        $orderItem->quantity+=$cartItem->qty;
+                        $orderItem->save();
+                        dd($orderItem);
+//                        break;
+                    }
+                }
+            }
+        }
+        if($found){
+            return redirect()->route('order.show',$pendId)->with(['status','Quantity added to existing pending item']);
+        }
+
         $notifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->get();
         $unreadNotifications=Notification::where('receiver_id','=',$foodie->id)->where('receiver_type','=','f')->where('is_read','=',0)->count();
         $chats= Chat::where('foodie_id','=',$foodie->id)->latest($column = 'updated_at')->get();
@@ -403,6 +426,9 @@ class FoodieOrderPlanController extends Controller
 
 //        $dt=Carbon::now();
 //        $startOfNextWeek = $dt->startOfWeek()->addDay(7)->format('F d');
+
+
+
         $order = new Order();
         $order->foodie_id = $foodie->id;
         $order->address_id = $orderAddress;
