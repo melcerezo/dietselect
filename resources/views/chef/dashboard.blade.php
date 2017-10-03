@@ -94,6 +94,14 @@
                                             @endif
                                         @endforeach
                                     </p>
+                                    <div class="divider"></div>
+                                    <p>
+                                        @if($orderItem['is_delivered']==0)
+                                            <span>Not Delivered</span>
+                                        @elseif($orderItem['is_delivered']==1)
+                                            <span>Delivered</span>
+                                        @endif
+                                    </p>
                                 </a>
                             </li>
                         @endforeach

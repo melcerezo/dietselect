@@ -122,7 +122,7 @@ class ChefController extends Controller
                 }
 
                 $paidOrders[]=array('id'=>$orderItem->id,'name'=> $planName,
-                    'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,
+                    'quantity'=>$orderItem->quantity,'foodie_id'=>$orderItem->order->foodie_id,'is_delivered'=>$orderItem->is_delivered,
                     'address_id'=>$orderItem->order->address_id,'type'=>$type);
             }
         }

@@ -295,6 +295,13 @@
                                         </div>
                                     @endunless
                                 </li>
+                                <li class="collection-item">
+                                    @if($orderItem->is_delivered==0)
+                                        <span>Not Delivered</span>
+                                    @elseif($orderItem->is_delivered==1)
+                                        <span>Delivered</span>
+                                    @endif
+                                </li>
                                 <li class="collection-item">Allergies:
                                     <div>
                                         @if($allergies->count()>0)
