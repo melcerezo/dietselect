@@ -83,7 +83,7 @@ $(document).ready(function () {
 
 function dateChoose($val){
     return $.ajax({
-        url: '/foodie/order/dateChange/' + $val,
+        url: '/foodie/order/dateChange/' + $val
 
     });
 }
