@@ -1079,8 +1079,8 @@ class FoodieOrderPlanController extends Controller
                             $thisInput .= '}';
                         }
                     }
-                    $thisInput .= ']';
                 }
+                $thisInput .= ']';
 
                 return $thisInput;
             }
