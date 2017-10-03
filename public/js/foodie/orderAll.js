@@ -91,6 +91,7 @@ $(document).ready(function () {
 
     $('#datepick').change(function () {
         console.log($(this).val());
+
     });
 
     var startVal = $('select#orderFilter option:selected').val();
