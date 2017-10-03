@@ -80,6 +80,11 @@
                                     <option value="4">This Year</option>
                                 </select>
                             </div>
+                            <div class="row">
+                                <div class="col s12 m2">
+                                    <input type="text" id="datepick" value="Pick a date">
+                                </div>
+                            </div>
                         </div>
                         <div id="dayPick">
 
