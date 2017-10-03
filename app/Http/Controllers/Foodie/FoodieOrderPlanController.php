@@ -1021,7 +1021,7 @@ class FoodieOrderPlanController extends Controller
                         $is_paid = "Paid";
                     }
                     $thisInput .= '"is_paid":"' . $is_paid . '", ';
-//                    $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
