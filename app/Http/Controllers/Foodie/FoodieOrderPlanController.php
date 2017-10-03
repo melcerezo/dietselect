@@ -1065,7 +1065,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"chef":"' . $chefName . '", ';
                         $thisInput .= '"type":"' . $orderType . '", ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
-                        $thisInput .= '"quantity":' . $orderItem->order_type . ', ';
+                        $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                         if (++$j < $orderItems->count()) {
                             $thisInput .= '},';
