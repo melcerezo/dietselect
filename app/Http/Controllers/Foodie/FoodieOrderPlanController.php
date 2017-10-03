@@ -1004,7 +1004,8 @@ class FoodieOrderPlanController extends Controller
         $thisInput = '';
         if ($type == 1) {
             $i = 0;
-            $orders = Order::where('created_at', '>=', $thisDay)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+            $orders = Order::where('created_at', '>=', $thisDay)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1101,7 +1102,8 @@ class FoodieOrderPlanController extends Controller
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfWeek)
                 ->where('created_at', '<', $endOfWeek)
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1198,7 +1200,8 @@ class FoodieOrderPlanController extends Controller
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfMonth)
                 ->where('created_at', '<', $endOfMonth)
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1295,7 +1298,8 @@ class FoodieOrderPlanController extends Controller
             $i = 0;
             $orders = Order::where('created_at', '>', $startOfYear)
                 ->where('created_at', '<', $endOfYear)
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
