@@ -70,4 +70,6 @@ $(document).ready(function () {
         $('#cancelLinkContain').addClass('activeTab');
         $('#ordCancel').show();
     });
+
+
 });
