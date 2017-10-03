@@ -137,7 +137,7 @@ $(document).ready(function () {
         $(document).on('click','.btnView', function () {
             var id = $(this).attr('data-id');
             $.ajax({
-                url:'/foodie/order/viewSingle/'+id
+                url:'/foodie/order/viewSingle/'+ id
             });
         });
 });

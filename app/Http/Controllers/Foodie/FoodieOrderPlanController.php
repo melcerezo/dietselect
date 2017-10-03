@@ -190,10 +190,9 @@ class FoodieOrderPlanController extends Controller
             ->where('is_read', '=', 0)
             ->get();
         $chats = Chat::where('foodie_id', '=', $foodie)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
-        $orderMealPlans = [];
         $orderPlan = '';
         $ingredientMeals = [];
-        $orderMealPlans = "";
+        $orderMealPlans = [];
         $saMeals = 0;
         $moSnaMeals = 0;
         $aftSnaMeals = 0;
