@@ -417,6 +417,7 @@ class FoodieOrderPlanController extends Controller
             }
         }
         if($found){
+            Cart::destroy();
             return redirect()->route('order.show',$pendId)->with(['status','Quantity added to existing pending item']);
         }
 
