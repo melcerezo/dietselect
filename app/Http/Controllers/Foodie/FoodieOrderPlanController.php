@@ -1073,11 +1073,11 @@ class FoodieOrderPlanController extends Controller
                             $thisInput .= '}';
                         }
                         $thisInput .= ']';
-                        if (++$i < $orders->count()) {
+//                        if (++$i < $orders->count()) {
                             $thisInput .= '}';
-                        } else {
-                            $thisInput .= '}';
-                        }
+//                        } else {
+//                            $thisInput .= '}';
+//                        }
                     }
                 }
                 $thisInput .= ']';
