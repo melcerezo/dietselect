@@ -61,7 +61,7 @@ class FoodieOrderPlanController extends Controller
 
     public function getAllOrdersView($from)
     {
-
+        $thisDay = Carbon::today();
 //        dd($from);
         $foodie = Auth::guard('foodie')->user();
         $foodieAddress = DB::table('foodie_address')->where('foodie_id', '=', $foodie->id)->select('id', 'city', 'unit', 'street', 'brgy', 'bldg', 'type')->get();
@@ -164,6 +164,7 @@ class FoodieOrderPlanController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'foodie' => $foodie,
             'orders' => $orders,
+            'thisDay'=>$thisDay,
             'orderArray' => $orderArray,
             'orderItemArray' => $orderItemArray,
             'ordersCount' => $ordersCount,
