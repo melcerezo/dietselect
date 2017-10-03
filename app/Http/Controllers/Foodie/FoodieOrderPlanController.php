@@ -991,7 +991,7 @@ class FoodieOrderPlanController extends Controller
         $thisInput = '';
         if ($type == 1) {
             $i = 0;
-            $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
+            $orders = Order::where('created_at', '>=', $thisDay)->where('foodie_id', '=', Auth::guard('foodie')->user()->id)->get();
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1073,11 +1073,11 @@ class FoodieOrderPlanController extends Controller
                             $thisInput .= '}';
                         }
                         $thisInput .= ']';
-//                        if (++$i < $orders->count()) {
+                        if (++$i < $orders->count()) {
+                            $thisInput .= '},';
+                        } else {
                             $thisInput .= '}';
-//                        } else {
-//                            $thisInput .= '}';
-//                        }
+                        }
                     }
                 }
                 $thisInput .= ']';
