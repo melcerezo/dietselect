@@ -1056,21 +1056,21 @@ class FoodieOrderPlanController extends Controller
                                 $chefName = $orderPlan->plan->chef->name;
                                 $orderType = "Customized";
                             }
-                            $thisInput .= '{';
-                            $thisInput .= '"id":' . $orderItem->id . ', ';
-                            $thisInput .= '"order_id":' . $orderItem->order_id . ', ';
-                            $thisInput .= '"plan":"' . $planName . '", ';
-                            $thisInput .= '"planPic":"' . $planPic . '", ';
-                            $thisInput .= '"chef":"' . $chefName . '", ';
-                            $thisInput .= '"type":"' . $orderType . '", ';
-                            $thisInput .= '"cust":' . $orderItem->order_type . ', ';
-                            $thisInput .= '"quantity":' . $orderItem->order_type . ', ';
-                            $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                            if (++$j < $orderItems->count()) {
-                                $thisInput .= '},';
-                            } else {
-                                $thisInput .= '}';
-                            }
+                        }
+                        $thisInput .= '{';
+                        $thisInput .= '"id":' . $orderItem->id . ', ';
+                        $thisInput .= '"order_id":' . $orderItem->order_id . ', ';
+                        $thisInput .= '"plan":"' . $planName . '", ';
+                        $thisInput .= '"planPic":"' . $planPic . '", ';
+                        $thisInput .= '"chef":"' . $chefName . '", ';
+                        $thisInput .= '"type":"' . $orderType . '", ';
+                        $thisInput .= '"cust":' . $orderItem->order_type . ', ';
+                        $thisInput .= '"quantity":' . $orderItem->order_type . ', ';
+                        $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
+                        if (++$j < $orderItems->count()) {
+                            $thisInput .= '},';
+                        } else {
+                            $thisInput .= '}';
                         }
                         $thisInput .= ']';
                         if (++$i < $orders->count()) {
