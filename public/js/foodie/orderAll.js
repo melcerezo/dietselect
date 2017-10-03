@@ -85,10 +85,8 @@ $(document).ready(function () {
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15, // Creates a dropdown of 15 years to control year
-        onSet: function(context) {
-            console.log('Just set stuff:', context)
-        }
+        selectYears: 15// Creates a dropdown of 15 years to control year
+
     });
 
     var startVal = $('select#orderFilter option:selected').val();
