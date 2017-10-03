@@ -61,6 +61,8 @@ class FoodieOrderPlanController extends Controller
 
     public function getAllOrdersView($from)
     {
+        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->select('created_at')->get();
+        dd($orderTime);
         $thisDay = Carbon::today();
 //        dd($from);
         $foodie = Auth::guard('foodie')->user();
