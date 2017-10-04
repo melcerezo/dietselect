@@ -253,9 +253,9 @@ $(document).ready(function () {
                     x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                     x += '<div>Price: ' + valData[i].items[j].price + '</div>';
                     if(valData[i].items[j].delivery==0){
-                        x += '<div>Delivered: Pending</div>';
+                        x += '<div>Delivery: Pending</div>';
                     }else if(valData[i].items[j].delivery==1){
-                        x += '<div>Delivered: Delivered</div>';
+                        x += '<div>Delivery: Delivered</div>';
                     }
                     x += '</div>';
                     x += '<div class="col s12 offset-m2 m2">';
