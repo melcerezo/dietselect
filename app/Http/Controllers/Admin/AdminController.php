@@ -65,7 +65,7 @@ class AdminController extends Controller
         $commissions = Commission::orderBy('created_at', 'desc')->get();
         $firstCom = Commission::first();
         $lastCom = Commission::latest()->first();
-        dd($lastCom);
+//        dd($lastCom);
 
         $totalCommissions = 0;
         $pendCommissions = 0;
@@ -109,7 +109,9 @@ class AdminController extends Controller
             'startOfMonth'=>$startOfMonth,
             'endOfMonth'=>$endOfMonth,
             'startOfYear'=>$startOfYear,
-            'endOfYear'=>$endOfYear
+            'endOfYear'=>$endOfYear,
+            'firstCom'=>$firstCom,
+            'lastCom'=>$lastCom
 
         ]);
     }

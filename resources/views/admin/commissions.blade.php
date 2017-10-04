@@ -96,7 +96,7 @@
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                 <div>
                                     <span>
-                                        Total Commissions
+                                        Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}
                                     </span>
                                 </div>
                             </div>
