@@ -276,9 +276,284 @@ class ChefOrderController extends Controller
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
 
-    public function dateChange()
+    public function dateChange($type)
     {
-        
+        $thisDay = Carbon::today();
+//        $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
+//            'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek,'created_at'=>$order->created_at);
+        $dw = Carbon::now();
+        $startOfTheWeek=$dw->startOfWeek();
+        $de = Carbon::now();
+        $endOfWeek = $de->endOfWeek();
+
+        $ds = Carbon::now();
+        $startOfMonth=$ds->startOfMonth();
+        $dr = Carbon::now();
+        $endOfMonth = $dr->endOfMonth();
+
+        $dt = Carbon::now();
+        $startOfYear=$dt->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dm->endOfYear();
+
+        $thisInput = null;
+        if($type==1){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->where('created_at', '>=', $thisDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest()->get();
+
+
+            $thisInput = null;
+            $i=0;
+            if($orderItems->count() >0){
+                $thisInput = '[';
+                foreach($orderItems as $orderItem){
+//                if($orderItem->order->is_cancelled!=1){
+                    if($orderItem->order_type==0){
+                        $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                        $orderPlanPic = $orderPlan->picture;
+                        $orderPlanName = $orderPlan->plan_name;
+                        $orderType="Standard";
+                        $dt = new Carbon($orderItem->order->created_at);
+                        $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    }elseif($orderItem->order_type==1){
+                        $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        //                dd($orderPlan);
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }elseif($orderItem->order_type==2){
+                        $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"picture":"' . $orderPlanPic . '", ';
+                    $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
+                    $thisInput .= '"type":"' . $orderType . '", ';
+                    $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+//                }
+                }
+                $thisInput .= ']';
+
+                return $thisInput;
+            }
+        }else if($type==2){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->where('created_at', '>=', $startOfTheWeek)->where('created_at','<=',$endOfWeek)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest()->get();
+
+
+            $thisInput = null;
+            $i=0;
+            if($orderItems->count() >0){
+                $thisInput = '[';
+                foreach($orderItems as $orderItem){
+//                if($orderItem->order->is_cancelled!=1){
+                    if($orderItem->order_type==0){
+                        $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                        $orderPlanPic = $orderPlan->picture;
+                        $orderPlanName = $orderPlan->plan_name;
+                        $orderType="Standard";
+                        $dt = new Carbon($orderItem->order->created_at);
+                        $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    }elseif($orderItem->order_type==1){
+                        $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        //                dd($orderPlan);
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }elseif($orderItem->order_type==2){
+                        $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"picture":"' . $orderPlanPic . '", ';
+                    $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
+                    $thisInput .= '"type":"' . $orderType . '", ';
+                    $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+//                }
+                }
+                $thisInput .= ']';
+
+                return $thisInput;
+            }
+        }else if($type==3){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->where('created_at', '>=', $startOfMonth)->where('created_at','<=',$endOfMonth)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest()->get();
+
+
+            $thisInput = null;
+            $i=0;
+            if($orderItems->count() >0){
+                $thisInput = '[';
+                foreach($orderItems as $orderItem){
+//                if($orderItem->order->is_cancelled!=1){
+                    if($orderItem->order_type==0){
+                        $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                        $orderPlanPic = $orderPlan->picture;
+                        $orderPlanName = $orderPlan->plan_name;
+                        $orderType="Standard";
+                        $dt = new Carbon($orderItem->order->created_at);
+                        $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    }elseif($orderItem->order_type==1){
+                        $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        //                dd($orderPlan);
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }elseif($orderItem->order_type==2){
+                        $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"picture":"' . $orderPlanPic . '", ';
+                    $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
+                    $thisInput .= '"type":"' . $orderType . '", ';
+                    $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+//                }
+                }
+                $thisInput .= ']';
+
+                return $thisInput;
+            }
+        }else if($type==4){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->where('created_at', '>=', $startOfYear)->where('created_at','<=',$endOfYear)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest()->get();
+
+
+            $thisInput = null;
+            $i=0;
+            if($orderItems->count() >0){
+                $thisInput = '[';
+                foreach($orderItems as $orderItem){
+//                if($orderItem->order->is_cancelled!=1){
+                    if($orderItem->order_type==0){
+                        $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                        $orderPlanPic = $orderPlan->picture;
+                        $orderPlanName = $orderPlan->plan_name;
+                        $orderType="Standard";
+                        $dt = new Carbon($orderItem->order->created_at);
+                        $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    }elseif($orderItem->order_type==1){
+                        $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        //                dd($orderPlan);
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }elseif($orderItem->order_type==2){
+                        $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"picture":"' . $orderPlanPic . '", ';
+                    $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
+                    $thisInput .= '"type":"' . $orderType . '", ';
+                    $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+//                }
+                }
+                $thisInput .= ']';
+
+                return $thisInput;
+            }
+        }
     }
 
     public function dayChange($date)
