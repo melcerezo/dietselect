@@ -346,7 +346,7 @@ class ChefOrderController extends Controller
 
     public function selectDay()
     {
-        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->select('created_at')->latest()->get();
+        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
 //        $yearArray = [];
 //        $monthArray =[];
 //        $dayArray = [];
@@ -355,7 +355,7 @@ class ChefOrderController extends Controller
 //            $yearArray[] = $item->created_at->year;
 //            $monthArray[] = $item->created_at->month;
 //            $dayArray[] = $item->created_at->day;
-            if($orderTime->order->is_cancelled!=1){
+            if($item->order->is_cancelled!=1){
                 $timeArray[]=date('Y-m-d', strtotime($item->created_at));
             }
         }
