@@ -61,7 +61,7 @@ class FoodieOrderPlanController extends Controller
 
     public function getAllOrdersView($from)
     {
-        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->select('created_at')->get();
+        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',0)->select('created_at')->get();
         $timeArray = [];
         foreach($orderTime as $item){
 //            $time = $item->created_at->format('Y-m-d');
