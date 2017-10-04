@@ -55,6 +55,8 @@ $(document).ready(function() {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
+        $('select#orderFilter').val("0");
+
         $('#allCom').show();
         $('#comAll').show();
         $('#pendCom').hide();
