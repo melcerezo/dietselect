@@ -198,7 +198,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions
+                                                Commissions For This Week
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
@@ -259,7 +259,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions
+                                                Commissions For This Month
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
@@ -320,7 +320,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions
+                                                Commissions For This Year
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
