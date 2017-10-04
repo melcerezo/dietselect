@@ -63,6 +63,9 @@ class AdminController extends Controller
     {
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $commissions = Commission::orderBy('created_at', 'desc')->get();
+        $firstCom = Commission::first();
+        $lastCom = Commission::latest()->first();
+        dd($firstCom);
 
         $totalCommissions = 0;
         $pendCommissions = 0;

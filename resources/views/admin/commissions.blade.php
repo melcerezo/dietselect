@@ -376,7 +376,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card">
+                            <div id="comAll" class="card">
                                 <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                     <div>
                                         <span>
