@@ -326,7 +326,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
-                    $thisInput .= '"is_delivered":' . $orderItem->order->is_delivered . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
