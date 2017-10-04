@@ -75,6 +75,12 @@ $(document).ready(function () {
 
     daySelect.done(function (response) {
         console.log(response);
+        var valData = response;
+        for(var i in valData){
+            $('#dateFilter').append(
+                '<option value="'+valData[i]+'">'+valData[i]+'</option>'
+            );
+        }
     });
 
 
