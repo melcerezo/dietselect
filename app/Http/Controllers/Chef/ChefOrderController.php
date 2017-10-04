@@ -38,6 +38,16 @@ class ChefOrderController extends Controller
 
     public function getAllOrdersView($from){
 
+        $orderItems = OrderItem::with(array('order' => function($query)
+        {
+            $query->where('is_cancelled', '=', 1);
+
+        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+            ->latest()->get();
+
+        dd($orderItems);
+
         $chef = Auth::guard('chef')->user();
 
         $orderItems=OrderItem::where('chef_id','=', $chef->id)->orderBy('created_at','desc')->get();
