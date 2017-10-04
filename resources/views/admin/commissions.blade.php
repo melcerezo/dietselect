@@ -93,9 +93,9 @@
                                 </div>
                             </div>
                             <ul class="collection" style="margin-top: 0;">
-                                <li class="collection-item">Total Commissions: {{$totalCommissions}}</li>
-                                <li class="collection-item">Total Unpaid Commissions: {{$pendCommissions}}</li>
-                                <li class="collection-item">Total Paid Commissions: {{$paidCommissions}}</li>
+                                <li class="collection-item">Total Commissions: {{'PHP '.number_format($totalCommissions,2,'.',',')}}</li>
+                                <li class="collection-item">Total Unpaid Commissions: {{'PHP '.number_format($pendCommissions,2,'.',',')}}</li>
+                                <li class="collection-item">Total Paid Commissions: {{'PHP '.number_format($paidCommissions,2,'.',',')}}</li>
                             </ul>
                         </div>
                     </div>
