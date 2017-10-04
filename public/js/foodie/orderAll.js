@@ -76,15 +76,41 @@ $(document).ready(function () {
     daySelect.done(function (response) {
         console.log(response[0]);
         var valData = response;
-        var parts = [];
+        // var yearArray=[];
+        // var monthArray=[];
+        // var dayArray=[];
         $.each(valData,function( index,value){
-            parts.push(value.split('-'));
-            // console.log(parts);
-            // $('select#dateFilter').append(
-            //     $('<option></option>').attr("value",value).text(value)
-            // );
+            // var parts=value.split('-');
+            // yearArray.push(parts[0]);
+            // monthArray.push(parts[1]);
+            // dayArray.push(parts[2]);
+            $('select#dateFilter').append(
+                $('<option></option>').attr("value",value).text(value)
+            );
         });
-        console.log(parts);
+        // var uniqueYear = [];
+        // var uniqueMonth = [];
+        // var uniqueDay = [];
+        // $.each(yearArray,function (index,value) {
+        //     if($.inArray(value, uniqueYear) == -1){
+        //         uniqueYear.push(value);
+        //     }
+        // });
+        // $.each(monthArray,function (index,value) {
+        //     if($.inArray(value, uniqueMonth) == -1){
+        //         uniqueMonth.push(value);
+        //     }
+        // });
+        // $.each(dayArray,function (index,value) {
+        //     if($.inArray(value, uniqueDay) == -1){
+        //         uniqueDay.push(value);
+        //     }
+        // });
+        // $.each(uniqueYear, function (index,value) {
+        //     $('select#dateFilter').append(
+        //         $('<option></option>').attr("value",value).text(value)
+        //     );
+        // });
         $('select#dateFilter').material_select();
     });
 

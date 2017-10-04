@@ -82,6 +82,9 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 m2">
+                                    <select id="yearFilter"></select>
+                                    <select id="monthFilter"></select>
+                                    <select id="dayFilter"></select>
                                     <select id="dateFilter">
                                     </select>
                                 </div>
