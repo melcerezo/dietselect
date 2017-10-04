@@ -296,6 +296,16 @@
                                     @endunless
                                 </li>
                                 <li class="collection-item">
+                                    <div>
+                                        <span>Payment Status: </span>
+                                    </div>
+                                    @if($orderItem->order->is_paid==0)
+                                        <span>Pending</span>
+                                    @elseif($orderItem->order->is_paid==1)
+                                        <span>Confirmed</span>
+                                    @endif
+                                </li>
+                                <li class="collection-item">
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
                                         @if($orderItem->order->is_paid==1)
@@ -1631,8 +1641,21 @@
                                     @endunless
                                 </li>
                                 <li class="collection-item">
+                                    <div>
+                                        <span>Payment Status: </span>
+                                    </div>
+                                    @if($orderItem->order->is_paid==0)
+                                        <span>Pending</span>
+                                    @elseif($orderItem->order->is_paid==1)
+                                        <span>Confirmed</span>
+                                    @endif
+                                </li>
+                                <li class="collection-item">
+                                    <div>
+                                        <span>Delivery Status: </span>
+                                    </div>
                                     @if($orderItem->is_delivered==0)
-                                        <span>Not Delivered</span>
+                                        <span>Pending</span>
                                         @if($orderItem->order->is_paid==1)
                                             <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
                                         @endif
