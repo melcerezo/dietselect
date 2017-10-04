@@ -292,13 +292,12 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
-//        $orderItems = OrderItem::with('order'))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
-//            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
-//            ->latest()->get();
+        $orderItems = OrderItem::whereHas('order', function ($query) {
+            $query->where('is_cancelled', '=', 0);
+        })->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+            ->latest()->get();
 
-        $orderItems = DB::table('order_items')
-            ->join('orders','order_items.order_id','=','orders.id')
-        ->where('orders.is_cancelled','=',0)->get();
 
         $thisInput = null;
         $i=0;
