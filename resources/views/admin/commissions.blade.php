@@ -83,7 +83,7 @@
             </div>
             <div class="col s12 m10">
                 <div class="row">
-                    <div class="col s12 m6">
+                    <div class="col s12 m7">
                         <div class="card">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                 <div>
@@ -93,20 +93,11 @@
                                 </div>
                             </div>
                             <div class="card-content">
-                                <table class="responsive-table">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Chef Name</th>
-                                        <th>Date</th>
-                                        <th>Amount</th>
-                                        <th>Paid</th>
-                                        <th>Update</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    </tbody>
-                                </table>
+                                <ul class="collection">
+                                    <li class="collection-item">Total Commissions: {{$totalCommissions}}</li>
+                                    <li class="collection-item">Total Unpaid Commissions: {{$pendCommissions}}</li>
+                                    <li class="collection-item">Total Paid Commissions: {{$paidCommissions}}</li>
+                                </ul>
                             </div>
                         </div>
                     </div>

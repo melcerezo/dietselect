@@ -81,6 +81,9 @@ class AdminController extends Controller
         return view("admin.commissions")->with([
             'chefs'=>$chefs,
             'commissions'=>$commissions,
+            'totalCommissions'=>$totalCommissions,
+            'pendCommissions'=>$pendCommissions,
+            'paidCommissions'=>$paidCommissions
         ]);
     }
 
