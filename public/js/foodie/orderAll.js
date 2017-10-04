@@ -74,7 +74,7 @@ $(document).ready(function () {
     var daySelect= selectDay();
 
     daySelect.done(function (response) {
-        console.log(response);
+        console.log(response[0]);
         var valData = response;
         for(var i in valData){
             $('#dateFilter').append(
