@@ -52,7 +52,7 @@ class ChefOrderController extends Controller
 
         $chef = Auth::guard('chef')->user();
 
-        $orderItems=OrderItem::where('chef_id','=', $chef->id)->orderBy('created_at','desc')->get();
+        $orderItems=OrderItem::where('chef_id','=', $chef->id)->orderBy('is_paid','asc')->orderBy('created_at','desc')->get();
 
         $orders = [];
 
