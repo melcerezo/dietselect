@@ -63,7 +63,7 @@ $(document).ready(function() {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
-        $('select#orderFilter').val("0");
+        $('select#orderFilter').val("5");
 
         $('#allCom').show();
         $('#comAll').show();
