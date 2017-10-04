@@ -95,6 +95,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('order/viewSimpCust/{orderItem}', 'Foodie\FoodieOrderPlanController@getSimpCustView')->name('foodie.order.simpCust');
     Route::get('/order/dateChange/{type}', 'Foodie\FoodieOrderPlanController@dateChange');
     Route::get('/order/dayChange/{date}', 'Foodie\FoodieOrderPlanController@dayChange');
+    Route::get('/order/selectDay', 'Foodie\FoodieOrderPlanController@selectDay');
 
 
     // Route after ordering

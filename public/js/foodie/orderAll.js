@@ -325,6 +325,6 @@ function dayChoose($val){
 
 function selectDay() {
     return $.ajax({
-       url: '/foodie/order/selectDay/'
+       url: '/foodie/order/selectDay'
     });
 }
