@@ -290,6 +290,7 @@ class ChefOrderController extends Controller
         if($orderItems->count() >0){
             $thisInput = '[';
             foreach($orderItems as $orderItem){
+                $thisInput .= '{';
                 if($orderItem->order->is_cancelled!=1){
                     if($orderItem->order_type==0){
                         $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
@@ -318,7 +319,7 @@ class ChefOrderController extends Controller
                             $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                         }
                     }
-                    $thisInput .= '{';
+
                     $thisInput .= '"id":' . $orderItem->id . ', ';
                     $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
@@ -330,11 +331,11 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
-                    if (++$i < $orderItems->count()) {
-                        $thisInput .= '},';
-                    } else {
-                        $thisInput .= '}';
-                    }
+                }
+                if (++$i < $orderItems->count()) {
+                    $thisInput .= '},';
+                } else {
+                    $thisInput .= '}';
                 }
             }
             $thisInput .= ']';
