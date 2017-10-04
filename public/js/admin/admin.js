@@ -6,8 +6,49 @@ $(document).ready(function() {
     $('#allCom').show();
     $('#pendCom').hide();
     $('#paidCom').hide();
+    $('#dayCom').hide();
+    $('#weekCom').hide();
+    $('#monthCom').hide();
+    $('#yearCom').hide();
 
     $('#allLinkContain').addClass('activeTab');
+
+    $('#orderFilter').change(function () {
+        var value = $('select#orderFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').show();
+            $('#weekCom').hide();
+            $('#monthCom').hide();
+            $('#yearCom').hide();
+        }else if(value==2){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').show();
+            $('#monthCom').hide();
+            $('#yearCom').hide();
+        }else if(value==3){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').show();
+            $('#yearCom').hide();
+        }else if(value==4){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').hide();
+            $('#yearCom').show();
+        }
+    });
 
     $('.allLink').click(function () {
         $('#allLinkContain').addClass('activeTab');
@@ -17,6 +58,10 @@ $(document).ready(function() {
         $('#allCom').show();
         $('#pendCom').hide();
         $('#paidCom').hide();
+        $('#dayCom').hide();
+        $('#weekCom').hide();
+        $('#monthCom').hide();
+        $('#yearCom').hide();
     });
     $('.pendLink').click(function () {
         $('#allLinkContain').removeClass('activeTab');
@@ -26,6 +71,10 @@ $(document).ready(function() {
         $('#allCom').hide();
         $('#pendCom').show();
         $('#paidCom').hide();
+        $('#dayCom').hide();
+        $('#weekCom').hide();
+        $('#monthCom').hide();
+        $('#yearCom').hide();
     });
     $('.paidLink').click(function () {
         $('#allLinkContain').removeClass('activeTab');
@@ -35,6 +84,10 @@ $(document).ready(function() {
         $('#allCom').hide();
         $('#pendCom').hide();
         $('#paidCom').show();
+        $('#dayCom').hide();
+        $('#weekCom').hide();
+        $('#monthCom').hide();
+        $('#yearCom').hide();
     });
 
 
