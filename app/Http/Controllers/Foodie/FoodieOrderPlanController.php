@@ -141,7 +141,7 @@ class FoodieOrderPlanController extends Controller
                         }
                     }
                     if ($orderPlan != null) {
-                        $orderItemArray[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id,
+                        $orderItemArray[] = array('id' => $orderItem->id, 'order_id' => $orderItem->order_id, 'is_delivered' => $orderItem->is_delivered,
                             'plan' => $planName, 'planPic' => $planPic, 'chef' => $chefName, 'type' => $orderType, 'cust' => $orderItem->order_type, 'quantity' => $orderItem->quantity, 'price' => 'PHP ' . number_format($orderItem->price, 2, '.', ','));
                     }
                 }
@@ -1082,6 +1082,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"type":"' . $orderType . '", ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                         $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                        $thisInput .= '"delivery":' . $orderItem->is_delivered . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                         if (++$j < $orderItems->count()) {
                             $thisInput .= '},';
@@ -1180,6 +1181,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"type":"' . $orderType . '", ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                         $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                        $thisInput .= '"delivery":' . $orderItem->is_delivered . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                         if (++$j < $orderItems->count()) {
                             $thisInput .= '},';
@@ -1278,6 +1280,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"type":"' . $orderType . '", ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                         $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                        $thisInput .= '"delivery":' . $orderItem->is_delivered . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                         if (++$j < $orderItems->count()) {
                             $thisInput .= '},';
@@ -1376,6 +1379,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"type":"' . $orderType . '", ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                         $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                        $thisInput .= '"delivery":' . $orderItem->is_delivered . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                         if (++$j < $orderItems->count()) {
                             $thisInput .= '},';
@@ -1485,6 +1489,7 @@ class FoodieOrderPlanController extends Controller
                         $thisInput .= '"planPic":"' . $planPic . '", ';
                         $thisInput .= '"chef":"' . $chefName . '", ';
                         $thisInput .= '"type":"' . $orderType . '", ';
+                        $thisInput .= '"delivery":' . $orderItem->is_delivered . ', ';
                         $thisInput .= '"cust":' . $orderItem->order_type . ', ';
                         $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                         $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';

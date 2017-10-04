@@ -300,6 +300,11 @@
                                                             <div>Type:  {{$orderItemItem['type']}}</div>
                                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                             <div>Amount: {{$orderItemItem['price']}}</div>
+                                                            @if($orderItemItem['is_delivered']==0)
+                                                                <div>Delivery: Pending</div>
+                                                            @elseif($orderItemItem['is_delivered']==1)
+                                                                <div>Delivery: Delivered</div>
+                                                            @endif
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
                                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
@@ -388,6 +393,11 @@
                                                             <div>Type:  {{$orderItemItem['type']}}</div>
                                                             <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                             <div>Amount: {{$orderItemItem['price']}}</div>
+                                                            @if($orderItemItem['is_delivered']==0)
+                                                                <div>Delivery: Pending</div>
+                                                            @elseif($orderItemItem['is_delivered']==1)
+                                                                <div>Delivery: Delivered</div>
+                                                            @endif
                                                         </div>
                                                         <div class="col s12 offset-m2 m2">
                                                             <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; ">View</a>
