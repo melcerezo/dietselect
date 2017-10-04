@@ -247,11 +247,11 @@ $(document).ready(function () {
                     x += ' <img src="/img/' + valData[i].items[j].planPic + '" class="img-responsive" style="max-width:150px;"/>';
                     x += '</div>';
                     x += '<div class="col s12 m4" style="font-size: 20px;">';
-                    x += '<div>' + valData[i].items[j].plan + '</div>';
-                    x += '<div>' + valData[i].items[j].chef + '</div>';
-                    x += '<div>' + valData[i].items[j].type + '</div>';
-                    x += '<div>' + valData[i].items[j].quantity + '</div>';
-                    x += '<div>' + valData[i].items[j].price + '</div>';
+                    x += '<div>Plan: ' + valData[i].items[j].plan + '</div>';
+                    x += '<div>Chef: ' + valData[i].items[j].chef + '</div>';
+                    x += '<div>Type:' + valData[i].items[j].type + '</div>';
+                    x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
+                    x += '<div>Price: ' + valData[i].items[j].price + '</div>';
                     x += '</div>';
                     x += '<div class="col s12 offset-m2 m2">';
                     x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
