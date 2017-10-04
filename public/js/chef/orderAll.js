@@ -12,6 +12,9 @@ $(document).ready(function () {
     }else if(from == 3){
         $('#cancelLinkContain').addClass('activeTab');
         $('#ordCancel').show();
+    }else if(from==4){
+        $('#deliveredLinkContain').addClass('activeTab');
+        $('#ordDelivered').show();
     }
 
     $('.allLink').on('click',function () {
@@ -20,9 +23,11 @@ $(document).ready(function () {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
         $('#cancelLinkContain').removeClass('activeTab');
+        $('#deliveredLinkContain').removeClass('activeTab');
         $('#ordPend').hide();
         $('#ordPaid').hide();
         $('#ordCancel').hide();
+        $('#ordDelivered').hide();
 
         // show pending tab
         $('#allLinkContain').addClass('activeTab');
@@ -34,9 +39,12 @@ $(document).ready(function () {
         $('#allLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
         $('#cancelLinkContain').removeClass('activeTab');
+        $('#deliveredLinkContain').removeClass('activeTab');
         $('#ordAll').hide();
         $('#ordPaid').hide();
         $('#ordCancel').hide();
+        $('#ordDelivered').hide();
+
 
         // show pending tab
         $('#pendLinkContain').addClass('activeTab');
@@ -48,9 +56,11 @@ $(document).ready(function () {
         $('#allLinkContain').removeClass('activeTab');
         $('#pendLinkContain').removeClass('activeTab');
         $('#cancelLinkContain').removeClass('activeTab');
+        $('#deliveredLinkContain').removeClass('activeTab');
         $('#ordAll').hide();
         $('#ordPend').hide();
         $('#ordCancel').hide();
+        $('#ordDelivered').hide();
 
         // show paid tab
         $('#paidLinkContain').addClass('activeTab');
@@ -62,14 +72,33 @@ $(document).ready(function () {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
         $('#allLinkContain').removeClass('activeTab');
+        $('#deliveredLinkContain').removeClass('activeTab');
         $('#ordPend').hide();
         $('#ordPaid').hide();
         $('#ordAll').hide();
+        $('#ordDelivered').hide();
 
         // show pending tab
         $('#cancelLinkContain').addClass('activeTab');
         $('#ordCancel').show();
     });
+    $('.deliveredLink').on('click',function () {
+
+        // hide other tabs
+        $('#pendLinkContain').removeClass('activeTab');
+        $('#paidLinkContain').removeClass('activeTab');
+        $('#allLinkContain').removeClass('activeTab');
+        $('#cancelLinkContain').removeClass('activeTab');
+        $('#ordPend').hide();
+        $('#ordPaid').hide();
+        $('#ordAll').hide();
+        $('#ordCancel').hide();
+
+        // show delivered tab
+        $('#deliveredLinkContain').addClass('activeTab');
+        $('#ordDelivered').show();
+    });
+
 
     var daySelect= selectDay();
 
