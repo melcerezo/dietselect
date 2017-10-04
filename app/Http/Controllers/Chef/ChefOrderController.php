@@ -38,9 +38,14 @@ class ChefOrderController extends Controller
 
     public function getAllOrdersView($from){
 
-       $orderItems = DB::table('order_items')
-        ->join('orders','order_items.order_id','=','orders.id')
-            ->where('orders.is_cancelled','=',0)->orderBy('order_items.created_at', 'desc')->get();
+//       $orderItems = DB::table('order_items')
+//        ->join('orders','order_items.order_id','=','orders.id')
+//            ->where('orders.is_cancelled','=',0)->orderBy('order_items.created_at', 'desc')
+//           ->select('order_items.id', 'order_items.')->get();
+        $orderItems = OrderItem::with('order')
+//        ->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+            ->latest()->get();
         dd($orderItems);
 
         $chef = Auth::guard('chef')->user();
@@ -285,11 +290,7 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
-//        $orderItems = OrderItem::with(array('order' => function($query)
-//        {
-//            $query->where('is_cancelled', '=', 1);
-//
-//        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+//        $orderItems = OrderItem::with('order'))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
 //            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
 //            ->latest()->get();
 
