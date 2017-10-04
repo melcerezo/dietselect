@@ -156,7 +156,7 @@ $(document).ready(function () {
                     x += '<div class="card-content">';
                     x += '<div class="row">';
                     x += '<div class="col s12 m2">';
-                    x += '<img src="/img/" class="img-responsive" style="max-width:100px;"/>';
+                    x += '<img src="/img/'+valData[i].picture+'" class="img-responsive" style="max-width:100px;"/>';
                     x += '</div>';
                     x += '<div class="col s12 m4">';
                     x += '<div style="font-size: 20px;">';
