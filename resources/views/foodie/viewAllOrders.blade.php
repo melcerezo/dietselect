@@ -82,7 +82,7 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 m2">
-                                    <input type="text" id="datepick" value="Pick a date">
+                                    <select id="dateFilter"></select>
                                 </div>
                             </div>
                         </div>
