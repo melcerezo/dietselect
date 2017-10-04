@@ -72,7 +72,7 @@
             <div class="col s12 m10">
                     <div id="ordAll">
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search by Interval:</span>
                                 </div>
