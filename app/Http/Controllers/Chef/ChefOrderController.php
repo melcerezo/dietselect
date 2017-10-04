@@ -40,7 +40,7 @@ class ChefOrderController extends Controller
 
        $orderItems = DB::table('order_items')
         ->join('orders','order_items.order_id','=','orders.id')
-            ->where('orders.is_cancelled','=',0)->orderBy('order_items.created_by', 'desc')->get();
+            ->where('orders.is_cancelled','=',0)->orderBy('order_items.created_at', 'desc')->get();
         dd($orderItems);
 
         $chef = Auth::guard('chef')->user();
