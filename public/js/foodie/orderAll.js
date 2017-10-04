@@ -76,13 +76,15 @@ $(document).ready(function () {
     daySelect.done(function (response) {
         console.log(response[0]);
         var valData = response;
+        var parts = [];
         $.each(valData,function( index,value){
-            var parts = value.split('-');
-            console.log(parts);
+            parts.push(value.split('-'));
+            // console.log(parts);
             // $('select#dateFilter').append(
             //     $('<option></option>').attr("value",value).text(value)
             // );
         });
+        console.log(parts);
         $('select#dateFilter').material_select();
     });
 
