@@ -330,11 +330,11 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
-                }
-                if (++$i < $orderItems->count()) {
-                    $thisInput .= '},';
-                } else {
-                    $thisInput .= '}';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
                 }
             }
             $thisInput .= ']';
