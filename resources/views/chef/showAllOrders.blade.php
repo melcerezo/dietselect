@@ -12,12 +12,12 @@
     @if(count($orders)>0)
         <div class="container" style="width: 85%; margin-top: 1rem;">
             <div class="row">
-                <div class="col offset-m2 s6">
-                    <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
-                    <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
-                    <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
-                    <div id="deliveredLinkContain" class="col s3 center"><a href="#!" class="deliveredLink">Delivered</a></div>
-                    <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
+                <div class="col offset-m2 s7">
+                    <div id="allLinkContain" class="col s2 center"><a href="#!" class="allLink">All</a></div>
+                    <div id="pendLinkContain" class="col s2 center"><a href="#!" class="pendLink">Pending</a></div>
+                    <div id="paidLinkContain" class="col s2 center"><a href="#!" class="paidLink">Paid</a></div>
+                    <div id="deliveredLinkContain" class="col s2 center"><a href="#!" class="deliveredLink">Delivered</a></div>
+                    <div id="cancelLinkContain" class="col s2 center"><a href="#!" class="cancelLink">Cancelled</a></div>
                 </div>
             </div>
             <div class="row">
