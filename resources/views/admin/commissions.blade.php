@@ -117,265 +117,265 @@
                 </div>
                 <div class="row">
                     <div class="col s12">
-                        <div class="row">
-                            <div class="col s12 m3">
-                                <div>
-                                    <span>Search by Interval:</span>
-                                </div>
-                                <select id="orderFilter">
-                                    <option value="" disabled selected>Pick an interval</option>
-                                    <option value="1">Today</option>
-                                    <option value="2">This Week</option>
-                                    <option value="3">This Month</option>
-                                    <option value="4">This Year</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div id="dayCom">
-                            <div class="card">
-                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                    <div>
-                                        <span>
-                                            Commissions
-                                        </span>
-                                        <span class="badge light-green white-text" style="border-radius: 15px">
-                                            {{$commissions->where('created_at','>',$thisDay)->count()}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <table class="responsive-table">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Chef Name</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('created_at','>',$thisDay) as $commission)
-                                            <tr>
-                                                <td>{{$commission->id}}</td>
-                                                <td>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $commission->chef_id)
-                                                            {{$chef->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Not Paid</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="weekCom">
-                            <div class="card">
-                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                    <div>
-                                        <span>
-                                            Commissions
-                                        </span>
-                                        <span class="badge light-green white-text" style="border-radius: 15px">
-                                            {{$commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <table class="responsive-table">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Chef Name</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $commission)
-                                            <tr>
-                                                <td>{{$commission->id}}</td>
-                                                <td>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $commission->chef_id)
-                                                            {{$chef->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Not Paid</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="monthCom">
-                            <div class="card">
-                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                    <div>
-                                        <span>
-                                            Commissions
-                                        </span>
-                                        <span class="badge light-green white-text" style="border-radius: 15px">
-                                            {{$commissions->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <table class="responsive-table">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Chef Name</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions as $commission)
-                                            <tr>
-                                                <td>{{$commission->id}}</td>
-                                                <td>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $commission->chef_id)
-                                                            {{$chef->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Not Paid</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div id="yearCom">
-                            <div class="card">
-                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                                    <div>
-                                        <span>
-                                            Commissions
-                                        </span>
-                                        <span class="badge light-green white-text" style="border-radius: 15px">
-                                            {{$commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="card-content">
-                                    <table class="responsive-table">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Chef Name</th>
-                                            <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $commission)
-                                            <tr>
-                                                <td>{{$commission->id}}</td>
-                                                <td>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $commission->chef_id)
-                                                            {{$chef->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Not Paid</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
                         <div id="allCom">
+                            <div class="row">
+                                <div class="col s12 m3">
+                                    <div>
+                                        <span>Search by Interval:</span>
+                                    </div>
+                                    <select id="orderFilter">
+                                        <option value="" disabled selected>Pick an interval</option>
+                                        <option value="1">Today</option>
+                                        <option value="2">This Week</option>
+                                        <option value="3">This Month</option>
+                                        <option value="4">This Year</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div id="dayCom">
+                                <div class="card">
+                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                        <div>
+                                            <span>
+                                                Commissions
+                                            </span>
+                                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                                {{$commissions->where('created_at','>',$thisDay)->count()}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <table class="responsive-table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Chef Name</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Paid</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('created_at','>',$thisDay) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    <td>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $commission->chef_id)
+                                                                {{$chef->name}}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Not Paid</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="weekCom">
+                                <div class="card">
+                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                        <div>
+                                            <span>
+                                                Commissions
+                                            </span>
+                                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                                {{$commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <table class="responsive-table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Chef Name</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Paid</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    <td>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $commission->chef_id)
+                                                                {{$chef->name}}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Not Paid</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="monthCom">
+                                <div class="card">
+                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                        <div>
+                                            <span>
+                                                Commissions
+                                            </span>
+                                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                                {{$commissions->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <table class="responsive-table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Chef Name</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Paid</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    <td>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $commission->chef_id)
+                                                                {{$chef->name}}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Not Paid</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="yearCom">
+                                <div class="card">
+                                    <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                        <div>
+                                            <span>
+                                                Commissions
+                                            </span>
+                                            <span class="badge light-green white-text" style="border-radius: 15px">
+                                                {{$commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="card-content">
+                                        <table class="responsive-table">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Chef Name</th>
+                                                <th>Date</th>
+                                                <th>Amount</th>
+                                                <th>Paid</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    <td>
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id == $commission->chef_id)
+                                                                {{$chef->name}}
+                                                            @endif
+                                                        @endforeach
+                                                    </td>
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Not Paid</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="card">
                                 <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                     <div>
