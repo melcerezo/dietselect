@@ -67,7 +67,7 @@ class FoodieOrderPlanController extends Controller
 //            $time = $item->created_at->format('Y-m-d');
             $timeArray[]=array("time"=>date('Y-m-d', strtotime($item->created_at)));
         }
-//        $uniqueTimeArray = array_unique($timeArray);
+        $uniqueTimeArray = array_unique($timeArray);
         dd($timeArray);
 
         $thisDay = Carbon::today();
