@@ -263,4 +263,103 @@ class ChefOrderController extends Controller
 
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
+
+    public function dateChange()
+    {
+        
+    }
+
+    public function dayChange($date)
+    {
+        $dt = Carbon::createFromFormat('Y-m-d', $date);
+        $thisDay=$dt->startOfDay();
+        $dr = Carbon::createFromFormat('Y-m-d', $date);
+        $endDay=$dr->endOfDay();
+
+
+//        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
+//            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
+//            'is_cancelled'=>$orderItem->order->is_cancelled);
+
+        $orderItems = OrderItem::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+            ->latest()->get();
+
+        $thisInput = null;
+        $i=0;
+        if($orderItems->count() >0){
+            $thisInput = '[';
+            foreach($orderItems as $orderItem){
+                if($orderItem->order->is_cancelled!=1){
+                    if($orderItem->order_type==0){
+                        $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                        $orderPlanPic = $orderPlan->picture;
+                        $orderPlanName = $orderPlan->plan_name;
+                        $orderType="Standard";
+                        $dt = new Carbon($orderItem->order->created_at);
+                        $startOfWeek=$dt->startOfWeek()->addDay(7)->format('F d, Y');
+                    }elseif($orderItem->order_type==1){
+                        $orderPlan = CustomPlan::where('id','=',$orderItem->plan_id)->first();
+        //                dd($orderPlan);
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }elseif($orderItem->order_type==2){
+                        $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                        if($orderPlan!=null) {
+                            $orderPlanPic = $orderPlan->plan->picture;
+                            $orderPlanName = $orderPlan->plan->plan_name;
+                            $orderType = "Customized";
+                            $dt = new Carbon($orderItem->order->created_at);
+                            $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
+                        }
+                    }
+                    $thisInput .= '{';
+                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
+                    $thisInput .= '"week":"' . $startOfWeek . '", ';
+                    $thisInput .= '"picture":"' . $orderPlanPic . '", ';
+                    $thisInput .= '"foodie":"' . $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name. '", ';
+                    $thisInput .= '"type":"' . $orderType . '", ';
+                    $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
+                    $thisInput .= '"is_delivered":' . $orderItem->order->is_delivered . ', ';
+                    $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at . '", ';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    if (++$i < $orderItems->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+                }
+            }
+            $thisInput .= ']';
+
+            return $thisInput;
+        }
+        return $thisInput;
+    }
+
+    public function selectDay()
+    {
+        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
+//        $yearArray = [];
+//        $monthArray =[];
+//        $dayArray = [];
+        $timeArray =[];
+        foreach($orderTime as $item){
+//            $yearArray[] = $item->created_at->year;
+//            $monthArray[] = $item->created_at->month;
+//            $dayArray[] = $item->created_at->day;
+            $timeArray[]=date('Y-m-d', strtotime($item->created_at));
+        }
+        $uniqueTimeArray = array_unique($timeArray);
+//        dd($timeArray);
+        return $uniqueTimeArray;
+    }
+
 }
