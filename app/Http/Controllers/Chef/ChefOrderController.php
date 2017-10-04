@@ -42,7 +42,8 @@ class ChefOrderController extends Controller
         {
             $query->where('is_cancelled', '=', 1);
 
-        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+        }))
+//            ->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
             ->where('chef_id', '=', Auth::guard('chef')->user()->id)
             ->latest()->get();
 
