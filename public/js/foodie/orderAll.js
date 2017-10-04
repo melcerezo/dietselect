@@ -252,7 +252,11 @@ $(document).ready(function () {
                     x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                     x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                     x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                    x += '<div>Delivered: ' + valData[i].items[j].price + '</div>';
+                    if(valData[i].items[j].delivery==0){
+                        x += '<div>Delivered: Pending</div>';
+                    }else if(valData[i].items[j].delivery==1){
+                        x += '<div>Delivered: Delivered</div>';
+                    }
                     x += '</div>';
                     x += '<div class="col s12 offset-m2 m2">';
                     x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
