@@ -83,7 +83,6 @@
                             <div class="row">
                                 <div class="col s12 m2">
                                     <select id="dateFilter">
-                                        <option val="" disabled>Pick a date</option>
                                     </select>
                                 </div>
                             </div>

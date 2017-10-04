@@ -77,10 +77,11 @@ $(document).ready(function () {
         console.log(response[0]);
         var valData = response;
         $.each(valData,function( index,value){
-            console.log(value);
-            $('select#dateFilter').append(
-                $('<option></option>').attr("value",value).text(value)
-            );
+            var parts = value.split('-');
+            console.log(parts);
+            // $('select#dateFilter').append(
+            //     $('<option></option>').attr("value",value).text(value)
+            // );
         });
         $('select#dateFilter').material_select();
     });
