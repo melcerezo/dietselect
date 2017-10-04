@@ -279,7 +279,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($commissions as $commission)
+                                            @foreach($commissions->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $commission)
                                                 <tr>
                                                     <td>{{$commission->id}}</td>
                                                     <td>
