@@ -280,7 +280,7 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
-        $orderItems = OrderItem::with(array('orders' => function($query)
+        $orderItems = OrderItem::with(array('order' => function($query)
         {
             $query->where('is_cancelled', '=', 1);
 
