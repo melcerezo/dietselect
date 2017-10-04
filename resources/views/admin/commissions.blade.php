@@ -92,7 +92,7 @@
                                     </span>
                                 </div>
                             </div>
-                            <ul class="collection">
+                            <ul class="collection" style="margin-top: 0;">
                                 <li class="collection-item">Total Commissions: {{$totalCommissions}}</li>
                                 <li class="collection-item">Total Unpaid Commissions: {{$pendCommissions}}</li>
                                 <li class="collection-item">Total Paid Commissions: {{$paidCommissions}}</li>
