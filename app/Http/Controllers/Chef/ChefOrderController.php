@@ -40,7 +40,7 @@ class ChefOrderController extends Controller
 
         $orderItems = OrderItem::with(array('order' => function($query)
         {
-            $query->where('is_cancelled', '=', 1);
+            $query->where('is_cancelled', '!=', 1);
 
         }))
 //            ->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
