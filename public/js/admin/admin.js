@@ -47,6 +47,14 @@ $(document).ready(function() {
             $('#weekCom').hide();
             $('#monthCom').hide();
             $('#yearCom').show();
+        }else if(value==5){
+            $('#comAll').show();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').hide();
+            $('#yearCom').hide();
         }
     });
 

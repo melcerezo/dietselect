@@ -126,6 +126,7 @@
                                     <select id="orderFilter">
                                         <option value="0" disabled selected>Pick an interval</option>
                                         {{--<option value="1">Today</option>--}}
+                                        <option value="5">All</option>
                                         <option value="2">This Week</option>
                                         <option value="3">This Month</option>
                                         <option value="4">This Year</option>
