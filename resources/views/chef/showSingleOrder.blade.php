@@ -306,6 +306,9 @@
                                     @endif
                                 </li>
                                 <li class="collection-item">
+                                    <div>
+                                        <span>Delivery Status: </span>
+                                    </div>
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
                                         @if($orderItem->order->is_paid==1)
