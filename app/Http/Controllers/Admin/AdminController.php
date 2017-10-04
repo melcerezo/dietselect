@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
 use App\Message;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Foodie;
@@ -76,14 +77,37 @@ class AdminController extends Controller
         foreach($commissions->where('paid','=',1) as $commission){
             $paidCommissions+= $commission->amount;
         }
-//        dd($paidCommissions);
+
+        $thisDay = Carbon::today();
+        $dw = Carbon::now();
+        $startOfTheWeek=$dw->startOfWeek();
+        $de = Carbon::now();
+        $endOfWeek = $de->endOfWeek();
+
+        $ds = Carbon::now();
+        $startOfMonth=$ds->startOfMonth();
+        $dr = Carbon::now();
+        $endOfMonth = $dr->endOfMonth();
+
+        $dt = Carbon::now();
+        $startOfYear=$dt->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dm->endOfYear();
 
         return view("admin.commissions")->with([
             'chefs'=>$chefs,
             'commissions'=>$commissions,
             'totalCommissions'=>$totalCommissions,
             'pendCommissions'=>$pendCommissions,
-            'paidCommissions'=>$paidCommissions
+            'paidCommissions'=>$paidCommissions,
+            'thisDay'=>$thisDay,
+            'startOfTheWeek'=>$startOfTheWeek,
+            'endOfWeek'=>$endOfWeek,
+            'startOfMonth'=>$startOfMonth,
+            'endOfMonth'=>$endOfMonth,
+            'startOfYear'=>$startOfYear,
+            'endOfYear'=>$endOfYear
+
         ]);
     }
 
