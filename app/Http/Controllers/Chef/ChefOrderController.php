@@ -157,7 +157,7 @@ class ChefOrderController extends Controller
         $orderMealPlans = [];
         $orderPlan='';
         $ingredientMeals=[];
-        $orderMealPlans="";
+        $orderMealPlans=[];
         $saMeals = 0;
         $moSnaMeals = 0;
         $aftSnaMeals = 0;
