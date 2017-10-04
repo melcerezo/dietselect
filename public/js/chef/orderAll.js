@@ -198,7 +198,7 @@ $(document).ready(function () {
 
 function dayChoose($val){
     return $.ajax({
-        url: '/foodie/order/dayChange/' + $val
+        url: '/chef/order/dayChange/' + $val
 
     });
 }
