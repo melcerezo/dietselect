@@ -77,6 +77,7 @@ $(document).ready(function () {
         console.log(response[0]);
         var valData = response;
         $.each(valData,function( index,value){
+            console.log(value);
             $('#dateFilter').append(
                 $('<option>', {
                     value: value,
