@@ -78,7 +78,10 @@ $(document).ready(function () {
         var valData = response;
         for(var i in valData){
             $('#dateFilter').append(
-                '<option value="'+valData[i]+'">'+valData[i]+'</option>'
+                $('<option>', {
+                    value: valData[i],
+                    text: valData[i]
+                })
             );
         }
     });
