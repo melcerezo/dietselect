@@ -76,7 +76,7 @@ class AdminController extends Controller
         foreach($commissions->where('paid','=',1) as $commission){
             $paidCommissions+= $commission->amount;
         }
-        dd($totalCommissions);
+        dd($pendCommissions);
 
         return view("admin.commissions")->with([
             'chefs'=>$chefs,
