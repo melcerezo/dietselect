@@ -249,7 +249,7 @@ $(document).ready(function () {
                     x += '<div class="col s12 m4" style="font-size: 20px;">';
                     x += '<div>Plan: ' + valData[i].items[j].plan + '</div>';
                     x += '<div>Chef: ' + valData[i].items[j].chef + '</div>';
-                    x += '<div>Type:' + valData[i].items[j].type + '</div>';
+                    x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                     x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                     x += '<div>Price: ' + valData[i].items[j].price + '</div>';
                     x += '</div>';
