@@ -280,8 +280,11 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
+        $orderItems = OrderItem::with(array('orders' => function($query)
+        {
+            $query->where('is_cancelled', '=', 1);
 
-        $orderItems = OrderItem::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
             ->where('chef_id', '=', Auth::guard('chef')->user()->id)
             ->latest()->get();
 
@@ -290,7 +293,7 @@ class ChefOrderController extends Controller
         if($orderItems->count() >0){
             $thisInput = '[';
             foreach($orderItems as $orderItem){
-                if($orderItem->order->is_cancelled!=1){
+//                if($orderItem->order->is_cancelled!=1){
                     if($orderItem->order_type==0){
                         $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
                         $orderPlanPic = $orderPlan->picture;
@@ -335,7 +338,7 @@ class ChefOrderController extends Controller
                     } else {
                         $thisInput .= '}';
                     }
-                }
+//                }
             }
             $thisInput .= ']';
 
