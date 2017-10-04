@@ -78,11 +78,8 @@ $(document).ready(function () {
         var valData = response;
         $.each(valData,function( index,value){
             console.log(value);
-            $('#dateFilter').append(
-                $('<option>', {
-                    value: value,
-                    text: value
-                })
+            $('select#dateFilter').append(
+                $('<option></option>').attr("value",value).text(value)
             );
         });
     });
