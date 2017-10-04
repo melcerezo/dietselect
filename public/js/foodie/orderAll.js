@@ -82,6 +82,7 @@ $(document).ready(function () {
                 $('<option></option>').attr("value",value).text(value)
             );
         });
+        $('select#dateFilter').material_select();
     });
 
 
