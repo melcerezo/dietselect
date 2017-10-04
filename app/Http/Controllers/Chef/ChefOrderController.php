@@ -44,6 +44,7 @@ class ChefOrderController extends Controller
 //           ->select('order_items.id', 'order_items.')->get();
         $orderItems = OrderItem::with('order')
 //        ->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+            ->where('order.is_cancelled','=',0)
             ->where('chef_id', '=', Auth::guard('chef')->user()->id)
             ->latest()->get();
         dd($orderItems);
