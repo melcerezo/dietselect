@@ -64,7 +64,7 @@ $(document).ready(function() {
         $('#paidLinkContain').removeClass('activeTab');
 
         $('select#orderFilter option[value=5]').attr('selected','selected');
-        $('select#orderFilter').material_select();
+        $('select#orderFilter').material_select('destroy');
         $('#allCom').show();
         $('#comAll').show();
         $('#pendCom').hide();
