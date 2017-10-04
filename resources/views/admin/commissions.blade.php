@@ -123,8 +123,9 @@
                                     <span>Search by Interval:</span>
                                 </div>
                                 <select id="orderFilter">
+                                    <option value="" disabled selected>Pick an interval</option>
                                     <option value="1">Today</option>
-                                    <option value="2" selected>This Week</option>
+                                    <option value="2">This Week</option>
                                     <option value="3">This Month</option>
                                     <option value="4">This Year</option>
                                 </select>
