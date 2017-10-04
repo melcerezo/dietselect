@@ -1511,7 +1511,7 @@ class FoodieOrderPlanController extends Controller
 
     public function selectDay()
     {
-        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',0)->select('created_at')->get();
+        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
         $timeArray = [];
         foreach($orderTime as $item){
 //            $time = $item->created_at->format('Y-m-d');
