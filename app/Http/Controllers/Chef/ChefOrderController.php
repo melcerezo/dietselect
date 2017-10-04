@@ -38,11 +38,9 @@ class ChefOrderController extends Controller
 
     public function getAllOrdersView($from){
 
-        $orderItems = OrderItem::with(array('order'=> function($query){
-            $query->where('is_cancelled','!=',1);
-        }))->where('chef_id', '=', Auth::guard('chef')->user()->id)
-            ->get();
-
+       $orderItems = DB::table('order_items')
+        ->join('orders','order_items.order_id','=','orders.id')
+            ->where('orders.is_cancelled','=',0)->get();
         dd($orderItems->count());
 
         $chef = Auth::guard('chef')->user();
@@ -287,13 +285,17 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
-        $orderItems = OrderItem::with(array('order' => function($query)
-        {
-            $query->where('is_cancelled', '=', 1);
+//        $orderItems = OrderItem::with(array('order' => function($query)
+//        {
+//            $query->where('is_cancelled', '=', 1);
+//
+//        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
+//            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+//            ->latest()->get();
 
-        }))->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
-            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
-            ->latest()->get();
+        $orderItems = DB::table('order_items')
+            ->join('orders','order_items.order_id','=','orders.id')
+        ->where('orders.is_cancelled','=',0)->get();
 
         $thisInput = null;
         $i=0;
