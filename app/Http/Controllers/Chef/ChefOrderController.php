@@ -355,7 +355,9 @@ class ChefOrderController extends Controller
 //            $yearArray[] = $item->created_at->year;
 //            $monthArray[] = $item->created_at->month;
 //            $dayArray[] = $item->created_at->day;
-            $timeArray[]=date('Y-m-d', strtotime($item->created_at));
+            if($orderTime->order->is_cancelled!=1){
+                $timeArray[]=date('Y-m-d', strtotime($item->created_at));
+            }
         }
         $uniqueTimeArray = array_unique($timeArray);
 //        dd($timeArray);
