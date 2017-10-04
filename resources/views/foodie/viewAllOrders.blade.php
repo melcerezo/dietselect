@@ -73,6 +73,9 @@
                     <div id="ordAll">
                         <div class="row">
                             <div class="col s12 m2">
+                                <div>
+                                    <span>Search by Interval:</span>
+                                </div>
                                 <select id="orderFilter">
                                     <option value="1">Today</option>
                                     <option value="2" selected>This Week</option>
@@ -82,6 +85,9 @@
                             </div>
                             <div class="row">
                                 <div class="col s12 m2">
+                                    <div>
+                                        <span>Search By Date:</span>
+                                    </div>
                                     {{--<select id="yearFilter"></select>--}}
                                     {{--<select id="monthFilter"></select>--}}
                                     {{--<select id="dayFilter"></select>--}}
