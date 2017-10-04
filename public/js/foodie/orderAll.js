@@ -79,8 +79,8 @@ $(document).ready(function () {
         for(var i in valData){
             $('#dateFilter').append(
                 $('<option>', {
-                    value: valData[i],
-                    text: valData[i]
+                    value: valData[i].value,
+                    text: valData[i].value
                 })
             );
         }
