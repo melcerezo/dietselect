@@ -138,7 +138,7 @@ $(document).ready(function () {
                     x += '<div> Ordered By:</div>';
                     x += '<div>' + valData[i].foodie + '</div>';
                     x += '</div>';
-                    x += '<div class="col s12 m3" style="font-size: 20px;">';
+                    x += '<div class="col s12 m2" style="font-size: 20px;">';
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
@@ -216,7 +216,7 @@ $(document).ready(function () {
                 x += '<div> Ordered By:</div>';
                 x += '<div>' + valData[i].foodie + '</div>';
                 x += '</div>';
-                x += '<div class="col s12 m3" style="font-size: 20px;">';
+                x += '<div class="col s12 m2" style="font-size: 20px;">';
                 x += '<div>Payment:</div>';
                 if(valData[i].is_paid==0){
                     x += '<div>Pending</div>';
@@ -294,7 +294,7 @@ $(document).ready(function () {
                     x += '<div> Ordered By:</div>';
                     x += '<div>' + valData[i].foodie + '</div>';
                     x += '</div>';
-                    x += '<div class="col s12 m3" style="font-size: 20px;">';
+                    x += '<div class="col s12 m2" style="font-size: 20px;">';
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
