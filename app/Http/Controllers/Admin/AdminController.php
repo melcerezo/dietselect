@@ -63,6 +63,21 @@ class AdminController extends Controller
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $commissions = Commission::orderBy('created_at', 'desc')->get();
 
+        $totalCommissions = 0;
+        $pendCommissions = 0;
+        $paidCommissions = 0;
+
+        foreach($commissions as $commission){
+            $totalCommissions+=$commission->amount;
+        }
+        foreach($commissions->where('paid','=',0) as $commission){
+            $pendCommissions+= $commission->amount;
+        }
+        foreach($commissions->where('paid','=',1) as $commission){
+            $paidCommissions+= $commission->amount;
+        }
+        dd($totalCommissions);
+
         return view("admin.commissions")->with([
             'chefs'=>$chefs,
             'commissions'=>$commissions,
