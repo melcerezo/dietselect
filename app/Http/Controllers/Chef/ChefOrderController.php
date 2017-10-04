@@ -42,9 +42,10 @@ class ChefOrderController extends Controller
 //        ->join('orders','order_items.order_id','=','orders.id')
 //            ->where('orders.is_cancelled','=',0)->orderBy('order_items.created_at', 'desc')
 //           ->select('order_items.id', 'order_items.')->get();
-        $orderItems = OrderItem::with('order')
+        $orderItems = OrderItem::whereHas('order', function ($query) {
+            $query->where('is_cancelled', '=', 0);
+        })
 //        ->where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)
-            ->where('order.is_cancelled','=',0)
             ->where('chef_id', '=', Auth::guard('chef')->user()->id)
             ->latest()->get();
         dd($orderItems);
