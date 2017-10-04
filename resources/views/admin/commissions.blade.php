@@ -92,13 +92,11 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="card-content">
-                                <ul class="collection">
-                                    <li class="collection-item">Total Commissions: {{$totalCommissions}}</li>
-                                    <li class="collection-item">Total Unpaid Commissions: {{$pendCommissions}}</li>
-                                    <li class="collection-item">Total Paid Commissions: {{$paidCommissions}}</li>
-                                </ul>
-                            </div>
+                            <ul class="collection">
+                                <li class="collection-item">Total Commissions: {{$totalCommissions}}</li>
+                                <li class="collection-item">Total Unpaid Commissions: {{$pendCommissions}}</li>
+                                <li class="collection-item">Total Paid Commissions: {{$paidCommissions}}</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
