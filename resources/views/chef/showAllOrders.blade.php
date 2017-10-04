@@ -389,5 +389,6 @@
     @else
         No Orders Yet!
     @endif
+</div>
 
 @endsection
