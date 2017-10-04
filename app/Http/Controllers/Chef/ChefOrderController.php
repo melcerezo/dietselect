@@ -87,7 +87,7 @@ class ChefOrderController extends Controller
             if($orderPlan!=null){
                 $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
                     'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
-                    'is_cancelled'=>$orderItem->order->is_cancelled,'is_delivered'=>$orderItem->is_delivered);
+                    'is_cancelled'=>$orderItem->order->is_cancelled,'is_delivered'=>$orderItem->is_delivered,'created_at'=>$orderItem->created_at);
             }
 
         }

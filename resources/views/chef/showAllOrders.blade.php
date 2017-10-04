@@ -199,7 +199,7 @@
                 </div>
                 <div id="ordPend">
                     @foreach($orders as $order)
-                        @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                        @if($order['is_delivered']==0 && $order['is_cancelled']==0)
                             <div class="card">
                                 <div class="card-title" style="font-size: 18px;">
                                     <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
@@ -219,9 +219,29 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col s12 m3" style="font-size: 20px;">
+                                        <div class="col s12 m2" style="font-size: 20px;">
                                             <div>
-                                                <div>Status:</div>
+                                                <div>Payment:</div>
+                                                <div>
+                                                    @if($order['is_paid']==0)
+                                                        Pending
+                                                    @else
+                                                        Paid
+                                                    @endif
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>
+                                                <div>Order Date:</div>
+                                                <div>
+                                                    {{$order['created_at']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>
+                                                <div>Delivery:</div>
                                                 <div>
                                                     Pending
                                                 </div>
@@ -281,11 +301,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col s12 m3" style="font-size: 20px;">
+                                        <div class="col s12 m2" style="font-size: 20px;">
                                             <div>
-                                                <div>Status:</div>
+                                                <div>Payment:</div>
                                                 <div>
                                                     Paid
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>
+                                                <div>Order Date:</div>
+                                                <div>
+                                                    {{$order['created_at']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>
+                                                <div>Delivery:</div>
+                                                <div>
+                                                    @if($order['is_delivered']==0)
+                                                        Pending
+                                                    @else
+                                                        Delivered
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -348,6 +388,14 @@
                                                 <div>Status:</div>
                                                 <div>
                                                     Cancelled
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m2" style="font-size: 20px;">
+                                            <div>
+                                                <div>Order Date:</div>
+                                                <div>
+                                                    {{$order['created_at']}}
                                                 </div>
                                             </div>
                                         </div>
