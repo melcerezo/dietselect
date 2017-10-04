@@ -199,7 +199,7 @@
                 </div>
                 <div id="ordPend">
                     @foreach($orders as $order)
-                        @if($order['is_paid']==0 && $order['is_cancelled']==0)
+                        @if($order['is_delivered']==0 && $order['is_cancelled']==0)
                             <div class="card">
                                 <div class="card-title" style="font-size: 18px;">
                                     <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
