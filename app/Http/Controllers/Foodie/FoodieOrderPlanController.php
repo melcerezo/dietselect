@@ -67,7 +67,9 @@ class FoodieOrderPlanController extends Controller
 //            $time = $item->created_at->format('Y-m-d');
             $timeArray[]=array("time"=>date('Y-m-d', strtotime($item->created_at)));
         }
-        dd($timeArray);
+        $uniqueTimeArray = array_unique($timeArray);
+        dd($uniqueTimeArray);
+
         $thisDay = Carbon::today();
 //        dd($from);
         $foodie = Auth::guard('foodie')->user();
@@ -1513,5 +1515,18 @@ class FoodieOrderPlanController extends Controller
             }
 
         return $thisInput;
+    }
+
+    public function selectDay()
+    {
+        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->select('created_at')->get();
+        $timeArray = [];
+        foreach($orderTime as $item){
+//            $time = $item->created_at->format('Y-m-d');
+            $timeArray[]=array("time"=>date('Y-m-d', strtotime($item->created_at)));
+        }
+        $uniqueTimeArray = array_unique($timeArray);
+//        dd($timeArray);
+        return $uniqueTimeArray;
     }
 }

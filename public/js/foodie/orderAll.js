@@ -71,6 +71,9 @@ $(document).ready(function () {
         $('#ordCancel').show();
     });
 
+
+
+
     $('#datepick').pickadate({
 
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
@@ -313,5 +316,11 @@ function dayChoose($val){
     return $.ajax({
         url: '/foodie/order/dayChange/' + $val
 
+    });
+}
+
+function selectDay() {
+    return $.ajax({
+       url: '/foodie/order/selectDay/'
     });
 }
