@@ -76,7 +76,7 @@ class FoodieOrderPlanController extends Controller
         $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
         if ($ordersCount > 0) {
-            $orders = Order::where('foodie_id', '=', $foodie->id)->latest($column = 'created_at')->get();
+            $orders = Order::where('foodie_id', '=', $foodie->id)->orderBy('is_paid','ASC')->latest($column = 'created_at')->get();
         }
 
         $orderArray = [];
