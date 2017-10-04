@@ -43,7 +43,7 @@ class ChefOrderController extends Controller
         }))->where('chef_id', '=', Auth::guard('chef')->user()->id)
             ->get();
 
-        dd($orderItems);
+        dd($orderItems->count());
 
         $chef = Auth::guard('chef')->user();
 
