@@ -92,7 +92,7 @@ class AdminController extends Controller
         $dr = Carbon::now();
         $endOfMonth = $dr->endOfMonth();
 
-        dd($startOfMonth);
+        dd($endOfMonth);
 
         $dt = Carbon::now();
         $startOfYear=$dt->startOfYear();
