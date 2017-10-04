@@ -56,6 +56,7 @@ $(document).ready(function() {
         $('#paidLinkContain').removeClass('activeTab');
 
         $('#allCom').show();
+        $('#comAll').show();
         $('#pendCom').hide();
         $('#paidCom').hide();
         $('#dayCom').hide();
