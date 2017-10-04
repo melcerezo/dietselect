@@ -298,7 +298,9 @@
                                 <li class="collection-item">
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
-                                        <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                        @if($orderItem->order->is_paid==1)
+                                            <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                        @endif
                                     @elseif($orderItem->is_delivered==1)
                                         <span>Delivered</span>
                                     @endif
@@ -1631,7 +1633,9 @@
                                 <li class="collection-item">
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
-                                        <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                        @if($orderItem->order->is_paid==1)
+                                            <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                        @endif
                                     @elseif($orderItem->is_delivered==1)
                                         <span>Delivered</span>
                                     @endif
