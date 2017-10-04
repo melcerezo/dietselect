@@ -76,14 +76,14 @@ $(document).ready(function () {
     daySelect.done(function (response) {
         console.log(response[0]);
         var valData = response;
-        for(var i in valData){
+        $.each(valData,function( index,value){
             $('#dateFilter').append(
                 $('<option>', {
-                    value: valData[i].value,
-                    text: valData[i].value
+                    value: value,
+                    text: value
                 })
             );
-        }
+        });
     });
 
 
