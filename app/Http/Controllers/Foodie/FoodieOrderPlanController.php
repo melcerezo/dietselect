@@ -731,9 +731,9 @@ class FoodieOrderPlanController extends Controller
         Cart::destroy();
 
         $status= 'Successfully placed an order!';
-        if($notfound){
-            $status= 'Updated pre';
-        }
+//        if($notfound){
+//            $status= 'Updated pre';
+//        }
         return redirect()->route('order.show', $order->id)->with(['status'=>$status]);
 
     }
