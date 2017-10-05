@@ -397,7 +397,7 @@ class FoodieOrderPlanController extends Controller
         //pending orders
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
 
-        if($pendingOrders->count() > 0){
+//        if($pendingOrders->count() > 0){
             $notfound = 0;
             foreach ($pendingOrders as $pendingOrder) {
                 $orderItems = $pendingOrder->order_item()->get();
@@ -423,9 +423,9 @@ class FoodieOrderPlanController extends Controller
                 Cart::destroy();
                 return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
             }
-        }
+//        }
 
-        dd($pendingOrders);
+        dd($pendId);
 
         $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
         $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
@@ -444,33 +444,33 @@ class FoodieOrderPlanController extends Controller
 //        $order->week = $startOfNextWeek;
         $order->save();
 
-//        $foodnotif = new Notification();
-//        $foodnotif->sender_id = 0;
-//        $foodnotif->receiver_id = $foodie->id;
-//        $foodnotif->receiver_type = 'f';
-//        $foodnotif->notification = 'Your order has been placed ';
-//        $foodnotif->notification .= '. Please pay before ' . $thisSaturday . '.';
-//        $foodnotif->notification_type = 1;
-//        $foodnotif->save();
-//
-//        $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at . '. Please pay your balance of: PHP ';
-//        $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
-//        $foodiePhoneNumber = '0' . $foodie->mobile_number;
-//        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-//        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
-//        $paramFoodie = array(
-//            'http' => array(
-//                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-//                'method' => 'POST',
-//                'content' => http_build_query($itexmoFoodie),
-//            ),
-//            "ssl" => array(
-//                "verify_peer" => false,
-//                "verify_peer_name" => false,
-//            ),
-//        );
-//        $contextFoodie = stream_context_create($paramFoodie);
-//        file_get_contents($urlFoodie, false, $contextFoodie);
+        $foodnotif = new Notification();
+        $foodnotif->sender_id = 0;
+        $foodnotif->receiver_id = $foodie->id;
+        $foodnotif->receiver_type = 'f';
+        $foodnotif->notification = 'Your order has been placed ';
+        $foodnotif->notification .= '. Please pay before ' . $thisSaturday . '.';
+        $foodnotif->notification_type = 1;
+        $foodnotif->save();
+
+        $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at . '. Please pay your balance of: PHP ';
+        $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+        $paramFoodie = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmoFoodie),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $contextFoodie = stream_context_create($paramFoodie);
+        file_get_contents($urlFoodie, false, $contextFoodie);
 
         $cartChefs = [];
 
@@ -515,12 +515,12 @@ class FoodieOrderPlanController extends Controller
 
 
         $price = Cart::total();
-//
-//        $mailer->to($foodie->email)
-//            ->send(new MyOrderMail(
-//                $mailHTML,
-//                $price
-//            ));
+
+        $mailer->to($foodie->email)
+            ->send(new MyOrderMail(
+                $mailHTML,
+                $price
+            ));
 
         $orderChefs = array_unique($cartChefs);
 //        dd($orderChefs);
