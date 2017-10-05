@@ -389,10 +389,10 @@ class FoodieOrderPlanController extends Controller
             $orderAddress = $foodieAddress->id;
         }
         $cartItems = Cart::content();
-        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
-            ->where('receiver_type', '=', 'f')
-            ->where('is_read', '=', 0)
-            ->get();
+//        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
+//            ->where('receiver_type', '=', 'f')
+//            ->where('is_read', '=', 0)
+//            ->get();
 
         //pending orders
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
@@ -425,11 +425,11 @@ class FoodieOrderPlanController extends Controller
             }
         }
 
-        dd('no');
+//        dd('no');
 
-        $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
-        $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
-        $chats = Chat::where('foodie_id', '=', $foodie->id)->latest($column = 'updated_at')->get();
+//        $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
+//        $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
+//        $chats = Chat::where('foodie_id', '=', $foodie->id)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
         $thisSaturday = Carbon::parse('this saturday')->format('F d');
 
