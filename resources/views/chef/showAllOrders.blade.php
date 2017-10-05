@@ -50,8 +50,8 @@
                     </ul>
                     <div>
                         <ul class="collection">
-                            <li class="collection-item"><div>Total Orders:</div> {{$orderItems->count()}}</li>
-                            <li class="collection-item"><div>Total Delivered Orders:</div> {{$orderItems->where('is_delivered','=',1)->count()}}</li>
+                            <li class="collection-item"><div>Total Orders:</div> <span style="font-size: 14px;">{{$orderItems->count()}}</span></li>
+                            <li class="collection-item"><div>Total Delivered Orders:</div> <span style="font-size: 14px;">{{$orderItems->where('is_delivered','=',1)->count()}}</span></li>
                             <li class="collection-item"><div>Total Paid:</div> <span style="font-size: 14px;">PHP {{number_format($totalPaid,2,'.',',')}}</span></li>
                             <li class="collection-item"><div>Total Unpaid:</div> <span style="font-size: 14px;">PHP {{number_format($pendPaid,2,'.',',')}}</span></li>
                             {{--<li class="collection-item"></li>--}}
