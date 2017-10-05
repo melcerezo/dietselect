@@ -75,7 +75,7 @@
     </nav>
 
     <div class="container" style="width: 85%;">
-        <div class="row">
+        <div class="row" style="margin-top: 5px;">
             <div class="col s12 m2">
                 <ul class="collection">
                     <li class="collection-item light-green lighten-1 white-text">
