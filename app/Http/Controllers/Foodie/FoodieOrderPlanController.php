@@ -395,26 +395,29 @@ class FoodieOrderPlanController extends Controller
             ->get();
 
         //pending orders
-        $found = false;
+        $found = 0;
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
         foreach ($pendingOrders as $pendingOrder) {
             $orderItems = $pendingOrder->order_item()->get();
             foreach ($orderItems as $orderItem) {
                 foreach ($cartItems as $cartItem) {
                     if ($cartItem->id == $orderItem->plan_id) {
-                        $found = true;
                         $pendId = $pendingOrder->id;
                         $orderItem->quantity += $cartItem->qty;
                         $orderItem->save();
                         $pendingOrder->total += $cartItem->price;
                         $pendingOrder->save();
+                        Cart::remove($cartItem->rowId);
+
 //                        dd($orderItem);
 //                        break;
+                    }else{
+                        $found+=1;
                     }
                 }
             }
         }
-        if ($found) {
+        if ($found == 0 ) {
             Cart::destroy();
             return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
         }
