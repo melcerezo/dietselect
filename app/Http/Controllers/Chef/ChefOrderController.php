@@ -587,7 +587,7 @@ class ChefOrderController extends Controller
         })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
             ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
             ->where('chef_id', '=', Auth::guard('chef')->user()->id)
-            ->latest()->get();
+            ->latest($column='order_items.created_at')->get();
 
 
         $thisInput = null;
