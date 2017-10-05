@@ -397,7 +397,7 @@ class FoodieOrderPlanController extends Controller
         //pending orders
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
 
-        if($pendingOrders->count > 0){
+        if($pendingOrders->count() > 0){
             $notfound = 0;
             foreach ($pendingOrders as $pendingOrder) {
                 $orderItems = $pendingOrder->order_item()->get();
