@@ -88,8 +88,6 @@
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
-            </div>
-            <div class="col s12 m10">
                 <div class="row">
                     <div class="col s12 m7">
                         <div class="card">
@@ -108,6 +106,8 @@
                         </div>
                     </div>
                 </div>
+            </div>
+            <div class="col s12 m10">
                 <div class="row">
                     <div class="col s12 m7">
                         <div id="allLinkContain" class="col s2 center"><a href="#!" class="allLink">All</a></div>
