@@ -395,31 +395,34 @@ class FoodieOrderPlanController extends Controller
             ->get();
 
         //pending orders
-        $notfound = 0;
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
-        foreach ($pendingOrders as $pendingOrder) {
-            $orderItems = $pendingOrder->order_item()->get();
-            foreach ($orderItems as $orderItem) {
-                foreach ($cartItems as $cartItem) {
-                    if ($cartItem->id == $orderItem->plan_id) {
-                        $pendId = $pendingOrder->id;
-                        $orderItem->quantity += $cartItem->qty;
-                        $orderItem->save();
-                        $pendingOrder->total += $cartItem->price;
-                        $pendingOrder->save();
-                        Cart::remove($cartItem->rowId);
 
-//                        dd($orderItem);
-//                        break;
-                    }else{
-                        $notfound+=1;
+        if($pendingOrders>0){
+            $notfound = 0;
+            foreach ($pendingOrders as $pendingOrder) {
+                $orderItems = $pendingOrder->order_item()->get();
+                foreach ($orderItems as $orderItem) {
+                    foreach ($cartItems as $cartItem) {
+                        if ($cartItem->id == $orderItem->plan_id) {
+                            $pendId = $pendingOrder->id;
+                            $orderItem->quantity += $cartItem->qty;
+                            $orderItem->save();
+                            $pendingOrder->total += $cartItem->price;
+                            $pendingOrder->save();
+                            Cart::remove($cartItem->rowId);
+
+    //                        dd($orderItem);
+    //                        break;
+                        }else{
+                            $notfound+=1;
+                        }
                     }
                 }
             }
-        }
-        if ($notfound == 0 ) {
-            Cart::destroy();
-            return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
+            if ($notfound == 0 ) {
+                Cart::destroy();
+                return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
+            }
         }
 
         $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
