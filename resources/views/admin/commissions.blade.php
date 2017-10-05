@@ -89,7 +89,7 @@
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
                 <div class="row">
-                    <div class="col s12 m7">
+                    <div class="col s12">
                         <div class="card">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                 <div>
