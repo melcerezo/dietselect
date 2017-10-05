@@ -58,6 +58,95 @@ $(document).ready(function() {
         }
     });
 
+    $('#pendOrderFilter').change(function () {
+        var value = $('select#pendOrderFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#dayCom').show();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').hide();
+        }else if(value==2){
+            $('#allCom').hide();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#pendweekCom').show();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').hide();
+        }else if(value==3){
+            $('#allCom').hide();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').show();
+            $('#pendyearCom').hide();
+        }else if(value==4){
+            $('#allCom').hide();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').show();
+        }else if(value==5){
+            $('#allCom').hide();
+            $('#allPend').show();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').hide();
+        }
+    });
+    $('#paidOrderFilter').change(function () {
+        var value = $('select#paidOrderFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').show();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').show();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==3){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paidpaiddayCom').hide();
+            $('#paidpaidweekCom').hide();
+            $('#paidpaidmonthCom').show();
+            $('#paidpaidyearCom').hide();
+        }else if(value==4){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').show();
+        }else if(value==5){
+            $('#allCom').show();
+            $('#pendCom').hide();
+            $('#allPaid').show();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }
+    });
+
     $('.allLink').click(function () {
         $('#allLinkContain').addClass('activeTab');
         $('#pendLinkContain').removeClass('activeTab');
