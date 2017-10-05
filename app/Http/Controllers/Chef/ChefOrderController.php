@@ -60,7 +60,7 @@ class ChefOrderController extends Controller
         }
 
 
-        dd($orderItems->where('is_paid','=',0)->where('is_cancelled','=',0));
+        dd($orderItems->where('is_paid','=',1)->where('is_cancelled','=',0));
 
         $orders = [];
 
@@ -114,7 +114,9 @@ class ChefOrderController extends Controller
             'from'=>$from,
             'chats' => $chats,
             'messages'=>$messages,
-            'notifications' => $notifications
+            'notifications' => $notifications,
+            'totalPaid'=>$totalPaid,
+            'pendPaid'=>$pendPaid
         ]);
     }
 
