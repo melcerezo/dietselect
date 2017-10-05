@@ -51,7 +51,7 @@ class ChefOrderController extends Controller
             $totalPaid+=$orderItem->price;
         }
 
-        dd($orderItems);
+        dd($orderItems->is_paid);
 
         $pendPaid=0;
 
