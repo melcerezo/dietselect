@@ -420,13 +420,13 @@ class FoodieOrderPlanController extends Controller
                     }
                 }
 //            }
-            if ($notfound == 0 ) {
-                Cart::destroy();
-                return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
-            }
+        }
+        if ($notfound == 0 ) {
+            Cart::destroy();
+            return redirect()->route('order.show', $pendId)->with(['status', 'Quantity added to existing pending item']);
         }
 
-        dd('no');
+        dd($pendId);
 
         $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
         $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
