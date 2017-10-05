@@ -60,7 +60,7 @@ class ChefOrderController extends Controller
         }
 
 
-        dd($orderItems->where('is_paid','=',1)->count());
+        dd($orderItems->where('is_paid','=',0)->count());
 
         $orders = [];
 
