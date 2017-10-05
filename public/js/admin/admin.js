@@ -170,6 +170,7 @@ $(document).ready(function() {
         $('#paidLinkContain').removeClass('activeTab');
 
         $('#allCom').hide();
+        $('#pendCom').show();
         $('#allPend').show();
         $('#paidCom').hide();
         $('#penddayCom').hide();
@@ -184,6 +185,7 @@ $(document).ready(function() {
 
         $('#allCom').hide();
         $('#pendCom').hide();
+        $('#paidCom').show();
         $('#allPaid').show();
         $('#paiddayCom').hide();
         $('#paidweekCom').hide();
