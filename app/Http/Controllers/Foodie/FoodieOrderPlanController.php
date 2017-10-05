@@ -516,12 +516,12 @@ class FoodieOrderPlanController extends Controller
 
 
         $price = Cart::total();
-
-        $mailer->to($foodie->email)
-            ->send(new MyOrderMail(
-                $mailHTML,
-                $price
-            ));
+//
+//        $mailer->to($foodie->email)
+//            ->send(new MyOrderMail(
+//                $mailHTML,
+//                $price
+//            ));
 
         $orderChefs = array_unique($cartChefs);
 //        dd($orderChefs);
