@@ -110,6 +110,7 @@ class ChefOrderController extends Controller
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
             'foodies'=>$foodies,
+            'orderItems'=>$orderItems,
             'orders'=>$orders,
             'from'=>$from,
             'chats' => $chats,
