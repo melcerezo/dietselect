@@ -48,6 +48,13 @@
                             <a href="{{route('chef.ratings')}}" >Ratings</a>
                         </li>
                     </ul>
+                    <div>
+                        <ul class="collection">
+                            <li class="collection-item">Total Paid: {{$totalPaid}}</li>
+                            <li class="collection-item">Total Unpaid: {{$pendPaid}}</li>
+                            {{--<li class="collection-item"></li>--}}
+                        </ul>
+                    </div>
                 </div>
             <div class="col s12 m10">
 
