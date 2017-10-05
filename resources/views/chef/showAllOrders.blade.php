@@ -51,6 +51,7 @@
                     <div>
                         <ul class="collection">
                             <li class="collection-item">Total Orders: {{$orderItems->count()}}</li>
+                            <li class="collection-item">Total Delivered Orders: {{$orderItems->where('is_delivered','=',1)->count()}}</li>
                             <li class="collection-item"><div>Total Paid:</div> <span style="font-size: 14px;">PHP {{number_format($totalPaid,2,'.',',')}}</span></li>
                             <li class="collection-item"><div>Total Unpaid:</div> <span style="font-size: 14px;">PHP {{number_format($pendPaid,2,'.',',')}}</span></li>
                             {{--<li class="collection-item"></li>--}}
