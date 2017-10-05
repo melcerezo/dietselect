@@ -88,13 +88,6 @@
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
-                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
-                    <div>
-                        <span>
-                            Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}
-                        </span>
-                    </div>
-                </div>
                 <ul class="collection" style="margin-top: 0;">
                     <li class="collection-item grey lighten-3">
                          <span>
@@ -105,7 +98,6 @@
                     <li class="collection-item">Total Unpaid Commissions: {{'PHP '.number_format($pendCommissions,2,'.',',')}}</li>
                     <li class="collection-item">Total Paid Commissions: {{'PHP '.number_format($paidCommissions,2,'.',',')}}</li>
                 </ul>
-                </div>
             </div>
             <div class="col s12 m10">
                 <div class="row">
