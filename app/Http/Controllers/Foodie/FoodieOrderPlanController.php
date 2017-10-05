@@ -397,8 +397,8 @@ class FoodieOrderPlanController extends Controller
         //pending orders
         $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
 
+        $notfound = 0;
         if($pendingOrders->count() > 0){
-            $notfound = 0;
             foreach ($pendingOrders as $pendingOrder) {
                 $orderItems = $pendingOrder->order_item()->get();
                 foreach ($orderItems as $orderItem) {
@@ -425,7 +425,7 @@ class FoodieOrderPlanController extends Controller
             }
         }
 
-//        dd('no');
+        dd($notfound);
 
 //        $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
 //        $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
@@ -585,6 +585,7 @@ class FoodieOrderPlanController extends Controller
         }
 
         Cart::destroy();
+
 
         return redirect()->route('order.show', $order->id);
 
