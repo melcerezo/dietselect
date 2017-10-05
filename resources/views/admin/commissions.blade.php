@@ -96,12 +96,15 @@
                     </div>
                 </div>
                 <ul class="collection" style="margin-top: 0;">
-                    <li class="collection-item"></li>
+                    <li class="collection-item grey lighten-3">
+                         <span>
+                            Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}
+                        </span>
+                    </li>
                     <li class="collection-item">Total Commissions: {{'PHP '.number_format($totalCommissions,2,'.',',')}}</li>
                     <li class="collection-item">Total Unpaid Commissions: {{'PHP '.number_format($pendCommissions,2,'.',',')}}</li>
                     <li class="collection-item">Total Paid Commissions: {{'PHP '.number_format($paidCommissions,2,'.',',')}}</li>
                 </ul>
-                    </div>
                 </div>
             </div>
             <div class="col s12 m10">
