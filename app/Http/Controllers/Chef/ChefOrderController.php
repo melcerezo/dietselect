@@ -55,7 +55,7 @@ class ChefOrderController extends Controller
 
         $pendPaid=0;
 
-        foreach($orderItems->where('is_paid','=',0)->where('is_cancelled','=',0)->get() as $orderItem){
+        foreach($orderItems->where('is_paid','=',0)->where('is_cancelled','=',0) as $orderItem){
             $pendPaid+=$orderItem->price;
         }
         dd($pendPaid);
