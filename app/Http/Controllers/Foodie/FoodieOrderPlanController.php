@@ -395,11 +395,11 @@ class FoodieOrderPlanController extends Controller
             ->get();
 
         //pending orders
-        $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
 
 //        dd($pendingOrders->count());
 //        if($pendingOrders->count > 0){
             $notfound = 0;
+            $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
             foreach ($pendingOrders as $pendingOrder) {
                 $orderItems = $pendingOrder->order_item()->get();
                 foreach ($orderItems as $orderItem) {
