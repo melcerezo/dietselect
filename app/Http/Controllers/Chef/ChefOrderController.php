@@ -44,6 +44,21 @@ class ChefOrderController extends Controller
         $orderItems=OrderItem::where('chef_id','=', $chef->id)->join('orders','order_items.order_id','=','orders.id')->orderBy('orders.is_paid','ASC')
             ->orderBy('order_items.created_at','desc')->get();
 
+
+        $totalPaid=0;
+
+        foreach($orderItems->where('orders.is_paid','=',1)->where('orders.is_cancelled','=',0)->get() as $orderItem){
+            $totalPaid+=$orderItem->price;
+        }
+
+        dd($totalPaid);
+
+        $pendPaid=0;
+
+        foreach($orderItems->where('orders.is_paid','=',1)->where('orders.is_cancelled','=',0)->get() as $orderItem){
+            $pendPaid+=$orderItem->price;
+        }
+
         $orders = [];
 
         foreach($orderItems as $orderItem){
