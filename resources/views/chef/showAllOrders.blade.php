@@ -50,7 +50,7 @@
                     </ul>
                     <div>
                         <ul class="collection">
-                            <li class="collection-item">Total Paid: {{$totalPaid}}</li>
+                            <li class="collection-item">Total Paid: PHP {{number_format($totalPaid,2,'.',',')}}</li>
                             <li class="collection-item">Total Unpaid: {{$pendPaid}}</li>
                             {{--<li class="collection-item"></li>--}}
                         </ul>
