@@ -80,6 +80,19 @@
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
+                <ul class="collection" style="margin-top: 0;">
+                    <li class="collection-item grey lighten-3">
+                         <span>
+                            Totals from {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
+                        </span>
+                    </li>
+                    <li class="collection-item"><div>Orders:</div> <span style="font-size: 14px;">{{$orders}}</span></li>
+                    <li class="collection-item"><div>Unpaid Orders:</div> <span style="font-size: 14px;">{{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)}}</span></li>
+                    <li class="collection-item"><div>Paid Orders:</div> <span style="font-size: 14px;">{{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)}}</span></li>
+                    <li class="collection-item"><div>Cancelled Orders:</div> <span style="font-size: 14px;">{{$orders->where('is_cancelled','=',1)}}</span></li>
+                    <li class="collection-item"><div>Total Paid:</div> <span style="font-size: 14px;">{{'PHP '.number_format($totalPaid,2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Pending:</div> <span style="font-size: 14px;">{{'PHP '.number_format($totalPend,2,'.',',')}}</span></li>
+                </ul>
             </div>
             <div class="col s12 m10">
                 <div class="card">

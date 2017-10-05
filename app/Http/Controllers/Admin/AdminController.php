@@ -309,10 +309,53 @@ class AdminController extends Controller
 
     public function orders()
     {
-        $orders = Order::all();
+        $orders = Order::orderBy('created_at', 'desc')->get();
+        $firstOrd = Order::first();
+        $lastOrd = Order::latest()->first();
+
+        $totalPaid = 0;
+
+        foreach($orders->where('is_paid','=',1)->where('is_cancelled','=',0) as $order){
+            $totalPaid+=$order->total;
+        }
+
+        $totalPend = 0;
+
+        foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0) as $order){
+            $totalPend+=$order->total;
+        }
+
+        $thisDay = Carbon::today();
+        $dw = Carbon::now();
+        $startOfTheWeek=$dw->startOfWeek();
+        $de = Carbon::now();
+        $endOfWeek = $de->endOfWeek();
+
+        $ds = Carbon::now();
+        $startOfMonth=$ds->startOfMonth();
+        $dr = Carbon::now();
+        $endOfMonth = $dr->endOfMonth();
+
+
+        $dt = Carbon::now();
+        $startOfYear=$dt->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dm->endOfYear();
+
 
         return view('admin.orders')->with([
             'orders'=>$orders,
+            'firstOrd'=>$firstOrd,
+            'lastOrd'=>$lastOrd,
+            'thisDay'=>$thisDay,
+            'startOfTheWeek'=>$startOfTheWeek,
+            'endOfWeek'=>$endOfWeek,
+            'startOfMonth'=>$startOfMonth,
+            'endOfMonth'=>$endOfMonth,
+            'startOfYear'=>$startOfYear,
+            'endOfYear'=>$endOfYear,
+            'totalPaid'=>$totalPaid,
+            'totalPend'=>$totalPend
         ]);
     }
 
