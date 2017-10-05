@@ -123,7 +123,7 @@
                                             <span>Cancelled</span>
                                         @endif
                                     </td>
-                                    <td>{{'PHP'.number_format($order->total, 2, '.', '')}}</td>
+                                    <td>{{'PHP '.number_format($order->total, 2, '.', ',')}}</td>
                                     <td>{{$order->created_at->format('F d, Y')}}</td>
                                 </tr>
                             @endforeach
