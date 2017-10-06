@@ -168,6 +168,9 @@ $(document).ready(function() {
         $('#pendLinkContain').addClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
+        $('select#pendOrderFilter').val('5');
+        $('select#pendOrderFilter').material_select();
+
         $('#allCom').hide();
         $('#pendCom').show();
         $('#allPend').show();
@@ -181,6 +184,9 @@ $(document).ready(function() {
         $('#allLinkContain').removeClass('activeTab');
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').addClass('activeTab');
+
+        $('select#paidOrderFilter').val('5');
+        $('select#paidOrderFilter').material_select();
 
         $('#allCom').hide();
         $('#pendCom').hide();
