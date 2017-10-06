@@ -77,12 +77,11 @@ class FoodieOrderPlanController extends Controller
         $totalPend = 0;
 
         $orderAmounts = Order::where('foodie_id', '=', $foodie->id)->where('is_cancelled', '=', 0)->get();
-
         foreach($orderAmounts->where('is_paid','=',0) as $orderAmount){
-            $totalPend+=$orderAmount->total();
+            $totalPend+=$orderAmount->total;
         }
         foreach($orderAmounts->where('is_paid','=',1) as $orderAmount){
-            $totalPaid+=$orderAmount->total();
+            $totalPaid+=$orderAmount->total;
         }
 
 
