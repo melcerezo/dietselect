@@ -70,7 +70,7 @@
             </div>
             <div class="row">
                 <ul class="collection">
-                    <li class="collection-item"><div>Total Orders:</div> <span style="font-size: 14px;">{{$orderItems->count()}} orders</span></li>
+                    <li class="collection-item"><div>Total Orders:</div> <span style="font-size: 14px;">{{$ordersCount}} orders</span></li>
                     <li class="collection-item"><div>Total Paid:</div> <span style="font-size: 14px;">PHP {{number_format($totalPaid,2,'.',',')}}</span></li>
                     <li class="collection-item"><div>Total Unpaid:</div> <span style="font-size: 14px;">PHP {{number_format($pendPaid,2,'.',',')}}</span></li>
                     {{--<li class="collection-item"></li>--}}
