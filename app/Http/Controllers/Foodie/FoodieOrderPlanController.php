@@ -73,6 +73,19 @@ class FoodieOrderPlanController extends Controller
         $paidOrdCount = Order::where('foodie_id', '=', $foodie->id)->where('is_paid', '=', 1)->where('is_cancelled', '=', 0)->count();
         $cancelOrdCount = Order::where('foodie_id', '=', $foodie->id)->where('is_cancelled', '=', 1)->count();
 
+        $totalPaid = 0;
+        $totalPend = 0;
+
+        $orderAmounts = Order::where('foodie_id', '=', $foodie->id)->where('is_cancelled', '=', 0)->get();
+
+        foreach($orderAmounts->where('is_paid','=',0) as $orderAmount){
+            $totalPend+=$orderAmount->total();
+        }
+        foreach($orderAmounts->where('is_paid','=',1) as $orderAmount){
+            $totalPaid+=$orderAmount->total();
+        }
+
+
 
         $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $chefs = Chef::all();
@@ -178,7 +191,9 @@ class FoodieOrderPlanController extends Controller
             'messages' => $messages,
             'notifications' => $notifications,
             'unreadNotifications' => $unreadNotifications,
-            'from' => $from
+            'from' => $from,
+            'totalPaid'=>$totalPaid,
+            'totalPend'=>$totalPend
         ]);
     }
 
