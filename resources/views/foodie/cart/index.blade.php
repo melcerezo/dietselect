@@ -112,7 +112,7 @@
                             </div>
                         </div>
                         <div style="margin: 10px 0;">
-                            <a id="orderButton" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange darken-2">Order</a>
+                            <a id="orderButton" href="{{route('foodie.order')}}" class="btn waves-effect waves-light orange darken-2">Checkout</a>
                         </div>
                     </div>
                     {{--<div class="col s12 m2">--}}
