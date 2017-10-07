@@ -191,7 +191,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Week
+                                                Commissions From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
@@ -252,7 +252,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Month
+                                                Commissions From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
@@ -313,7 +313,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Year
+                                                Commissions From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
@@ -511,7 +511,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Week
+                                                Pending Commissions From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('paid','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
@@ -572,7 +572,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Month
+                                                Pending Commissions From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('paid','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
@@ -633,7 +633,7 @@
                                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                         <div>
                                             <span>
-                                                Commissions For This Year
+                                                Pending Commissions From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
                                             </span>
                                             <span class="badge light-green white-text" style="border-radius: 15px">
                                                 {{$commissions->where('paid','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
