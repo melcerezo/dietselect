@@ -415,172 +415,172 @@ class FoodieOrderPlanController extends Controller
 //            ->get();
 
         //pending orders
-        $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
-
-        $found = false;
-        if($pendingOrders->count() > 0){
-            foreach ($pendingOrders as $pendingOrder) {
-                $orderItems = $pendingOrder->order_item()->get();
-                foreach ($orderItems as $orderItem) {
-                    foreach ($cartItems as $cartItem) {
-                        if ($cartItem->id == $orderItem->plan_id) {
-                            $found=true;
-                            $pendId = $pendingOrder->id;
-                            $orderItem->quantity += $cartItem->qty;
-                            $orderItem->save();
-                            $pendingOrder->total += $cartItem->price;
-                            $pendingOrder->save();
-                            Cart::remove($cartItem->rowId);
-
-    //                        dd($orderItem);
-    //                        break;
-                        }
-                    }
-                }
-            }
-            if ($found) {
-//                if(Cart::count()>0){
-//                    $order=Order::where('id','=',$pendId)->first();
+//        $pendingOrders = Order::where('is_paid', '=', 0)->where('is_cancelled', '=', 0)->where('foodie_id', '=', $foodie->id)->where('created_at', '>', $lastSaturday)->latest()->get();
+//
+//        $found = false;
+//        if($pendingOrders->count() > 0){
+//            foreach ($pendingOrders as $pendingOrder) {
+//                $orderItems = $pendingOrder->order_item()->get();
+//                foreach ($orderItems as $orderItem) {
 //                    foreach ($cartItems as $cartItem) {
-//                        $orderItem = new OrderItem();
-//                        $orderItem->order_id = $order->id;
-//                        $orderItem->plan_id = $cartItem->id;
-//                        $orderItem->chef_id = $cartItem->options->chef;
-//                        $orderItem->order_type = $cartItem->options->cust;
-//                        $orderItem->quantity = $cartItem->qty;
-//                        $orderItem->price = $cartItem->price;
-//                        $orderItem->save();
+//                        if ($cartItem->id == $orderItem->plan_id) {
+//                            $found=true;
+//                            $pendId = $pendingOrder->id;
+//                            $orderItem->quantity += $cartItem->qty;
+//                            $orderItem->save();
+//                            $pendingOrder->total += $cartItem->price;
+//                            $pendingOrder->save();
+//                            Cart::remove($cartItem->rowId);
 //
-//                        $mailNameHTML = $cartItem->name;
-//                        $mailQtyHTML = $cartItem->qty;
-//                        $mailPriceHTML = $cartItem->price;
-//                        foreach ($chefs as $chef) {
-//                            if ($chef->id == $cartItem->options->chef) {
-//                                $mailChefHTML = $chef->name;
-//                            }
+//    //                        dd($orderItem);
+//    //                        break;
 //                        }
-//                        if ($cartItem->options->cust == 0) {
-//                            $mailTypeHTML = 'Standard';
-//                        } elseif ($cartItem->options->cust == 1) {
-//                            $mailTypeHTML = 'Customized';
-//                        }
-//    //            $mailDateHTML=$cartItem->options->date;
-//                        $cartChefs[] = $cartItem->options->chef;
-//                        $mailHTML[] = [
-//                            'name' => $mailNameHTML,
-//                            'qty' => $mailQtyHTML,
-//                            'price' => $mailPriceHTML,
-//                            'chef' => $mailChefHTML,
-//                            'type' => $mailTypeHTML,
-//                            'date' => $thisSaturday
-//                        ];
-//
-//
-//                        $order->total+=$cartItem->price;
-//                        $order->save();
-//                    }
-//
-//
-//                    $messageFoodie = 'Greetings from DietSelect! Your order has been updated on ' . $order->updated_at . '. Please pay your balance of: PHP ';
-//                    $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
-//                    $foodiePhoneNumber = '0' . $foodie->mobile_number;
-//                    $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
-//                    $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
-//                    $paramFoodie = array(
-//                        'http' => array(
-//                            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-//                            'method' => 'POST',
-//                            'content' => http_build_query($itexmoFoodie),
-//                        ),
-//                        "ssl" => array(
-//                            "verify_peer" => false,
-//                            "verify_peer_name" => false,
-//                        ),
-//                    );
-//                    $contextFoodie = stream_context_create($paramFoodie);
-//                    file_get_contents($urlFoodie, false, $contextFoodie);
-//
-//                    $price = number_format($order->total,2,'.',',');
-//                    $time = $order->created_at;
-//
-//                    $mailer->to($foodie->email)
-//                        ->send(new MyOrderMailUpdate(
-//                            $mailHTML,
-//                            $price,
-//                            $time
-//                        ));
-//
-//
-//                    $orderChefs = array_unique($cartChefs);
-//    //        dd($orderChefs);
-//
-//                    foreach ($orderChefs as $orderChef) {
-//                        $planName = [];
-//                        foreach ($cartItems as $cartItem) {
-//                            if ($cartItem->options->chef == $orderChef) {
-//                                $planName[] = $cartItem->name;
-//                                if ($cartItem->options->cust == 0) {
-//                                    $planName[] .= '- Standard';
-//                                } elseif ($cartItem->options->cust == 1) {
-//                                    $planName[] .= '- Custom';
-//                                }
-//
-//                            }
-//                        }
-//                        $chefnotif = new Notification();
-//                        $chefnotif->sender_id = 0;
-//                        $chefnotif->receiver_id = $orderChef;
-//                        $chefnotif->receiver_type = 'c';
-//                        $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has placed an order for: ';
-//                        foreach ($planName as $pName) {
-//                            $chefnotif->notification .= $pName . ' ';
-//                        }
-//                        $chefnotif->notification .= '.';
-//                        $chefnotif->notification_type = 1;
-//                        $chefnotif->save();
-//
-//                        $phoneChef = Chef::where('id', '=', $orderChef)->select('mobile_number')->first();
-//                        $message = 'Greetings from DietSelect! ' . $foodie->first_name . ' ' . $foodie->last_name . ' has ordered: ';
-//                        foreach ($planName as $pName) {
-//                            $message .= $pName . ' ';
-//                        }
-//                        $message .= ' on ' . $order->created_at;
-//                        $message .= '.';
-//                        $chefPhoneNumber = '0' . $phoneChef->mobile_number;
-//                        $url = 'https://www.itexmo.com/php_api/api.php';
-//                        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
-//                        $param = array(
-//                            'http' => array(
-//                                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-//                                'method' => 'POST',
-//                                'content' => http_build_query($itexmo),
-//                            ),
-//                            "ssl" => array(
-//                                "verify_peer" => false,
-//                                "verify_peer_name" => false,
-//                            ),
-//                        );
-//                        $context = stream_context_create($param);
-//                        file_get_contents($url, false, $context);
-//
-//                        $emailChef = Chef::where('id', '=', $orderChef)->select('email')->first();
-//                        $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
-//                        $price = Cart::total();
-//    //        dd($foodieName);
-//                        $mailer->to($emailChef)
-//                            ->send(new MyOrderMailChef(
-//                                $planName,
-//                                $foodieName,
-//                                $price));
 //                    }
 //                }
-
-                if(Cart::count()==0){
-                    Cart::destroy();
-                    return redirect()->route('order.show', $pendId)->with(['status' => 'Added to existing pending order']);
-                }
-            }
-        }
+//            }
+//            if ($found) {
+////                if(Cart::count()>0){
+////                    $order=Order::where('id','=',$pendId)->first();
+////                    foreach ($cartItems as $cartItem) {
+////                        $orderItem = new OrderItem();
+////                        $orderItem->order_id = $order->id;
+////                        $orderItem->plan_id = $cartItem->id;
+////                        $orderItem->chef_id = $cartItem->options->chef;
+////                        $orderItem->order_type = $cartItem->options->cust;
+////                        $orderItem->quantity = $cartItem->qty;
+////                        $orderItem->price = $cartItem->price;
+////                        $orderItem->save();
+////
+////                        $mailNameHTML = $cartItem->name;
+////                        $mailQtyHTML = $cartItem->qty;
+////                        $mailPriceHTML = $cartItem->price;
+////                        foreach ($chefs as $chef) {
+////                            if ($chef->id == $cartItem->options->chef) {
+////                                $mailChefHTML = $chef->name;
+////                            }
+////                        }
+////                        if ($cartItem->options->cust == 0) {
+////                            $mailTypeHTML = 'Standard';
+////                        } elseif ($cartItem->options->cust == 1) {
+////                            $mailTypeHTML = 'Customized';
+////                        }
+////    //            $mailDateHTML=$cartItem->options->date;
+////                        $cartChefs[] = $cartItem->options->chef;
+////                        $mailHTML[] = [
+////                            'name' => $mailNameHTML,
+////                            'qty' => $mailQtyHTML,
+////                            'price' => $mailPriceHTML,
+////                            'chef' => $mailChefHTML,
+////                            'type' => $mailTypeHTML,
+////                            'date' => $thisSaturday
+////                        ];
+////
+////
+////                        $order->total+=$cartItem->price;
+////                        $order->save();
+////                    }
+////
+////
+////                    $messageFoodie = 'Greetings from DietSelect! Your order has been updated on ' . $order->updated_at . '. Please pay your balance of: PHP ';
+////                    $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
+////                    $foodiePhoneNumber = '0' . $foodie->mobile_number;
+////                    $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+////                    $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+////                    $paramFoodie = array(
+////                        'http' => array(
+////                            'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+////                            'method' => 'POST',
+////                            'content' => http_build_query($itexmoFoodie),
+////                        ),
+////                        "ssl" => array(
+////                            "verify_peer" => false,
+////                            "verify_peer_name" => false,
+////                        ),
+////                    );
+////                    $contextFoodie = stream_context_create($paramFoodie);
+////                    file_get_contents($urlFoodie, false, $contextFoodie);
+////
+////                    $price = number_format($order->total,2,'.',',');
+////                    $time = $order->created_at;
+////
+////                    $mailer->to($foodie->email)
+////                        ->send(new MyOrderMailUpdate(
+////                            $mailHTML,
+////                            $price,
+////                            $time
+////                        ));
+////
+////
+////                    $orderChefs = array_unique($cartChefs);
+////    //        dd($orderChefs);
+////
+////                    foreach ($orderChefs as $orderChef) {
+////                        $planName = [];
+////                        foreach ($cartItems as $cartItem) {
+////                            if ($cartItem->options->chef == $orderChef) {
+////                                $planName[] = $cartItem->name;
+////                                if ($cartItem->options->cust == 0) {
+////                                    $planName[] .= '- Standard';
+////                                } elseif ($cartItem->options->cust == 1) {
+////                                    $planName[] .= '- Custom';
+////                                }
+////
+////                            }
+////                        }
+////                        $chefnotif = new Notification();
+////                        $chefnotif->sender_id = 0;
+////                        $chefnotif->receiver_id = $orderChef;
+////                        $chefnotif->receiver_type = 'c';
+////                        $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has placed an order for: ';
+////                        foreach ($planName as $pName) {
+////                            $chefnotif->notification .= $pName . ' ';
+////                        }
+////                        $chefnotif->notification .= '.';
+////                        $chefnotif->notification_type = 1;
+////                        $chefnotif->save();
+////
+////                        $phoneChef = Chef::where('id', '=', $orderChef)->select('mobile_number')->first();
+////                        $message = 'Greetings from DietSelect! ' . $foodie->first_name . ' ' . $foodie->last_name . ' has ordered: ';
+////                        foreach ($planName as $pName) {
+////                            $message .= $pName . ' ';
+////                        }
+////                        $message .= ' on ' . $order->created_at;
+////                        $message .= '.';
+////                        $chefPhoneNumber = '0' . $phoneChef->mobile_number;
+////                        $url = 'https://www.itexmo.com/php_api/api.php';
+////                        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+////                        $param = array(
+////                            'http' => array(
+////                                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+////                                'method' => 'POST',
+////                                'content' => http_build_query($itexmo),
+////                            ),
+////                            "ssl" => array(
+////                                "verify_peer" => false,
+////                                "verify_peer_name" => false,
+////                            ),
+////                        );
+////                        $context = stream_context_create($param);
+////                        file_get_contents($url, false, $context);
+////
+////                        $emailChef = Chef::where('id', '=', $orderChef)->select('email')->first();
+////                        $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
+////                        $price = Cart::total();
+////    //        dd($foodieName);
+////                        $mailer->to($emailChef)
+////                            ->send(new MyOrderMailChef(
+////                                $planName,
+////                                $foodieName,
+////                                $price));
+////                    }
+////                }
+//
+//                if(Cart::count()==0){
+//                    Cart::destroy();
+//                    return redirect()->route('order.show', $pendId)->with(['status' => 'Added to existing pending order']);
+//                }
+//            }
+//        }
 
 //        dd($notfound);
 
@@ -611,7 +611,7 @@ class FoodieOrderPlanController extends Controller
 
 
 
-        $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at . '. Please pay your balance of: PHP ';
+        $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at->format('F d, Y g:i A') . '. Please pay your balance of: PHP ';
         $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -712,7 +712,7 @@ class FoodieOrderPlanController extends Controller
             foreach ($planName as $pName) {
                 $message .= $pName . ' ';
             }
-            $message .= ' on ' . $order->created_at;
+            $message .= ' on ' . $order->created_at->format('F d, Y g:i A');
             $message .= '.';
             $chefPhoneNumber = '0' . $phoneChef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
