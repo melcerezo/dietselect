@@ -254,7 +254,7 @@ class ChefOrderController extends Controller
 //        dd($tasteCount);
 //        dd($ingredientMealData);
 
-        dd($orderItem);
+//        dd($orderItem);
 
         return view('chef.showSingleOrder')->with([
             'sms_unverified' => $this->mobileNumberExists(),
@@ -316,7 +316,8 @@ class ChefOrderController extends Controller
             })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
                 ->where('order_items.created_at', '>=', $thisDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
-                ->latest($column='order_items.created_at')->get();
+                ->latest($column='order_items.created_at')
+                ->select('*','order_items.id as it_id')->get();
 
 
             $thisInput = null;
@@ -353,7 +354,7 @@ class ChefOrderController extends Controller
                         }
                     }
                     $thisInput .= '{';
-                    $thisInput .= '"id":' . $orderItem->id . ', ';
+                    $thisInput .= '"id":' . $orderItem->it_id . ', ';
                     $thisInput .= '"plan_name":"' . $orderPlanName . '", ';
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
                     $thisInput .= '"picture":"' . $orderPlanPic . '", ';
