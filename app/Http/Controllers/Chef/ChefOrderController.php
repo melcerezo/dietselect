@@ -42,7 +42,8 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
 
         $orderItems=OrderItem::where('chef_id','=', $chef->id)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
-            ->orderBy('order_items.created_at','desc')->get();
+            ->orderBy('order_items.created_at','desc')
+            ->select('*','order_items.id as it_id')->get();
 
 
         $totalPaid=0;
@@ -93,7 +94,7 @@ class ChefOrderController extends Controller
                 }
             }
             if($orderPlan!=null){
-                $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
+                $orders[]= array('id'=>$orderItem->it_id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
                     'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
                     'is_cancelled'=>$orderItem->order->is_cancelled,'is_delivered'=>$orderItem->is_delivered,'created_at'=>$orderItem->created_at);
             }
