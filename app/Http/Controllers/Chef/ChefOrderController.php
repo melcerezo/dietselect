@@ -254,6 +254,8 @@ class ChefOrderController extends Controller
 //        dd($tasteCount);
 //        dd($ingredientMealData);
 
+        dd($orderItem)
+
         return view('chef.showSingleOrder')->with([
             'sms_unverified' => $this->mobileNumberExists(),
             'chef'=>$chef,
