@@ -125,7 +125,7 @@ $(document).ready(function () {
                 // var dateArray = [];
                 $.each(valData,function( index,value){
                     var parts=value.split('-');
-                    var date = [parts[0],parts[1],parts[2]];
+                    var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
                     // dateArray.push(date);
                     console.log(date);
                     // yearArray.push(parts[0]);
