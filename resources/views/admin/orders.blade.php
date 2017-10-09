@@ -803,14 +803,14 @@
                         </div>
                     </div>
                     <div id="orderCancelWeekPicker">
-                        <div class="card" id="orderPendWeekTable">
+                        <div class="card" id="orderCancelWeekTable">
                             <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                 <div>
                                 <span>
                                     Cancelled Orders From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
+                                    {{$orders->where('is_cancelled','=',1)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -827,7 +827,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
+                                        @foreach($orders->where('is_cancelled','=',1)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -863,7 +863,7 @@
                                     Cancelled Orders From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
+                                    {{$orders->where('is_cancelled','=',1)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -880,7 +880,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
+                                        @foreach($orders->where('is_cancelled','=',1)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -916,7 +916,7 @@
                                     Cancelled Orders From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
+                                    {{$orders->where('is_cancelled','=',1)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -933,7 +933,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
+                                        @foreach($orders->where('is_cancelled','=',1)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -968,7 +968,7 @@
                                     Cancelled Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
                                 </span>
                                 <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->count()}}
+                                    {{$orders->where('is_cancelled','=',1)->count()}}
                                 </span>
                             </div>
                         </div>
@@ -984,7 +984,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0) as $order)
+                                @foreach($orders->where('is_cancelled','=',1) as $order)
                                     <tr>
 
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
