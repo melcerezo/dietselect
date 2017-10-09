@@ -131,8 +131,8 @@ $(document).ready(function () {
             var parts=value.split('-');
             var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
             // dateArray.push(date);
-            console.log(date);
             picker.set('highlight',date);
+            picker.get('highlight');
             // yearArray.push(parts[0]);
             // monthArray.push(parts[1]);
             // dayArray.push(parts[2]);
