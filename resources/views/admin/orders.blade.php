@@ -740,7 +740,7 @@
                         <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                             <div>
                                 <span>
-                                    Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
+                                    Paid Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
                                 </span>
                                 <span class="badge light-green white-text" style="border-radius: 15px">
                                     {{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)->count()}}
