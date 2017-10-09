@@ -362,6 +362,7 @@ $(document).ready(function() {
         $('select#orderPageFilter').val('0');
         $('select#orderPageFilter').material_select();
         $('#orderPageAll').show();
+        $('#orderPageCancel').hide();
         $('#orderAllTable').show();
         $('#orderPagePend').hide();
         $('#orderPagePaid').hide();
@@ -378,6 +379,7 @@ $(document).ready(function() {
         $('select#orderPendFilter').val('0');
         $('select#orderPendFilter').material_select();
         $('#orderPageAll').hide();
+        $('#orderPageCancel').hide();
         $('#orderPendAllTable').show();
         $('#orderPagePend').show();
         $('#orderPagePaid').hide();
@@ -396,9 +398,28 @@ $(document).ready(function() {
         $('select#orderPaidFilter').val('0');
         $('select#orderPaidFilter').material_select();
         $('#orderPageAll').hide();
+        $('#orderPageCancel').hide();
         $('#orderPaidAllTable').show();
         $('#orderPagePend').hide();
         $('#orderPagePaid').show();
+        $('#orderPaidWeekPicker').hide();
+        $('#orderPaidMonthPicker').hide();
+        $('#orderPaidYearPicker').hide();
+    });
+
+    $('.cancelledOrderLink').click(function () {
+        $('#allOrderLinkContain').addClass('activeTab');
+        $('#pendOrderLinkContain').removeClass('activeTab');
+        $('#paidOrderLinkContain').removeClass('activeTab');
+        $('#cancelledOrderLinkContain').removeClass('activeTab');
+
+        $('select#orderCancelFilter').val('0');
+        $('select#orderCancelFilter').material_select();
+        $('#orderPageAll').hide();
+        $('#orderCancelAllTable').show();
+        $('#orderPagePend').hide();
+        $('#orderPagePaid').show();
+        $('#orderPageCancel').show();
         $('#orderPaidWeekPicker').hide();
         $('#orderPaidMonthPicker').hide();
         $('#orderPaidYearPicker').hide();

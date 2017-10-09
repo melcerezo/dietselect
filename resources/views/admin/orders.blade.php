@@ -105,9 +105,10 @@
             <div class="col s12 m10">
                 <div class="row">
                     <div class="col s12 m7">
-                        <div id="allOrderLinkContain" class="col s2 center"><a href="#!" class="allOrderLink">All</a></div>
-                        <div id="pendOrderLinkContain" class="col s2 center"><a href="#!" class="pendOrderLink">Pending</a></div>
-                        <div id="paidOrderLinkContain" class="col s2 center"><a href="#!" class="paidOrderLink">Paid</a></div>
+                        <div id="allOrderLinkContain" class="col s3 center"><a href="#!" class="allOrderLink">All</a></div>
+                        <div id="pendOrderLinkContain" class="col s3 center"><a href="#!" class="pendOrderLink">Pending</a></div>
+                        <div id="paidOrderLinkContain" class="col s3 center"><a href="#!" class="paidOrderLink">Paid</a></div>
+                        <div id="cancelledOrderLinkContain" class="col s3 center"><a href="#!" class="cancelledOrderLink">Cancelled</a></div>
                     </div>
                 </div>
                 <div id="orderPageAll">
@@ -289,7 +290,7 @@
                         <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                             <div>
                                 <span>
-                                    Orders
+                                    Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
                                 </span>
                                 <span class="badge light-green white-text" style="border-radius: 15px">
                                     {{$orders->count()}}
@@ -359,7 +360,7 @@
                                     Orders From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -376,7 +377,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -412,7 +413,7 @@
                                     Orders From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -429,7 +430,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -465,7 +466,7 @@
                                     Orders From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -482,7 +483,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -514,10 +515,10 @@
                         <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                             <div>
                                 <span>
-                                    Orders
+                                    Pending Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
                                 </span>
                                 <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->count()}}
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->count()}}
                                 </span>
                             </div>
                         </div>
@@ -533,7 +534,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($orders as $order)
+                                @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0) as $order)
                                     <tr>
 
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -584,7 +585,7 @@
                                     Orders From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
+                                    {{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -601,7 +602,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
+                                        @foreach($orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -637,7 +638,7 @@
                                     Orders From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
+                                    {{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -654,7 +655,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
+                                        @foreach($orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -690,7 +691,7 @@
                                     Orders From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
                                 </span>
                                     <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
+                                    {{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
                                 </span>
                                 </div>
                             </div>
@@ -707,7 +708,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($orders->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
+                                        @foreach($orders->where('is_paid','=',1)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
                                             <tr>
 
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
@@ -739,10 +740,10 @@
                         <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                             <div>
                                 <span>
-                                    Orders
+                                    Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
                                 </span>
                                 <span class="badge light-green white-text" style="border-radius: 15px">
-                                    {{$orders->count()}}
+                                    {{$orders->where('is_paid','=',1)->where('is_cancelled','=',0)->count()}}
                                 </span>
                             </div>
                         </div>
@@ -758,7 +759,232 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($orders as $order)
+                                @foreach($orders->where('is_paid','=',1)->where('is_cancelled','=',0) as $order)
+                                    <tr>
+
+                                        <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
+                                        <td>
+                                            {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                        </td>
+                                        <td>
+                                            @if($order->is_cancelled==0)
+                                                @if($order->is_paid==0)
+                                                    <span>Pending</span>
+                                                @elseif($order->is_paid==1)
+                                                    <span>Paid</span>
+                                                @endif
+                                            @elseif($order->is_cancelled==1)
+                                                <span>Cancelled</span>
+                                            @endif
+                                        </td>
+                                        <td>{{'PHP '.number_format($order->total, 2, '.', ',')}}</td>
+                                        <td>{{$order->created_at->format('F d, Y')}}</td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div id="orderPageCancel">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div>
+                                <span>Search by Interval:</span>
+                            </div>
+                            <select id="orderCancelFilter">
+                                <option value="0" disabled selected>Pick an interval</option>
+                                {{--<option value="1">Today</option>--}}
+                                <option value="5">All</option>
+                                <option value="2">This Week</option>
+                                <option value="3">This Month</option>
+                                <option value="4">This Year</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="orderCancelWeekPicker">
+                        <div class="card" id="orderPendWeekTable">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                <span>
+                                    Cancelled Orders From {{$startOfTheWeek->format('F d, Y')}} to {{$endOfWeek->format('F d, Y')}}
+                                </span>
+                                    <span class="badge light-green white-text" style="border-radius: 15px">
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek)->count()}}
+                                </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="card-content">
+                                    <table class="responsive-table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Foodie</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfTheWeek)->where('created_at','<',$endOfWeek) as $order)
+                                            <tr>
+
+                                                <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
+                                                <td>
+                                                    {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if($order->is_cancelled==0)
+                                                        @if($order->is_paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($order->is_paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    @elseif($order->is_cancelled==1)
+                                                        <span>Cancelled</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{'PHP '.number_format($order->total, 2, '.', ',')}}</td>
+                                                <td>{{$order->created_at->format('F d, Y')}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="orderCancelMonthPicker">
+                        <div class="card" id="orderCancelMonthTable">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                <span>
+                                    Cancelled Orders From {{$startOfMonth->format('F d, Y')}} to {{$endOfMonth->format('F d, Y')}}
+                                </span>
+                                    <span class="badge light-green white-text" style="border-radius: 15px">
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->count()}}
+                                </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="card-content">
+                                    <table class="responsive-table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Foodie</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth) as $order)
+                                            <tr>
+
+                                                <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
+                                                <td>
+                                                    {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if($order->is_cancelled==0)
+                                                        @if($order->is_paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($order->is_paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    @elseif($order->is_cancelled==1)
+                                                        <span>Cancelled</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{'PHP '.number_format($order->total, 2, '.', ',')}}</td>
+                                                <td>{{$order->created_at->format('F d, Y')}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="orderCancelYearPicker">
+                        <div class="card" id="orderCancelYearTable">
+                            <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                <div>
+                                <span>
+                                    Cancelled Orders From {{$startOfYear->format('F d, Y')}} to {{$endOfYear->format('F d, Y')}}
+                                </span>
+                                    <span class="badge light-green white-text" style="border-radius: 15px">
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->count()}}
+                                </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="card-content">
+                                    <table class="responsive-table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Foodie</th>
+                                            <th>Status</th>
+                                            <th>Total</th>
+                                            <th>Created</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear) as $order)
+                                            <tr>
+
+                                                <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
+                                                <td>
+                                                    {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if($order->is_cancelled==0)
+                                                        @if($order->is_paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($order->is_paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    @elseif($order->is_cancelled==1)
+                                                        <span>Cancelled</span>
+                                                    @endif
+                                                </td>
+                                                <td>{{'PHP '.number_format($order->total, 2, '.', ',')}}</td>
+                                                <td>{{$order->created_at->format('F d, Y')}}</td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card" id="orderCancelAllTable">
+                        <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                            <div>
+                                <span>
+                                    Cancelled Orders From {{$firstOrd->created_at->format('F d, Y')}} To {{$lastOrd->created_at->format('F d, Y')}}
+                                </span>
+                                <span class="badge light-green white-text" style="border-radius: 15px">
+                                    {{$orders->where('is_paid','=',0)->where('is_cancelled','=',0)->count()}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="card-content">
+                            <table class="responsive-table">
+                                <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Foodie</th>
+                                    <th>Status</th>
+                                    <th>Total</th>
+                                    <th>Created</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($orders->where('is_paid','=',0)->where('is_cancelled','=',0) as $order)
                                     <tr>
 
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
