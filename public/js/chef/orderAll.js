@@ -116,72 +116,73 @@ $(document).ready(function () {
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15,// Creates a dropdown of 15 years to control year
+        selectYears: 15// Creates a dropdown of 15 years to control year
 
         //set highlights
-        onRender: function () {
-            daySelect.done(function (response) {
-                var valData = response;
-                // var dateArray = [];
-                $.each(valData,function( index,value){
-                    var parts=value.split('-');
-                    var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
-                    // dateArray.push(date);
-                    console.log(date);
-                    datePick.set('highlight',date);
-                    // yearArray.push(parts[0]);
-                    // monthArray.push(parts[1]);
-                    // dayArray.push(parts[2]);
-
-                    $('select#dateFilter').append(
-                        $('<option></option>').attr("value",value).text(value)
-                    );
-                });
-            });
-        }
 
     });
 
+    var picker = datePick.pickadate('picker');
+
     daySelect.done(function (response) {
-        console.log(response[0]);
         var valData = response;
-        // var yearArray=[];
-        // var monthArray=[];
-        // var dayArray=[];
+        // var dateArray = [];
         $.each(valData,function( index,value){
-            // var parts=value.split('-');
+            var parts=value.split('-');
+            var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
+            // dateArray.push(date);
+            console.log(date);
+            picker.set('highlight',date);
             // yearArray.push(parts[0]);
             // monthArray.push(parts[1]);
             // dayArray.push(parts[2]);
+
             $('select#dateFilter').append(
                 $('<option></option>').attr("value",value).text(value)
             );
         });
-        // var uniqueYear = [];
-        // var uniqueMonth = [];
-        // var uniqueDay = [];
-        // $.each(yearArray,function (index,value) {
-        //     if($.inArray(value, uniqueYear) == -1){
-        //         uniqueYear.push(value);
-        //     }
-        // });
-        // $.each(monthArray,function (index,value) {
-        //     if($.inArray(value, uniqueMonth) == -1){
-        //         uniqueMonth.push(value);
-        //     }
-        // });
-        // $.each(dayArray,function (index,value) {
-        //     if($.inArray(value, uniqueDay) == -1){
-        //         uniqueDay.push(value);
-        //     }
-        // });
-        // $.each(uniqueYear, function (index,value) {
-        //     $('select#dateFilter').append(
-        //         $('<option></option>').attr("value",value).text(value)
-        //     );
-        // });
-        $('select#dateFilter').material_select();
     });
+
+    // daySelect.done(function (response) {
+    //     console.log(response[0]);
+    //     var valData = response;
+    //     // var yearArray=[];
+    //     // var monthArray=[];
+    //     // var dayArray=[];
+    //     $.each(valData,function( index,value){
+    //         // var parts=value.split('-');
+    //         // yearArray.push(parts[0]);
+    //         // monthArray.push(parts[1]);
+    //         // dayArray.push(parts[2]);
+    //         $('select#dateFilter').append(
+    //             $('<option></option>').attr("value",value).text(value)
+    //         );
+    //     });
+    //     // var uniqueYear = [];
+    //     // var uniqueMonth = [];
+    //     // var uniqueDay = [];
+    //     // $.each(yearArray,function (index,value) {
+    //     //     if($.inArray(value, uniqueYear) == -1){
+    //     //         uniqueYear.push(value);
+    //     //     }
+    //     // });
+    //     // $.each(monthArray,function (index,value) {
+    //     //     if($.inArray(value, uniqueMonth) == -1){
+    //     //         uniqueMonth.push(value);
+    //     //     }
+    //     // });
+    //     // $.each(dayArray,function (index,value) {
+    //     //     if($.inArray(value, uniqueDay) == -1){
+    //     //         uniqueDay.push(value);
+    //     //     }
+    //     // });
+    //     // $.each(uniqueYear, function (index,value) {
+    //     //     $('select#dateFilter').append(
+    //     //         $('<option></option>').attr("value",value).text(value)
+    //     //     );
+    //     // });
+    //     $('select#dateFilter').material_select();
+    // });
 
     $('select#dateFilter').change(function () {
         var dayVal=$('select#dateFilter option:selected').val();
