@@ -73,7 +73,7 @@ $(document).ready(function () {
 
     var daySelect= selectDay();
 
-    var datePick = $('#dateFilter').pickadate({
+    $('#dateFilter').pickadate({
 
         today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
         clear: 'Clear',
