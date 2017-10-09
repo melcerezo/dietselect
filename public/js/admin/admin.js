@@ -395,10 +395,10 @@ $(document).ready(function() {
 
         $('select#orderPaidFilter').val('0');
         $('select#orderPaidFilter').material_select();
-        $('#orderPageAll').show();
-        $('#orderAllTable').show();
+        $('#orderPageAll').hide();
+        $('#orderPaidAllTable').show();
         $('#orderPagePend').hide();
-        $('#orderPagePaid').hide();
+        $('#orderPagePaid').show();
         $('#orderPaidWeekPicker').hide();
         $('#orderPaidMonthPicker').hide();
         $('#orderPaidYearPicker').hide();
