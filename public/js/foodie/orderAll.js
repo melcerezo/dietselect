@@ -73,17 +73,43 @@ $(document).ready(function () {
 
     var daySelect= selectDay();
 
+    var datePick = $('#dateFilter').pickadate({
+
+        today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+        clear: 'Clear',
+        close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+        //Formats
+        format: 'yyyy-mm-dd',
+
+        //Date limits
+        max: Date.now(),
+
+        //Dropdown selectors
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 15// Creates a dropdown of 15 years to control year
+
+        //set highlights
+
+
+    });
+
     daySelect.done(function (response) {
         console.log(response[0]);
         var valData = response;
         // var yearArray=[];
         // var monthArray=[];
         // var dayArray=[];
+
+
+
+
         $.each(valData,function( index,value){
             // var parts=value.split('-');
             // yearArray.push(parts[0]);
             // monthArray.push(parts[1]);
             // dayArray.push(parts[2]);
+
             $('select#dateFilter').append(
                 $('<option></option>').attr("value",value).text(value)
             );
@@ -111,11 +137,11 @@ $(document).ready(function () {
         //         $('<option></option>').attr("value",value).text(value)
         //     );
         // });
-        $('select#dateFilter').material_select();
+        // $('select#dateFilter').material_select();
     });
 
 
-    // $('#datepick').pickadate({
+    // $('#dateFilter').pickadate({
     //
     //     today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
     //     clear: 'Clear',

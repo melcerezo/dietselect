@@ -82,6 +82,7 @@
                                 {{--<select id="yearFilter"></select>--}}
                                 {{--<select id="monthFilter"></select>--}}
                                 {{--<select id="dayFilter"></select>--}}
+                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
                                 <select id="dateFilter">
                                 </select>
                             </div>
