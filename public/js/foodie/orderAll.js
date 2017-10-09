@@ -93,12 +93,12 @@ $(document).ready(function () {
         onRender: function () {
             daySelect.done(function (response) {
                 var valData = response;
-                var dateArray = [];
+                // var dateArray = [];
                 $.each(valData,function( index,value){
                     var parts=value.split('-');
                     var date = [parts[0],parts[1],parts[2]];
                     dateArray.push(date);
-                    console.log(dateArray);
+                    console.log(date);
                     // yearArray.push(parts[0]);
                     // monthArray.push(parts[1]);
                     // dayArray.push(parts[2]);
