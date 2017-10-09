@@ -87,15 +87,33 @@ $(document).ready(function () {
 
         //Dropdown selectors
         selectMonths: true, // Creates a dropdown to control month
-        selectYears: 15// Creates a dropdown of 15 years to control year
+        selectYears: 15,// Creates a dropdown of 15 years to control year
 
         //set highlights
+        onRender: function () {
+            daySelect.done(function (response) {
+                var valData = response;
+                var dateArray = [];
+                $.each(valData,function( index,value){
+                    var parts=value.split('-');
+                    var date = [parts[0],parts[1],parts[2]];
+                    dateArray.push(date);
+                    console.log(dateArray);
+                    // yearArray.push(parts[0]);
+                    // monthArray.push(parts[1]);
+                    // dayArray.push(parts[2]);
 
+                    $('select#dateFilter').append(
+                        $('<option></option>').attr("value",value).text(value)
+                    );
+                });
+            });
+        }
 
     });
 
     daySelect.done(function (response) {
-        console.log(response[0]);
+        // console.log(response[0]);
         var valData = response;
         // var yearArray=[];
         // var monthArray=[];
