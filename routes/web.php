@@ -221,7 +221,11 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
     Route::get('plans/{plan}','Admin\AdminController@plan')->name('admin.plan');
     Route::get('plan/ban/{plan}','Admin\AdminController@planBan')->name('admin.plan.ban');
     Route::get('plan/unban/{plan}','Admin\AdminController@planUnban')->name('admin.plan.unban');
+
     Route::get('orders','Admin\AdminController@orders')->name('admin.orders');
+    Route::get('orders/orderChange/{type}','Admin\AdminController@orderChange');
+
+
     Route::get('orders/{order}','Admin\AdminController@order')->name('admin.order');
     Route::get('order/cancel/{order}','Admin\AdminController@orderCancel')->name('admin.order.cancel');
     Route::get('foodie/freeze/{foodie}','Admin\AdminController@foodieFreeze')->name('admin.foodie.freeze');

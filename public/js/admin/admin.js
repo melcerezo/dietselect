@@ -3,6 +3,8 @@ $(document).ready(function() {
         $('form#logout').submit();
     });
 
+    // commissions page
+
     $('#allCom').show();
     $('#pendCom').hide();
     $('#paidCom').hide();
@@ -198,5 +200,208 @@ $(document).ready(function() {
         $('#paidyearCom').hide();
     });
 
+    // orders page
+
+    $('#orderPageAll').show();
+    $('#orderPagePend').hide();
+    $('#orderPagePaid').hide();
+    $('#orderWeekPicker').hide();
+    $('#orderMonthPicker').hide();
+    $('#orderYearPicker').hide();
+
+    $('#allOrderLinkContain').addClass('activeTab');
+
+    // var orderAllTable= $('#orderAllTable');
+    $('#orderAllTable').show();
+    $('#orderWeekPicker').hide();
+    $('#orderMonthPicker').hide();
+    $('#orderYearPicker').hide();
+
+
+
+    $('#orderPageFilter').change(function () {
+        var value = $('select#orderPageFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').show();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderAllTable').hide();
+            $('#orderWeekPicker').show();
+            $('#orderMonthPicker').hide();
+            $('#orderYearPicker').hide();
+        }else if(value==3){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderAllTable').hide();
+            $('#orderWeekPicker').hide();
+            $('#orderMonthPicker').show();
+            $('#orderYearPicker').hide();
+        }else if(value==4){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderAllTable').hide();
+            $('#orderWeekPicker').hide();
+            $('#orderMonthPicker').hide();
+            $('#orderYearPicker').show();
+        }else if(value==5){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderAllTable').show();
+            $('#orderWeekPicker').hide();
+            $('#orderMonthPicker').hide();
+            $('#orderYearPicker').hide();
+        }
+    });
+
+    $('#orderPendFilter').change(function () {
+        var value = $('select#orderPendFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').show();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPageAll').hide();
+            $('#orderPendAllTable').hide();
+            $('#orderPendWeekPicker').show();
+            $('#orderPendMonthPicker').hide();
+            $('#orderPendYearPicker').hide();
+        }else if(value==3){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPageAll').hide();
+            $('#orderPendAllTable').hide();
+            $('#orderPendWeekPicker').hide();
+            $('#orderPendMonthPicker').show();
+            $('#orderPendYearPicker').hide();
+        }else if(value==4){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPageAll').hide();
+            $('#orderPendAllTable').hide();
+            $('#orderPendWeekPicker').hide();
+            $('#orderPendMonthPicker').hide();
+            $('#orderPendYearPicker').show();
+        }else if(value==5){
+            // $('#allCom').hide();
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderPendAllTable').show();
+            $('#orderPendWeekPicker').hide();
+            $('#orderPendMonthPicker').hide();
+            $('#orderPendYearPicker').hide();
+        }
+    });
+
+    $('#orderPaidFilter').change(function () {
+        var value = $('select#orderPaidFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').show();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            // $('#allCom').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').show();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').hide();
+        }else if(value==3){
+            // $('#allCom').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').show();
+            $('#orderPaidYearPicker').hide();
+        }else if(value==4){
+            // $('#allCom').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').show();
+        }else if(value==5){
+            // $('#allCom').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').show();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').hide();
+        }
+    });
+
+    $('.allOrderLink').click(function () {
+        $('#allOrderLinkContain').addClass('activeTab');
+        $('#pendOrderLinkContain').removeClass('activeTab');
+        $('#paidOrderLinkContain').removeClass('activeTab');
+
+        $('select#orderPageFilter').val('0');
+        $('select#orderPageFilter').material_select();
+        $('#orderPageAll').show();
+        $('#orderAllTable').show();
+        $('#orderPagePend').hide();
+        $('#orderPagePaid').hide();
+        $('#orderWeekPicker').hide();
+        $('#orderMonthPicker').hide();
+        $('#orderYearPicker').hide();
+    });
+
+    $('.pendOrderLink').click(function () {
+        $('#allOrderLinkContain').removeClass('activeTab');
+        $('#pendOrderLinkContain').addClass('activeTab');
+        $('#paidOrderLinkContain').removeClass('activeTab');
+
+        $('select#orderPendFilter').val('0');
+        $('select#orderPendFilter').material_select();
+        $('#orderPageAll').hide();
+        $('#orderPendAllTable').show();
+        $('#orderPagePend').show();
+        $('#orderPagePaid').hide();
+        $('#orderPendWeekPicker').hide();
+        $('#orderPendMonthPicker').hide();
+        $('#orderPendYearPicker').hide();
+    });
+
+
+
+    $('.paidOrderLink').click(function () {
+        $('#allOrderLinkContain').addClass('activeTab');
+        $('#pendOrderLinkContain').removeClass('activeTab');
+        $('#paidOrderLinkContain').removeClass('activeTab');
+
+        $('select#orderPaidFilter').val('0');
+        $('select#orderPaidFilter').material_select();
+        $('#orderPageAll').show();
+        $('#orderAllTable').show();
+        $('#orderPagePend').hide();
+        $('#orderPagePaid').hide();
+        $('#orderPaidWeekPicker').hide();
+        $('#orderPaidMonthPicker').hide();
+        $('#orderPaidYearPicker').hide();
+    });
 
 });

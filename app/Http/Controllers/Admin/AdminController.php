@@ -423,4 +423,104 @@ class AdminController extends Controller
 
         return back()->with(['status'=>'Cancelled Order']);
     }
+
+    public function orderChange($type)
+    {
+        $thisDay = Carbon::today();
+//        $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
+//            'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek,'created_at'=>$order->created_at);
+       $
+
+        $thisInput = null;
+        if($type==2){
+            $i = 0;
+            $orders = Order::where('created_at', '>', $startOfTheWeek)
+                ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                ->latest()->get();
+              if ($orders->count() > 0) {
+                  $thisInput = '[';
+                  foreach ($orders as $order) {
+                      $thisInput .= '{';
+                      $thisInput .= '"id":' . $order->id . ', ';
+                      $thisInput .= '"total":"PHP ' . number_format($order->total, 2, '.', ',') . '", ';
+                      $is_paid = "";
+                      if ($order->is_paid == 0) {
+                          $is_paid = "Pending";
+                      } elseif ($order->is_paid == 1) {
+                          $is_paid = "Paid";
+                      }
+                      $thisInput .= '"is_paid":"' . $is_paid . '", ';
+                      $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                      $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                      if (++$i < $orders->count()) {
+                          $thisInput .= '},';
+                      } else {
+                          $thisInput .= '}';
+                      }
+                  }
+                  $thisInput .= ']';
+              }
+            return $thisInput;
+        }else if($type==3){
+            $i = 0;
+            $orders = Order::where('created_at', '>', $startOfMonth)
+                ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                ->latest()->get();
+              if ($orders->count() > 0) {
+                  $thisInput = '[';
+                  foreach ($orders as $order) {
+                      $thisInput .= '{';
+                      $thisInput .= '"id":' . $order->id . ', ';
+                      $thisInput .= '"total":"PHP ' . number_format($order->total, 2, '.', ',') . '", ';
+                      $is_paid = "";
+                      if ($order->is_paid == 0) {
+                          $is_paid = "Pending";
+                      } elseif ($order->is_paid == 1) {
+                          $is_paid = "Paid";
+                      }
+                      $thisInput .= '"is_paid":"' . $is_paid . '", ';
+                      $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                      $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                      if (++$i < $orders->count()) {
+                          $thisInput .= '},';
+                      } else {
+                          $thisInput .= '}';
+                      }
+                  }
+                  $thisInput .= ']';
+              }
+                return $thisInput;
+        }else if($type==4) {
+                  $i = 0;
+                  $orders = Order::where('created_at', '>', $startOfYear)
+                      ->where('created_at', '<', $endOfYear)->where('is_cancelled', '=', 0)->orderBy('is_paid', 'ASC')
+                      ->latest()->get();
+                  if ($orders->count() > 0) {
+                      $thisInput = '[';
+                      foreach ($orders as $order) {
+                          $thisInput .= '{';
+                          $thisInput .= '"id":' . $order->id . ', ';
+                          $thisInput .= '"total":"PHP ' . number_format($order->total, 2, '.', ',') . '", ';
+                          $is_paid = "";
+                          if ($order->is_paid == 0) {
+                              $is_paid = "Pending";
+                          } elseif ($order->is_paid == 1) {
+                              $is_paid = "Paid";
+                          }
+                          $thisInput .= '"is_paid":"' . $is_paid . '", ';
+                          $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                          $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                          if (++$i < $orders->count()) {
+                              $thisInput .= '},';
+                          } else {
+                              $thisInput .= '}';
+                          }
+                      }
+                      $thisInput .= ']';
+                  }
+                      return $thisInput;
+        }
+        return $thisInput;
+    }
+
 }
