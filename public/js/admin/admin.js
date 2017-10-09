@@ -421,11 +421,11 @@ $(document).ready(function() {
         $('#orderPageAll').hide();
         $('#orderCancelAllTable').show();
         $('#orderPagePend').hide();
-        $('#orderPagePaid').show();
+        $('#orderPagePaid').hide();
         $('#orderPageCancel').show();
-        $('#orderPaidWeekPicker').hide();
-        $('#orderPaidMonthPicker').hide();
-        $('#orderPaidYearPicker').hide();
+        $('#orderCancelWeekPicker').hide();
+        $('#orderCancelMonthPicker').hide();
+        $('#orderCancelYearPicker').hide();
     });
 
 });
