@@ -358,6 +358,7 @@ $(document).ready(function() {
         $('#allOrderLinkContain').addClass('activeTab');
         $('#pendOrderLinkContain').removeClass('activeTab');
         $('#paidOrderLinkContain').removeClass('activeTab');
+        $('#cancelledOrderLinkContain').removeClass('activeTab');
 
         $('select#orderPageFilter').val('0');
         $('select#orderPageFilter').material_select();
@@ -375,6 +376,7 @@ $(document).ready(function() {
         $('#allOrderLinkContain').removeClass('activeTab');
         $('#pendOrderLinkContain').addClass('activeTab');
         $('#paidOrderLinkContain').removeClass('activeTab');
+        $('#cancelledOrderLinkContain').removeClass('activeTab');
 
         $('select#orderPendFilter').val('0');
         $('select#orderPendFilter').material_select();
@@ -391,9 +393,10 @@ $(document).ready(function() {
 
 
     $('.paidOrderLink').click(function () {
-        $('#allOrderLinkContain').addClass('activeTab');
+        $('#allOrderLinkContain').removeClass('activeTab');
         $('#pendOrderLinkContain').removeClass('activeTab');
-        $('#paidOrderLinkContain').removeClass('activeTab');
+        $('#paidOrderLinkContain').addClass('activeTab');
+        $('#cancelledOrderLinkContain').removeClass('activeTab');
 
         $('select#orderPaidFilter').val('0');
         $('select#orderPaidFilter').material_select();
@@ -408,10 +411,10 @@ $(document).ready(function() {
     });
 
     $('.cancelledOrderLink').click(function () {
-        $('#allOrderLinkContain').addClass('activeTab');
+        $('#allOrderLinkContain').removeClass('activeTab');
         $('#pendOrderLinkContain').removeClass('activeTab');
         $('#paidOrderLinkContain').removeClass('activeTab');
-        $('#cancelledOrderLinkContain').removeClass('activeTab');
+        $('#cancelledOrderLinkContain').addClass('activeTab');
 
         $('select#orderCancelFilter').val('0');
         $('select#orderCancelFilter').material_select();
