@@ -355,7 +355,7 @@ $(document).ready(function() {
     });
 
     $('#orderCancelFilter').change(function () {
-        var value = $('select#orderPaidFilter option:selected').val();
+        var value = $('select#orderCancelFilter option:selected').val();
         if(value==1){
             $('#allCom').hide();
             $('#pendCom').hide();
@@ -368,34 +368,34 @@ $(document).ready(function() {
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
-            $('#orderPaidAllTable').hide();
-            $('#orderPaidWeekPicker').show();
-            $('#orderPaidMonthPicker').hide();
-            $('#orderPaidYearPicker').hide();
+            $('#orderCancelAllTable').hide();
+            $('#orderCancelWeekPicker').show();
+            $('#orderCancelMonthPicker').hide();
+            $('#orderCancelYearPicker').hide();
         }else if(value==3){
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
-            $('#orderPaidAllTable').hide();
-            $('#orderPaidWeekPicker').hide();
-            $('#orderPaidMonthPicker').show();
-            $('#orderPaidYearPicker').hide();
+            $('#orderCancelAllTable').hide();
+            $('#orderCancelWeekPicker').hide();
+            $('#orderCancelMonthPicker').show();
+            $('#orderCancelYearPicker').hide();
         }else if(value==4){
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
-            $('#orderPaidAllTable').hide();
-            $('#orderPaidWeekPicker').hide();
-            $('#orderPaidMonthPicker').hide();
-            $('#orderPaidYearPicker').show();
+            $('#orderCancelAllTable').hide();
+            $('#orderCancelWeekPicker').hide();
+            $('#orderCancelMonthPicker').hide();
+            $('#orderCancelYearPicker').show();
         }else if(value==5){
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
-            $('#orderPaidAllTable').show();
-            $('#orderPaidWeekPicker').hide();
-            $('#orderPaidMonthPicker').hide();
-            $('#orderPaidYearPicker').hide();
+            $('#orderCancelAllTable').show();
+            $('#orderCancelWeekPicker').hide();
+            $('#orderCancelMonthPicker').hide();
+            $('#orderCancelYearPicker').hide();
         }
     });
 
