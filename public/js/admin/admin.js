@@ -230,7 +230,7 @@ $(document).ready(function() {
             $('#paidmonthCom').hide();
             $('#paidyearCom').hide();
         }else if(value==2){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderAllTable').hide();
@@ -238,7 +238,7 @@ $(document).ready(function() {
             $('#orderMonthPicker').hide();
             $('#orderYearPicker').hide();
         }else if(value==3){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderAllTable').hide();
@@ -246,7 +246,7 @@ $(document).ready(function() {
             $('#orderMonthPicker').show();
             $('#orderYearPicker').hide();
         }else if(value==4){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderAllTable').hide();
@@ -254,7 +254,7 @@ $(document).ready(function() {
             $('#orderMonthPicker').hide();
             $('#orderYearPicker').show();
         }else if(value==5){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderAllTable').show();
@@ -275,7 +275,7 @@ $(document).ready(function() {
             $('#paidmonthCom').hide();
             $('#paidyearCom').hide();
         }else if(value==2){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPageAll').hide();
             $('#orderPendAllTable').hide();
@@ -283,7 +283,7 @@ $(document).ready(function() {
             $('#orderPendMonthPicker').hide();
             $('#orderPendYearPicker').hide();
         }else if(value==3){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPageAll').hide();
             $('#orderPendAllTable').hide();
@@ -291,7 +291,7 @@ $(document).ready(function() {
             $('#orderPendMonthPicker').show();
             $('#orderPendYearPicker').hide();
         }else if(value==4){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPageAll').hide();
             $('#orderPendAllTable').hide();
@@ -299,7 +299,7 @@ $(document).ready(function() {
             $('#orderPendMonthPicker').hide();
             $('#orderPendYearPicker').show();
         }else if(value==5){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPendAllTable').show();
@@ -320,7 +320,7 @@ $(document).ready(function() {
             $('#paidmonthCom').hide();
             $('#paidyearCom').hide();
         }else if(value==2){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
             $('#orderPaidAllTable').hide();
@@ -328,7 +328,7 @@ $(document).ready(function() {
             $('#orderPaidMonthPicker').hide();
             $('#orderPaidYearPicker').hide();
         }else if(value==3){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
             $('#orderPaidAllTable').hide();
@@ -336,7 +336,7 @@ $(document).ready(function() {
             $('#orderPaidMonthPicker').show();
             $('#orderPaidYearPicker').hide();
         }else if(value==4){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
             $('#orderPaidAllTable').hide();
@@ -344,7 +344,52 @@ $(document).ready(function() {
             $('#orderPaidMonthPicker').hide();
             $('#orderPaidYearPicker').show();
         }else if(value==5){
-            // $('#allCom').hide();
+            $('#orderPageCancel').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').show();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').hide();
+        }
+    });
+
+    $('#orderCancelFilter').change(function () {
+        var value = $('select#orderPaidFilter option:selected').val();
+        if(value==1){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#allPaid').hide();
+            $('#paiddayCom').show();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').show();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').hide();
+        }else if(value==3){
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').show();
+            $('#orderPaidYearPicker').hide();
+        }else if(value==4){
+            $('#orderPagePaid').hide();
+            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
+            $('#orderPaidAllTable').hide();
+            $('#orderPaidWeekPicker').hide();
+            $('#orderPaidMonthPicker').hide();
+            $('#orderPaidYearPicker').show();
+        }else if(value==5){
+            $('#orderPagePaid').hide();
             $('#orderPagePend').hide();
             $('#orderPageAll').hide();
             $('#orderPaidAllTable').show();
