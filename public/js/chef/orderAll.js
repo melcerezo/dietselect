@@ -128,6 +128,7 @@ $(document).ready(function () {
                     var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
                     // dateArray.push(date);
                     console.log(date);
+                    $(this).set('highlight',date);
                     // yearArray.push(parts[0]);
                     // monthArray.push(parts[1]);
                     // dayArray.push(parts[2]);
