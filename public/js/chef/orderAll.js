@@ -1163,7 +1163,7 @@ $(document).ready(function () {
     $('#orderFilter').change(function () {
         var val = $('select#orderFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'0');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
@@ -1326,7 +1326,7 @@ $(document).ready(function () {
     $('#orderPendFilter').change(function () {
         var val = $('select#orderPendFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'1');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
@@ -1488,7 +1488,7 @@ $(document).ready(function () {
     $('#orderPaidFilter').change(function () {
         var val = $('select#orderPaidFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'2');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
@@ -1653,7 +1653,7 @@ $(document).ready(function () {
     $('#orderCancelFilter').change(function () {
         var val = $('select#orderCancelFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'3');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
@@ -1817,7 +1817,7 @@ $(document).ready(function () {
     $('#orderDeliverFilter').change(function () {
         var val = $('select#orderDeliverFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'4');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
