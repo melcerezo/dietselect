@@ -4,6 +4,6 @@
 .activeTab a{
     color: #f57c00;
 }
-div#ordAll,div#ordPend,div#ordPaid,div#ordCancel{
+div#ordAll,div#ordPend,div#ordPaid,div#ordCancel,div#ordDelivered{
     display: none;
 }
