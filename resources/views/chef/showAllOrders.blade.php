@@ -75,7 +75,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search By Date:</span>
                                 </div>
@@ -223,7 +223,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search By Date:</span>
                                 </div>
@@ -336,7 +336,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search By Date:</span>
                                 </div>
@@ -449,7 +449,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search By Date:</span>
                                 </div>
@@ -562,7 +562,7 @@
                             </select>
                         </div>
                         <div class="row">
-                            <div class="col s12 m2">
+                            <div class="col s12 m3">
                                 <div>
                                     <span>Search By Date:</span>
                                 </div>
