@@ -14,6 +14,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateFilter').empty();
             $.each(valData,function(index,value){
 
                 var dateSplit = value.split('-');
@@ -116,6 +117,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#datePendFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -217,6 +219,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#datePaidFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -318,6 +321,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateCancelFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -421,6 +425,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateDeliverFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -532,6 +537,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -645,6 +651,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#datePendFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -755,6 +762,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#datePaidFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -865,6 +873,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateCancelFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
@@ -976,6 +985,7 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
+            $('select#dateDeliverFilter').empty();
             $.each(valData,function( index,value){
                 var dateSplit = value.split('-');
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
