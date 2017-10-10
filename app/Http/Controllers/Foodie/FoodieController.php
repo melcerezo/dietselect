@@ -321,7 +321,7 @@ class FoodieController extends Controller
                                 $type="Customized";
                             } elseif ($orderItem->order_type == 2) {
                                 $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
-                                dd($orderPlan);
+                                dd($orderItem);
 //                                $planName = $orderPlan->plan->plan_name;
                                 $type="Customized";
                             }
