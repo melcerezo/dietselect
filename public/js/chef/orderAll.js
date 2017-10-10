@@ -17,7 +17,6 @@ $(document).ready(function () {
             $.each(valData,function(index,value){
 
                 var dateSplit = value.split('-');
-                // parseInt(
                 var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 console.log(dateSplit);
                 $('select#dateFilter').append(
@@ -118,8 +117,11 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#datePendFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#datePendFilter').material_select();
@@ -216,8 +218,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#datePaidFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#datePaidFilter').material_select();
@@ -315,8 +319,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#dateCancelFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateCancelFilter').material_select();
@@ -416,8 +422,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#dateDeliverFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateDeliverFilter').material_select();
@@ -525,8 +533,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#dateFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateFilter').material_select();
@@ -636,8 +646,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#datePendFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#datePendFilter').material_select();
@@ -744,8 +756,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#datePaidFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#datePaidFilter').material_select();
@@ -852,8 +866,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#dateCancelFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateCancelFilter').material_select();
@@ -961,8 +977,10 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
+                var dateSplit = value.split('-');
+                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
                 $('select#dateDeliverFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateDeliverFilter').material_select();
