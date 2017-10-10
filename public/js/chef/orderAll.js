@@ -147,7 +147,7 @@ $(document).ready(function () {
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#datePendFilter').material_select();
         });
 
 
@@ -178,7 +178,7 @@ $(document).ready(function () {
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#datePaidFilter').material_select();
         });
 
         // show paid tab
@@ -238,7 +238,7 @@ $(document).ready(function () {
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#dateDeliverFilter').material_select();
         });
 
 
