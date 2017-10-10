@@ -5,7 +5,7 @@ $(document).ready(function () {
         $('#ordAll').show();
 
         //initialize day select all
-        var daySelect= selectDay(0);
+        var daySelect= selectDay('0');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -23,7 +23,7 @@ $(document).ready(function () {
         $('#ordPend').show(1);
 
         //initialize day select pending
-        var daySelect= selectDay();
+        var daySelect= selectDay('1');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -41,7 +41,7 @@ $(document).ready(function () {
         $('#ordPaid').show(2);
 
         //initialize day select paid
-        var daySelect= selectDay();
+        var daySelect= selectDay('2');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -56,7 +56,7 @@ $(document).ready(function () {
 
     }else if(from == 3){
         $('#cancelLinkContain').addClass('activeTab');
-        $('#ordCancel').show(3);
+        $('#ordCancel').show('3');
 
         //initialize day select cancel
         var daySelect= selectDay();
@@ -77,7 +77,7 @@ $(document).ready(function () {
         $('#ordDelivered').show();
 
         //initialize day select delivered
-        var daySelect= selectDay(4);
+        var daySelect= selectDay('4');
 
         daySelect.done(function (response) {
             console.log(response[0]);
