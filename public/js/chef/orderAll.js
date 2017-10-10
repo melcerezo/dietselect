@@ -745,11 +745,12 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '<div class="col s12 m2" style="font-size: 20px;">';
                     x += '<div>Payment:</div>';
-                    if(valData[i].is_paid==0){
-                        x += '<div>Pending</div>';
-                    }else if(valData[i].is_paid==1){
-                        x += '<div>Paid</div>';
-                    }
+                    x += '<div>Cancelled</div>';
+                    // if(valData[i].is_paid==0){
+                    //     x += '<div>Pending</div>';
+                    // }else if(valData[i].is_paid==1){
+                    //     x += '<div>Paid</div>';
+                    // }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
                     x += '<div>Order Date:</div>';
@@ -757,11 +758,12 @@ $(document).ready(function () {
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
                     x += '<div>Delivery:</div>';
-                    if(valData[i].is_delivered==0){
-                        x += '<div>Pending</div>';
-                    }else if(valData[i].is_delivered==1){
-                        x += '<div>Delivered</div>';
-                    }
+                    x += '<div>Cancelled</div>';
+                    // if(valData[i].is_delivered==0){
+                    //     x += '<div>Pending</div>';
+                    // }else if(valData[i].is_delivered==1){
+                    //     x += '<div>Delivered</div>';
+                    // }
                     x += '</div>';
                     x += '</div>';
                     x += '</div>';
