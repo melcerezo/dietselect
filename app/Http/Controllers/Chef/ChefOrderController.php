@@ -364,7 +364,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
-                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y H:i A') . '", ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -430,7 +430,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
-                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y H:i A') . '", ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -496,7 +496,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
-                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y H:i A') . '", ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -562,7 +562,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
-                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y H:i A') . '", ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -640,7 +640,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
-                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y H:i A') . '", ';
+                    $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
