@@ -56,10 +56,10 @@ $(document).ready(function () {
 
     }else if(from == 3){
         $('#cancelLinkContain').addClass('activeTab');
-        $('#ordCancel').show('3');
+        $('#ordCancel').show();
 
         //initialize day select cancel
-        var daySelect= selectDay();
+        var daySelect= selectDay('3');
 
         daySelect.done(function (response) {
             console.log(response[0]);
