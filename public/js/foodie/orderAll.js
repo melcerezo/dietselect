@@ -30,75 +30,75 @@ $(document).ready(function () {
 
         // initialize order filter select all
 
-        // var startVal = $('select#orderFilter option:selected').val();
-        //
-        // var dateChange = dateChoose(startVal,'0');
-        // dateChange.done(function (response) {
-        //     $('div#dayPick').empty();
-        //     if(response==''){
-        //         $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
-        //     }else {
-        //         var valData = JSON.parse(response);
-        //         // console.log(JSON.parse(response));
-        //         // console.log(response);
-        //         for (var i in valData) {
-        //             var x = '<div class="card">';
-        //             x += '<div class="card-title" style="font-size: 18px;">';
-        //             x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-        //             x += ' <div class="col s12 m2">';
-        //             x += '<div>For Week Of</div>';
-        //             x += '<div style="font-size: 22px;">' + valData[i].week + '</div>';
-        //             x += '</div>';
-        //             x += '<div class="col s12 m3">';
-        //             x += '<div>Total</div>';
-        //             x += '<div style="font-size: 22px;">' + valData[i].total + '</div>';
-        //             x += '</div>';
-        //             x += '<div class="col s12 m4">';
-        //             x += '<div>Address</div>';
-        //             x += '<div style="font-size: 22px;">' + valData[i].address + '</div>';
-        //             x += '</div>';
-        //             x += '<div class="col s12 m3">';
-        //             x += '<div>Status</div>';
-        //             x += '<div style="font-size: 22px;">' + valData[i].is_paid + '</div>';
-        //             x += '</div>';
-        //             x += '</div>';
-        //             x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-        //             x += '<div class="col s12 m6">';
-        //             x += '<div>Order Date</div>';
-        //             x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
-        //             x += '</div>';
-        //             x += '</div>';
-        //             x += '</div>';
-        //             x += '<div class="divider" style="margin: 0 5px;"></div>';
-        //             x += '<div class="card-content">';
-        //             for (var j in valData[i].items) {
-        //                 x += '<div class="row">';
-        //                 x += '<div class="col s12 m3">';
-        //                 x += ' <img src="/img/' + valData[i].items[j].planPic + '" class="img-responsive" style="max-width:150px;"/>';
-        //                 x += '</div>';
-        //                 x += '<div class="col s12 m4" style="font-size: 20px;">';
-        //                 x += '<div>Plan: ' + valData[i].items[j].plan + '</div>';
-        //                 x += '<div>Chef: ' + valData[i].items[j].chef + '</div>';
-        //                 x += '<div>Type: ' + valData[i].items[j].type + '</div>';
-        //                 x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
-        //                 x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-        //                 if(valData[i].items[j].delivery==0){
-        //                     x += '<div>Delivery: Pending</div>';
-        //                 }else if(valData[i].items[j].delivery==1){
-        //                     x += '<div>Delivery: Delivered</div>';
-        //                 }
-        //                 x += '</div>';
-        //                 x += '<div class="col s12 offset-m2 m2">';
-        //                 x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
-        //                 x += '</div>';
-        //                 x += '</div>';
-        //             }
-        //             x += '</div>';
-        //             x += '</div>';
-        //             $('div#dayPick').append(x);
-        //         }
-        //     }
-        // });
+        var startVal = $('select#orderFilter option:selected').val();
+
+        var dateChange = dateChoose(startVal,'0');
+        dateChange.done(function (response) {
+            $('div#dayPick').empty();
+            if(response==''){
+                $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
+            }else {
+                var valData = JSON.parse(response);
+                // console.log(JSON.parse(response));
+                // console.log(response);
+                for (var i in valData) {
+                    var x = '<div class="card">';
+                    x += '<div class="card-title" style="font-size: 18px;">';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += ' <div class="col s12 m2">';
+                    x += '<div>For Week Of</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].week + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Total</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].total + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m4">';
+                    x += '<div>Address</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].address + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Status</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].is_paid + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Order Date</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="divider" style="margin: 0 5px;"></div>';
+                    x += '<div class="card-content">';
+                    for (var j in valData[i].items) {
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m3">';
+                        x += ' <img src="/img/' + valData[i].items[j].planPic + '" class="img-responsive" style="max-width:150px;"/>';
+                        x += '</div>';
+                        x += '<div class="col s12 m4" style="font-size: 20px;">';
+                        x += '<div>Plan: ' + valData[i].items[j].plan + '</div>';
+                        x += '<div>Chef: ' + valData[i].items[j].chef + '</div>';
+                        x += '<div>Type: ' + valData[i].items[j].type + '</div>';
+                        x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
+                        x += '<div>Price: ' + valData[i].items[j].price + '</div>';
+                        if(valData[i].items[j].delivery==0){
+                            x += '<div>Delivery: Pending</div>';
+                        }else if(valData[i].items[j].delivery==1){
+                            x += '<div>Delivery: Delivered</div>';
+                        }
+                        x += '</div>';
+                        x += '<div class="col s12 offset-m2 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
+                    x += '</div>';
+                    x += '</div>';
+                    $('div#dayPick').append(x);
+                }
+            }
+        });
 
     }else if(from == 1){
         $('#pendLinkContain').addClass('activeTab');

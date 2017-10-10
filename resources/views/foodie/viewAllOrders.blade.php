@@ -632,9 +632,9 @@
                         {{--No Cancelled Orders--}}
                     {{--@endif--}}
                 {{--</div>--}}
-            {{--@else--}}
-                {{--No Orders Yet!--}}
-            {{--@endif--}}
+            @else
+                No Orders Yet!
+            @endif
         </div>
     </div>
 </div>
