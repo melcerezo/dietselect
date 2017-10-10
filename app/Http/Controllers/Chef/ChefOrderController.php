@@ -549,7 +549,7 @@ class ChefOrderController extends Controller
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==3){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0);
+                    $query->where('is_cancelled', '=', 1);
                 })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
