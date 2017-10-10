@@ -720,7 +720,7 @@ $(document).ready(function () {
 
     $('select#dateCancelFilter').change(function () {
         var dayVal=$('select#dateCancelFilter option:selected').val();
-        var dayChange = dayChoose(dayVal,'2');
+        var dayChange = dayChoose(dayVal,'3');
         $('#ordCancelAll').hide();
         dayChange.done(function (response) {
             console.log(response);
