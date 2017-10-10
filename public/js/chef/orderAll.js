@@ -26,6 +26,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayPick').append('<div><span>All Orders for This Week</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -123,6 +124,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendPick').append('<div><span>Pending Orders for This Week</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -220,6 +222,8 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
+            $('div#dayPaidPick').append('<div><span>Paid Orders for This Week</span></div>');
+
             if(response==''){
                 $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -317,6 +321,8 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
+            $('div#dayCancelPick').append('<div><span>Cancelled Orders for This Week</span></div>');
+
             if(response==''){
                 $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -416,6 +422,8 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
+            $('div#dayDeliverPick').append('<div><span>Delivered Orders for This Week</span></div>');
+
             if(response==''){
                 $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -523,6 +531,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayPick').append('<div><span>All Orders for '+$('select#orderFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -631,6 +640,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendPick').append('<div><span>Pending Orders for ' +$('select#orderPendFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -738,6 +748,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
+            $('div#dayPaidPick').append('<div><span>Paid Orders for ' +$('select#orderPaidFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -845,6 +856,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
+            $('div#dayCancelPick').append('<div><span>Cancelled Orders for ' +$('select#orderCancelFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -953,6 +965,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
+            $('div#dayDeliverPick').append('<div><span>Delivered Orders for ' +$('select#orderDeliverFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
