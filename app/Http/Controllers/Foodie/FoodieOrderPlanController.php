@@ -1211,7 +1211,7 @@ class FoodieOrderPlanController extends Controller
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
-                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at->format('F d, Y h:i A') . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
@@ -1310,7 +1310,7 @@ class FoodieOrderPlanController extends Controller
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
-                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at->format('F d, Y h:i A') . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
@@ -1409,7 +1409,7 @@ class FoodieOrderPlanController extends Controller
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
-                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at->format('F d, Y h:i A') . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
@@ -1508,7 +1508,7 @@ class FoodieOrderPlanController extends Controller
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
-                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at->format('F d, Y h:i A') . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
@@ -1620,7 +1620,7 @@ class FoodieOrderPlanController extends Controller
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
-                    $thisInput .= '"created_at":"' . $order->created_at . '", ';
+                    $thisInput .= '"created_at":"' . $order->created_at->format('F d, Y h:i A') . '", ';
                     $orderItems = $order->order_item()->get();
                     $thisInput .= '"items": [';
                     $j = 0;
