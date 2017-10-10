@@ -143,7 +143,7 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#datePendFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
@@ -174,7 +174,7 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#datePaidFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
@@ -204,7 +204,7 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#dateCancelFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
