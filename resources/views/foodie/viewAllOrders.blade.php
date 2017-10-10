@@ -255,166 +255,222 @@
                         {{--</div>--}}
                     </div>
                     <div id="ordPend">
-                        @if($pendOrdCount>0)
-                            @foreach($orders as $order)
-                                @if($order->is_paid==0 && $order->is_cancelled==0)
-                                    <div class="card">
-                                        @foreach($orderArray as $orderItem)
-                                            @if($orderItem['id'] == $order->id)
-                                                <div class="card-title" style="font-size: 18px;">
-                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <div>
+                                    <span>Search by Interval:</span>
+                                </div>
+                                <select id="orderPendFilter">
+                                    <option value="1">Today</option>
+                                    <option value="2" selected>This Week</option>
+                                    <option value="3">This Month</option>
+                                    <option value="4">This Year</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m3">
+                                    <div>
+                                        <span>Search By Date:</span>
+                                    </div>
+                                    {{--<select id="yearFilter"></select>--}}
+                                    {{--<select id="monthFilter"></select>--}}
+                                    {{--<select id="dayFilter"></select>--}}
+                                    <select id="datePendFilter">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dayPendPick">
+
+                        </div>
+                        {{--@if($pendOrdCount>0)--}}
+                            {{--@foreach($orders as $order)--}}
+                                {{--@if($order->is_paid==0 && $order->is_cancelled==0)--}}
+                                    {{--<div class="card">--}}
+                                        {{--@foreach($orderArray as $orderItem)--}}
+                                            {{--@if($orderItem['id'] == $order->id)--}}
+                                                {{--<div class="card-title" style="font-size: 18px;">--}}
+                                                    {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
                                                         {{--<div class="col s12 m1">--}}
                                                             {{--<div>ID</div>--}}
                                                             {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
                                                         {{--</div>--}}
-                                                        <div class="col s12 m2">
-                                                            <div>For Week Of</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['week']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m3">
-                                                            <div>Total</div>
-                                                            <div style="font-size: 22px;">{{'PHP '.$orderItem['total']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m4">
-                                                            <div>Address</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['address']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m3">
-                                                            <div>Status</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                                        <div class="col s12 m2">
-                                                            <div>Order Date</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                        <div class="divider" style="margin: 0 5px;">
-                                        </div>
-                                        <div class="card-content">
-                                            @foreach($orderItemArray as $orderItemItem)
-                                                @if($orderItemItem['order_id']==$order->id)
-                                                    <div class="row">
-                                                        <div class="col s12 m3">
-                                                            <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
-                                                        </div>
-                                                        <div class="col s12 m4" style="font-size: 20px;">
-                                                            <div>{{$orderItemItem['plan']}}</div>
-                                                            <div>Made By: {{$orderItemItem['chef']}}</div>
-                                                            <div>Type:  {{$orderItemItem['type']}}</div>
-                                                            <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{$orderItemItem['price']}}</div>
-                                                            @if($orderItemItem['is_delivered']==0)
-                                                                <div>Delivery: Pending</div>
-                                                            @elseif($orderItemItem['is_delivered']==1)
-                                                                <div>Delivery: Delivered</div>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                            <div class="row">
-                                                <div class="col s12 m2">
-                                                    <a href="{{route('order.show', $order->id)}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>
-                                                </div>
-                                                <div class="col s12 m2">
-                                                    <button data-target="cancelPendModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>
-                                                </div>
-                                            </div>
-                                            <div id="cancelPendModal{{$order->id}}" class="modal">
-                                                <div class="modal-content">
-                                                    <div>
-                                                        <span>Are you sure you want to cancel your order?</span>
-                                                    </div>
-                                                    <form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">
-                                                        {{csrf_field()}}
-                                                        <button class="btn waves-effect waves-light">Cancel</button>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @endif
-                            @endforeach
-                        @else
-                            No Pending Orders
-                        @endif
+                                                        {{--<div class="col s12 m2">--}}
+                                                            {{--<div>For Week Of</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['week']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<div>Total</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{'PHP '.$orderItem['total']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m4">--}}
+                                                            {{--<div>Address</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['address']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<div>Status</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
+                                                        {{--<div class="col s12 m2">--}}
+                                                            {{--<div>Order Date</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['created_at']}}</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--<div class="divider" style="margin: 0 5px;">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="card-content">--}}
+                                            {{--@foreach($orderItemArray as $orderItemItem)--}}
+                                                {{--@if($orderItemItem['order_id']==$order->id)--}}
+                                                    {{--<div class="row">--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m4" style="font-size: 20px;">--}}
+                                                            {{--<div>{{$orderItemItem['plan']}}</div>--}}
+                                                            {{--<div>Made By: {{$orderItemItem['chef']}}</div>--}}
+                                                            {{--<div>Type:  {{$orderItemItem['type']}}</div>--}}
+                                                            {{--<div>Quantity: {{$orderItemItem['quantity']}}</div>--}}
+                                                            {{--<div>Amount: {{$orderItemItem['price']}}</div>--}}
+                                                            {{--@if($orderItemItem['is_delivered']==0)--}}
+                                                                {{--<div>Delivery: Pending</div>--}}
+                                                            {{--@elseif($orderItemItem['is_delivered']==1)--}}
+                                                                {{--<div>Delivery: Delivered</div>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 offset-m2 m2">--}}
+                                                            {{--<a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                            {{--<div class="row">--}}
+                                                {{--<div class="col s12 m2">--}}
+                                                    {{--<a href="{{route('order.show', $order->id)}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>--}}
+                                                {{--</div>--}}
+                                                {{--<div class="col s12 m2">--}}
+                                                    {{--<button data-target="cancelPendModal{{$order->id}}" class="btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                            {{--<div id="cancelPendModal{{$order->id}}" class="modal">--}}
+                                                {{--<div class="modal-content">--}}
+                                                    {{--<div>--}}
+                                                        {{--<span>Are you sure you want to cancel your order?</span>--}}
+                                                    {{--</div>--}}
+                                                    {{--<form action="{{route('foodie.orderAll.cancel', $order->id)}}" method="post">--}}
+                                                        {{--{{csrf_field()}}--}}
+                                                        {{--<button class="btn waves-effect waves-light">Cancel</button>--}}
+                                                    {{--</form>--}}
+                                                {{--</div>--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                        {{--@else--}}
+                            {{--No Pending Orders--}}
+                        {{--@endif--}}
                     </div>
                     <div id="ordPaid">
-                        @if($paidOrdCount>0)
-                            @foreach($orders as $order)
-                                @if($order->is_paid==1 && $order->is_cancelled==0)
-                                        <div class="card">
-                                            @foreach($orderArray as $orderItem)
-                                                @if($orderItem['id'] == $order->id)
-                                                    <div class="card-title" style="font-size: 18px;">
-                                                        <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <div>
+                                    <span>Search by Interval:</span>
+                                </div>
+                                <select id="orderPaidFilter">
+                                    <option value="1">Today</option>
+                                    <option value="2" selected>This Week</option>
+                                    <option value="3">This Month</option>
+                                    <option value="4">This Year</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m3">
+                                    <div>
+                                        <span>Search By Date:</span>
+                                    </div>
+                                    {{--<select id="yearFilter"></select>--}}
+                                    {{--<select id="monthFilter"></select>--}}
+                                    {{--<select id="dayFilter"></select>--}}
+                                    <select id="datePaidFilter">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dayPaidPick">
+
+                        </div>
+                        {{--@if($paidOrdCount>0)--}}
+                            {{--@foreach($orders as $order)--}}
+                                {{--@if($order->is_paid==1 && $order->is_cancelled==0)--}}
+                                        {{--<div class="card">--}}
+                                            {{--@foreach($orderArray as $orderItem)--}}
+                                                {{--@if($orderItem['id'] == $order->id)--}}
+                                                    {{--<div class="card-title" style="font-size: 18px;">--}}
+                                                        {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
                                                             {{--<div class="col s12 m1">--}}
                                                                 {{--<div>ID</div>--}}
                                                                 {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
                                                             {{--</div>--}}
-                                                            <div class="col s12 m2">
-                                                                <div>For Week Of</div>
-                                                                <div style="font-size: 22px;">{{$orderItem['week']}}</div>
-                                                            </div>
-                                                            <div class="col s12 m3">
-                                                                <div>Total</div>
-                                                                <div style="font-size: 22px;">{{'PHP '.$orderItem['total']}}</div>
-                                                            </div>
-                                                            <div class="col s12 m4">
-                                                                <div>Address</div>
-                                                                <div style="font-size: 22px;">{{$orderItem['address']}}</div>
-                                                            </div>
-                                                            <div class="col s12 m3">
-                                                                <div>Status</div>
-                                                                <div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                                            <div class="col s12 m2">
-                                                                <div>Order Date</div>
-                                                                <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                                <div class="divider" style="margin: 0 5px;">
-                                                </div>
-                                                <div class="card-content">
-                                                    @foreach($orderItemArray as $orderItemItem)
-                                                        @if($orderItemItem['order_id']==$order->id)
-                                                    <div class="row">
-                                                        <div class="col s12 m3">
-                                                            <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
-                                                        </div>
-                                                        <div class="col s12 m4" style="font-size: 20px;">
-                                                            <div>{{$orderItemItem['plan']}}</div>
-                                                            <div>Made By: {{$orderItemItem['chef']}}</div>
-                                                            <div>Type:  {{$orderItemItem['type']}}</div>
-                                                            <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{$orderItemItem['price']}}</div>
-                                                            @if($orderItemItem['is_delivered']==0)
-                                                                <div>Delivery: Pending</div>
-                                                            @elseif($orderItemItem['is_delivered']==1)
-                                                                <div>Delivery: Delivered</div>
-                                                            @endif
-                                                        </div>
-                                                        <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; ">View</a>
-                                                        </div>
-                                                    </div>
-                                                    @endif
-                                                @endforeach
-                                                </div>
-                                        </div>
+                                                            {{--<div class="col s12 m2">--}}
+                                                                {{--<div>For Week Of</div>--}}
+                                                                {{--<div style="font-size: 22px;">{{$orderItem['week']}}</div>--}}
+                                                            {{--</div>--}}
+                                                            {{--<div class="col s12 m3">--}}
+                                                                {{--<div>Total</div>--}}
+                                                                {{--<div style="font-size: 22px;">{{'PHP '.$orderItem['total']}}</div>--}}
+                                                            {{--</div>--}}
+                                                            {{--<div class="col s12 m4">--}}
+                                                                {{--<div>Address</div>--}}
+                                                                {{--<div style="font-size: 22px;">{{$orderItem['address']}}</div>--}}
+                                                            {{--</div>--}}
+                                                            {{--<div class="col s12 m3">--}}
+                                                                {{--<div>Status</div>--}}
+                                                                {{--<div style="font-size: 22px;">{{$orderItem['is_paid']}}</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
+                                                            {{--<div class="col s12 m2">--}}
+                                                                {{--<div>Order Date</div>--}}
+                                                                {{--<div style="font-size: 22px;">{{$orderItem['created_at']}}</div>--}}
+                                                            {{--</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                                {{--<div class="divider" style="margin: 0 5px;">--}}
+                                                {{--</div>--}}
+                                                {{--<div class="card-content">--}}
+                                                    {{--@foreach($orderItemArray as $orderItemItem)--}}
+                                                        {{--@if($orderItemItem['order_id']==$order->id)--}}
+                                                    {{--<div class="row">--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m4" style="font-size: 20px;">--}}
+                                                            {{--<div>{{$orderItemItem['plan']}}</div>--}}
+                                                            {{--<div>Made By: {{$orderItemItem['chef']}}</div>--}}
+                                                            {{--<div>Type:  {{$orderItemItem['type']}}</div>--}}
+                                                            {{--<div>Quantity: {{$orderItemItem['quantity']}}</div>--}}
+                                                            {{--<div>Amount: {{$orderItemItem['price']}}</div>--}}
+                                                            {{--@if($orderItemItem['is_delivered']==0)--}}
+                                                                {{--<div>Delivery: Pending</div>--}}
+                                                            {{--@elseif($orderItemItem['is_delivered']==1)--}}
+                                                                {{--<div>Delivery: Delivered</div>--}}
+                                                            {{--@endif--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 offset-m2 m2">--}}
+                                                            {{--<a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; ">View</a>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                    {{--@endif--}}
+                                                {{--@endforeach--}}
+                                                {{--</div>--}}
+                                        {{--</div>--}}
 
                                     {{--<a href="{{route('order.show', $order->id)}}">--}}
                                         {{--<div class="row">--}}
@@ -473,84 +529,112 @@
                                             {{--</div>--}}
                                         {{--</div>--}}
                                     {{--</a>--}}
-                                @endif
-                            @endforeach
-                        @else
-                            No Paid Orders
-                        @endif
+                                {{--@endif--}}
+                            {{--@endforeach--}}
+                        {{--@else--}}
+                            {{--No Paid Orders--}}
+                        {{--@endif--}}
                     </div>
                     <div id="ordCancel">
-                        @if($cancelOrdCount)
-                        @foreach($orders as $order)
-                            @if($order->is_cancelled==1)
-                                    <div class="card">
-                                        @foreach($orderArray as $orderItem)
-                                            @if($orderItem['id'] == $order->id)
-                                                <div class="card-title" style="font-size: 18px;">
-                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
+                        <div class="row">
+                            <div class="col s12 m3">
+                                <div>
+                                    <span>Search by Interval:</span>
+                                </div>
+                                <select id="orderCancelFilter">
+                                    <option value="1">Today</option>
+                                    <option value="2" selected>This Week</option>
+                                    <option value="3">This Month</option>
+                                    <option value="4">This Year</option>
+                                </select>
+                            </div>
+                            <div class="row">
+                                <div class="col s12 m3">
+                                    <div>
+                                        <span>Search By Date:</span>
+                                    </div>
+                                    {{--<select id="yearFilter"></select>--}}
+                                    {{--<select id="monthFilter"></select>--}}
+                                    {{--<select id="dayFilter"></select>--}}
+                                    <select id="dateCancelFilter">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="dayCancelPick">
+
+                        </div>
+                        {{--@if($cancelOrdCount)--}}
+                        {{--@foreach($orders as $order)--}}
+                            {{--@if($order->is_cancelled==1)--}}
+                                    {{--<div class="card">--}}
+                                        {{--@foreach($orderArray as $orderItem)--}}
+                                            {{--@if($orderItem['id'] == $order->id)--}}
+                                                {{--<div class="card-title" style="font-size: 18px;">--}}
+                                                    {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
                                                         {{--<div class="col s12 m1">--}}
                                                             {{--<div>ID</div>--}}
                                                             {{--<div style="font-size: 22px;">{{$orderItem['id']}}</div>--}}
                                                         {{--</div>--}}
-                                                        <div class="col s12 m2">
-                                                            <div>For Week Of</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['week']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m3">
-                                                            <div>Total</div>
-                                                            <div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m4">
-                                                            <div>Address</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['address']}}</div>
-                                                        </div>
-                                                        <div class="col s12 m3">
-                                                            <div>Status</div>
-                                                            <div style="font-size: 22px;">Cancelled</div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row" style="margin: 0 0 20px 0; padding: 5px;">
-                                                        <div class="col s12 m2">
-                                                            <div>Order Date</div>
-                                                            <div style="font-size: 22px;">{{$orderItem['created_at']}}</div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            @endif
-                                        @endforeach
-                                        <div class="divider" style="margin: 0 5px;">
-                                        </div>
-                                        <div class="card-content">
-                                            @foreach($orderItemArray as $orderItemItem)
-                                                @if($orderItemItem['order_id']==$order->id)
-                                                    <div class="row">
-                                                        <div class="col s12 m3">
-                                                            <img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>
-                                                        </div>
-                                                        <div class="col s12 m4" style="font-size: 20px;">
-                                                            <div>{{$orderItemItem['plan']}}</div>
-                                                            <div>Made By: {{$orderItemItem['chef']}}</div>
-                                                            <div>Type:  {{$orderItemItem['type']}}</div>
-                                                            <div>Quantity: {{$orderItemItem['quantity']}}</div>
-                                                            <div>Amount: {{'PHP '.$orderItemItem['price']}}</div>
-                                                        </div>
-                                                        <div class="col s12 offset-m2 m2">
-                                                            <a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                    </div>
-                            @endif
-                        @endforeach
-                    @else
-                        No Cancelled Orders
-                    @endif
-                </div>
-            @else
-                No Orders Yet!
-            @endif
+                                                        {{--<div class="col s12 m2">--}}
+                                                            {{--<div>For Week Of</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['week']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<div>Total</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{'PHP'.$orderItem['total']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m4">--}}
+                                                            {{--<div>Address</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['address']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<div>Status</div>--}}
+                                                            {{--<div style="font-size: 22px;">Cancelled</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                    {{--<div class="row" style="margin: 0 0 20px 0; padding: 5px;">--}}
+                                                        {{--<div class="col s12 m2">--}}
+                                                            {{--<div>Order Date</div>--}}
+                                                            {{--<div style="font-size: 22px;">{{$orderItem['created_at']}}</div>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--</div>--}}
+                                            {{--@endif--}}
+                                        {{--@endforeach--}}
+                                        {{--<div class="divider" style="margin: 0 5px;">--}}
+                                        {{--</div>--}}
+                                        {{--<div class="card-content">--}}
+                                            {{--@foreach($orderItemArray as $orderItemItem)--}}
+                                                {{--@if($orderItemItem['order_id']==$order->id)--}}
+                                                    {{--<div class="row">--}}
+                                                        {{--<div class="col s12 m3">--}}
+                                                            {{--<img src="/img/{{$orderItemItem['planPic']}}" class="img-responsive" style="max-width:150px;"/>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 m4" style="font-size: 20px;">--}}
+                                                            {{--<div>{{$orderItemItem['plan']}}</div>--}}
+                                                            {{--<div>Made By: {{$orderItemItem['chef']}}</div>--}}
+                                                            {{--<div>Type:  {{$orderItemItem['type']}}</div>--}}
+                                                            {{--<div>Quantity: {{$orderItemItem['quantity']}}</div>--}}
+                                                            {{--<div>Amount: {{'PHP '.$orderItemItem['price']}}</div>--}}
+                                                        {{--</div>--}}
+                                                        {{--<div class="col s12 offset-m2 m2">--}}
+                                                            {{--<a href="{{route('foodie.order.single', $orderItemItem['id'])}}" class="orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">View</a>--}}
+                                                        {{--</div>--}}
+                                                    {{--</div>--}}
+                                                {{--@endif--}}
+                                            {{--@endforeach--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                            {{--@endif--}}
+                        {{--@endforeach--}}
+                    {{--@else--}}
+                        {{--No Cancelled Orders--}}
+                    {{--@endif--}}
+                {{--</div>--}}
+            {{--@else--}}
+                {{--No Orders Yet!--}}
+            {{--@endif--}}
         </div>
     </div>
 </div>

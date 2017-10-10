@@ -1150,7 +1150,7 @@ class FoodieOrderPlanController extends Controller
         return back()->with(['status' => 'Added delivery address!']);
     }
 
-    public function dateChange($type)
+    public function dateChange($type,$id)
     {
         $thisDay = Carbon::today();
 //        $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
@@ -1175,9 +1175,27 @@ class FoodieOrderPlanController extends Controller
         $thisInput = null;
         if ($type == 1) {
             $i = 0;
-            $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
-                ->latest()->get();
+
+            if($id==0){
+                $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==1){
+                $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==2){
+                $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==3){
+                $orders = Order::where('created_at', '>=', $thisDay)->where('is_cancelled','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }
+
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1273,10 +1291,32 @@ class FoodieOrderPlanController extends Controller
             }
         }else if($type==2){
             $i = 0;
-            $orders = Order::where('created_at', '>', $startOfWeek)
-                ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
-                ->latest()->get();
+
+            if($id==0){
+                $orders = Order::where('created_at', '>', $startOfWeek)
+                    ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==1){
+                $orders = Order::where('created_at', '>', $startOfWeek)
+                    ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',0)
+                    ->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==2){
+                $orders = Order::where('created_at', '>', $startOfWeek)
+                    ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',1)
+                    ->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==3){
+                $orders = Order::where('created_at', '>', $startOfWeek)
+                    ->where('created_at', '<', $endOfWeek)->where('is_cancelled','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1372,10 +1412,32 @@ class FoodieOrderPlanController extends Controller
             }
         }else if($type==3){
             $i = 0;
-            $orders = Order::where('created_at', '>', $startOfMonth)
-                ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
-                ->latest()->get();
+
+            if($id==0){
+                $orders = Order::where('created_at', '>', $startOfMonth)
+                    ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==1){
+                $orders = Order::where('created_at', '>', $startOfMonth)
+                    ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==2){
+                $orders = Order::where('created_at', '>', $startOfMonth)
+                    ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==3){
+                $orders = Order::where('created_at', '>', $startOfMonth)
+                    ->where('created_at', '<', $endOfMonth)->where('is_cancelled','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }
+
+
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1471,10 +1533,33 @@ class FoodieOrderPlanController extends Controller
             }
         }else if($type==4){
             $i = 0;
-            $orders = Order::where('created_at', '>', $startOfYear)
-                ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
-                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
-                ->latest()->get();
+
+            if($id==0){
+                $orders = Order::where('created_at', '>', $startOfYear)
+                    ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==1){
+                $orders = Order::where('created_at', '>', $startOfYear)
+                    ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',0)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==2){
+                $orders = Order::where('created_at', '>', $startOfYear)
+                    ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',0)
+                    ->where('is_paid','=',1)->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }else if($id==3){
+                $orders = Order::where('created_at', '>', $startOfYear)
+                    ->where('created_at', '<', $endOfYear)->where('is_cancelled','=',1)
+                    ->orderBy('is_paid','ASC')
+                    ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                    ->latest()->get();
+            }
+
+
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1573,7 +1658,7 @@ class FoodieOrderPlanController extends Controller
         return $thisInput;
     }
 
-    public function dayChange($date)
+    public function dayChange($date,$type)
     {
         $dt = Carbon::createFromFormat('Y-m-d', $date);
         $thisDay=$dt->startOfDay();
@@ -1584,9 +1669,28 @@ class FoodieOrderPlanController extends Controller
 
         $thisInput = null;
             $i = 0;
-            $orders = Order::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)->orderBy('is_paid','ASC')->where('is_cancelled','=',0)
+        if($type==0){
+            $orders = Order::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)->orderBy('is_paid','ASC')
+                ->where('is_cancelled','=',0)
                 ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
                 ->latest()->get();
+        }else if($type==1){
+            $orders = Order::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)->orderBy('is_paid','ASC')
+                ->where('is_cancelled','=',0)->where('is_paid','=',0)
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
+        }else if($type==2){
+            $orders = Order::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)->orderBy('is_paid','ASC')
+                ->where('is_cancelled','=',0)->where('is_paid','=',1)
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
+        }else if($type==3){
+            $orders = Order::where('created_at', '>=', $thisDay)->where('created_at','<=',$endDay)->orderBy('is_paid','ASC')
+                ->where('is_cancelled','=',1)
+                ->where('foodie_id', '=', Auth::guard('foodie')->user()->id)
+                ->latest()->get();
+        }
+
             if ($orders->count() > 0) {
                 $thisInput = '[';
                 foreach ($orders as $order) {
@@ -1684,9 +1788,18 @@ class FoodieOrderPlanController extends Controller
         return $thisInput;
     }
 
-    public function selectDay()
+    public function selectDay($type)
     {
-        $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
+        if($type == 0){
+            $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
+        }else if($type == 1){
+            $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_paid','=',0)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
+        }else if($type == 2){
+            $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_paid','=',1)->where('is_cancelled','=',0)->select('created_at')->latest()->get();
+        }else if($type == 3){
+            $orderTime = Order::where('foodie_id','=',Auth::guard('foodie')->user()->id)->where('is_cancelled','=',1)->select('created_at')->latest()->get();
+        }
+
 //        $yearArray = [];
 //        $monthArray =[];
 //        $dayArray = [];
