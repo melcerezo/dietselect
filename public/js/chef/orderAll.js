@@ -17,9 +17,11 @@ $(document).ready(function () {
             $.each(valData,function(index,value){
 
                 var dateSplit = value.split('-');
+                // parseInt(
+                var stringDate = m_names[parseInt(dateSplit[1])]+' '+dateSplit[2]+', '+dateSplit[0];
                 console.log(dateSplit);
                 $('select#dateFilter').append(
-                    $('<option></option>').attr("value",value).text(value)
+                    $('<option></option>').attr("value",value).text(stringDate)
                 );
             });
             $('select#dateFilter').material_select();
