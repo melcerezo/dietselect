@@ -578,7 +578,7 @@ class ChefOrderController extends Controller
         }
     }
 
-    public function dayChange($date)
+    public function dayChange($date,$type)
     {
         $dt = Carbon::createFromFormat('Y-m-d', $date);
         $thisDay=$dt->startOfDay();
@@ -589,12 +589,46 @@ class ChefOrderController extends Controller
 //        $orders[]= array('id'=>$orderItem->id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
 //            'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
 //            'is_cancelled'=>$orderItem->order->is_cancelled);
-        $orderItems = OrderItem::whereHas('order', function ($query) {
-            $query->where('is_cancelled', '=', 0);
-        })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
-            ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
-            ->where('chef_id', '=', Auth::guard('chef')->user()->id)
-            ->latest($column='order_items.created_at')->get();
+
+        if($type==0){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest($column='order_items.created_at')->get();
+        }else if($type==1){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                      ->where('is_delivered','=',0);
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest($column='order_items.created_at')->get();
+        }else if($type==2){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                    ->where('is_paid','=',1);
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest($column='order_items.created_at')->get();
+        }else if($type==3){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 1);
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest($column='order_items.created_at')->get();
+        }else if($type==4){
+            $orderItems = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                    ->where('is_delivered','=',1);
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
+                ->where('chef_id', '=', Auth::guard('chef')->user()->id)
+                ->latest($column='order_items.created_at')->get();
+        }
 
 
         $thisInput = null;
