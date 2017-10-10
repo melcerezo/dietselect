@@ -3,18 +3,93 @@ $(document).ready(function () {
     if(from == 0){
         $('#allLinkContain').addClass('activeTab');
         $('#ordAll').show();
+
+        //initialize day select all
+        var daySelect= selectDay(0);
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
     }else if(from == 1){
         $('#pendLinkContain').addClass('activeTab');
-        $('#ordPend').show();
+        $('#ordPend').show(1);
+
+        //initialize day select pending
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
     }else if(from == 2){
         $('#paidLinkContain').addClass('activeTab');
-        $('#ordPaid').show();
+        $('#ordPaid').show(2);
+
+        //initialize day select paid
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
     }else if(from == 3){
         $('#cancelLinkContain').addClass('activeTab');
-        $('#ordCancel').show();
+        $('#ordCancel').show(3);
+
+        //initialize day select cancel
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
     }else if(from==4){
         $('#deliveredLinkContain').addClass('activeTab');
         $('#ordDelivered').show();
+
+        //initialize day select delivered
+        var daySelect= selectDay(4);
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
     }
 
     $('.allLink').on('click',function () {
@@ -28,6 +103,21 @@ $(document).ready(function () {
         $('#ordPaid').hide();
         $('#ordCancel').hide();
         $('#ordDelivered').hide();
+
+        //initialize day select all again on tab click
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
 
         // show pending tab
         $('#allLinkContain').addClass('activeTab');
@@ -46,6 +136,21 @@ $(document).ready(function () {
         $('#ordDelivered').hide();
 
 
+        //initialize day select pend again on tab click
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
+
         // show pending tab
         $('#pendLinkContain').addClass('activeTab');
         $('#ordPend').show();
@@ -62,6 +167,20 @@ $(document).ready(function () {
         $('#ordCancel').hide();
         $('#ordDelivered').hide();
 
+        //initialize day select paid again on tab click
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
         // show paid tab
         $('#paidLinkContain').addClass('activeTab');
         $('#ordPaid').show();
@@ -77,6 +196,21 @@ $(document).ready(function () {
         $('#ordPaid').hide();
         $('#ordAll').hide();
         $('#ordDelivered').hide();
+
+        //initialize day select deliver again on tab click
+        var daySelect= selectDay();
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
 
         // show pending tab
         $('#cancelLinkContain').addClass('activeTab');
@@ -100,7 +234,10 @@ $(document).ready(function () {
     });
 
 
-    var daySelect= selectDay();
+
+
+
+    //unfinished code
 
     var datePick = $('#dateFilter').pickadate({
 
@@ -124,6 +261,9 @@ $(document).ready(function () {
 
     var picker = datePick.pickadate('picker');
 
+
+
+
     // daySelect.done(function (response) {
     //     var valData = response;
     //     // var dateArray = [];
@@ -143,46 +283,9 @@ $(document).ready(function () {
     //     });
     // });
 
-    daySelect.done(function (response) {
-        console.log(response[0]);
-        var valData = response;
-        // var yearArray=[];
-        // var monthArray=[];
-        // var dayArray=[];
-        $.each(valData,function( index,value){
-            // var parts=value.split('-');
-            // yearArray.push(parts[0]);
-            // monthArray.push(parts[1]);
-            // dayArray.push(parts[2]);
-            $('select#dateFilter').append(
-                $('<option></option>').attr("value",value).text(value)
-            );
-        });
-        // var uniqueYear = [];
-        // var uniqueMonth = [];
-        // var uniqueDay = [];
-        // $.each(yearArray,function (index,value) {
-        //     if($.inArray(value, uniqueYear) == -1){
-        //         uniqueYear.push(value);
-        //     }
-        // });
-        // $.each(monthArray,function (index,value) {
-        //     if($.inArray(value, uniqueMonth) == -1){
-        //         uniqueMonth.push(value);
-        //     }
-        // });
-        // $.each(dayArray,function (index,value) {
-        //     if($.inArray(value, uniqueDay) == -1){
-        //         uniqueDay.push(value);
-        //     }
-        // });
-        // $.each(uniqueYear, function (index,value) {
-        //     $('select#dateFilter').append(
-        //         $('<option></option>').attr("value",value).text(value)
-        //     );
-        // });
-        $('select#dateFilter').material_select();
-    });
+
+
+    // date filter all change
 
     $('select#dateFilter').change(function () {
         var dayVal=$('select#dateFilter option:selected').val();
@@ -262,6 +365,8 @@ $(document).ready(function () {
         });
     });
 
+    //order filter all initialize
+
     var startVal = $('select#orderFilter option:selected').val();
 
     var dateChange = dateChoose(startVal);
@@ -338,6 +443,8 @@ $(document).ready(function () {
             }
         }
     });
+
+    //order filter all change
 
     $('#orderFilter').change(function () {
         var val = $('select#orderFilter option:selected').val();
@@ -418,6 +525,55 @@ $(document).ready(function () {
         });
     });
 
+
+    //date filter pend change
+
+
+
+    //order filter pend initialize
+
+
+
+    //order filter pend change
+
+
+    //date filter paid change
+
+
+
+    //order filter paid initialize
+
+
+
+    //order filter paid change
+
+
+    //date filter cancel change
+
+
+
+    //order filter cancel initialize
+
+
+
+    //order filter cancel change
+
+
+
+    //date filter deliver change
+
+
+
+    //order filter deliver initialize
+
+
+
+    //order filter deliver change
+
+
+
+    //button click
+
     $(document).on('click','.btnView', function () {
         var id = $(this).attr('data-id');
         $.ajax({
@@ -444,8 +600,8 @@ function dayChoose($val){
     });
 }
 
-function selectDay() {
+function selectDay($val) {
     return $.ajax({
-        url: '/chef/order/selectDay'
+        url: '/chef/order/selectDay/' + $val
     });
 }

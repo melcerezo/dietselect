@@ -210,6 +210,7 @@
                     {{--@endforeach--}}
                 </div>
                 <div id="ordPend">
+
                     @foreach($orders as $order)
                         @if($order['is_delivered']==0 && $order['is_cancelled']==0)
                             <div class="card">

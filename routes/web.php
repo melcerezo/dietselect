@@ -199,7 +199,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
     Route::get('order/deliver/{id}', 'Chef\ChefOrderController@updateDelivery')->name('chef.order.deliver');
     Route::get('/order/dateChange/{type}', 'Chef\ChefOrderController@dateChange');
     Route::get('/order/dayChange/{date}', 'Chef\ChefOrderController@dayChange');
-    Route::get('/order/selectDay', 'Chef\ChefOrderController@selectDay');
+    Route::get('/order/selectDay/{type}', 'Chef\ChefOrderController@selectDay');
 
     // Chef Rating
     Route::get('rating', 'ChefRatingsController@viewRatings')->name('chef.ratings');

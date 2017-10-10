@@ -656,9 +656,33 @@ class ChefOrderController extends Controller
         return $thisInput;
     }
 
-    public function selectDay()
+    public function selectDay($type)
     {
-        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        if($type == 0){
+            $orderTime = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0);
+            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        }else if($type == 1){
+            $orderTime = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                ->where('is_delivered','=',0);
+            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        }else if($type == 2){
+            $orderTime = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                    ->where('is_paid','=',1);
+            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        }else if($type == 3){
+            $orderTime = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 1);
+            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        }else if($type == 4){
+            $orderTime = OrderItem::whereHas('order', function ($query) {
+                $query->where('is_cancelled', '=', 0)
+                    ->where('is_delivered','=',1);
+            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+        }
+//        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
 //        $yearArray = [];
 //        $monthArray =[];
 //        $dayArray = [];
