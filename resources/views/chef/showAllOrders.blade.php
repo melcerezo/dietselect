@@ -210,7 +210,35 @@
                     {{--@endforeach--}}
                 </div>
                 <div id="ordPend">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div>
+                                <span>Search by Interval:</span>
+                            </div>
+                            <select id="orderPendFilter">
+                                <option value="1">Today</option>
+                                <option value="2" selected>This Week</option>
+                                <option value="3">This Month</option>
+                                <option value="4">This Year</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m2">
+                                <div>
+                                    <span>Search By Date:</span>
+                                </div>
+                                {{--<select id="yearFilter"></select>--}}
+                                {{--<select id="monthFilter"></select>--}}
+                                {{--<select id="dayFilter"></select>--}}
+                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
+                                <select id="datePendFilter">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dayPendPick">
 
+                    </div>
                     @foreach($orders as $order)
                         @if($order['is_delivered']==0 && $order['is_cancelled']==0)
                             <div class="card">
@@ -293,6 +321,35 @@
                     @endforeach
                 </div>
                 <div id="ordPaid">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div>
+                                <span>Search by Interval:</span>
+                            </div>
+                            <select id="orderPaidFilter">
+                                <option value="1">Today</option>
+                                <option value="2" selected>This Week</option>
+                                <option value="3">This Month</option>
+                                <option value="4">This Year</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m2">
+                                <div>
+                                    <span>Search By Date:</span>
+                                </div>
+                                {{--<select id="yearFilter"></select>--}}
+                                {{--<select id="monthFilter"></select>--}}
+                                {{--<select id="dayFilter"></select>--}}
+                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
+                                <select id="datePaidFilter">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dayPaidPick">
+
+                    </div>
                     @foreach($orders as $order)
                         @if($order['is_paid']==1 && $order['is_cancelled']==0)
                             <div class="card">
@@ -375,6 +432,35 @@
                     @endforeach
                 </div>
                 <div id="ordDelivered">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div>
+                                <span>Search by Interval:</span>
+                            </div>
+                            <select id="orderDeliverFilter">
+                                <option value="1">Today</option>
+                                <option value="2" selected>This Week</option>
+                                <option value="3">This Month</option>
+                                <option value="4">This Year</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m2">
+                                <div>
+                                    <span>Search By Date:</span>
+                                </div>
+                                {{--<select id="yearFilter"></select>--}}
+                                {{--<select id="monthFilter"></select>--}}
+                                {{--<select id="dayFilter"></select>--}}
+                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
+                                <select id="dateDeliverFilter">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dayDeliverPick">
+
+                    </div>
                     @foreach($orders as $order)
                         @if($order['is_delivered']==1 && $order['is_cancelled']==0)
                             <div class="card">
@@ -457,6 +543,35 @@
                     @endforeach
                 </div>
                 <div id="ordCancel">
+                    <div class="row">
+                        <div class="col s12 m3">
+                            <div>
+                                <span>Search by Interval:</span>
+                            </div>
+                            <select id="orderCancelFilter">
+                                <option value="1">Today</option>
+                                <option value="2" selected>This Week</option>
+                                <option value="3">This Month</option>
+                                <option value="4">This Year</option>
+                            </select>
+                        </div>
+                        <div class="row">
+                            <div class="col s12 m2">
+                                <div>
+                                    <span>Search By Date:</span>
+                                </div>
+                                {{--<select id="yearFilter"></select>--}}
+                                {{--<select id="monthFilter"></select>--}}
+                                {{--<select id="dayFilter"></select>--}}
+                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
+                                <select id="dateCancelFilter">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="dayCancelPick">
+
+                    </div>
                     @foreach($orders as $order)
                         @if($order['is_cancelled']==1)
                             <div class="card">

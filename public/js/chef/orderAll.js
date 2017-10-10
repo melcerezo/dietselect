@@ -29,11 +29,11 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#datePendFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#datePendFilter').material_select();
         });
 
     }else if(from == 2){
@@ -47,11 +47,11 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#datePaidFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#datePaidFilter').material_select();
         });
 
     }else if(from == 3){
@@ -65,11 +65,11 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#dateCancelFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#dateCancelFilter').material_select();
         });
 
     }else if(from==4){
@@ -83,11 +83,11 @@ $(document).ready(function () {
             console.log(response[0]);
             var valData = response;
             $.each(valData,function( index,value){
-                $('select#dateFilter').append(
+                $('select#dateDeliverFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#dateDeliverFilter').material_select();
         });
 
     }
