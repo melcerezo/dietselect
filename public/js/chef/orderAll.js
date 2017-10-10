@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    var m_names = ["January", "February", "March",
+        "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"];
+
     if(from == 0){
         $('#allLinkContain').addClass('activeTab');
         $('#ordAll').show();
@@ -10,7 +14,10 @@ $(document).ready(function () {
         daySelect.done(function (response) {
             console.log(response[0]);
             var valData = response;
-            $.each(valData,function( index,value){
+            $.each(valData,function(index,value){
+
+                var dateSplit = value.split('-');
+                console.log(dateSplit);
                 $('select#dateFilter').append(
                     $('<option></option>').attr("value",value).text(value)
                 );
