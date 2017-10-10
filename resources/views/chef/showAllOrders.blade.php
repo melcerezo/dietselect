@@ -352,6 +352,8 @@
                     <div id="dayPaidPick">
 
                     </div>
+                    <div id="ordPaidAll">
+                    </div>
                     @foreach($orders as $order)
                         @if($order['is_paid']==1 && $order['is_cancelled']==0)
                             <div class="card">
