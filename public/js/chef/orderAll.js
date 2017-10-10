@@ -105,7 +105,7 @@ $(document).ready(function () {
         $('#ordDelivered').hide();
 
         //initialize day select all again on tab click
-        var daySelect= selectDay();
+        var daySelect= selectDay('0');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -137,7 +137,7 @@ $(document).ready(function () {
 
 
         //initialize day select pend again on tab click
-        var daySelect= selectDay();
+        var daySelect= selectDay('1');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -168,7 +168,7 @@ $(document).ready(function () {
         $('#ordDelivered').hide();
 
         //initialize day select paid again on tab click
-        var daySelect= selectDay();
+        var daySelect= selectDay('2');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -197,8 +197,8 @@ $(document).ready(function () {
         $('#ordAll').hide();
         $('#ordDelivered').hide();
 
-        //initialize day select deliver again on tab click
-        var daySelect= selectDay();
+        //initialize day select cancel again on tab click
+        var daySelect= selectDay('3');
 
         daySelect.done(function (response) {
             console.log(response[0]);
@@ -208,7 +208,7 @@ $(document).ready(function () {
                     $('<option></option>').attr("value",value).text(value)
                 );
             });
-            $('select#dateFilter').material_select();
+            $('select#dateCancelFilter').material_select();
         });
 
 
@@ -227,6 +227,20 @@ $(document).ready(function () {
         $('#ordPaid').hide();
         $('#ordAll').hide();
         $('#ordCancel').hide();
+
+        var daySelect= selectDay('4');
+
+        daySelect.done(function (response) {
+            console.log(response[0]);
+            var valData = response;
+            $.each(valData,function( index,value){
+                $('select#dateDeliverFilter').append(
+                    $('<option></option>').attr("value",value).text(value)
+                );
+            });
+            $('select#dateFilter').material_select();
+        });
+
 
         // show delivered tab
         $('#deliveredLinkContain').addClass('activeTab');
