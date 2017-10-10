@@ -412,7 +412,7 @@ $(document).ready(function () {
 
         daySelect.done(function (response) {
             var valData = response;
-
+            $('select#dateFilter').empty();
             $.each(valData,function( index,value){
                 var parts=value.split('-');
 
@@ -519,7 +519,7 @@ $(document).ready(function () {
 
         daySelect.done(function (response) {
             var valData = response;
-
+            $('select#datePendFilter').empty();
             $.each(valData,function( index,value){
                 var parts=value.split('-');
 
@@ -626,7 +626,7 @@ $(document).ready(function () {
 
         daySelect.done(function (response) {
             var valData = response;
-
+            $('select#datePaidFilter').empty();
             $.each(valData,function( index,value){
                 var parts=value.split('-');
 
@@ -733,7 +733,7 @@ $(document).ready(function () {
 
         daySelect.done(function (response) {
             var valData = response;
-
+            $('select#dateCancelFilter').empty();
             $.each(valData,function( index,value){
                 var parts=value.split('-');
 
