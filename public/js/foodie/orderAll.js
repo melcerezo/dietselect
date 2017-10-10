@@ -888,7 +888,7 @@ $(document).ready(function () {
 
     $('select#dateFilter').change(function () {
         var dayVal=$('select#dateFilter option:selected').val();
-        var dayChange = dayChoose(dayVal);
+        var dayChange = dayChoose(dayVal,'0');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
@@ -961,7 +961,7 @@ $(document).ready(function () {
     $('#orderFilter').change(function () {
         var val = $('select#orderFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'0');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
@@ -1035,7 +1035,7 @@ $(document).ready(function () {
 
     $('select#datePendFilter').change(function () {
         var dayVal=$('select#datePendFilter option:selected').val();
-        var dayChange = dayChoose(dayVal);
+        var dayChange = dayChoose(dayVal,'1');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
@@ -1108,7 +1108,7 @@ $(document).ready(function () {
     $('#orderPendFilter').change(function () {
         var val = $('select#orderPendFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'1');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
@@ -1176,14 +1176,13 @@ $(document).ready(function () {
                     $('div#dayPendPick').append(x);
                 }
             }
-Pend
         });
     });
 
 
     $('select#datePaidFilter').change(function () {
         var dayVal=$('select#datePaidFilter option:selected').val();
-        var dayChange = dayChoose(dayVal);
+        var dayChange = dayChoose(dayVal,'2');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
@@ -1256,7 +1255,7 @@ Pend
     $('#orderPaidFilter').change(function () {
         var val = $('select#orderPaidFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'2');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
@@ -1331,7 +1330,7 @@ Pend
 
     $('select#dateCancelFilter').change(function () {
         var dayVal=$('select#dateCancelFilter option:selected').val();
-        var dayChange = dayChoose(dayVal);
+        var dayChange = dayChoose(dayVal,'3');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
@@ -1404,7 +1403,7 @@ Pend
     $('#orderCancelFilter').change(function () {
         var val = $('select#orderCancelFilter option:selected').val();
 
-        var dateChange = dateChoose(val);
+        var dateChange = dateChoose(val,'3');
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
