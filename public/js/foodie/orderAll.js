@@ -1,5 +1,9 @@
 $(document).ready(function () {
 
+    var m_names = ["January", "February", "March",
+        "April", "May", "June", "July", "August", "September",
+        "October", "November", "December"];
+
     if(from == 0){
         $('#allLinkContain').addClass('activeTab');
         $('#ordAll').show();
@@ -123,13 +127,14 @@ $(document).ready(function () {
 
 
         $.each(valData,function( index,value){
-            // var parts=value.split('-');
+            var parts=value.split('-');
             // yearArray.push(parts[0]);
             // monthArray.push(parts[1]);
             // dayArray.push(parts[2]);
+            var stringDate = m_names[parseInt(parts[1])-1]+' '+parts[2]+', '+parts[0];
 
             $('select#dateFilter').append(
-                $('<option></option>').attr("value",value).text(value)
+                $('<option></option>').attr("value",value).text(stringDate)
             );
         });
         // var uniqueYear = [];
