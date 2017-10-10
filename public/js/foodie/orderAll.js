@@ -216,7 +216,7 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-                    x += '<div class="col s12 m3">';
+                    x += '<div class="col s12 m6">';
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
@@ -287,7 +287,7 @@ $(document).ready(function () {
                 x += '</div>';
                 x += '</div>';
                 x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-                x += '<div class="col s12 m3">';
+                x += '<div class="col s12 m6">';
                 x += '<div>Order Date</div>';
                 x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                 x += '</div>';
@@ -361,7 +361,7 @@ $(document).ready(function () {
                 x += '</div>';
                 x += '</div>';
                 x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-                x += '<div class="col s12 m3">';
+                x += '<div class="col s12 m6">';
                 x += '<div>Order Date</div>';
                 x += '<div style="font-size: 22px;">'+valData[i].created_at+'</div>';
                 x += '</div>';
