@@ -632,7 +632,7 @@ $(document).ready(function () {
 
     $('select#datePaidFilter').change(function () {
         var dayVal=$('select#datePaidFilter option:selected').val();
-        var dayChange = dayChoose(dayVal,'1');
+        var dayChange = dayChoose(dayVal,'2');
         $('#ordPaidAll').hide();
         dayChange.done(function (response) {
             console.log(response);
