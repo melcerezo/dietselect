@@ -545,6 +545,7 @@ $(document).ready(function () {
     $('select#datePendFilter').change(function () {
         var dayVal=$('select#datePendFilter option:selected').val();
         var dayChange = dayChoose(dayVal,'1');
+        $('#ordPendAll').hide();
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
