@@ -197,7 +197,7 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
     Route::get('ingred/{id}/get/{cust}', 'Chef\ChefOrderController@getIngred');
     Route::get('order/viewSingle/{orderItem}', 'Chef\ChefOrderController@getOneOrderDetails')->name('chef.order.single');
     Route::get('order/deliver/{id}', 'Chef\ChefOrderController@updateDelivery')->name('chef.order.deliver');
-    Route::get('/order/dateChange/{type}', 'Chef\ChefOrderController@dateChange');
+    Route::get('/order/dateChange/{type}/{id}', 'Chef\ChefOrderController@dateChange');
     Route::get('/order/dayChange/{date}/{type}', 'Chef\ChefOrderController@dayChange');
     Route::get('/order/selectDay/{type}', 'Chef\ChefOrderController@selectDay');
 
