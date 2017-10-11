@@ -255,7 +255,7 @@
                                             @if($order->is_cancelled==1)
                                                 <tr>
                                                     <td>{{$order->id}}</td>
-                                                    <td>{{'PHP '.number_format($order->total,2,'.',',')}}</td>
+                                                    <td style="font-size: 14px;">{{'PHP '.number_format($order->total,2,'.',',')}}</td>
                                                     <td>
                                                         <span>Cancelled</span>
                                                     </td>
