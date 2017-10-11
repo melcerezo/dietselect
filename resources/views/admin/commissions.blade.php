@@ -116,7 +116,7 @@
                                         <span>Search by Interval:</span>
                                     </div>
                                     <select id="orderFilter">
-                                        <option value="0" disabled selected>Pick an interval</option>
+                                        <option value="0" disabled>Pick an interval</option>
                                         {{--<option value="1">Today</option>--}}
                                         <option value="5">All</option>
                                         <option value="2">This Week</option>
@@ -436,7 +436,7 @@
                                         <span>Search by Interval:</span>
                                     </div>
                                     <select id="pendOrderFilter">
-                                        <option value="0" disabled selected>Pick an interval</option>
+                                        <option value="0" disabled>Pick an interval</option>
                                         {{--<option value="1">Today</option>--}}
                                         <option value="5">All</option>
                                         <option value="2">This Week</option>
@@ -756,7 +756,7 @@
                                         <span>Search by Interval:</span>
                                     </div>
                                     <select id="paidOrderFilter">
-                                        <option value="0" disabled selected>Pick an interval</option>
+                                        <option value="0" disabled>Pick an interval</option>
                                         {{--<option value="1">Today</option>--}}
                                         <option value="5">All</option>
                                         <option value="2">This Week</option>
