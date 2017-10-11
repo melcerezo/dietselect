@@ -214,7 +214,7 @@
                                             @if($order->is_cancelled!=1)
                                                 <tr>
                                                     <td>{{$order->id}}</td>
-                                                    <td>{{$order->total}}</td>
+                                                    <td>{{'PHP '.number_format($order->total,2,'.',',')}}</td>
                                                     <td>
                                                         @if($order->is_paid==0)
                                                             <span>Pending</span>
@@ -255,7 +255,7 @@
                                             @if($order->is_cancelled==1)
                                                 <tr>
                                                     <td>{{$order->id}}</td>
-                                                    <td>{{$order->total}}</td>
+                                                    <td>{{'PHP '.number_format($order->total,2,'.',',')}}</td>
                                                     <td>
                                                         <span>Cancelled</span>
                                                     </td>
