@@ -73,7 +73,7 @@ class ChefController extends Controller
 
 
         $pendingOrderItems = OrderItem::where('chef_id','=',$chef->id)->where('is_delivered','=',0)->orderBy('created_at','desc')->take(5)->get();
-        dd($pendingOrderItems);
+//        dd($pendingOrderItems);
         $pendingOrders = [];
 
         $paidOrders = [];
