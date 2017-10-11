@@ -218,7 +218,7 @@ class FoodieOrderPlanController extends Controller
         if ($orderItem->order_type == 0) {
             $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
-            $mealPlans = $orderPlan->mealplans()->get();
+            $mealPlans = $orderPlan->mealplans()->where('is_deleted','=',0)->get();
             $saMeals = $mealPlans->where('day', '=', 'SA')->count();
             $moSnaMeals = $mealPlans->where('meal_type', '=', 'MorningSnack')->count();
             $aftSnaMeals = $mealPlans->where('meal_type', '=', 'AfternoonSnack')->count();
