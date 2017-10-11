@@ -179,6 +179,7 @@ class ChefOrderController extends Controller
             $orderPlan=Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
             $mealPlans=$orderPlan->mealplans()->get();
+            dd($mealPlans);
             $saMeals = $mealPlans->where('day','=','SA')->count();
             $moSnaMeals = $mealPlans->where('meal_type','=','MorningSnack')->count();
             $aftSnaMeals = $mealPlans->where('meal_type','=','AfternoonSnack')->count();
