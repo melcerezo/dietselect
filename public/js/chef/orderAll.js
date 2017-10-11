@@ -20,7 +20,7 @@ $(document).ready(function () {
                 var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
                 dateArray.push(date);
             });
-            console.log(dateArray);
+            console.log(dateArray[dateArray.length-1]);
             $('#dateFilter').pickadate({
 
                 today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
@@ -31,6 +31,7 @@ $(document).ready(function () {
                 format: 'yyyy-mm-dd',
 
                 //Date limits
+                // min:,
                 max: Date.now(),
 
                 //Dropdown selectors
