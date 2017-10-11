@@ -156,7 +156,7 @@ $(document).ready(function() {
         $('#paidLinkContain').removeClass('activeTab');
 
         var value = $('select#orderFilter option:selected').val();
-
+        console.log(value);
         if(value == 5){
             $('#allCom').show();
             $('#comAll').show();
