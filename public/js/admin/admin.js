@@ -154,50 +154,150 @@ $(document).ready(function() {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
-        $('select#orderFilter').val('0');
-        $('select#orderFilter').material_select();
-        $('#allCom').show();
-        $('#comAll').show();
-        $('#pendCom').hide();
-        $('#paidCom').hide();
-        $('#dayCom').hide();
-        $('#weekCom').hide();
-        $('#monthCom').hide();
-        $('#yearCom').hide();
+
+        var value = $('select#orderFilter option:selected').val();
+
+        if(value == 5){
+            $('#allCom').show();
+            $('#comAll').show();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').hide();
+            $('#yearCom').hide();
+        }else if(value == 2){
+            $('#allCom').hide();
+            $('#comAll').show();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').show();
+            $('#monthCom').hide();
+            $('#yearCom').hide();
+        }else if(value == 3){
+            $('#allCom').hide();
+            $('#comAll').show();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').show();
+            $('#yearCom').hide();
+        }else if(value == 4){
+            $('#allCom').hide();
+            $('#comAll').show();
+            $('#pendCom').hide();
+            $('#paidCom').hide();
+            $('#dayCom').hide();
+            $('#weekCom').hide();
+            $('#monthCom').hide();
+            $('#yearCom').show();
+        }
+
+        // $('#allCom').show();
+        // $('#comAll').show();
+        // $('#pendCom').hide();
+        // $('#paidCom').hide();
+        // $('#dayCom').hide();
+        // $('#weekCom').hide();
+        // $('#monthCom').hide();
+        // $('#yearCom').hide();
     });
     $('.pendLink').click(function () {
         $('#allLinkContain').removeClass('activeTab');
         $('#pendLinkContain').addClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
-        $('select#pendOrderFilter').val('0');
-        $('select#pendOrderFilter').material_select();
+        var value = $('select#pendOrderFilter option:selected').val();
 
-        $('#allCom').hide();
-        $('#pendCom').show();
-        $('#allPend').show();
-        $('#paidCom').hide();
-        $('#penddayCom').hide();
-        $('#pendweekCom').hide();
-        $('#pendmonthCom').hide();
-        $('#pendyearCom').hide();
+        if(value==5){
+            $('#allCom').hide();
+            $('#pendCom').show();
+            $('#allPend').show();
+            $('#paidCom').hide();
+            $('#penddayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').hide();
+        }else if(value==2){
+            $('#allCom').hide();
+            $('#pendCom').show();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#penddayCom').hide();
+            $('#pendweekCom').show();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').hide();
+        }else if(value==3){
+            $('#allCom').hide();
+            $('#pendCom').show();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#penddayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').show();
+            $('#pendyearCom').hide();
+        }else if(value==4){
+            $('#allCom').hide();
+            $('#pendCom').show();
+            $('#allPend').hide();
+            $('#paidCom').hide();
+            $('#penddayCom').hide();
+            $('#pendweekCom').hide();
+            $('#pendmonthCom').hide();
+            $('#pendyearCom').show();
+        }
+
+
     });
     $('.paidLink').click(function () {
         $('#allLinkContain').removeClass('activeTab');
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').addClass('activeTab');
 
-        $('select#paidOrderFilter').val('0');
-        $('select#paidOrderFilter').material_select();
+        var value = $('select#paidOrderFilter option:selected').val();
 
-        $('#allCom').hide();
-        $('#pendCom').hide();
-        $('#paidCom').show();
-        $('#allPaid').show();
-        $('#paiddayCom').hide();
-        $('#paidweekCom').hide();
-        $('#paidmonthCom').hide();
-        $('#paidyearCom').hide();
+        if(value==5){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').show();
+            $('#allPaid').show();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==2){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').show();
+            $('#allPaid').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').show();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').hide();
+        }else if(value==3){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').show();
+            $('#allPaid').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').show();
+            $('#paidyearCom').hide();
+        }else if(value==4){
+            $('#allCom').hide();
+            $('#pendCom').hide();
+            $('#paidCom').show();
+            $('#allPaid').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').hide();
+            $('#paidyearCom').show();
+        }
+
+
+
     });
 
     // orders page

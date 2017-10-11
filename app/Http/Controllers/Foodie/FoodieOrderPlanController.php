@@ -1153,8 +1153,6 @@ class FoodieOrderPlanController extends Controller
     public function dateChange($type,$id)
     {
         $thisDay = Carbon::today();
-//        $orderArray[] = array('id'=>$order->id,'address'=>$orderAddress,'total'=>number_format($order->total,2,'.',','),
-//            'is_paid'=>$is_paid,'is_cancelled'=>$order->is_cancelled,'week'=>$startOfWeek,'created_at'=>$order->created_at);
         $dw = Carbon::now();
         $startOfWeek=$dw->startOfWeek();
         $de = Carbon::now();
