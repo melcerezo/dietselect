@@ -359,7 +359,7 @@ class ChefOrderController extends Controller
         $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
 
         $mailer->to($chef->email)
-            ->send(new DeliverySuccessFoodie(
+            ->send(new DeliverySuccessChef(
                 $planName,
                 $foodieName,
                 $time));

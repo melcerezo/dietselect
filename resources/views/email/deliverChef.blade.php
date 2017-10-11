@@ -12,7 +12,7 @@
     <div>
         <div>
             <p>Hello, this is DietSelect!</p>
-            <p>You have delivered {{$foodieName}}'s order for {{$planName}} on {{$time}}\.</p>
+            <p>You have delivered {{$foodieName}}'s order for {{$planName}} on {{$time}}.</p>
         </div>
     </div>
 </body>
