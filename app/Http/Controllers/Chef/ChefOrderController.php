@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Chat;
 use App\CustomizedMeal;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
+use App\Mail\DeliverySuccessChef;
+use App\Mail\DeliverySuccessFoodie;
 use App\Notification;
 use App\Order;
 use App\Message;
@@ -23,7 +25,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Mail as mailer;
 
 
 class ChefOrderController extends Controller
@@ -281,7 +283,7 @@ class ChefOrderController extends Controller
         ]);
     }
 
-    public function updateDelivery($id)
+    public function updateDelivery($id,mailer\Mailer $mailer)
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
         $foodie = $orderItem->order->foodie;
@@ -303,6 +305,64 @@ class ChefOrderController extends Controller
         );
         $contextFoodie = stream_context_create($paramFoodie);
         file_get_contents($urlFoodie, false, $contextFoodie);
+
+        $foodnotif = new Notification();
+        $foodnotif->sender_id = 0;
+        $foodnotif->receiver_id = $foodie->id;
+        $foodnotif->receiver_type = 'f';
+        $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been delivered on ';
+        $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+        $foodnotif->notification_type = 1;
+        $foodnotif->save();
+
+        $chef= Auth::guard('chef')->user();
+        $message = 'Greetings from DietSelect! You have delivered ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
+        $message .= $orderItem->plan->plan_name;
+        $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
+        $message .= '.';
+        $chefPhoneNumber = '0' . $chef->mobile_number;
+        $url = 'https://www.itexmo.com/php_api/api.php';
+        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+        $param = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmo),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $context = stream_context_create($param);
+        file_get_contents($url, false, $context);
+
+        $chefnotif = new Notification();
+        $chefnotif->sender_id = 0;
+        $chefnotif->receiver_id = $chef->id;
+        $chefnotif->receiver_type = 'c';
+        $chefnotif->notification = 'You have delivered ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
+        $chefnotif->notification .= $orderItem->plan->plan_name . ' ';
+        $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+        $chefnotif->notification_type = 1;
+        $chefnotif->save();
+
+        $chefName = $chef->name;
+        $planName = $orderItem->plan->plan_name;
+        $time = Carbon::now()->format('F d, Y g:i A');
+        $mailer->to($foodie->email)
+            ->send(new DeliverySuccessFoodie(
+                $chefName,
+                $planName,
+                $time));
+
+        $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
+
+        $mailer->to($chef->email)
+            ->send(new DeliverySuccessFoodie(
+                $planName,
+                $foodieName,
+                $time));
 
 
         $orderItem->is_delivered=1;
