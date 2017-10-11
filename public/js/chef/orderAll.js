@@ -206,7 +206,7 @@ $(document).ready(function () {
             $('div#dayPendPick').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for This Week</span></div>');
             if(response==''){
-                $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPendPick').append('<span>No Pending Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -341,7 +341,7 @@ $(document).ready(function () {
             $('div#dayPaidPick').append('<div><span>Paid Orders for This Week</span></div>');
 
             if(response==''){
-                $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -476,7 +476,7 @@ $(document).ready(function () {
             $('div#dayCancelPick').append('<div><span>Cancelled Orders for This Week</span></div>');
 
             if(response==''){
-                $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayCancelPick').append('<span>No Cancelled Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -613,7 +613,7 @@ $(document).ready(function () {
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for This Week</span></div>');
 
             if(response==''){
-                $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayDeliverPick').append('<span>No Plans Delivered!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -904,7 +904,7 @@ $(document).ready(function () {
             $('div#dayPendPick').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for ' +$('select#orderPendFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPendPick').append('<span>No Pending Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1049,7 +1049,7 @@ $(document).ready(function () {
             $('div#dayPaidPick').empty();
             $('div#dayPaidPick').append('<div><span>Paid Orders for ' +$('select#orderPaidFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1194,7 +1194,7 @@ $(document).ready(function () {
             $('div#dayCancelPick').empty();
             $('div#dayCancelPick').append('<div><span>Cancelled Orders for ' +$('select#orderCancelFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayCancelPick').append('<span>No Cancelled Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1340,7 +1340,7 @@ $(document).ready(function () {
             $('div#dayDeliverPick').empty();
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for ' +$('select#orderDeliverFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayDeliverPick').append('<span>No Delivered Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1616,7 +1616,7 @@ $(document).ready(function () {
             $('div#dayPendPick').append('<div><span>Pending Orders for '+stringDate+'</span></div>');
             // $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#datePendFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPendPick').append('<span>No Pending Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1698,7 +1698,7 @@ $(document).ready(function () {
             $('div#dayPendPick').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#orderPendFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPendPick').append('<span>No Pending Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1785,7 +1785,7 @@ $(document).ready(function () {
             $('div#dayPaidPick').append('<div><span>Paid Orders for '+stringDate+'</span></div>');
             // $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#datePaidFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1867,7 +1867,7 @@ $(document).ready(function () {
             $('div#dayPaidPick').empty();
             $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#orderPaidFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -1954,7 +1954,7 @@ $(document).ready(function () {
             $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+stringDate+'</span></div>');
             // $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+$('select#dateCancelFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayCancelPick').append('<span>No Cancelled Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -2039,7 +2039,7 @@ $(document).ready(function () {
             $('div#dayCancelPick').empty();
             $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+$('select#orderCancelFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayCancelPick').append('<span>No Cancelled Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -2130,7 +2130,7 @@ $(document).ready(function () {
             // $('div#dayDeliverPick').append('<div><span>Pending Orders for '+$('select#dateDeliverFilter option:selected').text()+'</span></div>');
 
             if(response==''){
-                $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayDeliverPick').append('<span>No Delivered Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
@@ -2213,7 +2213,7 @@ $(document).ready(function () {
             $('div#dayDeliverPick').empty();
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for '+$('select#orderDeliverFilter option:selected').text()+'</span></div>');
             if(response==''){
-                $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
+                $('div#dayDeliverPick').append('<span>No Delivered Plans!</span>');
             }else {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
