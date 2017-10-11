@@ -405,7 +405,8 @@ class AdminController extends Controller
             }
 
             $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
-                'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
+                'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'is_delivered'=>$orderItem->is_delivered,
+                'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
         }
 
         return view('admin.order')->with([
