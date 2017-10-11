@@ -295,7 +295,7 @@ class AddMoneyController extends Controller{
                         $foodieName,
                         $chefOrderPlans));
 
-                $message = 'Greetings from DietSelect! '.$foodieName.'has confirmed their order for: ';
+                $message = 'Greetings from DietSelect! '.$foodieName.' has confirmed their order for: ';
                 foreach($chefOrderPlans as $chefOrderPlan){
                     $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
                 }

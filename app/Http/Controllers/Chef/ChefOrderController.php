@@ -360,8 +360,8 @@ class ChefOrderController extends Controller
 
         $mailer->to($chef->email)
             ->send(new DeliverySuccessChef(
-                $planName,
                 $foodieName,
+                $planName,
                 $time));
 
 
