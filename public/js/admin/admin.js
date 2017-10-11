@@ -175,6 +175,7 @@ $(document).ready(function() {
             $('#weekCom').show();
             $('#monthCom').hide();
             $('#yearCom').hide();
+            console.log(value);
         }else if(value == 3){
             $('#allCom').hide();
             $('#comAll').show();
