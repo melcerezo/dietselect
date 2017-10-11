@@ -174,7 +174,7 @@
                                         </li>
                                         <li class="collection-item">
                                             <span>Mobile: </span>
-                                            <span>{{$foodie->mobile_number}}</span>
+                                            <span>{{'0'.$foodie->mobile_number}}</span>
                                         </li>
                                         <li class="collection-item">
                                             <span>Status:</span>
