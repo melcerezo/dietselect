@@ -1265,12 +1265,14 @@ $(document).ready(function () {
     $('#dateFilter').change(function () {
     // $('select#dateFilter').change(function () {
         var dayVal=$('#dateFilter').val();
+        var dateSplit = dayVal.split('-');
+        var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
         // var dayVal=$('select#dateFilter option:selected').val();
         var dayChange = dayChoose(dayVal,'0');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
-            $('div#dayPick').append('<div><span>All Orders for '+$('#dateFilter').val()+'</span></div>');
+            $('div#dayPick').append('<div><span>All Orders for '+stringDate+'</span></div>');
             // $('div#dayPick').append('<div><span>All Orders for '+$('select#dateFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
