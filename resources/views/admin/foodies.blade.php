@@ -100,7 +100,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Name</th>
-                                    <th>User Name</th>
+                                    <th>Email Address</th>
                                     <th>Status</th>
                                     <th>Created</th>
                                 </tr>
@@ -113,11 +113,12 @@
                                             <a href="{{route('admin.foodie', $foodie->id)}}">{{$foodie->first_name.' '.$foodie->last_name}}</a>
                                         </td>
                                         <td>
-                                            @if($foodie->username!="")
-                                                {{$foodie->username}}
-                                            @else
-                                                N/A
-                                            @endif
+                                            {{$foodie->email}}
+                                            {{--@if($foodie->username!="")--}}
+                                                {{--{{$foodie->username}}--}}
+                                            {{--@else--}}
+                                                {{--N/A--}}
+                                            {{--@endif--}}
                                         </td>
                                         <td>
                                             @if($foodie->active==1)
