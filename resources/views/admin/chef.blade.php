@@ -132,6 +132,14 @@
                                         </div>
                                     </div>
                                     <ul class="collection">
+                                        <li class="collection-time">
+                                            <span>Email:</span>
+                                            <span>{{$chef->email}}</span>
+                                        </li>
+                                        <li class="collection-time">
+                                            <span>Mobile Number: </span>
+                                            <span>{{$chef->mobile_number}}</span>
+                                        </li>
                                         <li class="collection-item">
                                             <span>Status:</span>
                                             @if($chef->active==1)
