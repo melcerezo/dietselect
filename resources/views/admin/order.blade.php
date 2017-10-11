@@ -113,6 +113,17 @@
                                                     <div>Type:  {{$orderItemItem['type']}}</div>
                                                     <div>Quantity: {{$orderItemItem['quantity']}}</div>
                                                     <div>Amount: {{$orderItemItem['price']}}</div>
+                                                    <div>
+                                                        @if($orderItemItem['is_cancelled']==0)
+                                                            @if($orderItemItem['is_delivered']==0)
+                                                                <span>Pending</span>
+                                                            @elseif($orderItemItem['is_cancelled']==1)
+                                                                <span>Delivered</span>
+                                                            @endif
+                                                        @elseif($orderItemItem['is_cancelled']==1)
+                                                            <span>Cancelled</span>
+                                                        @endif
+                                                    </div>
                                                 </div>
                                                 {{--<div class="col s12 l3">--}}
                                                     {{--<div style="padding: 10px">--}}
