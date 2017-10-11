@@ -17,7 +17,7 @@ $(document).ready(function () {
             dateArray.push(true);
             $.each(valData,function( index,value){
                 var parts=value.split('-');
-                var date = [parseInt(parts[0]),parseInt(parts[1]),parseInt(parts[2])];
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
                 dateArray.push(date);
             });
             console.log(dateArray);
