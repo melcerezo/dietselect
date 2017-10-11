@@ -701,18 +701,52 @@ $(document).ready(function () {
         var daySelect= selectDay('0');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#dateFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#dateFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#dateFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#dateFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                min: dateArray[dateArray.length-1],
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 2,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#dateFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#dateFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#dateFilter').material_select();
+        // });
 
         //initialize order all select again tab click
 
@@ -815,18 +849,52 @@ $(document).ready(function () {
         var daySelect= selectDay('1');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#datePendFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#datePendFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#datePendFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#datePendFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                min: dateArray[dateArray.length-1],
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 2,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#datePendFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#datePendFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#datePendFilter').material_select();
+        // });
 
         var startVal = $('select#orderPendFilter option:selected').val();
 
@@ -926,18 +994,52 @@ $(document).ready(function () {
         var daySelect= selectDay('2');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#datePaidFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#datePaidFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#datePaidFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#datePaidFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                min: dateArray[dateArray.length-1],
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 2,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#datePaidFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#datePaidFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#datePaidFilter').material_select();
+        // });
 
         var startVal = $('select#orderPaidFilter option:selected').val();
 
@@ -1037,18 +1139,52 @@ $(document).ready(function () {
         var daySelect= selectDay('3');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#dateCancelFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#dateCancelFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#dateCancelFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#dateCancelFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                min: dateArray[dateArray.length-1],
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 2,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#dateCancelFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#dateCancelFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#dateCancelFilter').material_select();
+        // });
 
         var startVal = $('select#orderCancelFilter option:selected').val();
 
@@ -1149,18 +1285,52 @@ $(document).ready(function () {
         var daySelect= selectDay('4');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#dateDeliverFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#dateDeliverFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#dateDeliverFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#dateDeliverFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                min: dateArray[dateArray.length-1],
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 2,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#dateDeliverFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#dateDeliverFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#dateDeliverFilter').material_select();
+        // });
 
         var startVal = $('select#orderDeliverFilter option:selected').val();
 
@@ -1433,13 +1603,17 @@ $(document).ready(function () {
     //date filter pend change
 
     $('select#datePendFilter').change(function () {
-        var dayVal=$('select#datePendFilter option:selected').val();
+        var dayVal=$('#datePendFilter').val();
+        // var dayVal=$('select#datePendFilter option:selected').val();
+        var dateSplit = dayVal.split('-');
+        var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
         var dayChange = dayChoose(dayVal,'1');
         $('#ordPendAll').hide();
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
-            $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#datePendFilter option:selected').text()+'</span></div>');
+            $('div#dayPendPick').append('<div><span>Pending Orders for '+stringDate+'</span></div>');
+            // $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#datePendFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -1597,13 +1771,17 @@ $(document).ready(function () {
     //date filter paid change
 
     $('select#datePaidFilter').change(function () {
-        var dayVal=$('select#datePaidFilter option:selected').val();
+        var dayVal=$('#datePaidFilter').val();
+        // var dayVal=$('select#datePaidFilter option:selected').val();
+        var dateSplit = dayVal.split('-');
+        var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
         var dayChange = dayChoose(dayVal,'2');
         $('#ordPaidAll').hide();
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
-            $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#datePaidFilter option:selected').text()+'</span></div>');
+            $('div#dayPaidPick').append('<div><span>Paid Orders for '+stringDate+'</span></div>');
+            // $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#datePaidFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPaidPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -1761,13 +1939,17 @@ $(document).ready(function () {
     //date filter cancel change
 
     $('select#dateCancelFilter').change(function () {
-        var dayVal=$('select#dateCancelFilter option:selected').val();
+        var dayVal=$('#dateCancelFilter').val();
+        // var dayVal=$('select#dateCancelFilter option:selected').val();
+        var dateSplit = dayVal.split('-');
+        var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
         var dayChange = dayChoose(dayVal,'3');
         $('#ordCancelAll').hide();
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayCancelPick').empty();
-            $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+$('select#dateCancelFilter option:selected').text()+'</span></div>');
+            $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+stringDate+'</span></div>');
+            // $('div#dayCancelPick').append('<div><span>Cancelled Orders for '+$('select#dateCancelFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayCancelPick').append('<span>No Plans Ordered Yet!</span>');
             }else {
@@ -1931,13 +2113,17 @@ $(document).ready(function () {
     //date filter deliver change
 
     $('select#dateDeliverFilter').change(function () {
-        var dayVal=$('select#dateDeliverFilter option:selected').val();
+        var dayVal=$('#dateDeliverFilter').val();
+        // var dayVal=$('select#dateDeliverFilter option:selected').val();
+        var dateSplit = dayVal.split('-');
+        var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
         var dayChange = dayChoose(dayVal,'4');
         $('#ordDeliverAll').hide();
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
-            $('div#dayDeliverPick').append('<div><span>Pending Orders for '+$('select#dateDeliverFilter option:selected').text()+'</span></div>');
+            $('div#dayDeliverPick').append('<div><span>Delivered Orders for '+stringDate+'</span></div>');
+            // $('div#dayDeliverPick').append('<div><span>Pending Orders for '+$('select#dateDeliverFilter option:selected').text()+'</span></div>');
 
             if(response==''){
                 $('div#dayDeliverPick').append('<span>No Plans Ordered Yet!</span>');
