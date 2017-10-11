@@ -7,6 +7,7 @@
         pendRoute ='{{route('chef.order.view', ['from'=>1])}}';
         paidRoute ='{{route('chef.order.view', ['from'=>2])}}';
         cancelRoute ='{{route('chef.order.view', ['from'=>3])}}';
+        deliverRoute ='{{route('chef.order.view', ['from'=>4])}}';
         logoutRoute='{{route('chef.logoutAuto')}}';
     </script>
 

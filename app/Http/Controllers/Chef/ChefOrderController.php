@@ -312,7 +312,7 @@ class ChefOrderController extends Controller
         $foodnotif->receiver_type = 'f';
         $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been delivered on ';
         $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
-        $foodnotif->notification_type = 1;
+        $foodnotif->notification_type = 2;
         $foodnotif->save();
 
         $chef= Auth::guard('chef')->user();
@@ -344,7 +344,7 @@ class ChefOrderController extends Controller
         $chefnotif->notification = 'You have delivered ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
         $chefnotif->notification .= $orderItem->plan->plan_name . ' ';
         $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
-        $chefnotif->notification_type = 1;
+        $chefnotif->notification_type = 4;
         $chefnotif->save();
 
         $chefName = $chef->name;
