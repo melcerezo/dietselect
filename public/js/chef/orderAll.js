@@ -1602,7 +1602,8 @@ $(document).ready(function () {
 
     //date filter pend change
 
-    $('select#datePendFilter').change(function () {
+    $('#datePendFilter').change(function () {
+    // $('select#datePendFilter').change(function () {
         var dayVal=$('#datePendFilter').val();
         // var dayVal=$('select#datePendFilter option:selected').val();
         var dateSplit = dayVal.split('-');
@@ -1770,7 +1771,8 @@ $(document).ready(function () {
 
     //date filter paid change
 
-    $('select#datePaidFilter').change(function () {
+    $('#datePaidFilter').change(function () {
+    // $('select#datePaidFilter').change(function () {
         var dayVal=$('#datePaidFilter').val();
         // var dayVal=$('select#datePaidFilter option:selected').val();
         var dateSplit = dayVal.split('-');
@@ -1938,7 +1940,8 @@ $(document).ready(function () {
 
     //date filter cancel change
 
-    $('select#dateCancelFilter').change(function () {
+    $('#dateCancelFilter').change(function () {
+    // $('select#dateCancelFilter').change(function () {
         var dayVal=$('#dateCancelFilter').val();
         // var dayVal=$('select#dateCancelFilter option:selected').val();
         var dateSplit = dayVal.split('-');
@@ -2112,7 +2115,8 @@ $(document).ready(function () {
 
     //date filter deliver change
 
-    $('select#dateDeliverFilter').change(function () {
+    $('#dateDeliverFilter').change(function () {
+    // $('select#dateDeliverFilter').change(function () {
         var dayVal=$('#dateDeliverFilter').val();
         // var dayVal=$('select#dateDeliverFilter option:selected').val();
         var dateSplit = dayVal.split('-');
