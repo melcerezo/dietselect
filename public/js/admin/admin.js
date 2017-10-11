@@ -17,8 +17,7 @@ $(document).ready(function() {
 
     $('#orderFilter').change(function () {
         var value = $('select#orderFilter option:selected').val();
-        $('select#orderFilter').material_select();
-
+        console.log(value);
         if(value==1){
             $('#comAll').hide();
             $('#pendCom').hide();
