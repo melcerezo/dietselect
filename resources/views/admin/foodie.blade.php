@@ -169,6 +169,14 @@
                                             </span>
                                         </li>
                                         <li class="collection-item">
+                                            <span>Email: </span>
+                                            <span>{{$foodie->email}}</span>
+                                        </li>
+                                        <li class="collection-item">
+                                            <span>Mobile: </span>
+                                            <span>{{$foodie->mobile_number}}</span>
+                                        </li>
+                                        <li class="collection-item">
                                             <span>Status:</span>
                                             @if($foodie->active==1)
                                                 <span>Active</span>
