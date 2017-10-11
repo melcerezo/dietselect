@@ -132,11 +132,11 @@
                                         </div>
                                     </div>
                                     <ul class="collection">
-                                        <li class="collection-time">
+                                        <li class="collection-item">
                                             <span>Email:</span>
                                             <span>{{$chef->email}}</span>
                                         </li>
-                                        <li class="collection-time">
+                                        <li class="collection-item">
                                             <span>Mobile Number: </span>
                                             <span>{{$chef->mobile_number}}</span>
                                         </li>
