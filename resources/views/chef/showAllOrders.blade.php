@@ -230,9 +230,9 @@
                                 {{--<select id="yearFilter"></select>--}}
                                 {{--<select id="monthFilter"></select>--}}
                                 {{--<select id="dayFilter"></select>--}}
-                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
-                                <select id="datePendFilter">
-                                </select>
+                                <input type="text" id="datePendFilter" placeholder="Please choose a day">
+                                {{--<select id="datePendFilter">--}}
+                                {{--</select>--}}
                             </div>
                         </div>
                     </div>
@@ -343,9 +343,9 @@
                                 {{--<select id="yearFilter"></select>--}}
                                 {{--<select id="monthFilter"></select>--}}
                                 {{--<select id="dayFilter"></select>--}}
-                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
-                                <select id="datePaidFilter">
-                                </select>
+                                <input type="text" id="datePaidFilter" placeholder="Please choose a day">
+                                {{--<select id="datePaidFilter">--}}
+                                {{--</select>--}}
                             </div>
                         </div>
                     </div>
@@ -456,9 +456,9 @@
                                 {{--<select id="yearFilter"></select>--}}
                                 {{--<select id="monthFilter"></select>--}}
                                 {{--<select id="dayFilter"></select>--}}
-                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
-                                <select id="dateDeliverFilter">
-                                </select>
+                                <input type="text" id="dateDeliverFilter" placeholder="Please choose a day">
+                                {{--<select id="dateDeliverFilter">--}}
+                                {{--</select>--}}
                             </div>
                         </div>
                     </div>
@@ -569,9 +569,9 @@
                                 {{--<select id="yearFilter"></select>--}}
                                 {{--<select id="monthFilter"></select>--}}
                                 {{--<select id="dayFilter"></select>--}}
-                                {{--<input type="text" id="dateFilter" placeholder="Please choose a day">--}}
-                                <select id="dateCancelFilter">
-                                </select>
+                                <input type="text" id="dateCancelFilter" placeholder="Please choose a day">
+                                {{--<select id="dateCancelFilter">--}}
+                                {{--</select>--}}
                             </div>
                         </div>
                     </div>
