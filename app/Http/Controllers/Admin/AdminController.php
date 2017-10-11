@@ -409,6 +409,8 @@ class AdminController extends Controller
                 'is_cancelled'=>$orderItem->order->is_cancelled,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
         }
 
+        dd($orderItemArray);
+
         return view('admin.order')->with([
             'order'=>$order,
             'orderItems'=>$orderItems,
