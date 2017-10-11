@@ -117,7 +117,7 @@
                                                         @if($orderItemItem['is_cancelled']==0)
                                                             @if($orderItemItem['is_delivered']==0)
                                                                 <span>Pending</span>
-                                                            @elseif($orderItemItem['is_cancelled']==1)
+                                                            @elseif($orderItemItem['is_delivered']==1)
                                                                 <span>Delivered</span>
                                                             @endif
                                                         @elseif($orderItemItem['is_cancelled']==1)
