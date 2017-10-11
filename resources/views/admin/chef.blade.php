@@ -138,7 +138,7 @@
                                         </li>
                                         <li class="collection-item">
                                             <span>Mobile Number: </span>
-                                            <span>{{$chef->mobile_number}}</span>
+                                            <span>{{'0'.$chef->mobile_number}}</span>
                                         </li>
                                         <li class="collection-item">
                                             <span>Status:</span>
