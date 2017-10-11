@@ -284,6 +284,27 @@ class ChefOrderController extends Controller
     public function updateDelivery($id)
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
+        $foodie = $orderItem->order->foodie;
+        $messageFoodie = 'Greetings from DietSelect! Your order for '.$orderItem->plan->plan_name.' has been delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+        dd($foodie);
+        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+        $paramFoodie = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmoFoodie),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $contextFoodie = stream_context_create($paramFoodie);
+        file_get_contents($urlFoodie, false, $contextFoodie);
+
+
         $orderItem->is_delivered=1;
         $orderItem->save();
 
