@@ -17,6 +17,8 @@ $(document).ready(function() {
 
     $('#orderFilter').change(function () {
         var value = $('select#orderFilter option:selected').val();
+        $('select#orderFilter').material_select();
+
         if(value==1){
             $('#comAll').hide();
             $('#pendCom').hide();
@@ -154,7 +156,6 @@ $(document).ready(function() {
         $('#pendLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
 
-        $('select#orderFilter').material_select();
         var value = $('select#orderFilter option:selected').val();
 
         if(value == 5){
