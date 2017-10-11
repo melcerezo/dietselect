@@ -6,6 +6,9 @@ function ingredAjax(id,type) {
 }
 
 $(document).ready(function () {
+    $('#deliverButton').click(function () {
+        $('#loadWait').show();
+    });
     $(document).on('click','.mealLink',function(){
         var id = $(this).attr('data-id');
         var type = $(this).attr('data-cust');

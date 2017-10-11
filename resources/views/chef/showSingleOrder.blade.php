@@ -312,7 +312,7 @@
                                     @if($orderItem->is_delivered==0)
                                         <span>Not Delivered</span>
                                         @if($orderItem->order->is_paid==1)
-                                            <a href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                            <a id="deliverButton" href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
                                         @endif
                                     @elseif($orderItem->is_delivered==1)
                                         <span>Delivered</span>
@@ -3575,5 +3575,19 @@
                     {{--@endif--}}
                 {{--@endforeach--}}
             {{--@endfor--}}
+
+        <div id="loadWait" class="valign-wrapper">
+            <div id="loadStatus" class="preloader-wrapper active valign">
+                <div class="spinner-layer spinner-red-only">
+                    <div class="circle-clipper left">
+                        <div class="circle"></div>
+                    </div><div class="gap-patch">
+                        <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
 @endsection
