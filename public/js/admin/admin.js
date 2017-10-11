@@ -167,8 +167,8 @@ $(document).ready(function() {
             $('#monthCom').hide();
             $('#yearCom').hide();
         }else if(value == 2){
-            $('#allCom').hide();
-            $('#comAll').show();
+            $('#allCom').show();
+            $('#comAll').hide();
             $('#pendCom').hide();
             $('#paidCom').hide();
             $('#dayCom').hide();
@@ -177,8 +177,8 @@ $(document).ready(function() {
             $('#yearCom').hide();
             console.log(value);
         }else if(value == 3){
-            $('#allCom').hide();
-            $('#comAll').show();
+            $('#allCom').show();
+            $('#comAll').hide();
             $('#pendCom').hide();
             $('#paidCom').hide();
             $('#dayCom').hide();
@@ -186,8 +186,8 @@ $(document).ready(function() {
             $('#monthCom').show();
             $('#yearCom').hide();
         }else if(value == 4){
-            $('#allCom').hide();
-            $('#comAll').show();
+            $('#allCom').show();
+            $('#comAll').hide();
             $('#pendCom').hide();
             $('#paidCom').hide();
             $('#dayCom').hide();
