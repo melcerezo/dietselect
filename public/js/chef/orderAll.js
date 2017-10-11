@@ -31,7 +31,7 @@ $(document).ready(function () {
                 format: 'yyyy-mm-dd',
 
                 //Date limits
-                // min:,
+                min:dateArray[dateArray.length-1],
                 max: Date.now(),
 
                 //Dropdown selectors
@@ -147,20 +147,54 @@ $(document).ready(function () {
         //initialize day select pending
         var daySelect= selectDay('1');
 
-        daySelect.done(function (response) {
-            console.log(response[0]);
-            var valData = response;
-            $('select#datePendFilter').empty();
-            $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#datePendFilter').append(
 
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+        daySelect.done(function (response) {
+            var valData = response;
+            var dateArray = [];
+            dateArray.push(true);
+            $.each(valData,function( index,value){
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#datePendFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#datePendFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                // min:,
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#datePendFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#datePendFilter').append(
+        //
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#datePendFilter').material_select();
+        // });
 
         //order filter all initialize
 
@@ -250,18 +284,51 @@ $(document).ready(function () {
         var daySelect= selectDay('2');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#datePaidFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#datePaidFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#datePaidFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#datePaidFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                // min:,
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#datePaidFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#datePaidFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#datePaidFilter').material_select();
+        // });
 
         //order filter all initialize
 
@@ -352,18 +419,51 @@ $(document).ready(function () {
         var daySelect= selectDay('3');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#dateCancelFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#dateCancelFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#dateCancelFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#dateCancelFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                // min:,
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#dateCancelFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#dateCancelFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#dateCancelFilter').material_select();
+        // });
 
         //order filter all initialize
 
@@ -456,18 +556,51 @@ $(document).ready(function () {
         var daySelect= selectDay('4');
 
         daySelect.done(function (response) {
-            console.log(response[0]);
             var valData = response;
-            $('select#dateDeliverFilter').empty();
+            var dateArray = [];
+            dateArray.push(true);
             $.each(valData,function( index,value){
-                var dateSplit = value.split('-');
-                var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
-                $('select#dateDeliverFilter').append(
-                    $('<option></option>').attr("value",value).text(stringDate)
-                );
+                var parts=value.split('-');
+                var date = [parseInt(parts[0]),parseInt(parts[1])-1,parseInt(parts[2])];
+                dateArray.push(date);
             });
-            $('select#dateDeliverFilter').material_select();
+            console.log(dateArray[dateArray.length-1]);
+            $('#dateDeliverFilter').pickadate({
+
+                today: '<i class="fa fa-calendar-check-o" aria-hidden="true"></i>',
+                clear: 'Clear',
+                close: '<i class="fa fa-check-circle" aria-hidden="true"></i>',
+
+                //Formats
+                format: 'yyyy-mm-dd',
+
+                //Date limits
+                // min:,
+                max: Date.now(),
+
+                //Dropdown selectors
+                selectMonths: true, // Creates a dropdown to control month
+                selectYears: 15,// Creates a dropdown of 15 years to control year
+
+                //disable
+                disable: dateArray
+
+            });
         });
+
+        // daySelect.done(function (response) {
+        //     console.log(response[0]);
+        //     var valData = response;
+        //     $('select#dateDeliverFilter').empty();
+        //     $.each(valData,function( index,value){
+        //         var dateSplit = value.split('-');
+        //         var stringDate = m_names[parseInt(dateSplit[1])-1]+' '+dateSplit[2]+', '+dateSplit[0];
+        //         $('select#dateDeliverFilter').append(
+        //             $('<option></option>').attr("value",value).text(stringDate)
+        //         );
+        //     });
+        //     $('select#dateDeliverFilter').material_select();
+        // });
 
         //order filter all initialize
 
