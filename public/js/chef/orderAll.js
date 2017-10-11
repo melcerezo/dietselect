@@ -1266,7 +1266,7 @@ $(document).ready(function () {
     // $('select#dateFilter').change(function () {
         var dayVal=$('#dateFilter').val();
         // var dayVal=$('select#dateFilter option:selected').val();
-        var dayChange = dayChoose(dayVal);
+        var dayChange = dayChoose(dayVal,'0');
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
