@@ -287,7 +287,7 @@ class ChefOrderController extends Controller
         $foodie = $orderItem->order->foodie;
         $messageFoodie = 'Greetings from DietSelect! Your order for '.$orderItem->plan->plan_name.' has been delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
-        dd($foodie);
+//        dd($foodie);
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
         $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
         $paramFoodie = array(
