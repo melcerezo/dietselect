@@ -127,10 +127,10 @@ $(document).ready(function() {
             $('#allCom').hide();
             $('#pendCom').hide();
             $('#allPaid').hide();
-            $('#paidpaiddayCom').hide();
-            $('#paidpaidweekCom').hide();
-            $('#paidpaidmonthCom').show();
-            $('#paidpaidyearCom').hide();
+            $('#paiddayCom').hide();
+            $('#paidweekCom').hide();
+            $('#paidmonthCom').show();
+            $('#paidyearCom').hide();
         }else if(value==4){
             $('#allCom').hide();
             $('#pendCom').hide();
@@ -140,7 +140,7 @@ $(document).ready(function() {
             $('#paidmonthCom').hide();
             $('#paidyearCom').show();
         }else if(value==5){
-            $('#allCom').show();
+            $('#allCom').hide();
             $('#pendCom').hide();
             $('#allPaid').show();
             $('#paiddayCom').hide();
