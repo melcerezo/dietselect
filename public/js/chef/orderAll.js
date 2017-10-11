@@ -31,12 +31,12 @@ $(document).ready(function () {
                 format: 'yyyy-mm-dd',
 
                 //Date limits
-                min:dateArray[dateArray.length-1],
+                min: dateArray[dateArray.length-1],
                 max: Date.now(),
 
                 //Dropdown selectors
                 selectMonths: true, // Creates a dropdown to control month
-                selectYears: 15,// Creates a dropdown of 15 years to control year
+                selectYears: 2,// Creates a dropdown of 15 years to control year
 
                 //disable
                 disable: dateArray
@@ -1262,7 +1262,8 @@ $(document).ready(function () {
 
     // date filter all change
 
-    $('select#dateFilter').change(function () {
+    $('#dateFilter').change(function () {
+    // $('select#dateFilter').change(function () {
         var dayVal=$('select#dateFilter option:selected').val();
         var dayChange = dayChoose(dayVal);
         dayChange.done(function (response) {
