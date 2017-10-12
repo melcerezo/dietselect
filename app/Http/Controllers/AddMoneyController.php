@@ -16,6 +16,7 @@ use App\Rating;
 use App\Mail\PaymentSuccess;
 use App\Mail\PaymentSuccessChef;
 use App\SimpleCustomPlan;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -193,7 +194,7 @@ class AddMoneyController extends Controller{
 //        dd($foodnotif);
             $foodnotif->save();
 
-            $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through PayPal. Thank you.';
+            $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through PayPal on '.Carbon::now()->format('F d, Y g:i A').'. Thank you.';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
@@ -299,7 +300,7 @@ class AddMoneyController extends Controller{
                 foreach($chefOrderPlans as $chefOrderPlan){
                     $message.=$chefOrderPlan['plan_name'].'-'.$chefOrderPlan['type'].' ';
                 }
-                $message.='.';
+                $message.='on '.Carbon::now()->format('F d, Y g:i A').'.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $url = 'https://www.itexmo.com/php_api/api.php';
                 $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
