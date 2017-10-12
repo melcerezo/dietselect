@@ -309,6 +309,8 @@ $(document).ready(function() {
     $('#orderWeekPicker').hide();
     $('#orderMonthPicker').hide();
     $('#orderYearPicker').hide();
+    $('#orderPageCancel').hide();
+
 
     $('#allOrderLinkContain').addClass('activeTab');
 
