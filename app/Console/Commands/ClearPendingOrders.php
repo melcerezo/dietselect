@@ -60,7 +60,7 @@ class ClearPendingOrders extends Command
 
 
             $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled on';
-            $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y h:i A').'.';
+            $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y').' 3:00pm.';
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');

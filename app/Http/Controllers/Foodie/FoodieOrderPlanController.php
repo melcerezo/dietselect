@@ -406,7 +406,7 @@ class FoodieOrderPlanController extends Controller
         $cartItems = Cart::content();
 
         $chefs = Chef::all();
-        $thisSaturday = Carbon::parse('this saturday')->format('F d, Y g:i A');
+        $thisSaturday = Carbon::parse('this saturday')->format('F d, Y');
         $cartChefs = [];
         $mailHTML = [];
 //        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
@@ -605,14 +605,14 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->receiver_id = $foodie->id;
         $foodnotif->receiver_type = 'f';
         $foodnotif->notification = 'Your order has been placed ';
-        $foodnotif->notification .= '. Please pay before ' . $thisSaturday . '.';
+        $foodnotif->notification .= '. Please pay before ' . $thisSaturday . ' 3:00pm.';
         $foodnotif->notification_type = 1;
         $foodnotif->save();
 
 
 
         $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at->format('F d, Y g:i A') . '. Please pay your balance of: PHP ';
-        $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday;
+        $messageFoodie .= number_format($order->total, 2, '.', ',') . ' before ' . $thisSaturday.' 3:00pm';
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
         $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
