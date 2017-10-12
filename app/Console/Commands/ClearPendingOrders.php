@@ -60,7 +60,9 @@ class ClearPendingOrders extends Command
         foreach($pendingOrders as $item){
 //            $item->is_cancelled=1;
 //            $item->save();
-            $messageFoodie = 'Your order is: '.$item->created_at->format('F d, Y h:i A');
+
+
+            $messageFoodie = 'Your order is: '.$saturday->format('F d, Y h:i A');
 //            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -79,6 +81,48 @@ class ClearPendingOrders extends Command
             $contextFoodie = stream_context_create($paramFoodie);
             file_get_contents($urlFoodie, false, $contextFoodie);
 
+            $orderItems = $item->order_item()->get();
+            $arrayChef=[];
+            foreach($orderItems as $orderItem){
+                $arrayChef[]=$orderItem->chef_id;
+            }
+            $uniqueChef=array_unique($arrayChef);
+
+            foreach($uniqueChef as $chefUn){
+                $planName=[];
+                foreach($orderItems as $orderItem){
+                    if($orderItem->chef_id==$chefUn){
+                        $planName[] = $orderItem->plan->plan_name;
+                        if ($orderItem->is_customized == 0) {
+                            $planName[] .= '- Standard';
+                        } elseif ($orderItem->is_customized == 1) {
+                            $planName[] .= '- Custom';
+                        }
+                    }
+                }
+                $chef = Chef::where('id','=',$chefUn)->first();
+
+                $messageChef = 'Your order is: '.$saturday->format('F d, Y h:i A');
+                foreach ($planName as $pName) {
+                    $messageChef .= $pName . ' ';
+                }
+                $chefPhoneNumber = '0'.$chef->mobile_number;
+                $urlChef = 'https://www.itexmo.com/php_api/api.php';
+                $itexmoChef = array('1' => $chefPhoneNumber, '2' => $messageChef, '3' => 'PR-DIETS656642_VBVIA');
+                $paramChef = array(
+                    'http' => array(
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($itexmoChef),
+                    ),
+                    "ssl" => array(
+                        "verify_peer" => false,
+                        "verify_peer_name" => false,
+                    ),
+                );
+                $contextChef = stream_context_create($paramChef);
+                file_get_contents($urlChef, false, $contextChef);
+            }
 
 //        dd($foodie);
 
