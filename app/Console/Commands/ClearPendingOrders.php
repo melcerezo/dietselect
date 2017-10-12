@@ -51,16 +51,16 @@ class ClearPendingOrders extends Command
         $pendingOrders = Order::where('is_paid','=',0)
             ->where('foodie_id','=',22)
             ->where('is_cancelled','=',0)
-            ->join('order_items','order_items.order_id','=','orders.id')
+//            ->join('order_items','order_items.order_id','=','orders.id')
 //            ->where('orders.is_created','>',$monday)
 //            ->where('orders.is_created','<',$saturday)
-            ->select('*','orders.is_created as it_time')
+//            ->select('*','orders.is_created as it_time')
             ->get();
 
         foreach($pendingOrders as $item){
 //            $item->is_cancelled=1;
 //            $item->save();
-            $messageFoodie = 'Your order is: '.$item->it_time->format('F d, Y h:i A');
+            $messageFoodie = 'Your order is: '.$item->created_at->format('F d, Y h:i A');
 //            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
             $foodiePhoneNumber = '09273656642';
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
