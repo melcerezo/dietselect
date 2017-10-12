@@ -44,18 +44,18 @@ class ClearPendingOrders extends Command
     public function handle()
     {
 
-        $saturday=Carbon::now();
-        $dt = Carbon::now();
-        $monday=$dt->startOfWeek();
-
-        $pendingOrders = Order::where('is_paid','=',0)
-            ->where('foodie_id','=',22)
-            ->where('is_cancelled','=',0)
-            ->join('order_items','order_items.order_id','=','orders.id')
-            ->where('orders.is_created','>',$monday)
-            ->where('orders.is_created','<',$saturday)
-            ->select('*','orders.is_created as it_time')
-            ->first();
+//        $saturday=Carbon::now();
+//        $dt = Carbon::now();
+//        $monday=$dt->startOfWeek();
+//
+//        $pendingOrders = Order::where('is_paid','=',0)
+//            ->where('foodie_id','=',22)
+//            ->where('is_cancelled','=',0)
+//            ->join('order_items','order_items.order_id','=','orders.id')
+//            ->where('orders.is_created','>',$monday)
+//            ->where('orders.is_created','<',$saturday)
+//            ->select('*','orders.is_created as it_time')
+//            ->first();
 
 //        foreach($pendingOrders as $item){
 ////            $item->is_cancelled=1;
