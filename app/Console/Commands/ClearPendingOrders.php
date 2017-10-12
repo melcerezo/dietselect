@@ -101,8 +101,8 @@ class ClearPendingOrders extends Command
                     }
                 }
                 $chef = Chef::where('id','=',$chefUn)->first();
-
-                $messageChef = 'Your order is: '.$saturday->format('F d, Y h:i A');
+                $foodie =$item->foodie->first_name.' '.$item->foodie->last_name;
+                $messageChef = $foodie.'\'s order is: '.$saturday->format('F d, Y h:i A').'. ';
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';
                 }
