@@ -59,7 +59,7 @@ class ClearPendingOrders extends Command
             $item->save();
 
 
-            $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled on';
+            $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled ';
             $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y').' 3:00pm.';
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -103,7 +103,7 @@ class ClearPendingOrders extends Command
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';
                 }
-                $messageChef.='has been cancelled due to no payment before: '.$saturday->format('F d, Y h:i A').'.';
+                $messageChef.='has been cancelled due to no payment before: '.$saturday->format('F d, Y').' 3:00pm.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $urlChef = 'https://www.itexmo.com/php_api/api.php';
                 $itexmoChef = array('1' => $chefPhoneNumber, '2' => $messageChef, '3' => 'PR-DIETS656642_VBVIA');
