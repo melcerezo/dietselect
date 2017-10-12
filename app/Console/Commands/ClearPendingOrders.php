@@ -47,15 +47,15 @@ class ClearPendingOrders extends Command
 //        $saturday=Carbon::now();
 //        $dt = Carbon::now();
 //        $monday=$dt->startOfWeek();
-//
-//        $pendingOrders = Order::where('is_paid','=',0)
+
+        $pendingOrders = Order::where('is_paid','=',0)
 //            ->where('foodie_id','=',22)
 //            ->where('is_cancelled','=',0)
 //            ->join('order_items','order_items.order_id','=','orders.id')
 //            ->where('orders.is_created','>',$monday)
 //            ->where('orders.is_created','<',$saturday)
 //            ->select('*','orders.is_created as it_time')
-//            ->first();
+            ->first();
 
 //        foreach($pendingOrders as $item){
 ////            $item->is_cancelled=1;
@@ -67,7 +67,7 @@ class ClearPendingOrders extends Command
 //        }
 //        $mobileNumber = $item->foodie->mobile_number;
 //
-            $messageFoodie = 'Hello';
+            $messageFoodie = $pendingOrders->it_time;
 //            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
             $foodiePhoneNumber = '09273656642';
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
