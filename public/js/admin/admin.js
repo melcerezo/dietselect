@@ -404,7 +404,7 @@ $(document).ready(function() {
         }else if(value==5){
             $('#orderPageCancel').hide();
             $('#orderPagePaid').hide();
-            $('#orderPagePend').hide();
+            $('#orderPageAll').hide();
             $('#orderPendAllTable').show();
             $('#orderPendWeekPicker').hide();
             $('#orderPendMonthPicker').hide();
