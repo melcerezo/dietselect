@@ -130,10 +130,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -270,10 +270,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -685,10 +685,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -837,10 +837,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -1273,10 +1273,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -1358,10 +1358,10 @@ $(document).ready(function () {
                 if(valData[i].is_paid == 'Pending'){
                     x += '<div class="row">';
                     x += '<div class="col s12 m2">';
-                    x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                     x += '</div>';
                     x += '<div class="col s12 m2">';
-                    x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                    x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                     x += '</div>';
                     x += '</div>';
                 }
@@ -1446,10 +1446,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -1531,10 +1531,10 @@ $(document).ready(function () {
                     if(valData[i].is_paid == 'Pending'){
                         x += '<div class="row">';
                         x += '<div class="col s12 m2">';
-                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
                         x += '</div>';
                         x += '<div class="col s12 m2">';
-                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '<button data-id="' + valData[i].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
