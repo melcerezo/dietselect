@@ -67,7 +67,8 @@ class ClearPendingOrders extends Command
 //        }
 //        $mobileNumber = $item->foodie->mobile_number;
 //
-            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
+            $messageFoodie = 'Hello';
+//            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
             $foodiePhoneNumber = '09273656642';
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
