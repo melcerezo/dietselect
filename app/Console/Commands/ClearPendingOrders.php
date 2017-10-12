@@ -58,12 +58,12 @@ class ClearPendingOrders extends Command
             ->get();
 
         foreach($pendingOrders as $item){
-//            $item->is_cancelled=1;
-//            $item->save();
+            $item->is_cancelled=1;
+            $item->save();
 
 
-            $messageFoodie = 'Your order is: '.$saturday->format('F d, Y h:i A');
-//            $messageFoodie = 'Hello, your order is: on'. $pendingOrders->it_time;
+            $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled on';
+            $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y h:i A').'.';
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
@@ -102,10 +102,11 @@ class ClearPendingOrders extends Command
                 }
                 $chef = Chef::where('id','=',$chefUn)->first();
                 $foodie =$item->foodie->first_name.' '.$item->foodie->last_name;
-                $messageChef = $foodie.'\'s order is: '.$saturday->format('F d, Y h:i A').'. ';
+                $messageChef = $foodie.'\'s order for: ';
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';
                 }
+                $messageChef.='has been cancelled due to no payment before: '.$saturday->format('F d, Y h:i A').'.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $urlChef = 'https://www.itexmo.com/php_api/api.php';
                 $itexmoChef = array('1' => $chefPhoneNumber, '2' => $messageChef, '3' => 'PR-DIETS656642_VBVIA');
