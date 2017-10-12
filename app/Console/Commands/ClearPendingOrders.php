@@ -50,11 +50,8 @@ class ClearPendingOrders extends Command
 
         $pendingOrders = Order::where('is_paid','=',0)
             ->where('is_cancelled','=',0)
-            ->where('foodie_id','=',22)
             ->where('created_at','>',$monday)
             ->where('created_at','<',$saturday)
-//            ->join('order_items','order_items.order_id','=','orders.id')
-//            ->select('*','orders.is_created as it_time')
             ->get();
 
         foreach($pendingOrders as $item){

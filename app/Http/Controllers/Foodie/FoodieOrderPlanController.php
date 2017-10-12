@@ -406,7 +406,7 @@ class FoodieOrderPlanController extends Controller
         $cartItems = Cart::content();
 
         $chefs = Chef::all();
-        $thisSaturday = Carbon::parse('this saturday')->format('F d, Y');
+        $thisSaturday = Carbon::parse('this saturday')->format('F d, Y g:i A');
         $cartChefs = [];
         $mailHTML = [];
 //        $messages = Message::where('receiver_id', '=', Auth::guard('foodie')->user()->id)
