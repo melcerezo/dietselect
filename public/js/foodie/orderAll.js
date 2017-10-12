@@ -127,6 +127,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '</div>';
                     }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayPick').append(x);
@@ -254,6 +264,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
                         x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -662,6 +682,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '</div>';
                     }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayPick').append(x);
@@ -801,6 +831,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
                         x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -1230,6 +1270,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '</div>';
                     }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayPick').append(x);
@@ -1305,6 +1355,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '</div>';
                     }
+                if(valData[i].is_paid == 'Pending'){
+                    x += '<div class="row">';
+                    x += '<div class="col s12 m2">';
+                    x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                    x += '</div>';
+                    x += '<div class="col s12 m2">';
+                    x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                    x += '</div>';
+                    x += '</div>';
+                }
                 x+= '</div>';
                 x+= '</div>';
                 $('div#dayPick').append(x);
@@ -1383,6 +1443,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '</div>';
                     }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayPendPick').append(x);
@@ -1455,6 +1525,16 @@ $(document).ready(function () {
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
                         x += '<a href="#!" data-id="'+valData[i].items[j].id+'" class="btnView orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Details</a>';
+                        x += '</div>';
+                        x += '</div>';
+                    }
+                    if(valData[i].is_paid == 'Pending'){
+                        x += '<div class="row">';
+                        x += '<div class="col s12 m2">';
+                        x += '<a href="#!" data-id="' + valData[i].items[j].id + '" class="btnPay orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100;">Pay</a>';
+                        x += '</div>';
+                        x += '<div class="col s12 m2">';
+                        x += '<button data-id="' + valData[i].items[j].id + '" class="btnCancel btn btn-primary waves-effect waves-light red modal-trigger" style="font-weight: 100;">Cancel</button>';
                         x += '</div>';
                         x += '</div>';
                     }
@@ -1785,6 +1865,26 @@ $(document).ready(function () {
             });
 
         });
+
+    $(document).on('click','.btnPay', function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url:'/foodie/get/order/'+ id
+        }).success(function () {
+            window.location.href= this.url;
+        });
+
+    });
+
+    $(document).on('click','.btnCancel', function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url:'/foodie/order/cancelAll/'+ id
+        }).success(function () {
+            window.location.href= this.url;
+        });
+
+    });
 });
 
 function dateChoose($val,$type){

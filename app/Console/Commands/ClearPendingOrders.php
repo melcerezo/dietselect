@@ -58,6 +58,14 @@ class ClearPendingOrders extends Command
             $item->is_cancelled=1;
             $item->save();
 
+            $foodnotif = new Notification();
+            $foodnotif->sender_id = 0;
+            $foodnotif->receiver_id = $item->foodie->id;
+            $foodnotif->receiver_type = 'f';
+            $foodnotif->notification = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled due to your failure to pay ';
+            $foodnotif->notification .= 'before ' . $saturday . ' 3:00pm.';
+            $foodnotif->notification_type = 3;
+            $foodnotif->save();
 
             $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled';
             $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y').' 3:00pm.';
@@ -80,8 +88,10 @@ class ClearPendingOrders extends Command
 
             $orderItems = $item->order_item()->get();
             $arrayChef=[];
-            foreach($orderItems as $orderItem){
+            foreach($orderItems->where('is_cancelled','=',0) as $orderItem){
                 $arrayChef[]=$orderItem->chef_id;
+                $orderItem->is_cancelled=1;
+                $orderItem->save();
             }
             $uniqueChef=array_unique($arrayChef);
 
@@ -99,6 +109,19 @@ class ClearPendingOrders extends Command
                 }
                 $chef = Chef::where('id','=',$chefUn)->first();
                 $foodie =$item->foodie->first_name.' '.$item->foodie->last_name;
+
+                $chefnotif = new Notification();
+                $chefnotif->sender_id = 0;
+                $chefnotif->receiver_id = $chef;
+                $chefnotif->receiver_type = 'c';
+                $chefnotif->notification = $foodie. '\'s order for: ';
+                foreach ($planName as $pName) {
+                    $chefnotif->notification .= $pName . ' ';
+                }
+                $chefnotif->notification .= 'has been cancelled due to failure to pay before '.$saturday.' 3:00pm.';
+                $chefnotif->notification_type = 3;
+                $chefnotif->save();
+
                 $messageChef = $foodie.'\'s order for: ';
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';

@@ -50,7 +50,7 @@ class ChefOrderController extends Controller
 
         $totalPaid=0;
 
-        foreach($orderItems->where('is_paid','=',1)->where('is_cancelled','=',0) as $orderItem){
+        foreach($orderItems->where('is_paid','=',1)->where('order_items.is_cancelled','=',0) as $orderItem){
             $totalPaid+=$orderItem->price;
         }
 
@@ -58,7 +58,7 @@ class ChefOrderController extends Controller
 
         $pendPaid=0;
 
-        foreach($orderItems->where('is_paid','=',0)->where('is_cancelled','=',0) as $orderItem){
+        foreach($orderItems->where('is_paid','=',0)->where('order_items.is_cancelled','=',0) as $orderItem){
             $pendPaid+=$orderItem->price;
         }
 
@@ -396,16 +396,16 @@ class ChefOrderController extends Controller
             if($id==0){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
+                    ->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==1){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                        ->where('is_delivered','=',0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',0)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -414,7 +414,7 @@ class ChefOrderController extends Controller
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0)
                         ->where('is_paid','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -422,16 +422,15 @@ class ChefOrderController extends Controller
             }else if($id==3){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',1)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==4){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                        ->where('is_delivered','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',1)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -500,16 +499,15 @@ class ChefOrderController extends Controller
             if($id==0){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfTheWeek)->where('order_items.created_at','<=',$endOfWeek)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==1){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                    ->where('is_delivered','=',0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',0)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfTheWeek)->where('order_items.created_at','<=',$endOfWeek)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -518,7 +516,7 @@ class ChefOrderController extends Controller
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0)
                         ->where('is_paid','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfTheWeek)->where('order_items.created_at','<=',$endOfWeek)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -526,16 +524,15 @@ class ChefOrderController extends Controller
             }else if($id==3){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',1)
                     ->where('order_items.created_at', '>=', $startOfTheWeek)->where('order_items.created_at','<=',$endOfWeek)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==4){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                        ->where('is_delivered','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',1)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfTheWeek)->where('order_items.created_at','<=',$endOfWeek)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -605,16 +602,15 @@ class ChefOrderController extends Controller
             if($id==0){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==1){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                    ->where('is_delivered','=',0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',0)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -623,7 +619,7 @@ class ChefOrderController extends Controller
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0)
                         ->where('is_paid','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -631,16 +627,15 @@ class ChefOrderController extends Controller
             }else if($id==3){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',1)
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==4){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                        ->where('is_delivered','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',1)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfMonth)->where('order_items.created_at','<=',$endOfMonth)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -708,16 +703,15 @@ class ChefOrderController extends Controller
             if($id==0){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfYear)->where('order_items.created_at','<=',$endOfYear)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==1){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                    ->where('is_delivered','=',0);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',0)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfYear)->where('order_items.created_at','<=',$endOfYear)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -726,7 +720,7 @@ class ChefOrderController extends Controller
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 0)
                         ->where('is_paid','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfYear)->where('order_items.created_at','<=',$endOfYear)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
@@ -734,16 +728,16 @@ class ChefOrderController extends Controller
             }else if($id==3){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
                     $query->where('is_cancelled', '=', 1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',1)
                     ->where('order_items.created_at', '>=', $startOfYear)->where('order_items.created_at','<=',$endOfYear)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
                     ->select('*','order_items.id as it_id')->get();
             }else if($id==4){
                 $orderItems = OrderItem::whereHas('order', function ($query) {
-                    $query->where('is_cancelled', '=', 0)
-                        ->where('is_delivered','=',1);
-                })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+                    $query->where('is_cancelled', '=', 0);
+                })->where('is_delivered','=',1)->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
+                    ->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $startOfYear)->where('order_items.created_at','<=',$endOfYear)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                     ->latest($column='order_items.created_at')
