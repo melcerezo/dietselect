@@ -44,16 +44,16 @@ class ClearPendingOrders extends Command
     public function handle()
     {
 
-//        $saturday=Carbon::now();
-//        $dt = Carbon::now();
-//        $monday=$dt->startOfWeek();
+        $saturday=Carbon::now();
+        $dt = Carbon::now();
+        $monday=$dt->startOfWeek();
 
         $pendingOrders = Order::where('is_paid','=',0)
+            ->where('is_cancelled','=',0)
             ->where('foodie_id','=',22)
-//            ->where('is_cancelled','=',0)
+            ->where('is_created','>',$monday)
+            ->where('is_created','<',$saturday)
 //            ->join('order_items','order_items.order_id','=','orders.id')
-//            ->where('orders.is_created','>',$monday)
-//            ->where('orders.is_created','<',$saturday)
 //            ->select('*','orders.is_created as it_time')
             ->get();
 
