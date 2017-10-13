@@ -644,10 +644,12 @@ $(document).ready(function () {
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
                     x += '<div>Delivery:</div>';
-                    if(valData[i].is_delivered==0){
-                        x += '<div>Pending</div>';
-                    }else if(valData[i].is_delivered==1){
-                        x += '<div>Delivered</div>';
+                    if(){
+                        if(valData[i].is_delivered==0){
+                            x += '<div>Pending</div>';
+                        }else if(valData[i].is_delivered==1){
+                            x += '<div>Delivered</div>';
+                        }
                     }
                     x += '</div>';
                     x += '</div>';

@@ -480,6 +480,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
@@ -583,6 +584,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
@@ -684,6 +686,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
@@ -787,6 +790,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
@@ -819,7 +823,7 @@ class ChefOrderController extends Controller
         if($type==0){
             $orderItems = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0);
-            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                 ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                 ->latest($column='order_items.created_at')->get();
@@ -827,7 +831,7 @@ class ChefOrderController extends Controller
             $orderItems = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0)
                       ->where('is_delivered','=',0);
-            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                 ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                 ->latest($column='order_items.created_at')->get();
@@ -835,14 +839,14 @@ class ChefOrderController extends Controller
             $orderItems = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0)
                     ->where('is_paid','=',1);
-            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                 ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                 ->latest($column='order_items.created_at')->get();
         }else if($type==3){
             $orderItems = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 1);
-            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',1)
                 ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                 ->latest($column='order_items.created_at')->get();
@@ -850,7 +854,7 @@ class ChefOrderController extends Controller
             $orderItems = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0)
                     ->where('is_delivered','=',1);
-            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            })->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
                 ->where('order_items.created_at', '>=', $thisDay)->where('order_items.created_at','<=',$endDay)
                 ->where('chef_id', '=', Auth::guard('chef')->user()->id)
                 ->latest($column='order_items.created_at')->get();
@@ -899,6 +903,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"type":"' . $orderType . '", ';
                     $thisInput .= '"is_paid":' . $orderItem->order->is_paid . ', ';
                     $thisInput .= '"is_delivered":' . $orderItem->is_delivered . ', ';
+                    $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
@@ -921,26 +926,24 @@ class ChefOrderController extends Controller
         if($type == 0){
             $orderTime = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0);
-            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+            })->where('is_cancelled','=',0)->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
         }else if($type == 1){
             $orderTime = OrderItem::whereHas('order', function ($query) {
-                $query->where('is_cancelled', '=', 0)
-                ->where('is_delivered','=',0);
-            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+                $query->where('is_cancelled', '=', 0);
+            })->where('is_delivered','=',0)->where('is_cancelled','=',0)->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
         }else if($type == 2){
             $orderTime = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 0)
                     ->where('is_paid','=',1);
-            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+            })->where('is_cancelled','=',0)->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
         }else if($type == 3){
             $orderTime = OrderItem::whereHas('order', function ($query) {
                 $query->where('is_cancelled', '=', 1);
-            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+            })->where('is_cancelled','=',1)->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
         }else if($type == 4){
             $orderTime = OrderItem::whereHas('order', function ($query) {
-                $query->where('is_cancelled', '=', 0)
-                    ->where('is_delivered','=',1);
-            })->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
+                $query->where('is_cancelled', '=', 0);
+            })->where('is_delivered','=',1)->where('is_cancelled','=',0)->where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
         }
 //        $orderTime = OrderItem::where('chef_id','=',Auth::guard('chef')->user()->id)->latest()->get();
 //        $yearArray = [];
