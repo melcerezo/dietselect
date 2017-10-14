@@ -550,10 +550,31 @@ class AdminController extends Controller
 
     public function getComChef()
     {
-        $comChef = Commission::orderBy('chef_id','asc')->groupBy('chef_id')->select('chef_id')->get();
+        $comChefs = Commission::orderBy('chef_id','asc')->groupBy('chef_id')->select('chef_id')->get();
+        $chefs = Chef::all();
 
-        
+        $thisInput = null;
+        if($comChefs->count() > 0){
+            $i=0;
+            $thisInput = '[';
+            foreach($comChefs as $comChef){
+                $thisInput .= '{';
+                foreach ($chefs as $chef){
+                    if($chef->id == $comChef->chef_id){
+                        $thisInput .= '"id":'. $chef->id.', ' ;
+                        $thisInput .= '"name":"'. $chef->name.'"' ;
+                    }
+                }
+                if (++$i < $comChefs->count()) {
+                    $thisInput .= '},';
+                } else {
+                    $thisInput .= '}';
+                }
+            }
+            $thisInput = ']';
+        }
 
+        return $thisInput;
     }
 
 }

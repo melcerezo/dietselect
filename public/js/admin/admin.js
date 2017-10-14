@@ -7,7 +7,16 @@ $(document).ready(function() {
 
     // initialize select of chefs
 
-    var chefs = chooseChef();
+    var chefAjax = chooseChef();
+
+    chefAjax.done(function (response) {
+        var valData = JSON.parse(response);
+        $('select#chefFilter').empty();
+        for(var i in valData){
+            $('select#chefFilter').append($('<option></option>').attr("value",valData[i].id).text(valData[i].name));
+        }
+
+    });
 
 
     // $('#allCom').show();

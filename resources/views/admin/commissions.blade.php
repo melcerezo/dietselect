@@ -106,8 +106,6 @@
                             <span>Search by Chef:</span>
                         </div>
                         <select id="chefFilter">
-                            <option value="0" disabled>Pick an interval</option>
-                            <option value="1">All</option>
                         </select>
                     </div>
                 </div>
