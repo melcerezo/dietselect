@@ -113,7 +113,7 @@ class ClearPendingOrders extends Command
 
                 $chefnotif = new Notification();
                 $chefnotif->sender_id = 0;
-                $chefnotif->receiver_id = $chef;
+                $chefnotif->receiver_id = $chef->id;
                 $chefnotif->receiver_type = 'c';
                 $chefnotif->notification = $foodie. '\'s order for: ';
                 foreach ($planName as $pName) {
