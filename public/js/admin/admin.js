@@ -597,7 +597,7 @@ $(document).ready(function() {
 
 function chooseChef(){
     return $.ajax({
-        url: '/admin/commissions/chef/'
+        url: '/admin/commissions/chef'
 
     });
 }
