@@ -11,9 +11,9 @@ $(document).ready(function() {
 
     chefAjax.done(function (response) {
         // console.log(response);
+        $('select#chefFilter').empty();
         $('select#chefFilter').append($('<option></option>').attr("value",'0').text('All'));
         var valData = JSON.parse(response);
-        $('select#chefFilter').empty();
         for(var i in valData){
             $('select#chefFilter').append($('<option></option>').attr("value",valData[i].id).text(valData[i].name));
         }
