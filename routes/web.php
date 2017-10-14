@@ -210,7 +210,11 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     Route::get('/', 'Admin\AdminController@index')->name('admin');
     Route::get('dashboard', 'Admin\AdminController@index')->name('admin.dashboard');
+
     Route::get('commissions','Admin\AdminController@commissions')->name('admin.commissions');
+    Route::get('commissions/chef','Admin\AdminController@getComChef');
+
+
     Route::post('/payCommission/{commission}','Admin\AdminController@payCommission')->name('admin.pay');
     Route::post('/payCommissionAll','Admin\AdminController@payCommissionAll')->name('admin.payAll');
     Route::get('chefs','Admin\AdminController@chefs')->name('admin.chefs');

@@ -49,8 +49,8 @@ class ClearPendingOrders extends Command
         $monday=$dt->startOfWeek();
 
         $pendingOrders = Order::where('is_paid','=',0)
-            ->where('foodie_id','=',22)
             ->where('is_cancelled','=',0)
+            ->where('foodie_id','=',22)
             ->where('created_at','>',$monday)
             ->where('created_at','<',$saturday)
             ->get();
@@ -89,7 +89,7 @@ class ClearPendingOrders extends Command
 
             $orderItems = $item->order_item()->get();
             $arrayChef=[];
-            foreach($orderItems->where('is_cancelled','=',0) as $orderItem){
+            foreach($orderItems as $orderItem){
                 $arrayChef[]=$orderItem->chef_id;
                 $orderItem->is_cancelled=1;
                 $orderItem->save();

@@ -71,9 +71,14 @@ class AdminController extends Controller
         $pendCommissions = 0;
         $paidCommissions = 0;
 
+        $comChefs =[];
+
         foreach($commissions as $commission){
             $totalCommissions+=$commission->amount;
+            $comChefs[]=$commission->chef_id;
         }
+        $uniqueComChefs = array_unique($comChefs);
+
         foreach($commissions->where('paid','=',0) as $commission){
             $pendCommissions+= $commission->amount;
         }
@@ -101,6 +106,7 @@ class AdminController extends Controller
         return view("admin.commissions")->with([
             'chefs'=>$chefs,
             'commissions'=>$commissions,
+            'uniqueComChefs'=>$uniqueComChefs,
             'totalCommissions'=>$totalCommissions,
             'pendCommissions'=>$pendCommissions,
             'paidCommissions'=>$paidCommissions,
@@ -540,6 +546,14 @@ class AdminController extends Controller
                       return $thisInput;
         }
         return $thisInput;
+    }
+
+    public function getComChef()
+    {
+        $comChef = Commission::orderBy('chef_id','asc')->groupBy('chef_id')->select('chef_id')->get();
+
+        
+
     }
 
 }
