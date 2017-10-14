@@ -553,7 +553,7 @@ class AdminController extends Controller
         $comChefs = Commission::orderBy('chef_id','ASC')->groupBy('chef_id')->select('chef_id')->get();
         $chefs = Chef::all();
 //        dd($comChefs->count());
-        $thisInput = null;
+        $thisInput = 'hello';
         if($comChefs->count()){
             $i=0;
             $thisInput = '[';
