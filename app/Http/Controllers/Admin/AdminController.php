@@ -571,7 +571,7 @@ class AdminController extends Controller
                     $thisInput .= '}';
                 }
             }
-            $thisInput = ']';
+            $thisInput .= ']';
         }
 //        dd($thisInput);
         return $thisInput;
