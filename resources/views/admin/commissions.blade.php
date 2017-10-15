@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="divider">
                                     </div>
-                                    <div class="row centered">
+                                    <div class="row center">
                                         <div class="col s12 m4">
                                             <span class="chefTabAll{{$uniqueComChef}}">All</span>
                                         </div>
