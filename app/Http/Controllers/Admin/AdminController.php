@@ -552,7 +552,7 @@ class AdminController extends Controller
         $thisInput=null;
 
         if($type==0){
-            $commissions = Commission::groupBy('chef_id')->orderBy('created_at', 'desc')->get();
+            $commissions = Commission::orderBy('created_at', 'desc')->get();
             $i=0;
             if($commissions->count()){
                 $thisInput ='[';
