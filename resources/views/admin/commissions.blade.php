@@ -7,6 +7,10 @@
         .activeTab a{
             color: #f57c00;
         }
+
+        .chefCom{
+            display: none;
+        }
     </style>
     <script src="/js/admin/admin.js" defer></script>
 @endsection
@@ -90,7 +94,7 @@
                 </ul>
 
                 @foreach($uniqueComArray as $comArray)
-                    <ul class="collection" style="margin-top: 0;">
+                    <ul id="chef{{$comArray['id']}}" data-id="{{$comArray['id']}}" class="collection chefCom" style="margin-top: 0;">
                         <li class="collection-item grey lighten-3">
                          <span>
                             Total Commissions For
