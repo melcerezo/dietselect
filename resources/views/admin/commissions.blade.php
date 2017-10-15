@@ -164,19 +164,35 @@
                                             @if($comArray['id']==$uniqueComChef)
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total For Vendors
+                                                        Total For
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id==$uniqueComChef)
+                                                                <span>{{$chef->name}}</span>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['total'] * 0.9),2,'.',',')}}</span>
                                                 </div>
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total Unpaid For Vendors
+                                                        Total Unpaid For
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id==$uniqueComChef)
+                                                                <span>{{$chef->name}}</span>
+                                                            @endif
+                                                        @endforeach
+
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['pend'] * 0.9),2,'.',',')}}</span>
                                                 </div>
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total Paid for Vendors
+                                                        Total Paid For
+                                                        @foreach($chefs as $chef)
+                                                            @if($chef->id==$uniqueComChef)
+                                                                <span>{{$chef->name}}</span>
+                                                            @endif
+                                                        @endforeach
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['paid'] * 0.9),2,'.',',')}}</span>
                                                 </div>
