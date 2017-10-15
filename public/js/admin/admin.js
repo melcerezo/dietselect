@@ -23,44 +23,52 @@ $(document).ready(function() {
         $('select#chefFilter').material_select();
 
         //initialize all chef view
-        var value = $('select#chefFilter option:selected').val();
-
-        var getComAjax = chefComAjax(value);
-
-        getComAjax.done(function (response) {
-            var valData = JSON.parse(response);
-
-            console.log(valData);
-            var chefArray = [];
-
-            for(var i in valData){
-                if($.inArray(valData[i].name,chefArray)==-1){
-                    chefArray.push(valData[i].name);
-                }
-            }
-
-
-            console.log(chefArray);
-
-            var x = '<table>';
-            x += '<thead>';
-            x += '<tr>';
-            x += '<th>ID</th>';
-            x += '<th>Chef Name</th>';
-            x += '<th>Date</th>';
-            x += '<th>Amount</th>';
-            x += '<th>Paid</th>';
-            x += '<th>Update</th>';
-            x += '</tr>';
-            x += '</thead>';
-            x += '<tbody>';
-            for(var i in valData){
-
-            }
-            x += '</tbody>';
-            x += '</table>';
-
-        });
+        // var value = $('select#chefFilter option:selected').val();
+        //
+        // var getComAjax = chefComAjax(value);
+        //
+        // getComAjax.done(function (response) {
+        //     var valData = JSON.parse(response);
+        //
+        //     // console.log(valData);
+        //     var chefArray = [];
+        //
+        //     for(var i in valData){
+        //         if($.inArray(valData[i].name,chefArray)==-1){
+        //             chefArray.push(valData[i].name);
+        //         }
+        //     }
+        //
+        //
+        //     // console.log(chefArray);
+        // $.each(chefArray,function () {
+        //     var specChef
+        //
+        //
+        //     var x = '<div class="card-panel">';
+        //
+        //     x += '<table>';
+        //     x += '<thead>';
+        //     x += '<tr>';
+        //     x += '<th>ID</th>';
+        //     x += '<th>Chef Name</th>';
+        //     x += '<th>Date</th>';
+        //     x += '<th>Amount</th>';
+        //     x += '<th>Paid</th>';
+        //     x += '<th>Update</th>';
+        //     x += '</tr>';
+        //     x += '</thead>';
+        //     x += '<tbody>';
+        //     for(var i in valData){
+        //
+        //     }
+        //     x += '</tbody>';
+        //     x += '</table>';
+        //     x += '</div>';
+        //
+        // });
+        //
+        // });
     });
 
 
