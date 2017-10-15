@@ -190,16 +190,21 @@
 
 
                                             $('span.chefTabAll{{$uniqueComChef}}').on('click',function () {
+                                                $(this).addClass('activeTab');
                                                 $('table#allTable{{$uniqueComChef}}').show();
                                                 $('table#pendTable{{$uniqueComChef}}').hide();
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPend{{$uniqueComChef}}').on('click',function () {
+                                                $(this).addClass('activeTab');
+
                                                 $('table#allTable{{$uniqueComChef}}').hide();
                                                 $('table#pendTable{{$uniqueComChef}}').show();
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPaid{{$uniqueComChef}}').on('click',function () {
+                                                $(this).addClass('activeTab');
+
                                                 $('table#allTable{{$uniqueComChef}}').hide();
                                                 $('table#pendTable{{$uniqueComChef}}').hide();
                                                 $('table#paidTable{{$uniqueComChef}}').show();
