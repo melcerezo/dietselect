@@ -136,9 +136,9 @@
                     </div>
                 </div>
                 <script>
-                    $(document).on('change','#chefFilter',function () {
-                        var value = $('select#chefFilter option:selected').val();
+                    $('chefFilter').change(function () {
 
+                        var value = $('select#chefFilter option:selected').val();
                         $('div.chefCard').hide();
                         $('div#cardCom'+value).show();
 
