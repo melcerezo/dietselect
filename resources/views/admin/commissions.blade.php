@@ -108,9 +108,10 @@
                              @endforeach
                         </span>
                         </li>
-                        <li class="collection-item"><div>Total Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['total'],2,'.',',')}}</span></li>
-                        <li class="collection-item"><div>Total Unpaid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['pend'],2,'.',',')}}</span></li>
-                        <li class="collection-item"><div>Total Paid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['paid'],2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Commissions to Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['total'] * 0.9),2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Unpaid Commissions to Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['pend'] * 0.9),2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Paid Commissions to Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['paid'] * 0.9),2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Collected for DietSelect:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['total'] * 0.1),2,'.',',')}}</span></li>
                     </ul>
                 @endforeach
 
