@@ -175,7 +175,7 @@
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Chef Name</th>
+                                            {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
                                             <th>Amount</th>
                                             <th>Paid</th>
@@ -186,13 +186,13 @@
                                         @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
                                             <tr>
                                                 <td>{{$commission->id}}</td>
-                                                <td>
-                                                    @foreach($chefs as $chef)
-                                                        @if($chef->id == $commission->chef_id)
-                                                            {{$chef->name}}
-                                                        @endif
-                                                    @endforeach
-                                                </td>
+                                                {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                        {{--@if($chef->id == $commission->chef_id)--}}
+                                                            {{--{{$chef->name}}--}}
+                                                        {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                {{--</td>--}}
                                                 <td>{{$commission->created_at->format('F d, Y')}}</td>
                                                 <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
                                                 <td>
