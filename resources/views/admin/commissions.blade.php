@@ -8,7 +8,9 @@
         .activeTab a{
             color: #f57c00;
         }
-
+        .tableTab{
+            cursor: pointer;
+        }
         .chefCom{
             display: none;
         }
