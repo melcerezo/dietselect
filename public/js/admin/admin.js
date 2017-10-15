@@ -30,7 +30,7 @@ $(document).ready(function() {
         getComAjax.done(function (response) {
             var valData = JSON.parse(response);
 
-            // console.log(valData);
+            console.log(valData);
             var chefArray = [];
 
             $.each(valData,function () {
