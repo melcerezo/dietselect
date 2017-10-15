@@ -169,6 +169,8 @@
                                             @endif
                                         @endforeach
                                     </div>
+                                    <div class="divider">
+                                    </div>
                                     <table class="responsive-table">
                                         <thead>
                                         <tr>
