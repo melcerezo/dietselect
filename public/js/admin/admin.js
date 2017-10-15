@@ -30,7 +30,34 @@ $(document).ready(function() {
         getComAjax.done(function (response) {
             var valData = JSON.parse(response);
 
-            console.log(valData);
+            // console.log(valData);
+            var chefArray = [];
+
+            $.each(valData,function () {
+                if($.inArray(valData.name,chefArray)==-1){
+                    chefArray.push(valData.name);
+                }
+            });
+
+            console.log(chefArray);
+
+            var x = '<table>';
+            x += '<thead>';
+            x += '<tr>';
+            x += '<th>ID</th>';
+            x += '<th>Chef Name</th>';
+            x += '<th>Date</th>';
+            x += '<th>Amount</th>';
+            x += '<th>Paid</th>';
+            x += '<th>Update</th>';
+            x += '</tr>';
+            x += '</thead>';
+            x += '<tbody>';
+            for(var i in valData){
+
+            }
+            x += '</tbody>';
+            x += '</table>';
 
         });
     });
