@@ -154,6 +154,21 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
+                                    <div class="row">
+                                        @foreach($uniqueComArray as $comArray)
+                                            @if($comArray['id']==$uniqueComChef)
+                                                <div class="col s12 m4">
+                                                    <span>Total: {{'PHP '.number_format($comArray['total'],2,'.',',')}}</span>
+                                                </div>
+                                                <div class="col s12 m4">
+                                                    <span>Total Unpaid: {{'PHP '.number_format($comArray['pend'],2,'.',',')}}</span>
+                                                </div>
+                                                <div class="col s12 m4">
+                                                    <span>Total Paid: {{'PHP '.number_format($comArray['paid'],2,'.',',')}}</span>
+                                                </div>
+                                            @endif
+                                        @endforeach
+                                    </div>
                                     <table class="responsive-table">
                                         <thead>
                                         <tr>
