@@ -187,6 +187,7 @@
                                     </div>
                                     <script>
                                         $(document).ready(function () {
+                                            $('span.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
                                             $('table#allTable{{$uniqueComChef}}').show();
                                             $('table#pendTable{{$uniqueComChef}}').hide();
                                             $('table#paidTable{{$uniqueComChef}}').hide();
