@@ -193,7 +193,8 @@
 
 
                                             $('span.chefTabAll{{$uniqueComChef}}').on('click',function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
                                                 $('table#allTable{{$uniqueComChef}}').show();
@@ -201,7 +202,8 @@
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPend{{$uniqueComChef}}').on('click',function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
                                                 $('table#allTable{{$uniqueComChef}}').hide();
@@ -209,7 +211,8 @@
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPaid{{$uniqueComChef}}').on('click',function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
                                                 $('table#allTable{{$uniqueComChef}}').hide();
