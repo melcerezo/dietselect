@@ -88,7 +88,26 @@
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
                 </ul>
-                <ul class="collection" style="margin-top: 0;">
+
+                @foreach($uniqueComArray as $comArray)
+                    <ul class="collection" style="margin-top: 0;">
+                        <li class="collection-item grey lighten-3">
+                         <span>
+                            Total Commissions For
+                             @foreach($chefs as $chef)
+                                 @if($chef->id==$comArray['id'])
+                                     <span>{{$chef->name}}</span>
+                                 @endif
+                             @endforeach
+                        </span>
+                        </li>
+                        <li class="collection-item"><div>Total Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['total'],2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Unpaid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['pend'],2,'.',',')}}</span></li>
+                        <li class="collection-item"><div>Total Paid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($comArray['paid'],2,'.',',')}}</span></li>
+                    </ul>
+                @endforeach
+
+                <ul id="sumAll" class="collection" style="margin-top: 0;">
                     <li class="collection-item grey lighten-3">
                          <span>
                             Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}

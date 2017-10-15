@@ -79,6 +79,25 @@ class AdminController extends Controller
         }
         $uniqueComChefs = array_unique($comChefs);
 
+        $uniqueComArray =[];
+
+        foreach($uniqueComChefs as $uniqueComChef){
+            $comTotal = 0;
+            $comPend = 0;
+            $comPaid = 0;
+            foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission){
+                $comTotal += $commission->amount;
+            }
+            foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0) as $commission){
+                $comPend += $commission->amount;
+            }
+            foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1) as $commission){
+                $comPaid += $commission->amount;
+            }
+
+            $uniqueComArray[]= array('id'=>$uniqueComChef,'total'=>$comTotal,'pend'=>$comPend,'paid'=>$comPaid);
+        };
+
         foreach($commissions->where('paid','=',0) as $commission){
             $pendCommissions+= $commission->amount;
         }
@@ -118,7 +137,8 @@ class AdminController extends Controller
             'startOfYear'=>$startOfYear,
             'endOfYear'=>$endOfYear,
             'firstCom'=>$firstCom,
-            'lastCom'=>$lastCom
+            'lastCom'=>$lastCom,
+            'uniqueComArray'=>$uniqueComArray
 
         ]);
     }
