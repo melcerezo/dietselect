@@ -21,11 +21,11 @@ $(document).ready(function() {
         $('select#chefFilter').val('0');
 
         $('select#chefFilter').material_select();
-    });
+
         //initialize all chef view
         var value = $('select#chefFilter option:selected').val();
 
-        var getComAjax = chefAjax(value);
+        var getComAjax = chefComAjax(value);
 
         getComAjax.done(function (response) {
             var valData = response;
@@ -33,6 +33,7 @@ $(document).ready(function() {
             console.log(valData);
 
         });
+    });
 
 
 
@@ -622,7 +623,7 @@ function chooseChef(){
     });
 }
 
-function chefAjax($val){
+function chefComAjax($val){
     return $.ajax({
         url: '/admin/commissions/get/'+ $val
 
