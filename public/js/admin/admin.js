@@ -21,9 +21,8 @@ $(document).ready(function() {
         $('select#chefFilter').val('0');
 
         $('select#chefFilter').material_select();
-
+    });
         //initialize all chef view
-
         var value = $('select#chefFilter option:selected').val();
 
         var getComAjax = chefAjax(value);
@@ -34,9 +33,6 @@ $(document).ready(function() {
             console.log(valData);
 
         });
-
-
-    });
 
 
 
