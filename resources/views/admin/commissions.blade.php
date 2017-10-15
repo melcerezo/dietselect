@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="row centered">
+                                    <div class="row center">
                                         @foreach($uniqueComArray as $comArray)
                                             @if($comArray['id']==$uniqueComChef)
                                                 <div class="col s12 m4">
