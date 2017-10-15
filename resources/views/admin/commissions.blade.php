@@ -131,51 +131,51 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    {{--<table class="responsive-table">--}}
-                                        {{--<thead>--}}
-                                        {{--<tr>--}}
-                                            {{--<th>ID</th>--}}
-                                            {{--<th>Chef Name</th>--}}
-                                            {{--<th>Date</th>--}}
-                                            {{--<th>Amount</th>--}}
-                                            {{--<th>Paid</th>--}}
-                                            {{--<th>Update</th>--}}
-                                        {{--</tr>--}}
-                                        {{--</thead>--}}
-                                        {{--<tbody>--}}
-                                        {{--@foreach($commissions->where('created_at','>',$thisDay) as $commission)--}}
-                                            {{--<tr>--}}
-                                                {{--<td>{{$commission->id}}</td>--}}
-                                                {{--<td>--}}
-                                                    {{--@foreach($chefs as $chef)--}}
-                                                        {{--@if($chef->id == $commission->chef_id)--}}
-                                                            {{--{{$chef->name}}--}}
-                                                        {{--@endif--}}
-                                                    {{--@endforeach--}}
-                                                {{--</td>--}}
-                                                {{--<td>{{$commission->created_at->format('F d, Y')}}</td>--}}
-                                                {{--<td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>--}}
-                                                {{--<td>--}}
-                                                    {{--@if($commission->paid==0)--}}
-                                                        {{--<span>Not Paid</span>--}}
-                                                    {{--@elseif($commission->paid==1)--}}
-                                                        {{--<span>Paid</span>--}}
-                                                    {{--@endif--}}
-                                                {{--</td>--}}
-                                                {{--<td>--}}
-                                                    {{--@if($commission->paid==0)--}}
-                                                        {{--<form method="post" action="{{route('admin.pay',$commission->id)}}">--}}
-                                                            {{--{{ csrf_field() }}--}}
-                                                            {{--<button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>--}}
-                                                        {{--</form>--}}
-                                                    {{--@elseif($commission->paid==1)--}}
-                                                        {{--<span>Paid</span>--}}
-                                                    {{--@endif--}}
-                                                {{--</td>--}}
-                                            {{--</tr>--}}
-                                        {{--@endforeach--}}
-                                        {{--</tbody>--}}
-                                    {{--</table>--}}
+                                    <table class="responsive-table">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Chef Name</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Paid</th>
+                                            <th>Update</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
+                                            <tr>
+                                                <td>{{$commission->id}}</td>
+                                                <td>
+                                                    @foreach($chefs as $chef)
+                                                        @if($chef->id == $commission->chef_id)
+                                                            {{$chef->name}}
+                                                        @endif
+                                                    @endforeach
+                                                </td>
+                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                <td>
+                                                    @if($commission->paid==0)
+                                                        <span>Not Paid</span>
+                                                    @elseif($commission->paid==1)
+                                                        <span>Paid</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($commission->paid==0)
+                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                            {{ csrf_field() }}
+                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                        </form>
+                                                    @elseif($commission->paid==1)
+                                                        <span>Paid</span>
+                                                    @endif
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         @endforeach
