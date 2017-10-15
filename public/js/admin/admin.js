@@ -74,9 +74,14 @@ $(document).ready(function() {
     $('#chefFilter').change(function () {
 
         var value = $('select#chefFilter option:selected').val();
+
+
         console.log(value);
         $('div.chefCard').hide();
         $('div#cardCom'+value).show();
+        $('#sumAll').hide();
+        $('.chefCom').hide();
+        $('#chef'+value).show();
 
     });
 
