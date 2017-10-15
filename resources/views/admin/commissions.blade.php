@@ -136,7 +136,7 @@
                     </div>
                 </div>
                 <script>
-                    $('chefFilter').change(function () {
+                    $('#chefFilter').change(function () {
 
                         var value = $('select#chefFilter option:selected').val();
                         $('div.chefCard').hide();
