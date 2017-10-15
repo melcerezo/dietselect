@@ -154,7 +154,7 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="row">
+                                    <div class="row centered">
                                         @foreach($uniqueComArray as $comArray)
                                             @if($comArray['id']==$uniqueComChef)
                                                 <div class="col s12 m4">
@@ -168,6 +168,19 @@
                                                 </div>
                                             @endif
                                         @endforeach
+                                    </div>
+                                    <div class="divider">
+                                    </div>
+                                    <div class="row centered">
+                                        <div class="col s12 m4">
+                                            <span class="chefTabAll{{$uniqueComChef}}">All</span>
+                                        </div>
+                                        <div class="col s12 m4">
+                                            <span class="chefTabPend{{$uniqueComChef}}">Pending</span>
+                                        </div>
+                                        <div class="col s12 m4">
+                                            <span class="chefTabPaid{{$uniqueComChef}}">Paid</span>
+                                        </div>
                                     </div>
                                     <div class="divider">
                                     </div>
