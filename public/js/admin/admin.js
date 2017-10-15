@@ -71,6 +71,13 @@ $(document).ready(function() {
         // });
     });
 
+    $('#chefFilter').change(function () {
+
+        var value = $('select#chefFilter option:selected').val();
+        $('div.chefCard').hide();
+        $('div#cardCom'+value).show();
+
+    });
 
 
 
