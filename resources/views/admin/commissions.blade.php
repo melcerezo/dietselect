@@ -121,9 +121,10 @@
                             Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}
                         </span>
                     </li>
-                    <li class="collection-item"><div>Total Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($totalCommissions,2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Unpaid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($pendCommissions,2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Paid Commissions:</div> <span style="font-size: 14px;">{{'PHP '.number_format($paidCommissions,2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($totalCommissions * 0.9),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Unpaid Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($pendCommissions * 0.9),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Paid Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($paidCommissions * 0.9),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Collected For DietSelect:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($totalCommissions * 0.1),2,'.',',')}}</span></li>
                 </ul>
             </div>
             <div class="col s12 m10">
