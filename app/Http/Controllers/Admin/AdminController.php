@@ -570,7 +570,7 @@ class AdminController extends Controller
 
                     }
 
-                    $thisInput.='"is_paid":'.$paid;
+                    $thisInput.='"is_paid":"'.$paid.'"';
                     if (++$i < $commissions->count()) {
                         $thisInput .= '},';
                     } else {
