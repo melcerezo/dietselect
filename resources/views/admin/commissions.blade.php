@@ -184,6 +184,11 @@
                                     </div>
                                     <script>
                                         $(document).ready(function () {
+                                            $('table#allTable{{$uniqueComChef}}').show();
+                                            $('table#pendTable{{$uniqueComChef}}').hide();
+                                            $('table#paidTable{{$uniqueComChef}}').hide();
+
+
                                             $('span.chefTabAll{{$uniqueComChef}}').on('click',function () {
                                                 $('table#allTable{{$uniqueComChef}}').show();
                                                 $('table#pendTable{{$uniqueComChef}}').hide();
