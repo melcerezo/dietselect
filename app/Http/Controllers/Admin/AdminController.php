@@ -559,7 +559,7 @@ class AdminController extends Controller
                 foreach($commissions as $commission){
                     $thisInput.='{';
                     $thisInput.='"id":'.$commission->id.', ';
-                    $thisInput.='"name":"'.$commission->chefs->name.'", ';
+                    $thisInput.='"name":"'.$commission->chef->name.'", ';
                     $thisInput.='"created_at":'.$commission->created_at->format('F d, Y h:i A').', ';
                     $thisInput.='"amount":"'.'PHP '.number_format($commission->amount,2,'.',',').'", ';
                     $thisInput.='"is_paid":"'.$commission->is_paid.'"';
