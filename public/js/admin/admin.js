@@ -33,11 +33,12 @@ $(document).ready(function() {
             console.log(valData);
             var chefArray = [];
 
-            $.each(valData,function () {
-                if($.inArray(valData.name,chefArray)==-1){
-                    chefArray.push(valData.name);
+            for(var i in valData){
+                if($.inArray(valData[i].name,chefArray)==-1){
+                    chefArray.push(valData[i].name);
                 }
-            });
+            }
+
 
             console.log(chefArray);
 
