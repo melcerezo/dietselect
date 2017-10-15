@@ -28,7 +28,7 @@ $(document).ready(function() {
         var getComAjax = chefComAjax(value);
 
         getComAjax.done(function (response) {
-            var valData = response;
+            var valData = JSON.parse(response);
 
             console.log(valData);
 
