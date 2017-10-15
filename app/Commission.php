@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Commission extends Model
 {
-    public function chefs()
+    public function chef()
     {
         return $this->belongsTo(Chef::class,'chef_id');
     }
