@@ -110,6 +110,8 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div id="chefsContainer">
+                    </div>
                 </div>
             </div>
                 {{--<div class="row">--}}

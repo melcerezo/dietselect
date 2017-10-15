@@ -17,8 +17,30 @@ $(document).ready(function() {
         for(var i in valData){
             $('select#chefFilter').append($('<option></option>').attr("value",valData[i].id).text(valData[i].name));
         }
+
+        $('select#chefFilter').val('0');
+
         $('select#chefFilter').material_select();
+
+        //initialize all chef view
+
+        var value = $('select#chefFilter option:selected').val();
+
+        var getComAjax = chefAjax(value);
+
+        getComAjax.done(function (response) {
+            var valData = response;
+
+            console.log(valData);
+
+        });
+
+
     });
+
+
+
+
 
 
     // $('#allCom').show();
@@ -600,6 +622,13 @@ $(document).ready(function() {
 function chooseChef(){
     return $.ajax({
         url: '/admin/commissions/chef'
+
+    });
+}
+
+function chefAjax($val){
+    return $.ajax({
+        url: '/admin/commissions/get/'+ $val
 
     });
 }

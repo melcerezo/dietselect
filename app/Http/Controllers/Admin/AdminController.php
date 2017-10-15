@@ -548,6 +548,54 @@ class AdminController extends Controller
         return $thisInput;
     }
 
+    public function getCom($type){
+        $thisInput=null;
+
+        if($type==0){
+            $commissions = Commission::orderBy('created_at', 'desc')->groupBy('chef_id')->get();
+            $i=0;
+            if($commissions->count()){
+                $thisInput ='[';
+                foreach($commissions as $commission){
+                    $thisInput.='{';
+                    $thisInput.='"id":'.$commission->id.', ';
+                    $thisInput.='"name":"'.$commission->chefs->name.'", ';
+                    $thisInput.='"created_at":'.$commission->created_at->format('F d, Y h:i A').', ';
+                    $thisInput.='"amount":"'.'PHP '.number_format($commission->amount,2,'.',',').'", ';
+                    $thisInput.='"is_paid":"'.$commission->is_paid.'"';
+                    if (++$i < $commissions->count()) {
+                        $thisInput .= '},';
+                    } else {
+                        $thisInput .= '}';
+                    }
+                }
+                $thisInput .=']';
+            }
+        }else{
+            $id=$type;
+            $commissions = Commission::where('chef_id','=',$id)->orderBy('created_at', 'desc')->get();
+            $i = 0;
+            if($commissions->count()){
+                $thisInput ='[';
+                foreach($commissions as $commission){
+                       $thisInput.='{';
+                       $thisInput.='"id":'.$commission->id.', ';
+                       $thisInput.='"name":"'.$commission->chefs->name.'", ';
+                       $thisInput.='"created_at":'.$commission->created_at->format('F d, Y h:i A').', ';
+                       $thisInput.='"amount":"'.'PHP '.number_format($commission->amount,2,'.',',').'", ';
+                       $thisInput.='"is_paid":"'.$commission->is_paid.'"';
+                        if (++$i < $commissions->count()) {
+                            $thisInput .= '},';
+                        } else {
+                            $thisInput .= '}';
+                        }
+                }
+                $thisInput .=']';
+            }
+        }
+        return $thisInput;
+    }
+
     public function getComChef()
     {
         $comChefs = Commission::orderBy('chef_id','ASC')->groupBy('chef_id')->select('chef_id')->get();
