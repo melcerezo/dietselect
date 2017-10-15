@@ -136,14 +136,20 @@
                     </div>
                 </div>
                 <script>
+                    $(document).on('change','#chefFilter',function () {
+                        var value = $('select#chefFilter option:selected').val();
 
+                        $('div.chefCard').hide();
+                        $('div#cardCom'+value).show();
+
+                    });
                 </script>
                 <div class="row">
                     <div id="chefsContainer">
                     </div>
                     <div id="divChefsAll">
                         @foreach($uniqueComChefs as $uniqueComChef)
-                            <div class="card">
+                            <div id="cardCom{{$uniqueComChef}}" class="card chefCard">
                                 <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                     <div>
                                         <span>
