@@ -135,15 +135,6 @@
                         </select>
                     </div>
                 </div>
-                <script>
-                    $('#chefFilter').change(function () {
-
-                        var value = $('select#chefFilter option:selected').val();
-                        $('div.chefCard').hide();
-                        $('div#cardCom'+value).show();
-
-                    });
-                </script>
                 <div class="row">
                     <div id="chefsContainer">
                     </div>
