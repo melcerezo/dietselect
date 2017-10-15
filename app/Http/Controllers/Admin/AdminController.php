@@ -560,7 +560,7 @@ class AdminController extends Controller
                     $thisInput.='{';
                     $thisInput.='"id":'.$commission->id.', ';
                     $thisInput.='"name":"'.$commission->chef->name.'", ';
-                    $thisInput.='"created_at":'.$commission->created_at->format('F d, Y h:i A').', ';
+                    $thisInput.='"created_at":"'.$commission->created_at->format('F d, Y h:i A').'", ';
                     $thisInput.='"amount":"'.'PHP '.number_format($commission->amount,2,'.',',').'", ';
                     $paid ="";
                     if($commission->paid==0){
