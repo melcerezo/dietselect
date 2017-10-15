@@ -164,19 +164,19 @@
                                             @if($comArray['id']==$uniqueComChef)
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total
+                                                        Total For Vendors
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['total'] * 0.9),2,'.',',')}}</span>
                                                 </div>
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total Unpaid
+                                                        Total Unpaid For Vendors
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['pend'] * 0.9),2,'.',',')}}</span>
                                                 </div>
                                                 <div class="col s12 m3">
                                                     <div>
-                                                        Total Paid
+                                                        Total Paid for Vendors
                                                     </div>
                                                     <span>{{'PHP '.number_format(($comArray['paid'] * 0.9),2,'.',',')}}</span>
                                                 </div>
