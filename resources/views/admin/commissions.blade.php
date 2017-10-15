@@ -5,9 +5,9 @@
             color: #f57c00;
             border-bottom: 4px solid #f57c00;
         }
-        .activeTab a{
-            color: #f57c00;
-        }
+        /*.activeTab a{*/
+            /*color: #f57c00;*/
+        /*}*/
         .tableTab{
             cursor: pointer;
         }
