@@ -171,7 +171,7 @@
                                     </div>
                                     <div class="divider">
                                     </div>
-                                    <table class="responsive-table">
+                                    <table class="responsive-table centered">
                                         <thead>
                                         <tr>
                                             <th>ID</th>
@@ -197,7 +197,7 @@
                                                 <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
                                                 <td>
                                                     @if($commission->paid==0)
-                                                        <span>Not Paid</span>
+                                                        <span>Pending</span>
                                                     @elseif($commission->paid==1)
                                                         <span>Paid</span>
                                                     @endif
