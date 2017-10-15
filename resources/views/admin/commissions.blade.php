@@ -135,6 +135,9 @@
                         </select>
                     </div>
                 </div>
+                <script>
+
+                </script>
                 <div class="row">
                     <div id="chefsContainer">
                     </div>
@@ -230,8 +233,9 @@
                                             <th>ID</th>
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
+                                            <th>Amount to Vendor</th>
+                                            <th>Amount to DietSelect</th>
+                                            <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -247,7 +251,8 @@
                                                     {{--@endforeach--}}
                                                 {{--</td>--}}
                                                 <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
                                                 <td>
                                                     @if($commission->paid==0)
                                                         <span>Pending</span>
@@ -275,8 +280,9 @@
                                             <th>ID</th>
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
+                                            <th>Amount to Vendor</th>
+                                            <th>Amount to DietSelect</th>
+                                            <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -292,7 +298,8 @@
                                                 {{--@endforeach--}}
                                                 {{--</td>--}}
                                                 <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
                                                 <td>
                                                     @if($commission->paid==0)
                                                         <span>Pending</span>
@@ -320,8 +327,9 @@
                                             <th>ID</th>
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
-                                            <th>Amount</th>
-                                            <th>Paid</th>
+                                            <th>Amount to Vendor</th>
+                                            <th>Amount to DietSelect</th>
+                                            <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -337,7 +345,8 @@
                                                 {{--@endforeach--}}
                                                 {{--</td>--}}
                                                 <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
                                                 <td>
                                                     @if($commission->paid==0)
                                                         <span>Pending</span>
