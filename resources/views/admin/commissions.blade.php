@@ -2,6 +2,7 @@
 @section('head')
     <style>
         .activeTab{
+            color: #f57c00;
             border-bottom: 4px solid #f57c00;
         }
         .activeTab a{
