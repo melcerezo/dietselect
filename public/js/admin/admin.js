@@ -75,13 +75,21 @@ $(document).ready(function() {
 
         var value = $('select#chefFilter option:selected').val();
 
+        if(value==0){
+            $('div.chefCard').hide();
+            $('div#divChefsAll').show();
+            $('#sumAll').show();
+            $('.chefCom').hide();
+        }else{
+            $('div.chefCard').hide();
+            $('div#cardCom'+value).show();
+            $('#sumAll').hide();
+            $('.chefCom').hide();
+            $('#chef'+value).show();
+        }
 
         console.log(value);
-        $('div.chefCard').hide();
-        $('div#cardCom'+value).show();
-        $('#sumAll').hide();
-        $('.chefCom').hide();
-        $('#chef'+value).show();
+
 
     });
 
