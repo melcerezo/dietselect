@@ -260,7 +260,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
+                                        @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0) as $commission)
                                             <tr>
                                                 <td>{{$commission->id}}</td>
                                                 {{--<td>--}}
@@ -305,7 +305,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
+                                        @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1) as $commission)
                                             <tr>
                                                 <td>{{$commission->id}}</td>
                                                 {{--<td>--}}
