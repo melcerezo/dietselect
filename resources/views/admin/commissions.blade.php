@@ -173,13 +173,13 @@
                                     </div>
                                     <div class="row center">
                                         <div class="col s12 m4">
-                                            <span class="chefTabAll{{$uniqueComChef}}">All</span>
+                                            <span class="chefTabAll{{$uniqueComChef}} tableTab">All</span>
                                         </div>
                                         <div class="col s12 m4">
-                                            <span class="chefTabPend{{$uniqueComChef}}">Pending</span>
+                                            <span class="chefTabPend{{$uniqueComChef}} tableTab">Pending</span>
                                         </div>
                                         <div class="col s12 m4">
-                                            <span class="chefTabPaid{{$uniqueComChef}}">Paid</span>
+                                            <span class="chefTabPaid{{$uniqueComChef}} tableTab">Paid</span>
                                         </div>
                                     </div>
                                     <script>
@@ -190,12 +190,15 @@
 
 
                                             $('span.chefTabAll{{$uniqueComChef}}').on('click',function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
+
                                                 $('table#allTable{{$uniqueComChef}}').show();
                                                 $('table#pendTable{{$uniqueComChef}}').hide();
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPend{{$uniqueComChef}}').on('click',function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
                                                 $('table#allTable{{$uniqueComChef}}').hide();
@@ -203,6 +206,7 @@
                                                 $('table#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPaid{{$uniqueComChef}}').on('click',function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
                                                 $('table#allTable{{$uniqueComChef}}').hide();
