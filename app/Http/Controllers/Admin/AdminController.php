@@ -562,7 +562,15 @@ class AdminController extends Controller
                     $thisInput.='"name":"'.$commission->chef->name.'", ';
                     $thisInput.='"created_at":'.$commission->created_at->format('F d, Y h:i A').', ';
                     $thisInput.='"amount":"'.'PHP '.number_format($commission->amount,2,'.',',').'", ';
-                    $thisInput.='"is_paid":'.$commission->paid;
+                    $paid ="";
+                    if($commission->paid==0){
+                        $paid="Pending";
+                    }else if($commission->paid==1){
+                        $paid="Paid";
+
+                    }
+
+                    $thisInput.='"is_paid":'.$paid;
                     if (++$i < $commissions->count()) {
                         $thisInput .= '},';
                     } else {
