@@ -76,8 +76,7 @@ $(document).ready(function() {
         var value = $('select#chefFilter option:selected').val();
 
         if(value==0){
-            $('div.chefCard').hide();
-            $('div#divChefsAll').show();
+            $('div.chefCard').show();
             $('#sumAll').show();
             $('.chefCom').hide();
         }else{
