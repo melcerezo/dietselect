@@ -2083,7 +2083,7 @@ $(document).ready(function () {
     $(document).on('click','.btnRefund', function () {
         var id = $(this).attr('data-id');
         $.ajax({
-            url:'/foodie/order/cancelAll/'+ id
+            url:'/foodie/order/refunds/'+ id
         }).success(function () {
             window.location.href= this.url;
         });
