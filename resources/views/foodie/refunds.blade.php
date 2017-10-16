@@ -40,7 +40,7 @@
                                 <div class="divider"></div>
                                 <div class="refundInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
                                 <div class="divider"></div>
-                                <div class="refundInfo">Chef: {{$orderItem->chef->name}}</div>
+                                <div class="refundInfo">Chef: {{$orderItem->plan->chef->name}}</div>
                             </div>
                             <form id="bankRefundForm" action="{{route('foodie.refund',$refund->id)}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
