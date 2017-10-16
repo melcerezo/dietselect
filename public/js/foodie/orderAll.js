@@ -564,11 +564,11 @@ $(document).ready(function () {
                     var x = '<div class="card">';
                     x += '<div class="card-content" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
-                    x += ' <div class="col s12 m2">';
+                    x += ' <div class="col s12 m3">';
                     x += '<div>Plan Name</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].plan + '</div>';
                     x += '</div>';
-                    x += '<div class="col s12 m2">';
+                    x += '<div class="col s12 m3">';
                     x += '<div>Chef</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].chef + '</div>';
                     x += '</div>';
