@@ -1884,6 +1884,7 @@ class FoodieOrderPlanController extends Controller
         $i=0;
 //        dd($refunds);
         if($refunds->count()>0){
+            dd('hello');
             $thisInput ='[';
             foreach($refunds as $refund){
                 $orderItem = $refund->order_item;
