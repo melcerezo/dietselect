@@ -4,9 +4,9 @@
 .refundTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto; }
 .refundTabs .row{ margin:0; }
 .refundTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
-.bankIcon{ color: #8bc34a; position: absolute; top:8px; left:23px; font-size: 70px; }
-.bankDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
-.transferIcon{ color: #9c27b0; position: absolute; top:25px; left:4px; font-size: 39px; }
+.bankIcon{ color: #8bc34a; position: absolute; top:8px; left:65px; font-size: 70px; }
+.bankDes{ position: absolute; top:90px; left:83px; font-size: 16px; }
+.transferIcon{ color: #9c27b0; position: absolute; top:8px; left:70px; font-size: 65px; }
 .transferDes{ position: absolute; top:90px; left:41px; font-size: 16px; }
 .refundInfo{ margin: 10px 0; }
 .refundForm{ display: none; padding: 15px;}
