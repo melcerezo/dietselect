@@ -1870,23 +1870,23 @@ class FoodieOrderPlanController extends Controller
             $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$thisDay)->get();
 
         }else if($type==2){
-            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','>',$endOfWeek)->get();
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','<',$endOfWeek)->get();
 
         }else if($type==3){
-            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfMonth)->where('created_at','>',$endOfMonth)->get();
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfMonth)->where('created_at','<',$endOfMonth)->get();
 
         }else if($type==4){
-            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfYear)->where('created_at','>',$endOfYear)->get();
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfYear)->where('created_at','<',$endOfYear)->get();
 
         }
 
         $thisInput = null;
         $i=0;
-        $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','>',$endOfWeek)->get();
-        dd($refunds);
+        $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','<',$endOfWeek)->get();
+//        dd($refunds);
 
         if($refunds->count()>0){
-            dd('hello');
+//            dd('hello');
             $thisInput ='[';
             foreach($refunds as $refund){
                 $orderItem = $refund->order_item;
