@@ -26,11 +26,11 @@
     @if($ordersCount>0)
     <div class="row" style="margin-top: 1rem;">
         <div class="col s6 offset-m2">
-            <div id="allLinkContain" class="col s3 center"><a href="#!" class="allLink">All</a></div>
-            <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
-            <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
-            <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
-            <div id="refundLinkContain" class="col s3 center"><a href="#!" class="refundLink">Refunds</a></div>
+            <div id="allLinkContain" class="col s2 center"><a href="#!" class="allLink">All</a></div>
+            <div id="pendLinkContain" class="col s2 center"><a href="#!" class="pendLink">Pending</a></div>
+            <div id="paidLinkContain" class="col s2 center"><a href="#!" class="paidLink">Paid</a></div>
+            <div id="cancelLinkContain" class="col s2 center"><a href="#!" class="cancelLink">Cancelled</a></div>
+            <div id="refundLinkContain" class="col s2 center"><a href="#!" class="refundLink">Refunds</a></div>
         </div>
         {{--<div class="row" >--}}
             {{--<div class="col s12" style="margin-top: 6px;">--}}
