@@ -1882,6 +1882,7 @@ class FoodieOrderPlanController extends Controller
 
         $thisInput = null;
         $i=0;
+        dd($refunds);
         if($refunds->count()>0){
             $thisInput ='[';
             foreach($refunds as $refund){
