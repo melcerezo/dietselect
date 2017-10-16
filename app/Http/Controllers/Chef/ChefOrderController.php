@@ -20,6 +20,7 @@ use App\Plan;
 use App\MealPlan;
 use App\Meal;
 use App\IngredientMeal;
+use App\Refund;
 use App\SimpleCustomPlan;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -375,6 +376,27 @@ class ChefOrderController extends Controller
 
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
+
+    public function cancelOrderItem($id)
+    {
+        $orderItem = OrderItem::where('id','=',$id)->first();
+        $order = $orderItem->order;
+
+        if($order->is_paid == 0){
+            $orderItem->is_cancelled = 1;
+            $orderItem->save();
+        }else if($order->is_paid == 1){
+
+            $refund = new Refund();
+
+
+            $orderItem->is_cancelled = 1;
+            $orderItem->save();
+        }
+
+
+    }
+
 
     public function dateChange($type,$id)
     {

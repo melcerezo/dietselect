@@ -91,8 +91,10 @@ class ClearPendingOrders extends Command
             $arrayChef=[];
             foreach($orderItems as $orderItem){
                 $arrayChef[]=$orderItem->chef_id;
-                $orderItem->is_cancelled=1;
-                $orderItem->save();
+                if($orderItem->is_cancelled == 0){
+                    $orderItem->is_cancelled=1;
+                    $orderItem->save();
+                }
             }
             $uniqueChef=array_unique($arrayChef);
 

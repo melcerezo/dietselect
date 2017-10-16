@@ -16,4 +16,9 @@ class OrderItem extends Model
     {
         return $this->hasOne(Rating::class);
     }
+
+    public function refund()
+    {
+        return $this->hasOne(Refund::class);
+    }
 }
