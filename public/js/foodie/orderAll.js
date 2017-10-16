@@ -559,7 +559,7 @@ $(document).ready(function () {
             }else {
                 var valData = JSON.parse(response);
                 console.log(JSON.parse(response));
-                // console.log(response);
+                console.log(response);
                 for (var i in valData) {
                     var x = '<div class="card">';
                     x += '<div class="card-content" style="font-size: 18px;">';
