@@ -1153,6 +1153,7 @@ class FoodieOrderPlanController extends Controller
 
     public function refundPage($id)
     {
+        $foodie = Auth::guard('foodie')->user();
         $refund = Refund::where('id','=',$id)->first();
         $orderItem = $refund->order_item;
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
