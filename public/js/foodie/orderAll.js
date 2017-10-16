@@ -572,7 +572,7 @@ $(document).ready(function () {
                     x += '<div>Chef</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].chef + '</div>';
                     x += '</div>';
-                    x += '<div class="col s12 m2">';
+                    x += '<div class="col s12 m3">';
                     x += '<div>Type</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].type + '</div>';
                     x += '</div>';
