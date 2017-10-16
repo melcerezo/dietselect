@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Chat;
 use App\CustomizedMeal;
 use App\Http\Controllers\Chef\Auth\VerifiesSms;
+use App\Mail\CancelSuccessChef;
+use App\Mail\CancelSuccessFoodie;
 use App\Mail\DeliverySuccessChef;
 use App\Mail\DeliverySuccessFoodie;
 use App\Notification;
@@ -538,13 +540,13 @@ class ChefOrderController extends Controller
             $planName = $orderItem->plan->plan_name;
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailer->to($orderItem->order->foodie->email)
-                ->send(new DeliverySuccessFoodie(
+                ->send(new CancelSuccessFoodie(
                     $chefName,
                     $planName,
                     $time));
 
             $mailer->to($chef->email)
-                ->send(new DeliverySuccessChef(
+                ->send(new CancelSuccessChef(
                     $foodieName,
                     $planName,
                     $time));
