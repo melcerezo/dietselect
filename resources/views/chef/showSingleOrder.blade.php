@@ -329,9 +329,11 @@
 
                                 </li>
                             </ul>
-                            <div>
-                                <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
-                            </div>
+                            @if($orderItem->is_cancelled==0)
+                                <div>
+                                    <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
@@ -1686,9 +1688,11 @@
                                     @endif
                                 </div>
                             @endif
-                            <div>
-                                <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
-                            </div>
+                            @if($orderItem->is_cancelled==0)
+                                <div>
+                                    <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                                </div>
+                            @endif
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
