@@ -86,6 +86,11 @@ class Foodie extends Authenticatable
         return $this->hasMany(Rating::class);
     }
 
+    public function refund()
+    {
+        return $this->hasMany(Refund::class);
+    }
+
 }
 
 

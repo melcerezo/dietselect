@@ -30,7 +30,7 @@
             <div id="pendLinkContain" class="col s3 center"><a href="#!" class="pendLink">Pending</a></div>
             <div id="paidLinkContain" class="col s3 center"><a href="#!" class="paidLink">Paid</a></div>
             <div id="cancelLinkContain" class="col s3 center"><a href="#!" class="cancelLink">Cancelled</a></div>
-
+            <div id="refundLinkContain" class="col s3 center"><a href="#!" class="refundLink">Refunds</a></div>
         </div>
         {{--<div class="row" >--}}
             {{--<div class="col s12" style="margin-top: 6px;">--}}
@@ -637,10 +637,31 @@
                         {{--No Cancelled Orders--}}
                     {{--@endif--}}
                 {{--</div>--}}
-            @else
-                No Orders Yet!
-            @endif
+            {{--@else--}}
+                {{--No Orders Yet!--}}
+            {{--@endif--}}
         </div>
+        <div id="ordRefund">
+            <div class="row">
+                <div class="col s12 m3">
+                    <div>
+                        <span>Search by Interval:</span>
+                    </div>
+                    <select id="orderRefundFilter">
+                        <option value="1">Today</option>
+                        <option value="2" selected>This Week</option>
+                        <option value="3">This Month</option>
+                        <option value="4">This Year</option>
+                    </select>
+                </div>
+            </div>
+            <div id="dayRefundPick">
+
+            </div>
+        </div>
+        @else
+            No Orders Yet!
+        @endif
     </div>
 </div>
 </div>

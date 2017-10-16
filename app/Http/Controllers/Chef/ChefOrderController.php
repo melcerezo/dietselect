@@ -288,7 +288,8 @@ class ChefOrderController extends Controller
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
         $foodie = $orderItem->order->foodie;
-        $messageFoodie = 'Greetings from DietSelect! Your order for '.$orderItem->plan->plan_name.' has been delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie = 'Greetings from DietSelect! Your order delivery status for '.$orderItem->plan->plan_name.' has been changed to delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie .= 'Please expect it within this week.' ;
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -377,23 +378,181 @@ class ChefOrderController extends Controller
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
 
-    public function cancelOrderItem($id)
+    public function cancelOrderItem($id,mailer\Mailer $mailer)
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
         $order = $orderItem->order;
-
+        $foodieName = $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name;
+        $chef = Auth::guard('chef')->user();
         if($order->is_paid == 0){
             $orderItem->is_cancelled = 1;
             $orderItem->save();
+
+            $foodnotif = new Notification();
+            $foodnotif->sender_id = 0;
+            $foodnotif->receiver_id = $orderItem->order->foodie->id;
+            $foodnotif->receiver_type = 'f';
+            $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
+            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $foodnotif->notification_type = 1;
+            $foodnotif->save();
+
+            $chefnotif = new Notification();
+            $chefnotif->sender_id = 0;
+            $chefnotif->receiver_id = $chef->id;
+            $chefnotif->receiver_type = 'c';
+            $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
+            $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
+            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $chefnotif->notification_type = 3;
+            $chefnotif->save();
+
+            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+            $foodiePhoneNumber = '0' . $orderItem->order->foodie->mobile_number;
+//        dd($foodie);
+            $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+            $paramFoodie = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmoFoodie),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $contextFoodie = stream_context_create($paramFoodie);
+            file_get_contents($urlFoodie, false, $contextFoodie);
+
+            $message = 'Greetings from DietSelect! You have cancelled ' . $foodieName . '\'s order for: ';
+            $message .= $orderItem->plan->plan_name;
+            $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
+            $message .= '.';
+            $chefPhoneNumber = '0' . $chef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
+
+            $chefName = $chef->name;
+            $planName = $orderItem->plan->plan_name;
+            $time = Carbon::now()->format('F d, Y g:i A');
+            $mailer->to($orderItem->order->foodie->email)
+                ->send(new DeliverySuccessFoodie(
+                    $chefName,
+                    $planName,
+                    $time));
+
+            $mailer->to($chef->email)
+                ->send(new DeliverySuccessChef(
+                    $foodieName,
+                    $planName,
+                    $time));
+
+            $message = 'You have cancelled '.$foodieName.'\'s for '.$planName;
+
         }else if($order->is_paid == 1){
-
             $refund = new Refund();
-
+            $refund->foodie_id = $orderItem->order->foodie->id;
+            $refund->order_item_id = $orderItem->id;
+            $refund->save();
 
             $orderItem->is_cancelled = 1;
             $orderItem->save();
+
+            $foodnotif = new Notification();
+            $foodnotif->sender_id = 0;
+            $foodnotif->receiver_id = $orderItem->order->foodie->id;
+            $foodnotif->receiver_type = 'f';
+            $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
+            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $foodnotif->notification .= 'Please go to the refunds tab on you orders page to confirm your refund.';
+            $foodnotif->notification_type = 4;
+            $foodnotif->save();
+
+            $chefnotif = new Notification();
+            $chefnotif->sender_id = 0;
+            $chefnotif->receiver_id = $chef->id;
+            $chefnotif->receiver_type = 'c';
+            $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
+            $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
+            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $chefnotif->notification_type = 3;
+            $chefnotif->save();
+
+            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+            $messageFoodie .= 'Please go to the refunds tab of your orders page to process your refund.' ;
+            $foodiePhoneNumber = '0' . $orderItem->order->foodie->mobile_number;
+//        dd($foodie);
+            $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+            $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+            $paramFoodie = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmoFoodie),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $contextFoodie = stream_context_create($paramFoodie);
+            file_get_contents($urlFoodie, false, $contextFoodie);
+
+            $message = 'Greetings from DietSelect! You have cancelled ' . $foodieName . '\'s order for: ';
+            $message .= $orderItem->plan->plan_name;
+            $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
+            $message .= '.';
+            $chefPhoneNumber = '0' . $chef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
+
+            $chefName = $chef->name;
+            $planName = $orderItem->plan->plan_name;
+            $time = Carbon::now()->format('F d, Y g:i A');
+            $mailer->to($orderItem->order->foodie->email)
+                ->send(new DeliverySuccessFoodie(
+                    $chefName,
+                    $planName,
+                    $time));
+
+            $mailer->to($chef->email)
+                ->send(new DeliverySuccessChef(
+                    $foodieName,
+                    $planName,
+                    $time));
+
+        $message = 'You have cancelled '.$foodieName.'\'s for '.$planName;
         }
 
+        return redirect()->route('chef.order.view',['from'=>3])->with(['status'=>$message]);
 
     }
 

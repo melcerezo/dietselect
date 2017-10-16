@@ -8,6 +8,7 @@
         pendRoute ='{{route('foodie.order.view', ['from'=>1])}}';
         paidRoute ='{{route('foodie.order.view', ['from'=>2])}}';
         cancelRoute ='{{route('foodie.order.view', ['from'=>3])}}';
+        refundRoute ='{{route('foodie.order.view', ['from'=>4])}}';
         logoutRoute='{{route('foodie.logoutAuto')}}';
     </script>
     <script src="/js/foodie/app.js" defer></script>

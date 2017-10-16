@@ -95,6 +95,20 @@ $(document).ready(function() {
                     '</div>'+
                     '</a>'+
                     '</li>';
+            }else if(notifs[index].notification_type==4){
+                notifCntnt=
+                    '<li id="notif'+notifs[index].id+'" class="collection-item">'+
+                    '<a class="msgLink notifLink" href="'+refundRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<div class="row msCntr">'+
+                    '<div class="msMsCnt col s12">'+
+                    '<span>'+notifs[index].notification+'</span>'+
+                    '<div style="margin-top: 5px; color:cornflowerblue;">' +
+                    '<span>'+notifs[index].created_at+'</span>' +
+                    '</div>'+
+                    '</div>'+
+                    '</div>'+
+                    '</a>'+
+                    '</li>';
             }
 
             $('#foodieNotificationDropdown').append(notifCntnt);

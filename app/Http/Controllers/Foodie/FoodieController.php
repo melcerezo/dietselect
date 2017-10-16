@@ -29,7 +29,7 @@ use App\FoodiePreference;
 use App\Plan;
 use App\MealPlan;
 
-class FoodieController extends Controller
+class   FoodieController extends Controller
 {
     use VerifiesSms;
 

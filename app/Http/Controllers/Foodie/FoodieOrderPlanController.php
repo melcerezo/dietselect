@@ -17,6 +17,7 @@ use App\OrderItem;
 use App\Plan;
 use App\Message;
 use App\CustomizedMeal;
+use App\Refund;
 use App\SimpleCustomDetail;
 use App\SimpleCustomPlan;
 use Gloudemans\Shoppingcart\Facades\Cart;
@@ -1148,6 +1149,39 @@ class FoodieOrderPlanController extends Controller
         $order->save();
 //        $address = DB::table('foodie_address')->where('foodie_id','=',$foodie->id)->where('id','=', $id)->select('id','city','unit','street','brgy','bldg','type')->first();
         return back()->with(['status' => 'Added delivery address!']);
+    }
+
+    public function refundPage($id)
+    {
+        $refund = Refund::where('id','=',$id)->first();
+        $orderItem = $refund->order_item;
+
+        return view('foodie.foodieRefund')->with([
+            'refund'=>$refund,
+            'orderItem'=>$orderItem
+        ]);
+    }
+
+    public function chooseRefund(Request $request, $id)
+    {
+        $refund = Refund::where('id','=',$id)->first();
+        $type = $request['refundType'];
+        if($type==0){
+            $refund->method = $type;
+            $refund->bank_type = $request['bankType'];
+            $refund->bank_account = $request['acctNmbr'];
+            $refund->name = $request['acctName'];
+            $refund->save();
+            $status = 'Confirmed refund through bank deposit!';
+        }else if($type==1){
+            $refund->method = $type;
+            $refund->transfer_company = $request['bankType'];
+            $refund->name = $request['acctName'];
+            $refund->save();
+            $status = 'Confirmed refund through money transfer!';
+        }
+
+        return redirect()->route('foodie.order.view', ['from'=>4])->with(['status'=>$status]);
     }
 
     public function dateChange($type,$id)

@@ -1,0 +1,9 @@
+.refundBox,.refundInfoCntr{ border :1px solid #d1d1d1; }
+.refundInfoCntr{ padding: 10px; }
+.refundMainTitle{ border-bottom: 1px solid #d1d1d1; padding: 15px 10px; }
+.refundTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto; }
+.refundTabs .row{ margin:0; }
+.refundInfo{ margin: 10px 0; }
+.refundForm{ display: none; padding: 15px;}
+.refundForm .row{ margin: 0 !important; }
+#defaultRefund{ display: block; }
