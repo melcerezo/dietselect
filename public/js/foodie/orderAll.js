@@ -591,6 +591,9 @@ $(document).ready(function () {
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
                     x += '</div>';
+                    x += '<div>';
+                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
+                    x += '</div>';
                     x += '</div>';
                     x += '</div>';
                     $('div#dayRefundPick').append(x);
@@ -1254,6 +1257,9 @@ $(document).ready(function () {
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    x += '</div>';
+                    x += '<div>';
+                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
                     x += '</div>';
                     x += '</div>';
                     x += '</div>';
@@ -2030,6 +2036,9 @@ $(document).ready(function () {
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
                     x += '</div>';
+                    x += '<div>';
+                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
+                    x += '</div>';
                     x += '</div>';
                     x += '</div>';
                     $('div#dayRefundPick').append(x);
@@ -2062,6 +2071,16 @@ $(document).ready(function () {
     });
 
     $(document).on('click','.btnCancel', function () {
+        var id = $(this).attr('data-id');
+        $.ajax({
+            url:'/foodie/order/cancelAll/'+ id
+        }).success(function () {
+            window.location.href= this.url;
+        });
+
+    });
+
+    $(document).on('click','.btnRefund', function () {
         var id = $(this).attr('data-id');
         $.ajax({
             url:'/foodie/order/cancelAll/'+ id
