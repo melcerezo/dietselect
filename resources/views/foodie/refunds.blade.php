@@ -21,7 +21,7 @@
                                 </div>
                                 <div data-pay-reveal="money" class="col s12 m3 refundTab">
                                     <span class="transferIcon"><i class="fa fa-exchange"></i></span>
-                                    <span class="exchangeDes">Money Transfer</span>
+                                    <span class="transferDes">Money Transfer</span>
                                 </div>
                             </div>
                         </div>
