@@ -1157,6 +1157,7 @@ class FoodieOrderPlanController extends Controller
         $orderItem = $refund->order_item;
 
         return view('foodie.refunds')->with([
+            'sms_unverified' => $this->smsIsUnverified(),
             'refund'=>$refund,
             'orderItem'=>$orderItem
         ]);
