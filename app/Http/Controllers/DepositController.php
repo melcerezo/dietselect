@@ -163,10 +163,10 @@ class DepositController extends Controller
                         'type'=>'Customized');
                 }
 
-                $com = new Commission();
-                $com->chef_id = $ratingChef;
-                $com->amount = $price;
-                $com->save();
+//                $com = new Commission();
+//                $com->chef_id = $ratingChef;
+//                $com->amount = $price;
+//                $com->save();
 
                 $rating = new Rating();
                 $rating->chef_id = $ratingChef;
@@ -360,10 +360,10 @@ class DepositController extends Controller
                         'type'=>'Customized');
                 }
 
-                $com = new Commission();
-                $com->chef_id = $ratingChef;
-                $com->amount = $price;
-                $com->save();
+//                $com = new Commission();
+//                $com->chef_id = $ratingChef;
+//                $com->amount = $price;
+//                $com->save();
 
                 $rating = new Rating();
                 $rating->chef_id = $ratingChef;

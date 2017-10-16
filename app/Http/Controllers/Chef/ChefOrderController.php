@@ -368,6 +368,11 @@ class ChefOrderController extends Controller
         $orderItem->is_delivered=1;
         $orderItem->save();
 
+        $com = new Commission();
+        $com->chef_id = $chef->id;
+        $com->amount = $orderItem->price * $orderItem->quantity;
+        $com->save();
+
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
 
