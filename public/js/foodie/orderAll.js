@@ -558,7 +558,7 @@ $(document).ready(function () {
                 $('div#dayRefundPick').append('<span>No Refunds!</span>');
             }else {
                 var valData = JSON.parse(response);
-                // console.log(JSON.parse(response));
+                console.log(JSON.parse(response));
                 // console.log(response);
                 for (var i in valData) {
                     var x = '<div class="card">';
@@ -1222,7 +1222,7 @@ $(document).ready(function () {
                 $('div#dayRefundPick').append('<span>No Refunds!</span>');
             }else {
                 var valData = JSON.parse(response);
-                // console.log(JSON.parse(response));
+                console.log(JSON.parse(response));
                 // console.log(response);
                 for (var i in valData) {
                     var x = '<div class="card">';
