@@ -1992,7 +1992,7 @@ $(document).ready(function () {
         var refundChange = refundChoose(val);
         refundChange.done(function (response) {
             $('div#dayRefundPick').empty();
-            $('div#dayRefundPick').append('<div><span>Refunds For' +$('select#orderRefundFilter option:selected').text()+'</span></div>');
+            $('div#dayRefundPick').append('<div><span>Refunds For ' +$('select#orderRefundFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayRefundPick').append('<span>No Refunds!</span>');
             }else {
