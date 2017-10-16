@@ -1205,7 +1205,7 @@ $(document).ready(function () {
         $('#ordPaid').hide();
         $('#ordCancel').hide();
         $('#allLinkContain').removeClass('activeTab');
-        $('#ordAll').show();
+        $('#ordAll').hide();
 
 
         // show pending tab
