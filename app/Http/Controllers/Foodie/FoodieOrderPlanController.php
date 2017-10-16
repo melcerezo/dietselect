@@ -1161,6 +1161,7 @@ class FoodieOrderPlanController extends Controller
         $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
         $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
         return view('foodie.refunds')->with([
+            'foodie'=>$foodie,
             'sms_unverified' => $this->smsIsUnverified(),
             'messages' => $messages,
             'chats' => $chats,
