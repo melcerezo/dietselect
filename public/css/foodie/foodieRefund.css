@@ -3,6 +3,7 @@
 .refundMainTitle{ border-bottom: 1px solid #d1d1d1; padding: 15px 10px; }
 .refundTabsWrapper{ border-top: 1px solid #d1d1d1; height:auto; }
 .refundTabs .row{ margin:0; }
+.refundTab{ border-right: 1px solid #d1d1d1; height: 123px; position: relative; cursor: pointer; }
 .refundInfo{ margin: 10px 0; }
 .refundForm{ display: none; padding: 15px;}
 .refundForm .row{ margin: 0 !important; }
