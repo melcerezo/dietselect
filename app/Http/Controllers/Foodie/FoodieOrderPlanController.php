@@ -1882,7 +1882,9 @@ class FoodieOrderPlanController extends Controller
 
         $thisInput = null;
         $i=0;
+        $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','>',$endOfWeek)->get();
         dd($refunds);
+
         if($refunds->count()>0){
             dd('hello');
             $thisInput ='[';
