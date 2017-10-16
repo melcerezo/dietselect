@@ -313,13 +313,17 @@
                                     <div>
                                         <span>Delivery Status: </span>
                                     </div>
-                                    @if($orderItem->is_delivered==0)
-                                        <span>Not Delivered</span>
-                                        @if($orderItem->order->is_paid==1)
-                                            <a id="deliverButton" href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                    @if($orderItem->is_cancelled==0)
+                                        @if($orderItem->is_delivered==0)
+                                            <span>Not Delivered</span>
+                                                @if($orderItem->order->is_paid==1)
+                                                    <a id="deliverButton" href="{{route('chef.order.deliver',$orderItem->id)}}" style="margin-left: 5px;">Deliver</a>
+                                                @endif
+                                        @elseif($orderItem->is_delivered==1)
+                                            <span>Delivered</span>
                                         @endif
-                                    @elseif($orderItem->is_delivered==1)
-                                        <span>Delivered</span>
+                                    @elseif($orderItem->is_cancelled==1)
+                                        <span>Cancelled</span>
                                     @endif
                                 </li>
                                 <li class="collection-item">Allergies:
