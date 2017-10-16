@@ -102,7 +102,7 @@
                                 <div class="payInfo">Chef: {{$orderItem->plan->chef->name}}</div>
                             </div>
 
-                            <form id="transferRefundForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
+                            <form id="transferRefundForm" action="{{route('foodie.refund',$refund->id)}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
                                 <input type="hidden" value="1" name="refundType">
                                 <div class="row">
