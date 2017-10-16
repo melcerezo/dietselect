@@ -544,6 +544,61 @@ $(document).ready(function () {
             }
         });
 
+    }else if(from == 4){
+        $('#refundLinkContain').addClass('activeTab');
+        $('#ordRefund').show();
+
+        var startVal = $('select#orderRefundFilter option:selected').val();
+
+        var refundChange = refundChoose(startVal);
+        refundChange.done(function (response) {
+            $('div#dayRefundPick').empty();
+            $('div#dayRefundPick').append('<div><span>Refunds For This Week</span></div>');
+            if(response==''){
+                $('div#dayRefundPick').append('<span>No Refunds!</span>');
+            }else {
+                var valData = JSON.parse(response);
+                // console.log(JSON.parse(response));
+                // console.log(response);
+                for (var i in valData) {
+                    var x = '<div class="card">';
+                    x += '<div class="card-content" style="font-size: 18px;">';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += ' <div class="col s12 m2">';
+                    x += '<div>Plan Name</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].plan + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Chef</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].chef + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m4">';
+                    x += '<div>Type</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].type + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Quantity</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].quantity+ '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Amount</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].amount + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Order Date</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    $('div#dayRefundPick').append(x);
+                }
+            }
+        });
     }
 
     $('.allLink').on('click',function () {
@@ -555,7 +610,8 @@ $(document).ready(function () {
         $('#ordPend').hide();
         $('#ordPaid').hide();
         $('#ordCancel').hide();
-
+        $('#refundLinkContain').removeClass('activeTab');
+        $('#ordRefund').hide();
 
 
         // show pending tab
@@ -709,6 +765,8 @@ $(document).ready(function () {
         $('#ordAll').hide();
         $('#ordPaid').hide();
         $('#ordCancel').hide();
+        $('#refundLinkContain').removeClass('activeTab');
+        $('#ordRefund').hide();
 
         // show pending tab
         $('#pendLinkContain').addClass('activeTab');
@@ -861,7 +919,8 @@ $(document).ready(function () {
         $('#ordAll').hide();
         $('#ordPend').hide();
         $('#ordCancel').hide();
-
+        $('#refundLinkContain').removeClass('activeTab');
+        $('#ordRefund').hide();
         // show paid tab
         $('#paidLinkContain').addClass('activeTab');
         $('#ordPaid').show();
@@ -997,11 +1056,13 @@ $(document).ready(function () {
 
         // hide other tabs
         $('#pendLinkContain').removeClass('activeTab');
+        $('#refundLinkContain').removeClass('activeTab');
         $('#paidLinkContain').removeClass('activeTab');
         $('#allLinkContain').removeClass('activeTab');
         $('#ordPend').hide();
         $('#ordPaid').hide();
         $('#ordAll').hide();
+        $('#ordRefund').hide();
 
         // show pending tab
         $('#cancelLinkContain').addClass('activeTab');
@@ -1133,6 +1194,75 @@ $(document).ready(function () {
             }
         });
 
+    });
+
+    $('.refundLink').on('click',function () {
+
+        $('#pendLinkContain').removeClass('activeTab');
+        $('#paidLinkContain').removeClass('activeTab');
+        $('#cancelLinkContain').removeClass('activeTab');
+        $('#ordPend').hide();
+        $('#ordPaid').hide();
+        $('#ordCancel').hide();
+        $('#allLinkContain').removeClass('activeTab');
+        $('#ordAll').show();
+
+
+        // show pending tab
+        $('#refundLinkContain').addClass('activeTab');
+        $('#ordRefund').show();
+
+        var startVal = $('select#orderRefundFilter option:selected').val();
+
+        var refundChange = refundChoose(startVal);
+        refundChange.done(function (response) {
+            $('div#dayRefundPick').empty();
+            $('div#dayRefundPick').append('<div><span>Refunds For This Week</span></div>');
+            if(response==''){
+                $('div#dayRefundPick').append('<span>No Refunds!</span>');
+            }else {
+                var valData = JSON.parse(response);
+                // console.log(JSON.parse(response));
+                // console.log(response);
+                for (var i in valData) {
+                    var x = '<div class="card">';
+                    x += '<div class="card-content" style="font-size: 18px;">';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += ' <div class="col s12 m2">';
+                    x += '<div>Plan Name</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].plan + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Chef</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].chef + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m4">';
+                    x += '<div>Type</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].type + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Quantity</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].quantity+ '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Amount</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].amount + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Order Date</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    $('div#dayRefundPick').append(x);
+                }
+            }
+        });
     });
 
     // var daySelect= selectDay();
@@ -1855,6 +1985,63 @@ $(document).ready(function () {
     });
 
 
+
+
+    $('select#orderRefundFilter').change(function () {
+        var val = $('select#orderRefundFilter option:selected').val();
+        var refundChange = refundChoose(val);
+        refundChange.done(function (response) {
+            $('div#dayRefundPick').empty();
+            $('div#dayRefundPick').append('<div><span>Refunds For This Week</span></div>');
+            if(response==''){
+                $('div#dayRefundPick').append('<span>No Refunds!</span>');
+            }else {
+                var valData = JSON.parse(response);
+                // console.log(JSON.parse(response));
+                // console.log(response);
+                for (var i in valData) {
+                    var x = '<div class="card">';
+                    x += '<div class="card-content" style="font-size: 18px;">';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += ' <div class="col s12 m2">';
+                    x += '<div>Plan Name</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].plan + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Chef</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].chef + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m4">';
+                    x += '<div>Type</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].type + '</div>';
+                    x += '</div>';
+                    x += '<div class="col s12 m3">';
+                    x += '<div>Quantity</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].quantity+ '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Amount</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].amount + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
+                    x += '<div class="col s12 m6">';
+                    x += '<div>Order Date</div>';
+                    x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    x += '</div>';
+                    $('div#dayRefundPick').append(x);
+                }
+            }
+        });
+    });
+
+
+
     
         $(document).on('click','.btnView', function () {
             var id = $(this).attr('data-id');
@@ -1890,6 +2077,12 @@ $(document).ready(function () {
 function dateChoose($val,$type){
     return $.ajax({
         url: '/foodie/order/dateChange/' + $val +'/'+ $type
+
+    });
+}
+function refundChoose($type){
+    return $.ajax({
+        url: '/foodie/order/refundChange/' + $type
 
     });
 }

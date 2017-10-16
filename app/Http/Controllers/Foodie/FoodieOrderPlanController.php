@@ -1846,4 +1846,84 @@ class FoodieOrderPlanController extends Controller
 //        dd($timeArray);
         return $uniqueTimeArray;
     }
+
+    public function refundChange($type)
+    {
+        $foodie=Auth::guard('foodie')->user();
+        $thisDay = Carbon::today();
+        $dw = Carbon::now();
+        $startOfWeek=$dw->startOfWeek();
+        $de = Carbon::now();
+        $endOfWeek = $de->endOfWeek();
+
+        $ds = Carbon::now();
+        $startOfMonth=$ds->startOfMonth();
+        $dr = Carbon::now();
+        $endOfMonth = $dr->endOfMonth();
+
+        $dt = Carbon::now();
+        $startOfYear=$dt->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dm->endOfYear();
+
+        if($type==1){
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$thisDay)->get();
+
+        }else if($type==2){
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfWeek)->where('created_at','>',$endOfWeek)->get();
+
+        }else if($type==3){
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfMonth)->where('created_at','>',$endOfMonth)->get();
+
+        }else if($type==4){
+            $refunds = Refund::where('foodie_id','=',$foodie->id)->where('created_at','>',$startOfYear)->where('created_at','>',$endOfYear)->get();
+
+        }
+
+        $thisInput = null;
+        $i=0;
+        if($refunds->count()>0){
+            $thisInput ='[';
+            foreach($refunds as $refund){
+                $orderItem = $refund->order_item;
+                if ($orderItem->order_type == 0) {
+                    $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                    //                    dd($orderPlan->picture);
+                    $planPic = $orderPlan->picture;
+                    $planName = $orderPlan->plan_name;
+                    $chefName = $orderPlan->chef->name;
+                    $orderType = "Standard";
+                } elseif ($orderItem->order_type == 1 || $orderItem->order_type == 2) {
+                    if ($orderItem->order_type == 1) {
+                        $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                    } elseif ($orderItem->order_type == 2) {
+                        $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                    }
+                    if ($orderPlan != null) {
+                        $planPic = $orderPlan->plan->picture;
+                        $planName = $orderPlan->plan->plan_name;
+                        $chefName = $orderPlan->plan->chef->name;
+                        $orderType = "Customized";
+                    }
+                }
+
+                $thisInput .='{';
+                $thisInput .= '"id":' . $refund->id . ', ';
+                $thisInput .= '"plan":' . $planName . ', ';
+                $thisInput .= '"chef":' . $chefName . ', ';
+                $thisInput .= '"type":' . $orderType . ', ';
+                $thisInput .='"quantity":' . $orderItem->quantity . ', ';
+                $thisInput .='"amount":"PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',') . '", ';
+                $thisInput .='"created_at":" ' . $refund->created_at->format('F d, Y h:i A') . '"';
+                if (++$i < $refunds->count()) {
+                    $thisInput .= '},';
+                } else {
+                    $thisInput .= '}';
+                }
+            }
+            $thisInput .=']';
+        }
+
+        return $thisInput;
+    }
 }
