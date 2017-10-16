@@ -329,6 +329,9 @@
 
                                 </li>
                             </ul>
+                            <div>
+                                <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                            </div>
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
@@ -1677,10 +1680,15 @@
                                 </li>
                             </ul>
                             @if($orderItem->order_type==2)
-                                @if($orderPlan->simple_custom_plan_detail->count())
-                                    <button data-target="planCustomization" class="orange darken-2 btn waves-effect waves-light modal-trigger">See Customization</button>
-                                @endif
+                                <div>
+                                    @if($orderPlan->simple_custom_plan_detail->count())
+                                        <button data-target="planCustomization" class="orange darken-2 btn waves-effect waves-light modal-trigger">See Customization</button>
+                                    @endif
+                                </div>
                             @endif
+                            <div>
+                                <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                            </div>
                         </div>
                     </div>
                     <div class="row mlPlnCnt">
@@ -3292,6 +3300,21 @@
 
                 {{--</div>--}}
             {{--</div>--}}
+            <div id="cancelModal" class="modal">
+                <div class="orange-text text-darken-2" style="margin:10px; border-left:4px solid #f57c00">
+                    <span style="font-size: 30px;">Cancel</span>
+                </div>
+                <div class="divider" style="margin: 0 5px;"></div>
+                <div class="modal-content">
+                    <div class="row">
+                        <span>Do you want to cancel this order?</span>
+                    </div>
+                    <form method="post" action="{{route('chef.order.cancel', $orderItem->id)}}" id="cancelForm">
+                        {{ csrf_field() }}
+                        <input type="submit" class="btn waves-effect waves-light red darken-2" value="Cancel" />
+                    </form>
+                </div>
+            </div>
             <div id="allergiesModal" class="modal">
                 <div class="orange-text text-darken-2" style="margin:10px; border-left:4px solid #f57c00">
                     <span style="font-size: 30px;">Allergies</span>
