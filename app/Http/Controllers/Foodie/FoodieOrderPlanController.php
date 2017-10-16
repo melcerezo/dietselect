@@ -1156,7 +1156,7 @@ class FoodieOrderPlanController extends Controller
         $refund = Refund::where('id','=',$id)->first();
         $orderItem = $refund->order_item;
 
-        return view('foodie.foodieRefund')->with([
+        return view('foodie.refunds')->with([
             'refund'=>$refund,
             'orderItem'=>$orderItem
         ]);
