@@ -299,10 +299,14 @@
                                     <div>
                                         <span>Payment Status: </span>
                                     </div>
-                                    @if($orderItem->order->is_paid==0)
-                                        <span>Pending</span>
-                                    @elseif($orderItem->order->is_paid==1)
-                                        <span>Confirmed</span>
+                                    @if($orderItem->is_cancelled==0)
+                                        @if($orderItem->order->is_paid==0)
+                                            <span>Pending</span>
+                                        @elseif($orderItem->order->is_paid==1)
+                                            <span>Confirmed</span>
+                                        @endif
+                                    @elseif($order->is_cancelled==1)
+                                        <span>Cancelled</span>
                                     @endif
                                 </li>
                                 <li class="collection-item">
