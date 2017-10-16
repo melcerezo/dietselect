@@ -1155,9 +1155,16 @@ class FoodieOrderPlanController extends Controller
     {
         $refund = Refund::where('id','=',$id)->first();
         $orderItem = $refund->order_item;
-
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
+        $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
+        $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
         return view('foodie.refunds')->with([
             'sms_unverified' => $this->smsIsUnverified(),
+            'messages' => $messages,
+            'chats' => $chats,
+            'notifications' => $notifications,
+            'unreadNotifications' => $unreadNotifications,
             'refund'=>$refund,
             'orderItem'=>$orderItem
         ]);
