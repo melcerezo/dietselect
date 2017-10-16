@@ -305,7 +305,7 @@
                                         @elseif($orderItem->order->is_paid==1)
                                             <span>Confirmed</span>
                                         @endif
-                                    @elseif($order->is_cancelled==1)
+                                    @elseif($orderItem->is_cancelled==1)
                                         <span>Cancelled</span>
                                     @endif
                                 </li>
