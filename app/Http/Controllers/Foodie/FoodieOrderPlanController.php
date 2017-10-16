@@ -1155,6 +1155,7 @@ class FoodieOrderPlanController extends Controller
     {
         $foodie = Auth::guard('foodie')->user();
         $refund = Refund::where('id','=',$id)->first();
+        $chefs = Chef::all();
         $orderItem = $refund->order_item;
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
         $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
@@ -1165,6 +1166,7 @@ class FoodieOrderPlanController extends Controller
             'sms_unverified' => $this->smsIsUnverified(),
             'messages' => $messages,
             'chats' => $chats,
+            'chefs'=>$chefs,
             'notifications' => $notifications,
             'unreadNotifications' => $unreadNotifications,
             'refund'=>$refund,
