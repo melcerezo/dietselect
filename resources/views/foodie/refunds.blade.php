@@ -99,7 +99,7 @@
                                 <div class="divider"></div>
                                 <div class="payInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
                                 <div class="divider"></div>
-                                <div class="payInfo">Chef: {{$orderItem->chef->name}}</div>
+                                <div class="payInfo">Chef: {{$orderItem->plan->chef->name}}</div>
                             </div>
 
                             <form id="transferRefundForm" action="{{route('deposit.order', $order->id)}}" method="post" enctype="multipart/form-data">
