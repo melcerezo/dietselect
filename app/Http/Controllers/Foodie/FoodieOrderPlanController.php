@@ -1882,7 +1882,7 @@ class FoodieOrderPlanController extends Controller
 
         $thisInput = null;
         $i=0;
-//        dd($refunds);
+        dd('hello');
         if($refunds->count()>0){
             dd('hello');
             $thisInput ='[';
