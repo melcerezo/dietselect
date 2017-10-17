@@ -109,7 +109,7 @@
                                 <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Company Name</th>
+                                    <th>Name</th>
                                     <th>Date</th>
                                     <th>Amount</th>
                                 </tr>
