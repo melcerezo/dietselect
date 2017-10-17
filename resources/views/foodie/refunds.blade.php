@@ -97,11 +97,11 @@
                             </div>
 
                             <div class="refundInfoCntr">
-                                <div class="payInfo"><span style="font-size: 30px;">Refund Information</span></div>
+                                <div class="refundInfo"><span style="font-size: 30px;">Refund Information</span></div>
                                 <div class="divider"></div>
-                                <div class="payInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
+                                <div class="refundInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
                                 <div class="divider"></div>
-                                <div class="payInfo">Chef: {{$orderItem->plan->chef->name}}</div>
+                                <div class="refundInfo">Chef: {{$orderItem->plan->chef->name}}</div>
                                 <div class="divider"></div>
                                 <div class="refundInfo">Amount: {{'PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',')}}</div>
                             </div>
