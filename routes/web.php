@@ -96,7 +96,7 @@ Route::group(['prefix' => 'foodie','middleware'=>'validateBackHistory'], functio
     Route::get('/order/dateChange/{type}/{id}', 'Foodie\FoodieOrderPlanController@dateChange');
     Route::get('/order/refundChange/{type}', 'Foodie\FoodieOrderPlanController@refundChange');
     Route::get('/order/refunds/{id}', 'Foodie\FoodieOrderPlanController@refundPage');
-    Route::get('/order/refundChoose/{id}', 'Foodie\FoodieOrderPlanController@chooseRefund')->name('foodie.refund');
+    Route::post('/order/refundChoose/{id}', 'Foodie\FoodieOrderPlanController@chooseRefund')->name('foodie.refund');
     Route::get('/order/dayChange/{date}/{type}', 'Foodie\FoodieOrderPlanController@dayChange');
     Route::get('/order/selectDay/{type}', 'Foodie\FoodieOrderPlanController@selectDay');
 
