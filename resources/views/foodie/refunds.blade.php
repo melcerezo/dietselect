@@ -19,7 +19,7 @@
                                     <span class="bankIcon"><i class="fa fa-bank"></i></span>
                                     <span class="bankDes">Bank</span>
                                 </div>
-                                <div data-pay-reveal="money" class="col s12 m3 refundTab">
+                                <div data-pay-reveal="transfer" class="col s12 m3 refundTab">
                                     <span class="transferIcon"><i class="fa fa-exchange"></i></span>
                                     <span class="transferDes">Money Transfer</span>
                                 </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div id="transferMoneyPayment" class="refundForm">
                             <div>
-                                <span style="font-size: 30px; font-weight: bold;">Bank Deposit Refund</span>
+                                <span style="font-size: 30px; font-weight: bold;">Money Transfer Refund</span>
                             </div>
 
                             <div class="refundInfoCntr">
