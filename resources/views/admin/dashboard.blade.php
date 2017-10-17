@@ -169,7 +169,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($refunds->take(5) as $refunds)
+                                    @foreach($refunds->take(5) as $refund)
                                         <tr>
                                             <td>{{$refund->id}}</td>
                                             <td>
