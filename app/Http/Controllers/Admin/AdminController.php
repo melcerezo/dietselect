@@ -29,6 +29,7 @@ use App\SimpleCustomPlan;
 use App\Commission;
 use DB;
 use Illuminate\Mail as mailer;
+use Intervention\Image\Facades\Image;
 
 
 class AdminController extends Controller
@@ -252,9 +253,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function refund()
+    public function refund($id, Request $request)
     {
+        $refund = Refund::where('id','=',$id)->first();
 
+        if($request->hasFile('refundPic')) {
+            $avatar = $request->file('refundPic');
+            $filename = time() . '.' . $avatar->getClientOriginalExtension();
+            // Change Directory HERE
+            Image::make($avatar)->resize(500, 500)->save(public_path('img/refunds' . $filename));
+            $refund->refund_pic = $filename;
+            $refund->is_paid = 1;
+            $refund->save();
+        }
+
+        return redirect()->route('admin.adminRefund')->with(['status'=>'Refund successfully paid!']);
     }
 
     public function chefs()
