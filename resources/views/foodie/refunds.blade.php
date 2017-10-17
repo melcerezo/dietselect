@@ -41,6 +41,8 @@
                                 <div class="refundInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
                                 <div class="divider"></div>
                                 <div class="refundInfo">Chef: {{$orderItem->plan->chef->name}}</div>
+                                <div class="divider"></div>
+                                <div class="refundInfo">Amount: {{'PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',')}}</div>
                             </div>
                             <form id="bankRefundForm" action="{{route('foodie.refund',$refund->id)}}" method="post" enctype="multipart/form-data">
                                 {{csrf_field()}}
@@ -113,7 +115,7 @@
                                     {{--<div class="error-recpt err"></div>--}}
                                 </div>
                                 <div class="row">
-                                    <div><label for="transferName">Account Name:</label></div>
+                                    <div><label for="transferName">Full Name:</label></div>
                                     <div><input id="transferName" name="transferName" data-error=".error-transfer-name" type="text"></div>
                                     <div class="error-transfer-name err"></div>
                                 </div>
