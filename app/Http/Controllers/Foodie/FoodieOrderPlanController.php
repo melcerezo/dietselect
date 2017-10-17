@@ -1157,6 +1157,26 @@ class FoodieOrderPlanController extends Controller
         $refund = Refund::where('id','=',$id)->first();
         $chefs = Chef::all();
         $orderItem = $refund->order_item;
+        if ($orderItem->order_type == 0) {
+            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+            //                    dd($orderPlan->picture);
+            $planPic = $orderPlan->picture;
+            $planName = $orderPlan->plan_name;
+            $chefName = $orderPlan->chef->name;
+            $orderType = "Standard";
+        } elseif ($orderItem->order_type == 1 || $orderItem->order_type == 2) {
+            if ($orderItem->order_type == 1) {
+                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            } elseif ($orderItem->order_type == 2) {
+                $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            }
+            if ($orderPlan != null) {
+                $planPic = $orderPlan->plan->picture;
+                $planName = $orderPlan->plan->plan_name;
+                $chefName = $orderPlan->plan->chef->name;
+                $orderType = "Customized";
+            }
+        }
         $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
         $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
         $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
@@ -1170,8 +1190,58 @@ class FoodieOrderPlanController extends Controller
             'notifications' => $notifications,
             'unreadNotifications' => $unreadNotifications,
             'refund'=>$refund,
-            'orderItem'=>$orderItem
+            'orderItem'=>$orderItem,
+            'planName'=>$planName,
+            'chefName'=>$chefName,
+            'orderType'=>$orderType
         ]);
+    }
+
+    public function refundReview($id)
+    {
+        $foodie = Auth::guard('foodie')->user();
+        $refund = Refund::where('id','=',$id)->first();
+        $chefs = Chef::all();
+        $orderItem = $refund->order_item;
+        if ($orderItem->order_type == 0) {
+            $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+            //                    dd($orderPlan->picture);
+            $planPic = $orderPlan->picture;
+            $planName = $orderPlan->plan_name;
+            $chefName = $orderPlan->chef->name;
+            $orderType = "Standard";
+        } elseif ($orderItem->order_type == 1 || $orderItem->order_type == 2) {
+            if ($orderItem->order_type == 1) {
+                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            } elseif ($orderItem->order_type == 2) {
+                $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            }
+            if ($orderPlan != null) {
+                $planPic = $orderPlan->plan->picture;
+                $planName = $orderPlan->plan->plan_name;
+                $chefName = $orderPlan->plan->chef->name;
+                $orderType = "Customized";
+            }
+        }
+        $messages = Message::where('receiver_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->get();
+        $chats = Chat::where('foodie_id', '=', $foodie->id)->where('foodie_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $notifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->get();
+        $unreadNotifications = Notification::where('receiver_id', '=', $foodie->id)->where('receiver_type', '=', 'f')->where('is_read', '=', 0)->count();
+        return view('foodie.refundView')->with([
+            'foodie'=>$foodie,
+            'sms_unverified' => $this->smsIsUnverified(),
+            'messages' => $messages,
+            'chats' => $chats,
+            'chefs'=>$chefs,
+            'notifications' => $notifications,
+            'unreadNotifications' => $unreadNotifications,
+            'refund'=>$refund,
+            'orderItem'=>$orderItem,
+            'planName'=>$planName,
+            'chefName'=>$chefName,
+            'orderType'=>$orderType
+        ]);
+
     }
 
     public function chooseRefund(Request $request, $id)
@@ -1188,7 +1258,7 @@ class FoodieOrderPlanController extends Controller
         }else if($type==1){
             $refund->method = $type;
             $refund->transfer_company = $request['transferType'];
-            $refund->name = $request['acctName'];
+            $refund->name = $request['transferName'];
             $refund->save();
             $status = 'Confirmed refund through money transfer!';
         }
@@ -1930,6 +2000,7 @@ class FoodieOrderPlanController extends Controller
                 $thisInput .= '"type":"' . $orderType . '", ';
                 $thisInput .='"quantity":' . $orderItem->quantity . ', ';
                 $thisInput .='"is_paid":' . $refund->is_paid . ', ';
+                $thisInput .='"name":' . $refund->name . ', ';
                 $thisInput .='"amount":"PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',') . '", ';
                 $thisInput .='"created_at":" ' . $refund->created_at->format('F d, Y h:i A') . '"';
                 if (++$i < $refunds->count()) {
