@@ -1187,7 +1187,7 @@ class FoodieOrderPlanController extends Controller
             $status = 'Confirmed refund through bank deposit!';
         }else if($type==1){
             $refund->method = $type;
-            $refund->transfer_company = $request['bankType'];
+            $refund->transfer_company = $request['transferType'];
             $refund->name = $request['acctName'];
             $refund->save();
             $status = 'Confirmed refund through money transfer!';
