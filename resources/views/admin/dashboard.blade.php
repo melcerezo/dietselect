@@ -149,49 +149,49 @@
                     <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                         <div>
                             <span>
-                                Paid Commissions
+                                Unpaid Refunds
                             </span>
                             <span class="badge light-green white-text" style="border-radius: 15px">
-                                {{$paidCommissions->count()}}
+                                {{$refunds->count()}}
                             </span>
                         </div>
                     </div>
                     <div class="card-content">
-                        @if($paidCommissions->count()!=0)
+                        @if($refunds->count()!=0)
                             <div>
                                 <table class="">
                                     <thead>
                                     <tr>
                                         <th>ID</th>
-                                        <th>Company Name</th>
+                                        <th>Foodie</th>
                                         <th>Date</th>
                                         <th>Amount</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($paidCommissions->take(5) as $commission)
+                                    @foreach($refunds->take(5) as $refunds)
                                         <tr>
-                                            <td>{{$commission->id}}</td>
+                                            <td>{{$refund->id}}</td>
                                             <td>
-                                                @foreach($chefs as $chef)
-                                                    @if($chef->id==$commission->chef_id)
-                                                        {{$chef->name}}
+                                                @foreach($foodies as $foodie)
+                                                    @if($foodie->id==$refund->foodie_id)
+                                                        {{$foodie->name}}
                                                     @endif
                                                 @endforeach
                                             </td>
-                                            <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                            <td>{{'PHP '.number_format($commission->amount,2,'.',',')}}</td>
+                                            <td>{{$refund->created_at->format('F d, Y')}}</td>
+                                            <td>{{'PHP '.number_format(($refund->order_item->price * $refund->order_item->quantity),2,'.',',')}}</td>
                                         </tr>
                                     @endforeach
                                     </tbody>
                                 </table>
                                 <div>
-                                    <a href="{{route('admin.commissions')}}">See All</a>
+                                    <a href="{{route('admin.adminRefund')}}">See All</a>
                                 </div>
                             </div>
                             @else
                                 <div>
-                                    <span>No Paid Commissions</span>
+                                    <span>No Unpaid Refunds</span>
                                 </div>
                             @endif
                     </div>

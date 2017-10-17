@@ -48,6 +48,7 @@ class AdminController extends Controller
         $plans = Plan::orderBy('created_at', 'desc')->get();
         $commissions = Commission::where('paid','=',0)->orderBy('created_at', 'desc')->get();
         $paidCommissions = Commission::where('paid','=',1)->orderBy('created_at', 'desc')->get();
+        $refunds = Refund::where('is_paid','=',0)->orderBy('created_at','desc')->get();
 
         return view("admin.dashboard")->with([
             'foodies'=>$foodies,
@@ -55,6 +56,7 @@ class AdminController extends Controller
             'orders'=>$orders,
             'plans'=>$plans,
             'commissions'=>$commissions,
+            'refunds'=>$refunds,
             'paidCommissions'=>$paidCommissions,
         ]);
     }
