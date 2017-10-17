@@ -590,10 +590,30 @@ $(document).ready(function () {
                     x += '<div>Refund Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    x += '<div class="col s12 m2">';
+                    x += '<div>Payment Status:</div>';
+                    if(valData[i].is_paid==0){
+                        x += '<div style="font-size: 22px;">Pending</div>';
+                    }else if(valData[i].is_paid==1){
+                        x += '<div style="font-size: 22px;">Paid</div>';
+                    }
                     x += '</div>';
-                    x += '<div>';
-                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
                     x += '</div>';
+                    if(valData[i].is_paid==0){
+                        if(valData[i].name==''){
+                            x += '<div>';
+                            x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
+                            x += '</div>';
+                        }else{
+                            x += '<div>';
+                            x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefundInfo orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">View</a>';
+                            x += '</div>';
+                        }
+                    }else if(valData[i].is_paid==1){
+                        x += '<div>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefundInfo orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">View</a>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayRefundPick').append(x);
@@ -1257,10 +1277,30 @@ $(document).ready(function () {
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    x += '<div class="col s12 m2">';
+                    x += '<div>Payment Status:</div>';
+                    if(valData[i].is_paid==0){
+                        x += '<div style="font-size: 22px;">Pending</div>';
+                    }else if(valData[i].is_paid==1){
+                        x += '<div style="font-size: 22px;">Paid</div>';
+                    }
                     x += '</div>';
-                    x += '<div>';
-                    x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
                     x += '</div>';
+                    if(valData[i].is_paid==0){
+                        if(valData[i].name==''){
+                            x += '<div>';
+                            x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
+                            x += '</div>';
+                        }else{
+                            x += '<div>';
+                            x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefundInfo orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">View</a>';
+                            x += '</div>';
+                        }
+                    }else if(valData[i].is_paid==1){
+                        x += '<div>';
+                        x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefundInfo orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">View</a>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     $('div#dayRefundPick').append(x);
