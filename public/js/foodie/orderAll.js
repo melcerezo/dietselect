@@ -2036,6 +2036,9 @@ $(document).ready(function () {
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
                     x += '</div>';
+                    if(valData[i]){
+
+                    }
                     x += '<div>';
                     x += '<a href="#!" data-id="' + valData[i].id + '" class="btnRefund orange darken-2 btn btn-primary waves-effect waves-light" style="font-weight: 100; width:100%;">Refund</a>';
                     x += '</div>';

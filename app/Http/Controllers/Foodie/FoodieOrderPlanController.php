@@ -1929,6 +1929,7 @@ class FoodieOrderPlanController extends Controller
                 $thisInput .= '"chef":"' . $chefName . '", ';
                 $thisInput .= '"type":"' . $orderType . '", ';
                 $thisInput .='"quantity":' . $orderItem->quantity . ', ';
+                $thisInput .='"is_paid":' . $refund->is_paid . ', ';
                 $thisInput .='"amount":"PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',') . '", ';
                 $thisInput .='"created_at":" ' . $refund->created_at->format('F d, Y h:i A') . '"';
                 if (++$i < $refunds->count()) {
