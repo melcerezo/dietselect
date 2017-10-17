@@ -408,30 +408,6 @@
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
-                                                    <div id="updateRefundModal{{$refund->id}}" class="modal">
-                                                        <div class="modal-content">
-                                                            <form action="{{route('admin.refundUpdate', $refund->id)}}" method="post">
-                                                                <div class="row">
-                                                                    <div id="refundContainer{{$refund->id}}">
-                                                                    </div>
-                                                                    <div class="file-field input-field">
-                                                                        <label for="refundPic" class="active">Picture Upload:</label>
-                                                                        <div style="padding-top: 10px;">
-                                                                            <div class="btn orange darken-2">
-                                                                                <span>File</span>
-                                                                                <input type="file" data-error=".error-pic" id="refundPic" name="refundPic">
-                                                                            </div>
-                                                                            <div class="file-path-wrapper">
-                                                                                <input class="file-path validate" type="text" >
-                                                                            </div>
-                                                                            <div class="error-pic err"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <input type="submit" class="btn waves-effect waves-light orange darken-2" value="Submit">
-                                                            </form>
-                                                        </div>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
@@ -447,7 +423,32 @@
     </div>
 
 
-
+@foreach($refunds->where('is_paid','=',0) as $refund)
+    <div id="updateRefundModal{{$refund->id}}" class="modal">
+        <div class="modal-content">
+            <form action="{{route('admin.refundUpdate', $refund->id)}}" method="post">
+                <div class="row">
+                    <div id="refundContainer{{$refund->id}}">
+                    </div>
+                    <div class="file-field input-field">
+                        <label for="refundPic" class="active">Picture Upload:</label>
+                        <div style="padding-top: 10px;">
+                            <div class="btn orange darken-2">
+                                <span>File</span>
+                                <input type="file" data-error=".error-pic" id="refundPic" name="refundPic">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" >
+                            </div>
+                            <div class="error-pic err"></div>
+                        </div>
+                    </div>
+                </div>
+                <input type="submit" class="btn waves-effect waves-light orange darken-2" value="Submit">
+            </form>
+        </div>
+    </div>
+@endforeach
 
 
 @endsection
