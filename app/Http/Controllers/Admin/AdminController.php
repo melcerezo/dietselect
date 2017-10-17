@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
 use App\Message;
+use App\Refund;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -161,6 +162,99 @@ class AdminController extends Controller
         }
 
         return back()->with(['status'=>'Paid all unpaid commissions!']);
+    }
+
+    public function refundPage()
+    {
+        $foodies = Foodie::orderBy('created_at', 'desc')->get();
+        $refunds = Refund::orderBy('created_at','desc')->get();
+        $firstRefund = Refund::first();
+        $lastRefund = Refund::latest()->first();
+
+        $totalRefunds = 0;
+        $pendRefunds = 0;
+        $paidRefunds = 0;
+
+
+        $refundFoodies = [];
+        $uniqueRefundArray = [];
+        foreach($refunds as $refund){
+            $orderItem = $refund->order_item;
+            $totalRefunds+= ($orderItem->price * $orderItem->quantity);
+            $refFoodie = $refund->foodie->id;
+            if(!(in_array($refFoodie,$refundFoodies))){
+                $refundFoodies[] = $refFoodie;
+            }
+        }
+
+        foreach($refunds->where('is_paid','=',0) as $refund){
+            $orderItem = $refund->order_item;
+            $pendRefunds+= ($orderItem->price * $orderItem->quantity);
+        }
+        foreach($refunds->where('is_paid','=',1) as $refund){
+            $orderItem = $refund->order_item;
+            $paidRefunds+= ($orderItem->price * $orderItem->quantity);
+        }
+
+        foreach($refundFoodies as $refundFoodie){
+            $refundTotal = 0;
+            $refundPend = 0;
+            $refundPaid = 0;
+            foreach($refunds->where('foodie_id','=',$refundFoodie) as $item){
+                $orderItem = $item->order_item;
+                $refundTotal += ($orderItem->price * $orderItem->quantity);
+            }
+            foreach($refunds->where('foodie_id','=',$refundFoodie)->where('is_paid','=',0) as $item){
+                $orderItem = $item->order_item;
+                $refundPend += ($orderItem->price * $orderItem->quantity);
+            }
+            foreach($refunds->where('foodie_id','=',$refundFoodie)->where('is_paid','=',1) as $item){
+                $orderItem = $item->order_item;
+                $refundPaid += ($orderItem->price * $orderItem->quantity);
+            }
+
+            $uniqueRefundArray[]= array('id'=>$refundFoodie,'total'=>$refundTotal,'pend'=>$refundPend,'paid'=>$refundPaid);
+        }
+
+        $thisDay = Carbon::today();
+        $dw = Carbon::now();
+        $startOfTheWeek=$dw->startOfWeek();
+        $de = Carbon::now();
+        $endOfWeek = $de->endOfWeek();
+
+        $ds = Carbon::now();
+        $startOfMonth=$ds->startOfMonth();
+        $dr = Carbon::now();
+        $endOfMonth = $dr->endOfMonth();
+
+        $dt = Carbon::now();
+        $startOfYear=$dt->startOfYear();
+        $dm = Carbon::now();
+        $endOfYear = $dm->endOfYear();
+
+        return view("admin.adminRefund")->with([
+            'foodies'=>$foodies,
+            'refunds'=>$refunds,
+            'refundFoodies'=>$refundFoodies,
+            'totalRefunds'=>$totalRefunds,
+            'pendRefunds'=>$pendRefunds,
+            'paidRefunds'=>$paidRefunds,
+            'thisDay'=>$thisDay,
+            'startOfTheWeek'=>$startOfTheWeek,
+            'endOfWeek'=>$endOfWeek,
+            'startOfMonth'=>$startOfMonth,
+            'endOfMonth'=>$endOfMonth,
+            'startOfYear'=>$startOfYear,
+            'endOfYear'=>$endOfYear,
+            'firstRefund'=>$firstRefund,
+            'lastRefund'=>$lastRefund,
+            'uniqueRefundArray'=>$uniqueRefundArray
+        ]);
+    }
+
+    public function refund()
+    {
+
     }
 
     public function chefs()
@@ -629,7 +723,7 @@ class AdminController extends Controller
         $comChefs = Commission::orderBy('chef_id','ASC')->groupBy('chef_id')->select('chef_id')->get();
         $chefs = Chef::all();
 //        dd($comChefs->count());
-        $thisInput = 'hello';
+        $thisInput = '';
         if($comChefs->count()){
             $i=0;
             $thisInput = '[';
@@ -653,4 +747,35 @@ class AdminController extends Controller
         return $thisInput;
     }
 
+    public function getRefFoodie()
+    {
+        $refFoodies = Refund::orderBy('foodie_id','ASC')->groupBy('foodie_id')->select('foodie_id')->get();
+        $foodies = Foodie::all();
+    //        dd($comChefs->count());
+        $thisInput = '';
+        if($refFoodies->count()){
+            $i=0;
+            $thisInput = '[';
+            foreach($refFoodies as $refFoodie){
+                $thisInput .= '{';
+                foreach ($foodies as $foodie){
+                    if($foodie->id == $refFoodie->foodie_id){
+                        $thisInput .= '"id":'. $foodie->id.', ' ;
+                        $thisInput .= '"name":"'. $foodie->first_name.' '.$foodie->last_name.'"' ;
+                    }
+                }
+                if (++$i < $refFoodies->count()) {
+                    $thisInput .= '},';
+                } else {
+                    $thisInput .= '}';
+                }
+            }
+            $thisInput .= ']';
+        }
+    //        dd($thisInput);
+        return $thisInput;
+    }
 }
+
+
+

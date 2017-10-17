@@ -93,6 +93,92 @@ $(document).ready(function() {
     });
 
 
+    // refunds page
+
+    var foodieAjax = chooseRefund();
+
+    foodieAjax.done(function (response) {
+        // console.log(response);
+        $('select#foodieFilter').empty();
+        $('select#foodieFilter').append($('<option></option>').attr("value",'0').text('All'));
+        var valData = JSON.parse(response);
+        for(var i in valData){
+            $('select#foodieFilter').append($('<option></option>').attr("value",valData[i].id).text(valData[i].name));
+        }
+
+        $('select#foodieFilter').val('0');
+
+        $('select#foodieFilter').material_select();
+
+        //initialize all chef view
+        // var value = $('select#chefFilter option:selected').val();
+        //
+        // var getComAjax = chefComAjax(value);
+        //
+        // getComAjax.done(function (response) {
+        //     var valData = JSON.parse(response);
+        //
+        //     // console.log(valData);
+        //     var chefArray = [];
+        //
+        //     for(var i in valData){
+        //         if($.inArray(valData[i].name,chefArray)==-1){
+        //             chefArray.push(valData[i].name);
+        //         }
+        //     }
+        //
+        //
+        //     // console.log(chefArray);
+        // $.each(chefArray,function () {
+        //     var specChef
+        //
+        //
+        //     var x = '<div class="card-panel">';
+        //
+        //     x += '<table>';
+        //     x += '<thead>';
+        //     x += '<tr>';
+        //     x += '<th>ID</th>';
+        //     x += '<th>Chef Name</th>';
+        //     x += '<th>Date</th>';
+        //     x += '<th>Amount</th>';
+        //     x += '<th>Paid</th>';
+        //     x += '<th>Update</th>';
+        //     x += '</tr>';
+        //     x += '</thead>';
+        //     x += '<tbody>';
+        //     for(var i in valData){
+        //
+        //     }
+        //     x += '</tbody>';
+        //     x += '</table>';
+        //     x += '</div>';
+        //
+        // });
+        //
+        // });
+    });
+
+    $('#foodieFilter').change(function () {
+
+        var value = $('select#foodieFilter option:selected').val();
+
+        if(value==0){
+            $('div.foodieCard').show();
+            $('#refundAll').show();
+            $('.refundTot').hide();
+        }else{
+            $('div.foodieCard').hide();
+            $('div#cardRef'+value).show();
+            $('#refundAll').hide();
+            $('.refundTot').hide();
+            $('#refund'+value).show();
+        }
+
+        console.log(value);
+
+
+    });
 
 
 
@@ -675,6 +761,13 @@ $(document).ready(function() {
 function chooseChef(){
     return $.ajax({
         url: '/admin/commissions/chef'
+
+    });
+}
+
+function chooseRefund(){
+    return $.ajax({
+        url: '/admin/refunds/'
 
     });
 }

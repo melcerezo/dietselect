@@ -220,6 +220,9 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
     Route::get('commissions/chef','Admin\AdminController@getComChef');
     Route::get('commissions/get/{type}','Admin\AdminController@getCom');
 
+    Route::get('refunds','Admin\AdminController@getRefFoodie');
+
+
 
     Route::post('/payCommission/{commission}','Admin\AdminController@payCommission')->name('admin.pay');
     Route::post('/payCommissionAll','Admin\AdminController@payCommissionAll')->name('admin.payAll');

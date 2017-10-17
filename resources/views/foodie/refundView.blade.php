@@ -6,7 +6,16 @@
 @section('page_content')
     <div class="container">
         <div class="row">
-            <div class="RefundInfo">
+            <div class="refundPic col s12 m6">
+                    @if($refund->refund_pic=='')
+                        <span>Payment Pending</span>
+                    @else
+                        <div style="border :1px solid #d1d1d1; height: 300px; width: 300px;">
+                            <img src="/img/refunds/{{ $refund->refund_pic }}" alt="">
+                        </div>
+                    @endif
+            </div>
+            <div class="refundInfo col s12 m6">
                 <div class="row">
                     <span style="font-size: 20px; font-weight: bold;">Refund Information</span>
                 </div>
