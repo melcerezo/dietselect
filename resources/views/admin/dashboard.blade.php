@@ -175,7 +175,7 @@
                                             <td>
                                                 @foreach($foodies as $foodie)
                                                     @if($foodie->id==$refund->foodie_id)
-                                                        {{$foodie->name}}
+                                                        {{$foodie->first_name.' '.$foodie->last_name}}
                                                     @endif
                                                 @endforeach
                                             </td>
