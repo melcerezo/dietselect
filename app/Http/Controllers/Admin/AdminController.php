@@ -258,8 +258,8 @@ class AdminController extends Controller
     public function refund(Request $request)
     {
         $id = $request['refund-id'];
-        dd($id);
         $refund = Refund::where('id','=',$id)->first();
+        dd($refund);
 
         if($request->hasFile('refundPic')) {
             $avatar = $request->file('refundPic');
