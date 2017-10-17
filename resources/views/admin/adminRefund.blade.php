@@ -320,7 +320,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        <a href="#updateRefundModal{{$refund->id}}" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
@@ -362,7 +362,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        <a href="#updateRefundModal{{$refund->id}}" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
