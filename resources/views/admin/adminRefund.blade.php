@@ -11,7 +11,7 @@
         .tableTab{
             cursor: pointer;
         }
-        .refundTot`{
+        .refundTot{
             display: none;
         }
     </style>
@@ -155,12 +155,12 @@
                 <ul id="refundAll" class="collection" style="margin-top: 0;">
                     <li class="collection-item grey lighten-3">
                          <span>
-                            Total Commissions From {{$firstRefund->created_at->format('F d, Y')}} To {{$lastRefund->created_at->format('F d, Y')}}
+                            Total Refunds From {{$firstRefund->created_at->format('F d, Y')}} To {{$lastRefund->created_at->format('F d, Y')}}
                         </span>
                     </li>
-                    <li class="collection-item"><div>Total Refunds for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($totalRefunds),2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Unpaid Refunds for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($pendRefunds),2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Paid Refunds for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($paidRefunds),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Refunds for Customers:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($totalRefunds),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Unpaid Refunds for Customers:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($pendRefunds),2,'.',',')}}</span></li>
+                    <li class="collection-item"><div>Total Paid Refunds for Customers:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($paidRefunds),2,'.',',')}}</span></li>
                 </ul>
             </div>
             <div class="col s12 m10">
