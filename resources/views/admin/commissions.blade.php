@@ -69,6 +69,13 @@
                     </a>
                 </li>
                 <li>
+                    <a href="{{route('admin.adminRefund')}}">
+                        <span style="margin-left: 2px;">
+                            Refunds
+                        </span>
+                    </a>
+                </li>
+                <li>
                     <form id="logout" method="post" action="{{ route('admin.logout') }}">
                         {{ csrf_field() }}
                         <a id="logout-link" class="nvItLnk" href="#">
@@ -91,6 +98,7 @@
                         </span>
                     </li>
                     <li class="collection-item"><a href="{{route('admin.commissions')}}">Commissions</a></li>
+                    <li class="collection-item"><a href="{{route('admin.adminRefund')}}">Refunds</a></li>
                     <li class="collection-item"><a href="{{route('admin.orders')}}">Orders</a></li>
                     <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
                     <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
