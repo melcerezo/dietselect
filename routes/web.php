@@ -222,7 +222,7 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
 
     Route::get('refunds','Admin\AdminController@getRefFoodie');
     Route::get('refunds/get','Admin\AdminController@refundPage')->name('admin.adminRefund');
-    Route::post('refunds/update/{id}','Admin\AdminController@refund')->name('admin.refundUpdate');
+    Route::post('refunds/update','Admin\AdminController@refund')->name('admin.refundUpdate');
 
 
 

@@ -320,7 +320,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="#updateRefundModal{{$refund->id}}" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
@@ -362,7 +362,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="#updateRefundModal{{$refund->id}}" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
@@ -404,7 +404,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="#updateRefundModal{{$refund->id}}" data-id="{{$refund->id}}" class="btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
@@ -423,12 +423,13 @@
     </div>
 
 
-@foreach($refunds->where('is_paid','=',0) as $refund)
-    <div id="updateRefundModal{{$refund->id}}" class="modal">
+    <div id="updateRefundModal" class="modal">
         <div class="modal-content">
-            <form action="{{route('admin.refundUpdate', $refund->id)}}" method="post">
+            <form id="refundForm" action="{{route('admin.refundUpdate')}}" method="post">
+                {{csrf_field()}}
+                <input type="hidden" id="refund-id" name="refund-id" value="">
                 <div class="row">
-                    <div id="refundContainer{{$refund->id}}">
+                    <div id="refundContainer">
                     </div>
                     <div class="file-field input-field">
                         <label for="refundPic" class="active">Picture Upload:</label>
@@ -448,7 +449,6 @@
             </form>
         </div>
     </div>
-@endforeach
 
 
 @endsection

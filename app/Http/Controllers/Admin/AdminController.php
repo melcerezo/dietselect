@@ -255,8 +255,10 @@ class AdminController extends Controller
         ]);
     }
 
-    public function refund($id, Request $request)
+    public function refund(Request $request)
     {
+        $id = $request['refund-id'];
+
         $refund = Refund::where('id','=',$id)->first();
 
         if($request->hasFile('refundPic')) {
