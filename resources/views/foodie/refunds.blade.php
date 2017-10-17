@@ -102,6 +102,8 @@
                                 <div class="payInfo">Order Item: {{$orderItem->plan->plan_name}}</div>
                                 <div class="divider"></div>
                                 <div class="payInfo">Chef: {{$orderItem->plan->chef->name}}</div>
+                                <div class="divider"></div>
+                                <div class="refundInfo">Amount: {{'PHP ' . number_format(($orderItem->price * $orderItem->quantity), 2, '.', ',')}}</div>
                             </div>
 
                             <form id="transferRefundForm" action="{{route('foodie.refund',$refund->id)}}" method="post" enctype="multipart/form-data">
