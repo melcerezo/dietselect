@@ -365,7 +365,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                        <form method="post" action="{{route('admin.pay',$refund->id)}}">
                                                             {{ csrf_field() }}
                                                             <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
                                                         </form>
@@ -410,7 +410,7 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                        <form method="post" action="{{route('admin.pay',$refund->id)}}">
                                                             {{ csrf_field() }}
                                                             <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
                                                         </form>
