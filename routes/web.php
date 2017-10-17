@@ -221,6 +221,7 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
     Route::get('commissions/get/{type}','Admin\AdminController@getCom');
 
     Route::get('refunds','Admin\AdminController@getRefFoodie');
+    Route::get('refunds/get','Admin\AdminController@refundPage')->name('admin.adminRefund');
 
 
 
