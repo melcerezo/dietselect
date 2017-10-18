@@ -116,10 +116,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -256,10 +261,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -396,10 +406,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -526,10 +541,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -748,10 +768,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -902,10 +927,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1054,10 +1084,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1197,10 +1232,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1433,10 +1473,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1518,10 +1563,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1606,10 +1656,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1691,10 +1746,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1779,10 +1839,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1854,10 +1919,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -1933,10 +2003,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
@@ -2008,10 +2083,15 @@ $(document).ready(function () {
                         x += '<div>Type: ' + valData[i].items[j].type + '</div>';
                         x += '<div>Quantity: ' + valData[i].items[j].quantity + '</div>';
                         x += '<div>Price: ' + valData[i].items[j].price + '</div>';
-                        if(valData[i].items[j].delivery==0){
-                            x += '<div>Delivery: Pending</div>';
-                        }else if(valData[i].items[j].delivery==1){
-                            x += '<div>Delivery: Delivered</div>';
+                        if(valData[i].items[j].is_cancelled==0){
+                            if(valData[i].items[j].delivery==0){
+                                x += '<div>Delivery: Pending</div>';
+                            }else if(valData[i].items[j].delivery==1){
+                                x += '<div>Delivery: Delivered</div>';
+                            }
+                        }else if(valData[i].items[j].is_cancelled==1){
+                            x += '<div>Delivery: Cancelled</div>';
+
                         }
                         x += '</div>';
                         x += '<div class="col s12 offset-m2 m2">';
