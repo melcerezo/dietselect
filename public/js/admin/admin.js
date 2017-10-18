@@ -189,12 +189,16 @@ $(document).ready(function() {
 
             var x = '<ul class="collection">';
             x += '<li class="collection-item">Name: '+valData.name+'</li>';
+            x += '<li class="collection-item">Plan: '+valData.plan+'</li>';
+            x += '<li class="collection-item">Chef: '+valData.plan+'</li>';
             if(valData.method == 0){
+                x += '<li class="collection-item">Method: Bank Deposit</li>';
                 if(valData.bank_type==0){
                     x += '<li class="collection-item">Bank: BDO</li>';
                 }
                 x += '<li class="collection-item">Account Number: '+valData.bank_account+'</li>';
             }else if(valData.method==1){
+                x += '<li class="collection-item">Method: Money Transfer</li>';
                 if(valData.transfer_company==0){
                     x += '<li class="collection-item">Transfer Company: Cebuana Lhuillier</li>';
                 }
