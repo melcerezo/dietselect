@@ -295,6 +295,7 @@
                                             <th>Date</th>
                                             <th>Refund Amount</th>
                                             <th>Payment Status</th>
+                                            <th>Method</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -319,6 +320,13 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    @if($refund->method==0)
+                                                        <span>Bank</span>
+                                                    @elseif($refund->method==1)
+                                                        <span>Transfer</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     @if($refund->is_paid==0)
                                                         <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
@@ -337,6 +345,7 @@
                                             <th>Date</th>
                                             <th>Amount to Vendor</th>
                                             <th>Payment Status</th>
+                                            <th>Method</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -361,6 +370,13 @@
                                                     @endif
                                                 </td>
                                                 <td>
+                                                    @if($refund->method==0)
+                                                        <span>Bank</span>
+                                                    @elseif($refund->method==1)
+                                                        <span>Transfer</span>
+                                                    @endif
+                                                </td>
+                                                <td>
                                                     @if($refund->is_paid==0)
                                                         <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
                                                     @elseif($refund->is_paid==1)
@@ -379,6 +395,7 @@
                                             <th>Date</th>
                                             <th>Amount to Vendor</th>
                                             <th>Payment Status</th>
+                                            <th>Method</th>
                                             <th>Update</th>
                                         </tr>
                                         </thead>
@@ -400,6 +417,13 @@
                                                         <span>Pending</span>
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
+                                                    @endif
+                                                </td>
+                                                <td>
+                                                    @if($refund->method==0)
+                                                        <span>Bank</span>
+                                                    @elseif($refund->method==1)
+                                                        <span>Transfer</span>
                                                     @endif
                                                 </td>
                                                 <td>
