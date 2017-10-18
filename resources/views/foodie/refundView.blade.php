@@ -75,19 +75,22 @@
                         <span style="font-size: 20px; font-weight: bold;">REFUND METHOD</span>
                         <span class="right">{{$refund->method == 1 ? 'Money Transfer' : 'Bank Deposit'}}</span>
                     </div>
+                    <div class="divider"></div>
                     <div>
                         @if($refund->method==0)
                             <div>
                                 <span style="font-size: 20px; font-weight: bold;">BANK ACCOUNT</span>
                                 <span class="right">{{$refund->bank_account}}</span>
                             </div>
+                            <div class="divider"></div>
                         @elseif($refund->method==1)
                             <div>
-                                <span style="font-size: 20px; font-weight: bold;">MONEY TRANSFER COMPANY</span>
+                                <span style="font-size: 20px; font-weight: bold;">TRANSFER COMPANY</span>
                                 @if($refund->transfer_company==0)
                                     <span class="right">Cebuana Lhuillier</span>
                                 @endif
                             </div>
+                            <div class="divider"></div>
                         @endif
                             <div>
                                 @if($refund->method==0)
