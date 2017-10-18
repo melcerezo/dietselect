@@ -265,7 +265,7 @@ class AdminController extends Controller
             $avatar = $request->file('refundPic');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
             // Change Directory HERE
-            Image::make($avatar)->resize(500, 500)->save(public_path('img/refunds' . $filename));
+            Image::make($avatar)->resize(500, 500)->save(public_path('img/refunds/' . $filename));
             $refund->refund_pic = $filename;
             $refund->is_paid = 1;
             $refund->save();

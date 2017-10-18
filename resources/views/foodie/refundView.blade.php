@@ -11,7 +11,7 @@
                         <span>Payment Pending</span>
                     @else
                         <div style="border :1px solid #d1d1d1; height: 300px; width: 300px;">
-                            <img src="/img/refunds/{{ $refund->refund_pic }}" alt="">
+                            <img class="responsive-img" src="/img/refunds/{{ $refund->refund_pic }}" alt="">
                         </div>
                     @endif
             </div>
