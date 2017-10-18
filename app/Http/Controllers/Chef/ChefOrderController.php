@@ -396,8 +396,9 @@ class ChefOrderController extends Controller
             $orderItem->is_cancelled = 1;
             $orderItem->save();
 
-            if($order){
-
+            if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
+                $order->is_cancelled=1;
+                $order->save();
             }
 
             $foodnotif = new Notification();
@@ -480,6 +481,11 @@ class ChefOrderController extends Controller
 
             $orderItem->is_cancelled = 1;
             $orderItem->save();
+
+            if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
+                $order->is_cancelled=1;
+                $order->save();
+            }
 
             $refund = new Refund();
             $refund->foodie_id = $orderItem->order->foodie->id;
