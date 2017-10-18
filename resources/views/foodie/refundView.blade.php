@@ -91,6 +91,11 @@
                                 @endif
                             </div>
                             <div class="divider"></div>
+                            <div>
+                                <span style="font-size: 20px; font-weight: bold;">TRANSACTION CODE</span>
+                                <span class="right">{{$refund->transfer_number}}</span>
+                            </div>
+                            <div class="divider"></div>
                         @endif
                             <div>
                                 @if($refund->method==0)
