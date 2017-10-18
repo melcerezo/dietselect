@@ -259,8 +259,8 @@ class AdminController extends Controller
     {
         $id = $request['refund-id'];
         $refund = Refund::where('id','=',$id)->first();
-        dd($refund);
 
+        dd($request['refundPic']);
         if($request->hasFile('refundPic')) {
             $avatar = $request->file('refundPic');
             $filename = time() . '.' . $avatar->getClientOriginalExtension();
