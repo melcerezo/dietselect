@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Chef;
 
 use App\ChefCustomizedMeal;
+use App\Commission;
 use App\CustomPlan;
 use App\Foodie;
 use App\Http\Controllers\Controller;
@@ -101,7 +102,7 @@ class ChefOrderController extends Controller
             if($orderPlan!=null){
                 $orders[]= array('id'=>$orderItem->it_id,'plan_name'=>$orderPlanName,'foodie_id'=>$orderItem->order->foodie_id,'week'=>$startOfWeek,
                     'quantity'=>$orderItem->quantity,'picture'=>$orderPlanPic,'price'=>$orderItem->price,'order_type'=>$orderType,'is_paid'=>$orderItem->order->is_paid,
-                    'is_cancelled'=>$orderItem->order->is_cancelled,'is_delivered'=>$orderItem->is_delivered,'created_at'=>$orderItem->created_at->format('F d, Y h:i A'));
+                    'is_cancelled'=>$orderItem->is_cancelled,'is_delivered'=>$orderItem->is_delivered,'created_at'=>$orderItem->created_at->format('F d, Y h:i A'));
             }
 
         }
