@@ -399,7 +399,7 @@ class ChefOrderController extends Controller
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
                 $order->save();
-                dd($order);
+//                dd($order);
             }
 
             $foodnotif = new Notification();
