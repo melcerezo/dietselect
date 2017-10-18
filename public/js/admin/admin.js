@@ -190,7 +190,7 @@ $(document).ready(function() {
             var x = '<ul class="collection">';
             x += '<li class="collection-item">Name: '+valData.name+'</li>';
             x += '<li class="collection-item">Plan: '+valData.plan+'</li>';
-            x += '<li class="collection-item">Chef: '+valData.plan+'</li>';
+            x += '<li class="collection-item">Chef: '+valData.chef+'</li>';
             if(valData.method == 0){
                 x += '<li class="collection-item">Method: Bank Deposit</li>';
                 if(valData.bank_type==0){
