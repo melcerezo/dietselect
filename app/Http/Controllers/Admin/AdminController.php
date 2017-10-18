@@ -792,6 +792,57 @@ class AdminController extends Controller
     //        dd($thisInput);
         return $thisInput;
     }
+
+    public function getRefInfo($id)
+    {
+        $refund = Refund::where('id','=',$id)->first();
+        $foodies = Foodie::all();
+        //        dd($comChefs->count());
+        $thisInput = '';
+        if($refund->count()){
+            $orderItem = $refund->order_item;
+            if ($orderItem->order_type == 0) {
+                $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                //                    dd($orderPlan->picture);
+                $planPic = $orderPlan->picture;
+                $planName = $orderPlan->plan_name;
+                $chefName = $orderPlan->chef->name;
+                $orderType = "Standard";
+            } elseif ($orderItem->order_type == 1 || $orderItem->order_type == 2) {
+                if ($orderItem->order_type == 1) {
+                    $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                } elseif ($orderItem->order_type == 2) {
+                    $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                }
+                if ($orderPlan != null) {
+                    $planPic = $orderPlan->plan->picture;
+                    $planName = $orderPlan->plan->plan_name;
+                    $chefName = $orderPlan->plan->chef->name;
+                    $orderType = "Customized";
+                }
+            }
+                $thisInput .= '{';
+                foreach ($foodies as $foodie){
+                    if($foodie->id == $refund->foodie_id){
+                        $thisInput .= '"id":'. $foodie->id.', ' ;
+                        $thisInput .= '"name":"'. $foodie->first_name.' '.$foodie->last_name.'",' ;
+                    }
+                    $thisInput .= '"plan":'. $planName.', ' ;
+                    $thisInput .= '"chef":'. $chefName.', ' ;
+                    $thisInput .= '"method":'. $refund->method.', ' ;
+                    if($refund->method == 0){
+                        $thisInput .= '"bank_type":'. $refund->bank_type.', ' ;
+                        $thisInput .= '"bank_account":'. $refund->bank_account.', ' ;
+                    }else if($refund->method == 1){
+                        $thisInput .= '"transfer_company":'. $refund->bank_account.', ' ;
+                    }
+                }
+
+                $thisInput .= '}';
+        }
+        //        dd($thisInput);
+        return $thisInput;
+    }
 }
 
 

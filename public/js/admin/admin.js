@@ -182,6 +182,26 @@ $(document).ready(function() {
 
     $('.updateRefund').click(function () {
         var id = $(this).attr('data-id');
+        var info = refInfo(id);
+
+        info.done(function (response) {
+           var valData = JSON.parse(response);
+
+            var x = '<ul class="collection">';
+            x += '<li class="collection-item">Name: '+valData.name+'</li>';
+            if(valData.method == 0){
+                if(valData.bank_type==0){
+                    x += '<li class="collection-item">Bank: BDO</li>';
+                }
+                x += '<li class="collection-item">Account Number: '+valData.bank_account+'</li>';
+            }else if(valData.method==1){
+                if(valData.transfer_company==0){
+                    x += '<li class="collection-item">Transfer Company: Cebuana Lhuillier</li>';
+                }
+            }
+            x += '</ul>';
+        });
+
         $('#refund-id').val(id);
     });
 
@@ -840,6 +860,13 @@ $(document).ready(function() {
 function chooseChef(){
     return $.ajax({
         url: '/admin/commissions/chef'
+
+    });
+}
+
+function refInfo(value){
+    return $.ajax({
+        url: '/admin/refunds/'+ value
 
     });
 }

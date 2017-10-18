@@ -83,6 +83,13 @@
                                 <span class="right">{{$refund->bank_account}}</span>
                             </div>
                             <div class="divider"></div>
+                            @if($refund->transfer_number!=null)
+                                <div>
+                                    <span style="font-size: 20px; font-weight: bold;">REFERENCE NUMBER</span>
+                                    <span class="right">{{$refund->transfer_number}}</span>
+                                </div>
+                                <div class="divider"></div>
+                            @endif
                         @elseif($refund->method==1)
                             <div>
                                 <span style="font-size: 20px; font-weight: bold;">TRANSFER COMPANY</span>
@@ -91,11 +98,13 @@
                                 @endif
                             </div>
                             <div class="divider"></div>
-                            <div>
-                                <span style="font-size: 20px; font-weight: bold;">TRANSACTION CODE</span>
-                                <span class="right">{{$refund->transfer_number}}</span>
-                            </div>
-                            <div class="divider"></div>
+                            @if($refund->transfer_number!=null)
+                                <div>
+                                    <span style="font-size: 20px; font-weight: bold;">TRANSACTION CODE</span>
+                                    <span class="right">{{$refund->transfer_number}}</span>
+                                </div>
+                                <div class="divider"></div>
+                            @endif
                         @endif
                             <div>
                                 @if($refund->method==0)
