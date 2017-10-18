@@ -388,13 +388,17 @@ class ChefOrderController extends Controller
 
         $orderItemsAll = $order->order_item()->get();
 
-        dd($orderItemsAll);
+        dd($orderItemsAll->where('is_cancelled','=',0)->count());
 
         $foodieName = $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name;
         $chef = Auth::guard('chef')->user();
         if($order->is_paid == 0){
             $orderItem->is_cancelled = 1;
             $orderItem->save();
+
+            if($order){
+
+            }
 
             $foodnotif = new Notification();
             $foodnotif->sender_id = 0;
