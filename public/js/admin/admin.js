@@ -866,7 +866,7 @@ function chooseChef(){
 
 function refInfo(value){
     return $.ajax({
-        url: '/admin/refunds/'+ value
+        url: '/admin/refunds/info/'+ value
 
     });
 }
