@@ -50,7 +50,7 @@ class ClearPendingOrders extends Command
 
         $pendingOrders = Order::where('is_paid','=',0)
             ->where('is_cancelled','=',0)
-            ->where('foodie_id','=',23)
+//            ->where('foodie_id','=',23)
             ->where('created_at','>',$monday)
             ->where('created_at','<',$saturday)
             ->get();
@@ -64,12 +64,12 @@ class ClearPendingOrders extends Command
             $foodnotif->receiver_id = $item->foodie->id;
             $foodnotif->receiver_type = 'f';
             $foodnotif->notification = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled due to your failure to pay ';
-            $foodnotif->notification .= 'before ' . $saturday . ' 3:00pm.';
+            $foodnotif->notification .= 'before ' . $item->created_at->copy()->addDays(5)->format('F d, Y') . ' 3:00pm.';
             $foodnotif->notification_type = 3;
             $foodnotif->save();
 
             $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled';
-            $messageFoodie .= ' because you failed to pay before '.$saturday->format('F d, Y').' 3:00pm.';
+            $messageFoodie .= ' because you failed to pay before '. $item->created_at->copy()->addDays(5)->format('F d, Y').' 3:00pm.';
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
@@ -121,7 +121,7 @@ class ClearPendingOrders extends Command
                 foreach ($planName as $pName) {
                     $chefnotif->notification .= $pName . ' ';
                 }
-                $chefnotif->notification .= 'has been cancelled due to failure to pay before '.$saturday.' 3:00pm.';
+                $chefnotif->notification .= 'has been cancelled due to failure to pay before '.$item->created_at->copy()->addDays(5)->format('F d, Y').' 3:00pm.';
                 $chefnotif->notification_type = 3;
                 $chefnotif->save();
 
@@ -129,7 +129,7 @@ class ClearPendingOrders extends Command
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';
                 }
-                $messageChef.='has been cancelled due to no payment before '.$saturday->format('F d, Y').' 3:00pm.';
+                $messageChef.='has been cancelled due to no payment before '.$item->created_at->copy()->addDays(5)->format('F d, Y').' 3:00pm.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $urlChef = 'https://www.itexmo.com/php_api/api.php';
                 $itexmoChef = array('1' => $chefPhoneNumber, '2' => $messageChef, '3' => 'PR-DIETS656642_VBVIA');
