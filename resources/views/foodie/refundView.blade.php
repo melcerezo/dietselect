@@ -79,6 +79,19 @@
                     <div>
                         @if($refund->method==0)
                             <div>
+                                <span style="font-size: 20px; font-weight: bold;">BANK</span>
+                                @if($refund->bank_type==0)
+                                    <span class="right">BDO</span>
+                                @elseif($refund->bank_type==1)
+                                    <span class="right">BPI</span>
+                                @elseif($refund->bank_type==2)
+                                    <span class="right">MetroBank</span>
+                                @elseif($refund->bank_type==2)
+                                    <span class="right">EastWest</span>
+                                @endif
+                            </div>
+                            <div class="divider"></div>
+                            <div>
                                 <span style="font-size: 20px; font-weight: bold;">BANK ACCOUNT</span>
                                 <span class="right">{{$refund->bank_account}}</span>
                             </div>
