@@ -425,7 +425,7 @@
 
     <div id="updateRefundModal" class="modal">
         <div class="modal-content">
-            <form id="refundForm" action="{{route('admin.refundUpdate')}}" method="post">
+            <form id="refundForm" action="{{route('admin.refundUpdate')}}" method="post" enctype="multipart/form-data">
                 {{csrf_field()}}
                 <input type="hidden" id="refund-id" name="refund-id" value="">
                 <div class="row">
