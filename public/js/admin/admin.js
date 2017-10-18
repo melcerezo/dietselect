@@ -200,6 +200,8 @@ $(document).ready(function() {
                 }
             }
             x += '</ul>';
+
+            $('div#infoRef').append(x);
         });
 
         $('#refund-id').val(id);
