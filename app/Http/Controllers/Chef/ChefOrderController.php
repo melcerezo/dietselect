@@ -385,6 +385,11 @@ class ChefOrderController extends Controller
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
         $order = $orderItem->order;
+
+        $orderItemsAll = $order->order_item()->get();
+
+        dd($orderItemsAll);
+
         $foodieName = $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name;
         $chef = Auth::guard('chef')->user();
         if($order->is_paid == 0){
@@ -468,13 +473,15 @@ class ChefOrderController extends Controller
             $message = 'You have cancelled '.$foodieName.'\'s for '.$planName;
 
         }else if($order->is_paid == 1){
+
+            $orderItem->is_cancelled = 1;
+            $orderItem->save();
+
             $refund = new Refund();
             $refund->foodie_id = $orderItem->order->foodie->id;
             $refund->order_item_id = $orderItem->id;
             $refund->save();
 
-            $orderItem->is_cancelled = 1;
-            $orderItem->save();
 
             $foodnotif = new Notification();
             $foodnotif->sender_id = 0;
