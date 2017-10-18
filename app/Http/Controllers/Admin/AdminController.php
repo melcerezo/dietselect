@@ -829,9 +829,9 @@ class AdminController extends Controller
                     $thisInput .= '"method":'. $refund->method.', ' ;
                     if($refund->method == 0){
                         $thisInput .= '"bank_type":'. $refund->bank_type.', ' ;
-                        $thisInput .= '"bank_account":'. $refund->bank_account.', ' ;
+                        $thisInput .= '"bank_account":'. $refund->bank_account.' ' ;
                     }else if($refund->method == 1){
-                        $thisInput .= '"transfer_company":'. $refund->bank_account.', ' ;
+                        $thisInput .= '"transfer_company":'. $refund->bank_account.' ' ;
                     }
 
                 $thisInput .= '}';
