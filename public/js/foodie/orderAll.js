@@ -518,7 +518,7 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '<div class="col s12 m3">';
                     x += '<div>Status</div>';
-                    x += '<div style="font-size: 22px;">' + valData[i].is_paid + '</div>';
+                    x += '<div style="font-size: 22px;">Cancelled</div>';
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1209,7 +1209,7 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '<div class="col s12 m3">';
                     x += '<div>Status</div>';
-                    x += '<div style="font-size: 22px;">' + valData[i].is_paid + '</div>';
+                    x += '<div style="font-size: 22px;">Cancelled</div>';
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1980,7 +1980,7 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '<div class="col s12 m3">';
                     x += '<div>Status</div>';
-                    x += '<div style="font-size: 22px;">' + valData[i].is_paid + '</div>';
+                    x += '<div style="font-size: 22px;">Cancelled</div>';
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -2060,7 +2060,7 @@ $(document).ready(function () {
                     x += '</div>';
                     x += '<div class="col s12 m3">';
                     x += '<div>Status</div>';
-                    x += '<div style="font-size: 22px;">'+valData[i].is_paid+'</div>';
+                    x += '<div style="font-size: 22px;">Cancelled</div>';
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
