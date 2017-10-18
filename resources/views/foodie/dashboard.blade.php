@@ -19,7 +19,7 @@
                 <div class="row">
                     <ul class="collection">
                         <li class="collection-item">
-                            <a href="{{route("foodie.order.view", ['id'=> 0])}}">Order History</a>
+                            <a href="{{route("foodie.order.view", ['id'=> 0])}}">Orders</a>
                         </li>
                         <li class="collection-item">
                             <a href="{{route('foodie.plan.show')}}">Browse Plans</a>
