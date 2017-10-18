@@ -185,6 +185,7 @@ $(document).ready(function() {
         var info = refInfo(id);
 
         info.done(function (response) {
+           $('div#infoRef').empty();
            var valData = JSON.parse(response);
 
             var x = '<ul class="collection">';
