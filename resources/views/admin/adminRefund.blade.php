@@ -182,10 +182,10 @@
                                 <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                     <div>
                                         <span>
-                                            Commissions -
+                                            Refunds -
                                             @foreach($foodies as $foodie)
                                                 @if($foodie->id==$refundFoodie)
-                                                    <span>{{$foodie->name}}</span>
+                                                    <span>{{$foodie->first_name.' '.$foodie->last_name}}</span>
                                                 @endif
                                             @endforeach
                                         </span>
