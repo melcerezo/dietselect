@@ -196,6 +196,15 @@ $(document).ready(function() {
                 x += '<li class="collection-item">Method: Bank Deposit</li>';
                 if(valData.bank_type==0){
                     x += '<li class="collection-item">Bank: BDO</li>';
+                }else if(valData.bank_type==1){
+                    x += '<li class="collection-item">Bank: BPI</li>';
+
+                }else if(valData.bank_type==2){
+                    x += '<li class="collection-item">Bank: MetroBank</li>';
+
+                }else if(valData.bank_type==3){
+                    x += '<li class="collection-item">Bank: EastWest</li>';
+
                 }
                 x += '<li class="collection-item">Account Number: '+valData.bank_account+'</li>';
             }else if(valData.method==1){
