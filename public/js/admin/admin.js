@@ -188,6 +188,8 @@ $(document).ready(function() {
            var valData = JSON.parse(response);
 
             var x = '<ul class="collection">';
+
+            x += '<li class="collection-item grey lighten-1">Refund Information</li>';
             x += '<li class="collection-item">Name: '+valData.name+'</li>';
             if(valData.method == 0){
                 x += '<li class="collection-item">Method: Bank Deposit</li>';
