@@ -196,6 +196,7 @@ $(document).ready(function() {
 
     $('form#refundForm').validate({
         rules: {
+            code:{ required:true },
             cover:{
                 required:true,
                 accept:"image/jpg,image/jpeg,image/png,image/gif",
@@ -204,7 +205,7 @@ $(document).ready(function() {
         },
         messages: {
             cover:{
-                required: 'Please choose a cover photo!',
+                required: 'Please upload proof photo!',
                 accept: 'Images Only!'
             }
         },

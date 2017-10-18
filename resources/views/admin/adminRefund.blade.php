@@ -429,6 +429,10 @@
                 {{csrf_field()}}
                 <input type="hidden" id="refund-id" name="refund-id" value="">
                 <div class="row">
+                    <label for="code" class="active">Transaction Number/Reference Number:</label>
+                    <input type="text" name="code" id="code">
+                </div>
+                <div class="row">
                     <div id="refundContainer">
                     </div>
                     <div class="file-field input-field">
