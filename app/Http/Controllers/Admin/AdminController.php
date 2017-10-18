@@ -827,8 +827,8 @@ class AdminController extends Controller
                         $thisInput .= '"id":'. $foodie->id.', ' ;
                         $thisInput .= '"name":"'. $foodie->first_name.' '.$foodie->last_name.'",' ;
                     }
-                    $thisInput .= '"plan":'. $planName.', ' ;
-                    $thisInput .= '"chef":'. $chefName.', ' ;
+                    $thisInput .= '"plan":"'. $planName.'", ' ;
+                    $thisInput .= '"chef":"'. $chefName.'", ' ;
                     $thisInput .= '"method":'. $refund->method.', ' ;
                     if($refund->method == 0){
                         $thisInput .= '"bank_type":'. $refund->bank_type.', ' ;
