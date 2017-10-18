@@ -1075,6 +1075,11 @@ class FoodieOrderPlanController extends Controller
         $order->is_cancelled = 1;
         $order->save();
 
+        foreach ($orderItems as $orderItem){
+            $orderItem->is_cancelled =1;
+            $orderItem->save();
+        }
+
         $foodnotif = new Notification();
         $foodnotif->sender_id = 0;
         $foodnotif->receiver_id = $foodie->id;

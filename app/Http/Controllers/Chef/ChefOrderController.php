@@ -388,7 +388,7 @@ class ChefOrderController extends Controller
 
         $orderItemsAll = $order->order_item()->get();
 
-//        dd($orderItemsAll->where('is_cancelled','=',0)->count());
+        dd($orderItemsAll->where('is_cancelled','=',0)->count());
 
         $foodieName = $orderItem->order->foodie->first_name.' '.$orderItem->order->foodie->last_name;
         $chef = Auth::guard('chef')->user();
@@ -396,7 +396,7 @@ class ChefOrderController extends Controller
             $orderItem->is_cancelled = 1;
             $orderItem->save();
 
-            if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
+            if($orderItemsAll->where('is_cancelled','=',0)->count()){
                 $order->is_cancelled=1;
                 $order->save();
             }
