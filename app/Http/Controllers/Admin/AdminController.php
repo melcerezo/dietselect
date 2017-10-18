@@ -796,7 +796,7 @@ class AdminController extends Controller
     public function getRefInfo($id)
     {
         $refund = Refund::where('id','=',$id)->first();
-        $foodies = Foodie::all();
+        $foodie = Foodie::where('id','=',$refund->foodie_id)->first();
         //        dd($comChefs->count());
         $thisInput = '';
         if($refund->count()){
@@ -822,11 +822,8 @@ class AdminController extends Controller
                 }
             }
                 $thisInput .= '{';
-                foreach ($foodies as $foodie){
-                    if($foodie->id == $refund->foodie_id){
-                        $thisInput .= '"id":'. $foodie->id.', ' ;
-                        $thisInput .= '"name":"'. $foodie->first_name.' '.$foodie->last_name.'",' ;
-                    }
+                    $thisInput .= '"id":'. $foodie->id.', ' ;
+                    $thisInput .= '"name":"'. $foodie->first_name.' '.$foodie->last_name.'",' ;
                     $thisInput .= '"plan":"'. $planName.'", ' ;
                     $thisInput .= '"chef":"'. $chefName.'", ' ;
                     $thisInput .= '"method":'. $refund->method.', ' ;
@@ -836,7 +833,6 @@ class AdminController extends Controller
                     }else if($refund->method == 1){
                         $thisInput .= '"transfer_company":'. $refund->bank_account.', ' ;
                     }
-                }
 
                 $thisInput .= '}';
         }
