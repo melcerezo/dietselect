@@ -526,6 +526,12 @@ $(document).ready(function () {
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    if(valData[i].is_cancelled == 1){
+                        x += '<div class="col s12 m6">';
+                        x += '<div>Cancellation Reason:</div>';
+                        x += '<div style="font-size: 22px;">'+valData[i].cancelled_reason+'</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="divider" style="margin: 0 5px;"></div>';
@@ -1217,6 +1223,12 @@ $(document).ready(function () {
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    if(valData[i].is_cancelled == 1){
+                        x += '<div class="col s12 m6">';
+                        x += '<div>Cancellation Reason:</div>';
+                        x += '<div style="font-size: 22px;">'+valData[i].cancelled_reason+'</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="divider" style="margin: 0 5px;"></div>';
@@ -1988,6 +2000,12 @@ $(document).ready(function () {
                     x += '<div>Order Date</div>';
                     x += '<div style="font-size: 22px;">' + valData[i].created_at + '</div>';
                     x += '</div>';
+                    if(valData[i].is_cancelled == 1){
+                        x += '<div class="col s12 m6">';
+                        x += '<div>Cancellation Reason:</div>';
+                        x += '<div style="font-size: 22px;">'+valData[i].cancelled_reason+'</div>';
+                        x += '</div>';
+                    }
                     x += '</div>';
                     x += '</div>';
                     x += '<div class="divider" style="margin: 0 5px;"></div>';
