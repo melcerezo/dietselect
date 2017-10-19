@@ -2075,7 +2075,7 @@ class FoodieOrderPlanController extends Controller
                     if($order->cancelled_reason != null){
                         $thisInput .= '"cancelled_reason":"' . $order->cancelled_reason . '", ';
                     }else{
-                        $thisInput .= '"cancelled_reason":"No Reason.", ';
+                        $thisInput .= '"cancelled_reason":"No Reason", ';
                     }
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
