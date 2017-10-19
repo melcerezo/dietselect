@@ -1109,6 +1109,8 @@ class FoodieOrderPlanController extends Controller
 //        dd($foodnotif);
         $foodnotif->save();
 
+
+
         $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
         $messageFoodie .= 'Your listed reason is: ' ;
         if($reason == 0){
@@ -1260,6 +1262,35 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type = 3;
 //        dd($foodnotif);
         $foodnotif->save();
+
+        $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie .= 'Your listed reason is: ' ;
+        if($reason == 0){
+            $messageFoodie .= "No reason.";
+        }else if($reason == 1){
+            $messageFoodie .= "Not Interested.";
+        }else if($reason == 2){
+            $messageFoodie .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $messageFoodie .= "Out of Town.";
+        }
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+//        dd($foodie);
+        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+        $paramFoodie = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmoFoodie),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $contextFoodie = stream_context_create($paramFoodie);
+        file_get_contents($urlFoodie, false, $contextFoodie);
 
         $statusMessage='';
         if($reason == 0){
