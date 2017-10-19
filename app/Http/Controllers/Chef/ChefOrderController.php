@@ -383,6 +383,7 @@ class ChefOrderController extends Controller
 
     public function cancelOrderItem($id,mailer\Mailer $mailer)
     {
+
         $orderItem = OrderItem::where('id','=',$id)->first();
         $order = $orderItem->order;
 
@@ -394,10 +395,12 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
         if($order->is_paid == 0){
             $orderItem->is_cancelled = 1;
+            $orderItem->cancelled_reason = "Chefs Cancellation";
             $orderItem->save();
 
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
+                $order->cancelled_reason = "Chefs Cancellation";
                 $order->save();
 //                dd($order);
             }
