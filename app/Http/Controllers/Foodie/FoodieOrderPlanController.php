@@ -1150,7 +1150,7 @@ class FoodieOrderPlanController extends Controller
         $id = $request['cancelId'];
         $order= Order::where('id','=',$id)->first();
         $reason = $request['cancelReason'];
-        dd($order);
+//        dd($order);
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
         $orderChef = [];
