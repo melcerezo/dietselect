@@ -694,7 +694,7 @@
                         <label for="pref-none">Out of Town</label><br/>
                     </div>
 
-                    <input type="submit" class="btn waves-effect waves-light orange darken-2" />
+                    <input type="submit" class="btn waves-effect waves-light orange darken-2">
                 </form>
             </div>
         </form>
