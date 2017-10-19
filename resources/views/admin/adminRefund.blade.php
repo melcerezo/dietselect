@@ -328,7 +328,11 @@
                                                 </td>
                                                 <td>
                                                     @if($refund->is_paid==0)
-                                                        <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        @if($refund->name!=null)
+                                                            <a href="#updateRefundModal" data-id="{{$refund->id}}" class="updateRefund btn orange darken-2 waves-effect waves-light modal-trigger">Update</a>
+                                                        @else
+                                                            <span>Unconfirmed</span>
+                                                        @endif
                                                     @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
