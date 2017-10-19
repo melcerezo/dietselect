@@ -673,7 +673,7 @@
             <div>
                 <form method="post" action="{{route('foodie.orderAll.cancel', $order->id)}}" id="pickAddressForm">
                     {{ csrf_field() }}
-                    <input type="hidden" name="cancelId" value="">
+                    <input type="hidden" name="cancelId" id="cancelId" value="">
                     <div>
                         <span>Please tell us why you are cancelling</span>
                     </div>

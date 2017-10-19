@@ -1054,8 +1054,8 @@ class FoodieOrderPlanController extends Controller
             if ($orderItem->order_type == 0) {
                 $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
                 $orderChef[] = $orderPlan->chef->id;
-            } elseif ($orderItem->order_type == 0) {
-                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            } elseif ($orderItem->order_type == 2) {
+                $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                 $orderChef[] = $orderPlan->plan->chef->id;
             }
         }
@@ -1149,6 +1149,7 @@ class FoodieOrderPlanController extends Controller
     {
         $id = $request['cancelId'];
         $order= Order::where('id','=',$id)->first();
+        $reason = $request['cancelReason'];
 
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
@@ -1157,8 +1158,8 @@ class FoodieOrderPlanController extends Controller
             if ($orderItem->order_type == 0) {
                 $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
                 $orderChef[] = $orderPlan->chef->id;
-            } elseif ($orderItem->order_type == 0) {
-                $orderPlan = CustomPlan::where('id', '=', $orderItem->plan_id)->first();
+            } elseif ($orderItem->order_type == 2) {
+                $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                 $orderChef[] = $orderPlan->plan->chef->id;
             }
         }
@@ -1170,7 +1171,16 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->sender_id = 0;
             $chefnotif->receiver_id = $chef;
             $chefnotif->receiver_type = 'c';
-            $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has cancelled their order.';
+            $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has cancelled their order because: ';
+            if($reason == 0){
+                $chefnotif->notification .= "No reason.";
+            }else if($reason == 1){
+                $chefnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $chefnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $chefnotif->notification .= "Out of Town.";
+            }
             $chefnotif->notification_type = 3;
 //        dd($chefnotif);
             $chefnotif->save();
@@ -1178,20 +1188,49 @@ class FoodieOrderPlanController extends Controller
 //        $chef = $order->chef->id;
 //        dd($chef);
         $order->is_cancelled = 1;
+        if($reason == 0){
+            $order->cancelled_reason = "No reason.";
+        }else if($reason == 1){
+            $order->cancelled_reason = "Not Interested.";
+        }else if($reason == 2){
+            $order->cancelled_reason = "Unable to take delivery.";
+        }else if($reason == 3){
+            $order->cancelled_reason = "Out of Town.";
+        }
         $order->save();
 
         $foodnotif = new Notification();
         $foodnotif->sender_id = 0;
         $foodnotif->receiver_id = $foodie->id;
         $foodnotif->receiver_type = 'f';
-        $foodnotif->notification = 'You have cancelled your order.';
+        $foodnotif->notification = 'You have cancelled your order due to:';
+        if($reason == 0){
+            $foodnotif->notification .= "No reason.";
+        }else if($reason == 1){
+            $foodnotif->notification .= "Not Interested.";
+        }else if($reason == 2){
+            $foodnotif->notification .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $foodnotif->notification .= "Out of Town.";
+        }
 //        $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
         $foodnotif->notification_type = 3;
 //        dd($foodnotif);
         $foodnotif->save();
 
+        $statusMessage='';
+        if($reason == 0){
+            $statusMessage .= "No reason.";
+        }else if($reason == 1){
+            $statusMessage .= "Not Interested.";
+        }else if($reason == 2){
+            $statusMessage .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $statusMessage .= "Out of Town.";
+        }
+
         return redirect()->route('foodie.order.view', ['from' => 3])->with([
-            'status' => 'You have cancelled your order.'
+            'status' => 'You have cancelled your order due to: '.$statusMessage
         ]);
     }
 

@@ -2213,7 +2213,7 @@ $(document).ready(function () {
     $(document).on('click','.btnCancel', function () {
         var id = $(this).attr('data-id');
 
-        $('').val(id);
+        $('#cancelId').val(id);
         // $.ajax({
         //     url:'/foodie/order/cancelAll/'+ id
         // }).success(function () {
