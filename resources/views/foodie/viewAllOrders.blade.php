@@ -671,14 +671,14 @@
     <div class="modal-content">
 
             <div>
-                <form method="post" action="{{route('foodie.orderAll.cancel')}}" id="pickAddressForm">
+                <form method="post" action="{{route('foodie.orderAll.cancel')}}" id="cancelForm">
                     {{ csrf_field() }}
                     <input type="hidden" name="cancelId" id="cancelId" value="">
                     <div>
                         <span>Please tell us why you are cancelling</span>
                     </div>
                     <div>
-                        <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                        <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>
                         <label for="pref-none">No Reason</label><br/>
                     </div>
                     <div>

@@ -2189,7 +2189,32 @@ $(document).ready(function () {
 
 
 
-    
+        //validate cancel modal
+
+    $('form#cancelForm').validate({
+        rules: {
+            cancelReason:{
+                required:true
+            },
+        },
+        messages: {
+            cancelReason:{
+                required: 'Please enter a reason!'
+            },
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+
+        //button actions
         $(document).on('click','.btnView', function () {
             var id = $(this).attr('data-id');
             $.ajax({
