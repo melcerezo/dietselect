@@ -1263,7 +1263,7 @@ class FoodieOrderPlanController extends Controller
 //        dd($foodnotif);
         $foodnotif->save();
 
-        $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->addDays(7)->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
         $messageFoodie .= 'Your listed reason is: ' ;
         if($reason == 0){
             $messageFoodie .= "No reason.";
