@@ -1109,6 +1109,25 @@ class FoodieOrderPlanController extends Controller
 //        dd($foodnotif);
         $foodnotif->save();
 
+        $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+//        dd($foodie);
+        $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
+        $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
+        $paramFoodie = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmoFoodie),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $contextFoodie = stream_context_create($paramFoodie);
+        file_get_contents($urlFoodie, false, $contextFoodie);
+
         foreach ($uniqueChef as $chef) {
             $chefnotif = new Notification();
             $chefnotif->sender_id = 0;
@@ -1171,7 +1190,7 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->sender_id = 0;
             $chefnotif->receiver_id = $chef;
             $chefnotif->receiver_type = 'c';
-            $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has cancelled their order because: ';
+            $chefnotif->notification = $foodie->first_name . ' ' . $foodie->last_name . ' has cancelled their order due to: ';
             if($reason == 0){
                 $chefnotif->notification .= "No reason.";
             }else if($reason == 1){
