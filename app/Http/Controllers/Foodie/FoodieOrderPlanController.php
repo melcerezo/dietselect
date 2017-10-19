@@ -1199,6 +1199,20 @@ class FoodieOrderPlanController extends Controller
         }
         $order->save();
 
+        foreach($orderItems as $orderItem){
+            $orderItem->is_cancelled = 1;
+            if($reason == 0){
+                $orderItem->cancelled_reason = "No reason.";
+            }else if($reason == 1){
+                $orderItem->cancelled_reason = "Not Interested.";
+            }else if($reason == 2){
+                $orderItem->cancelled_reason = "Unable to take delivery.";
+            }else if($reason == 3){
+                $orderItem->cancelled_reason = "Out of Town.";
+            }
+            $orderItem->save();
+        }
+
         $foodnotif = new Notification();
         $foodnotif->sender_id = 0;
         $foodnotif->receiver_id = $foodie->id;
