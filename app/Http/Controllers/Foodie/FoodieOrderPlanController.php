@@ -1573,6 +1573,11 @@ class FoodieOrderPlanController extends Controller
                     }
                     $thisInput .= '"is_paid":"' . $is_paid . '", ';
                     $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    if($order->cancelled_reason != null){
+                        $thisInput .= '"cancelled_reason":"' . $order->cancelled_reason . '", ';
+                    }else{
+                        $thisInput .= '"cancelled_reason":"No Reason", ';
+                    }
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
@@ -1695,6 +1700,11 @@ class FoodieOrderPlanController extends Controller
                     }
                     $thisInput .= '"is_paid":"' . $is_paid . '", ';
                     $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    if($order->cancelled_reason != null){
+                        $thisInput .= '"cancelled_reason":"' . $order->cancelled_reason . '", ';
+                    }else{
+                        $thisInput .= '"cancelled_reason":"No Reason", ';
+                    }
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
@@ -1817,6 +1827,11 @@ class FoodieOrderPlanController extends Controller
                     }
                     $thisInput .= '"is_paid":"' . $is_paid . '", ';
                     $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    if($order->cancelled_reason != null){
+                        $thisInput .= '"cancelled_reason":"' . $order->cancelled_reason . '", ';
+                    }else{
+                        $thisInput .= '"cancelled_reason":"No Reason", ';
+                    }
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
@@ -1940,6 +1955,11 @@ class FoodieOrderPlanController extends Controller
                     }
                     $thisInput .= '"is_paid":"' . $is_paid . '", ';
                     $thisInput .= '"is_cancelled":' . $order->is_cancelled . ', ';
+                    if($order->cancelled_reason != null){
+                        $thisInput .= '"cancelled_reason":"' . $order->cancelled_reason . '", ';
+                    }else{
+                        $thisInput .= '"cancelled_reason":"No Reason", ';
+                    }
                     $dt = new Carbon($order->created_at);
                     $startOfWeek = $dt->startOfWeek()->addDay(7)->format('F d, Y');
                     $thisInput .= '"week":"' . $startOfWeek . '", ';
