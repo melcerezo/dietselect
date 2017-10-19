@@ -1261,7 +1261,7 @@ class FoodieOrderPlanController extends Controller
         ]);
     }
 
-    public function cancelAllOrder(Request $request)
+    public function cancelAllOrder(Request $request,mailer\Mailer $mailer)
     {
         $id = $request['cancelId'];
         $order= Order::where('id','=',$id)->first();
@@ -1270,14 +1270,23 @@ class FoodieOrderPlanController extends Controller
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
         $orderChef = [];
+        $orderArray = [];
+        $mailHTML = [];
         foreach ($orderItems as $orderItem) {
             if ($orderItem->order_type == 0) {
                 $orderPlan = Plan::where('id', '=', $orderItem->plan_id)->first();
+                $chefOrderId=$orderPlan->chef->id;
+                $mailChef = $orderPlan->chef->name;
                 $orderChef[] = $orderPlan->chef->id;
+                $mailType='Standard';
             } elseif ($orderItem->order_type == 2) {
                 $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
+                $chefOrderId=$orderPlan->plan->chef->id;
                 $orderChef[] = $orderPlan->plan->chef->id;
+                $mailType='Customized';
             }
+            $orderArray[]=array('id'=>$chefOrderId,'plan'=>$orderPlan->plan_name);
+            $mailHTML[]=array('plan'=>$orderPlan->plan_name,'chef'=>$mailChef,'quantity'=>$orderItem->quantity,'type'=>$mailType);
         }
 
         $uniqueChef = array_unique($orderChef);
@@ -1302,6 +1311,30 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->save();
 
             $unChef = Chef::where('id','=',$chef)->first();
+            $planName = [];
+            foreach($orderArray as $oArr){
+                if($oArr['id']==$unChef->id){
+                    $planName[]=$oArr['plan'];
+                }
+            }
+            $foodieName=$foodie->first_name . ' ' . $foodie->last_name;
+            $mailMess='';
+            if($reason == 0){
+                $mailMess .= "No reason.";
+            }else if($reason == 1){
+                $mailMess .= "Not Interested.";
+            }else if($reason == 2){
+                $mailMess .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $mailMess .= "Out of Town.";
+            }
+            $time = Carbon::now()->format('F d, Y g:i A');
+            $mailer->to($unChef->email)
+                ->send(new CancelFoodieSideChef(
+                    $foodieName,
+                    $planName,
+                    $mailMess,
+                    $time));
 
             $message = 'Greetings from DietSelect!'.$foodie->first_name . ' ' . $foodie->last_name .' has cancelled their order';
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
@@ -1378,6 +1411,24 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type = 3;
 //        dd($foodnotif);
         $foodnotif->save();
+
+        $mailMess='';
+        if($reason == 0){
+            $mailMess .= "No reason.";
+        }else if($reason == 1){
+            $mailMess .= "Not Interested.";
+        }else if($reason == 2){
+            $mailMess .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $mailMess .= "Out of Town.";
+        }
+        $time = Carbon::now()->format('F d, Y g:i A');
+
+        $mailer->to($foodie->email)
+            ->send(new CancelFoodieSideFoodie(
+                $mailHTML,
+                $mailMess,
+                $time));
 
         $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->addDays(7)->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
         $messageFoodie .= 'Your listed reason is: ' ;
