@@ -671,7 +671,7 @@
     <div class="modal-content">
         <form action="" method="post">
             <div>
-                <form method="post" action="{{route('foodie.orderAll.cancel', $order->id)}}" id="pickAddressForm">
+                <form method="post" action="{{route('foodie.orderAll.cancel')}}" id="pickAddressForm">
                     {{ csrf_field() }}
                     <input type="hidden" name="cancelId" id="cancelId" value="">
                     <div>
