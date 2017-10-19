@@ -1158,6 +1158,37 @@ class FoodieOrderPlanController extends Controller
             $chefnotif->notification_type = 3;
 //        dd($chefnotif);
             $chefnotif->save();
+
+            $unChef = Chef::where('id','=',$chef)->first();
+
+            $message = 'Greetings from DietSelect!'.$foodie->first_name . ' ' . $foodie->last_name .' has cancelled their order';
+            $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
+            $message .= 'The listed reason is: ' ;
+            if($reason == 0){
+                $message .= "No reason.";
+            }else if($reason == 1){
+                $message .= "Not Interested.";
+            }else if($reason == 2){
+                $message .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $message .= "Out of Town.";
+            }
+            $chefPhoneNumber = '0' . $unChef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
         }
 
         $statusMessage='';
