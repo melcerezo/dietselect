@@ -400,7 +400,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($refunds->where('chef_id','=',$refundFoodie)->where('paid','=',1) as $refund)
+                                        @foreach($refunds->where('foodie_id','=',$refundFoodie)->where('paid','=',1) as $refund)
                                             <tr>
                                                 <td>{{$refund->id}}</td>
                                                 {{--<td>--}}

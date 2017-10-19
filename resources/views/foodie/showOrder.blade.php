@@ -508,6 +508,26 @@
             </div>
             <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">
                 {{ csrf_field() }}
+                <div>
+                    <span>Please tell us why you are cancelling</span>
+                </div>
+                <div>
+                    <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                    <label for="pref-none">No Reason</label><br/>
+                </div>
+                <div>
+                    <input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                    <label for="pref-none">Not Interested Anymore</label><br/>
+                </div>
+                <div>
+                    <input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                    <label for="pref-none">Cannot Take Delivery at This Time</label><br/>
+                </div>
+                <div>
+                    <input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-none" data-error=".error-pref"/>
+                    <label for="pref-none">Out of Town</label><br/>
+                </div>
+
                 <input type="submit" class="btn waves-effect waves-light orange darken-2" />
             </form>
         </div>
