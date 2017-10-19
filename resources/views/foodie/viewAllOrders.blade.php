@@ -687,7 +687,7 @@
                     </div>
                     <div>
                         <input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>
-                        <label for="pref-noDel">Cannot Take Delivery at This Time</label><br/>
+                        <label for="pref-noDel">Cannot Take Delivery</label><br/>
                     </div>
                     <div>
                         <input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>
