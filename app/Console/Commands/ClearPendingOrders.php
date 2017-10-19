@@ -46,17 +46,20 @@ class ClearPendingOrders extends Command
 
         $saturday=Carbon::now();
         $dt = Carbon::now();
-        $monday=$dt->startOfWeek();
+        $monday=$dt->copy()->startOfWeek();
+        $monthBegin = $dt->copy()->startOfMonth();
+        $monthEnd = $dt->copy()->endOfMonth();
 
         $pendingOrders = Order::where('is_paid','=',0)
             ->where('is_cancelled','=',0)
-//            ->where('foodie_id','=',23)
-            ->where('created_at','>',$monday)
-            ->where('created_at','<',$saturday)
+            ->where('foodie_id','=',23)
+            ->where('created_at','>',$monthBegin)
+            ->where('created_at','<',$monthEnd)
             ->get();
 
         foreach($pendingOrders as $item){
             $item->is_cancelled=1;
+            $item->cancelled_reason = "Failure to Pay";
             $item->save();
 
             $foodnotif = new Notification();
@@ -93,6 +96,7 @@ class ClearPendingOrders extends Command
                 $arrayChef[]=$orderItem->chef_id;
                 if($orderItem->is_cancelled == 0){
                     $orderItem->is_cancelled=1;
+                    $orderItem->cancelled_reason='Failure to Pay';
                     $orderItem->save();
                 }
             }
