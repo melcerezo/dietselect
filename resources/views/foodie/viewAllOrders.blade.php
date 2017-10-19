@@ -669,7 +669,7 @@
 
 <div id="cancelModal" class="modal">
     <div class="modal-content">
-        <form action="" method="post">
+
             <div>
                 <form method="post" action="{{route('foodie.orderAll.cancel')}}" id="pickAddressForm">
                     {{ csrf_field() }}
@@ -697,7 +697,6 @@
                     <button type="submit" class="btn waves-effect waves-light orange darken-2">Submit</button>
                 </form>
             </div>
-        </form>
     </div>
 </div>
 
