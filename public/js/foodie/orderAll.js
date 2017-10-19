@@ -2211,6 +2211,8 @@ $(document).ready(function () {
     });
 
     $(document).on('click','.btnCancel', function () {
+        $('#cancelModal').modal('open');
+
         var id = $(this).attr('data-id');
 
         $('#cancelId').val(id);
