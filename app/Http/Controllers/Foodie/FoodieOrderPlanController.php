@@ -1110,6 +1110,16 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->save();
 
         $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie .= 'Your listed reason is: ' ;
+        if($reason == 0){
+            $messageFoodie .= "No reason.";
+        }else if($reason == 1){
+            $messageFoodie .= "Not Interested.";
+        }else if($reason == 2){
+            $messageFoodie .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $messageFoodie .= "Out of Town.";
+        }
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
