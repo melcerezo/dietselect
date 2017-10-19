@@ -2212,11 +2212,13 @@ $(document).ready(function () {
 
     $(document).on('click','.btnCancel', function () {
         var id = $(this).attr('data-id');
-        $.ajax({
-            url:'/foodie/order/cancelAll/'+ id
-        }).success(function () {
-            window.location.href= this.url;
-        });
+
+        $('').val(id);
+        // $.ajax({
+        //     url:'/foodie/order/cancelAll/'+ id
+        // }).success(function () {
+        //     window.location.href= this.url;
+        // });
 
     });
 

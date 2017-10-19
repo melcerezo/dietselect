@@ -1147,8 +1147,8 @@ class FoodieOrderPlanController extends Controller
 
     public function cancelAllOrder(Request $request)
     {
-
-        $order= Order::where('id','=',$id);
+        $id = $request['cancelId'];
+        $order= Order::where('id','=',$id)->first();
 
         $foodie = Auth::guard('foodie')->user();
         $orderItems = $order->order_item()->get();
