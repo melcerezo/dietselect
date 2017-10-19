@@ -350,7 +350,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($refunds->where('foodie_id','=',$refundFoodie)->where('paid','=',0) as $refund)
+                                        @foreach($refunds->where('foodie_id','=',$refundFoodie)->where('is_paid','=',0) as $refund)
                                             <tr>
                                                 <td>{{$refund->id}}</td>
                                                 {{--<td>--}}
@@ -363,9 +363,9 @@
                                                 <td>{{$refund->created_at->format('F d, Y')}}</td>
                                                 <td>{{'PHP '.number_format(($refund->order_item->price * $refund->order_item->quantity),2,'.',',')}}</td>
                                                 <td>
-                                                    @if($refund->paid==0)
+                                                    @if($refund->is_paid==0)
                                                         <span>Pending</span>
-                                                    @elseif($refund->paid==1)
+                                                    @elseif($refund->is_paid==1)
                                                         <span>Paid</span>
                                                     @endif
                                                 </td>
@@ -400,7 +400,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach($refunds->where('foodie_id','=',$refundFoodie)->where('paid','=',1) as $refund)
+                                        @foreach($refunds->where('foodie_id','=',$refundFoodie)->where('is_paid','=',1) as $refund)
                                             <tr>
                                                 <td>{{$refund->id}}</td>
                                                 {{--<td>--}}
