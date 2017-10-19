@@ -1163,7 +1163,7 @@ class FoodieOrderPlanController extends Controller
 
             $message = 'Greetings from DietSelect!'.$foodie->first_name . ' ' . $foodie->last_name .' has cancelled their order';
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
-            $message .= 'The listed reason is: ' ;
+            $message .= '. The listed reason is: ' ;
             if($reason == 0){
                 $message .= "No reason.";
             }else if($reason == 1){
@@ -1251,7 +1251,7 @@ class FoodieOrderPlanController extends Controller
 
             $message = 'Greetings from DietSelect!'.$foodie->first_name . ' ' . $foodie->last_name .' has cancelled their order';
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
-            $message .= 'The listed reason is: ' ;
+            $message .= '. The listed reason is: ' ;
             if($reason == 0){
                 $message .= "No reason.";
             }else if($reason == 1){
