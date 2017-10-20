@@ -37,6 +37,6 @@ class CancelFoodieSideFoodie extends Mailable
     public function build()
     {
         return $this->from('diet@dietselect.com')
-            ->view('email.cancelFoodieSideFoodie');
+            ->view('email.CancelFoodieSideFoodie');
     }
 }
