@@ -164,7 +164,7 @@ class ClearPendingOrders extends Command
                 $contextChef = stream_context_create($paramChef);
                 file_get_contents($urlChef, false, $contextChef);
 
-                $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
+                $foodieName = $foodie;
                 $timeCancel = $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y');
 //        dd($foodieName);
                 Mail::send('email.cancelOutChef', ['foodieName'=>$foodieName,'planName' => $planName,'timeCancel'=>$timeCancel], function ($m) use ($chef){
