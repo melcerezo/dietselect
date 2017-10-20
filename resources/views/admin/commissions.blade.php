@@ -272,8 +272,8 @@
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
                                             <th>Total Amount</th>
-                                            <th>Amount to Vendor</th>
-                                            <th>Amount to DietSelect</th>
+                                            <th>Amount to Vendor(90%)</th>
+                                            <th>Amount to DietSelect(10%)</th>
                                             <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
@@ -321,8 +321,8 @@
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
                                             <th>Total Amount</th>
-                                            <th>Amount to Vendor</th>
-                                            <th>Amount to DietSelect</th>
+                                            <th>Amount to Vendor(90%)</th>
+                                            <th>Amount to DietSelect(10%)</th>
                                             <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
@@ -370,8 +370,8 @@
                                             {{--<th>Chef Name</th>--}}
                                             <th>Date</th>
                                             <th>Total Amount</th>
-                                            <th>Amount to Vendor</th>
-                                            <th>Amount to DietSelect</th>
+                                            <th>Amount to Vendor(90%)</th>
+                                            <th>Amount to DietSelect(10%)</th>
                                             <th>Payment Status</th>
                                             <th>Update</th>
                                         </tr>
