@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use App\Mail\CancelOutChef;
 use App\Mail\CancelOutFoodie;
+use App\Plan;
+use App\SimpleCustomPlan;
 use Illuminate\Console\Command;
 use App\Notification;
 use Illuminate\Mail as mailer;
@@ -119,11 +121,12 @@ class ClearPendingOrders extends Command
                 $planName=[];
                 foreach($orderItems as $orderItem){
                     if($orderItem->chef_id==$chefUn){
-                        $planName[] = $orderItem->plan->plan_name;
-                        if ($orderItem->is_customized == 0) {
-                            $planName[] .= '- Standard';
-                        } elseif ($orderItem->is_customized == 1) {
-                            $planName[] .= '- Custom';
+                        if ($orderItem->order_type == 0) {
+                            $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                            $planName[] = $orderPlan->plan_name.'- Standard';
+                        } elseif ($orderItem->order_type == 2) {
+                            $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                            $planName[] = $orderPlan->plan->plan_name.'- Custom';
                         }
                     }
                 }
