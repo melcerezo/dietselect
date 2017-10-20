@@ -16,7 +16,5 @@
     </div>
 
 </div>
-<p>Time: {{$time}}</p>
-<p>Reason: {{$mailMess}}</p>
 </body>
 </html>

@@ -94,12 +94,14 @@ class ClearPendingOrders extends Command
             file_get_contents($urlFoodie, false, $contextFoodie);
 
 //            mailer\Mailer $mailer;
+            $foodieCancel = $item->foodie;
             $time = $item->created_at->format('F d, Y h:i A');
             $timeCancel = $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y');
-            Mail::to($item->foodie->email)->send(new CancelOutFoodie(
-                $time,
-                $timeCancel
-            ));
+            Mail::send('email.cancelOutFoodie', ['time' => $time,'timeCancel'=>$timeCancel], function ($m) use ($foodieCancel){
+                $m->from('diet@dietselect.com');
+
+                $m->to($foodieCancel->email)->subject('Cancel');
+            });
 
             $orderItems = $item->order_item()->get();
             $arrayChef=[];
