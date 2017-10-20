@@ -57,7 +57,7 @@ class ClearPendingOrders extends Command
 
         $pendingOrders = Order::where('is_paid','=',0)
             ->where('is_cancelled','=',0)
-            ->where('foodie_id','=',23)
+            ->where('foodie_id','=',6)
             ->where('created_at','>',$monthBegin)
             ->where('created_at','<',$monthEnd)
             ->get();
