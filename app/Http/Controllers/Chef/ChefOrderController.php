@@ -381,6 +381,12 @@ class ChefOrderController extends Controller
         return redirect()->route('chef.order.single',$orderItem->id)->with(['status'=>'Delivery Status Updated']);
     }
 
+//    public function getCommissions(){
+//        $chef = Auth::guard('chef')->user();
+//
+//
+//    }
+
     public function cancelOrderItem($id,mailer\Mailer $mailer)
     {
 
