@@ -18,7 +18,7 @@
                 <li>{{$plan}}</li>
             @endforeach
         </ul>
-        <p>Reason: Failure to Pay on {{$timeCancel}} at 3:00pm</p>
+        <p>Reason: Failure to Pay on {{$timeCancel}} at 3:00pm </p>
     </div>
 </div>
 </body>
