@@ -2,6 +2,8 @@
 
 namespace App\Console\Commands;
 
+use App\Mail\CancelOutChef;
+use App\Mail\CancelOutFoodie;
 use Illuminate\Console\Command;
 use App\Notification;
 use Illuminate\Mail as mailer;
@@ -9,6 +11,7 @@ use App\Foodie;
 use App\Chef;
 use App\Order;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Mail;
 
 class ClearPendingOrders extends Command
 {
@@ -67,12 +70,12 @@ class ClearPendingOrders extends Command
             $foodnotif->receiver_id = $item->foodie->id;
             $foodnotif->receiver_type = 'f';
             $foodnotif->notification = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled due to your failure to pay ';
-            $foodnotif->notification .= 'before ' . $item->created_at->copy()->addDays(5)->format('F d, Y') . ' 3:00pm.';
+            $foodnotif->notification .= 'before ' . $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y') . ' 3:00pm.';
             $foodnotif->notification_type = 3;
             $foodnotif->save();
 
             $messageFoodie = 'Your order on '.$item->created_at->format('F d, Y h:i A').' has been cancelled';
-            $messageFoodie .= ' because you failed to pay before '. $item->created_at->copy()->addDays(5)->format('F d, Y').' 3:00pm.';
+            $messageFoodie .= ' because you failed to pay before '. $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y').' 3:00pm.';
             $foodiePhoneNumber = '0'.$item->foodie->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
             $itexmoFoodie = array('1' => $foodiePhoneNumber, '2' => $messageFoodie, '3' => 'PR-DIETS656642_VBVIA');
@@ -89,6 +92,14 @@ class ClearPendingOrders extends Command
             );
             $contextFoodie = stream_context_create($paramFoodie);
             file_get_contents($urlFoodie, false, $contextFoodie);
+
+//            mailer\Mailer $mailer;
+            $time = $item->created_at->format('F d, Y h:i A');
+            $timeCancel = $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y');
+            Mail::to($item->foodie->email)->send(new CancelOutFoodie(
+                $time,
+                $timeCancel
+            ));
 
             $orderItems = $item->order_item()->get();
             $arrayChef=[];
@@ -133,7 +144,7 @@ class ClearPendingOrders extends Command
                 foreach ($planName as $pName) {
                     $messageChef .= $pName . ' ';
                 }
-                $messageChef.='has been cancelled due to no payment before '.$item->created_at->copy()->addDays(5)->format('F d, Y').' 3:00pm.';
+                $messageChef.='has been cancelled due to no payment before '.$item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y').' 3:00pm.';
                 $chefPhoneNumber = '0'.$chef->mobile_number;
                 $urlChef = 'https://www.itexmo.com/php_api/api.php';
                 $itexmoChef = array('1' => $chefPhoneNumber, '2' => $messageChef, '3' => 'PR-DIETS656642_VBVIA');
@@ -150,6 +161,18 @@ class ClearPendingOrders extends Command
                 );
                 $contextChef = stream_context_create($paramChef);
                 file_get_contents($urlChef, false, $contextChef);
+
+                $emailChef = $chef->email;
+                $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
+                $timeCancel = $item->created_at->copy()->startOfWeek()->addDays(5)->format('F d, Y');
+//        dd($foodieName);
+                Mail::to($emailChef)
+                    ->send(new CancelOutChef(
+                        $planName,
+                        $foodieName,
+                        $timeCancel
+                    ));
+
             }
 
 //        dd($foodie);
