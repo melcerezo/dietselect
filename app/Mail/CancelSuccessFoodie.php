@@ -17,17 +17,20 @@ class CancelSuccessFoodie extends Mailable
 
     public $time;
 
+    public $mailMess;
+
 
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($chefName,$planName,$time)
+    public function __construct($chefName,$planName,$time,$mailMess)
     {
         $this->chefName = $chefName;
         $this->planName = $planName;
         $this->time = $time;
+        $this->mailMess = $mailMess;
     }
 
     /**

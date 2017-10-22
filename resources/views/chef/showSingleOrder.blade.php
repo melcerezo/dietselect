@@ -3323,25 +3323,32 @@
                     </div>
                     <form method="post" action="{{route('chef.order.cancel', $orderItem->id)}}" id="cancelForm">
                         {{ csrf_field() }}
-                        {{--<div>--}}
-                            {{--<span>Please tell us why you are cancelling</span>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                            {{--<input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>--}}
-                            {{--<label for="pref-none">No Reason</label><br/>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                            {{--<input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>--}}
-                            {{--<label for="pref-noInt">Not Interested Anymore</label><br/>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                            {{--<input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>--}}
-                            {{--<label for="pref-noDel">Unable to Deliver</label><br/>--}}
-                        {{--</div>--}}
-                        {{--<div>--}}
-                            {{--<input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>--}}
-                            {{--<label for="pref-noTown">Out of Town</label><br/>--}}
-                        {{--</div>--}}
+                        <div>
+                            <span>Please tell us why you are cancelling</span>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>
+                            <label for="pref-none">No Reason</label><br/>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>
+                            <label for="pref-noInt">Not Interested Anymore</label><br/>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>
+                            <label for="pref-noDel">Unable to Deliver</label><br/>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>
+                            <label for="pref-noTown">Out of Town</label><br/>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="4" class="filled-in" id="pref-CustReason" data-error=".error-pref"/>
+                            <label for="pref-CustReason">Other</label><br/>
+                        </div>
+                        <div id="otherReasonContainer">
+                            <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                        </div>
 
                         <input type="submit" class="btn waves-effect waves-light red darken-2" value="Cancel" />
                     </form>

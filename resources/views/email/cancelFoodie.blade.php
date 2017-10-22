@@ -13,6 +13,7 @@
     <div>
         <p>Hello, this is DietSelect!</p>
         <p>Your order for: {{$planName}} has been cancelled by {{$chefName}} on {{$time}}.</p>
+        <p>Reason: {{$mailMess}}</p>
     </div>
 </div>
 </body>

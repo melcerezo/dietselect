@@ -387,8 +387,10 @@ class ChefOrderController extends Controller
 //
 //    }
 
-    public function cancelOrderItem($id,mailer\Mailer $mailer)
+    public function cancelOrderItem(Request $request,$id,mailer\Mailer $mailer)
     {
+
+        $reason = $request['cancelReason'];
 
         $orderItem = OrderItem::where('id','=',$id)->first();
         $order = $orderItem->order;
@@ -401,12 +403,32 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
         if($order->is_paid == 0){
             $orderItem->is_cancelled = 1;
-            $orderItem->cancelled_reason = "Chefs Cancellation";
+            if($reason == 0){
+                $orderItem->cancelled_reason = "No reason.";
+            }else if($reason == 1){
+                $orderItem->cancelled_reason = "Not Interested.";
+            }else if($reason == 2){
+                $orderItem->cancelled_reason = "Unable to take delivery.";
+            }else if($reason == 3){
+                $orderItem->cancelled_reason = "Out of Town.";
+            }else if($reason == 4){
+                $orderItem->cancelled_reason = $request['otherReason'];
+            }
             $orderItem->save();
 
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
-                $order->cancelled_reason = "Chefs Cancellation";
+                if($reason == 0){
+                    $order->cancelled_reason = "No reason.";
+                }else if($reason == 1){
+                    $order->cancelled_reason = "Not Interested.";
+                }else if($reason == 2){
+                    $order->cancelled_reason = "Unable to take delivery.";
+                }else if($reason == 3){
+                    $order->cancelled_reason = "Out of Town.";
+                }else if($reason == 4){
+                    $order->cancelled_reason = $request['otherReason'];
+                }
                 $order->save();
 //                dd($order);
             }
@@ -416,7 +438,18 @@ class ChefOrderController extends Controller
             $foodnotif->receiver_id = $orderItem->order->foodie->id;
             $foodnotif->receiver_type = 'f';
             $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
-            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').', due to: ';
+            if($reason == 0){
+                $foodnotif->notification .= "No reason.";
+            }else if($reason == 1){
+                $foodnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $foodnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $foodnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $foodnotif->notification .= $request['otherReason'];
+            }
             $foodnotif->notification_type = 1;
             $foodnotif->save();
 
@@ -426,11 +459,34 @@ class ChefOrderController extends Controller
             $chefnotif->receiver_type = 'c';
             $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
             $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
-            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
+            if($reason == 0){
+                $chefnotif->notification .= "No reason.";
+            }else if($reason == 1){
+                $chefnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $chefnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $chefnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $chefnotif->notification .= $request['otherReason'];
+            }
             $chefnotif->notification_type = 3;
             $chefnotif->save();
 
             $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+            $messageFoodie .= 'The listed reason is: ' ;
+            if($reason == 0){
+                $messageFoodie .= "No reason.";
+            }else if($reason == 1){
+                $messageFoodie .= "Not Interested.";
+            }else if($reason == 2){
+                $messageFoodie .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $messageFoodie .= "Out of Town.";
+            }else if($reason == 4){
+                $messageFoodie .= $request['otherReason'];
+            }
             $foodiePhoneNumber = '0' . $orderItem->order->foodie->mobile_number;
 //        dd($foodie);
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -453,6 +509,18 @@ class ChefOrderController extends Controller
             $message .= $orderItem->plan->plan_name;
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
             $message .= '.';
+            $message .= '. The listed reason is: ' ;
+            if($reason == 0){
+                $message .= "No reason.";
+            }else if($reason == 1){
+                $message .= "Not Interested.";
+            }else if($reason == 2){
+                $message .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $message .= "Out of Town.";
+            }else if($reason == 4){
+                $message .= $request['otherReason'];
+            }
             $chefPhoneNumber = '0' . $chef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
             $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
@@ -473,27 +541,63 @@ class ChefOrderController extends Controller
             $chefName = $chef->name;
             $planName = $orderItem->plan->plan_name;
             $time = Carbon::now()->format('F d, Y g:i A');
+            $mailMess='';
+            if($reason == 0){
+                $mailMess .= "No reason.";
+            }else if($reason == 1){
+                $mailMess .= "Not Interested.";
+            }else if($reason == 2){
+                $mailMess .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $mailMess .= "Out of Town.";
+            }else if($reason == 4){
+                $mailMess .= $request['otherReason'];
+            }
             $mailer->to($orderItem->order->foodie->email)
-                ->send(new DeliverySuccessFoodie(
+                ->send(new CancelSuccessFoodie(
                     $chefName,
                     $planName,
-                    $time));
+                    $time,
+                    $mailMess));
 
             $mailer->to($chef->email)
-                ->send(new DeliverySuccessChef(
+                ->send(new CancelSuccessChef(
                     $foodieName,
                     $planName,
-                    $time));
+                    $time,
+                    $mailMess));
 
             $message = 'You have cancelled '.$foodieName.'\'s for '.$planName;
 
         }else if($order->is_paid == 1){
 
             $orderItem->is_cancelled = 1;
+            if($reason == 0){
+                $orderItem->cancelled_reason = "No reason.";
+            }else if($reason == 1){
+                $orderItem->cancelled_reason = "Not Interested.";
+            }else if($reason == 2){
+                $orderItem->cancelled_reason = "Unable to take delivery.";
+            }else if($reason == 3){
+                $orderItem->cancelled_reason = "Out of Town.";
+            }else if($reason == 4){
+                $orderItem->cancelled_reason = $request['otherReason'];
+            }
             $orderItem->save();
 
             if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
                 $order->is_cancelled=1;
+                if($reason == 0){
+                    $order->cancelled_reason = "No reason.";
+                }else if($reason == 1){
+                    $order->cancelled_reason = "Not Interested.";
+                }else if($reason == 2){
+                    $order->cancelled_reason = "Unable to take delivery.";
+                }else if($reason == 3){
+                    $order->cancelled_reason = "Out of Town.";
+                }else if($reason == 4){
+                    $order->cancelled_reason = $request['otherReason'];
+                }
                 $order->save();
             }
 
@@ -508,7 +612,18 @@ class ChefOrderController extends Controller
             $foodnotif->receiver_id = $orderItem->order->foodie->id;
             $foodnotif->receiver_type = 'f';
             $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
-            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
+            if($reason == 0){
+                $foodnotif->notification .= "No reason.";
+            }else if($reason == 1){
+                $foodnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $foodnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $foodnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $foodnotif->notification .= $request['otherReason'];
+            }
             $foodnotif->notification .= 'Please go to the refunds tab on you orders page to confirm your refund.';
             $foodnotif->notification_type = 4;
             $foodnotif->save();
@@ -519,11 +634,33 @@ class ChefOrderController extends Controller
             $chefnotif->receiver_type = 'c';
             $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
             $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
-            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+            $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
+            if($reason == 0){
+                $chefnotif->notification .= "No reason.";
+            }else if($reason == 1){
+                $chefnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $chefnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $chefnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $chefnotif->notification .= $request['otherReason'];
+            }
             $chefnotif->notification_type = 3;
             $chefnotif->save();
 
-            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').' due to: ' ;
+            if($reason == 0){
+                $messageFoodie .= "No reason.";
+            }else if($reason == 1){
+                $messageFoodie .= "Not Interested.";
+            }else if($reason == 2){
+                $messageFoodie .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $messageFoodie .= "Out of Town.";
+            }else if($reason == 4){
+                $messageFoodie .= $request['otherReason'];
+            }
             $messageFoodie .= 'Please go to the refunds tab of your orders page to process your refund.' ;
             $foodiePhoneNumber = '0' . $orderItem->order->foodie->mobile_number;
 //        dd($foodie);
@@ -546,7 +683,18 @@ class ChefOrderController extends Controller
             $message = 'Greetings from DietSelect! You have cancelled ' . $foodieName . '\'s order for: ';
             $message .= $orderItem->plan->plan_name;
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
-            $message .= '.';
+            $message .= ' due to: ';
+            if($reason == 0){
+                $message .= "No reason.";
+            }else if($reason == 1){
+                $message .= "Not Interested.";
+            }else if($reason == 2){
+                $message .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $message .= "Out of Town.";
+            }else if($reason == 4){
+                $message .= $request['otherReason'];
+            }
             $chefPhoneNumber = '0' . $chef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
             $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
@@ -567,17 +715,31 @@ class ChefOrderController extends Controller
             $chefName = $chef->name;
             $planName = $orderItem->plan->plan_name;
             $time = Carbon::now()->format('F d, Y g:i A');
+            $mailMess='';
+            if($reason == 0){
+                $mailMess .= "No reason.";
+            }else if($reason == 1){
+                $mailMess .= "Not Interested.";
+            }else if($reason == 2){
+                $mailMess .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $mailMess .= "Out of Town.";
+            }else if($reason == 4){
+                $mailMess .= $request['otherReason'];
+            }
             $mailer->to($orderItem->order->foodie->email)
                 ->send(new CancelSuccessFoodie(
                     $chefName,
                     $planName,
-                    $time));
+                    $time,
+                    $mailMess));
 
             $mailer->to($chef->email)
                 ->send(new CancelSuccessChef(
                     $foodieName,
                     $planName,
-                    $time));
+                    $time,
+                    $mailMess));
 
         $message = 'You have cancelled '.$foodieName.'\'s for '.$planName;
         }

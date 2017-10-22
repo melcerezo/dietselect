@@ -1084,6 +1084,8 @@ class FoodieOrderPlanController extends Controller
             $order->cancelled_reason = "Unable to take delivery.";
         }else if($reason == 3){
             $order->cancelled_reason = "Out of Town.";
+        }else if($reason == 4){
+            $order->cancelled_reason = $request['otherReason'];
         }
         $order->save();
 
@@ -1097,6 +1099,8 @@ class FoodieOrderPlanController extends Controller
                 $orderItem->cancelled_reason = "Unable to take delivery.";
             }else if($reason == 3){
                 $orderItem->cancelled_reason = "Out of Town.";
+            }else if($reason == 4){
+                $orderItem->cancelled_reason = $request['otherReason'];
             }
             $orderItem->save();
         }
@@ -1114,6 +1118,8 @@ class FoodieOrderPlanController extends Controller
             $foodnotif->notification .= "Unable to take delivery.";
         }else if($reason == 3){
             $foodnotif->notification .= "Out of Town.";
+        }else if($reason == 4){
+            $foodnotif->notification .= $request['otherReason'];
         }
 //        $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
         $foodnotif->notification_type = 3;
@@ -1132,6 +1138,8 @@ class FoodieOrderPlanController extends Controller
             $messageFoodie .= "Unable to take delivery.";
         }else if($reason == 3){
             $messageFoodie .= "Out of Town.";
+        }else if($reason == 4){
+            $messageFoodie .= $request['otherReason'];
         }
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
@@ -1160,6 +1168,8 @@ class FoodieOrderPlanController extends Controller
             $mailMess .= "Unable to take delivery.";
         }else if($reason == 3){
             $mailMess .= "Out of Town.";
+        }else if($reason == 4){
+            $mailMess .= $request['otherReason'];
         }
         $time = Carbon::now()->format('F d, Y g:i A');
 
@@ -1183,6 +1193,8 @@ class FoodieOrderPlanController extends Controller
                 $chefnotif->notification .= "Unable to take delivery.";
             }else if($reason == 3){
                 $chefnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $chefnotif->notification .= $request['otherReason'];
             }
             $chefnotif->notification_type = 3;
 //        dd($chefnotif);
@@ -1205,6 +1217,8 @@ class FoodieOrderPlanController extends Controller
                 $mailMess .= "Unable to take delivery.";
             }else if($reason == 3){
                 $mailMess .= "Out of Town.";
+            }else if($reason == 4){
+                $mailMess .= $request['otherReason'];
             }
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailer->to($unChef->email)
@@ -1226,6 +1240,8 @@ class FoodieOrderPlanController extends Controller
                 $message .= "Unable to take delivery.";
             }else if($reason == 3){
                 $message .= "Out of Town.";
+            }else if($reason == 4){
+                $message .= $request['otherReason'];
             }
             $chefPhoneNumber = '0' . $unChef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
@@ -1254,6 +1270,8 @@ class FoodieOrderPlanController extends Controller
             $statusMessage .= "Unable to take delivery.";
         }else if($reason == 3){
             $statusMessage .= "Out of Town.";
+        }else if($reason == 4){
+            $statusMessage .= $request['otherReason'];
         }
 
         return redirect()->route('foodie.plan.show')->with([
@@ -1305,6 +1323,8 @@ class FoodieOrderPlanController extends Controller
                 $chefnotif->notification .= "Unable to take delivery.";
             }else if($reason == 3){
                 $chefnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $chefnotif->notification .= $request['otherReason'];
             }
             $chefnotif->notification_type = 3;
 //        dd($chefnotif);
@@ -1327,6 +1347,8 @@ class FoodieOrderPlanController extends Controller
                 $mailMess .= "Unable to take delivery.";
             }else if($reason == 3){
                 $mailMess .= "Out of Town.";
+            }else if($reason == 4){
+                $mailMess .= $request['otherReason'];
             }
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailer->to($unChef->email)
@@ -1347,6 +1369,8 @@ class FoodieOrderPlanController extends Controller
                 $message .= "Unable to take delivery.";
             }else if($reason == 3){
                 $message .= "Out of Town.";
+            }else if($reason == 4){
+                $message .= $request['otherReason'];
             }
             $chefPhoneNumber = '0' . $unChef->mobile_number;
             $url = 'https://www.itexmo.com/php_api/api.php';
@@ -1376,6 +1400,8 @@ class FoodieOrderPlanController extends Controller
             $order->cancelled_reason = "Unable to take delivery.";
         }else if($reason == 3){
             $order->cancelled_reason = "Out of Town.";
+        }else if($reason == 4){
+            $order->cancelled_reason = $request['otherReason'];
         }
         $order->save();
 
@@ -1389,6 +1415,8 @@ class FoodieOrderPlanController extends Controller
                 $orderItem->cancelled_reason = "Unable to take delivery.";
             }else if($reason == 3){
                 $orderItem->cancelled_reason = "Out of Town.";
+            }else if($reason == 4){
+                $orderItem->cancelled_reason = $request['otherReason'];
             }
             $orderItem->save();
         }
@@ -1406,6 +1434,8 @@ class FoodieOrderPlanController extends Controller
             $foodnotif->notification .= "Unable to take delivery.";
         }else if($reason == 3){
             $foodnotif->notification .= "Out of Town.";
+        }else if($reason == 4){
+            $foodnotif->notification .= $request['otherReason'];
         }
 //        $foodnotif->notification.=' Please pay before '.$thisSaturday.'.';
         $foodnotif->notification_type = 3;
@@ -1421,6 +1451,8 @@ class FoodieOrderPlanController extends Controller
             $mailMess .= "Unable to take delivery.";
         }else if($reason == 3){
             $mailMess .= "Out of Town.";
+        }else if($reason == 4){
+            $mailMess .= $request['otherReason'];
         }
         $time = Carbon::now()->format('F d, Y g:i A');
 
@@ -1440,6 +1472,8 @@ class FoodieOrderPlanController extends Controller
             $messageFoodie .= "Unable to take delivery.";
         }else if($reason == 3){
             $messageFoodie .= "Out of Town.";
+        }else if($reason == 4){
+            $messageFoodie .= $request['otherReason'];
         }
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
@@ -1468,6 +1502,8 @@ class FoodieOrderPlanController extends Controller
             $statusMessage .= "Unable to take delivery.";
         }else if($reason == 3){
             $statusMessage .= "Out of Town.";
+        }else if($reason == 4){
+            $statusMessage .= $request['otherReason'];
         }
 
         return redirect()->route('foodie.order.view', ['from' => 3])->with([
