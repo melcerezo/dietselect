@@ -45,4 +45,8 @@ $(document).ready(function () {
             $('#otherReasonContainer').hide();
         }
     });
+
+    $('#cancelOrderItemButton').click(function () {
+        $('#loadWait').show();
+    });
 });

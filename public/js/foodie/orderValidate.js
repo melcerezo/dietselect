@@ -269,5 +269,9 @@ $(document).ready(function () {
             $('#otherReasonContainer').hide();
         }
     });
+
+    $('#cancelOrderSubmit').click(function () {
+        $('#loadWait').show();
+    })
     
 });

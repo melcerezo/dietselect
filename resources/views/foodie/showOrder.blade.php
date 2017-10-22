@@ -531,7 +531,7 @@
                 <div id="otherReasonContainer">
                     <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
                 </div>
-                <input type="submit" class="btn waves-effect waves-light orange darken-2" />
+                <button type="submit" id="cancelOrderSubmit" class="btn waves-effect waves-light orange darken-2">Submit</button>
             </form>
         </div>
     </div>

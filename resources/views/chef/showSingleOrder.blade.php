@@ -3350,7 +3350,7 @@
                             <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
                         </div>
 
-                        <input type="submit" class="btn waves-effect waves-light red darken-2" value="Cancel" />
+                        <button type="submit" id="cancelOrderItemButton" class="btn waves-effect waves-light red darken-2">Cancel</button>
                     </form>
                 </div>
             </div>
