@@ -24,6 +24,7 @@
 #defaultPay{ display: block; }
 .payForm .row{ margin: 0 !important; }
 .payInfo{ margin: 10px 0; }
+#otherReasonContainer{ display: none; }
 
 
 #pickOrderAddressModal .modal-content, #cancelOrderModal .modal-content{

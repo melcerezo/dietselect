@@ -524,7 +524,13 @@
                     <input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>
                     <label for="pref-noTown">Out of Town</label><br/>
                 </div>
-
+                <div>
+                    <input type="radio" name="cancelReason" value="4" class="filled-in" id="pref-CustReason" data-error=".error-pref"/>
+                    <label for="pref-CustReason">Other</label><br/>
+                </div>
+                <div id="otherReasonContainer">
+                    <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                </div>
                 <input type="submit" class="btn waves-effect waves-light orange darken-2" />
             </form>
         </div>
