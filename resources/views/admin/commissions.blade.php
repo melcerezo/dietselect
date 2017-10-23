@@ -277,6 +277,30 @@
 
                                                 $('div#allTable{{$uniqueComChef}}').hide();
                                                 $('div#pendTable{{$uniqueComChef}}').show();
+
+                                                var val = $('select#comPendFilter{{$uniqueComChef}} option:selected').val();
+                                                if(val==2){
+                                                    $('#weekPendTable{{$uniqueComChef}}').show();
+                                                    $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                    $('#allPendTable{{$uniqueComChef}}').hide();
+                                                }else if(val==3){
+                                                    $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPendTable{{$uniqueComChef}}').show();
+                                                    $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                    $('#allPendTable{{$uniqueComChef}}').hide();
+                                                }else if(val==4){
+                                                    $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPendTable{{$uniqueComChef}}').show();
+                                                    $('#allPendTable{{$uniqueComChef}}').hide();
+                                                }else if(val==5){
+                                                    $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                    $('#allPendTable{{$uniqueComChef}}').show();
+                                                }
+
                                                 $('div#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPaid{{$uniqueComChef}}').on('click',function () {
@@ -287,6 +311,29 @@
                                                 $('div#allTable{{$uniqueComChef}}').hide();
                                                 $('div#pendTable{{$uniqueComChef}}').hide();
                                                 $('div#paidTable{{$uniqueComChef}}').show();
+
+                                                var val = $('select#comPaidFilter{{$uniqueComChef}} option:selected').val();
+                                                if(val==2){
+                                                    $('#weekPaidTable{{$uniqueComChef}}').show();
+                                                    $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                }else if(val==3){
+                                                    $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPaidTable{{$uniqueComChef}}').show();
+                                                    $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                }else if(val==4){
+                                                    $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPaidTable{{$uniqueComChef}}').show();
+                                                    $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                }else if(val==5){
+                                                    $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                    $('#allPaidTable{{$uniqueComChef}}').show();
+                                                }
                                             });
                                         });
                                     </script>
