@@ -135,6 +135,9 @@
                     <li class="collection-item">
                         <div>Total Commissions for Vendors:</div>
                         <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($totalCommissions * 0.9),2,'.',',')}}</span>
+                        <div style="margin-top: 5px;">
+                            <span>Breakdown</span>
+                        </div>
                         @foreach($uniqueComArray as $comArray)
                             @foreach($chefs as $chef)
                                 @if($chef->id==$comArray['id'])
@@ -150,6 +153,9 @@
                     </li>
                     <li class="collection-item">
                         <div>Total Unpaid Commissions for Vendors:</div> <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($pendCommissions * 0.9),2,'.',',')}}</span>
+                        <div style="margin-top: 5px;">
+                            <span>Breakdown</span>
+                        </div>
                         @foreach($uniqueComArray as $comArray)
                             @foreach($chefs as $chef)
                                 @if($chef->id==$comArray['id'])
@@ -166,6 +172,9 @@
                     <li class="collection-item">
                         <div>Total Paid Commissions for Vendors:</div>
                         <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($paidCommissions * 0.9),2,'.',',')}}</span>
+                        <div style="margin-top: 5px;">
+                            <span>Breakdown</span>
+                        </div>
                         @foreach($uniqueComArray as $comArray)
                             @foreach($chefs as $chef)
                                 @if($chef->id==$comArray['id'])
@@ -182,6 +191,9 @@
                     <li class="collection-item">
                         <div>Total Collected For DietSelect:</div>
                         <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($paidCommissions * 0.1),2,'.',',')}}</span>
+                        <div style="margin-top: 5px;">
+                            <span>Breakdown</span>
+                        </div>
                         @foreach($uniqueComArray as $comArray)
                             @foreach($chefs as $chef)
                                 @if($chef->id==$comArray['id'])
