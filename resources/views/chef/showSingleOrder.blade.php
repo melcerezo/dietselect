@@ -3328,20 +3328,20 @@
                         </div>
                         <div>
                             <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>
-                            <label for="pref-none">No Reason</label><br/>
+                            <label for="pref-none">Out of Stock</label><br/>
                         </div>
-                        <div>
-                            <input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>
-                            <label for="pref-noInt">Not Interested Anymore</label><br/>
-                        </div>
-                        <div>
-                            <input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>
-                            <label for="pref-noDel">Unable to Deliver</label><br/>
-                        </div>
-                        <div>
-                            <input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>
-                            <label for="pref-noTown">Out of Town</label><br/>
-                        </div>
+                        {{--<div>--}}
+                            {{--<input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>--}}
+                            {{--<label for="pref-noInt"></label><br/>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                            {{--<input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>--}}
+                            {{--<label for="pref-noDel">Unable to Deliver</label><br/>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                            {{--<input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>--}}
+                            {{--<label for="pref-noTown">Out of Town</label><br/>--}}
+                        {{--</div>--}}
                         <div>
                             <input type="radio" name="cancelReason" value="4" class="filled-in" id="pref-CustReason" data-error=".error-pref"/>
                             <label for="pref-CustReason">Other</label><br/>

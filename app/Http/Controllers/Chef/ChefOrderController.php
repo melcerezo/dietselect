@@ -404,7 +404,7 @@ class ChefOrderController extends Controller
         if($order->is_paid == 0){
             $orderItem->is_cancelled = 1;
             if($reason == 0){
-                $orderItem->cancelled_reason = "No reason.";
+                $orderItem->cancelled_reason = "Out of Stock.";
             }else if($reason == 1){
                 $orderItem->cancelled_reason = "Not Interested.";
             }else if($reason == 2){
@@ -419,7 +419,7 @@ class ChefOrderController extends Controller
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
                 if($reason == 0){
-                    $order->cancelled_reason = "No reason.";
+                    $order->cancelled_reason = "Out of Stock.";
                 }else if($reason == 1){
                     $order->cancelled_reason = "Not Interested.";
                 }else if($reason == 2){
@@ -440,7 +440,7 @@ class ChefOrderController extends Controller
             $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
             $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').', due to: ';
             if($reason == 0){
-                $foodnotif->notification .= "No reason.";
+                $foodnotif->notification .= "Out of Stock.";
             }else if($reason == 1){
                 $foodnotif->notification .= "Not Interested.";
             }else if($reason == 2){
@@ -461,7 +461,7 @@ class ChefOrderController extends Controller
             $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
             $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
-                $chefnotif->notification .= "No reason.";
+                $chefnotif->notification .= "Out of Stock.";
             }else if($reason == 1){
                 $chefnotif->notification .= "Not Interested.";
             }else if($reason == 2){
@@ -477,7 +477,7 @@ class ChefOrderController extends Controller
             $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
             $messageFoodie .= 'The listed reason is: ' ;
             if($reason == 0){
-                $messageFoodie .= "No reason.";
+                $messageFoodie .= "Out of Stock.";
             }else if($reason == 1){
                 $messageFoodie .= "Not Interested.";
             }else if($reason == 2){
@@ -511,7 +511,7 @@ class ChefOrderController extends Controller
             $message .= '.';
             $message .= '. The listed reason is: ' ;
             if($reason == 0){
-                $message .= "No reason.";
+                $message .= "Out of Stock.";
             }else if($reason == 1){
                 $message .= "Not Interested.";
             }else if($reason == 2){
@@ -543,7 +543,7 @@ class ChefOrderController extends Controller
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailMess='';
             if($reason == 0){
-                $mailMess .= "No reason.";
+                $mailMess .= "Out of Stock.";
             }else if($reason == 1){
                 $mailMess .= "Not Interested.";
             }else if($reason == 2){
@@ -573,7 +573,7 @@ class ChefOrderController extends Controller
 
             $orderItem->is_cancelled = 1;
             if($reason == 0){
-                $orderItem->cancelled_reason = "No reason.";
+                $orderItem->cancelled_reason = "Out of Stock.";
             }else if($reason == 1){
                 $orderItem->cancelled_reason = "Not Interested.";
             }else if($reason == 2){
@@ -588,7 +588,7 @@ class ChefOrderController extends Controller
             if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
                 $order->is_cancelled=1;
                 if($reason == 0){
-                    $order->cancelled_reason = "No reason.";
+                    $order->cancelled_reason = "Out of Stock.";
                 }else if($reason == 1){
                     $order->cancelled_reason = "Not Interested.";
                 }else if($reason == 2){
@@ -614,7 +614,7 @@ class ChefOrderController extends Controller
             $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
             $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
-                $foodnotif->notification .= "No reason.";
+                $foodnotif->notification .= "Out of Stock.";
             }else if($reason == 1){
                 $foodnotif->notification .= "Not Interested.";
             }else if($reason == 2){
@@ -636,7 +636,7 @@ class ChefOrderController extends Controller
             $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
             $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
-                $chefnotif->notification .= "No reason.";
+                $chefnotif->notification .= "Out of Stock.";
             }else if($reason == 1){
                 $chefnotif->notification .= "Not Interested.";
             }else if($reason == 2){
@@ -651,7 +651,7 @@ class ChefOrderController extends Controller
 
             $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').' due to: ' ;
             if($reason == 0){
-                $messageFoodie .= "No reason.";
+                $messageFoodie .= "Out of Stock.";
             }else if($reason == 1){
                 $messageFoodie .= "Not Interested.";
             }else if($reason == 2){
@@ -685,7 +685,7 @@ class ChefOrderController extends Controller
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
             $message .= ' due to: ';
             if($reason == 0){
-                $message .= "No reason.";
+                $message .= "Out of Stock.";
             }else if($reason == 1){
                 $message .= "Not Interested.";
             }else if($reason == 2){
@@ -717,7 +717,7 @@ class ChefOrderController extends Controller
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailMess='';
             if($reason == 0){
-                $mailMess .= "No reason.";
+                $mailMess .= "Out of Stock.";
             }else if($reason == 1){
                 $mailMess .= "Not Interested.";
             }else if($reason == 2){
