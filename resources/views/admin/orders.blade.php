@@ -219,6 +219,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -231,6 +232,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -272,6 +284,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -284,6 +297,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -323,6 +347,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Foodie</th>
+                                    <th>Method</th>
                                     <th>Status</th>
                                     <th>Total</th>
                                     <th>Created</th>
@@ -335,6 +360,17 @@
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                         <td>
                                             {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                        </td>
+                                        <td>
+                                            @if(count($order->deposit()->get()))
+                                                <span>Deposit</span>
+                                            @elseif(count($order->gcash()->get()))
+                                                <span>Gcash</span>
+                                            @elseif(count($order->paypal()->get()))
+                                                <span>PayPal</span>
+                                            @else
+                                                <span>None</span>
+                                            @endif
                                         </td>
                                         <td>
                                             @if($order->is_cancelled==0)
@@ -391,6 +427,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -403,6 +440,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -444,6 +492,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -456,6 +505,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -497,6 +557,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -509,6 +570,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -548,6 +620,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Foodie</th>
+                                    <th>Method</th>
                                     <th>Status</th>
                                     <th>Total</th>
                                     <th>Created</th>
@@ -560,6 +633,17 @@
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                         <td>
                                             {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                        </td>
+                                        <td>
+                                            @if(count($order->deposit()->get()))
+                                                <span>Deposit</span>
+                                            @elseif(count($order->gcash()->get()))
+                                                <span>Gcash</span>
+                                            @elseif(count($order->paypal()->get()))
+                                                <span>PayPal</span>
+                                            @else
+                                                <span>None</span>
+                                            @endif
                                         </td>
                                         <td>
                                             @if($order->is_cancelled==0)
@@ -616,6 +700,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -628,6 +713,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -669,6 +765,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -681,6 +778,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -722,6 +830,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -734,6 +843,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -773,6 +893,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Foodie</th>
+                                    <th>Method</th>
                                     <th>Status</th>
                                     <th>Total</th>
                                     <th>Created</th>
@@ -785,6 +906,17 @@
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                         <td>
                                             {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                        </td>
+                                        <td>
+                                            @if(count($order->deposit()->get()))
+                                                <span>Deposit</span>
+                                            @elseif(count($order->gcash()->get()))
+                                                <span>Gcash</span>
+                                            @elseif(count($order->paypal()->get()))
+                                                <span>PayPal</span>
+                                            @else
+                                                <span>None</span>
+                                            @endif
                                         </td>
                                         <td>
                                             @if($order->is_cancelled==0)
@@ -841,6 +973,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -853,6 +986,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -894,6 +1038,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -906,6 +1051,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -947,6 +1103,7 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Foodie</th>
+                                            <th>Method</th>
                                             <th>Status</th>
                                             <th>Total</th>
                                             <th>Created</th>
@@ -959,6 +1116,17 @@
                                                 <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                                 <td>
                                                     {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                                </td>
+                                                <td>
+                                                    @if(count($order->deposit()->get()))
+                                                        <span>Deposit</span>
+                                                    @elseif(count($order->gcash()->get()))
+                                                        <span>Gcash</span>
+                                                    @elseif(count($order->paypal()->get()))
+                                                        <span>PayPal</span>
+                                                    @else
+                                                        <span>None</span>
+                                                    @endif
                                                 </td>
                                                 <td>
                                                     @if($order->is_cancelled==0)
@@ -998,6 +1166,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th>Foodie</th>
+                                    <th>Method</th>
                                     <th>Status</th>
                                     <th>Total</th>
                                     <th>Created</th>
@@ -1010,6 +1179,17 @@
                                         <td><a href="{{route('admin.order', $order->id)}}">{{$order->id}}</a></td>
                                         <td>
                                             {{$order->foodie->first_name.' '.$order->foodie->last_name}}
+                                        </td>
+                                        <td>
+                                            @if(count($order->deposit()->get()))
+                                                <span>Deposit</span>
+                                            @elseif(count($order->gcash()->get()))
+                                                <span>Gcash</span>
+                                            @elseif(count($order->paypal()->get()))
+                                                <span>PayPal</span>
+                                            @else
+                                                <span>None</span>
+                                            @endif
                                         </td>
                                         <td>
                                             @if($order->is_cancelled==0)
