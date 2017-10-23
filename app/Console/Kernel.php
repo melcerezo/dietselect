@@ -27,10 +27,10 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')
         //          ->hourly();
         $schedule->command('dietselect:pending')
-            ->everyThirtyMinutes();
+//            ->everyThirtyMinutes();
 //            ->weekly()
 //            ->saturdays()
-//            ->at('15:50');
+            ->dailyAt('09:50');
     }
 
     /**
