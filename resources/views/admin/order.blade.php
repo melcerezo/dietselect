@@ -153,7 +153,7 @@
                                     <li class="collection-item">Ordered By: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</li>
                                     <li class="collection-item">Address: {{$orderAddress}}</li>
                                     <li class="collection-item">Payment Method:
-                                        @if(count($order->deposit()))
+                                        @if(count($order->deposit()->get()))
                                             <span>Deposit</span>
                                             <div>
                                                 <span>Proof:</span>
@@ -161,12 +161,15 @@
                                             <div>
                                                 <img src="/img/{{ $order->deposit->receipt_name }}" class="responsive-img">
                                             </div>
-                                        @elseif(count($order->gcash()))
+                                        @elseif(count($order->gcash()->get()))
                                             <span>Gcash</span>
                                             <div>
-
+                                                <span>Proof:</span>
                                             </div>
-                                        @elseif(count($order->paypal()))
+                                            <div>
+                                                <img src="/img/{{ $order->gcash->picture }}" class="responsive-img">
+                                            </div>
+                                        @elseif(count($order->paypal()->get()))
                                             <span>Paypal</span>
                                         @else
                                             <span>No Payment Method</span>
