@@ -294,6 +294,7 @@ class AdminController extends Controller
             // Change Directory HERE
             Image::make($avatar)->resize(500, 500)->save(public_path('img/refunds/' . $filename));
             $refund->refund_pic = $filename;
+            $refund->transfer_number = $request['code'];
             $refund->is_paid = 1;
             $refund->save();
         }
