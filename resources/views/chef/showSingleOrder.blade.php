@@ -338,9 +338,11 @@
                                 </li>
                             </ul>
                             @if($orderItem->is_cancelled==0)
-                                <div>
-                                    <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
-                                </div>
+                                @if($orderItem->is_delivered == 0)
+                                    <div>
+                                        <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
@@ -1697,9 +1699,11 @@
                                 </div>
                             @endif
                             @if($orderItem->is_cancelled==0)
-                                <div>
-                                    <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
-                                </div>
+                                @if($orderItem->is_delivered==0)
+                                    <div>
+                                        <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                                    </div>
+                                @endif
                             @endif
                         </div>
                     </div>
