@@ -163,6 +163,15 @@
                                             <span>Cancelled</span>
                                         @endif
                                     </li>
+                                    @if($order->is_cancelled==1)
+                                        <li class="collection-item">Cancellation Reason:
+                                            @if($order->cancelled_reason==null)
+                                                <span>No Reason</span>
+                                            @else
+                                                <span>{{$order->cancelled_reason}}</span>
+                                            @endif
+                                        </li>
+                                    @endif
                                     <li class="collection-item">Total: {{'PHP '.number_format($order->total, 2, '.', ',')}}</li>
                                 </ul>
                             </div>
