@@ -290,9 +290,18 @@ class ChefOrderController extends Controller
     public function updateDelivery($id,mailer\Mailer $mailer)
     {
         $orderItem = OrderItem::where('id','=',$id)->first();
+        $planName = "";
+        if($orderItem->order_type == 0){
+            $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan_name;
+        }else if($orderItem->order_type == 1){
+            $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
+        }
+
         $foodie = $orderItem->order->foodie;
-        $messageFoodie = 'Greetings from DietSelect! Your order delivery status for '.$orderItem->plan->plan_name.' has been changed to delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
-        $messageFoodie .= 'Please expect it within this week.' ;
+        $messageFoodie = 'Greetings from DietSelect! Your order delivery status for '.$planName.' has been changed to delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+        $messageFoodie .= 'Please expect it within the week of '.$orderItem->created_at->startOfWeek()->addDays(7).'.' ;
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -315,14 +324,14 @@ class ChefOrderController extends Controller
         $foodnotif->sender_id = 0;
         $foodnotif->receiver_id = $foodie->id;
         $foodnotif->receiver_type = 'f';
-        $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been delivered on ';
-        $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+        $foodnotif->notification = 'Your order for '.$planName.'\'s status has been changed to delivered, please expect it on the week of: ';
+        $foodnotif->notification .= $orderItem->created_at->startOfWeek()->addDays(7).'.';
         $foodnotif->notification_type = 2;
         $foodnotif->save();
 
         $chef= Auth::guard('chef')->user();
-        $message = 'Greetings from DietSelect! You have delivered ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
-        $message .= $orderItem->plan->plan_name;
+        $message = 'Greetings from DietSelect! You have changed ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order delivery status to delivered for: ';
+        $message .= $planName;
         $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
         $message .= '.';
         $chefPhoneNumber = '0' . $chef->mobile_number;
@@ -346,20 +355,23 @@ class ChefOrderController extends Controller
         $chefnotif->sender_id = 0;
         $chefnotif->receiver_id = $chef->id;
         $chefnotif->receiver_type = 'c';
-        $chefnotif->notification = 'You have delivered ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
-        $chefnotif->notification .= $orderItem->plan->plan_name . ' ';
+        $chefnotif->notification = 'You have changed ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
+        $chefnotif->notification .= $planName . ' to delivered on ';
         $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
+        $chefnotif->notification .= 'Please deliver on week of: '.$orderItem->created_at->startOfWeek()->addDays(7).'.';
         $chefnotif->notification_type = 4;
         $chefnotif->save();
 
         $chefName = $chef->name;
-        $planName = $orderItem->plan->plan_name;
+//        $planName = $orderItem->plan->plan_name;
         $time = Carbon::now()->format('F d, Y g:i A');
+        $startTime = $orderItem->created_at->startOfWeek->addDays(7);
         $mailer->to($foodie->email)
             ->send(new DeliverySuccessFoodie(
                 $chefName,
                 $planName,
-                $time));
+                $time,
+                $startTime));
 
         $foodieName = $foodie->first_name . ' ' . $foodie->last_name;
 
@@ -367,7 +379,8 @@ class ChefOrderController extends Controller
             ->send(new DeliverySuccessChef(
                 $foodieName,
                 $planName,
-                $time));
+                $time,
+                $startTime));
 
 
         $orderItem->is_delivered=1;
@@ -396,6 +409,14 @@ class ChefOrderController extends Controller
         $order = $orderItem->order;
 
         $orderItemsAll = $order->order_item()->get();
+        $planName = "";
+        if($orderItem->order_type == 0){
+            $orderPlan= Plan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan_name;
+        }else if($orderItem->order_type == 2){
+            $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
+        }
 
 //        dd($orderItemsAll->where('is_cancelled','=',0)->count());
 
@@ -418,26 +439,35 @@ class ChefOrderController extends Controller
 
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
-                if($reason == 0){
-                    $order->cancelled_reason = "Out of Stock.";
-                }else if($reason == 1){
-                    $order->cancelled_reason = "Not Interested.";
-                }else if($reason == 2){
-                    $order->cancelled_reason = "Unable to take delivery.";
-                }else if($reason == 3){
-                    $order->cancelled_reason = "Out of Town.";
-                }else if($reason == 4){
-                    $order->cancelled_reason = $request['otherReason'];
-                }
+//                if($reason == 0){
+//                    $order->cancelled_reason = "Out of Stock.";
+//                }else if($reason == 1){
+//                    $order->cancelled_reason = "Not Interested.";
+//                }else if($reason == 2){
+//                    $order->cancelled_reason = "Unable to take delivery.";
+//                }else if($reason == 3){
+//                    $order->cancelled_reason = "Out of Town.";
+//                }else if($reason == 4){
+                    $order->cancelled_reason = 'Chefs\' Cancellation';
+//                }
                 $order->save();
 //                dd($order);
+                $foodnotif = new Notification();
+                $foodnotif->sender_id = 0;
+                $foodnotif->receiver_id = $orderItem->order->foodie->id;
+                $foodnotif->receiver_type = 'f';
+                $foodnotif->notification = 'Your order has been cancelled on ';
+                $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').', due to: ';
+                $foodnotif->notification .= 'chefs cancelling their orders';
+                $foodnotif->notification_type = 1;
+                $foodnotif->save();
             }
 
             $foodnotif = new Notification();
             $foodnotif->sender_id = 0;
             $foodnotif->receiver_id = $orderItem->order->foodie->id;
             $foodnotif->receiver_type = 'f';
-            $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
+            $foodnotif->notification = 'Your order for '.$planName.' has been cancelled by '.$chef->name.' on ';
             $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').', due to: ';
             if($reason == 0){
                 $foodnotif->notification .= "Out of Stock.";
@@ -458,7 +488,7 @@ class ChefOrderController extends Controller
             $chefnotif->receiver_id = $chef->id;
             $chefnotif->receiver_type = 'c';
             $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
-            $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
+            $chefnotif->notification .= $planName . ' on';
             $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
                 $chefnotif->notification .= "Out of Stock.";
@@ -474,7 +504,7 @@ class ChefOrderController extends Controller
             $chefnotif->notification_type = 3;
             $chefnotif->save();
 
-            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
+            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$planName.' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
             $messageFoodie .= 'The listed reason is: ' ;
             if($reason == 0){
                 $messageFoodie .= "Out of Stock.";
@@ -506,7 +536,7 @@ class ChefOrderController extends Controller
             file_get_contents($urlFoodie, false, $contextFoodie);
 
             $message = 'Greetings from DietSelect! You have cancelled ' . $foodieName . '\'s order for: ';
-            $message .= $orderItem->plan->plan_name;
+            $message .= $planName;
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
             $message .= '.';
             $message .= '. The listed reason is: ' ;
@@ -539,7 +569,7 @@ class ChefOrderController extends Controller
             file_get_contents($url, false, $context);
 
             $chefName = $chef->name;
-            $planName = $orderItem->plan->plan_name;
+//            $planName = $orderItem->plan->plan_name;
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailMess='';
             if($reason == 0){
@@ -587,17 +617,17 @@ class ChefOrderController extends Controller
 
             if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
                 $order->is_cancelled=1;
-                if($reason == 0){
-                    $order->cancelled_reason = "Out of Stock.";
-                }else if($reason == 1){
-                    $order->cancelled_reason = "Not Interested.";
-                }else if($reason == 2){
-                    $order->cancelled_reason = "Unable to take delivery.";
-                }else if($reason == 3){
-                    $order->cancelled_reason = "Out of Town.";
-                }else if($reason == 4){
-                    $order->cancelled_reason = $request['otherReason'];
-                }
+//                if($reason == 0){
+//                    $order->cancelled_reason = "Out of Stock.";
+//                }else if($reason == 1){
+//                    $order->cancelled_reason = "Not Interested.";
+//                }else if($reason == 2){
+//                    $order->cancelled_reason = "Unable to take delivery.";
+//                }else if($reason == 3){
+//                    $order->cancelled_reason = "Out of Town.";
+//                }else if($reason == 4){
+                    $order->cancelled_reason = 'Chefs\' cancellation';
+//                }
                 $order->save();
             }
 
@@ -611,7 +641,7 @@ class ChefOrderController extends Controller
             $foodnotif->sender_id = 0;
             $foodnotif->receiver_id = $orderItem->order->foodie->id;
             $foodnotif->receiver_type = 'f';
-            $foodnotif->notification = 'Your order for '.$orderItem->plan->plan_name.' has been cancelled by '.$chef->name.' on ';
+            $foodnotif->notification = 'Your order for '.$planName.' has been cancelled by '.$chef->name.' on ';
             $foodnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
                 $foodnotif->notification .= "Out of Stock.";
@@ -633,7 +663,7 @@ class ChefOrderController extends Controller
             $chefnotif->receiver_id = $chef->id;
             $chefnotif->receiver_type = 'c';
             $chefnotif->notification = 'You have cancelled ' . $foodieName . '\'s order for: ';
-            $chefnotif->notification .= $orderItem->plan->plan_name . ' on';
+            $chefnotif->notification .= $planName . ' on';
             $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').' due to: ';
             if($reason == 0){
                 $chefnotif->notification .= "Out of Stock.";
@@ -649,7 +679,7 @@ class ChefOrderController extends Controller
             $chefnotif->notification_type = 3;
             $chefnotif->save();
 
-            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$orderItem->plan->plan_name.' on ' . Carbon::now()->format('F d, Y g:i A').' due to: ' ;
+            $messageFoodie = 'Greetings from DietSelect! '.$chef->name.' has cancelled your order for '.$planName.' on ' . Carbon::now()->format('F d, Y g:i A').' due to: ' ;
             if($reason == 0){
                 $messageFoodie .= "Out of Stock.";
             }else if($reason == 1){
@@ -681,7 +711,7 @@ class ChefOrderController extends Controller
             file_get_contents($urlFoodie, false, $contextFoodie);
 
             $message = 'Greetings from DietSelect! You have cancelled ' . $foodieName . '\'s order for: ';
-            $message .= $orderItem->plan->plan_name;
+            $message .= $planName;
             $message .= ' on ' . Carbon::now()->format('F d, Y g:i A');
             $message .= ' due to: ';
             if($reason == 0){
@@ -713,7 +743,7 @@ class ChefOrderController extends Controller
             file_get_contents($url, false, $context);
 
             $chefName = $chef->name;
-            $planName = $orderItem->plan->plan_name;
+//            $planName = $orderItem->plan->plan_name;
             $time = Carbon::now()->format('F d, Y g:i A');
             $mailMess='';
             if($reason == 0){

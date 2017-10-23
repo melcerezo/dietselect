@@ -12,7 +12,9 @@
 <div>
     <div>
         <p>Hello, this is DietSelect!</p>
-        <p>Your order for: {{$planName}} has been delivered by {{$chefName}} on {{$time}}.</p>
+        <p>Your order for: {{$planName}}'s status has been changed to delivered by {{$chefName}} on {{$time}}.</p>
+        <p>Please expect your delivery on the week of: {{$startTime}}</p>
+
     </div>
 </div>
 </body>

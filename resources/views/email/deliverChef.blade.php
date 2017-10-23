@@ -12,7 +12,8 @@
     <div>
         <div>
             <p>Hello, this is DietSelect!</p>
-            <p>You have delivered {{$foodieName}}'s order for {{$planName}} on {{$time}}.</p>
+            <p>You have changed the status of {{$foodieName}}'s order for {{$planName}} to delivered on {{$time}}.</p>
+            <p>Please deliver on the week of: {{$startTime}}</p>
         </div>
     </div>
 </body>

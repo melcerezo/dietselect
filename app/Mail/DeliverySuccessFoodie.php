@@ -17,16 +17,19 @@ class DeliverySuccessFoodie extends Mailable
 
     public $time;
 
+    public $startTime;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($chefName,$planName,$time)
+    public function __construct($chefName,$planName,$time,$startTime)
     {
         $this->chefName = $chefName;
         $this->planName = $planName;
         $this->time = $time;
+        $this->startTime = $startTime;
     }
 
     /**
