@@ -155,8 +155,17 @@
                                     <li class="collection-item">Payment Method:
                                         @if(count($order->deposit()))
                                             <span>Deposit</span>
+                                            <div>
+                                                <span>Proof:</span>
+                                            </div>
+                                            <div>
+                                                <img src="/img/{{ $order->deposit->receipt_name }}" class="responsive-img">
+                                            </div>
                                         @elseif(count($order->gcash()))
                                             <span>Gcash</span>
+                                            <div>
+
+                                            </div>
                                         @elseif(count($order->paypal()))
                                             <span>Paypal</span>
                                         @else
