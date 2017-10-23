@@ -8,6 +8,7 @@ use App\FoodiePreference;
 use App\Http\Controllers\Controller;
 use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
+use App\Mail\RefundSuccessFoodie;
 use App\Message;
 use App\Refund;
 use Carbon\Carbon;
@@ -149,8 +150,30 @@ class AdminController extends Controller
 
     public function payCommission(Commission $commission)
     {
-        $chef = $commission->chef;
-        dd($chef->email);
+//        $chef = $commission->chef;
+//        dd($chef->email);
+//
+//        $message = 'Greetings from DietSelect! Your commission has been paid on: ';
+//        $message .= Carbon::now()->format('F d, Y g:i A');
+//        $message .= '.';
+//        $chefPhoneNumber = '0' . $chef->mobile_number;
+//        $url = 'https://www.itexmo.com/php_api/api.php';
+//        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+//        $param = array(
+//            'http' => array(
+//                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+//                'method' => 'POST',
+//                'content' => http_build_query($itexmo),
+//            ),
+//            "ssl" => array(
+//                "verify_peer" => false,
+//                "verify_peer_name" => false,
+//            ),
+//        );
+//        $context = stream_context_create($param);
+//        file_get_contents($url, false, $context);
+
+
 
         $commission->paid=1;
         $commission->save();
@@ -259,7 +282,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function refund(Request $request)
+    public function refund(Request $request, mailer\Mailer $mailer)
     {
         $id = $request['refund-id'];
         $refund = Refund::where('id','=',$id)->first();
@@ -274,6 +297,50 @@ class AdminController extends Controller
             $refund->is_paid = 1;
             $refund->save();
         }
+
+        $foodie = $refund->foodie;
+        $orderItem = $refund->order_item;
+
+        $planName = '';
+        $chefName = '';
+        if($orderItem->order_type == 0){
+            $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan_name;
+            $chefName = $orderPlan->chef->name;
+        }else if($orderItem->order_type == 1){
+            $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+            $planName = $orderPlan->plan->plan_name;
+            $chefName = $orderPlan->plan->chef->name;
+        }
+
+        $message = 'Greetings from DietSelect! Your refund for the chef: '.$chefName.'\'s cancellation of your order of '.$planName.' on '.$orderItem->created_at->format('F d, Y').' has been paid on: ';
+        $message .= Carbon::now()->format('F d, Y g:i A');
+        $message .= '.';
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+        $url = 'https://www.itexmo.com/php_api/api.php';
+        $itexmo = array('1' => $foodiePhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+        $param = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmo),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $context = stream_context_create($param);
+        file_get_contents($url, false, $context);
+
+        $foodieName = $foodie->first_name.' '.$foodie->last_name;
+        $time = $orderItem->created_at->format('F d, Y h:i A');
+        $mailer->to($foodie->email)
+            ->send(new RefundSuccessFoodie(
+//                $foodieName,
+                $planName,
+                $time
+            ));
 
         return redirect()->route('admin.adminRefund')->with(['status'=>'Refund successfully paid!']);
     }
