@@ -10,6 +10,7 @@ use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
 use App\Mail\RefundSuccessFoodie;
 use App\Message;
+use App\Notification;
 use App\Refund;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -314,9 +315,17 @@ class AdminController extends Controller
             $chefName = $orderPlan->plan->chef->name;
         }
 
+        $foodnotif = new Notification();
+        $foodnotif->sender_id = 0;
+        $foodnotif->receiver_id = $foodie->id;
+        $foodnotif->receiver_type = 'f';
+        $foodnotif->notification = 'Your refund for your order of '.$planName.' has been paid on '.Carbon::now()->format('F d, Y h:i A').', please view the refunds tab on your orders page for more details.';
+        $foodnotif->notification_type = 4;
+        $foodnotif->save();
+
         $message = 'Greetings from DietSelect! Your refund for the chef: '.$chefName.'\'s cancellation of your order of '.$planName.' on '.$orderItem->created_at->format('F d, Y').' has been paid on: ';
         $message .= Carbon::now()->format('F d, Y g:i A');
-        $message .= '.';
+        $message .= '. Please see the refunds tab of your orders page for more details.';
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
         $url = 'https://www.itexmo.com/php_api/api.php';
         $itexmo = array('1' => $foodiePhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
@@ -334,7 +343,7 @@ class AdminController extends Controller
         $context = stream_context_create($param);
         file_get_contents($url, false, $context);
 
-        $foodieName = $foodie->first_name.' '.$foodie->last_name;
+//        $foodieName = $foodie->first_name.' '.$foodie->last_name;
         $time = $orderItem->created_at->format('F d, Y h:i A');
         $mailer->to($foodie->email)
             ->send(new RefundSuccessFoodie(

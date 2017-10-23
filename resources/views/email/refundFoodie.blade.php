@@ -10,7 +10,7 @@
 <body>
 <h1>Refund Payment Made</h1>
 <div>
-    <p>Your refund for your order of {{$planName}} has been paid on: {{$time}}.</p>
+    <p>Your refund for your order of {{$planName}} has been paid on: {{$time}}. Please see the refunds tab of your order page for more details.</p>
 </div>
 </body>
 </html>
