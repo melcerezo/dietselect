@@ -301,7 +301,7 @@ class ChefOrderController extends Controller
 
         $foodie = $orderItem->order->foodie;
         $messageFoodie = 'Greetings from DietSelect! Your order delivery status for '.$planName.' has been changed to delivered on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
-        $messageFoodie .= 'Please expect it within the week of '.$orderItem->created_at->startOfWeek()->addDays(7).'.' ;
+        $messageFoodie .= 'Please expect it within the week of '.$orderItem->created_at->startOfWeek()->addDays(7)->format('F d, Y').'.' ;
         $foodiePhoneNumber = '0' . $foodie->mobile_number;
 //        dd($foodie);
         $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -325,7 +325,7 @@ class ChefOrderController extends Controller
         $foodnotif->receiver_id = $foodie->id;
         $foodnotif->receiver_type = 'f';
         $foodnotif->notification = 'Your order for '.$planName.'\'s status has been changed to delivered, please expect it on the week of: ';
-        $foodnotif->notification .= $orderItem->created_at->startOfWeek()->addDays(7).'.';
+        $foodnotif->notification .= $orderItem->created_at->startOfWeek()->addDays(7)->format('F d, Y').'.';
         $foodnotif->notification_type = 2;
         $foodnotif->save();
 
@@ -358,14 +358,14 @@ class ChefOrderController extends Controller
         $chefnotif->notification = 'You have changed ' . $foodie->first_name . ' ' . $foodie->last_name . '\'s order for: ';
         $chefnotif->notification .= $planName . ' to delivered on ';
         $chefnotif->notification .= Carbon::now()->format('F d, Y g:i A').'.';
-        $chefnotif->notification .= 'Please deliver on week of: '.$orderItem->created_at->startOfWeek()->addDays(7).'.';
+        $chefnotif->notification .= 'Please deliver on week of: '.$orderItem->created_at->startOfWeek()->addDays(7)->format('F d, Y').'.';
         $chefnotif->notification_type = 4;
         $chefnotif->save();
 
         $chefName = $chef->name;
 //        $planName = $orderItem->plan->plan_name;
         $time = Carbon::now()->format('F d, Y g:i A');
-        $startTime = $orderItem->created_at->startOfWeek->addDays(7);
+        $startTime = $orderItem->created_at->startOfWeek()->addDays(7)->format('F d, Y');
         $mailer->to($foodie->email)
             ->send(new DeliverySuccessFoodie(
                 $chefName,
