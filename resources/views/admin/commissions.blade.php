@@ -140,14 +140,61 @@
                                 @if($chef->id==$comArray['id'])
                                     <div class="divider">
                                     </div>
-                                    <span>{{$chef->name.': PHP '.number_format($comArray['total'],2,'.',',')}}</span>
+                                    <div>
+                                        {{$chef->name.':'}}
+                                    </div>
+                                    <div>{{'PHP '.number_format(($comArray['total']*0.9),2,'.',',')}}</div>
                                 @endif
                             @endforeach
                         @endforeach
                     </li>
-                    <li class="collection-item"><div>Total Unpaid Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($pendCommissions * 0.9),2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Paid Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($paidCommissions * 0.9),2,'.',',')}}</span></li>
-                    <li class="collection-item"><div>Total Collected For DietSelect:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($paidCommissions * 0.1),2,'.',',')}}</span></li>
+                    <li class="collection-item">
+                        <div>Total Unpaid Commissions for Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($pendCommissions * 0.9),2,'.',',')}}</span>
+                        @foreach($uniqueComArray as $comArray)
+                            @foreach($chefs as $chef)
+                                @if($chef->id==$comArray['id'])
+                                    <div class="divider">
+                                    </div>
+                                    <div>
+                                        {{$chef->name.':'}}
+                                    </div>
+                                    <div>{{'PHP '.number_format(($comArray['pend']*0.9),2,'.',',')}}</div>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </li>
+                    <li class="collection-item">
+                        <div>Total Paid Commissions for Vendors:</div>
+                        <span style="font-size: 14px;">{{'PHP '.number_format(($paidCommissions * 0.9),2,'.',',')}}</span>
+                        @foreach($uniqueComArray as $comArray)
+                            @foreach($chefs as $chef)
+                                @if($chef->id==$comArray['id'])
+                                    <div class="divider">
+                                    </div>
+                                    <div>
+                                        {{$chef->name.':'}}
+                                    </div>
+                                    <div>{{'PHP '.number_format(($comArray['paid']*0.9),2,'.',',')}}</div>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </li>
+                    <li class="collection-item">
+                        <div>Total Collected For DietSelect:</div>
+                        <span style="font-size: 14px;">{{'PHP '.number_format(($paidCommissions * 0.1),2,'.',',')}}</span>
+                        @foreach($uniqueComArray as $comArray)
+                            @foreach($chefs as $chef)
+                                @if($chef->id==$comArray['id'])
+                                    <div class="divider">
+                                    </div>
+                                    <div>
+                                        {{$chef->name.':'}}
+                                    </div>
+                                    <div>{{'PHP '.number_format(($comArray['paid']*0.1),2,'.',',')}}</div>
+                                @endif
+                            @endforeach
+                        @endforeach
+                    </li>
                 </ul>
             </div>
             <div class="col s12 m10">
