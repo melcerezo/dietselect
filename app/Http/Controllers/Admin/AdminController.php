@@ -583,7 +583,9 @@ class AdminController extends Controller
         $foodieAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
-
+        if(count($order->deposit())){
+            dd($order->deposit);
+        }
 
         if($foodieAddress!=null){
 
