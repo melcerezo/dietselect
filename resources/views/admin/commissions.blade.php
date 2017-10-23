@@ -229,9 +229,10 @@
                                     <script>
                                         $(document).ready(function () {
                                             $('span.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
-                                            $('table#allTable{{$uniqueComChef}}').show();
-                                            $('table#pendTable{{$uniqueComChef}}').hide();
-                                            $('table#paidTable{{$uniqueComChef}}').hide();
+                                            $('div#allTable{{$uniqueComChef}}').show();
+                                            $('table#allWeekTable{{$uniqueComChef}}').show();
+                                            $('div#pendTable{{$uniqueComChef}}').hide();
+                                            $('div#paidTable{{$uniqueComChef}}').hide();
 
 
                                             $('span.chefTabAll{{$uniqueComChef}}').on('click',function () {
@@ -239,179 +240,775 @@
                                                 $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
-                                                $('table#allTable{{$uniqueComChef}}').show();
-                                                $('table#pendTable{{$uniqueComChef}}').hide();
-                                                $('table#paidTable{{$uniqueComChef}}').hide();
+                                                $('div#allTable{{$uniqueComChef}}').show();
+                                                var val = $('select#comAllFilter{{$uniqueComChef}} option:selected').val();
+                                                if(val==2){
+                                                    $('#weekAllTable{{$uniqueComChef}}').show();
+                                                    $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                    $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                    $('#allAllTable{{$uniqueComChef}}').hide();
+                                                }else if(val==3){
+                                                    $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                    $('#monthAllTable{{$uniqueComChef}}').show();
+                                                    $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                    $('#allAllTable{{$uniqueComChef}}').hide();
+                                                }else if(val==4){
+                                                    $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                    $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                    $('#yearAllTable{{$uniqueComChef}}').show();
+                                                    $('#allAllTable{{$uniqueComChef}}').hide();
+                                                }else if(val==5){
+                                                    $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                    $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                    $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                    $('#allAllTable{{$uniqueComChef}}').show();
+                                                }
+
+                                                $('div#pendTable{{$uniqueComChef}}').hide();
+                                                $('div#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPend{{$uniqueComChef}}').on('click',function () {
                                                 $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
                                                 $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
-                                                $('table#allTable{{$uniqueComChef}}').hide();
-                                                $('table#pendTable{{$uniqueComChef}}').show();
-                                                $('table#paidTable{{$uniqueComChef}}').hide();
+                                                $('div#allTable{{$uniqueComChef}}').hide();
+                                                $('div#pendTable{{$uniqueComChef}}').show();
+                                                $('div#paidTable{{$uniqueComChef}}').hide();
                                             });
                                             $('span.chefTabPaid{{$uniqueComChef}}').on('click',function () {
                                                 $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
                                                 $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
 
-                                                $('table#allTable{{$uniqueComChef}}').hide();
-                                                $('table#pendTable{{$uniqueComChef}}').hide();
-                                                $('table#paidTable{{$uniqueComChef}}').show();
+                                                $('div#allTable{{$uniqueComChef}}').hide();
+                                                $('div#pendTable{{$uniqueComChef}}').hide();
+                                                $('div#paidTable{{$uniqueComChef}}').show();
                                             });
                                         });
                                     </script>
                                     <div class="divider">
                                     </div>
-                                    <table id="allTable{{$uniqueComChef}}" class="responsive-table centered">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            {{--<th>Chef Name</th>--}}
-                                            <th>Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Amount to Vendor(90%)</th>
-                                            <th>Amount to DietSelect(10%)</th>
-                                            <th>Payment Status</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
+                                    <div id="allTable{{$uniqueComChef}}">
+                                        <div>
+                                            <div>
+                                                <span>Search by Interval:</span>
+                                            </div>
+                                            <select id="comAllFilter{{$uniqueComChef}}">
+                                                <option value="2" selected>This Week</option>
+                                                <option value="3">This Month</option>
+                                                <option value="4">This Year</option>
+                                                <option value="5">All</option>
+                                            </select>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('#comAllFilter{{$uniqueComChef}}').change(function () {
+                                                        var val = $('select#comAllFilter{{$uniqueComChef}} option:selected').val();
+                                                        if(val==2){
+                                                            $('#weekAllTable{{$uniqueComChef}}').show();
+                                                            $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                            $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                            $('#allAllTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==3){
+                                                            $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                            $('#monthAllTable{{$uniqueComChef}}').show();
+                                                            $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                            $('#allAllTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==4){
+                                                            $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                            $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                            $('#yearAllTable{{$uniqueComChef}}').show();
+                                                            $('#allAllTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==5){
+                                                            $('#weekAllTable{{$uniqueComChef}}').hide();
+                                                            $('#monthAllTable{{$uniqueComChef}}').hide();
+                                                            $('#yearAllTable{{$uniqueComChef}}').hide();
+                                                            $('#allAllTable{{$uniqueComChef}}').show();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                        <table id="weekAllTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
                                             <tr>
-                                                <td>{{$commission->id}}</td>
-                                                {{--<td>--}}
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
                                                     {{--@foreach($chefs as $chef)--}}
-                                                        {{--@if($chef->id == $commission->chef_id)--}}
-                                                            {{--{{$chef->name}}--}}
-                                                        {{--@endif--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
                                                     {{--@endforeach--}}
-                                                {{--</td>--}}
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Pending</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                            </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <table id="pendTable{{$uniqueComChef}}" class="responsive-table centered">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            {{--<th>Chef Name</th>--}}
-                                            <th>Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Amount to Vendor(90%)</th>
-                                            <th>Amount to DietSelect(10%)</th>
-                                            <th>Payment Status</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0) as $commission)
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="monthAllTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
                                             <tr>
-                                                <td>{{$commission->id}}</td>
-                                                {{--<td>--}}
-                                                {{--@foreach($chefs as $chef)--}}
-                                                {{--@if($chef->id == $commission->chef_id)--}}
-                                                {{--{{$chef->name}}--}}
-                                                {{--@endif--}}
-                                                {{--@endforeach--}}
-                                                {{--</td>--}}
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Pending</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
-                                    <table id="paidTable{{$uniqueComChef}}" class="responsive-table centered">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            {{--<th>Chef Name</th>--}}
-                                            <th>Date</th>
-                                            <th>Total Amount</th>
-                                            <th>Amount to Vendor(90%)</th>
-                                            <th>Amount to DietSelect(10%)</th>
-                                            <th>Payment Status</th>
-                                            <th>Update</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1) as $commission)
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('created_at','>', $startMonth)->where('created_at','<',$endMonth) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="yearAllTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
                                             <tr>
-                                                <td>{{$commission->id}}</td>
-                                                {{--<td>--}}
-                                                {{--@foreach($chefs as $chef)--}}
-                                                {{--@if($chef->id == $commission->chef_id)--}}
-                                                {{--{{$chef->name}}--}}
-                                                {{--@endif--}}
-                                                {{--@endforeach--}}
-                                                {{--</td>--}}
-                                                <td>{{$commission->created_at->format('F d, Y')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
-                                                <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <span>Pending</span>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
-                                                <td>
-                                                    @if($commission->paid==0)
-                                                        <form method="post" action="{{route('admin.pay',$commission->id)}}">
-                                                            {{ csrf_field() }}
-                                                            <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
-                                                        </form>
-                                                    @elseif($commission->paid==1)
-                                                        <span>Paid</span>
-                                                    @endif
-                                                </td>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
                                             </tr>
-                                        @endforeach
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('created_at','>', $startYear)->where('created_at','<',$endYear) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="allAllTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                        {{--@foreach($chefs as $chef)--}}
+                                                            {{--@if($chef->id == $commission->chef_id)--}}
+                                                                {{--{{$chef->name}}--}}
+                                                            {{--@endif--}}
+                                                        {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="pendTable{{$uniqueComChef}}">
+                                        <div>
+                                            <div>
+                                                <span>Search by Interval:</span>
+                                            </div>
+                                            <select id="comPendFilter{{$uniqueComChef}}">
+                                                <option value="2" selected>This Week</option>
+                                                <option value="3">This Month</option>
+                                                <option value="4">This Year</option>
+                                                <option value="5">All</option>
+                                            </select>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('#comPendFilter{{$uniqueComChef}}').change(function () {
+                                                        var val = $('select#comPendFilter{{$uniqueComChef}} option:selected').val();
+                                                        if(val==2){
+                                                            $('#weekPendTable{{$uniqueComChef}}').show();
+                                                            $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                            $('#allPendTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==3){
+                                                            $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPendTable{{$uniqueComChef}}').show();
+                                                            $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                            $('#allPendTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==4){
+                                                            $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPendTable{{$uniqueComChef}}').show();
+                                                            $('#allPendTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==5){
+                                                            $('#weekPendTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPendTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPendTable{{$uniqueComChef}}').hide();
+                                                            $('#allPendTable{{$uniqueComChef}}').show();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                        <table id="weekPendTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="monthPendTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="yearPendTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0)->where('created_at','>', $startYear)->where('created_at','<',$endYear) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="allPendTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div id="paidTable{{$uniqueComChef}}">
+                                        <div>
+                                            <div>
+                                                <span>Search by Interval:</span>
+                                            </div>
+                                            <select id="comPendFilter{{$uniqueComChef}}">
+                                                <option value="2" selected>This Week</option>
+                                                <option value="3">This Month</option>
+                                                <option value="4">This Year</option>
+                                                <option value="5">All</option>
+                                            </select>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    $('#comPaidFilter{{$uniqueComChef}}').change(function () {
+                                                        var val = $('select#comPaidFilter{{$uniqueComChef}} option:selected').val();
+                                                        if(val==2){
+                                                            $('#weekPaidTable{{$uniqueComChef}}').show();
+                                                            $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==3){
+                                                            $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPaidTable{{$uniqueComChef}}').show();
+                                                            $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==4){
+                                                            $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPaidTable{{$uniqueComChef}}').show();
+                                                            $('#allPaidTable{{$uniqueComChef}}').hide();
+                                                        }else if(val==5){
+                                                            $('#weekPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#monthPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#yearPaidTable{{$uniqueComChef}}').hide();
+                                                            $('#allPaidTable{{$uniqueComChef}}').show();
+                                                        }
+                                                    });
+                                                });
+                                            </script>
+                                        </div>
+                                        <table id="weekPaidTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="monthPaidTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="yearPaidTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1)->where('created_at','>', $startYear)->where('created_at','<',$endYear) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+
+                                        <table id="allPaidTable{{$uniqueComChef}}" class="responsive-table centered">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                {{--<th>Chef Name</th>--}}
+                                                <th>Date</th>
+                                                <th>Total Amount</th>
+                                                <th>Amount to Vendor(90%)</th>
+                                                <th>Amount to DietSelect(10%)</th>
+                                                <th>Payment Status</th>
+                                                <th>Update</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1) as $commission)
+                                                <tr>
+                                                    <td>{{$commission->id}}</td>
+                                                    {{--<td>--}}
+                                                    {{--@foreach($chefs as $chef)--}}
+                                                    {{--@if($chef->id == $commission->chef_id)--}}
+                                                    {{--{{$chef->name}}--}}
+                                                    {{--@endif--}}
+                                                    {{--@endforeach--}}
+                                                    {{--</td>--}}
+                                                    <td>{{$commission->created_at->format('F d, Y')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.9),2,'.',',')}}</td>
+                                                    <td>{{'PHP '.number_format(($commission->amount * 0.1),2,'.',',')}}</td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <span>Pending</span>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                    <td>
+                                                        @if($commission->paid==0)
+                                                            <form method="post" action="{{route('admin.pay',$commission->id)}}">
+                                                                {{ csrf_field() }}
+                                                                <button type="submit" class="btn btn-primary waves-light waves-effect">Update</button>
+                                                            </form>
+                                                        @elseif($commission->paid==1)
+                                                            <span>Paid</span>
+                                                        @endif
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         @endforeach
