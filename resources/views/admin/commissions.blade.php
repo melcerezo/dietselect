@@ -340,16 +340,18 @@
                                     <div class="divider">
                                     </div>
                                     <div id="allTable{{$uniqueComChef}}">
-                                        <div>
-                                            <div>
-                                                <span>Search by Interval:</span>
+                                        <div class="row">
+                                            <div class="col s12 m3">
+                                                <div>
+                                                    <span>Search by Interval:</span>
+                                                </div>
+                                                <select id="comAllFilter{{$uniqueComChef}}">
+                                                    <option value="2" selected>This Week</option>
+                                                    <option value="3">This Month</option>
+                                                    <option value="4">This Year</option>
+                                                    <option value="5">All</option>
+                                                </select>
                                             </div>
-                                            <select id="comAllFilter{{$uniqueComChef}}">
-                                                <option value="2" selected>This Week</option>
-                                                <option value="3">This Month</option>
-                                                <option value="4">This Year</option>
-                                                <option value="5">All</option>
-                                            </select>
                                             <script>
                                                 $(document).ready(function () {
                                                     $('#comAllFilter{{$uniqueComChef}}').change(function () {
@@ -581,15 +583,17 @@
                                     </div>
                                     <div id="pendTable{{$uniqueComChef}}">
                                         <div>
-                                            <div>
-                                                <span>Search by Interval:</span>
+                                            <div class="col s12 m3">
+                                                <div>
+                                                    <span>Search by Interval:</span>
+                                                </div>
+                                                <select id="comPendFilter{{$uniqueComChef}}">
+                                                    <option value="2" selected>This Week</option>
+                                                    <option value="3">This Month</option>
+                                                    <option value="4">This Year</option>
+                                                    <option value="5">All</option>
+                                                </select>
                                             </div>
-                                            <select id="comPendFilter{{$uniqueComChef}}">
-                                                <option value="2" selected>This Week</option>
-                                                <option value="3">This Month</option>
-                                                <option value="4">This Year</option>
-                                                <option value="5">All</option>
-                                            </select>
                                             <script>
                                                 $(document).ready(function () {
                                                     $('#comPendFilter{{$uniqueComChef}}').change(function () {
@@ -820,16 +824,18 @@
                                         </table>
                                     </div>
                                     <div id="paidTable{{$uniqueComChef}}">
-                                        <div>
-                                            <div>
-                                                <span>Search by Interval:</span>
+                                        <div class="row">
+                                            <div class="col s12 m3">
+                                                <div>
+                                                    <span>Search by Interval:</span>
+                                                </div>
+                                                <select id="comPaidFilter{{$uniqueComChef}}">
+                                                    <option value="2" selected>This Week</option>
+                                                    <option value="3">This Month</option>
+                                                    <option value="4">This Year</option>
+                                                    <option value="5">All</option>
+                                                </select>
                                             </div>
-                                            <select id="comPaidFilter{{$uniqueComChef}}">
-                                                <option value="2" selected>This Week</option>
-                                                <option value="3">This Month</option>
-                                                <option value="4">This Year</option>
-                                                <option value="5">All</option>
-                                            </select>
                                             <script>
                                                 $(document).ready(function () {
                                                     $('#comPaidFilter{{$uniqueComChef}}').change(function () {
