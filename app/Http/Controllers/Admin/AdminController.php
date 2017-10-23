@@ -149,8 +149,12 @@ class AdminController extends Controller
 
     public function payCommission(Commission $commission)
     {
+        $chef = $commission->chef();
+        dd($chef);
+
         $commission->paid=1;
         $commission->save();
+
 
         return back()->with(['status'=>'Paid commission!']);
     }
