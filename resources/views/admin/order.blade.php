@@ -148,10 +148,19 @@
                             <div class="col s12 m6">
                                 <ul class="collection">
                                     <li class="collection-item grey lighten-3">
-                                        <div class="collection-header">Pending Order</div>
+                                        <div class="collection-header">Order</div>
                                     </li>
                                     <li class="collection-item">Ordered By: {{$order->foodie->first_name.' '.$order->foodie->last_name}}</li>
                                     <li class="collection-item">Address: {{$orderAddress}}</li>
+                                    <li class="collection-item">Payment Method:
+                                        @if(count($order->deposit()))
+                                            <span>Deposit</span>
+                                        @elseif(count($order->gcash()))
+                                            <span>Gcash</span>
+                                        @else
+                                            <span>Paypal</span>
+                                        @endif
+                                    </li>
                                     <li class="collection-item">Payment:
                                         @if($order->is_cancelled==0)
                                             @if($order->is_paid==0)
@@ -192,7 +201,48 @@
     </div>
     <div id="cancelModal" class="modal">
         <div class="modal-content">
-            <a href="{{route('admin.order.cancel', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100;">Cancel Order?</a>
+            <form method="post" action="{{route('admin.order.cancel', $order->id)}}" id="pickAddressForm">
+                {{ csrf_field() }}
+                <div>
+                    <span>Reason for cancellation</span>
+                </div>
+                {{--<div>--}}
+                    {{--<input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>--}}
+                    {{--<label for="pref-none">Fraudulent Payment</label><br/>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>--}}
+                    {{--<label for="pref-noInt">Not Interested Anymore</label><br/>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>--}}
+                    {{--<label for="pref-noDel">Cannot Take Delivery at This Time</label><br/>--}}
+                {{--</div>--}}
+                {{--<div>--}}
+                    {{--<input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>--}}
+                    {{--<label for="pref-noTown">Out of Town</label><br/>--}}
+                {{--</div>--}}
+                <div>
+                    <input type="radio" name="cancelReason" value="4" class="filled-in" id="pref-CustReason" data-error=".error-pref"/>
+                    <label for="pref-CustReason">Other</label><br/>
+                </div>
+                <div id="otherReasonContainer">
+                    <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                </div>
+                <button type="submit" id="cancelOrderSubmit" class="btn waves-effect waves-light orange darken-2">Submit</button>
+            </form>
+            <script>
+                $(document).ready(function () {
+                    $('input[type=radio][name=cancelReason]').change(function () {
+                        if($(this).val()==4){
+                            $('#otherReasonContainer').show();
+                        }else{
+                            $('#otherReasonContainer').hide();
+                        }
+                    });
+                });
+            </script>
+            {{--<a href="{{route('admin.order.cancel', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100;">Cancel Order?</a>--}}
         </div>
     </div>
 

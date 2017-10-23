@@ -624,7 +624,7 @@ class AdminController extends Controller
 
             $orderItemArray[]= array('id'=>$orderItem->id,'order_id'=>$orderItem->order_id,
                 'plan'=>$planName,'planPic'=>$planPic,'chef'=>$chefName,'type'=>$orderType,'quantity'=>$orderItem->quantity,'is_delivered'=>$orderItem->is_delivered,
-                'is_cancelled'=>$orderItem->order->is_cancelled,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
+                'is_cancelled'=>$orderItem->is_cancelled,'cancelled_reason'=>$orderItem->cancelled_reason,'price'=>'PHP '.number_format($orderItem->price,2,'.',','));
         }
 
 //        dd($orderItemArray);
@@ -637,10 +637,28 @@ class AdminController extends Controller
         ]);
     }
 
-    public function orderCancel(Order $order)
+    public function orderCancel(Order $order, Request $request)
     {
+        $reason = $request['cancelReason'];
+        $orderItems = $order->order_item()->get();
+
         $order->is_cancelled=1;
+        if($reason==0){
+            $order->cancelled_reason = "Wrong Payment Method.";
+        }else if($reason==4){
+            $order->cancelled_reason = $request['otherReason'];
+        }
         $order->save();
+
+        foreach ($orderItems as $orderItem){
+            $orderItem->is_cancelled =1;
+            if($reason == 0){
+                $orderItem->cancelled_reason = "Wrong Payment Method.";
+            }else if($reason == 4){
+                $orderItem->cancelled_reason = $request['otherReason'];
+            }
+            $orderItem->save();
+        }
 
         return back()->with(['status'=>'Cancelled Order']);
     }
