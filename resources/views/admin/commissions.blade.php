@@ -230,9 +230,9 @@
                                         $(document).ready(function () {
                                             $('span.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
                                             $('div#allTable{{$uniqueComChef}}').show();
-                                            $('table#allWeekTable{{$uniqueComChef}}').show();
-                                            $('table#allMonthTable{{$uniqueComChef}}').hide();
-                                            $('table#allYearTable{{$uniqueComChef}}').hide();
+                                            $('table#weekAllTable{{$uniqueComChef}}').show();
+                                            $('table#monthAllTable{{$uniqueComChef}}').hide();
+                                            $('table#yearAllTable{{$uniqueComChef}}').hide();
                                             $('table#allAllTable{{$uniqueComChef}}').hide();
                                             $('div#pendTable{{$uniqueComChef}}').hide();
                                             $('div#paidTable{{$uniqueComChef}}').hide();
