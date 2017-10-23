@@ -220,10 +220,10 @@
                 <div>
                     <span>Reason for cancellation</span>
                 </div>
-                {{--<div>--}}
-                    {{--<input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>--}}
-                    {{--<label for="pref-none">Fraudulent Payment</label><br/>--}}
-                {{--</div>--}}
+                <div>
+                    <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>
+                    <label for="pref-none">Fraudulent Payment</label><br/>
+                </div>
                 {{--<div>--}}
                     {{--<input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>--}}
                     {{--<label for="pref-noInt">Not Interested Anymore</label><br/>--}}
