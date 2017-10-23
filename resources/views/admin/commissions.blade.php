@@ -824,7 +824,7 @@
                                             <div>
                                                 <span>Search by Interval:</span>
                                             </div>
-                                            <select id="comPendFilter{{$uniqueComChef}}">
+                                            <select id="comPaidFilter{{$uniqueComChef}}">
                                                 <option value="2" selected>This Week</option>
                                                 <option value="3">This Month</option>
                                                 <option value="4">This Year</option>
