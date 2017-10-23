@@ -157,8 +157,10 @@
                                             <span>Deposit</span>
                                         @elseif(count($order->gcash()))
                                             <span>Gcash</span>
-                                        @else
+                                        @elseif(count($order->paypal()))
                                             <span>Paypal</span>
+                                        @else
+                                            <span>No Payment Method</span>
                                         @endif
                                     </li>
                                     <li class="collection-item">Payment:
