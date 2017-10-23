@@ -140,7 +140,7 @@
                                 @if($chef->id==$comArray['id'])
                                     <div class="divider">
                                     </div>
-                                    <span>{{$chef->name.': '.$comArray['total']}}</span>
+                                    <span>{{$chef->name.': PHP '.number_format($comArray['total'],2,'.',',')}}</span>
                                 @endif
                             @endforeach
                         @endforeach
