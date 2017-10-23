@@ -584,7 +584,7 @@ class AdminController extends Controller
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
         if(count($order->deposit())){
-            dd($order->deposit);
+            dd($order->deposit());
         }
 
         if($foodieAddress!=null){
