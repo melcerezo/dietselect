@@ -19,7 +19,6 @@ class Order extends Model
     }
     public function paypal(){
         return $this->hasOne(PayPal::class);
-
     }
 
     public function order_item(){
