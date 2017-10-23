@@ -149,7 +149,7 @@ class AdminController extends Controller
 
     public function payCommission(Commission $commission)
     {
-        $chef = $commission->chef();
+        $chef = $commission->chef()->get();
         dd($chef);
 
         $commission->paid=1;
