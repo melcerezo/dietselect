@@ -294,7 +294,7 @@ class ChefOrderController extends Controller
         if($orderItem->order_type == 0){
             $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
-        }else if($orderItem->order_type == 1){
+        }else if($orderItem->order_type == 2){
             $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
         }
