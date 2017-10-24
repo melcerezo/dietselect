@@ -324,8 +324,16 @@
                                                                 x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                 x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
                                                                 x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                x += '<td>'+valData[i].status+'</td>';
-                                                                x += '<td>'+valData[i].paid+'</td>';
+                                                                if(valData[i].status==0){
+                                                                    x += '<td>Paid</td>';
+                                                                }else{
+                                                                    x += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[i].paid==0){
+                                                                    x += '<td>Pending</td>';
+                                                                }else{
+                                                                    x += '<td>Paid</td>';
+                                                                }
                                                                 x += '</tr>';
                                                             }
                                                             x += '</tbody>';
