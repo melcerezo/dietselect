@@ -278,10 +278,22 @@
 
                                                         $('select#monthFilter{{$uniqueComChef}}').material_select();
 
+                                                        var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
+
+                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+
+                                                        changeMonth.done(function (response) {
+                                                            var valData = JSON.parse(response);
+                                                            console.log(valData);
+                                                        });
+
                                                         console.log($('select#monthFilter{{$uniqueComChef}}').val());
                                                     });
                                                 });
                                             </script>
+                                        </div>
+                                        <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+
                                         </div>
                                     </div>
                                 </div>

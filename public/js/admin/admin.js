@@ -939,3 +939,9 @@ function getMonths(){
         url: '/admin/commissions/getMonths'
     });
 }
+
+function monthChange($chef,$type){
+    return $.ajax({
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type
+    });
+}

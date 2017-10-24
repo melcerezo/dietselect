@@ -21,4 +21,9 @@ class OrderItem extends Model
     {
         return $this->hasOne(Refund::class);
     }
+
+    public function commission()
+    {
+        return $this->hasOne(Commission::class);
+    }
 }

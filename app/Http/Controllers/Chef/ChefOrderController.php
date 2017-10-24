@@ -388,6 +388,7 @@ class ChefOrderController extends Controller
 
         $com = new Commission();
         $com->chef_id = $chef->id;
+        $com->order_item_id = $orderItem->id;
         $com->amount = $orderItem->price * $orderItem->quantity;
         $com->save();
 
