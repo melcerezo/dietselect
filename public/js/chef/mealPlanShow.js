@@ -58,6 +58,6 @@ $(document).ready(function () {
     });
 
     $('#cancelOrderItemButton').click(function () {
-        $('#loadWait').show();
+        // $('#loadWait').show();
     });
 });
