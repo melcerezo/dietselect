@@ -270,7 +270,7 @@ $(document).ready(function () {
             $('#otherReason').rules('add', {
                 required: true,
                 messages:{
-                    required: "Please choose an ingredient type."
+                    required: "Please enter a reason."
                 }
             });
         }else{

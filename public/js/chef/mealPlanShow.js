@@ -41,8 +41,15 @@ $(document).ready(function () {
     $('input[type=radio][name=cancelReason]').change(function () {
         if($(this).val()==4){
             $('#otherReasonContainer').show();
+            $('#otherReason').rules('add', {
+                required: true,
+                messages:{
+                    required: "Please enter a reason."
+                }
+            });
         }else{
             $('#otherReasonContainer').hide();
+            $('#otherReason').rules('remove', 'required');
         }
     });
 

@@ -215,7 +215,7 @@
     </div>
     <div id="cancelModal" class="modal">
         <div class="modal-content">
-            <form method="post" action="{{route('admin.order.cancel', $order->id)}}" id="pickAddressForm">
+            <form method="post" action="{{route('admin.order.cancel', $order->id)}}" id="adminOrderCancelForm">
                 {{ csrf_field() }}
                 <div>
                     <span>Reason for cancellation</span>
@@ -241,18 +241,28 @@
                     <label for="pref-CustReason">Other</label><br/>
                 </div>
                 <div id="otherReasonContainer">
-                    <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                    <input type="text" name="otherReason" data-error=".error-otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                    <div class="error-otherReason">
+                    </div>
                 </div>
                 <button type="submit" id="cancelOrderSubmit" class="btn waves-effect waves-light orange darken-2">Submit</button>
             </form>
             <script>
                 $(document).ready(function () {
+                    $('#adminOrderCancelForm').validate();
                     $('#otherReasonContainer').hide();
                     $('input[type=radio][name=cancelReason]').change(function () {
                         if($(this).val()==4){
                             $('#otherReasonContainer').show();
+                            $('#otherReason').rules('add', {
+                                required: true,
+                                messages:{
+                                    required: "Please enter a reason."
+                                }
+                            });
                         }else{
                             $('#otherReasonContainer').hide();
+                            $('#otherReason').rules('remove', 'required');
                         }
                     });
                 });

@@ -244,7 +244,7 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
 
 
     Route::get('orders/{order}','Admin\AdminController@order')->name('admin.order');
-    Route::get('order/cancel/{order}','Admin\AdminController@orderCancel')->name('admin.order.cancel');
+    Route::post('order/cancel/{order}','Admin\AdminController@orderCancel')->name('admin.order.cancel');
     Route::get('foodie/freeze/{foodie}','Admin\AdminController@foodieFreeze')->name('admin.foodie.freeze');
     Route::get('foodie/unfreeze/{foodie}','Admin\AdminController@foodieUnfreeze')->name('admin.foodie.unfreeze');
     Route::get('chef/freeze/{chef}','Admin\AdminController@chefFreeze')->name('admin.chef.freeze');
