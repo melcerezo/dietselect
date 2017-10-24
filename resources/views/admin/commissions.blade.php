@@ -287,7 +287,7 @@
                                                             console.log(valData);
                                                         });
 
-                                                        console.log($('select#monthFilter{{$uniqueComChef}}').val());
+                                                        {{--console.log($('select#monthFilter{{$uniqueComChef}}').val());--}}
                                                     });
                                                 });
                                             </script>
