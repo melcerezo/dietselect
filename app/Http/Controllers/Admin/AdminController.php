@@ -73,6 +73,11 @@ class AdminController extends Controller
         $firstCom = Commission::first();
         $lastCom = Commission::latest()->first();
 //        dd($lastCom);
+        $months = [];
+        foreach($commissions as $commission){
+            $months[]=$commission->created_at->format('m');
+        }
+        dd($months);
 
         $totalCommissions = 0;
         $pendCommissions = 0;
