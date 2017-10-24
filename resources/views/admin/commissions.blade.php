@@ -250,7 +250,7 @@
                                         <div>
                                             <span>Month:</span>
                                         </div>
-                                        <select id="monthFilter">
+                                        <select id="monthFilter{{$uniqueComChef}}">
                                         </select>
                                         <script>
                                             $(document).ready(function () {
@@ -263,11 +263,11 @@
                                                         var text = valData[i].monthText;
                                                         if(valData[i].current==1){
                                                             text += '(current)';
-                                                            $('select#monthFilter').append(
+                                                            $('select#monthFilter{{$uniqueComChef}}').append(
                                                                     $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
                                                             );
                                                         }else{
-                                                            $('select#monthFilter').append(
+                                                            $('select#monthFilter{{$uniqueComChef}}').append(
                                                                     $('<option></option>').attr("value",valData[i].month).text(text)
                                                             );
                                                         }
@@ -275,9 +275,9 @@
 
                                                     // $("select#monthFilter").val($("select#monthFilter option:first").val());
 
-                                                    $('select#monthFilter').material_select();
+                                                    $('select#monthFilter{{$uniqueComChef}}').material_select();
 
-                                                    console.log($('select#monthFilter').val());
+                                                    console.log($('select#monthFilter{{$uniqueComChef}}').val());
                                                 });
                                             });
                                         </script>
