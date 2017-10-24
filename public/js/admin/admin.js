@@ -115,6 +115,8 @@ $(document).ready(function() {
         // $("select#monthFilter").val($("select#monthFilter option:first").val());
 
         $('select#monthFilter').material_select();
+
+        console.log($('select#monthFilter').val());
     });
 
 
