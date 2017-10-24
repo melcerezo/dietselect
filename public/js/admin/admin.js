@@ -108,8 +108,7 @@ $(document).ready(function() {
             );
         }
 
-        $("select#monthFilter option:selected").prop("selected", false);
-        $("select#monthFilter option:first").prop("selected", "selected");
+        $("select#monthFilter").val($("select#monthFilter option:first").val());
 
         $('select#monthFilter').material_select();
     });
