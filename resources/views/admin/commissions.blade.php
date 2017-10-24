@@ -354,7 +354,7 @@
                                                         var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
                                                         console.log(selectVal);
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
-
+                                                        $('#monthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
 
                                                             var valData = JSON.parse(response);
