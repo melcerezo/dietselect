@@ -99,8 +99,12 @@ $(document).ready(function() {
         var valData = JSON.parse(response);
         console.log(valData);
         for(var i in valData){
+            var text = valData[i].monthText;
+            if(valData[i].current==1){
+                text += '(current)';
+            }
             $('select#monthFilter').append(
-                $('<option></option>').attr("value",valData[i].month).text(valData[i].monthText)
+                $('<option></option>').attr("value",valData[i].month).text(text)
             );
         }
         $('select#monthFilter').material_select();
