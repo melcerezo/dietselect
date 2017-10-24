@@ -265,6 +265,8 @@ $(document).ready(function () {
 
     $('form#cancelOrderForm').validate();
 
+    $('#otherReasonContainer').hide();
+
 
     $('input[type=radio][name=cancelReason]').change(function () {
         if($(this).val()==4){
