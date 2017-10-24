@@ -263,6 +263,8 @@ $(document).ready(function () {
     });
 
 
+    $('form#cancelOrderForm').validate();
+
 
     $('input[type=radio][name=cancelReason]').change(function () {
         if($(this).val()==4){
@@ -280,7 +282,7 @@ $(document).ready(function () {
     });
 
     $('#cancelOrderSubmit').click(function () {
-        $('#loadWait').show();
+        // $('#loadWait').show();
     })
     
 });

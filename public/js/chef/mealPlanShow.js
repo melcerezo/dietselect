@@ -38,6 +38,8 @@ $(document).ready(function () {
         });
     });
 
+    $('form#cancelForm').validate();
+
     $('input[type=radio][name=cancelReason]').change(function () {
         if($(this).val()==4){
             $('#otherReasonContainer').show();
