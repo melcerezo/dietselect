@@ -103,6 +103,7 @@ $(document).ready(function() {
                 $('<option></option>').attr("value",valData[i].month).text(valData[i].monthText)
             );
         }
+        $('select#monthFilter').material_select();
     });
 
 
