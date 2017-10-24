@@ -103,7 +103,7 @@ $(document).ready(function() {
             if(valData[i].current==1){
                 text += '(current)';
                 $('select#monthFilter').append(
-                    $('<option></option>').attr("value",valData[i].month).text(text).attr('selected','selected')
+                    $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
                 );
             }else{
                 $('select#monthFilter').append(
