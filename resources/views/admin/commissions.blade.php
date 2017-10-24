@@ -259,7 +259,7 @@
 
                                                     monthAjax.done(function (response) {
                                                         var valData = JSON.parse(response);
-                                                        console.log(valData);
+//                                                        console.log(valData);
                                                         for(var i in valData){
                                                             var text = valData[i].monthText;
                                                             if(valData[i].current==1){
