@@ -646,7 +646,7 @@ class AdminController extends Controller
 
         $order->is_cancelled=1;
         if($reason==0){
-            $order->cancelled_reason = "Wrong Payment Method.";
+            $order->cancelled_reason = "Fraudulent Payment Method.";
         }else if($reason==4){
             $order->cancelled_reason = $request['otherReason'];
         }
@@ -655,7 +655,7 @@ class AdminController extends Controller
         foreach ($orderItems as $orderItem){
             $orderItem->is_cancelled =1;
             if($reason == 0){
-                $orderItem->cancelled_reason = "Wrong Payment Method.";
+                $orderItem->cancelled_reason = "Fraudulent Payment Method.";
             }else if($reason == 4){
                 $orderItem->cancelled_reason = $request['otherReason'];
             }
@@ -667,7 +667,7 @@ class AdminController extends Controller
         $message .= Carbon::now()->format('F d, Y g:i A');
         $message .= 'due to: ';
         if($reason==0){
-            $message .= "Wrong Payment Method.";
+            $message .= "Fraudulent Payment Method.";
         }else if($reason==4){
             $message .= $request['otherReason'];
         }
@@ -692,7 +692,7 @@ class AdminController extends Controller
         $time = Carbon::now()->format('F d, Y h:i A');
         $mailMess ='';
         if($reason == 0){
-            $mailMess .= "Wrong Payment Method.";
+            $mailMess .= "Fraudulent Payment Method.";
         }else if($reason == 4){
             $mailMess .= $request['otherReason'];
         }
