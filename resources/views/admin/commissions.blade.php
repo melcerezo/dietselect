@@ -226,6 +226,30 @@
                         </select>
                     </div>
                 </div>
+                <div class="row">
+                    <div id="chefsContainer">
+                        @foreach($uniqueComChefs as $uniqueComChef)
+                            <div id="cardCom{{$uniqueComChef}}" class="card chefCard">
+                                <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
+                                    <div>
+                                        <span>
+                                            Commissions -
+                                            @foreach($chefs as $chef)
+                                                @if($chef->id==$uniqueComChef)
+                                                    <span>{{$chef->name}}</span>
+                                                @endif
+                                            @endforeach
+                                        </span>
+                                        <span class="badge light-green white-text" style="border-radius: 15px">
+                                            {{$commissions->where('chef_id','=',$uniqueComChef)->count()}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
                 {{--<div class="row">--}}
                     {{--<div id="chefsContainer">--}}
                     {{--</div>--}}
