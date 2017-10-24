@@ -82,15 +82,14 @@ class AdminController extends Controller
         $months = array_intersect_key($months, array_unique(array_map('serialize',$months)));
 //        $groupedCom = $commission
 
-        foreach($months as $month){
+        foreach($months as &$month){
             foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $commission){
                 $month['coms'][]=$commission;
 //                dd($month);
             }
-            dd($month);
         }
 
-//        dd($months);
+        dd($months);
 
 
         $totalCommissions = 0;
