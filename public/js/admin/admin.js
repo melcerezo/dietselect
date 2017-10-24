@@ -105,13 +105,14 @@ $(document).ready(function() {
                 $('select#monthFilter').append(
                     $('<option></option>').attr("value",valData[i].month).text(text).attr('selected','selected')
                 );
+            }else{
+                $('select#monthFilter').append(
+                    $('<option></option>').attr("value",valData[i].month).text(text)
+                );
             }
-            $('select#monthFilter').append(
-                $('<option></option>').attr("value",valData[i].month).text(text)
-            );
         }
 
-        $("select#monthFilter").val($("select#monthFilter option:first").val());
+        // $("select#monthFilter").val($("select#monthFilter option:first").val());
 
         $('select#monthFilter').material_select();
     });
