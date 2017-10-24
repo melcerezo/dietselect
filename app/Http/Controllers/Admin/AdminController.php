@@ -950,7 +950,7 @@ class AdminController extends Controller
                    $comArray[]= array(
                        'id'=>$commission->id,
                        'name'=>$commission->chef->name,
-                       'created_at'=>$commission->created_at->format('F d, Y h:i A'),
+                       'created_at'=>$commission->created_at->format('F d, Y'),
                        'amount'=>$commission->amount,
                        'chefAmount'=>($commission->amount * 0.9),
                        'dietAmount'=>($commission->amount * 0.1),
@@ -969,6 +969,7 @@ class AdminController extends Controller
             $monthComJson .='"amount":'.$item['amount'].', ';
             $monthComJson .='"chefAmount":'.$item['chefAmount'].', ';
             $monthComJson .='"dietAmount":'.$item['dietAmount'].', ';
+            $monthComJson .='"paid":'.$item['paid'].', ';
             $monthComJson .='"status":'.$item['status'].'';
             if (++$i < count($comArray)) {
                 $monthComJson .= '},';

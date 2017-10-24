@@ -285,9 +285,52 @@
                                                         changeMonth.done(function (response) {
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
-                                                        });
 
-                                                        {{--console.log($('select#monthFilter{{$uniqueComChef}}').val());--}}
+                                                            var x = '<div class="row">';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '</div>';
+                                                            x += '<div class="row">';
+                                                            x += '<div class="col s12">';
+                                                            x += '<table>';
+                                                            x += '<thead>';
+                                                            x += '<tr>';
+                                                            x += '<th>ID</th>';
+                                                            x += '<th>Name</th>';
+                                                            x += '<th>Date</th>';
+                                                            x += '<th>Total Payable</th>';
+                                                            x += '<th>Payable to Vendor</th>';
+                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Order Status</th>';
+                                                            x += '<th>Payment Status</th>';
+                                                            x += '</tr>';
+                                                            x += '</thead>';
+                                                            x += '<tbody>';
+                                                            for(var i in valData){
+                                                                x += '<tr>';
+                                                                x += '<td>'+valData[i].id+'</td>';
+                                                                x += '<td>'+valData[i].name+'</td>';
+                                                                x += '<td>'+valData[i].created_at+'</td>';
+                                                                x += '<td>'+valData[i].amount+'</td>';
+                                                                x += '<td>'+valData[i].chefAmount+'</td>';
+                                                                x += '<td>'+valData[i].dietAmount+'</td>';
+                                                                x += '<td>'+valData[i].status+'</td>';
+                                                                x += '<td>'+valData[i].paid+'</td>';
+                                                                x += '</tr>';
+                                                            }
+                                                            x += '</tbody>';
+                                                            x += '</table>';
+                                                            x += '</div>';
+                                                            x += '</div>';
+
+                                                            $('#monthPicker{{$uniqueComChef}}').append(x);
+                                                        });
                                                     });
                                                 });
                                             </script>
