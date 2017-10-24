@@ -906,10 +906,10 @@ class AdminController extends Controller
         $currentMonth = $current->copy()->month;
         $commissions = Commission::orderBy('created_at', 'desc')->get();
         $months = [];
-        $months[]=array('current'=>1,'month'=>$currentMonth);
+        $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
         foreach($commissions as $commission){
             if($commission->created_at->copy()->month < $currentMonth){
-                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month);
+                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
             }
 //            $months[]=
 //                array('month'=>$commission->created_at->copy()->format('m'),
@@ -925,7 +925,8 @@ class AdminController extends Controller
         foreach($months as $month){
             $monthJson .='{';
             $monthJson .= '"current":'.$month['current'].', ';
-            $monthJson .= '"month":'.$month['month'].'';
+            $monthJson .= '"month":'.$month['month'].', ';
+            $monthJson .= '"monthText":'.$month['monthText'].'';
             if (++$i < count($months)) {
                 $monthJson .= '},';
             } else {

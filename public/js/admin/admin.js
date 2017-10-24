@@ -1,4 +1,5 @@
 $(document).ready(function() {
+
     $(document).on("click", "#logout-link", function () {
         $('form#logout').submit();
     });
@@ -97,6 +98,9 @@ $(document).ready(function() {
     monthAjax.done(function (response) {
         var valData = JSON.parse(response);
         console.log(valData);
+        for(var i in valData){
+
+        }
     });
 
 
