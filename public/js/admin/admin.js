@@ -102,6 +102,9 @@ $(document).ready(function() {
             var text = valData[i].monthText;
             if(valData[i].current==1){
                 text += '(current)';
+                $('select#monthFilter').append(
+                    $('<option></option>').attr("value",valData[i].month).text(text).attr('selected','selected')
+                );
             }
             $('select#monthFilter').append(
                 $('<option></option>').attr("value",valData[i].month).text(text)
