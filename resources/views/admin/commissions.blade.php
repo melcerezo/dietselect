@@ -298,7 +298,7 @@
                                                             x += '</div>';
                                                             x += '<div class="row">';
                                                             x += '<div class="col s12">';
-                                                            x += '<table>';
+                                                            x += '<table class="">';
                                                             x += '<thead>';
                                                             x += '<tr>';
                                                             x += '<th>ID</th>';
@@ -313,13 +313,17 @@
                                                             x += '</thead>';
                                                             x += '<tbody>';
                                                             for(var i in valData){
+                                                                var amount = valData[i].amount;
+                                                                var chefAmount = valData[i].chefAmount;
+                                                                var dietAmount = valData[i].dietAmount;
+
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
                                                                 x += '<td>'+valData[i].name+'</td>';
                                                                 x += '<td>'+valData[i].created_at+'</td>';
-                                                                x += '<td>'+valData[i].amount+'</td>';
-                                                                x += '<td>'+valData[i].chefAmount+'</td>';
-                                                                x += '<td>'+valData[i].dietAmount+'</td>';
+                                                                x += '<td>'+amount.toFixed(2)+'</td>';
+                                                                x += '<td>'+chefAmount.toFixed(2)+'</td>';
+                                                                x += '<td>'+dietAmount.toFixed(2)+'</td>';
                                                                 x += '<td>'+valData[i].status+'</td>';
                                                                 x += '<td>'+valData[i].paid+'</td>';
                                                                 x += '</tr>';
