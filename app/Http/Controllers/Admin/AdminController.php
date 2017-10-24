@@ -87,7 +87,7 @@ class AdminController extends Controller
                 $month['coms'][]=$commission;
 //                dd($month);
             }
-            dd($month);
+            dd($months);
         }
 
 //        dd($months);
