@@ -688,9 +688,19 @@ class AdminController extends Controller
         $context = stream_context_create($param);
         file_get_contents($url, false, $context);
 
+        $foodieName = $foodie->first_name.' '.$foodie->last_name;
+        $time = Carbon::now()->format('F d, Y h:i A');
+        $mailMess ='';
+        if($reason == 0){
+            $mailMess .= "Wrong Payment Method.";
+        }else if($reason == 4){
+            $mailMess .= $request['otherReason'];
+        }
         $mailer->to($foodie->email)
             ->send(new AdminCancelFoodie(
-
+                $foodieName,
+                $time,
+                $mailMess
             ));
 
 
