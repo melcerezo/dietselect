@@ -72,24 +72,23 @@ class AdminController extends Controller
         $commissions = Commission::orderBy('created_at', 'desc')->get();
         $firstCom = Commission::first();
         $lastCom = Commission::latest()->first();
-//        dd($lastCom);
+
+        $current = Carbon::now();
+        $currentMonth = $current->copy()->month;
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
         $months = [];
+        $months[]=$currentMonth;
         foreach($commissions as $commission){
-            $months[]=array('month'=>$commission->created_at->copy()->format('m'),'start'=>$commission->created_at->copy()->startOfMonth(),'end'=>$commission->created_at->copy()->endOfMonth(),'coms'=>array());
-        }
-
-        //make it unique
-        $months = array_intersect_key($months, array_unique(array_map('serialize',$months)));
-//        $groupedCom = $commission
-
-        foreach($months as &$month){
-            foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $commission){
-                $month['coms'][]=$commission;
-//                dd($month);
+            if($commission->created_at->copy()->month < $currentMonth){
+                $months[]=$commission->created_at->copy()->month;
             }
+//            $months[]=
+//                array('month'=>$commission->created_at->copy()->format('m'),
+//                'start'=>$commission->created_at->copy()->startOfMonth(),
+//                'end'=>$commission->created_at->copy()->endOfMonth());
         }
-
-        dd($months);
+        $uniqueMonths = array_unique($months);
+        dd($uniqueMonths);
 
 
         $totalCommissions = 0;
@@ -895,6 +894,33 @@ class AdminController extends Controller
         }
         return $thisInput;
     }
+
+    public function getMonths()
+    {
+        $current = Carbon::now();
+        $currentMonth = $current->copy()->month;
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
+        $months = [];
+        $months[]=$currentMonth;
+        foreach($commissions as $commission){
+            if($commission->created_at->copy()->month < $currentMonth){
+                $months[]=$commission->created_at->copy()->month;
+            }
+//            $months[]=
+//                array('month'=>$commission->created_at->copy()->format('m'),
+//                'start'=>$commission->created_at->copy()->startOfMonth(),
+//                'end'=>$commission->created_at->copy()->endOfMonth());
+        }
+        $uniqueMonths = array_unique($months);
+
+
+    }
+
+    public function monthChange()
+    {
+        
+    }
+
 
     public function getComChef()
     {
