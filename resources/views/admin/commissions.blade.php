@@ -352,7 +352,7 @@
 
                                                     $('select#monthFilter{{$uniqueComChef}}').change(function (){
                                                         var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
-
+                                                        console.log(selectVal);
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
 
                                                         changeMonth.done(function (response) {
