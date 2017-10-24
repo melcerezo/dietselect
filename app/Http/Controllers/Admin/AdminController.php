@@ -83,9 +83,9 @@ class AdminController extends Controller
 //        $groupedCom = $commission
 
         foreach($months as $id=>$month){
-            foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $commission){
-                $month[$id]['coms'][]=$commission;
-                dd($month);
+            foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $cid=>$commission){
+                $month[$id]['coms'][$cid]=$commission;
+//                dd($month);
             }
         }
         dd($months);
