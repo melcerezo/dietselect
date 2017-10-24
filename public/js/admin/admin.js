@@ -99,7 +99,9 @@ $(document).ready(function() {
         var valData = JSON.parse(response);
         console.log(valData);
         for(var i in valData){
-
+            $('select#monthFilter').append(
+                $('<option></option>').attr("value",valData[i].month).text(valData[i].monthText)
+            );
         }
     });
 
