@@ -246,41 +246,43 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="col s12 m3">
-                                        <div>
-                                            <span>Month:</span>
-                                        </div>
-                                        <select id="monthFilter{{$uniqueComChef}}">
-                                        </select>
-                                        <script>
-                                            $(document).ready(function () {
-                                                var monthAjax = getMonths();
+                                    <div class="row">
+                                        <div class="col s12 m3">
+                                            <div>
+                                                <span>Month:</span>
+                                            </div>
+                                            <select id="monthFilter{{$uniqueComChef}}">
+                                            </select>
+                                            <script>
+                                                $(document).ready(function () {
+                                                    var monthAjax = getMonths();
 
-                                                monthAjax.done(function (response) {
-                                                    var valData = JSON.parse(response);
-                                                    console.log(valData);
-                                                    for(var i in valData){
-                                                        var text = valData[i].monthText;
-                                                        if(valData[i].current==1){
-                                                            text += '(current)';
-                                                            $('select#monthFilter{{$uniqueComChef}}').append(
-                                                                    $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                                                            );
-                                                        }else{
-                                                            $('select#monthFilter{{$uniqueComChef}}').append(
-                                                                    $('<option></option>').attr("value",valData[i].month).text(text)
-                                                            );
+                                                    monthAjax.done(function (response) {
+                                                        var valData = JSON.parse(response);
+                                                        console.log(valData);
+                                                        for(var i in valData){
+                                                            var text = valData[i].monthText;
+                                                            if(valData[i].current==1){
+                                                                text += '(current)';
+                                                                $('select#monthFilter{{$uniqueComChef}}').append(
+                                                                        $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
+                                                                );
+                                                            }else{
+                                                                $('select#monthFilter{{$uniqueComChef}}').append(
+                                                                        $('<option></option>').attr("value",valData[i].month).text(text)
+                                                                );
+                                                            }
                                                         }
-                                                    }
 
-                                                    // $("select#monthFilter").val($("select#monthFilter option:first").val());
+                                                        // $("select#monthFilter").val($("select#monthFilter option:first").val());
 
-                                                    $('select#monthFilter{{$uniqueComChef}}').material_select();
+                                                        $('select#monthFilter{{$uniqueComChef}}').material_select();
 
-                                                    console.log($('select#monthFilter{{$uniqueComChef}}').val());
+                                                        console.log($('select#monthFilter{{$uniqueComChef}}').val());
+                                                    });
                                                 });
-                                            });
-                                        </script>
+                                            </script>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
