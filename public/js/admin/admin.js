@@ -93,31 +93,31 @@ $(document).ready(function() {
 
     });
 
-    var monthAjax = getMonths();
-
-    monthAjax.done(function (response) {
-        var valData = JSON.parse(response);
-        console.log(valData);
-        for(var i in valData){
-            var text = valData[i].monthText;
-            if(valData[i].current==1){
-                text += '(current)';
-                $('select#monthFilter').append(
-                    $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                );
-            }else{
-                $('select#monthFilter').append(
-                    $('<option></option>').attr("value",valData[i].month).text(text)
-                );
-            }
-        }
-
-        // $("select#monthFilter").val($("select#monthFilter option:first").val());
-
-        $('select#monthFilter').material_select();
-
-        console.log($('select#monthFilter').val());
-    });
+    // var monthAjax = getMonths();
+    //
+    // monthAjax.done(function (response) {
+    //     var valData = JSON.parse(response);
+    //     console.log(valData);
+    //     for(var i in valData){
+    //         var text = valData[i].monthText;
+    //         if(valData[i].current==1){
+    //             text += '(current)';
+    //             $('select#monthFilter').append(
+    //                 $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
+    //             );
+    //         }else{
+    //             $('select#monthFilter').append(
+    //                 $('<option></option>').attr("value",valData[i].month).text(text)
+    //             );
+    //         }
+    //     }
+    //
+    //     // $("select#monthFilter").val($("select#monthFilter option:first").val());
+    //
+    //     $('select#monthFilter').material_select();
+    //
+    //     console.log($('select#monthFilter').val());
+    // });
 
 
     // refunds page
