@@ -503,7 +503,7 @@
                 <span style="font-size: 30px; margin-left: 10px;">Cancel Order</span>
             </div>
         <div class="modal-content">
-            <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="pickAddressForm">
+            <form method="post" action="{{route('foodie.order.cancel', $order->id)}}" id="cancelOrderForm">
                 {{ csrf_field() }}
                 <div>
                     <span>Please tell us why you are cancelling</span>
@@ -529,8 +529,11 @@
                     <label for="pref-CustReason">Other</label><br/>
                 </div>
                 <div id="otherReasonContainer">
-                    <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                    <input type="text" data-error=".error-otherReason" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                    <div class="error-otherReason">
+                    </div>
                 </div>
+
                 <button type="submit" id="cancelOrderSubmit" class="btn waves-effect waves-light orange darken-2">Submit</button>
             </form>
         </div>

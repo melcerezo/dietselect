@@ -12,4 +12,55 @@ $(document).ready(function () {
             $('#transferMoneyPayment').show();
         }
     });
+
+    $('form#bankRefundForm').validate({
+        rules: {
+            acctNmbr: {
+                required: true
+            },
+            acctName:{
+                required:true
+            }
+        },
+        messages: {
+            acctNmbr:{
+                required: 'Please enter account number!'
+            },
+            acctName:{
+                required: 'Please enter your account name!'
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
+    $('form#transferRefundForm').validate({
+        rules: {
+            transferName:{
+                required:true
+            }
+        },
+        messages: {
+            transferName:{
+                required: 'Please enter your full name!'
+            }
+        },
+        errorElement : 'div',
+        errorPlacement: function(error, element) {
+            var placement = $(element).data('error');
+            if (placement) {
+                $(placement).append(error);
+            } else {
+                error.insertAfter(element);
+            }
+        }
+    });
+
 });
