@@ -107,6 +107,10 @@ $(document).ready(function() {
                 $('<option></option>').attr("value",valData[i].month).text(text)
             );
         }
+
+        $("select#monthFilter option:selected").prop("selected", false);
+        $("select#monthFilter option:first").prop("selected", "selected");
+
         $('select#monthFilter').material_select();
     });
 

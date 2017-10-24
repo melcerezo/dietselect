@@ -938,7 +938,7 @@ class AdminController extends Controller
         return $monthJson;
     }
 
-    public function monthChange()
+    public function monthChange($chefId,$monthType)
     {
         
     }
