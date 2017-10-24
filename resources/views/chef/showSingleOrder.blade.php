@@ -10,6 +10,57 @@
     @if(count($mealPlans)==0)
         <div>
             <h2>This Meal Plan is Empty!</h2>
+            @if($orderItem->is_cancelled==0)
+                @if($orderItem->is_delivered == 0)
+                    <div>
+                        <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
+                    </div>
+                @endif
+            @endif
+
+            <div id="cancelModal" class="modal">
+                <div class="orange-text text-darken-2" style="margin:10px; border-left:4px solid #f57c00">
+                    <span style="font-size: 30px;">Cancel</span>
+                </div>
+                <div class="divider" style="margin: 0 5px;"></div>
+                <div class="modal-content">
+                    <div class="row">
+                        <span>Do you want to cancel this order?</span>
+                    </div>
+                    <form method="post" action="{{route('chef.order.cancel', $orderItem->id)}}" id="cancelForm">
+                        {{ csrf_field() }}
+                        <div>
+                            <span>Please tell us why you are cancelling</span>
+                        </div>
+                        <div>
+                            <input type="radio" name="cancelReason" value="0" class="filled-in" id="pref-none" data-error=".error-pref" checked/>
+                            <label for="pref-none">Out of Stock</label><br/>
+                        </div>
+                        {{--<div>--}}
+                        {{--<input type="radio" name="cancelReason" value="1" class="filled-in" id="pref-noInt" data-error=".error-pref"/>--}}
+                        {{--<label for="pref-noInt"></label><br/>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                        {{--<input type="radio" name="cancelReason" value="2" class="filled-in" id="pref-noDel" data-error=".error-pref"/>--}}
+                        {{--<label for="pref-noDel">Unable to Deliver</label><br/>--}}
+                        {{--</div>--}}
+                        {{--<div>--}}
+                        {{--<input type="radio" name="cancelReason" value="3" class="filled-in" id="pref-noTown" data-error=".error-pref"/>--}}
+                        {{--<label for="pref-noTown">Out of Town</label><br/>--}}
+                        {{--</div>--}}
+                        <div>
+                            <input type="radio" name="cancelReason" value="4" class="filled-in" id="pref-CustReason" data-error=".error-pref"/>
+                            <label for="pref-CustReason">Other</label><br/>
+                        </div>
+                        <div id="otherReasonContainer">
+                            <input type="text" name="otherReason" id="otherReason" placeholder="Please give your reason for cancellation">
+                        </div>
+
+                        <button type="submit" id="cancelOrderItemButton" class="btn waves-effect waves-light red darken-2">Cancel</button>
+                    </form>
+                </div>
+            </div>
+
         </div>
     @else
         <div class="container" style="width:85%; margin-top: 0.5rem;">
