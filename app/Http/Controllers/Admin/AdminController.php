@@ -75,11 +75,19 @@ class AdminController extends Controller
 //        dd($lastCom);
         $months = [];
         foreach($commissions as $commission){
-            $months[]=array('start'=>$commission->created_at->copy()->startOfMonth(),'end'=>$commission->created_at->copy()->endOfMonth());
+            $months[]=array('start'=>$commission->created_at->copy()->startOfMonth(),'end'=>$commission->created_at->copy()->endOfMonth(),'coms'=>array());
         }
+
+        //make it unique
         $months = array_intersect_key($months, array_unique(array_map('serialize',$months)));
 //        $groupedCom = $commission
         dd($months);
+
+        foreach($months as $id=>$month){
+            foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $commission){
+            }
+        }
+
 
         $totalCommissions = 0;
         $pendCommissions = 0;
