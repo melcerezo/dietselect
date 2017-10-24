@@ -926,7 +926,7 @@ class AdminController extends Controller
             $monthJson .='{';
             $monthJson .= '"current":'.$month['current'].', ';
             $monthJson .= '"month":'.$month['month'].', ';
-            $monthJson .= '"monthText":'.$month['monthText'].'';
+            $monthJson .= '"monthText":"'.$month['monthText'].'"';
             if (++$i < count($months)) {
                 $monthJson .= '},';
             } else {
