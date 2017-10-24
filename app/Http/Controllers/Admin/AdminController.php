@@ -84,7 +84,7 @@ class AdminController extends Controller
 
         foreach($months as $month){
             foreach($commissions->where('created_at','>',$month['start'])->where('created_at','<',$month['end']) as $commission){
-                $month['coms'][]=$commission;
+                $month['coms']=$commission;
 //                dd($month);
             }
         }
