@@ -919,7 +919,20 @@ class AdminController extends Controller
 
         $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
 
-        $monthJson = json_encode($months);
+//        $monthJson = json_encode($months);
+        $i=0;
+        $monthJson = '[';
+        foreach($months as $month){
+            $monthJson .='{';
+            $monthJson .= '"current":'.$month['current'].', ';
+            $monthJson .= '"month":'.$month['month'].'';
+            if (++$i < count($months)) {
+                $monthJson .= '},';
+            } else {
+                $monthJson .= '}';
+            }
+        }
+        $monthJson .=']';
 
         return $monthJson;
     }
