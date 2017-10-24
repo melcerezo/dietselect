@@ -75,7 +75,7 @@ class AdminController extends Controller
 //        dd($lastCom);
         $months = [];
         foreach($commissions as $commission){
-            $months[]=$commission->created_at->format('m');
+            $months[]=$commission->created_at->format('F');
         }
         $uniqueMonths = array_unique($months);
         dd($uniqueMonths);
