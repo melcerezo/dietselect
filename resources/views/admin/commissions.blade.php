@@ -761,7 +761,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',0)->where('created_at','>', $startMonth)->where('created_at','<',$endMonth) as $commission)
                                                 <tr>
                                                     <td>{{$commission->id}}</td>
                                                     {{--<td>--}}
@@ -1003,7 +1003,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1)->where('created_at','>', $startWeek)->where('created_at','<',$endWeek) as $commission)
+                                            @foreach($commissions->where('chef_id','=',$uniqueComChef)->where('paid','=',1)->where('created_at','>', $startMonth)->where('created_at','<',$endMonth) as $commission)
                                                 <tr>
                                                     <td>{{$commission->id}}</td>
                                                     {{--<td>--}}

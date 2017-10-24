@@ -6,6 +6,7 @@ use App\Allergy;
 use App\ChefBankAccount;
 use App\FoodiePreference;
 use App\Http\Controllers\Controller;
+use App\Mail\AdminCancelFoodie;
 use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
 use App\Mail\RefundSuccessFoodie;
@@ -636,10 +637,12 @@ class AdminController extends Controller
         ]);
     }
 
-    public function orderCancel(Order $order, Request $request)
+    public function orderCancel(Order $order, Request $request, mailer\Mailer $mailer)
     {
         $reason = $request['cancelReason'];
         $orderItems = $order->order_item()->get();
+
+        $foodie = $order->foodie;
 
         $order->is_cancelled=1;
         if($reason==0){
@@ -658,6 +661,38 @@ class AdminController extends Controller
             }
             $orderItem->save();
         }
+
+
+        $message = 'Greetings from DietSelect! Your order on '.$order->created_at->format('F d, Y h:i A').' has been cancelled by the admin on: ';
+        $message .= Carbon::now()->format('F d, Y g:i A');
+        $message .= 'due to: ';
+        if($reason==0){
+            $message .= "Wrong Payment Method.";
+        }else if($reason==4){
+            $message .= $request['otherReason'];
+        }
+        $foodiePhoneNumber = '0' . $foodie->mobile_number;
+        $url = 'https://www.itexmo.com/php_api/api.php';
+        $itexmo = array('1' => $foodiePhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+        $param = array(
+            'http' => array(
+                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method' => 'POST',
+                'content' => http_build_query($itexmo),
+            ),
+            "ssl" => array(
+                "verify_peer" => false,
+                "verify_peer_name" => false,
+            ),
+        );
+        $context = stream_context_create($param);
+        file_get_contents($url, false, $context);
+
+        $mailer->to($foodie->email)
+            ->send(new AdminCancelFoodie(
+
+            ));
+
 
         return back()->with(['status'=>'Cancelled Order']);
     }
