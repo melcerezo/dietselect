@@ -321,9 +321,9 @@
                                                                 x += '<td>'+valData[i].id+'</td>';
                                                                 x += '<td>'+valData[i].name+'</td>';
                                                                 x += '<td>'+valData[i].created_at+'</td>';
-                                                                x += '<td>'+amount.toFixed(2)+'</td>';
-                                                                x += '<td>'+chefAmount.toFixed(2)+'</td>';
-                                                                x += '<td>'+dietAmount.toFixed(2)+'</td>';
+                                                                x += '<td>'+addCommas(amount.toFixed(2))+'</td>';
+                                                                x += '<td>'+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                x += '<td>'+addCommas(dietAmount.toFixed(2))+'</td>';
                                                                 x += '<td>'+valData[i].status+'</td>';
                                                                 x += '<td>'+valData[i].paid+'</td>';
                                                                 x += '</tr>';
