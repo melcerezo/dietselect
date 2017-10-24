@@ -240,9 +240,9 @@
                                                 @endif
                                             @endforeach
                                         </span>
-                                        <span class="badge light-green white-text" style="border-radius: 15px">
-                                            {{$commissions->where('chef_id','=',$uniqueComChef)->count()}}
-                                        </span>
+                                        {{--<span class="badge light-green white-text" style="border-radius: 15px">--}}
+                                            {{--{{$commissions->where('chef_id','=',$uniqueComChef)->count()}}--}}
+                                        {{--</span>--}}
                                     </div>
                                 </div>
                                 <div class="card-content">
