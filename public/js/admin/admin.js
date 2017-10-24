@@ -92,6 +92,13 @@ $(document).ready(function() {
 
     });
 
+    var monthAjax = getMonths();
+
+    monthAjax.done(function (response) {
+        var valData = JSON.parse(response);
+        console.log(valData);
+    });
+
 
     // refunds page
 
@@ -904,5 +911,11 @@ function chefComAjax($val){
     return $.ajax({
         url: '/admin/commissions/get/'+ $val
 
+    });
+}
+
+function getMonths(){
+    return $.ajax({
+        url: '/admin/commissions/getMonths'
     });
 }

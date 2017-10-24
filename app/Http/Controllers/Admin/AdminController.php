@@ -73,26 +73,26 @@ class AdminController extends Controller
         $firstCom = Commission::first();
         $lastCom = Commission::latest()->first();
 
-        $current = Carbon::now();
-        $currentMonth = $current->copy()->month;
-        $commissions = Commission::orderBy('created_at', 'desc')->get();
-        $months = [];
-        $months[]=array('current'=>1,'month'=>$currentMonth);
-        foreach($commissions as $commission){
-            if($commission->created_at->copy()->month < $currentMonth){
-                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month);
-            }
-//            $months[]=
-//                array('month'=>$commission->created_at->copy()->format('m'),
-//                'start'=>$commission->created_at->copy()->startOfMonth(),
-//                'end'=>$commission->created_at->copy()->endOfMonth());
-        }
-
-        $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
-        $monthJson = json_encode($months);
-
-//        $uniqueMonths = array_unique($months);
-        dd($monthJson);
+//        $current = Carbon::now();
+//        $currentMonth = $current->copy()->month;
+//        $commissions = Commission::orderBy('created_at', 'desc')->get();
+//        $months = [];
+//        $months[]=array('current'=>1,'month'=>$currentMonth);
+//        foreach($commissions as $commission){
+//            if($commission->created_at->copy()->month < $currentMonth){
+//                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month);
+//            }
+////            $months[]=
+////                array('month'=>$commission->created_at->copy()->format('m'),
+////                'start'=>$commission->created_at->copy()->startOfMonth(),
+////                'end'=>$commission->created_at->copy()->endOfMonth());
+//        }
+//
+//        $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
+//        $monthJson = json_encode($months);
+//
+////        $uniqueMonths = array_unique($months);
+//        dd($monthJson);
 
 
 
@@ -921,9 +921,7 @@ class AdminController extends Controller
 
         $monthJson = json_encode($months);
 
-
-
-
+        return $monthJson;
     }
 
     public function monthChange()
