@@ -329,10 +329,14 @@
                                                                 }else{
                                                                     x += '<td>Cancelled</td>';
                                                                 }
-                                                                if(valData[i].paid==0){
-                                                                    x += '<td>Pending</td>';
+                                                                if(valData[i].status==0){
+                                                                    if(valData[i].paid==0){
+                                                                        x += '<td>Pending</td>';
+                                                                    }else{
+                                                                        x += '<td>Paid</td>';
+                                                                    }
                                                                 }else{
-                                                                    x += '<td>Paid</td>';
+                                                                    x += '<td>Cancelled</td>';
                                                                 }
                                                                 x += '</tr>';
                                                             }
