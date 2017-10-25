@@ -940,9 +940,9 @@ function getMonths(){
     });
 }
 
-function monthChange($chef,$type){
+function monthChange($chef,$type,$orderType){
     return $.ajax({
-        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type +'/'+ $orderType
     });
 }
 
