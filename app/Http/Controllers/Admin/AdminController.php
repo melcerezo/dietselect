@@ -948,12 +948,12 @@ class AdminController extends Controller
             })->where('chef_id','=',$chefId)->get();
         }else if($comType==1){
             $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',0)->where('is_paid','=',0);
-            })->where('chef_id','=',$chefId)->get();
+                $query->where('is_cancelled','=',0);
+            })->where('chef_id','=',$chefId)->where('paid','=',0)->get();
         }else if($comType==2){
             $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',0)->where('is_paid','=',1);
-            })->where('chef_id','=',$chefId)->get();
+                $query->where('is_cancelled','=',0);
+            })->where('chef_id','=',$chefId)->where('paid','=',1)->get();
         }else if($comType==3){
             $commissions = Commission::whereHas('order_item',function ($query){
                 $query->where('is_cancelled','=',1);
