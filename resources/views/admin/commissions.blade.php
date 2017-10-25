@@ -14,6 +14,9 @@
         .chefCom{
             display: none;
         }
+        .comContents{
+            display: none;
+        }
     </style>
     <script src="/js/admin/admin.js" defer></script>
 @endsection
@@ -239,6 +242,11 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
+                                    <script>
+                                        $(document).ready(function(){
+                                            $('#allMonth{{$uniqueComChef}}').show();
+                                        });
+                                    </script>
                                     <div id="allMonth{{$uniqueComChef}}" class="row">
                                         <div class="col s12 m3">
                                             <div>
