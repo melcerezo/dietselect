@@ -247,7 +247,7 @@
                                             $('#allMonth{{$uniqueComChef}}').show();
                                         });
                                     </script>
-                                    <div id="allMonth{{$uniqueComChef}}" class="row">
+                                    <div id="allMonth{{$uniqueComChef}}" class="row comContents">
                                         <div class="col s12 m3">
                                             <div>
                                                 <span>Month:</span>
@@ -430,7 +430,7 @@
                                         <div id="monthPicker{{$uniqueComChef}}" class="col s12">
                                         </div>
                                     </div>
-                                    <div id="pendMonth{{$uniqueComChef}}" class="row">
+                                    <div id="pendMonth{{$uniqueComChef}}" class="row comContents">
                                         <div class="col s12 m3">
                                             <div>
                                                 <span>Month:</span>
@@ -613,7 +613,7 @@
                                         <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
                                         </div>
                                     </div>
-                                    <div id="paidMonth{{$uniqueComChef}}" class="row">
+                                    <div id="paidMonth{{$uniqueComChef}}" class="row comContents">
                                         <div class="col s12 m3">
                                             <div>
                                                 <span>Month:</span>
