@@ -960,40 +960,42 @@ class AdminController extends Controller
             })->where('chef_id','=',$chefId)->get();
         }
 
-        $comArray = [];
-        foreach($commissions as $commission){
-            if($commission->created_at->copy()->month == $month){
-                   $comArray[]= array(
-                       'id'=>$commission->id,
-                       'name'=>$commission->chef->name,
-                       'created_at'=>$commission->created_at->format('F d, Y'),
-                       'amount'=>$commission->amount,
-                       'chefAmount'=>($commission->amount * 0.9),
-                       'dietAmount'=>($commission->amount * 0.1),
-                       'paid'=>$commission->paid,
-                       'status'=>$commission->order_item->is_cancelled
-                   );
+        if($commissions->count()){
+            $comArray = [];
+            foreach($commissions as $commission){
+                if($commission->created_at->copy()->month == $month){
+                       $comArray[]= array(
+                           'id'=>$commission->id,
+                           'name'=>$commission->chef->name,
+                           'created_at'=>$commission->created_at->format('F d, Y'),
+                           'amount'=>$commission->amount,
+                           'chefAmount'=>($commission->amount * 0.9),
+                           'dietAmount'=>($commission->amount * 0.1),
+                           'paid'=>$commission->paid,
+                           'status'=>$commission->order_item->is_cancelled
+                       );
+                }
             }
-        }
-        $i=0;
-        $monthComJson ='[';
-        foreach($comArray as $item){
-            $monthComJson .='{';
-            $monthComJson .='"id":'.$item['id'].', ';
-            $monthComJson .='"name":"'.$item['name'].'", ';
-            $monthComJson .='"created_at":"'.$item['created_at'].'", ';
-            $monthComJson .='"amount":'.$item['amount'].', ';
-            $monthComJson .='"chefAmount":'.$item['chefAmount'].', ';
-            $monthComJson .='"dietAmount":'.$item['dietAmount'].', ';
-            $monthComJson .='"paid":'.$item['paid'].', ';
-            $monthComJson .='"status":'.$item['status'].'';
-            if (++$i < count($comArray)) {
-                $monthComJson .= '},';
-            } else {
-                $monthComJson .= '}';
+            $i=0;
+            $monthComJson ='[';
+            foreach($comArray as $item){
+                $monthComJson .='{';
+                $monthComJson .='"id":'.$item['id'].', ';
+                $monthComJson .='"name":"'.$item['name'].'", ';
+                $monthComJson .='"created_at":"'.$item['created_at'].'", ';
+                $monthComJson .='"amount":'.$item['amount'].', ';
+                $monthComJson .='"chefAmount":'.$item['chefAmount'].', ';
+                $monthComJson .='"dietAmount":'.$item['dietAmount'].', ';
+                $monthComJson .='"paid":'.$item['paid'].', ';
+                $monthComJson .='"status":'.$item['status'].'';
+                if (++$i < count($comArray)) {
+                    $monthComJson .= '},';
+                } else {
+                    $monthComJson .= '}';
+                }
             }
+            $monthComJson .= ']';
         }
-        $monthComJson .= ']';
 
         return $monthComJson;
     }
