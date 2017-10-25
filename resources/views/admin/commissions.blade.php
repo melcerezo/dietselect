@@ -354,7 +354,7 @@
                                                     $('select#monthFilter{{$uniqueComChef}}').change(function (){
                                                         var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
                                                         console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'0');
                                                         $('#monthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
 
@@ -537,7 +537,7 @@
                                                     $('select#pendMonthFilter{{$uniqueComChef}}').change(function (){
                                                         var selectVal = $('select#pendMonthFilter{{$uniqueComChef}}').val();
                                                         console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
 
@@ -720,7 +720,7 @@
                                                     $('select#monthFilter{{$uniqueComChef}}').change(function (){
                                                         var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
                                                         console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');
                                                         $('#monthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
 
