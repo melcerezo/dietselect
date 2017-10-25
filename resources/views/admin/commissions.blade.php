@@ -218,13 +218,6 @@
                         <select id="chefFilter">
                         </select>
                     </div>
-                    <div class="col s12 m3">
-                        <div>
-                            <span>Month:</span>
-                        </div>
-                        <select id="monthFilter">
-                        </select>
-                    </div>
                 </div>
                 <div class="row">
                     <div id="chefsContainer">
@@ -427,7 +420,10 @@
                                             </script>
                                         </div>
                                         <div id="monthPicker{{$uniqueComChef}}" class="col s12">
-
+                                        </div>
+                                        <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                        </div>
+                                        <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
                                         </div>
                                     </div>
                                 </div>
