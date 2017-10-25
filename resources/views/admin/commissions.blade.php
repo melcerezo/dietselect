@@ -259,7 +259,7 @@
                                     <script>
                                         $(document).ready(function(){
                                             $('#allMonth{{$uniqueComChef}}').show();
-                                            $('chefTabAll{{$uniqueComChef}}').addClass('activeTab');
+                                            $('#chefTabAll{{$uniqueComChef}}').addClass('activeTab');
 
                                             $('.chefTabAll{{$uniqueComChef}}').click(function () {
                                                 $('.tableTab').removeClass('activeTab');
