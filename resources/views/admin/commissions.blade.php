@@ -261,24 +261,28 @@
                                             $('#allMonth{{$uniqueComChef}}').show();
 
                                             $('.chefTabAll{{$uniqueComChef}}').click(function () {
+                                                $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').show();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
                                                 $('#paidMonth{{$uniqueComChef}}').hide();
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPend{{$uniqueComChef}}').click(function () {
+                                                $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').show();
                                                 $('#paidMonth{{$uniqueComChef}}').hide();
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPaid{{$uniqueComChef}}').click(function () {
+                                                $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
                                                 $('#paidMonth{{$uniqueComChef}}').show();
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabCancel{{$uniqueComChef}}').click(function () {
+                                                $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
                                                 $('#paidMonth{{$uniqueComChef}}').hide();
