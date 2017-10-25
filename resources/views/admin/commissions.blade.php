@@ -243,7 +243,6 @@
                                 </div>
                                 <div class="card-content">
                                     <div class="row center">
-                                        <script>$('#chefTabAll{{$uniqueComChef}}').addClass('activeTab');</script>
                                         <div class="col s12 m3">
                                             <span class="chefTabAll{{$uniqueComChef}} tableTab">All</span>
                                         </div>
@@ -260,6 +259,7 @@
                                     <script>
                                         $(document).ready(function(){
                                             $('#allMonth{{$uniqueComChef}}').show();
+                                            $('.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
 
                                             $('.chefTabAll{{$uniqueComChef}}').click(function () {
                                                 $('.tableTab').removeClass('activeTab');
