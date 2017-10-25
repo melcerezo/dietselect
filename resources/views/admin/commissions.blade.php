@@ -262,7 +262,9 @@
                                             $('.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
 
                                             $('.chefTabAll{{$uniqueComChef}}').click(function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').show();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
@@ -270,7 +272,9 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPend{{$uniqueComChef}}').click(function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').show();
@@ -278,7 +282,9 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPaid{{$uniqueComChef}}').click(function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
@@ -286,7 +292,9 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabCancel{{$uniqueComChef}}').click(function () {
-                                                $('.tableTab').removeClass('activeTab');
+                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
+                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
