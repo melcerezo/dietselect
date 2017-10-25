@@ -259,8 +259,10 @@
                                     <script>
                                         $(document).ready(function(){
                                             $('#allMonth{{$uniqueComChef}}').show();
+                                            $('chefTabAll{{$uniqueComChef}}').addClass('activeTab');
 
                                             $('.chefTabAll{{$uniqueComChef}}').click(function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').show();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
@@ -268,6 +270,7 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPend{{$uniqueComChef}}').click(function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').show();
@@ -275,6 +278,7 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabPaid{{$uniqueComChef}}').click(function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
@@ -282,6 +286,7 @@
                                                 $('#cancelMonth{{$uniqueComChef}}').hide();
                                             });
                                             $('.chefTabCancel{{$uniqueComChef}}').click(function () {
+                                                $('.tableTab').removeClass('activeTab');
                                                 $(this).addClass('activeTab');
                                                 $('#allMonth{{$uniqueComChef}}').hide();
                                                 $('#pendMonth{{$uniqueComChef}}').hide();
