@@ -960,6 +960,7 @@ class AdminController extends Controller
             })->where('chef_id','=',$chefId)->get();
         }
 
+        $monthComJson ='';
         if($commissions->count()){
             $comArray = [];
             foreach($commissions as $commission){
