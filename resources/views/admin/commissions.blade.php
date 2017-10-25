@@ -259,6 +259,7 @@
                                                     var monthAjax = getMonths();
 
                                                     monthAjax.done(function (response) {
+
                                                         var valData = JSON.parse(response);
 //                                                        console.log(valData);
                                                         for(var i in valData){
@@ -284,6 +285,9 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'0');
 
                                                         changeMonth.done(function (response) {
+                                                            if(response==''){
+                                                                $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             $('#monthPicker{{$uniqueComChef}}').empty();
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
@@ -357,7 +361,9 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'0');
                                                         $('#monthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
-
+                                                            if(response==''){
+                                                                $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
@@ -468,6 +474,9 @@
 
                                                         changeMonth.done(function (response) {
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
+                                                            if(response==''){
+                                                                $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
@@ -540,7 +549,9 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
-
+                                                            if(response==''){
+                                                                $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
@@ -651,6 +662,9 @@
 
                                                         changeMonth.done(function (response) {
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
+                                                            if(response==''){
+                                                                $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
@@ -717,13 +731,15 @@
                                                         });
                                                     });
 
-                                                    $('select#monthFilter{{$uniqueComChef}}').change(function (){
-                                                        var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
+                                                    $('select#paidMonthFilter{{$uniqueComChef}}').change(function (){
+                                                        var selectVal = $('select#paidMonthFilter{{$uniqueComChef}}').val();
                                                         console.log(selectVal);
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');
-                                                        $('#monthPicker{{$uniqueComChef}}').empty();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                         changeMonth.done(function (response) {
-
+                                                            if(response==''){
+                                                                $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            }
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
