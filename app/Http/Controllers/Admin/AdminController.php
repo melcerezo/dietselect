@@ -44,7 +44,9 @@ class AdminController extends Controller
 
     public function index()
     {
-        dd(Auth::guard('admin')->user());
+//        dd(Auth::guard('admin')->user());
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $foodies=Foodie::orderBy('created_at', 'desc')->get();
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $orders = Order::orderBy('created_at', 'desc')->get();
@@ -68,6 +70,9 @@ class AdminController extends Controller
 
     public function commissions()
     {
+
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $commissions = Commission::orderBy('created_at', 'desc')->get();
         $firstCom = Commission::first();
@@ -220,6 +225,8 @@ class AdminController extends Controller
 
     public function refundPage()
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $foodies = Foodie::orderBy('created_at', 'desc')->get();
         $refunds = Refund::orderBy('created_at','desc')->get();
         $firstRefund = Refund::first();
@@ -380,6 +387,9 @@ class AdminController extends Controller
 
     public function chefs()
     {
+
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $chefs = Chef::all();
 
         return view('admin.chefs')->with([
@@ -389,6 +399,9 @@ class AdminController extends Controller
 
     public function chef(Chef $chef)
     {
+
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $orderPlanNames=[];
 
         $orderItems= OrderItem::where('chef_id','=',$chef->id)->orderBy('created_at','desc')->take(5)->get();
@@ -448,6 +461,8 @@ class AdminController extends Controller
 
     public function foodies()
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $foodies = Foodie::all();
 
         return view('admin.foodies')->with([
@@ -457,6 +472,8 @@ class AdminController extends Controller
 
     public function foodie(Foodie $foodie)
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $orders=Order::where('foodie_id','=',$foodie->id)->orderBy('created_at','desc')->take(5)->get();
         $foodieAddresses = DB::table('foodie_address')->where('foodie_id', '=', $foodie->id)->get();
         $foodieAllergy = Allergy::where('foodie_id','=',$foodie->id)->get();
@@ -495,6 +512,8 @@ class AdminController extends Controller
 
     public function plans()
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $plans = Plan::all();
 
         return view('admin.plans')->with([
@@ -504,6 +523,8 @@ class AdminController extends Controller
 
     public function plan(Plan $plan)
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $mealPlans = $plan->mealplans()
             ->orderByRaw('FIELD(meal_type,"Breakfast","MorningSnack","Lunch","AfternoonSnack","Dinner")')
             ->get();
@@ -550,6 +571,8 @@ class AdminController extends Controller
 
     public function orders()
     {
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $orders = Order::orderBy('created_at', 'desc')->get();
         $firstOrd = Order::first();
         $lastOrd = Order::latest()->first();
@@ -602,7 +625,8 @@ class AdminController extends Controller
 
     public function order(Order $order)
     {
-
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $foodieAddress = DB::table('foodie_address')->where('id','=',$order->address_id)->select('id','city','unit','street','brgy','bldg','type')->first();
         $orderItems = $order->order_item()->get();
         $orderItemArray = [];
@@ -1096,14 +1120,14 @@ class AdminController extends Controller
     public function getNotif()
     {
         $i=0;
-        $foodie = Auth::guard('foodie')->user()->id;
-        $notification = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        $admin = Auth::guard('admin')->user()->id;
+        $notification = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         $notifJson = '[';
         foreach($notification as $note){
             if(++$i<$notification->count()){
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
+                $notifJson.='{ "id":"'.$note->id.'","sender_id":'.$note->sender_id.' ,"notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
             }else{
-                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
+                $notifJson.='{ "id":"'.$note->id.'","sender_id":'.$note->sender_id.' ,"notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
             }
         }
         $notifJson .= ']';
@@ -1113,8 +1137,8 @@ class AdminController extends Controller
 
     public function clearNotifAll()
     {
-        $foodie = Auth::guard('foodie')->user()->id;
-        $notifications = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        $admin = Auth::guard('admin')->user()->id;
+        $notifications = Notification::where('receiver_id','=', $admin)->where('receiver_type','=','a')->latest($column='created_at')->take(5)->get();
         foreach($notifications as $notification){
             $notification->is_read=1;
             $notification->save();
