@@ -243,12 +243,14 @@
                                 </div>
                                 <div class="card-content">
                                     <div id="allMonth{{$uniqueComChef}}" class="row comContents">
-                                        <div class="col s12 m3">
-                                            <div>
-                                                <span>Month:</span>
+                                        <div class="row">
+                                            <div class="col s12 m3">
+                                                <div>
+                                                    <span>Month:</span>
+                                                </div>
+                                                <select id="monthFilter{{$uniqueComChef}}">
+                                                </select>
                                             </div>
-                                            <select id="monthFilter{{$uniqueComChef}}">
-                                            </select>
                                         </div>
                                         <div class="divider">
                                         </div>
