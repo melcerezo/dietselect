@@ -637,29 +637,32 @@
                                                     });
                                                 });
 
-                                                var valType = $('select#typeFilter{{$uniqueComChef}}').val();
 
-                                                if(valType==0){
-                                                    $('#monthPicker{{$uniqueComChef}}').show();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
-                                                }else if(valType==1){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').show();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
-                                                }else if(valType==2){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').show();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
-                                                }else if(valType==3){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').show();
-                                                }
+                                                $('select#typeFilter').change(function(){
+                                                    var valType = $('select#typeFilter{{$uniqueComChef}}').val();
+
+                                                    if(valType==0){
+                                                        $('#monthPicker{{$uniqueComChef}}').show();
+                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    }else if(valType==1){
+                                                        $('#monthPicker{{$uniqueComChef}}').hide();
+                                                        $('#pendMonthPicker{{$uniqueComChef}}').show();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    }else if(valType==2){
+                                                        $('#monthPicker{{$uniqueComChef}}').hide();
+                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').show();
+                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    }else if(valType==3){
+                                                        $('#monthPicker{{$uniqueComChef}}').hide();
+                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#cancelMonthPicker{{$uniqueComChef}}').show();
+                                                    }
+                                                });
 
                                                 $('select#monthFilter{{$uniqueComChef}}').change(function (){
                                                     var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
