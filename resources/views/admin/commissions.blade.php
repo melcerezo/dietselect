@@ -330,6 +330,9 @@
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                        $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
                                                         if(response==''){
                                                             $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
                                                             $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
@@ -598,9 +601,9 @@
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>'+chefPendTotal+'</div>');
-                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>'+chefPaidTotal+'</div>');
-                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>'+dietTotal+'</div>');
+                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>');
+                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>');
+                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>');
 
                                                         }
                                                     });
@@ -665,6 +668,9 @@
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                        $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
                                                         $('select#typeFilter{{$uniqueComChef}}').val('0');
                                                         if(response==''){
                                                             $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
@@ -936,9 +942,9 @@
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>'+chefPendTotal+'</div>');
-                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>'+chefPaidTotal+'</div>');
-                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>'+dietTotal+'</div>');
+                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>');
+                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>');
+                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>');
                                                         }
                                                     });
                                                 });
