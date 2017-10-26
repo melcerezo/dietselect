@@ -254,42 +254,44 @@
                                         </div>
                                         <div class="divider">
                                         </div>
-                                        <div id="monthContainer{{$uniqueComChef}}" class="col s12">
-                                            <div class="row">
-                                                <div class="col s12 m3">
-                                                    <div>
-                                                        <span>Type:</span>
+                                        <div class="row">
+                                            <div id="monthContainer{{$uniqueComChef}}" class="col s12">
+                                                <div class="row">
+                                                    <div class="col s12 m3">
+                                                        <div>
+                                                            <span>Type:</span>
+                                                        </div>
+                                                        <select id="typeFilter{{$uniqueComChef}}">
+                                                            <option value="0" selected>All</option>
+                                                            <option value="1">Pending</option>
+                                                            <option value="2">Paid</option>
+                                                            <option value="3">Cancelled</option>
+                                                        </select>
                                                     </div>
-                                                    <select id="typeFilter{{$uniqueComChef}}">
-                                                        <option value="0" selected>All</option>
-                                                        <option value="1">Pending</option>
-                                                        <option value="2">Paid</option>
-                                                        <option value="3">Cancelled</option>
-                                                    </select>
+                                                    <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    </div>
+                                                    <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    </div>
+                                                    <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    </div>
                                                 </div>
-                                                <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                <div class="divider">
                                                 </div>
-                                                <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                <div class="row">
+                                                    <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                                    </div>
                                                 </div>
-                                                <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                <div class="row">
+                                                    <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="divider">
-                                            </div>
-                                            <div class="row">
-                                                <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                                <div class="row">
+                                                    <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                            <div class="row">
-                                                <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
-                                                </div>
-                                            </div>
-                                            <div class="row">
-                                                <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                <div class="row">
+                                                    <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
