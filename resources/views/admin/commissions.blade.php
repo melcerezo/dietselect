@@ -263,11 +263,11 @@
                                                         <option value="3">Cancelled</option>
                                                     </select>
                                                 </div>
-                                                <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
                                                 </div>
-                                                <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
                                                 </div>
-                                                <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
                                                 </div>
                                             </div>
                                             <div class="row">
