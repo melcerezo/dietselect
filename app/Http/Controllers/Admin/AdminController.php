@@ -942,7 +942,7 @@ class AdminController extends Controller
     {
         $month = $monthType;
 
-        $commissions = Commission::where('chef_id','=',$chefId)->get();
+        $commissions = Commission::where('chef_id','=',$chefId)->latest()->get();
 
         $monthComJson ='';
         if($commissions->count()){
