@@ -938,7 +938,7 @@ class AdminController extends Controller
         return $monthJson;
     }
 
-    public function monthChange($chefId,$monthType,$comType)
+    public function monthChange($chefId,$monthType)
     {
         $month = $monthType;
 
@@ -999,6 +999,11 @@ class AdminController extends Controller
         }
 
         return $monthComJson;
+    }
+
+    public function typeChange()
+    {
+
     }
 
 

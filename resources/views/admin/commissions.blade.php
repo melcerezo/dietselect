@@ -310,760 +310,1168 @@
                                             </div>
                                             <select id="monthFilter{{$uniqueComChef}}">
                                             </select>
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var monthAjax = getMonths();
+                                        </div>
+                                        <div id="monthContainer{{$uniqueComChef}}" class="col s12">
+                                            <div class="col s12 m3">
+                                                <div>
+                                                    <span>Type:</span>
+                                                </div>
+                                                <select id="typeFilter{{$uniqueComChef}}">
+                                                    <option value="0" selected>All</option>
+                                                    <option value="1">Pending</option>
+                                                    <option value="2">Paid</option>
+                                                    <option value="3">Cancelled</option>
+                                                </select>
+                                            </div>
+                                            <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                            </div>
+                                            <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            </div>
+                                            <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            </div>
+                                            <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            </div>
+                                        </div>
+                                        <script>
+                                            $(document).ready(function () {
+                                                var monthAjax = getMonths();
 
-                                                    monthAjax.done(function (response) {
+                                                monthAjax.done(function (response) {
 
-                                                        var valData = JSON.parse(response);
+                                                    var valData = JSON.parse(response);
 //                                                        console.log(valData);
-                                                        for(var i in valData){
-                                                            var text = valData[i].monthText;
-                                                            if(valData[i].current==1){
-                                                                text += '(current)';
-                                                                $('select#monthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                                                                );
-                                                            }else{
-                                                                $('select#monthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text)
-                                                                );
-                                                            }
+                                                    for(var i in valData){
+                                                        var text = valData[i].monthText;
+                                                        if(valData[i].current==1){
+                                                            text += '(current)';
+                                                            $('select#monthFilter{{$uniqueComChef}}').append(
+                                                                    $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
+                                                            );
+                                                        }else{
+                                                            $('select#monthFilter{{$uniqueComChef}}').append(
+                                                                    $('<option></option>').attr("value",valData[i].month).text(text)
+                                                            );
                                                         }
+                                                    }
 
-                                                        // $("select#monthFilter").val($("select#monthFilter option:first").val());
+                                                    $('select#monthFilter{{$uniqueComChef}}').material_select();
 
-                                                        $('select#monthFilter{{$uniqueComChef}}').material_select();
+                                                    var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
 
-                                                        var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
 
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'0');
+                                                    // month change
 
-                                                        changeMonth.done(function (response) {
-                                                            $('#monthPicker{{$uniqueComChef}}').empty();
-                                                            if(response==''){
-                                                                $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
 
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
+                                                    var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
 
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#monthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                    $('select#monthFilter{{$uniqueComChef}}').change(function (){
-                                                        var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
-                                                        console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'0');
+                                                    changeMonth.done(function (response) {
                                                         $('#monthPicker{{$uniqueComChef}}').empty();
-                                                        changeMonth.done(function (response) {
-                                                            if(response==''){
-                                                                $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#monthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                });
-                                            </script>
-                                        </div>
-                                        <div id="monthPicker{{$uniqueComChef}}" class="col s12">
-                                        </div>
-                                    </div>
-                                    <div id="pendMonth{{$uniqueComChef}}" class="row comContents">
-                                        <div class="col s12 m3">
-                                            <div>
-                                                <span>Month:</span>
-                                            </div>
-                                            <select id="pendMonthFilter{{$uniqueComChef}}">
-                                            </select>
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var monthAjax = getMonths();
-
-                                                    monthAjax.done(function (response) {
-                                                        var valData = JSON.parse(response);
-//                                                        console.log(valData);
-                                                        for(var i in valData){
-                                                            var text = valData[i].monthText;
-                                                            if(valData[i].current==1){
-                                                                text += '(current)';
-                                                                $('select#pendMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                                                                );
-                                                            }else{
-                                                                $('select#pendMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text)
-                                                                );
-                                                            }
-                                                        }
-
-                                                        // $("select#monthFilter").val($("select#monthFilter option:first").val());
-
-                                                        $('select#pendMonthFilter{{$uniqueComChef}}').material_select();
-
-                                                        var selectVal = $('select#pendMonthFilter{{$uniqueComChef}}').val();
-
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');
-
-                                                        changeMonth.done(function (response) {
-                                                            $('#pendMonthPicker{{$uniqueComChef}}').empty();
-                                                            if(response==''){
-                                                                $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#pendMonthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                    $('select#pendMonthFilter{{$uniqueComChef}}').change(function (){
-                                                        var selectVal = $('select#pendMonthFilter{{$uniqueComChef}}').val();
-                                                        console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
-                                                        changeMonth.done(function (response) {
-                                                            if(response==''){
-                                                                $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#pendMonthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                });
-                                            </script>
-                                        </div>
-                                        <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
-                                        </div>
-                                    </div>
-                                    <div id="paidMonth{{$uniqueComChef}}" class="row comContents">
-                                        <div class="col s12 m3">
-                                            <div>
-                                                <span>Month:</span>
-                                            </div>
-                                            <select id="paidMonthFilter{{$uniqueComChef}}">
-                                            </select>
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var monthAjax = getMonths();
-
-                                                    monthAjax.done(function (response) {
-                                                        var valData = JSON.parse(response);
-//                                                        console.log(valData);
-                                                        for(var i in valData){
-                                                            var text = valData[i].monthText;
-                                                            if(valData[i].current==1){
-                                                                text += '(current)';
-                                                                $('select#paidMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                                                                );
-                                                            }else{
-                                                                $('select#paidMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text)
-                                                                );
-                                                            }
-                                                        }
-
-                                                        // $("select#monthFilter").val($("select#monthFilter option:first").val());
-
-                                                        $('select#paidMonthFilter{{$uniqueComChef}}').material_select();
-
-                                                        var selectVal = $('select#paidMonthFilter{{$uniqueComChef}}').val();
-
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');
-
-                                                        changeMonth.done(function (response) {
-                                                            $('#paidMonthPicker{{$uniqueComChef}}').empty();
-                                                            if(response==''){
-                                                                $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#paidMonthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                    $('select#paidMonthFilter{{$uniqueComChef}}').change(function (){
-                                                        var selectVal = $('select#paidMonthFilter{{$uniqueComChef}}').val();
-                                                        console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
-                                                        changeMonth.done(function (response) {
-                                                            if(response==''){
-                                                                $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#paidMonthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                });
-                                            </script>
-                                        </div>
-                                        <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
-                                        </div>
-                                    </div>
-                                    <div id="cancelMonth{{$uniqueComChef}}" class="row comContents">
-                                        <div class="col s12 m3">
-                                            <div>
-                                                <span>Month:</span>
-                                            </div>
-                                            <select id="cancelMonthFilter{{$uniqueComChef}}">
-                                            </select>
-                                            <script>
-                                                $(document).ready(function () {
-                                                    var monthAjax = getMonths();
-
-                                                    monthAjax.done(function (response) {
-                                                        var valData = JSON.parse(response);
-//                                                        console.log(valData);
-                                                        for(var i in valData){
-                                                            var text = valData[i].monthText;
-                                                            if(valData[i].current==1){
-                                                                text += '(current)';
-                                                                $('select#cancelMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
-                                                                );
-                                                            }else{
-                                                                $('select#cancelMonthFilter{{$uniqueComChef}}').append(
-                                                                        $('<option></option>').attr("value",valData[i].month).text(text)
-                                                                );
-                                                            }
-                                                        }
-
-                                                        // $("select#monthFilter").val($("select#monthFilter option:first").val());
-
-                                                        $('select#cancelMonthFilter{{$uniqueComChef}}').material_select();
-
-                                                        var selectVal = $('select#cancelMonthFilter{{$uniqueComChef}}').val();
-
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'3');
-
-                                                        changeMonth.done(function (response) {
-                                                            $('#cancelMonthPicker{{$uniqueComChef}}').empty();
-                                                            if(response==''){
-                                                                $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
-
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
-                                                                x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
-                                                                }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#cancelMonthPicker{{$uniqueComChef}}').append(x);
-                                                            }
-                                                        });
-                                                    });
-
-                                                    $('select#cancelMonthFilter{{$uniqueComChef}}').change(function (){
-                                                        var selectVal = $('select#cancelMonthFilter{{$uniqueComChef}}').val();
-                                                        console.log(selectVal);
-                                                        var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'3');
                                                         $('#cancelMonthPicker{{$uniqueComChef}}').empty();
-                                                        changeMonth.done(function (response) {
-                                                            if(response==''){
-                                                                $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            }else{
-                                                                var valData = JSON.parse(response);
-                                                                console.log(valData);
+                                                        if(response==''){
+                                                            $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                        }else{
+                                                            var valData = JSON.parse(response);
+                                                            console.log(valData);
 
-                                                                var x = '<div class="row">';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '<div class="col s12 m3">';
-                                                                x += '</div>';
-                                                                x += '</div>';
-                                                                x += '<div class="row">';
-                                                                x += '<div class="col s12">';
-                                                                x += '<table class="">';
-                                                                x += '<thead>';
+                                                            var x = '<div class="row">';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '</div>';
+                                                            x += '<div class="row">';
+                                                            x += '<div class="col s12">';
+                                                            x += '<table class="">';
+                                                            x += '<thead>';
+                                                            x += '<tr>';
+                                                            x += '<th>ID</th>';
+                                                            x += '<th>Name</th>';
+                                                            x += '<th>Date</th>';
+                                                            x += '<th>Total Payable</th>';
+                                                            x += '<th>Payable to Vendor</th>';
+                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Order Status</th>';
+                                                            x += '<th>Payment Status</th>';
+                                                            x += '</tr>';
+                                                            x += '</thead>';
+                                                            x += '<tbody>';
+                                                            for(var i in valData){
+                                                                var amount = valData[i].amount;
+                                                                var chefAmount = valData[i].chefAmount;
+                                                                var dietAmount = valData[i].dietAmount;
+
                                                                 x += '<tr>';
-                                                                x += '<th>ID</th>';
-                                                                x += '<th>Name</th>';
-                                                                x += '<th>Date</th>';
-                                                                x += '<th>Total Payable</th>';
-                                                                x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
-                                                                x += '<th>Payment Status</th>';
-                                                                x += '</tr>';
-                                                                x += '</thead>';
-                                                                x += '<tbody>';
-                                                                for(var i in valData){
-                                                                    var amount = valData[i].amount;
-                                                                    var chefAmount = valData[i].chefAmount;
-                                                                    var dietAmount = valData[i].dietAmount;
-
-                                                                    x += '<tr>';
-                                                                    x += '<td>'+valData[i].id+'</td>';
-                                                                    x += '<td>'+valData[i].name+'</td>';
-                                                                    x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    if(valData[i].status==0){
-                                                                        x += '<td>Paid</td>';
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    if(valData[i].status==0){
-                                                                        if(valData[i].paid==0){
-                                                                            x += '<td>Pending</td>';
-                                                                        }else{
-                                                                            x += '<td>Paid</td>';
-                                                                        }
-                                                                    }else{
-                                                                        x += '<td>Cancelled</td>';
-                                                                    }
-                                                                    x += '</tr>';
+                                                                x += '<td>'+valData[i].id+'</td>';
+                                                                x += '<td>'+valData[i].name+'</td>';
+                                                                x += '<td>'+valData[i].created_at+'</td>';
+                                                                x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
+                                                                x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                if(valData[i].status==0){
+                                                                    x += '<td>Paid</td>';
+                                                                }else{
+                                                                    x += '<td>Cancelled</td>';
                                                                 }
-                                                                x += '</tbody>';
-                                                                x += '</table>';
-                                                                x += '</div>';
-                                                                x += '</div>';
-
-                                                                $('#cancelMonthPicker{{$uniqueComChef}}').append(x);
+                                                                if(valData[i].status==0){
+                                                                    if(valData[i].paid==0){
+                                                                        x += '<td>Pending</td>';
+                                                                    }else{
+                                                                        x += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    x += '<td>Cancelled</td>';
+                                                                }
+                                                                x += '</tr>';
                                                             }
-                                                        });
-                                                    });
+                                                            x += '</tbody>';
+                                                            x += '</table>';
+                                                            x += '</div>';
+                                                            x += '</div>';
 
+                                                            var xPend = '<div class="row">';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="row">';
+                                                            xPend += '<div class="col s12">';
+                                                            xPend += '<table class="">';
+                                                            xPend += '<thead>';
+                                                            xPend += '<tr>';
+                                                            xPend += '<th>ID</th>';
+                                                            xPend += '<th>Name</th>';
+                                                            xPend += '<th>Date</th>';
+                                                            xPend += '<th>Total Payable</th>';
+                                                            xPend += '<th>Payable to Vendor</th>';
+                                                            xPend += '<th>Payable to DietSelect</th>';
+                                                            xPend += '<th>Order Status</th>';
+                                                            xPend += '<th>Payment Status</th>';
+                                                            xPend += '</tr>';
+                                                            xPend += '</thead>';
+                                                            xPend += '<tbody>';
+                                                            for(var j in valData){
+                                                                var pendAmount = valData[j].amount;
+                                                                var pendChefAmount = valData[j].chefAmount;
+                                                                var pendDietAmount = valData[j].dietAmount;
+
+                                                                xPend += '<tr>';
+                                                                xPend += '<td>'+valData[j].id+'</td>';
+                                                                xPend += '<td>'+valData[j].name+'</td>';
+                                                                xPend += '<td>'+valData[j].created_at+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[j].status==0){
+                                                                    xPend += '<td>Paid</td>';
+                                                                }else{
+                                                                    xPend += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[j].status==0){
+                                                                    if(valData[j].paid==0){
+                                                                        xPend += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xPend += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xPend += '<td>Cancelled</td>';
+                                                                }
+                                                                xPend += '</tr>';
+                                                            }
+                                                            xPend += '</tbody>';
+                                                            xPend += '</table>';
+                                                            xPend += '</div>';
+                                                            xPend += '</div>';
+
+                                                            var xPaid = '<div class="row">';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="row">';
+                                                            xPaid += '<div class="col s12">';
+                                                            xPaid += '<table class="">';
+                                                            xPaid += '<thead>';
+                                                            xPaid += '<tr>';
+                                                            xPaid += '<th>ID</th>';
+                                                            xPaid += '<th>Name</th>';
+                                                            xPaid += '<th>Date</th>';
+                                                            xPaid += '<th>Total Payable</th>';
+                                                            xPaid += '<th>Payable to Vendor</th>';
+                                                            xPaid += '<th>Payable to DietSelect</th>';
+                                                            xPaid += '<th>Order Status</th>';
+                                                            xPaid += '<th>Payment Status</th>';
+                                                            xPaid += '</tr>';
+                                                            xPaid += '</thead>';
+                                                            xPaid += '<tbody>';
+                                                            for(var k in valData){
+                                                                var paidAmount = valData[k].amount;
+                                                                var paidChefAmount = valData[k].chefAmount;
+                                                                var paidDietAmount = valData[k].dietAmount;
+
+                                                                xPaid += '<tr>';
+                                                                xPaid += '<td>'+valData[k].id+'</td>';
+                                                                xPaid += '<td>'+valData[k].name+'</td>';
+                                                                xPaid += '<td>'+valData[k].created_at+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[k].status==0){
+                                                                    xPaid += '<td>Paid</td>';
+                                                                }else{
+                                                                    xPaid += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[k].status==0){
+                                                                    if(valData[k].paid==0){
+                                                                        xPaid += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xPaid += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xPaid += '<td>Cancelled</td>';
+                                                                }
+                                                                xPaid += '</tr>';
+                                                            }
+                                                            xPaid += '</tbody>';
+                                                            xPaid += '</table>';
+                                                            xPaid += '</div>';
+                                                            xPaid += '</div>';
+
+                                                            var xCancel = '<div class="row">';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="row">';
+                                                            xCancel += '<div class="col s12">';
+                                                            xCancel += '<table class="">';
+                                                            xCancel += '<thead>';
+                                                            xCancel += '<tr>';
+                                                            xCancel += '<th>ID</th>';
+                                                            xCancel += '<th>Name</th>';
+                                                            xCancel += '<th>Date</th>';
+                                                            xCancel += '<th>Total Payable</th>';
+                                                            xCancel += '<th>Payable to Vendor</th>';
+                                                            xCancel += '<th>Payable to DietSelect</th>';
+                                                            xCancel += '<th>Order Status</th>';
+                                                            xCancel += '<th>Payment Status</th>';
+                                                            xCancel += '</tr>';
+                                                            xCancel += '</thead>';
+                                                            xCancel += '<tbody>';
+                                                            for(var l in valData){
+                                                                var cancelAmount = valData[l].amount;
+                                                                var cancelChefAmount = valData[l].chefAmount;
+                                                                var cancelDietAmount = valData[l].dietAmount;
+
+                                                                xCancel += '<tr>';
+                                                                xCancel += '<td>'+valData[l].id+'</td>';
+                                                                xCancel += '<td>'+valData[l].name+'</td>';
+                                                                xCancel += '<td>'+valData[l].created_at+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelAmount.toFixed(2))+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelChefAmount.toFixed(2))+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[l].status==0){
+                                                                    xCancel += '<td>Paid</td>';
+                                                                }else{
+                                                                    xCancel += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[l].status==0){
+                                                                    if(valData[l].paid==0){
+                                                                        xCancel += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xCancel += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xCancel += '<td>Cancelled</td>';
+                                                                }
+                                                                xCancel += '</tr>';
+                                                            }
+                                                            xCancel += '</tbody>';
+                                                            xCancel += '</table>';
+                                                            xCancel += '</div>';
+                                                            xCancel += '</div>';
+
+                                                            $('#monthPicker{{$uniqueComChef}}').append(x);
+                                                            $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
+                                                            $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
+                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+                                                        }
+                                                    });
                                                 });
-                                            </script>
-                                        </div>
-                                        <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
-                                        </div>
+
+                                                var valType = $('select#typeFilter{{$uniqueComChef}}').val();
+
+                                                if(valType==0){
+                                                    $('#monthPicker{{$uniqueComChef}}').show();
+                                                }else if(valType==1){
+                                                    $('#pendMonthPicker{{$uniqueComChef}}').show();
+                                                }else if(valType==2){
+                                                    $('#paidMonthPicker{{$uniqueComChef}}').show();
+                                                }else if(valType==3){
+                                                    $('#cancelMonthPicker{{$uniqueComChef}}').show();
+                                                }
+
+                                                $('select#monthFilter{{$uniqueComChef}}').change(function (){
+                                                    var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
+                                                    console.log(selectVal);
+                                                    var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                    changeMonth.done(function (response) {
+                                                        $('#monthPicker{{$uniqueComChef}}').empty();
+                                                        $('#pendMonthPicker{{$uniqueComChef}}').empty();
+                                                        $('#paidMonthPicker{{$uniqueComChef}}').empty();
+                                                        $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                        ('select#typeFilter{{$uniqueComChef}}').val('0');
+                                                        if(response==''){
+                                                            $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                        }else{
+                                                            var valData = JSON.parse(response);
+                                                            console.log(valData);
+
+                                                            var x = '<div class="row">';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '<div class="col s12 m3">';
+                                                            x += '</div>';
+                                                            x += '</div>';
+                                                            x += '<div class="row">';
+                                                            x += '<div class="col s12">';
+                                                            x += '<table class="">';
+                                                            x += '<thead>';
+                                                            x += '<tr>';
+                                                            x += '<th>ID</th>';
+                                                            x += '<th>Name</th>';
+                                                            x += '<th>Date</th>';
+                                                            x += '<th>Total Payable</th>';
+                                                            x += '<th>Payable to Vendor</th>';
+                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Order Status</th>';
+                                                            x += '<th>Payment Status</th>';
+                                                            x += '</tr>';
+                                                            x += '</thead>';
+                                                            x += '<tbody>';
+                                                            for(var i in valData){
+                                                                var amount = valData[i].amount;
+                                                                var chefAmount = valData[i].chefAmount;
+                                                                var dietAmount = valData[i].dietAmount;
+
+                                                                x += '<tr>';
+                                                                x += '<td>'+valData[i].id+'</td>';
+                                                                x += '<td>'+valData[i].name+'</td>';
+                                                                x += '<td>'+valData[i].created_at+'</td>';
+                                                                x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
+                                                                x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                if(valData[i].status==0){
+                                                                    x += '<td>Paid</td>';
+                                                                }else{
+                                                                    x += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[i].status==0){
+                                                                    if(valData[i].paid==0){
+                                                                        x += '<td>Pending</td>';
+                                                                    }else{
+                                                                        x += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    x += '<td>Cancelled</td>';
+                                                                }
+                                                                x += '</tr>';
+                                                            }
+                                                            x += '</tbody>';
+                                                            x += '</table>';
+                                                            x += '</div>';
+                                                            x += '</div>';
+
+                                                            var xPend = '<div class="row">';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="col s12 m3">';
+                                                            xPend += '</div>';
+                                                            xPend += '</div>';
+                                                            xPend += '<div class="row">';
+                                                            xPend += '<div class="col s12">';
+                                                            xPend += '<table class="">';
+                                                            xPend += '<thead>';
+                                                            xPend += '<tr>';
+                                                            xPend += '<th>ID</th>';
+                                                            xPend += '<th>Name</th>';
+                                                            xPend += '<th>Date</th>';
+                                                            xPend += '<th>Total Payable</th>';
+                                                            xPend += '<th>Payable to Vendor</th>';
+                                                            xPend += '<th>Payable to DietSelect</th>';
+                                                            xPend += '<th>Order Status</th>';
+                                                            xPend += '<th>Payment Status</th>';
+                                                            xPend += '</tr>';
+                                                            xPend += '</thead>';
+                                                            xPend += '<tbody>';
+                                                            for(var j in valData){
+                                                                var pendAmount = valData[j].amount;
+                                                                var pendChefAmount = valData[j].chefAmount;
+                                                                var pendDietAmount = valData[j].dietAmount;
+
+                                                                xPend += '<tr>';
+                                                                xPend += '<td>'+valData[j].id+'</td>';
+                                                                xPend += '<td>'+valData[j].name+'</td>';
+                                                                xPend += '<td>'+valData[j].created_at+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[j].status==0){
+                                                                    xPend += '<td>Paid</td>';
+                                                                }else{
+                                                                    xPend += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[j].status==0){
+                                                                    if(valData[j].paid==0){
+                                                                        xPend += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xPend += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xPend += '<td>Cancelled</td>';
+                                                                }
+                                                                xPend += '</tr>';
+                                                            }
+                                                            xPend += '</tbody>';
+                                                            xPend += '</table>';
+                                                            xPend += '</div>';
+                                                            xPend += '</div>';
+
+                                                            var xPaid = '<div class="row">';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="col s12 m3">';
+                                                            xPaid += '</div>';
+                                                            xPaid += '</div>';
+                                                            xPaid += '<div class="row">';
+                                                            xPaid += '<div class="col s12">';
+                                                            xPaid += '<table class="">';
+                                                            xPaid += '<thead>';
+                                                            xPaid += '<tr>';
+                                                            xPaid += '<th>ID</th>';
+                                                            xPaid += '<th>Name</th>';
+                                                            xPaid += '<th>Date</th>';
+                                                            xPaid += '<th>Total Payable</th>';
+                                                            xPaid += '<th>Payable to Vendor</th>';
+                                                            xPaid += '<th>Payable to DietSelect</th>';
+                                                            xPaid += '<th>Order Status</th>';
+                                                            xPaid += '<th>Payment Status</th>';
+                                                            xPaid += '</tr>';
+                                                            xPaid += '</thead>';
+                                                            xPaid += '<tbody>';
+                                                            for(var k in valData){
+                                                                var paidAmount = valData[k].amount;
+                                                                var paidChefAmount = valData[k].chefAmount;
+                                                                var paidDietAmount = valData[k].dietAmount;
+
+                                                                xPaid += '<tr>';
+                                                                xPaid += '<td>'+valData[k].id+'</td>';
+                                                                xPaid += '<td>'+valData[k].name+'</td>';
+                                                                xPaid += '<td>'+valData[k].created_at+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
+                                                                xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[k].status==0){
+                                                                    xPaid += '<td>Paid</td>';
+                                                                }else{
+                                                                    xPaid += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[k].status==0){
+                                                                    if(valData[k].paid==0){
+                                                                        xPaid += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xPaid += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xPaid += '<td>Cancelled</td>';
+                                                                }
+                                                                xPaid += '</tr>';
+                                                            }
+                                                            xPaid += '</tbody>';
+                                                            xPaid += '</table>';
+                                                            xPaid += '</div>';
+                                                            xPaid += '</div>';
+
+                                                            var xCancel = '<div class="row">';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="col s12 m3">';
+                                                            xCancel += '</div>';
+                                                            xCancel += '</div>';
+                                                            xCancel += '<div class="row">';
+                                                            xCancel += '<div class="col s12">';
+                                                            xCancel += '<table class="">';
+                                                            xCancel += '<thead>';
+                                                            xCancel += '<tr>';
+                                                            xCancel += '<th>ID</th>';
+                                                            xCancel += '<th>Name</th>';
+                                                            xCancel += '<th>Date</th>';
+                                                            xCancel += '<th>Total Payable</th>';
+                                                            xCancel += '<th>Payable to Vendor</th>';
+                                                            xCancel += '<th>Payable to DietSelect</th>';
+                                                            xCancel += '<th>Order Status</th>';
+                                                            xCancel += '<th>Payment Status</th>';
+                                                            xCancel += '</tr>';
+                                                            xCancel += '</thead>';
+                                                            xCancel += '<tbody>';
+                                                            for(var l in valData){
+                                                                var cancelAmount = valData[l].amount;
+                                                                var cancelChefAmount = valData[l].chefAmount;
+                                                                var cancelDietAmount = valData[l].dietAmount;
+
+                                                                xCancel += '<tr>';
+                                                                xCancel += '<td>'+valData[l].id+'</td>';
+                                                                xCancel += '<td>'+valData[l].name+'</td>';
+                                                                xCancel += '<td>'+valData[l].created_at+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelAmount.toFixed(2))+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelChefAmount.toFixed(2))+'</td>';
+                                                                xCancel += '<td>PHP '+addCommas(cancelDietAmount.toFixed(2))+'</td>';
+                                                                if(valData[l].status==0){
+                                                                    xCancel += '<td>Paid</td>';
+                                                                }else{
+                                                                    xCancel += '<td>Cancelled</td>';
+                                                                }
+                                                                if(valData[l].status==0){
+                                                                    if(valData[l].paid==0){
+                                                                        xCancel += '<td>Pending</td>';
+                                                                    }else{
+                                                                        xCancel += '<td>Paid</td>';
+                                                                    }
+                                                                }else{
+                                                                    xCancel += '<td>Cancelled</td>';
+                                                                }
+                                                                xCancel += '</tr>';
+                                                            }
+                                                            xCancel += '</tbody>';
+                                                            xCancel += '</table>';
+                                                            xCancel += '</div>';
+                                                            xCancel += '</div>';
+
+                                                            $('#monthPicker{{$uniqueComChef}}').append(x);
+                                                            $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
+                                                            $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
+                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+                                                        }
+                                                    });
+                                                });
+
+
+
+                                            });
+                                        </script>
                                     </div>
+                                    {{--<div id="pendMonth{{$uniqueComChef}}" class="row comContents">--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<div>--}}
+                                                {{--<span>Month:</span>--}}
+                                            {{--</div>--}}
+                                            {{--<select id="pendMonthFilter{{$uniqueComChef}}">--}}
+                                            {{--</select>--}}
+                                            {{--<script>--}}
+                                                {{--$(document).ready(function () {--}}
+                                                    {{--var monthAjax = getMonths();--}}
+
+                                                    {{--monthAjax.done(function (response) {--}}
+                                                        {{--var valData = JSON.parse(response);--}}
+{{--//                                                        console.log(valData);--}}
+                                                        {{--for(var i in valData){--}}
+                                                            {{--var text = valData[i].monthText;--}}
+                                                            {{--if(valData[i].current==1){--}}
+                                                                {{--text += '(current)';--}}
+                                                                {{--$('select#pendMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')--}}
+                                                                {{--);--}}
+                                                            {{--}else{--}}
+                                                                {{--$('select#pendMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text)--}}
+                                                                {{--);--}}
+                                                            {{--}--}}
+                                                        {{--}--}}
+
+                                                        {{--// $("select#monthFilter").val($("select#monthFilter option:first").val());--}}
+
+                                                        {{--$('select#pendMonthFilter{{$uniqueComChef}}').material_select();--}}
+
+                                                        {{--var selectVal = $('select#pendMonthFilter{{$uniqueComChef}}').val();--}}
+
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');--}}
+
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--$('#pendMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#pendMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                    {{--$('select#pendMonthFilter{{$uniqueComChef}}').change(function (){--}}
+                                                        {{--var selectVal = $('select#pendMonthFilter{{$uniqueComChef}}').val();--}}
+                                                        {{--console.log(selectVal);--}}
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'1');--}}
+                                                        {{--$('#pendMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#pendMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                {{--});--}}
+                                            {{--</script>--}}
+                                        {{--</div>--}}
+                                        {{--<div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div id="paidMonth{{$uniqueComChef}}" class="row comContents">--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<div>--}}
+                                                {{--<span>Month:</span>--}}
+                                            {{--</div>--}}
+                                            {{--<select id="paidMonthFilter{{$uniqueComChef}}">--}}
+                                            {{--</select>--}}
+                                            {{--<script>--}}
+                                                {{--$(document).ready(function () {--}}
+                                                    {{--var monthAjax = getMonths();--}}
+
+                                                    {{--monthAjax.done(function (response) {--}}
+                                                        {{--var valData = JSON.parse(response);--}}
+{{--//                                                        console.log(valData);--}}
+                                                        {{--for(var i in valData){--}}
+                                                            {{--var text = valData[i].monthText;--}}
+                                                            {{--if(valData[i].current==1){--}}
+                                                                {{--text += '(current)';--}}
+                                                                {{--$('select#paidMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')--}}
+                                                                {{--);--}}
+                                                            {{--}else{--}}
+                                                                {{--$('select#paidMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text)--}}
+                                                                {{--);--}}
+                                                            {{--}--}}
+                                                        {{--}--}}
+
+                                                        {{--// $("select#monthFilter").val($("select#monthFilter option:first").val());--}}
+
+                                                        {{--$('select#paidMonthFilter{{$uniqueComChef}}').material_select();--}}
+
+                                                        {{--var selectVal = $('select#paidMonthFilter{{$uniqueComChef}}').val();--}}
+
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');--}}
+
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--$('#paidMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#paidMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                    {{--$('select#paidMonthFilter{{$uniqueComChef}}').change(function (){--}}
+                                                        {{--var selectVal = $('select#paidMonthFilter{{$uniqueComChef}}').val();--}}
+                                                        {{--console.log(selectVal);--}}
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'2');--}}
+                                                        {{--$('#paidMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#paidMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                {{--});--}}
+                                            {{--</script>--}}
+                                        {{--</div>--}}
+                                        {{--<div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<div id="cancelMonth{{$uniqueComChef}}" class="row comContents">--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<div>--}}
+                                                {{--<span>Month:</span>--}}
+                                            {{--</div>--}}
+                                            {{--<select id="cancelMonthFilter{{$uniqueComChef}}">--}}
+                                            {{--</select>--}}
+                                            {{--<script>--}}
+                                                {{--$(document).ready(function () {--}}
+                                                    {{--var monthAjax = getMonths();--}}
+
+                                                    {{--monthAjax.done(function (response) {--}}
+                                                        {{--var valData = JSON.parse(response);--}}
+{{--//                                                        console.log(valData);--}}
+                                                        {{--for(var i in valData){--}}
+                                                            {{--var text = valData[i].monthText;--}}
+                                                            {{--if(valData[i].current==1){--}}
+                                                                {{--text += '(current)';--}}
+                                                                {{--$('select#cancelMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')--}}
+                                                                {{--);--}}
+                                                            {{--}else{--}}
+                                                                {{--$('select#cancelMonthFilter{{$uniqueComChef}}').append(--}}
+                                                                        {{--$('<option></option>').attr("value",valData[i].month).text(text)--}}
+                                                                {{--);--}}
+                                                            {{--}--}}
+                                                        {{--}--}}
+
+                                                        {{--// $("select#monthFilter").val($("select#monthFilter option:first").val());--}}
+
+                                                        {{--$('select#cancelMonthFilter{{$uniqueComChef}}').material_select();--}}
+
+                                                        {{--var selectVal = $('select#cancelMonthFilter{{$uniqueComChef}}').val();--}}
+
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'3');--}}
+
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--$('#cancelMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#cancelMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                    {{--$('select#cancelMonthFilter{{$uniqueComChef}}').change(function (){--}}
+                                                        {{--var selectVal = $('select#cancelMonthFilter{{$uniqueComChef}}').val();--}}
+                                                        {{--console.log(selectVal);--}}
+                                                        {{--var changeMonth = monthChange('{{$uniqueComChef}}',selectVal,'3');--}}
+                                                        {{--$('#cancelMonthPicker{{$uniqueComChef}}').empty();--}}
+                                                        {{--changeMonth.done(function (response) {--}}
+                                                            {{--if(response==''){--}}
+                                                                {{--$('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');--}}
+                                                            {{--}else{--}}
+                                                                {{--var valData = JSON.parse(response);--}}
+                                                                {{--console.log(valData);--}}
+
+                                                                {{--var x = '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="col s12 m3">';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '<div class="row">';--}}
+                                                                {{--x += '<div class="col s12">';--}}
+                                                                {{--x += '<table class="">';--}}
+                                                                {{--x += '<thead>';--}}
+                                                                {{--x += '<tr>';--}}
+                                                                {{--x += '<th>ID</th>';--}}
+                                                                {{--x += '<th>Name</th>';--}}
+                                                                {{--x += '<th>Date</th>';--}}
+                                                                {{--x += '<th>Total Payable</th>';--}}
+                                                                {{--x += '<th>Payable to Vendor</th>';--}}
+                                                                {{--x += '<th>Payable to DietSelect</th>';--}}
+                                                                {{--x += '<th>Order Status</th>';--}}
+                                                                {{--x += '<th>Payment Status</th>';--}}
+                                                                {{--x += '</tr>';--}}
+                                                                {{--x += '</thead>';--}}
+                                                                {{--x += '<tbody>';--}}
+                                                                {{--for(var i in valData){--}}
+                                                                    {{--var amount = valData[i].amount;--}}
+                                                                    {{--var chefAmount = valData[i].chefAmount;--}}
+                                                                    {{--var dietAmount = valData[i].dietAmount;--}}
+
+                                                                    {{--x += '<tr>';--}}
+                                                                    {{--x += '<td>'+valData[i].id+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].name+'</td>';--}}
+                                                                    {{--x += '<td>'+valData[i].created_at+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--x += '<td>Paid</td>';--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--if(valData[i].status==0){--}}
+                                                                        {{--if(valData[i].paid==0){--}}
+                                                                            {{--x += '<td>Pending</td>';--}}
+                                                                        {{--}else{--}}
+                                                                            {{--x += '<td>Paid</td>';--}}
+                                                                        {{--}--}}
+                                                                    {{--}else{--}}
+                                                                        {{--x += '<td>Cancelled</td>';--}}
+                                                                    {{--}--}}
+                                                                    {{--x += '</tr>';--}}
+                                                                {{--}--}}
+                                                                {{--x += '</tbody>';--}}
+                                                                {{--x += '</table>';--}}
+                                                                {{--x += '</div>';--}}
+                                                                {{--x += '</div>';--}}
+
+                                                                {{--$('#cancelMonthPicker{{$uniqueComChef}}').append(x);--}}
+                                                            {{--}--}}
+                                                        {{--});--}}
+                                                    {{--});--}}
+
+                                                {{--});--}}
+                                            {{--</script>--}}
+                                        {{--</div>--}}
+                                        {{--<div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
                                 </div>
                             </div>
                         @endforeach

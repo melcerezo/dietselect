@@ -940,12 +940,16 @@ function getMonths(){
     });
 }
 
-function monthChange($chef,$type,$orderType){
+function monthChange($chef,$type){
     return $.ajax({
-        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type +'/'+ $orderType
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type
     });
 }
-
+function typeChange($chef,$type,$monthType){
+    return $.ajax({
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type + $monthType
+    });
+}
 function addCommas(nStr)
 {
     nStr += '';
