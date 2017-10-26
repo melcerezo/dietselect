@@ -252,7 +252,7 @@
                                                 </select>
                                             </div>
                                         </div>
-                                        <div class="divider" style="margin-bottom: 10px;">
+                                        <div class="divider" style="margin-bottom: 20px;">
                                         </div>
                                         <div class="row">
                                             <div id="monthContainer{{$uniqueComChef}}" class="col s12">
