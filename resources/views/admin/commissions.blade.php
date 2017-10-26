@@ -242,67 +242,6 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    {{--<div class="row center">--}}
-                                        {{--<div class="col s12 m3">--}}
-                                            {{--<span class="chefTabAll{{$uniqueComChef}} tableTab">All</span>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col s12 m3">--}}
-                                            {{--<span class="chefTabPend{{$uniqueComChef}} tableTab">Pending</span>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col s12 m3">--}}
-                                            {{--<span class="chefTabPaid{{$uniqueComChef}} tableTab">Paid</span>--}}
-                                        {{--</div>--}}
-                                        {{--<div class="col s12 m3">--}}
-                                            {{--<span class="chefTabCancel{{$uniqueComChef}} tableTab">Cancel</span>--}}
-                                        {{--</div>--}}
-                                    {{--</div>--}}
-                                    {{--<script>--}}
-                                        {{--$(document).ready(function(){--}}
-                                            {{--$('#allMonth{{$uniqueComChef}}').show();--}}
-                                            {{--$('.chefTabAll{{$uniqueComChef}}').addClass('activeTab');--}}
-
-                                            {{--$('.chefTabAll{{$uniqueComChef}}').click(function () {--}}
-                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$(this).addClass('activeTab');--}}
-                                                {{--$('#allMonth{{$uniqueComChef}}').show();--}}
-                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
-                                            {{--});--}}
-                                            {{--$('.chefTabPend{{$uniqueComChef}}').click(function () {--}}
-                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$(this).addClass('activeTab');--}}
-                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#pendMonth{{$uniqueComChef}}').show();--}}
-                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
-                                            {{--});--}}
-                                            {{--$('.chefTabPaid{{$uniqueComChef}}').click(function () {--}}
-                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$(this).addClass('activeTab');--}}
-                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#paidMonth{{$uniqueComChef}}').show();--}}
-                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
-                                            {{--});--}}
-                                            {{--$('.chefTabCancel{{$uniqueComChef}}').click(function () {--}}
-                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
-                                                {{--$(this).addClass('activeTab');--}}
-                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
-                                                {{--$('#cancelMonth{{$uniqueComChef}}').show();--}}
-                                            {{--});--}}
-                                        {{--});--}}
-                                    {{--</script>--}}
                                     <div id="allMonth{{$uniqueComChef}}" class="row comContents">
                                         <div class="col s12 m3">
                                             <div>
@@ -312,24 +251,40 @@
                                             </select>
                                         </div>
                                         <div id="monthContainer{{$uniqueComChef}}" class="col s12">
-                                            <div class="col s12 m3">
-                                                <div>
-                                                    <span>Type:</span>
+                                            <div class="row">
+                                                <div class="col s12 m3">
+                                                    <div>
+                                                        <span>Type:</span>
+                                                    </div>
+                                                    <select id="typeFilter{{$uniqueComChef}}">
+                                                        <option value="0" selected>All</option>
+                                                        <option value="1">Pending</option>
+                                                        <option value="2">Paid</option>
+                                                        <option value="3">Cancelled</option>
+                                                    </select>
                                                 </div>
-                                                <select id="typeFilter{{$uniqueComChef}}">
-                                                    <option value="0" selected>All</option>
-                                                    <option value="1">Pending</option>
-                                                    <option value="2">Paid</option>
-                                                    <option value="3">Cancelled</option>
-                                                </select>
+                                                <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                </div>
+                                                <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                </div>
+                                                <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3">
+                                                </div>
                                             </div>
-                                            <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                            <div class="row">
+                                                <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                                </div>
                                             </div>
-                                            <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            <div class="row">
+                                                <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                </div>
                                             </div>
-                                            <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            <div class="row">
+                                                <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                </div>
                                             </div>
-                                            <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                            <div class="row">
+                                                <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                </div>
                                             </div>
                                         </div>
                                         <script>
@@ -383,6 +338,10 @@
                                                         }else{
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
+
+                                                            var chefPendTotal = 0;
+                                                            var chefPaidTotal = 0;
+                                                            var dietTotal = 0;
 
                                                             var x = '<div class="row">';
                                                             x += '<div class="col s12 m3">';
@@ -478,6 +437,8 @@
                                                                     var pendChefAmount = valData[j].chefAmount;
                                                                     var pendDietAmount = valData[j].dietAmount;
 
+                                                                    chefPendTotal +=valData[j].chefAmount;
+
                                                                     xPend += '<tr>';
                                                                     xPend += '<td>'+valData[j].id+'</td>';
                                                                     xPend += '<td>'+valData[j].name+'</td>';
@@ -538,6 +499,9 @@
                                                                     var paidAmount = valData[k].amount;
                                                                     var paidChefAmount = valData[k].chefAmount;
                                                                     var paidDietAmount = valData[k].dietAmount;
+
+                                                                    chefPaidTotal +=paidChefAmount;
+                                                                    dietTotal += paidDietAmount;
 
                                                                     xPaid += '<tr>';
                                                                     xPaid += '<td>'+valData[k].id+'</td>';
@@ -633,6 +597,11 @@
                                                             $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+
+                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>'+chefPendTotal+'</div>');
+                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>'+chefPaidTotal+'</div>');
+                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>'+dietTotal+'</div>');
+
                                                         }
                                                     });
                                                 });
@@ -706,6 +675,10 @@
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
+                                                            var chefPendTotal = 0;
+                                                            var chefPaidTotal = 0;
+                                                            var dietTotal = 0;
+
                                                             var x = '<div class="row">';
                                                             x += '<div class="col s12 m3">';
                                                             x += '</div>';
@@ -800,6 +773,8 @@
                                                                     var pendChefAmount = valData[j].chefAmount;
                                                                     var pendDietAmount = valData[j].dietAmount;
 
+                                                                    chefPendTotal +=valData[j].chefAmount;
+
                                                                     xPend += '<tr>';
                                                                     xPend += '<td>'+valData[j].id+'</td>';
                                                                     xPend += '<td>'+valData[j].name+'</td>';
@@ -861,6 +836,9 @@
                                                                     var paidAmount = valData[k].amount;
                                                                     var paidChefAmount = valData[k].chefAmount;
                                                                     var paidDietAmount = valData[k].dietAmount;
+
+                                                                    chefPaidTotal +=paidChefAmount;
+                                                                    dietTotal += paidDietAmount;
 
                                                                     xPaid += '<tr>';
                                                                     xPaid += '<td>'+valData[k].id+'</td>';
@@ -957,6 +935,10 @@
                                                             $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+
+                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>'+chefPendTotal+'</div>');
+                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>'+chefPaidTotal+'</div>');
+                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>'+dietTotal+'</div>');
                                                         }
                                                     });
                                                 });
