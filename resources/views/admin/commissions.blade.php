@@ -14,9 +14,9 @@
         .chefCom{
             display: none;
         }
-        .comContents{
-            display: none;
-        }
+        /*.comContents{*/
+            /*display: none;*/
+        /*}*/
     </style>
     <script src="/js/admin/admin.js" defer></script>
 @endsection
