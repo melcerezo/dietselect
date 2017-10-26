@@ -63,6 +63,7 @@ class AdminController extends Controller
             'commissions'=>$commissions,
             'refunds'=>$refunds,
             'paidCommissions'=>$paidCommissions,
+            'notifications'=>$notification
         ]);
     }
 
@@ -172,7 +173,8 @@ class AdminController extends Controller
             'endYear'=>$endOfYear,
             'firstCom'=>$firstCom,
             'lastCom'=>$lastCom,
-            'uniqueComArray'=>$uniqueComArray
+            'uniqueComArray'=>$uniqueComArray,
+            'notifications'=>$notification
 
         ]);
     }
@@ -309,7 +311,8 @@ class AdminController extends Controller
             'endOfYear'=>$endOfYear,
             'firstRefund'=>$firstRefund,
             'lastRefund'=>$lastRefund,
-            'uniqueRefundArray'=>$uniqueRefundArray
+            'uniqueRefundArray'=>$uniqueRefundArray,
+            'notifications'=>$notification
         ]);
     }
 
@@ -394,6 +397,7 @@ class AdminController extends Controller
 
         return view('admin.chefs')->with([
             'chefs'=>$chefs,
+            'notifications'=>$notification
         ]);
     }
 
@@ -430,6 +434,7 @@ class AdminController extends Controller
             'plans'=>$plans,
             'commissions'=>$commissions,
             'bank_account'=>$bank_account,
+            'notifications'=>$notification
         ]);
     }
 
@@ -467,6 +472,7 @@ class AdminController extends Controller
 
         return view('admin.foodies')->with([
             'foodies'=>$foodies,
+            'notifications'=>$notification
         ]);
     }
 
@@ -484,7 +490,8 @@ class AdminController extends Controller
             'orders'=>$orders,
             'foodieAddresses'=>$foodieAddresses,
             'foodieAllergy'=>$foodieAllergy,
-            'foodiePreference'=>$foodiePreference
+            'foodiePreference'=>$foodiePreference,
+            'notifications'=>$notification
         ]);
 
     }
@@ -518,6 +525,7 @@ class AdminController extends Controller
 
         return view('admin.plans')->with([
             'plans'=>$plans,
+            'notifications'=>$notification
         ]);
     }
 
@@ -550,6 +558,7 @@ class AdminController extends Controller
             'moSnaMeals'=>$moSnaMeals,
             'aftSnaMeals'=>$aftSnaMeals,
             'plan' => $plan,
+            'notifications'=>$notification
         ]);
     }
 
@@ -619,7 +628,8 @@ class AdminController extends Controller
             'startOfYear'=>$startOfYear,
             'endOfYear'=>$endOfYear,
             'totalPaid'=>$totalPaid,
-            'totalPend'=>$totalPend
+            'totalPend'=>$totalPend,
+            'notifications'=>$notification
         ]);
     }
 
@@ -679,7 +689,8 @@ class AdminController extends Controller
             'order'=>$order,
             'orderItems'=>$orderItems,
             'orderItemArray'=>$orderItemArray,
-            'orderAddress'=>$orderAddress
+            'orderAddress'=>$orderAddress,
+            'notifications'=>$notification
         ]);
     }
 
