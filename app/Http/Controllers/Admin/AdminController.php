@@ -942,23 +942,7 @@ class AdminController extends Controller
     {
         $month = $monthType;
 
-        if($comType==0){
-            $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',0);
-            })->where('chef_id','=',$chefId)->get();
-        }else if($comType==1){
-            $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',0);
-            })->where('chef_id','=',$chefId)->where('paid','=',0)->get();
-        }else if($comType==2){
-            $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',0);
-            })->where('chef_id','=',$chefId)->where('paid','=',1)->get();
-        }else if($comType==3){
-            $commissions = Commission::whereHas('order_item',function ($query){
-                $query->where('is_cancelled','=',1);
-            })->where('chef_id','=',$chefId)->get();
-        }
+        $commissions = Commission::where('chef_id','=',$chefId)->get();
 
         $monthComJson ='';
         if($commissions->count()){
@@ -1001,10 +985,7 @@ class AdminController extends Controller
         return $monthComJson;
     }
 
-    public function typeChange()
-    {
 
-    }
 
 
     public function getComChef()
