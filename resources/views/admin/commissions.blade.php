@@ -951,9 +951,18 @@
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>');
-                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>');
-                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append('<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>');
+                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append(
+                                                                    '<div>Total Pending for Vendor This Month</div>' +
+                                                                    '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
+                                                            );
+                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
+                                                                    '<div>Total Paid for Vendor This Month</div>' +
+                                                                    '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
+                                                            );
+                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
+                                                                    '<div>Total Paid for DietSelect This Month</div>' +
+                                                                    '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
+                                                            );
                                                         }
                                                     });
                                                 });
