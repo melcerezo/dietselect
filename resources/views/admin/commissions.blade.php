@@ -250,6 +250,8 @@
                                             <select id="monthFilter{{$uniqueComChef}}">
                                             </select>
                                         </div>
+                                        <div class="divider">
+                                        </div>
                                         <div id="monthContainer{{$uniqueComChef}}" class="col s12">
                                             <div class="row">
                                                 <div class="col s12 m3">
@@ -269,6 +271,8 @@
                                                 </div>
                                                 <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
                                                 </div>
+                                            </div>
+                                            <div class="divider">
                                             </div>
                                             <div class="row">
                                                 <div id="monthPicker{{$uniqueComChef}}" class="col s12">
