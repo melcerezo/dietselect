@@ -638,7 +638,7 @@
                                                 });
 
 
-                                                $('select#typeFilter').change(function(){
+                                                $('select#typeFilter{{$uniqueComChef}}').change(function(){
                                                     var valType = $('select#typeFilter{{$uniqueComChef}}').val();
 
                                                     if(valType==0){
