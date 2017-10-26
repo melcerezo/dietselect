@@ -44,7 +44,7 @@ class AdminController extends Controller
 
     public function index()
     {
-
+        dd(Auth::guard('admin')->user()->id);
         $foodies=Foodie::orderBy('created_at', 'desc')->get();
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $orders = Order::orderBy('created_at', 'desc')->get();
@@ -1091,6 +1091,45 @@ class AdminController extends Controller
         }
         //        dd($thisInput);
         return $thisInput;
+    }
+
+    public function getNotif()
+    {
+        $i=0;
+        $foodie = Auth::guard('foodie')->user()->id;
+        $notification = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        $notifJson = '[';
+        foreach($notification as $note){
+            if(++$i<$notification->count()){
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"},';
+            }else{
+                $notifJson.='{ "id":"'.$note->id.'", "notification":"'.$note->notification.'", "is_read":"'.$note->is_read.'", "notification_type":"'.$note->notification_type.'", "created_at":"'.$note->created_at->format('d F,  H:ia').'"} ';
+            }
+        }
+        $notifJson .= ']';
+
+        return $notifJson;
+    }
+
+    public function clearNotifAll()
+    {
+        $foodie = Auth::guard('foodie')->user()->id;
+        $notifications = Notification::where('receiver_id','=', $foodie)->where('receiver_type','=','f')->latest($column='created_at')->take(5)->get();
+        foreach($notifications as $notification){
+            $notification->is_read=1;
+            $notification->save();
+        }
+        return null;
+    }
+
+    public function clearNotif()
+    {
+        $clearId = $_GET['id'];
+        $clearNotif= Notification::where('id','=',$clearId)->first();
+        $clearNotif->is_read=1;
+        $clearNotif->save();
+
+        return null;
     }
 }
 

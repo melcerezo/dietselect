@@ -11,6 +11,23 @@
             </div>
             <ul class="right hide-on-med-and-down">
                 <li>
+                    <a class="dropdown-button" href="#" data-activates='adminNotificationDropdown' data-beloworigin="true" data-constrainwidth="false">
+                        <span class="valign-wrapper" style="position: relative;">
+                            <span style="margin-left: 2px;">
+                                Notifications
+                            </span>
+                        </span>
+                    </a>
+                    <ul id="adminNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
+                        <li class="collection-item"><a id="clearAll" href="#">Mark All Read</a></li>
+                        @unless($notifications->count()>0)
+                            <li class="collection-item">
+                                <span>No notifications</span>
+                            </li>
+                        @endunless
+                    </ul>
+                </li>
+                <li>
                     <a href="{{route("admin.dashboard")}}">
                         <span class="valign-wrapper" style="position: relative;">
                             <span style="margin-left: 2px;">

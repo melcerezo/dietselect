@@ -211,6 +211,11 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
 });
 
 Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function () {
+
+    Route::get('notifClear','Admin\AdminController@clearNotif')->name('admin.clearNotif');
+    Route::get('notifClearAll','Admin\AdminController@clearNotifAll')->name('admin.clearNotifAll');
+    Route::get('notifGet', 'Admin\AdminController@getNotif')->name('admin.getNotif');
+
     Route::post('login', 'Admin\Auth\LoginController@login')->name('admin.login');
     Route::post('logout', 'Admin\Auth\LoginController@logout')->name('admin.logout');
     Route::get('/', 'Admin\AdminController@index')->name('admin');
