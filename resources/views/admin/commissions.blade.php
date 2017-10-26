@@ -242,67 +242,67 @@
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div class="row center">
-                                        <div class="col s12 m3">
-                                            <span class="chefTabAll{{$uniqueComChef}} tableTab">All</span>
-                                        </div>
-                                        <div class="col s12 m3">
-                                            <span class="chefTabPend{{$uniqueComChef}} tableTab">Pending</span>
-                                        </div>
-                                        <div class="col s12 m3">
-                                            <span class="chefTabPaid{{$uniqueComChef}} tableTab">Paid</span>
-                                        </div>
-                                        <div class="col s12 m3">
-                                            <span class="chefTabCancel{{$uniqueComChef}} tableTab">Cancel</span>
-                                        </div>
-                                    </div>
-                                    <script>
-                                        $(document).ready(function(){
-                                            $('#allMonth{{$uniqueComChef}}').show();
-                                            $('.chefTabAll{{$uniqueComChef}}').addClass('activeTab');
+                                    {{--<div class="row center">--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<span class="chefTabAll{{$uniqueComChef}} tableTab">All</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<span class="chefTabPend{{$uniqueComChef}} tableTab">Pending</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<span class="chefTabPaid{{$uniqueComChef}} tableTab">Paid</span>--}}
+                                        {{--</div>--}}
+                                        {{--<div class="col s12 m3">--}}
+                                            {{--<span class="chefTabCancel{{$uniqueComChef}} tableTab">Cancel</span>--}}
+                                        {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<script>--}}
+                                        {{--$(document).ready(function(){--}}
+                                            {{--$('#allMonth{{$uniqueComChef}}').show();--}}
+                                            {{--$('.chefTabAll{{$uniqueComChef}}').addClass('activeTab');--}}
 
-                                            $('.chefTabAll{{$uniqueComChef}}').click(function () {
-                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
-                                                $(this).addClass('activeTab');
-                                                $('#allMonth{{$uniqueComChef}}').show();
-                                                $('#pendMonth{{$uniqueComChef}}').hide();
-                                                $('#paidMonth{{$uniqueComChef}}').hide();
-                                                $('#cancelMonth{{$uniqueComChef}}').hide();
-                                            });
-                                            $('.chefTabPend{{$uniqueComChef}}').click(function () {
-                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
-                                                $(this).addClass('activeTab');
-                                                $('#allMonth{{$uniqueComChef}}').hide();
-                                                $('#pendMonth{{$uniqueComChef}}').show();
-                                                $('#paidMonth{{$uniqueComChef}}').hide();
-                                                $('#cancelMonth{{$uniqueComChef}}').hide();
-                                            });
-                                            $('.chefTabPaid{{$uniqueComChef}}').click(function () {
-                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');
-                                                $(this).addClass('activeTab');
-                                                $('#allMonth{{$uniqueComChef}}').hide();
-                                                $('#pendMonth{{$uniqueComChef}}').hide();
-                                                $('#paidMonth{{$uniqueComChef}}').show();
-                                                $('#cancelMonth{{$uniqueComChef}}').hide();
-                                            });
-                                            $('.chefTabCancel{{$uniqueComChef}}').click(function () {
-                                                $('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');
-                                                $('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');
-                                                $(this).addClass('activeTab');
-                                                $('#allMonth{{$uniqueComChef}}').hide();
-                                                $('#pendMonth{{$uniqueComChef}}').hide();
-                                                $('#paidMonth{{$uniqueComChef}}').hide();
-                                                $('#cancelMonth{{$uniqueComChef}}').show();
-                                            });
-                                        });
-                                    </script>
+                                            {{--$('.chefTabAll{{$uniqueComChef}}').click(function () {--}}
+                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$(this).addClass('activeTab');--}}
+                                                {{--$('#allMonth{{$uniqueComChef}}').show();--}}
+                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
+                                            {{--});--}}
+                                            {{--$('.chefTabPend{{$uniqueComChef}}').click(function () {--}}
+                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$(this).addClass('activeTab');--}}
+                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#pendMonth{{$uniqueComChef}}').show();--}}
+                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
+                                            {{--});--}}
+                                            {{--$('.chefTabPaid{{$uniqueComChef}}').click(function () {--}}
+                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabCancel{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$(this).addClass('activeTab');--}}
+                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#paidMonth{{$uniqueComChef}}').show();--}}
+                                                {{--$('#cancelMonth{{$uniqueComChef}}').hide();--}}
+                                            {{--});--}}
+                                            {{--$('.chefTabCancel{{$uniqueComChef}}').click(function () {--}}
+                                                {{--$('.chefTabPend{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabPaid{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$('.chefTabAll{{$uniqueComChef}}').removeClass('activeTab');--}}
+                                                {{--$(this).addClass('activeTab');--}}
+                                                {{--$('#allMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#pendMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#paidMonth{{$uniqueComChef}}').hide();--}}
+                                                {{--$('#cancelMonth{{$uniqueComChef}}').show();--}}
+                                            {{--});--}}
+                                        {{--});--}}
+                                    {{--</script>--}}
                                     <div id="allMonth{{$uniqueComChef}}" class="row comContents">
                                         <div class="col s12 m3">
                                             <div>
