@@ -652,7 +652,7 @@
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#cancelMonthPicker{{$uniqueComChef}}').empty();
-                                                        ('select#typeFilter{{$uniqueComChef}}').val('0');
+                                                        $('select#typeFilter{{$uniqueComChef}}').val('0');
                                                         if(response==''){
                                                             $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
                                                             $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
