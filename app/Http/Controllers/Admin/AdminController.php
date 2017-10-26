@@ -44,7 +44,7 @@ class AdminController extends Controller
 
     public function index()
     {
-        dd(Auth::guard('admin')->user()->id);
+        dd(Auth::guard('admin')->user());
         $foodies=Foodie::orderBy('created_at', 'desc')->get();
         $chefs=Chef::orderBy('created_at', 'desc')->get();
         $orders = Order::orderBy('created_at', 'desc')->get();
