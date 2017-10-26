@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('head')
     <link rel="stylesheet" href="/css/admin/adminMain.css">
-    <script>
-        orderAllRoute ='{{route('foodie.order.view', ['from'=>0])}}';
-        pendRoute ='{{route('foodie.order.view', ['from'=>1])}}';
-        paidRoute ='{{route('foodie.order.view', ['from'=>2])}}';
-        cancelRoute ='{{route('foodie.order.view', ['from'=>3])}}';
-        refundRoute ='{{route('foodie.order.view', ['from'=>4])}}';
-    </script>
     <script src="/js/admin/admin.js" defer></script>
 @endsection
 
