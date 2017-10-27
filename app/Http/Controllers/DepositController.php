@@ -316,6 +316,7 @@ class DepositController extends Controller
             $adminnotif->notification = $user->first_name.' '.$user->last_name. 'has paid their order for '.$order->created_at->format('F d, Y h:i A').'. ';
             $adminnotif->notification .= 'Please check the proof of payment.';
             $adminnotif->notification_type = 5;
+            $adminnotif->save();
 
             $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through gcash on '.Carbon::now()->format('F d, Y g:i A').'. Thank you!';
             $foodiePhoneNumber = '0'.$user->mobile_number;
