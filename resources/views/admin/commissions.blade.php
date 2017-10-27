@@ -33,6 +33,7 @@
                         <span class="valign-wrapper" style="position: relative;">
                             <span style="margin-left: 2px;">
                                 Notifications
+                                <span id="notifBadge"></span>
                             </span>
                         </span>
                     </a>
