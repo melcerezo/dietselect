@@ -194,6 +194,14 @@ class AddMoneyController extends Controller{
 //        dd($foodnotif);
             $foodnotif->save();
 
+            $adminnotif = new Notification();
+            $adminnotif->sender_id = $order->id;
+            $adminnotif->receiver_id = 2;
+            $adminnotif->receiver_type = 'a';
+            $adminnotif->notification = $user->first_name.' '.$user->last_name. 'has paid their order for '.$order->created_at->format('F d, Y h:i A').'. ';
+            $adminnotif->notification .= 'Please check the proof of payment.';
+            $adminnotif->notification_type = 5;
+
             $messageFoodie = 'Greetings from DietSelect! You have confirmed your order through PayPal on '.Carbon::now()->format('F d, Y g:i A').'. Thank you.';
             $foodiePhoneNumber = '0'.$user->mobile_number;
             $urlFoodie = 'https://www.itexmo.com/php_api/api.php';
@@ -256,6 +264,12 @@ class AddMoneyController extends Controller{
                         'price'=>$orderPlan->plan->price,
                         'type'=>'Customized');
                 }
+
+                $com = new Commission();
+                $com->chef_id = $ratingChef;
+                $com->order_item_id =$orderItem->id;
+                $com->amount = $price * $orderItem->quantity;
+                $com->save();
 
 
                 $rating = new Rating();
