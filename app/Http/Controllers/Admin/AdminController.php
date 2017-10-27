@@ -179,38 +179,46 @@ class AdminController extends Controller
         ]);
     }
 
-    public function payCommission(Commission $commission)
+    public function payCommission(Order $order)
     {
-//        $chef = $commission->chef;
-//        dd($chef->email);
-//
-//        $message = 'Greetings from DietSelect! Your commission has been paid on: ';
-//        $message .= Carbon::now()->format('F d, Y g:i A');
-//        $message .= '.';
-//        $chefPhoneNumber = '0' . $chef->mobile_number;
-//        $url = 'https://www.itexmo.com/php_api/api.php';
-//        $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
-//        $param = array(
-//            'http' => array(
-//                'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-//                'method' => 'POST',
-//                'content' => http_build_query($itexmo),
-//            ),
-//            "ssl" => array(
-//                "verify_peer" => false,
-//                "verify_peer_name" => false,
-//            ),
-//        );
-//        $context = stream_context_create($param);
-//        file_get_contents($url, false, $context);
+        $orderItems = $order->order_item()->get();
+
+        foreach($orderItems as $orderItem){
+
+            $commission= $orderItem->commission;
+
+            $chef = $commission->chef;
+//            dd($chef->email);
+
+            $message = 'Greetings from DietSelect! Your commission has been paid on: ';
+            $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
+            $message .= '.';
+            $chefPhoneNumber = '0' . $chef->mobile_number;
+            $url = 'https://www.itexmo.com/php_api/api.php';
+            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+            $param = array(
+                'http' => array(
+                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                    'method' => 'POST',
+                    'content' => http_build_query($itexmo),
+                ),
+                "ssl" => array(
+                    "verify_peer" => false,
+                    "verify_peer_name" => false,
+                ),
+            );
+            $context = stream_context_create($param);
+            file_get_contents($url, false, $context);
 
 
 
-        $commission->paid=1;
-        $commission->save();
+            $commission->paid=1;
+            $commission->save();
+
+        }
 
 
-        return back()->with(['status'=>'Paid commission!']);
+        return back()->with(['status'=>'Paid commissions for this order!']);
     }
 
     public function payCommissionAll()

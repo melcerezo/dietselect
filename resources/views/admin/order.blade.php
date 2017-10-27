@@ -228,6 +228,19 @@
                     <button class="disabled btn">Cancel</button>
                 @endif
             </div>
+            <div class="col offset-m2 s12 m3">
+                <button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>
+            </div>
+        </div>
+    </div>
+    <div id="commissionModal">
+        <div class="modal-content">
+            <div>
+                <span>Would you like to update chef commissions status to paid?</span>
+            </div>
+            <div>
+                <a href="{{route('admin.pay', $order->id)}}" class="btn waves-effect waves-light" style="font-weight: 100">Update</a>
+            </div>
         </div>
     </div>
     <div id="cancelModal" class="modal">

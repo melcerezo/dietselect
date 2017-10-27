@@ -236,7 +236,8 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
 
 
 
-    Route::post('/payCommission/{commission}','Admin\AdminController@payCommission')->name('admin.pay');
+    Route::get('/payCommission/{order}','Admin\AdminController@payCommission')->name('admin.pay');
+//    Route::post('/payCommission/{order}','Admin\AdminController@payCommission')->name('admin.pay');
     Route::post('/payCommissionAll','Admin\AdminController@payCommissionAll')->name('admin.payAll');
     Route::get('chefs','Admin\AdminController@chefs')->name('admin.chefs');
     Route::get('chefs/{chef}','Admin\AdminController@chef')->name('admin.chef');
