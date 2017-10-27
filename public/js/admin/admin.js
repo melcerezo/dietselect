@@ -1133,6 +1133,6 @@ function clearAllNotif(){
 
 function foodiePaid($id){
     return $.ajax({
-        url: '/admin/orders' + $id
+        url: '/admin/orders/' + $id
     });
 }
