@@ -198,7 +198,7 @@ class AddMoneyController extends Controller{
             $adminnotif->sender_id = $order->id;
             $adminnotif->receiver_id = 2;
             $adminnotif->receiver_type = 'a';
-            $adminnotif->notification = $user->first_name.' '.$user->last_name. 'has paid their order for '.$order->created_at->format('F d, Y h:i A').'. ';
+            $adminnotif->notification = $user->first_name.' '.$user->last_name. ' has paid their order for '.$order->created_at->format('F d, Y h:i A').'. ';
             $adminnotif->notification .= 'Please check the proof of payment.';
             $adminnotif->notification_type = 5;
             $adminnotif->save();
