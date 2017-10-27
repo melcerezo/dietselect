@@ -235,7 +235,7 @@
             @endif
         </div>
     </div>
-    <div id="commissionModal">
+    <div id="commissionModal" class="modal">
         <div class="modal-content">
             <div>
                 <span>Would you like to update chef commissions status to paid?</span>
