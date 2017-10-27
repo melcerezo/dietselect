@@ -229,7 +229,7 @@
                 @endif
             </div>
             @if($order->is_cancelled==0)
-                <div class="col offset-m2 s12 m3">
+                <div class="col s12 m3">
                     <button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>
                 </div>
             @endif
