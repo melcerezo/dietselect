@@ -188,7 +188,7 @@ class AdminController extends Controller
             $commission= $orderItem->commission;
 
             $chef = $commission->chef;
-            dd($chef->email);
+//            dd($chef->email);
 
             $message = 'Greetings from DietSelect! Your commission has been paid on: ';
             $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
