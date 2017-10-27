@@ -595,25 +595,18 @@
                                                             xCancel += '<tbody>';
                                                             for(var l in valData){
                                                                 if(valData[l].status==1){
-                                                                    var cancelAmount = valData[l].amount;
-                                                                    var cancelChefAmount = valData[l].chefAmount;
-                                                                    var cancelDietAmount = valData[l].dietAmount;
+//                                                                    var cancelAmount = valData[l].amount;
+//                                                                    var cancelChefAmount = valData[l].chefAmount;
+//                                                                    var cancelDietAmount = valData[l].dietAmount;
 
                                                                     xCancel += '<tr>';
                                                                     xCancel += '<td>'+valData[l].id+'</td>';
                                                                     xCancel += '<td>'+valData[l].name+'</td>';
                                                                     xCancel += '<td>'+valData[l].created_at+'</td>';
-                                                                    if(valData[l].status==0){
-                                                                        xCancel += '<td>PHP '+addCommas(cancelAmount.toFixed(2))+'</td>';
-                                                                        xCancel += '<td>PHP '+addCommas(cancelChefAmount.toFixed(2))+'</td>';
-                                                                        xCancel += '<td>PHP '+addCommas(cancelDietAmount.toFixed(2))+'</td>';
-                                                                        xCancel += '<td>Paid</td>';
-                                                                    }else{
-                                                                        xCancel += '<td>PHP 0.00</td>';
-                                                                        xCancel += '<td>PHP 0.00</td>';
-                                                                        xCancel += '<td>PHP 0.00</td>';
-                                                                        xCancel += '<td>Cancelled</td>';
-                                                                    }
+                                                                    xCancel += '<td>PHP 0.00</td>';
+                                                                    xCancel += '<td>PHP 0.00</td>';
+                                                                    xCancel += '<td>PHP 0.00</td>';
+                                                                    xCancel += '<td>Cancelled</td>';
                                                                     if(valData[l].status==0){
                                                                         if(valData[l].paid==0){
                                                                             xCancel += '<td>Pending</td>';
