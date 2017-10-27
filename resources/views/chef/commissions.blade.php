@@ -1,324 +1,91 @@
-@extends("layouts.app")
-@section('head')
-    <style>
-        .activeTab{
-            color: #f57c00;
-            border-bottom: 4px solid #f57c00;
-        }
-        /*.activeTab a{*/
-            /*color: #f57c00;*/
-        /*}*/
-        .tableTab{
-            cursor: pointer;
-        }
-        .chefCom{
-            display: none;
-        }
-        /*.comContents{*/
-            /*display: none;*/
-        /*}*/
-    </style>
-    <script src="/js/admin/admin.js" defer></script>
+@extends('chef.layout')
+@section('page_head')
+    <link rel="stylesheet" href="/css/chef/chefCommission.css">
+    <script src="/js/chef/chefCommissions.js" defer></script>
 @endsection
 
-@section('content')
-    <nav>
-        <div class="nav-wrapper light-green lighten-1">
-            <div style="margin-left: 10px;">
-                <a href="{{route("admin.dashboard")}}" class="brand-logo">Admin Panel</a>
-            </div>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a class="dropdown-button" href="#" data-activates='adminNotificationDropdown' data-beloworigin="true" data-constrainwidth="false">
-                        <span class="valign-wrapper" style="position: relative;">
-                            <span style="margin-left: 2px;">
-                                Notifications
-                                <span id="notifBadge"></span>
-                            </span>
-                        </span>
-                    </a>
-                    <ul id="adminNotificationDropdown" class="notifCol dropdown-content collection" style="max-width: 300px;">
-                        <li class="collection-item"><a id="clearAll" href="#">Mark All Read</a></li>
-                        @unless($notifications->count()>0)
-                            <li class="collection-item">
-                                <span>No notifications</span>
-                            </li>
-                        @endunless
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{route("admin.dashboard")}}">
-                        <span class="valign-wrapper" style="position: relative;">
-                            <span style="margin-left: 2px;">
-                                Dashboard
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route("admin.commissions")}}">
-                        <span class="valign-wrapper" style="position: relative;">
-                            <span style="margin-left: 2px;">
-                                Commissions
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.foodies')}}">
-                        <span class="valign-wrapper">
-                            <span style="margin-left: 2px;">
-                                Foodies
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.chefs')}}">
-                        <span class="valign-wrapper">
-                            <span style="margin-left: 2px;">
-                                Chefs
-                            </span>
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.orders')}}">
-                        <span style="margin-left: 2px;">
-                            Orders
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{route('admin.adminRefund')}}">
-                        <span style="margin-left: 2px;">
-                            Refunds
-                        </span>
-                    </a>
-                </li>
-                <li>
-                    <form id="logout" method="post" action="{{ route('admin.logout') }}">
-                        {{ csrf_field() }}
-                        <a id="logout-link" class="nvItLnk" href="#">
-                            {{--<i class="fa fa-sign-out" aria-hidden="true"></i>--}}
-                            <span class="hide-on-med-and-down">Logout</span>
-                        </a>
-                    </form>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
+@section('page_content')
     <div class="container" style="width: 85%;">
         <div class="row" style="margin-top: 5px;">
             <div class="col s12 m2">
-                <ul class="collection">
-                    <li class="collection-item light-green lighten-1 white-text">
-                        <span class="collection-header">
-                            Admin
-                        </span>
-                    </li>
-                    <li class="collection-item"><a href="{{route('admin.commissions')}}">Commissions</a></li>
-                    <li class="collection-item"><a href="{{route('admin.adminRefund')}}">Refunds</a></li>
-                    <li class="collection-item"><a href="{{route('admin.orders')}}">Orders</a></li>
-                    <li class="collection-item"><a href="{{route('admin.foodies')}}">Foodies</a></li>
-                    <li class="collection-item"><a href="{{route('admin.chefs')}}">Chefs</a></li>
-                </ul>
-
-                @foreach($uniqueComArray as $comArray)
-                    <ul id="chef{{$comArray['id']}}" data-id="{{$comArray['id']}}" class="collection chefCom" style="margin-top: 0;">
-                        <li class="collection-item grey lighten-3">
-                         <span>
-                            Total Commissions For
-                             @foreach($chefs as $chef)
-                                 @if($chef->id==$comArray['id'])
-                                     <span>{{$chef->name}}</span>
-                                 @endif
-                             @endforeach
-                        </span>
-                        </li>
-                        <li class="collection-item">
-                            <div>Total Commissions to Vendors:</div>
-                            <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['total'] * 0.9),2,'.',',')}}</span>
-                        </li>
-                        <li class="collection-item"><div>Total Unpaid Commissions to Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['pend'] * 0.9),2,'.',',')}}</span></li>
-                        <li class="collection-item"><div>Total Paid Commissions to Vendors:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['paid'] * 0.9),2,'.',',')}}</span></li>
-                        <li class="collection-item"><div>Total Collected for DietSelect:</div> <span style="font-size: 14px;">{{'PHP '.number_format(($comArray['total'] * 0.1),2,'.',',')}}</span></li>
-                    </ul>
-                @endforeach
-
-                <ul id="sumAll" class="collection" style="margin-top: 0;">
-                    <li class="collection-item grey lighten-3">
-                         <span>
-                            Total Commissions From {{$firstCom->created_at->format('F d, Y')}} To {{$lastCom->created_at->format('F d, Y')}}
-                        </span>
-                    </li>
-                    <li class="collection-item">
-                        <div>Total Commissions for Vendors:</div>
-                        <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($totalCommissions * 0.9),2,'.',',')}}</span>
-                        <div style="margin-top: 5px;">
-                            <span>Breakdown</span>
-                        </div>
-                        @foreach($uniqueComArray as $comArray)
-                            @foreach($chefs as $chef)
-                                @if($chef->id==$comArray['id'])
-                                    <div class="divider">
-                                    </div>
-                                    <div>
-                                        {{$chef->name.':'}}
-                                    </div>
-                                    <div>{{'PHP '.number_format(($comArray['total']*0.9),2,'.',',')}}</div>
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </li>
-                    <li class="collection-item">
-                        <div>Total Unpaid Commissions for Vendors:</div> <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($pendCommissions * 0.9),2,'.',',')}}</span>
-                        <div style="margin-top: 5px;">
-                            <span>Breakdown</span>
-                        </div>
-                        @foreach($uniqueComArray as $comArray)
-                            @foreach($chefs as $chef)
-                                @if($chef->id==$comArray['id'])
-                                    <div class="divider">
-                                    </div>
-                                    <div>
-                                        {{$chef->name.':'}}
-                                    </div>
-                                    <div>{{'PHP '.number_format(($comArray['pend']*0.9),2,'.',',')}}</div>
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </li>
-                    <li class="collection-item">
-                        <div>Total Paid Commissions for Vendors:</div>
-                        <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($paidCommissions * 0.9),2,'.',',')}}</span>
-                        <div style="margin-top: 5px;">
-                            <span>Breakdown</span>
-                        </div>
-                        @foreach($uniqueComArray as $comArray)
-                            @foreach($chefs as $chef)
-                                @if($chef->id==$comArray['id'])
-                                    <div class="divider">
-                                    </div>
-                                    <div>
-                                        {{$chef->name.':'}}
-                                    </div>
-                                    <div>{{'PHP '.number_format(($comArray['paid']*0.9),2,'.',',')}}</div>
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </li>
-                    <li class="collection-item">
-                        <div>Total Collected For DietSelect:</div>
-                        <span style="font-size: 14px; font-weight: bold;">{{'PHP '.number_format(($paidCommissions * 0.1),2,'.',',')}}</span>
-                        <div style="margin-top: 5px;">
-                            <span>Breakdown</span>
-                        </div>
-                        @foreach($uniqueComArray as $comArray)
-                            @foreach($chefs as $chef)
-                                @if($chef->id==$comArray['id'])
-                                    <div class="divider">
-                                    </div>
-                                    <div>
-                                        {{$chef->name.':'}}
-                                    </div>
-                                    <div>{{'PHP '.number_format(($comArray['paid']*0.1),2,'.',',')}}</div>
-                                @endif
-                            @endforeach
-                        @endforeach
-                    </li>
-                </ul>
             </div>
             <div class="col s12 m10">
                 <div class="row">
-                    <div class="col s12 m3">
-                        <div>
-                            <span>Search by Chef:</span>
-                        </div>
-                        <select id="chefFilter">
-                        </select>
-                    </div>
                 </div>
                 <div class="row">
                     <div id="chefsContainer">
-                        @foreach($uniqueComChefs as $uniqueComChef)
-                            <div id="cardCom{{$uniqueComChef}}" class="card chefCard">
+                            <div id="cardCom" class="card chefCard">
                                 <div class="grey lighten-3" style="width: 100%; padding: 10px; border-bottom: solid lightgray 1px;">
                                     <div>
                                         <span>
                                             Commissions -
-                                            @foreach($chefs as $chef)
-                                                @if($chef->id==$uniqueComChef)
-                                                    <span>{{$chef->name}}</span>
-                                                @endif
-                                            @endforeach
+                                            <span>{{$chef->name}}</span>
                                         </span>
                                         {{--<span class="badge light-green white-text" style="border-radius: 15px">--}}
-                                            {{--{{$commissions->where('chef_id','=',$uniqueComChef)->count()}}--}}
+                                        {{--{{$commissions->where('chef_id','=',$uniqueComChef)->count()}}--}}
                                         {{--</span>--}}
                                     </div>
                                 </div>
                                 <div class="card-content">
-                                    <div id="allMonth{{$uniqueComChef}}" class="row comContents">
+                                    <div id="allMonth" class="row comContents">
                                         <div class="row">
                                             <div class="col s12 m3">
                                                 <div>
                                                     <span>Month:</span>
                                                 </div>
-                                                <select id="monthFilter{{$uniqueComChef}}">
+                                                <select id="monthFilter">
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="divider" style="margin-bottom: 20px;">
                                         </div>
                                         <div class="row">
-                                            <div id="monthContainer{{$uniqueComChef}}" class="col s12">
+                                            <div id="monthContainer" class="col s12">
                                                 <div class="row">
                                                     <div class="col s12 m3">
                                                         <div>
                                                             <span>Type:</span>
                                                         </div>
-                                                        <select id="typeFilter{{$uniqueComChef}}">
+                                                        <select id="typeFilter">
                                                             <option value="0" selected>All</option>
                                                             <option value="1">Pending</option>
                                                             <option value="2">Paid</option>
                                                             <option value="3">Cancelled</option>
                                                         </select>
                                                     </div>
-                                                    <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    <div id="chefPendTotalAmount" class="col s12 m3 center">
                                                     </div>
-                                                    <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    <div id="chefPaidTotalAmount" class="col s12 m3 center">
                                                     </div>
-                                                    <div id="dietPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
+                                                    <div id="dietPaidTotalAmount" class="col s12 m3 center">
                                                     </div>
                                                 </div>
                                                 <div class="divider">
                                                 </div>
                                                 <div class="row">
-                                                    <div id="monthPicker{{$uniqueComChef}}" class="col s12">
+                                                    <div id="monthPicker" class="col s12">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div id="pendMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    <div id="pendMonthPicker" class="col s12">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div id="paidMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    <div id="paidMonthPicker" class="col s12">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div id="cancelMonthPicker{{$uniqueComChef}}" class="col s12">
+                                                    <div id="cancelMonthPicker" class="col s12">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <script>
                                             $(document).ready(function () {
-                                                $('#monthPicker{{$uniqueComChef}}').show();
-                                                $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                $('#monthPicker').show();
+                                                $('#pendMonthPicker').hide();
+                                                $('#paidMonthPicker').hide();
+                                                $('#cancelMonthPicker').hide();
 
 
                                                 var monthAjax = getMonths();
@@ -331,39 +98,39 @@
                                                         var text = valData[i].monthText;
                                                         if(valData[i].current==1){
                                                             text += '(current)';
-                                                            $('select#monthFilter{{$uniqueComChef}}').append(
+                                                            $('select#monthFilter').append(
                                                                     $('<option></option>').attr("value",valData[i].month).text(text).prop('selected','selected')
                                                             );
                                                         }else{
-                                                            $('select#monthFilter{{$uniqueComChef}}').append(
+                                                            $('select#monthFilter').append(
                                                                     $('<option></option>').attr("value",valData[i].month).text(text)
                                                             );
                                                         }
                                                     }
 
-                                                    $('select#monthFilter{{$uniqueComChef}}').material_select();
+                                                    $('select#monthFilter').material_select();
 
-                                                    var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
+                                                    var selectVal = $('select#monthFilter').val();
 
 
                                                     // month change
 
 
-                                                    var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                    var changeMonth = monthChange('',selectVal);
 
                                                     changeMonth.done(function (response) {
-                                                        $('#monthPicker{{$uniqueComChef}}').empty();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
-                                                        $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
-                                                        $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#monthPicker').empty();
+                                                        $('#pendMonthPicker').empty();
+                                                        $('#paidMonthPicker').empty();
+                                                        $('#cancelMonthPicker').empty();
+                                                        $('#chefPendTotalAmount').empty();
+                                                        $('#chefPaidTotalAmount').empty();
+                                                        $('#dietPaidTotalAmount').empty();
                                                         if(response==''){
-                                                            $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#monthPicker').append('<div>No Commissions</div>');
+                                                            $('#pendMonthPicker').append('<div>No Commissions</div>');
+                                                            $('#paidMonthPicker').append('<div>No Commissions</div>');
+                                                            $('#cancelMonthPicker').append('<div>No Commissions</div>');
                                                         }else{
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
@@ -390,9 +157,9 @@
                                                             x += '<th>ID</th>';
                                                             x += '<th>Name</th>';
                                                             x += '<th>Date</th>';
-                                                            x += '<th>Total Payable</th>';
-                                                            x += '<th>Payable to Vendor</th>';
-                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Total Receivable</th>';
+                                                            x += '<th>Receivable to Vendor</th>';
+                                                            x += '<th>Receivable to DietSelect</th>';
                                                             x += '<th>Order Status</th>';
                                                             x += '<th>Payment Status</th>';
                                                             x += '</tr>';
@@ -452,9 +219,9 @@
                                                             xPend += '<th>ID</th>';
                                                             xPend += '<th>Name</th>';
                                                             xPend += '<th>Date</th>';
-                                                            xPend += '<th>Total Payable</th>';
-                                                            xPend += '<th>Payable to Vendor</th>';
-                                                            xPend += '<th>Payable to DietSelect</th>';
+                                                            xPend += '<th>Total Receivable</th>';
+                                                            xPend += '<th>Receivable to Vendor</th>';
+                                                            xPend += '<th>Receivable to DietSelect</th>';
                                                             xPend += '<th>Order Status</th>';
                                                             xPend += '<th>Payment Status</th>';
                                                             xPend += '</tr>';
@@ -518,9 +285,9 @@
                                                             xPaid += '<th>ID</th>';
                                                             xPaid += '<th>Name</th>';
                                                             xPaid += '<th>Date</th>';
-                                                            xPaid += '<th>Total Payable</th>';
-                                                            xPaid += '<th>Payable to Vendor</th>';
-                                                            xPaid += '<th>Payable to DietSelect</th>';
+                                                            xPaid += '<th>Total Receivable</th>';
+                                                            xPaid += '<th>Receivable to Vendor</th>';
+                                                            xPaid += '<th>Receivable to DietSelect</th>';
                                                             xPaid += '<th>Order Status</th>';
                                                             xPaid += '<th>Payment Status</th>';
                                                             xPaid += '</tr>';
@@ -585,9 +352,9 @@
                                                             xCancel += '<th>ID</th>';
                                                             xCancel += '<th>Name</th>';
                                                             xCancel += '<th>Date</th>';
-                                                            xCancel += '<th>Total Payable</th>';
-                                                            xCancel += '<th>Payable to Vendor</th>';
-                                                            xCancel += '<th>Payable to DietSelect</th>';
+                                                            xCancel += '<th>Total Receivable</th>';
+                                                            xCancel += '<th>Receivable to Vendor</th>';
+                                                            xCancel += '<th>Receivable to DietSelect</th>';
                                                             xCancel += '<th>Order Status</th>';
                                                             xCancel += '<th>Payment Status</th>';
                                                             xCancel += '</tr>';
@@ -620,20 +387,20 @@
                                                             xCancel += '</div>';
                                                             xCancel += '</div>';
 
-                                                            $('#monthPicker{{$uniqueComChef}}').append(x);
-                                                            $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
-                                                            $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
-                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+                                                            $('#monthPicker').append(x);
+                                                            $('#pendMonthPicker').append(xPend);
+                                                            $('#paidMonthPicker').append(xPaid);
+                                                            $('#cancelMonthPicker').append(xCancel);
 
-                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#chefPendTotalAmount').append(
                                                                     '<div>Total Pending for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                             );
-                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#chefPaidTotalAmount').append(
                                                                     '<div>Total Paid for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                             );
-                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#dietPaidTotalAmount').append(
                                                                     '<div>Total Paid for DietSelect This Month</div>' +
                                                                     '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                             );
@@ -642,73 +409,73 @@
                                                     });
                                                 });
 
-                                                var valType = $('select#typeFilter{{$uniqueComChef}}').val();
+                                                var valType = $('select#typeFilter').val();
 
                                                 if(valType==0){
-                                                    $('#monthPicker{{$uniqueComChef}}').show();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    $('#monthPicker').show();
+                                                    $('#pendMonthPicker').hide();
+                                                    $('#paidMonthPicker').hide();
+                                                    $('#cancelMonthPicker').hide();
                                                 }else if(valType==1){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').show();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    $('#monthPicker').hide();
+                                                    $('#pendMonthPicker').show();
+                                                    $('#paidMonthPicker').hide();
+                                                    $('#cancelMonthPicker').hide();
                                                 }else if(valType==2){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').show();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                    $('#monthPicker').hide();
+                                                    $('#pendMonthPicker').hide();
+                                                    $('#paidMonthPicker').show();
+                                                    $('#cancelMonthPicker').hide();
                                                 }else if(valType==3){
-                                                    $('#monthPicker{{$uniqueComChef}}').hide();
-                                                    $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                    $('#cancelMonthPicker{{$uniqueComChef}}').show();
+                                                    $('#monthPicker').hide();
+                                                    $('#pendMonthPicker').hide();
+                                                    $('#paidMonthPicker').hide();
+                                                    $('#cancelMonthPicker').show();
                                                 }
 
-                                                $('select#typeFilter{{$uniqueComChef}}').change(function(){
-                                                    var valType = $('select#typeFilter{{$uniqueComChef}}').val();
+                                                $('select#typeFilter').change(function(){
+                                                    var valType = $('select#typeFilter').val();
 
                                                     if(valType==0){
-                                                        $('#monthPicker{{$uniqueComChef}}').show();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#monthPicker').show();
+                                                        $('#pendMonthPicker').hide();
+                                                        $('#paidMonthPicker').hide();
+                                                        $('#cancelMonthPicker').hide();
                                                     }else if(valType==1){
-                                                        $('#monthPicker{{$uniqueComChef}}').hide();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').show();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#monthPicker').hide();
+                                                        $('#pendMonthPicker').show();
+                                                        $('#paidMonthPicker').hide();
+                                                        $('#cancelMonthPicker').hide();
                                                     }else if(valType==2){
-                                                        $('#monthPicker{{$uniqueComChef}}').hide();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').show();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').hide();
+                                                        $('#monthPicker').hide();
+                                                        $('#pendMonthPicker').hide();
+                                                        $('#paidMonthPicker').show();
+                                                        $('#cancelMonthPicker').hide();
                                                     }else if(valType==3){
-                                                        $('#monthPicker{{$uniqueComChef}}').hide();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').hide();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').show();
+                                                        $('#monthPicker').hide();
+                                                        $('#pendMonthPicker').hide();
+                                                        $('#paidMonthPicker').hide();
+                                                        $('#cancelMonthPicker').show();
                                                     }
                                                 });
 
-                                                $('select#monthFilter{{$uniqueComChef}}').change(function (){
-                                                    var selectVal = $('select#monthFilter{{$uniqueComChef}}').val();
+                                                $('select#monthFilter').change(function (){
+                                                    var selectVal = $('select#monthFilter').val();
                                                     console.log(selectVal);
-                                                    var changeMonth = monthChange('{{$uniqueComChef}}',selectVal);
+                                                    var changeMonth = monthChange('',selectVal);
                                                     changeMonth.done(function (response) {
-                                                        $('#monthPicker{{$uniqueComChef}}').empty();
-                                                        $('#pendMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#paidMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#cancelMonthPicker{{$uniqueComChef}}').empty();
-                                                        $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
-                                                        $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
-                                                        $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
+                                                        $('#monthPicker').empty();
+                                                        $('#pendMonthPicker').empty();
+                                                        $('#paidMonthPicker').empty();
+                                                        $('#cancelMonthPicker').empty();
+                                                        $('#chefPendTotalAmount').empty();
+                                                        $('#chefPaidTotalAmount').empty();
+                                                        $('#dietPaidTotalAmount').empty();
                                                         if(response==''){
-                                                            $('#monthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#pendMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#paidMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
-                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append('<div>No Commissions</div>');
+                                                            $('#monthPicker').append('<div>No Commissions</div>');
+                                                            $('#pendMonthPicker').append('<div>No Commissions</div>');
+                                                            $('#paidMonthPicker').append('<div>No Commissions</div>');
+                                                            $('#cancelMonthPicker').append('<div>No Commissions</div>');
                                                         }else{
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
@@ -735,9 +502,9 @@
                                                             x += '<th>ID</th>';
                                                             x += '<th>Name</th>';
                                                             x += '<th>Date</th>';
-                                                            x += '<th>Total Payable</th>';
-                                                            x += '<th>Payable to Vendor</th>';
-                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Total Receivable</th>';
+                                                            x += '<th>Receivable to Vendor</th>';
+                                                            x += '<th>Receivable to DietSelect</th>';
                                                             x += '<th>Order Status</th>';
                                                             x += '<th>Payment Status</th>';
                                                             x += '</tr>';
@@ -797,9 +564,9 @@
                                                             xPend += '<th>ID</th>';
                                                             xPend += '<th>Name</th>';
                                                             xPend += '<th>Date</th>';
-                                                            xPend += '<th>Total Payable</th>';
-                                                            xPend += '<th>Payable to Vendor</th>';
-                                                            xPend += '<th>Payable to DietSelect</th>';
+                                                            xPend += '<th>Total Receivable</th>';
+                                                            xPend += '<th>Receivable to Vendor</th>';
+                                                            xPend += '<th>Receivable to DietSelect</th>';
                                                             xPend += '<th>Order Status</th>';
                                                             xPend += '<th>Payment Status</th>';
                                                             xPend += '</tr>';
@@ -863,9 +630,9 @@
                                                             xPaid += '<th>ID</th>';
                                                             xPaid += '<th>Name</th>';
                                                             xPaid += '<th>Date</th>';
-                                                            xPaid += '<th>Total Payable</th>';
-                                                            xPaid += '<th>Payable to Vendor</th>';
-                                                            xPaid += '<th>Payable to DietSelect</th>';
+                                                            xPaid += '<th>Total Receivable</th>';
+                                                            xPaid += '<th>Receivable to Vendor</th>';
+                                                            xPaid += '<th>Receivable to DietSelect</th>';
                                                             xPaid += '<th>Order Status</th>';
                                                             xPaid += '<th>Payment Status</th>';
                                                             xPaid += '</tr>';
@@ -930,9 +697,9 @@
                                                             xCancel += '<th>ID</th>';
                                                             xCancel += '<th>Name</th>';
                                                             xCancel += '<th>Date</th>';
-                                                            xCancel += '<th>Total Payable</th>';
-                                                            xCancel += '<th>Payable to Vendor</th>';
-                                                            xCancel += '<th>Payable to DietSelect</th>';
+                                                            xCancel += '<th>Total Receivable</th>';
+                                                            xCancel += '<th>Receivable to Vendor</th>';
+                                                            xCancel += '<th>Receivable to DietSelect</th>';
                                                             xCancel += '<th>Order Status</th>';
                                                             xCancel += '<th>Payment Status</th>';
                                                             xCancel += '</tr>';
@@ -965,20 +732,20 @@
                                                             xCancel += '</div>';
                                                             xCancel += '</div>';
 
-                                                            $('#monthPicker{{$uniqueComChef}}').append(x);
-                                                            $('#pendMonthPicker{{$uniqueComChef}}').append(xPend);
-                                                            $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
-                                                            $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
+                                                            $('#monthPicker').append(x);
+                                                            $('#pendMonthPicker').append(xPend);
+                                                            $('#paidMonthPicker').append(xPaid);
+                                                            $('#cancelMonthPicker').append(xCancel);
 
-                                                            $('#chefPendTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#chefPendTotalAmount').append(
                                                                     '<div>Total Pending for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                             );
-                                                            $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#chefPaidTotalAmount').append(
                                                                     '<div>Total Paid for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                             );
-                                                            $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
+                                                            $('#dietPaidTotalAmount').append(
                                                                     '<div>Total Paid for DietSelect This Month</div>' +
                                                                     '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                             );
@@ -986,21 +753,14 @@
                                                         }
                                                     });
                                                 });
-
-
-
                                             });
                                         </script>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-
-
+    </div>    
 @endsection

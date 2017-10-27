@@ -128,6 +128,23 @@ class ChefOrderController extends Controller
         ]);
     }
 
+    public function commissions()
+    {
+        $chats= Chat::where('chef_id','=',$chef->id)->where('chef_can_see', '=', 1)->latest($column = 'updated_at')->get();
+        $foodies=Foodie::all();
+        $messages= Message::where('receiver_id','=',Auth::guard('chef')->user()->id)->where('chef_can_see', '=', 1)->where('receiver_type','=','c')->where('is_read','=',0)->get();
+        $notifications=Notification::where('receiver_id','=',$chef->id)->where('receiver_type','=','c')->get();
+
+        return view('chef.commissions')->with([
+            'sms_unverified' => $this->mobileNumberExists(),
+            'chef'=>$chef,
+            'foodies'=>$foodies,
+            'chats' => $chats,
+            'messages'=>$messages,
+            'notifications' => $notifications
+        ]);
+    }
+
     public function getIngred($id,$cust){
         if($cust==1){
             $meal = CustomizedMeal::where('id','=',$id)->first();
@@ -1360,6 +1377,93 @@ class ChefOrderController extends Controller
         $uniqueTimeArray = array_unique($timeArray);
 //        dd($timeArray);
         return $uniqueTimeArray;
+    }
+
+    public function getMonths()
+    {
+        $chef = Auth::guard('chef')->user();
+        $current = Carbon::now();
+        $currentMonth = $current->copy()->month;
+        $commissions = Commission::orderBy('created_at', 'desc')->where('chef_id','=',$chef->id)->get();
+        $months = [];
+        $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
+        foreach($commissions as $commission){
+            if($commission->created_at->copy()->month < $currentMonth){
+                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+            }
+//            $months[]=
+//                array('month'=>$commission->created_at->copy()->format('m'),
+//                'start'=>$commission->created_at->copy()->startOfMonth(),
+//                'end'=>$commission->created_at->copy()->endOfMonth());
+        }
+
+        $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
+
+//        $monthJson = json_encode($months);
+        $i=0;
+        $monthJson = '[';
+        foreach($months as $month){
+            $monthJson .='{';
+            $monthJson .= '"current":'.$month['current'].', ';
+            $monthJson .= '"month":'.$month['month'].', ';
+            $monthJson .= '"monthText":"'.$month['monthText'].'"';
+            if (++$i < count($months)) {
+                $monthJson .= '},';
+            } else {
+                $monthJson .= '}';
+            }
+        }
+        $monthJson .=']';
+
+        return $monthJson;
+    }
+
+    public function monthChange($monthType)
+    {
+        $chef = Auth::guard('chef')->user();
+        $month = $monthType;
+
+        $commissions = Commission::where('chef_id','=',$chef->id)->latest()->get();
+
+        $monthComJson ='';
+        if($commissions->count()){
+            $comArray = [];
+            foreach($commissions as $commission){
+                if($commission->created_at->copy()->month == $month){
+                    $comArray[]= array(
+                        'id'=>$commission->id,
+                        'name'=>$commission->chef->name,
+                        'created_at'=>$commission->created_at->format('F d, Y'),
+                        'amount'=>$commission->amount,
+                        'chefAmount'=>($commission->amount * 0.9),
+                        'dietAmount'=>($commission->amount * 0.1),
+                        'paid'=>$commission->paid,
+                        'status'=>$commission->order_item->is_cancelled
+                    );
+                }
+            }
+            $i=0;
+            $monthComJson ='[';
+            foreach($comArray as $item){
+                $monthComJson .='{';
+                $monthComJson .='"id":'.$item['id'].', ';
+                $monthComJson .='"name":"'.$item['name'].'", ';
+                $monthComJson .='"created_at":"'.$item['created_at'].'", ';
+                $monthComJson .='"amount":'.$item['amount'].', ';
+                $monthComJson .='"chefAmount":'.$item['chefAmount'].', ';
+                $monthComJson .='"dietAmount":'.$item['dietAmount'].', ';
+                $monthComJson .='"paid":'.$item['paid'].', ';
+                $monthComJson .='"status":'.$item['status'].'';
+                if (++$i < count($comArray)) {
+                    $monthComJson .= '},';
+                } else {
+                    $monthComJson .= '}';
+                }
+            }
+            $monthComJson .= ']';
+        }
+
+        return $monthComJson;
     }
 
 }

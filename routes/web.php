@@ -208,6 +208,12 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
 
     // Chef Rating
     Route::get('rating', 'ChefRatingsController@viewRatings')->name('chef.ratings');
+
+    //Chef Commissions
+    Route::get('commissions','Chef\ChefOrderController@commissions')->name('chef.getCommissions');
+    Route::get('commissions/getMonths','Chef\ChefOrderController@getMonths');
+    Route::get('commissions/monthChange/{monthType}','Chef\ChefOrderController@monthChange');
+
 });
 
 Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function () {

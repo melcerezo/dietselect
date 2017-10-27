@@ -185,36 +185,34 @@ class AdminController extends Controller
 
         foreach($orderItems as $orderItem){
 
-            $commission= $orderItem->commission;
+            if($orderItem->is_cancelled==0){
 
-            $chef = $commission->chef;
-//            dd($chef->email);
+                $commission= $orderItem->commission;
 
-            $message = 'Greetings from DietSelect! Your commission has been paid on: ';
-            $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
-            $message .= '.';
-            $chefPhoneNumber = '0' . $chef->mobile_number;
-            $url = 'https://www.itexmo.com/php_api/api.php';
-            $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
-            $param = array(
-                'http' => array(
-                    'header' => "Content-type: application/x-www-form-urlencoded\r\n",
-                    'method' => 'POST',
-                    'content' => http_build_query($itexmo),
-                ),
-                "ssl" => array(
-                    "verify_peer" => false,
-                    "verify_peer_name" => false,
-                ),
-            );
-            $context = stream_context_create($param);
-            file_get_contents($url, false, $context);
+                $chef = $commission->chef;
 
-
-
-            $commission->paid=1;
-            $commission->save();
-
+                $message = 'Greetings from DietSelect! Your commission has been paid on: ';
+                $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
+                $message .= '.';
+                $chefPhoneNumber = '0' . $chef->mobile_number;
+                $url = 'https://www.itexmo.com/php_api/api.php';
+                $itexmo = array('1' => $chefPhoneNumber, '2' => $message, '3' => 'PR-DIETS656642_VBVIA');
+                $param = array(
+                    'http' => array(
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($itexmo),
+                    ),
+                    "ssl" => array(
+                        "verify_peer" => false,
+                        "verify_peer_name" => false,
+                    ),
+                );
+                $context = stream_context_create($param);
+                file_get_contents($url, false, $context);
+                $commission->paid=1;
+                $commission->save();
+            }
         }
 
 
