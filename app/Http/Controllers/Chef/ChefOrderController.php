@@ -616,7 +616,7 @@ class ChefOrderController extends Controller
             }
             $orderItem->save();
 
-            if($orderItemsAll->where('is_cancelled','=',0)->count()==0){
+            if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
 //                if($reason == 0){
 //                    $order->cancelled_reason = "Out of Stock.";
