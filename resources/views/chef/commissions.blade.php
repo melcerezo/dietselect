@@ -8,6 +8,29 @@
     <div class="container" style="width: 85%;">
         <div class="row" style="margin-top: 5px;">
             <div class="col s12 m2">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <a href="{{route("chef.order.view", ['id'=> 0])}}">Orders</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route("chef.getCommissions)}}">Commissions</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.plan')}}">View Your Plans</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.profile')}}">Profile</a>
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.message.index')}}">Messages</a>
+                        {{--@if($messages->count()>0)--}}
+                        {{--<span class="new badge red">{{$messages->count()}}</span>--}}
+                        {{--@endif--}}
+                    </li>
+                    <li class="collection-item">
+                        <a href="{{route('chef.ratings')}}">Ratings</a>
+                    </li>
+                </ul>
             </div>
             <div class="col s12 m10">
                 <div class="row">
@@ -116,7 +139,7 @@
                                                     // month change
 
 
-                                                    var changeMonth = monthChange('',selectVal);
+                                                    var changeMonth = monthChange(selectVal);
 
                                                     changeMonth.done(function (response) {
                                                         $('#monthPicker').empty();
@@ -462,7 +485,7 @@
                                                 $('select#monthFilter').change(function (){
                                                     var selectVal = $('select#monthFilter').val();
                                                     console.log(selectVal);
-                                                    var changeMonth = monthChange('',selectVal);
+                                                    var changeMonth = monthChange(selectVal);
                                                     changeMonth.done(function (response) {
                                                         $('#monthPicker').empty();
                                                         $('#pendMonthPicker').empty();
