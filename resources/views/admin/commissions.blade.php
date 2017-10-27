@@ -595,10 +595,6 @@
                                                             xCancel += '<tbody>';
                                                             for(var l in valData){
                                                                 if(valData[l].status==1){
-//                                                                    var cancelAmount = valData[l].amount;
-//                                                                    var cancelChefAmount = valData[l].chefAmount;
-//                                                                    var cancelDietAmount = valData[l].dietAmount;
-
                                                                     xCancel += '<tr>';
                                                                     xCancel += '<td>'+valData[l].id+'</td>';
                                                                     xCancel += '<td>'+valData[l].name+'</td>';
