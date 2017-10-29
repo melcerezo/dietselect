@@ -763,6 +763,7 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
+                                                            $('select#monthFilter{{$uniqueComChef}}').empty();
                                                             $('#monthPicker{{$uniqueComChef}}').empty();
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
