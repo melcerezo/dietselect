@@ -1080,9 +1080,15 @@ function chefComAjax($val){
     });
 }
 
-function getMonths(){
+function getYears(){
     return $.ajax({
-        url: '/admin/commissions/getMonths'
+        url: '/admin/commissions/getYears'
+    });
+}
+
+function getMonths($val){
+    return $.ajax({
+        url: '/admin/commissions/getMonths/'+$val
     });
 }
 
