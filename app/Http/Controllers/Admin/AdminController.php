@@ -941,6 +941,43 @@ class AdminController extends Controller
         return $thisInput;
     }
 
+    public function getYears(){
+        $current = Carbon::now();
+        $currentYear = $current->copy()->year;
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
+        $years = [];
+        $years[]=array('current'=>1,'year'=>$currentYear,'yearText'=>$current->format('Y'));
+        foreach($commissions as $commission){
+            if($commission->created_at->copy()->year < $currentYear){
+                $years[]=array('current'=>0,'year'=>$commission->created_at->copy()->year,'yearText'=>$commission->created_at->copy()->format('Y'));
+            }
+//            $months[]=
+//                array('month'=>$commission->created_at->copy()->format('m'),
+//                'start'=>$commission->created_at->copy()->startOfMonth(),
+//                'end'=>$commission->created_at->copy()->endOfMonth());
+        }
+
+        $years = array_intersect_key($years, array_unique(array_map('serialize', $years)));
+
+//        $monthJson = json_encode($months);
+        $i=0;
+        $yearJson = '[';
+        foreach($years as $year){
+            $yearJson .='{';
+            $yearJson .= '"current":'.$year['current'].', ';
+            $yearJson .= '"year":'.$year['year'].', ';
+            $yearJson .= '"yearText":"'.$year['yearText'].'"';
+            if (++$i < count($years)) {
+                $yearJson .= '},';
+            } else {
+                $yearJson .= '}';
+            }
+        }
+        $yearJson .=']';
+
+        return $yearJson;
+    }
+
     public function getMonths()
     {
         $current = Carbon::now();
