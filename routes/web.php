@@ -232,7 +232,7 @@ Route::group(['prefix' => 'admin','middleware'=>'validateBackHistory'], function
     Route::get('commissions/get/{type}','Admin\AdminController@getCom');
     Route::get('commissions/getYears','Admin\AdminController@getYears');
     Route::get('commissions/getMonths/{val}','Admin\AdminController@getMonths');
-    Route::get('commissions/monthChange/{chefId}/{monthType}','Admin\AdminController@monthChange');
+    Route::get('commissions/monthChange/{chefId}/{yearType}/{monthType}','Admin\AdminController@monthChange');
 
 
     Route::get('refunds','Admin\AdminController@getRefFoodie');

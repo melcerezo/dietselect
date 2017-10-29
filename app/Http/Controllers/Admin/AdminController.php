@@ -978,21 +978,38 @@ class AdminController extends Controller
         return $yearJson;
     }
 
-    public function getMonths()
+    public function getMonths($val)
     {
         $current = Carbon::now();
         $currentMonth = $current->copy()->month;
         $commissions = Commission::orderBy('created_at', 'desc')->get();
-        $months = [];
-        $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
-        foreach($commissions as $commission){
-            if($commission->created_at->copy()->month < $currentMonth){
-                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+        if($val<$current->copy()->year){
+            $current = Carbon::create($val, 12, 31, 0, 0 ,0);
+
+            $months = [];
+            $months[]=array('current'=>0,'month'=>$current->copy()->month,'monthText'=>$current->format('F'));
+            foreach($commissions as $commission){
+                if($commission->created_at < $current){
+                    $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+                }
+                //            $months[]=
+                //                array('month'=>$commission->created_at->copy()->format('m'),
+                //                'start'=>$commission->created_at->copy()->startOfMonth(),
+                //                'end'=>$commission->created_at->copy()->endOfMonth());
             }
-//            $months[]=
-//                array('month'=>$commission->created_at->copy()->format('m'),
-//                'start'=>$commission->created_at->copy()->startOfMonth(),
-//                'end'=>$commission->created_at->copy()->endOfMonth());
+        }else{
+            $months = [];
+            $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
+            foreach($commissions as $commission){
+                if($commission->created_at->copy()->month < $currentMonth){
+                    $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+                }
+    //            $months[]=
+    //                array('month'=>$commission->created_at->copy()->format('m'),
+    //                'start'=>$commission->created_at->copy()->startOfMonth(),
+    //                'end'=>$commission->created_at->copy()->endOfMonth());
+            }
+
         }
 
         $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
@@ -1016,8 +1033,9 @@ class AdminController extends Controller
         return $monthJson;
     }
 
-    public function monthChange($chefId,$monthType)
+    public function monthChange($chefId,$yearType,$monthType)
     {
+        $year = $yearType;
         $month = $monthType;
 
         $commissions = Commission::where('chef_id','=',$chefId)->latest()->get();
@@ -1026,7 +1044,7 @@ class AdminController extends Controller
         if($commissions->count()){
             $comArray = [];
             foreach($commissions as $commission){
-                if($commission->created_at->copy()->month == $month){
+                if($commission->created_at->copy()->year == $year && $commission->created_at->copy()->month == $month){
                        $comArray[]= array(
                            'id'=>$commission->id,
                            'name'=>$commission->chef->name,

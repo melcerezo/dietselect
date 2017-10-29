@@ -1092,9 +1092,9 @@ function getMonths($val){
     });
 }
 
-function monthChange($chef,$type){
+function monthChange($chef,$yearType,$type){
     return $.ajax({
-        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $yearType +'/'+ $type
     });
 }
 function typeChange($chef,$type,$monthType){
