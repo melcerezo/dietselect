@@ -733,7 +733,7 @@
                                                     var monthAjax = getMonths(selectVal);
 
                                                     monthAjax.done(function (response) {
-
+                                                        $('select#monthFilter{{$uniqueComChef}}').empty();
                                                         var valData = JSON.parse(response);
                                                         //                                                        console.log(valData);
                                                         for(var i in valData){
@@ -763,7 +763,6 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
-                                                            $('select#monthFilter{{$uniqueComChef}}').empty();
                                                             $('#monthPicker{{$uniqueComChef}}').empty();
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
