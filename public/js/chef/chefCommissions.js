@@ -13,7 +13,7 @@ function addCommas(nStr)
 
 function getYears(){
     return $.ajax({
-        url: '/admin/commissions/getYears'
+        url: '/chef/commissions/getYears'
     });
 }
 
