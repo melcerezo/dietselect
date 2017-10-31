@@ -212,8 +212,8 @@ Route::group(['prefix' => 'chef','middleware'=>'validateBackHistory'], function 
     //Chef Commissions
     Route::get('commissions','Chef\ChefOrderController@commissions')->name('chef.getCommissions');
     Route::get('commissions/getYears','Chef\ChefOrderController@getYears');
-    Route::get('commissions/getMonths','Chef\ChefOrderController@getMonths');
-    Route::get('commissions/monthChange/{monthType}','Chef\ChefOrderController@monthChange');
+    Route::get('commissions/getMonths/{val}','Chef\ChefOrderController@getMonths');
+    Route::get('commissions/monthChange/{yearType}/{monthType}','Chef\ChefOrderController@monthChange');
 
 });
 
