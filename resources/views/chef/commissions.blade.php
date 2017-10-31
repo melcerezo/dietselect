@@ -193,6 +193,18 @@
                                                                 var chefPaidTotal = 0;
                                                                 var dietTotal = 0;
 
+                                                                var chefAllTabPay = 0;
+                                                                var chefAllTabChefPay = 0;
+                                                                var chefAllTabDietPay = 0;
+
+                                                                var chefPendTabPay = 0;
+                                                                var chefPendTabChefPay = 0;
+                                                                var chefPendTabDietPay = 0;
+
+                                                                var chefPaidTabPay = 0;
+                                                                var chefPaidTabChefPay = 0;
+                                                                var chefPaidTabDietPay = 0;
+
                                                                 var x = '<div class="row">';
                                                                 x += '<div class="col s12 m3">';
                                                                 x += '</div>';
@@ -224,6 +236,10 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
+                                                                    chefAllTabPay += amount;
+                                                                    chefAllTabChefPay += chefAmount;
+                                                                    chefAllTabDietPay += dietAmount;
+
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
@@ -250,6 +266,16 @@
                                                                     }
                                                                     x += '</tr>';
                                                                 }
+                                                                x +='<tr>';
+                                                                x +='<td></td>';
+                                                                x +='<td></td>';
+                                                                x +='<td>Total:</td>';
+                                                                x += '<td>'+chefAllTabPay+'</td>';
+                                                                x += '<td>'+chefAllTabChefPay+'</td>';
+                                                                x += '<td>'+chefAllTabDietPay+'</td>';
+                                                                x += '<td></td>';
+                                                                x += '<td></td>';
+                                                                x += '</tr>';
                                                                 x += '</tbody>';
                                                                 x += '</table>';
                                                                 x += '</div>';
@@ -288,6 +314,9 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         chefPendTotal +=valData[j].chefAmount;
+                                                                        chefPendTabPay += pendAmount;
+                                                                        chefPendTabChefPay += pendChefAmount;
+                                                                        chefPendTabDietPay += pendDietAmount;
 
                                                                         xPend += '<tr>';
                                                                         xPend += '<td>'+valData[j].id+'</td>';
@@ -316,6 +345,16 @@
                                                                     }
                                                                     xPend += '</tr>';
                                                                 }
+                                                                xPend +='<tr>';
+                                                                xPend +='<td></td>';
+                                                                xPend +='<td></td>';
+                                                                xPend +='<td>Total:</td>';
+                                                                xPend += '<td>'+chefPendTabPay+'</td>';
+                                                                xPend += '<td>'+chefPendTabChefPay+'</td>';
+                                                                xPend += '<td>'+chefPendTabDietPay+'</td>';
+                                                                xPend += '<td></td>';
+                                                                xPend += '<td></td>';
+                                                                xPend += '</tr>';
                                                                 xPend += '</tbody>';
                                                                 xPend += '</table>';
                                                                 xPend += '</div>';
@@ -355,6 +394,9 @@
 
                                                                         chefPaidTotal +=paidChefAmount;
                                                                         dietTotal += paidDietAmount;
+                                                                        chefPaidTabPay += paidAmount;
+                                                                        chefPaidTabChefPay += paidChefAmount;
+                                                                        chefPaidTabDietPay += paidDietAmount;
 
                                                                         xPaid += '<tr>';
                                                                         xPaid += '<td>'+valData[k].id+'</td>';
@@ -383,6 +425,16 @@
                                                                     }
                                                                     xPaid += '</tr>';
                                                                 }
+                                                                xPaid +='<tr>';
+                                                                xPaid +='<td></td>';
+                                                                xPaid +='<td></td>';
+                                                                xPaid +='<td>Total:</td>';
+                                                                xPaid += '<td>'+chefPaidTabPay+'</td>';
+                                                                xPaid += '<td>'+chefPaidTabChefPay+'</td>';
+                                                                xPaid += '<td>'+chefPaidTabDietPay+'</td>';
+                                                                xPaid += '<td></td>';
+                                                                xPaid += '<td></td>';
+                                                                xPaid += '</tr>';
                                                                 xPaid += '</tbody>';
                                                                 xPaid += '</table>';
                                                                 xPaid += '</div>';
@@ -436,6 +488,16 @@
                                                                     }
                                                                     xCancel += '</tr>';
                                                                 }
+                                                                xCancel +='<tr>';
+                                                                xCancel +='<td></td>';
+                                                                xCancel +='<td></td>';
+                                                                xCancel +='<td>Total:</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td></td>';
+                                                                xCancel += '<td></td>';
+                                                                xCancel += '</tr>';
                                                                 xCancel += '</tbody>';
                                                                 xCancel += '</table>';
                                                                 xCancel += '</div>';
@@ -573,6 +635,18 @@
                                                                 var chefPaidTotal = 0;
                                                                 var dietTotal = 0;
 
+                                                                var chefAllTabPay = 0;
+                                                                var chefAllTabChefPay = 0;
+                                                                var chefAllTabDietPay = 0;
+
+                                                                var chefPendTabPay = 0;
+                                                                var chefPendTabChefPay = 0;
+                                                                var chefPendTabDietPay = 0;
+
+                                                                var chefPaidTabPay = 0;
+                                                                var chefPaidTabChefPay = 0;
+                                                                var chefPaidTabDietPay = 0;
+
                                                                 var x = '<div class="row">';
                                                                 x += '<div class="col s12 m3">';
                                                                 x += '</div>';
@@ -604,6 +678,10 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
+                                                                    chefAllTabPay += amount;
+                                                                    chefAllTabChefPay += chefAmount;
+                                                                    chefAllTabDietPay += dietAmount;
+
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
@@ -630,6 +708,16 @@
                                                                     }
                                                                     x += '</tr>';
                                                                 }
+                                                                x +='<tr>';
+                                                                x +='<td></td>';
+                                                                x +='<td></td>';
+                                                                x +='<td>Total:</td>';
+                                                                x += '<td>'+chefAllTabPay+'</td>';
+                                                                x += '<td>'+chefAllTabChefPay+'</td>';
+                                                                x += '<td>'+chefAllTabDietPay+'</td>';
+                                                                x += '<td></td>';
+                                                                x += '<td></td>';
+                                                                x += '</tr>';
                                                                 x += '</tbody>';
                                                                 x += '</table>';
                                                                 x += '</div>';
@@ -668,6 +756,9 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         chefPendTotal +=valData[j].chefAmount;
+                                                                        chefPendTabPay += pendAmount;
+                                                                        chefPendTabChefPay += pendChefAmount;
+                                                                        chefPendTabDietPay += pendDietAmount;
 
                                                                         xPend += '<tr>';
                                                                         xPend += '<td>'+valData[j].id+'</td>';
@@ -696,6 +787,16 @@
                                                                     }
                                                                     xPend += '</tr>';
                                                                 }
+                                                                xPend +='<tr>';
+                                                                xPend +='<td></td>';
+                                                                xPend +='<td></td>';
+                                                                xPend +='<td>Total:</td>';
+                                                                xPend += '<td>'+chefPendTabPay+'</td>';
+                                                                xPend += '<td>'+chefPendTabChefPay+'</td>';
+                                                                xPend += '<td>'+chefPendTabDietPay+'</td>';
+                                                                xPend += '<td></td>';
+                                                                xPend += '<td></td>';
+                                                                xPend += '</tr>';
                                                                 xPend += '</tbody>';
                                                                 xPend += '</table>';
                                                                 xPend += '</div>';
@@ -735,6 +836,9 @@
 
                                                                         chefPaidTotal +=paidChefAmount;
                                                                         dietTotal += paidDietAmount;
+                                                                        chefPaidTabPay += paidAmount;
+                                                                        chefPaidTabChefPay += paidChefAmount;
+                                                                        chefPaidTabDietPay += paidDietAmount;
 
                                                                         xPaid += '<tr>';
                                                                         xPaid += '<td>'+valData[k].id+'</td>';
@@ -763,6 +867,16 @@
                                                                     }
                                                                     xPaid += '</tr>';
                                                                 }
+                                                                xPaid +='<tr>';
+                                                                xPaid +='<td></td>';
+                                                                xPaid +='<td></td>';
+                                                                xPaid +='<td>Total:</td>';
+                                                                xPaid += '<td>'+chefPaidTabPay+'</td>';
+                                                                xPaid += '<td>'+chefPaidTabChefPay+'</td>';
+                                                                xPaid += '<td>'+chefPaidTabDietPay+'</td>';
+                                                                xPaid += '<td></td>';
+                                                                xPaid += '<td></td>';
+                                                                xPaid += '</tr>';
                                                                 xPaid += '</tbody>';
                                                                 xPaid += '</table>';
                                                                 xPaid += '</div>';
@@ -816,6 +930,16 @@
                                                                     }
                                                                     xCancel += '</tr>';
                                                                 }
+                                                                xCancel +='<tr>';
+                                                                xCancel +='<td></td>';
+                                                                xCancel +='<td></td>';
+                                                                xCancel +='<td>Total:</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td>PHP 0.00</td>';
+                                                                xCancel += '<td></td>';
+                                                                xCancel += '<td></td>';
+                                                                xCancel += '</tr>';
                                                                 xCancel += '</tbody>';
                                                                 xCancel += '</table>';
                                                                 xCancel += '</div>';
@@ -870,6 +994,18 @@
                                                             var chefPaidTotal = 0;
                                                             var dietTotal = 0;
 
+                                                            var chefAllTabPay = 0;
+                                                            var chefAllTabChefPay = 0;
+                                                            var chefAllTabDietPay = 0;
+
+                                                            var chefPendTabPay = 0;
+                                                            var chefPendTabChefPay = 0;
+                                                            var chefPendTabDietPay = 0;
+
+                                                            var chefPaidTabPay = 0;
+                                                            var chefPaidTabChefPay = 0;
+                                                            var chefPaidTabDietPay = 0;
+
                                                             var x = '<div class="row">';
                                                             x += '<div class="col s12 m3">';
                                                             x += '</div>';
@@ -901,6 +1037,10 @@
                                                                 var chefAmount = valData[i].chefAmount;
                                                                 var dietAmount = valData[i].dietAmount;
 
+                                                                chefAllTabPay += amount;
+                                                                chefAllTabChefPay += chefAmount;
+                                                                chefAllTabDietPay += dietAmount;
+
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
                                                                 x += '<td>'+valData[i].name+'</td>';
@@ -927,6 +1067,16 @@
                                                                 }
                                                                 x += '</tr>';
                                                             }
+                                                            x +='<tr>';
+                                                            x +='<td></td>';
+                                                            x +='<td></td>';
+                                                            x +='<td>Total:</td>';
+                                                            x += '<td>'+chefAllTabPay+'</td>';
+                                                            x += '<td>'+chefAllTabChefPay+'</td>';
+                                                            x += '<td>'+chefAllTabDietPay+'</td>';
+                                                            x += '<td></td>';
+                                                            x += '<td></td>';
+                                                            x += '</tr>';
                                                             x += '</tbody>';
                                                             x += '</table>';
                                                             x += '</div>';
@@ -965,6 +1115,9 @@
                                                                     var pendDietAmount = valData[j].dietAmount;
 
                                                                     chefPendTotal +=valData[j].chefAmount;
+                                                                    chefPendTabPay += pendAmount;
+                                                                    chefPendTabChefPay += pendChefAmount;
+                                                                    chefPendTabDietPay += pendDietAmount;
 
                                                                     xPend += '<tr>';
                                                                     xPend += '<td>'+valData[j].id+'</td>';
@@ -993,6 +1146,16 @@
                                                                 }
                                                                 xPend += '</tr>';
                                                             }
+                                                            xPend +='<tr>';
+                                                            xPend +='<td></td>';
+                                                            xPend +='<td></td>';
+                                                            xPend +='<td>Total:</td>';
+                                                            xPend += '<td>'+chefPendTabPay+'</td>';
+                                                            xPend += '<td>'+chefPendTabChefPay+'</td>';
+                                                            xPend += '<td>'+chefPendTabDietPay+'</td>';
+                                                            xPend += '<td></td>';
+                                                            xPend += '<td></td>';
+                                                            xPend += '</tr>';
                                                             xPend += '</tbody>';
                                                             xPend += '</table>';
                                                             xPend += '</div>';
@@ -1032,6 +1195,9 @@
 
                                                                     chefPaidTotal +=paidChefAmount;
                                                                     dietTotal += paidDietAmount;
+                                                                    chefPaidTabPay += paidAmount;
+                                                                    chefPaidTabChefPay += paidChefAmount;
+                                                                    chefPaidTabDietPay += paidDietAmount;
 
                                                                     xPaid += '<tr>';
                                                                     xPaid += '<td>'+valData[k].id+'</td>';
@@ -1060,6 +1226,16 @@
                                                                 }
                                                                 xPaid += '</tr>';
                                                             }
+                                                            xPaid +='<tr>';
+                                                            xPaid +='<td></td>';
+                                                            xPaid +='<td></td>';
+                                                            xPaid +='<td>Total:</td>';
+                                                            xPaid += '<td>'+chefPaidTabPay+'</td>';
+                                                            xPaid += '<td>'+chefPaidTabChefPay+'</td>';
+                                                            xPaid += '<td>'+chefPaidTabDietPay+'</td>';
+                                                            xPaid += '<td></td>';
+                                                            xPaid += '<td></td>';
+                                                            xPaid += '</tr>';
                                                             xPaid += '</tbody>';
                                                             xPaid += '</table>';
                                                             xPaid += '</div>';
@@ -1113,6 +1289,16 @@
                                                                 }
                                                                 xCancel += '</tr>';
                                                             }
+                                                            xCancel +='<tr>';
+                                                            xCancel +='<td></td>';
+                                                            xCancel +='<td></td>';
+                                                            xCancel +='<td>Total:</td>';
+                                                            xCancel += '<td>PHP 0.00</td>';
+                                                            xCancel += '<td>PHP 0.00</td>';
+                                                            xCancel += '<td>PHP 0.00</td>';
+                                                            xCancel += '<td></td>';
+                                                            xCancel += '<td></td>';
+                                                            xCancel += '</tr>';
                                                             xCancel += '</tbody>';
                                                             xCancel += '</table>';
                                                             xCancel += '</div>';
