@@ -191,6 +191,15 @@ class AdminController extends Controller
 
                 $chef = $commission->chef;
 
+                $planName = '';
+                if($orderItem->order_type == 0){
+                    $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan_name;
+                }else if($orderItem->order_type == 2){
+                    $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
+                    $planName = $orderPlan->plan->plan_name;
+                }
+
                 $message = 'Greetings from DietSelect! Your commission has been paid on: ';
                 $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
                 $message .= '.';
@@ -212,6 +221,15 @@ class AdminController extends Controller
                 file_get_contents($url, false, $context);
                 $commission->paid=1;
                 $commission->save();
+
+                $chefnotif = new Notification();
+                $chefnotif->sender_id = 0;
+                $chefnotif->receiver_id = $chef->id;
+                $chefnotif->receiver_type = 'c';
+                $chefnotif->notification = 'Your commission for '.$planName.' has been paid on '.Carbon::now()->format('F d, Y h:i A').'. Please view the commissions page for more details.';
+                $chefnotif->notification_type = 4;
+                $chefnotif->save();
+
             }
         }
 
@@ -348,7 +366,7 @@ class AdminController extends Controller
             $orderPlan = Plan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan_name;
             $chefName = $orderPlan->chef->name;
-        }else if($orderItem->order_type == 1){
+        }else if($orderItem->order_type == 2){
             $orderPlan = SimpleCustomPlan::where('id','=',$orderItem->plan_id)->first();
             $planName = $orderPlan->plan->plan_name;
             $chefName = $orderPlan->plan->chef->name;
