@@ -19,13 +19,13 @@ function getYears(){
 
 function getMonths($val){
     return $.ajax({
-        url: '/admin/commissions/getMonths/'+$val
+        url: '/chef/commissions/getMonths/'+$val
     });
 }
 
 function monthChange($chef,$yearType,$type){
     return $.ajax({
-        url: '/admin/commissions/monthChange/' + $chef +'/'+ $yearType +'/'+ $type
+        url: '/chef/commissions/monthChange/' + $chef +'/'+ $yearType +'/'+ $type
     });
 }
 // function typeChange($chef,$type,$monthType){
