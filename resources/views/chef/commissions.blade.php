@@ -848,7 +848,7 @@
                                                     var yearVal = $('select#yearFilter').val();
                                                     var selectVal = $('select#monthFilter').val();
                                                     console.log(selectVal);
-                                                    var changeMonth = monthChange('',yearVal,selectVal);
+                                                    var changeMonth = monthChange(yearVal,selectVal);
                                                     changeMonth.done(function (response) {
                                                         $('#monthPicker').empty();
                                                         $('#pendMonthPicker').empty();
