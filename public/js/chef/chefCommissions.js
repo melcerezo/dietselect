@@ -23,7 +23,7 @@ function getMonths($val){
     });
 }
 
-function monthChange($chef,$yearType,$type){
+function monthChange($yearType,$type){
     return $.ajax({
         url: '/chef/commissions/monthChange/'+ $yearType +'/'+ $type
     });
