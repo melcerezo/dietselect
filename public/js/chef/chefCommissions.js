@@ -11,14 +11,25 @@ function addCommas(nStr)
     return x1 + x2;
 }
 
-function getMonths(){
+function getYears(){
     return $.ajax({
-        url: '/chef/commissions/getMonths'
+        url: '/admin/commissions/getYears'
     });
 }
 
-function monthChange($type){
+function getMonths($val){
     return $.ajax({
-        url: '/chef/commissions/monthChange/'+ $type
+        url: '/admin/commissions/getMonths/'+$val
     });
 }
+
+function monthChange($chef,$yearType,$type){
+    return $.ajax({
+        url: '/admin/commissions/monthChange/' + $chef +'/'+ $yearType +'/'+ $type
+    });
+}
+// function typeChange($chef,$type,$monthType){
+//     return $.ajax({
+//         url: '/admin/commissions/monthChange/' + $chef +'/'+ $type +'/'+ $monthType
+//     });
+// }

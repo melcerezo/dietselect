@@ -1097,11 +1097,11 @@ function monthChange($chef,$yearType,$type){
         url: '/admin/commissions/monthChange/' + $chef +'/'+ $yearType +'/'+ $type
     });
 }
-function typeChange($chef,$type,$monthType){
-    return $.ajax({
-        url: '/admin/commissions/monthChange/' + $chef +'/'+ $type + $monthType
-    });
-}
+// function typeChange($chef,$type,$monthType){
+//     return $.ajax({
+//         url: '/admin/commissions/monthChange/' + $chef +'/'+ $type +'/'+ $monthType
+//     });
+// }
 function addCommas(nStr)
 {
     nStr += '';

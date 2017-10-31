@@ -1380,22 +1380,76 @@ class ChefOrderController extends Controller
         return $uniqueTimeArray;
     }
 
-    public function getMonths()
-    {
-        $chef = Auth::guard('chef')->user();
+    public function getYears(){
         $current = Carbon::now();
-        $currentMonth = $current->copy()->month;
-        $commissions = Commission::orderBy('created_at', 'desc')->where('chef_id','=',$chef->id)->get();
-        $months = [];
-        $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
+        $currentYear = $current->copy()->year;
+        $commissions = Commission::orderBy('created_at', 'desc')->get();
+        $years = [];
+        $years[]=array('current'=>1,'year'=>$currentYear,'yearText'=>$current->format('Y'));
         foreach($commissions as $commission){
-            if($commission->created_at->copy()->month < $currentMonth){
-                $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+            if($commission->created_at->copy()->year < $currentYear){
+                $years[]=array('current'=>0,'year'=>$commission->created_at->copy()->year,'yearText'=>$commission->created_at->copy()->format('Y'));
             }
 //            $months[]=
 //                array('month'=>$commission->created_at->copy()->format('m'),
 //                'start'=>$commission->created_at->copy()->startOfMonth(),
 //                'end'=>$commission->created_at->copy()->endOfMonth());
+        }
+
+        $years = array_intersect_key($years, array_unique(array_map('serialize', $years)));
+
+//        $monthJson = json_encode($months);
+        $i=0;
+        $yearJson = '[';
+        foreach($years as $year){
+            $yearJson .='{';
+            $yearJson .= '"current":'.$year['current'].', ';
+            $yearJson .= '"year":'.$year['year'].', ';
+            $yearJson .= '"yearText":"'.$year['yearText'].'"';
+            if (++$i < count($years)) {
+                $yearJson .= '},';
+            } else {
+                $yearJson .= '}';
+            }
+        }
+        $yearJson .=']';
+
+        return $yearJson;
+    }
+
+    public function getMonths($val)
+    {
+        $chef = Auth::guard('chef')->user();
+        $current = Carbon::now();
+        $currentMonth = $current->copy()->month;
+        $commissions = Commission::orderBy('created_at', 'desc')->where('chef_id','=',$chef->id)->get();
+        if($val<$current->copy()->year){
+            $current = Carbon::create($val, 12, 31, 0, 0 ,0);
+
+            $months = [];
+            $months[]=array('current'=>0,'month'=>$current->copy()->month,'monthText'=>$current->format('F'));
+            foreach($commissions as $commission){
+                if($commission->created_at < $current){
+                    $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+                }
+                //            $months[]=
+                //                array('month'=>$commission->created_at->copy()->format('m'),
+                //                'start'=>$commission->created_at->copy()->startOfMonth(),
+                //                'end'=>$commission->created_at->copy()->endOfMonth());
+            }
+        }else{
+            $months = [];
+            $months[]=array('current'=>1,'month'=>$currentMonth,'monthText'=>$current->format('F'));
+            foreach($commissions as $commission){
+                if($commission->created_at->copy()->month < $currentMonth){
+                    $months[]=array('current'=>0,'month'=>$commission->created_at->copy()->month,'monthText'=>$commission->created_at->copy()->format('F'));
+                }
+                //            $months[]=
+                //                array('month'=>$commission->created_at->copy()->format('m'),
+                //                'start'=>$commission->created_at->copy()->startOfMonth(),
+                //                'end'=>$commission->created_at->copy()->endOfMonth());
+            }
+
         }
 
         $months = array_intersect_key($months, array_unique(array_map('serialize', $months)));
@@ -1419,9 +1473,10 @@ class ChefOrderController extends Controller
         return $monthJson;
     }
 
-    public function monthChange($monthType)
+    public function monthChange($yearType,$monthType)
     {
         $chef = Auth::guard('chef')->user();
+        $year = $yearType;
         $month = $monthType;
 
         $commissions = Commission::where('chef_id','=',$chef->id)->latest()->get();
@@ -1430,7 +1485,7 @@ class ChefOrderController extends Controller
         if($commissions->count()){
             $comArray = [];
             foreach($commissions as $commission){
-                if($commission->created_at->copy()->month == $month){
+                if($commission->created_at->copy()->year == $year && $commission->created_at->copy()->month == $month){
                     $comArray[]= array(
                         'id'=>$commission->id,
                         'name'=>$commission->chef->name,
