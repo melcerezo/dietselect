@@ -50,9 +50,7 @@
                     </ul>
                     <div>
                         <ul class="collection">
-                            <li class="collection-item"><div>Total Orders:</div> <span style="font-size: 14px;">{{$orderItems->whereHas('order', function ($query) {
-                    $query->where('order_items.is_cancelled', '=', 0);
-                })->where('is_cancelled','=',0)->count()}} orders</span></li>
+                            <li class="collection-item"><div>Total Orders:</div> <span style="font-size: 14px;">{{$orderItems->where('order_items.is_cancelled','=',0)->count()}} orders</span></li>
                             <li class="collection-item"><div>Pending Delivery:</div> <span style="font-size: 14px;">{{$orderItems->where('is_delivered','=',0)->where('is_cancelled','=',0)->count()}} orders</span></li>
                             <li class="collection-item"><div>Delivered:</div> <span style="font-size: 14px;">{{$orderItems->where('is_delivered','=',1)->count()}} orders</span></li>
                             <li class="collection-item"><div>Total Paid:</div> <span style="font-size: 14px;">PHP {{number_format($totalPaid,2,'.',',')}}</span></li>
