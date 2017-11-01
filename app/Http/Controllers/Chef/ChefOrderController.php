@@ -48,9 +48,9 @@ class ChefOrderController extends Controller
         $chef = Auth::guard('chef')->user();
 
         $orderItems=OrderItem::where('chef_id','=', $chef->id)
-//            ->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
-//            ->orderBy('order_items.created_at','desc')
-//            ->select('*','order_items.id as it_id')
+            ->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            ->orderBy('order_items.created_at','desc')
+            ->select('*','order_items.id as it_id')
             ->get();
 
 //        dd($orderItems);
