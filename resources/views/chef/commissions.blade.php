@@ -243,10 +243,12 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    chefAllTabPay += amount;
-                                                                    chefAllTabChefPay += chefAmount;
-                                                                    chefAllTabDietPay += dietAmount;
-                                                                    chefAllTotal += chefAmount;
+                                                                    if(valData[i].status==0){
+                                                                        chefAllTabPay += amount;
+                                                                        chefAllTabChefPay += chefAmount;
+                                                                        chefAllTabDietPay += dietAmount;
+                                                                        chefAllTotal += chefAmount;
+                                                                    }
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -321,10 +323,12 @@
                                                                         var pendChefAmount = valData[j].chefAmount;
                                                                         var pendDietAmount = valData[j].dietAmount;
 
-                                                                        chefPendTotal +=valData[j].chefAmount;
-                                                                        chefPendTabPay += pendAmount;
-                                                                        chefPendTabChefPay += pendChefAmount;
-                                                                        chefPendTabDietPay += pendDietAmount;
+                                                                        if(valData[j].status==0){
+                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTabPay += pendAmount;
+                                                                            chefPendTabChefPay += pendChefAmount;
+                                                                            chefPendTabDietPay += pendDietAmount;
+                                                                        }
 
                                                                         xPend += '<tr>';
                                                                         xPend += '<td>'+valData[j].id+'</td>';
@@ -400,11 +404,13 @@
                                                                         var paidChefAmount = valData[k].chefAmount;
                                                                         var paidDietAmount = valData[k].dietAmount;
 
-                                                                        chefPaidTotal +=paidChefAmount;
-                                                                        dietTotal += paidDietAmount;
-                                                                        chefPaidTabPay += paidAmount;
-                                                                        chefPaidTabChefPay += paidChefAmount;
-                                                                        chefPaidTabDietPay += paidDietAmount;
+                                                                        if(valData[k].status==0){
+                                                                            chefPaidTotal +=paidChefAmount;
+                                                                            dietTotal += paidDietAmount;
+                                                                            chefPaidTabPay += paidAmount;
+                                                                            chefPaidTabChefPay += paidChefAmount;
+                                                                            chefPaidTabDietPay += paidDietAmount;
+                                                                        }
 
                                                                         xPaid += '<tr>';
                                                                         xPaid += '<td>'+valData[k].id+'</td>';
@@ -692,10 +698,12 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    chefAllTabPay += amount;
-                                                                    chefAllTabChefPay += chefAmount;
-                                                                    chefAllTabDietPay += dietAmount;
-                                                                    chefAllTotal += chefAmount;
+                                                                    if(valData[i].status==0){
+                                                                        chefAllTabPay += amount;
+                                                                        chefAllTabChefPay += chefAmount;
+                                                                        chefAllTabDietPay += dietAmount;
+                                                                        chefAllTotal += chefAmount;
+                                                                    }
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -770,10 +778,12 @@
                                                                         var pendChefAmount = valData[j].chefAmount;
                                                                         var pendDietAmount = valData[j].dietAmount;
 
-                                                                        chefPendTotal +=valData[j].chefAmount;
-                                                                        chefPendTabPay += pendAmount;
-                                                                        chefPendTabChefPay += pendChefAmount;
-                                                                        chefPendTabDietPay += pendDietAmount;
+                                                                        if(valData[j].status==0){
+                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTabPay += pendAmount;
+                                                                            chefPendTabChefPay += pendChefAmount;
+                                                                            chefPendTabDietPay += pendDietAmount;
+                                                                        }
 
                                                                         xPend += '<tr>';
                                                                         xPend += '<td>'+valData[j].id+'</td>';
@@ -849,11 +859,13 @@
                                                                         var paidChefAmount = valData[k].chefAmount;
                                                                         var paidDietAmount = valData[k].dietAmount;
 
-                                                                        chefPaidTotal +=paidChefAmount;
-                                                                        dietTotal += paidDietAmount;
-                                                                        chefPaidTabPay += paidAmount;
-                                                                        chefPaidTabChefPay += paidChefAmount;
-                                                                        chefPaidTabDietPay += paidDietAmount;
+                                                                        if(valData[k].status==0){
+                                                                            chefPaidTotal +=paidChefAmount;
+                                                                            dietTotal += paidDietAmount;
+                                                                            chefPaidTabPay += paidAmount;
+                                                                            chefPaidTabChefPay += paidChefAmount;
+                                                                            chefPaidTabDietPay += paidDietAmount;
+                                                                        }
 
                                                                         xPaid += '<tr>';
                                                                         xPaid += '<td>'+valData[k].id+'</td>';
@@ -1058,10 +1070,12 @@
                                                                 var chefAmount = valData[i].chefAmount;
                                                                 var dietAmount = valData[i].dietAmount;
 
-                                                                chefAllTabPay += amount;
-                                                                chefAllTabChefPay += chefAmount;
-                                                                chefAllTabDietPay += dietAmount;
-                                                                chefAllTotal += chefAmount;
+                                                                if(valData[i].status==0){
+                                                                    chefAllTabPay += amount;
+                                                                    chefAllTabChefPay += chefAmount;
+                                                                    chefAllTabDietPay += dietAmount;
+                                                                    chefAllTotal += chefAmount;
+                                                                }
 
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
@@ -1136,10 +1150,12 @@
                                                                     var pendChefAmount = valData[j].chefAmount;
                                                                     var pendDietAmount = valData[j].dietAmount;
 
-                                                                    chefPendTotal +=valData[j].chefAmount;
-                                                                    chefPendTabPay += pendAmount;
-                                                                    chefPendTabChefPay += pendChefAmount;
-                                                                    chefPendTabDietPay += pendDietAmount;
+                                                                    if(valData[j].status==0){
+                                                                        chefPendTotal +=valData[j].chefAmount;
+                                                                        chefPendTabPay += pendAmount;
+                                                                        chefPendTabChefPay += pendChefAmount;
+                                                                        chefPendTabDietPay += pendDietAmount;
+                                                                    }
 
                                                                     xPend += '<tr>';
                                                                     xPend += '<td>'+valData[j].id+'</td>';
@@ -1215,11 +1231,14 @@
                                                                     var paidChefAmount = valData[k].chefAmount;
                                                                     var paidDietAmount = valData[k].dietAmount;
 
-                                                                    chefPaidTotal +=paidChefAmount;
-                                                                    dietTotal += paidDietAmount;
-                                                                    chefPaidTabPay += paidAmount;
-                                                                    chefPaidTabChefPay += paidChefAmount;
-                                                                    chefPaidTabDietPay += paidDietAmount;
+                                                                    if(valData[k].status==0){
+                                                                        chefPaidTotal +=paidChefAmount;
+                                                                        dietTotal += paidDietAmount;
+                                                                        chefPaidTabPay += paidAmount;
+                                                                        chefPaidTabChefPay += paidChefAmount;
+                                                                        chefPaidTabDietPay += paidDietAmount;
+                                                                    }
+
 
                                                                     xPaid += '<tr>';
                                                                     xPaid += '<td>'+valData[k].id+'</td>';
