@@ -1,5 +1,11 @@
 @extends("layouts.app")
 @section('head')
+    <style>
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
+    </style>
     <script src="/js/admin/admin.js" defer></script>
     <script src="/js/admin/foodieRegistration.validate.js" defer></script>
 @endsection

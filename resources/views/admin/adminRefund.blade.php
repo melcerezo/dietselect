@@ -14,6 +14,10 @@
         .refundTot{
             display: none;
         }
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
     </style>
     <script src="/js/admin/admin.js" defer></script>
 @endsection

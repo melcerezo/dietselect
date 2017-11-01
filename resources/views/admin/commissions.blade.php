@@ -14,6 +14,11 @@
         .chefCom{
             display: none;
         }
+
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
         /*.comContents{*/
             /*display: none;*/
         /*}*/

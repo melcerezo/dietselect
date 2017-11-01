@@ -20,6 +20,10 @@
             width: 90px;
             display: block;
         }
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
     </style>
     <script>
         $(document).ready(function () {

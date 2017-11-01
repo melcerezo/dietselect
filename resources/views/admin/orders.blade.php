@@ -7,6 +7,10 @@
         .activeTab a{
             color: #f57c00;
         }
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
     </style>
     <script src="/js/admin/admin.js" defer></script>
 @endsection

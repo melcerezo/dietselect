@@ -1,5 +1,11 @@
 @extends('layouts.app')
 @section('head')
+    <style>
+        ul.notifCol{
+            max-width: 250px !important;
+            white-space: normal !important;
+        }
+    </style>
     <link rel="stylesheet" href="/css/admin/adminMain.css">
     <script src="/js/admin/admin.js" defer></script>
 @endsection
