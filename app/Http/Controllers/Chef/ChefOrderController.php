@@ -53,7 +53,7 @@ class ChefOrderController extends Controller
             ->select('*','order_items.id as it_id')
             ->get();
 
-        dd($orderItems->where('is_paid','=',1)->where('is_cancelled','=',0));
+//        dd($orderItems->where('is_paid','=',1)->where('is_cancelled','=',0));
 
         $totalPaid=0;
 
