@@ -51,6 +51,7 @@ class ChefOrderController extends Controller
             ->orderBy('order_items.created_at','desc')
             ->select('*','order_items.id as it_id')->get();
 
+        dd($orderItems);
 
         $totalPaid=0;
 
@@ -929,7 +930,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                    $thisInput .= '"amount":'.$orderItem->price.'';
+                    $thisInput .= '"amount":'.($orderItem->price * $orderItem->quantity).'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
                     } else {
@@ -1032,7 +1033,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                    $thisInput .= '"amount":'.$orderItem->price.'';
+                    $thisInput .= '"amount":'.($orderItem->price * $orderItem->quantity).'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
                     } else {
@@ -1133,7 +1134,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                    $thisInput .= '"amount":'.$orderItem->price.'';
+                    $thisInput .= '"amount":'.($orderItem->price * $orderItem->quantity).'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
                     } else {
@@ -1236,7 +1237,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                    $thisInput .= '"amount":'.$orderItem->price.'';
+                    $thisInput .= '"amount":'.($orderItem->price * $orderItem->quantity).'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
                     } else {
@@ -1350,7 +1351,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
                     $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
-                    $thisInput .= '"amount":'.$orderItem->price.'';
+                    $thisInput .= '"amount":'.($orderItem->price * $orderItem->quantity).'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
                     } else {
