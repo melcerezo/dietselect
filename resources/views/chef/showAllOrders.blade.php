@@ -88,6 +88,8 @@
                             </div>
                         </div>
                     </div>
+                    <div id="dayTotal">
+                    </div>
                     <div id="dayPick">
 
                     </div>
@@ -236,6 +238,8 @@
                             </div>
                         </div>
                     </div>
+                    <div id="dayPendTotal">
+                    </div>
                     <div id="dayPendPick">
 
                     </div>
@@ -348,6 +352,8 @@
                                 {{--</select>--}}
                             </div>
                         </div>
+                    </div>
+                    <div id="dayPaidTotal">
                     </div>
                     <div id="dayPaidPick">
 
@@ -462,6 +468,8 @@
                             </div>
                         </div>
                     </div>
+                    <div id="dayDeliverTotal">
+                    </div>
                     <div id="dayDeliverPick">
 
                     </div>
@@ -574,6 +582,8 @@
                                 {{--</select>--}}
                             </div>
                         </div>
+                    </div>
+                    <div id="dayCancelTotal">
                     </div>
                     <div id="dayCancelPick">
 

@@ -68,6 +68,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayTotal').empty();
             $('div#dayPick').append('<div><span>All Orders for This Week</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
@@ -75,7 +76,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -91,8 +98,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -103,8 +112,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -137,6 +148,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPick').append(x);
                 }
+                $('div#dayTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -204,6 +231,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendTotal').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for This Week</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Pending Plans!</span>');
@@ -211,7 +239,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -227,8 +261,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -239,8 +275,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -273,6 +311,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPendPick').append(x);
                 }
+                $('div#dayPendTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -346,7 +400,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -362,8 +422,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -374,8 +436,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -408,6 +472,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPaidPick').append(x);
                 }
+                $('div#dayPaidTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -545,6 +625,7 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayCancelPick').append(x);
                 }
+
             }
         });
 
@@ -618,7 +699,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -634,8 +721,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -644,14 +733,12 @@ $(document).ready(function () {
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
                     x += '<div>Delivery:</div>';
-                    if(valData[i].is_cancelled==0){
-                        if(valData[i].is_delivered==0){
-                            x += '<div>Pending</div>';
-                        }else if(valData[i].is_delivered==1){
-                            x += '<div>Delivered</div>';
-                        }
-                    }else{
-                        x += '<div>Cancelled</div>';
+                    if(valData[i].is_delivered==0){
+                        x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
+                    }else if(valData[i].is_delivered==1){
+                        x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -684,6 +771,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayDeliverPick').append(x);
                 }
+                $('div#dayDeliverTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -760,6 +863,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayTotal').empty();
             $('div#dayPick').append('<div><span>All Orders for '+$('select#orderFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
@@ -767,7 +871,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -783,8 +893,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -795,8 +907,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -829,6 +943,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPick').append(x);
                 }
+                $('div#dayTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -906,6 +1036,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendTotal').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for ' +$('select#orderPendFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Pending Plans!</span>');
@@ -913,7 +1044,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -929,8 +1066,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -941,8 +1080,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -975,6 +1116,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPendPick').append(x);
                 }
+                $('div#dayPendTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -1051,6 +1208,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
+            $('div#dayPaidTotal').empty();
             $('div#dayPaidPick').append('<div><span>Paid Orders for ' +$('select#orderPaidFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
@@ -1058,7 +1216,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1074,8 +1238,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1086,8 +1252,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1120,6 +1288,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPaidPick').append(x);
                 }
+                $('div#dayPaidTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -1342,6 +1526,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
+            $('div#dayDeliverTotal').empty();
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for ' +$('select#orderDeliverFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayDeliverPick').append('<span>No Delivered Plans!</span>');
@@ -1349,7 +1534,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1365,8 +1556,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1377,8 +1570,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1411,6 +1606,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayDeliverPick').append(x);
                 }
+                $('div#dayDeliverTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
 
@@ -1446,6 +1657,7 @@ $(document).ready(function () {
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayTotal').empty();
             $('div#dayPick').append('<div><span>All Orders for '+stringDate+'</span></div>');
             // $('div#dayPick').append('<div><span>All Orders for '+$('select#dateFilter option:selected').text()+'</span></div>');
             if(response==''){
@@ -1454,7 +1666,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1470,8 +1688,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1482,8 +1702,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1516,6 +1738,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPick').append(x);
                 }
+                $('div#dayTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -1530,6 +1768,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPick').empty();
+            $('div#dayTotal').empty();
             $('div#dayPick').append('<div><span>All Orders for '+$('select#orderFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPick').append('<span>No Plans Ordered Yet!</span>');
@@ -1537,7 +1776,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1553,8 +1798,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1565,8 +1812,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1599,6 +1848,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPick').append(x);
                 }
+                $('div#dayTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -1617,6 +1882,7 @@ $(document).ready(function () {
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendTotal').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for '+stringDate+'</span></div>');
             // $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#datePendFilter option:selected').text()+'</span></div>');
             if(response==''){
@@ -1625,7 +1891,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1641,8 +1913,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1653,8 +1927,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1687,6 +1963,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPendPick').append(x);
                 }
+                $('div#dayPendTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -1700,6 +1992,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPendPick').empty();
+            $('div#dayPendTotal').empty();
             $('div#dayPendPick').append('<div><span>Pending Orders for '+$('select#orderPendFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPendPick').append('<span>No Pending Plans!</span>');
@@ -1707,7 +2000,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1723,8 +2022,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1735,8 +2036,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1769,6 +2072,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPendPick').append(x);
                 }
+                $('div#dayPendTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -1786,6 +2105,7 @@ $(document).ready(function () {
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
+            $('div#dayPaidTotal').empty();
             $('div#dayPaidPick').append('<div><span>Paid Orders for '+stringDate+'</span></div>');
             // $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#datePaidFilter option:selected').text()+'</span></div>');
             if(response==''){
@@ -1794,7 +2114,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1810,8 +2136,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1822,8 +2150,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1856,6 +2186,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPaidPick').append(x);
                 }
+                $('div#dayPaidTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -1869,6 +2215,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayPaidPick').empty();
+            $('div#dayPaidTotal').empty();
             $('div#dayPaidPick').append('<div><span>Paid Orders for '+$('select#orderPaidFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayPaidPick').append('<span>No Paid Plans!</span>');
@@ -1876,7 +2223,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -1892,8 +2245,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -1904,8 +2259,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -1938,6 +2295,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayPaidPick').append(x);
                 }
+                $('div#dayPaidTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -2130,6 +2503,7 @@ $(document).ready(function () {
         dayChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
+            $('div#dayDeliverTotal').empty();
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for '+stringDate+'</span></div>');
             // $('div#dayDeliverPick').append('<div><span>Pending Orders for '+$('select#dateDeliverFilter option:selected').text()+'</span></div>');
 
@@ -2139,7 +2513,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -2155,8 +2535,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -2167,8 +2549,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -2201,6 +2585,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayDeliverPick').append(x);
                 }
+                $('div#dayDeliverTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
@@ -2215,6 +2615,7 @@ $(document).ready(function () {
         dateChange.done(function (response) {
             console.log(response);
             $('div#dayDeliverPick').empty();
+            $('div#dayDeliverTotal').empty();
             $('div#dayDeliverPick').append('<div><span>Delivered Orders for '+$('select#orderDeliverFilter option:selected').text()+'</span></div>');
             if(response==''){
                 $('div#dayDeliverPick').append('<span>No Delivered Plans!</span>');
@@ -2222,7 +2623,13 @@ $(document).ready(function () {
                 var valData = JSON.parse(response);
                 // console.log(JSON.parse(response));
                 // console.log(response);
+                var orderIntervalTotal = 0;
+                var pendTotal = 0;
+                var paidTotal = 0;
+                var pendDeliverTotal = 0;
+                var deliverTotal = 0;
                 for (var i in valData) {
+                    orderIntervalTotal += 1;
                     var x = '<div class="card">';
                     x += '<div class="card-title" style="font-size: 18px;">';
                     x += '<div class="row" style="margin: 0 0 20px 0; padding: 5px;">';
@@ -2238,8 +2645,10 @@ $(document).ready(function () {
                     x += '<div>Payment:</div>';
                     if(valData[i].is_paid==0){
                         x += '<div>Pending</div>';
+                        pendTotal += valData[i].amount;
                     }else if(valData[i].is_paid==1){
                         x += '<div>Paid</div>';
+                        paidTotal += valData[i].amount;
                     }
                     x += '</div>';
                     x += ' <div class="col s12 m2">';
@@ -2250,8 +2659,10 @@ $(document).ready(function () {
                     x += '<div>Delivery:</div>';
                     if(valData[i].is_delivered==0){
                         x += '<div>Pending</div>';
+                        pendDeliverTotal += 1;
                     }else if(valData[i].is_delivered==1){
                         x += '<div>Delivered</div>';
+                        deliverTotal += 1;
                     }
                     x += '</div>';
                     x += '</div>';
@@ -2284,6 +2695,22 @@ $(document).ready(function () {
                     x += '</div>';
                     $('div#dayDeliverPick').append(x);
                 }
+                $('div#dayDeliverTotal').append('<table>' +
+                    '<tr>' +
+                    '<th>Total Orders</th>' +
+                    '<th>Pending Delivery</th>' +
+                    '<th>Delivered</th>' +
+                    '<th>Total Paid</th>' +
+                    '<th>Total Unpaid</th>' +
+                    '</tr>' +
+                    '<tr>' +
+                    '<td>'+orderIntervalTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendDeliverTotal+'</td>' +
+                    '<td>'+deliverTotal+'</td>' +
+                    '</tr>' +
+                    '</table>');
             }
         });
     });
