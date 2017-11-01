@@ -158,10 +158,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -321,10 +321,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -482,10 +482,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -781,10 +781,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -953,10 +953,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1126,10 +1126,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1298,10 +1298,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1616,10 +1616,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1748,10 +1748,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1858,10 +1858,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1973,10 +1973,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2082,10 +2082,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2196,10 +2196,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2305,10 +2305,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2595,10 +2595,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2705,10 +2705,10 @@ $(document).ready(function () {
                     '</tr>' +
                     '<tr>' +
                     '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
                     '<td>'+pendDeliverTotal+'</td>' +
                     '<td>'+deliverTotal+'</td>' +
+                    '<td>'+paidTotal+'</td>' +
+                    '<td>'+pendTotal+'</td>' +
                     '</tr>' +
                     '</table>');
             }
