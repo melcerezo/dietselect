@@ -50,7 +50,7 @@ class ChefOrderController extends Controller
         $orderItems=OrderItem::whereHas('order', function ($query) {
             $query->where('is_cancelled', '=', 0);
         })->where('chef_id','=', $chef->id)
-            ->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
+            ->join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
             ->orderBy('order_items.created_at','desc')
             ->select('*','order_items.id as it_id')
             ->get();
