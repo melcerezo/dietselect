@@ -183,6 +183,7 @@
                                                             $('#pendMonthPicker').empty();
                                                             $('#paidMonthPicker').empty();
                                                             $('#cancelMonthPicker').empty();
+                                                            $('#chefAllTotalAmount').empty();
                                                             $('#chefPendTotalAmount').empty();
                                                             $('#chefPaidTotalAmount').empty();
                                                             $('#dietPaidTotalAmount').empty();
@@ -638,6 +639,7 @@
                                                             $('#pendMonthPicker').empty();
                                                             $('#paidMonthPicker').empty();
                                                             $('#cancelMonthPicker').empty();
+                                                            $('#chefAllTotalAmount').empty();
                                                             $('#chefPendTotalAmount').empty();
                                                             $('#chefPaidTotalAmount').empty();
                                                             $('#dietPaidTotalAmount').empty();
@@ -1010,6 +1012,7 @@
                                                         $('#pendMonthPicker').empty();
                                                         $('#paidMonthPicker').empty();
                                                         $('#cancelMonthPicker').empty();
+                                                        $('#chefAllTotalAmount').empty();
                                                         $('#chefPendTotalAmount').empty();
                                                         $('#chefPaidTotalAmount').empty();
                                                         $('#dietPaidTotalAmount').empty();
