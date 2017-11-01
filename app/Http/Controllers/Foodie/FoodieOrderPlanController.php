@@ -612,6 +612,14 @@ class FoodieOrderPlanController extends Controller
         $foodnotif->notification_type = 1;
         $foodnotif->save();
 
+        $adminnotif = new Notification();
+        $adminnotif->sender_id = $order->id;
+        $adminnotif->receiver_id = 2;
+        $adminnotif->receiver_type = 'a';
+        $adminnotif->notification = $foodie->first_name.' '.$foodie->last_name. ' has placed order for '.$order->created_at->format('F d, Y h:i A').'. ';
+        $adminnotif->notification_type = 1;
+        $adminnotif->save();
+
 
 
         $messageFoodie = 'Greetings from DietSelect! Your order has been placed on ' . $order->created_at->format('F d, Y g:i A') . '. Please pay your balance of: PHP ';
@@ -1126,6 +1134,25 @@ class FoodieOrderPlanController extends Controller
 //        dd($foodnotif);
         $foodnotif->save();
 
+        $adminnotif = new Notification();
+        $adminnotif->sender_id = $order->id;
+        $adminnotif->receiver_id = 2;
+        $adminnotif->receiver_type = 'a';
+        $adminnotif->notification = $foodie->first_name.' '.$foodie->last_name. ' has cancelled their order for '.$order->created_at->format('F d, Y h:i A').'. ';
+        $adminnotif->notification .= 'Reason: ';
+        if($reason == 0){
+            $adminnotif->notification .= "No reason.";
+        }else if($reason == 1){
+            $adminnotif->notification .= "Not Interested.";
+        }else if($reason == 2){
+            $adminnotif->notification .= "Unable to take delivery.";
+        }else if($reason == 3){
+            $adminnotif->notification .= "Out of Town.";
+        }else if($reason == 4){
+            $adminnotif->notification .= $request['otherReason'];
+        }
+        $adminnotif->notification_type = 3;
+        $adminnotif->save();
 
 
         $messageFoodie = 'Greetings from DietSelect! You have cancelled your order for week of '.$order->created_at->startOfWeek()->format('F d, Y').' on ' . Carbon::now()->format('F d, Y g:i A').'.' ;
