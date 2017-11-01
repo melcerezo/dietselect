@@ -53,7 +53,7 @@ class ChefOrderController extends Controller
 //            ->select('*','order_items.id as it_id')
             ->get();
 
-        dd($orderItems);
+//        dd($orderItems);
 
         $totalPaid=0;
 
