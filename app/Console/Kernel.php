@@ -30,7 +30,7 @@ class Kernel extends ConsoleKernel
 //            ->everyThirtyMinutes();
 //            ->weekly()
 //            ->saturdays()
-            ->dailyAt('09:50');
+            ->dailyAt('06:50');
     }
 
     /**
