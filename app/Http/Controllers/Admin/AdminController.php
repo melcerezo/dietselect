@@ -179,7 +179,7 @@ class AdminController extends Controller
         ]);
     }
 
-    public function payCommission(Order $order)
+    public function payCommission(Order $order, mailer\Mailer $mailer)
     {
         $orderItems = $order->order_item()->get();
 
@@ -200,7 +200,7 @@ class AdminController extends Controller
                     $planName = $orderPlan->plan->plan_name;
                 }
 
-                $message = 'Greetings from DietSelect! Your commission has been paid on: ';
+                $message = 'Greetings from DietSelect! Your commission for the order of '.$planName.' has been updated to paid on: ';
                 $message .= Carbon::now()->format('F d, Y g:i A').'. Please check your commissions page to check the commission status';
                 $message .= '.';
                 $chefPhoneNumber = '0' . $chef->mobile_number;
@@ -229,6 +229,13 @@ class AdminController extends Controller
                 $chefnotif->notification = 'Your commission for '.$planName.' has been paid on '.Carbon::now()->format('F d, Y h:i A').'. Please view the commissions page for more details.';
                 $chefnotif->notification_type = 4;
                 $chefnotif->save();
+
+                $time = Carbon::now()->format('F d, Y g:i A');
+
+                $mailer->to($chef->email)
+                    ->send(new ChefCommission(
+                        $planName,
+                        $time));
 
             }
         }
