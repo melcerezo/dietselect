@@ -157,11 +157,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -320,11 +320,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -481,11 +481,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -780,11 +780,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -952,11 +952,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1125,11 +1125,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1297,11 +1297,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1615,11 +1615,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1747,11 +1747,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1857,11 +1857,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -1972,11 +1972,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2081,11 +2081,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2195,11 +2195,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2304,11 +2304,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2594,11 +2594,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
@@ -2704,11 +2704,11 @@ $(document).ready(function () {
                     '<th>Total Unpaid</th>' +
                     '</tr>' +
                     '<tr>' +
-                    '<td>'+orderIntervalTotal+'</td>' +
-                    '<td>'+pendDeliverTotal+'</td>' +
-                    '<td>'+deliverTotal+'</td>' +
-                    '<td>'+paidTotal+'</td>' +
-                    '<td>'+pendTotal+'</td>' +
+                    '<td>'+orderIntervalTotal+' orders</td>' +
+                    '<td>'+pendDeliverTotal+' orders</td>' +
+                    '<td>'+deliverTotal+' orders</td>' +
+                    '<td>PHP '+addCommas(paidTotal.toFixed(2))+'</td>' +
+                    '<td>PHP '+addCommas(pendTotal.toFixed(2))+'</td>' +
                     '</tr>' +
                     '</table>');
             }
