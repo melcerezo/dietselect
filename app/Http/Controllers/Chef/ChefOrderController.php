@@ -928,7 +928,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
-                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                     $thisInput .= '"amount":'.$orderItem->price.'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -1031,7 +1031,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
-                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                     $thisInput .= '"amount":'.$orderItem->price.'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -1132,7 +1132,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
-                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                     $thisInput .= '"amount":'.$orderItem->price.'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -1235,7 +1235,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
-                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                     $thisInput .= '"amount":'.$orderItem->price.'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
@@ -1349,7 +1349,7 @@ class ChefOrderController extends Controller
                     $thisInput .= '"is_cancelled":' . $orderItem->is_cancelled . ', ';
                     $thisInput .= '"quantity":' . $orderItem->quantity . ', ';
                     $thisInput .= '"created_at":"' . $orderItem->order->created_at->format('F d, Y h:i A') . '", ';
-                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '"';
+                    $thisInput .= '"price":"' . 'PHP ' . number_format($orderItem->price, 2, '.', ',') . '", ';
                     $thisInput .= '"amount":'.$orderItem->price.'';
                     if (++$i < $orderItems->count()) {
                         $thisInput .= '},';
