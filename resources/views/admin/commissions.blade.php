@@ -398,6 +398,7 @@
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                            $('#chefAllTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
@@ -854,6 +855,7 @@
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                            $('#chefAllTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
                                                             $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
@@ -1226,6 +1228,7 @@
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#cancelMonthPicker{{$uniqueComChef}}').empty();
+                                                        $('#chefAllTotalAmount{{$uniqueComChef}}').empty();
                                                         $('#chefPendTotalAmount{{$uniqueComChef}}').empty();
                                                         $('#chefPaidTotalAmount{{$uniqueComChef}}').empty();
                                                         $('#dietPaidTotalAmount{{$uniqueComChef}}').empty();
