@@ -86,7 +86,7 @@
                                                 </div>
                                                 <div class="divider">
                                                 </div>
-                                                <div class="row center">
+                                                <div class="row center" style="margin-top: 5px;">
                                                     <div id="chefAllTotalAmount" class="col s12 m3 center">
                                                     </div>
                                                     <div id="chefPendTotalAmount" class="col s12 m3 center">
