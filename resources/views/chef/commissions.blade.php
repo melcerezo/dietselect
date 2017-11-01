@@ -83,6 +83,12 @@
                                                             <option value="3">Cancelled</option>
                                                         </select>
                                                     </div>
+                                                </div>
+                                                <div class="divider">
+                                                </div>
+                                                <div class="row center">
+                                                    <div id="chefAllTotalAmount" class="col s12 m3 center">
+                                                    </div>
                                                     <div id="chefPendTotalAmount" class="col s12 m3 center">
                                                     </div>
                                                     <div id="chefPaidTotalAmount" class="col s12 m3 center">
@@ -189,6 +195,7 @@
                                                                 var valData = JSON.parse(response);
                                                                 console.log(valData);
 
+                                                                var chefAllTotal = 0;
                                                                 var chefPendTotal = 0;
                                                                 var chefPaidTotal = 0;
                                                                 var dietTotal = 0;
@@ -239,6 +246,7 @@
                                                                     chefAllTabPay += amount;
                                                                     chefAllTabChefPay += chefAmount;
                                                                     chefAllTabDietPay += dietAmount;
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -508,16 +516,21 @@
                                                                 $('#paidMonthPicker').append(xPaid);
                                                                 $('#cancelMonthPicker').append(xCancel);
 
+                                                                $('#chefAllTotalAmount').append(
+                                                                        '<div>Total Receivables for Vendor This Month</div>' +
+                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+                                                                );
+
                                                                 $('#chefPendTotalAmount').append(
-                                                                        '<div>Total Pending for Vendor This Month</div>' +
+                                                                        '<div>Total Pending Receivables for Vendor This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#chefPaidTotalAmount').append(
-                                                                        '<div>Total Paid for Vendor This Month</div>' +
+                                                                        '<div>Total Paid Receivables for Vendor This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#dietPaidTotalAmount').append(
-                                                                        '<div>Total Paid for DietSelect This Month</div>' +
+                                                                        '<div>Receivables for DietSelect This Month</div>' +
                                                                         '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                                 );
 
@@ -631,6 +644,7 @@
                                                                 var valData = JSON.parse(response);
                                                                 console.log(valData);
 
+                                                                var chefAllTotal = 0;
                                                                 var chefPendTotal = 0;
                                                                 var chefPaidTotal = 0;
                                                                 var dietTotal = 0;
@@ -681,6 +695,7 @@
                                                                     chefAllTabPay += amount;
                                                                     chefAllTabChefPay += chefAmount;
                                                                     chefAllTabDietPay += dietAmount;
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -950,16 +965,21 @@
                                                                 $('#paidMonthPicker').append(xPaid);
                                                                 $('#cancelMonthPicker').append(xCancel);
 
+                                                                $('#chefAllTotalAmount').append(
+                                                                        '<div>Total Receivables for Vendor This Month</div>' +
+                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+                                                                );
+
                                                                 $('#chefPendTotalAmount').append(
-                                                                        '<div>Total Pending for Vendor This Month</div>' +
+                                                                        '<div>Total Pending Receivables for Vendor This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#chefPaidTotalAmount').append(
-                                                                        '<div>Total Paid for Vendor This Month</div>' +
+                                                                        '<div>Total Paid Receivables for Vendor This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#dietPaidTotalAmount').append(
-                                                                        '<div>Total Paid for DietSelect This Month</div>' +
+                                                                        '<div>Receivables for DietSelect This Month</div>' +
                                                                         '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                                 );
 
@@ -990,6 +1010,7 @@
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
 
+                                                            var chefAllTotal = 0;
                                                             var chefPendTotal = 0;
                                                             var chefPaidTotal = 0;
                                                             var dietTotal = 0;
@@ -1040,6 +1061,7 @@
                                                                 chefAllTabPay += amount;
                                                                 chefAllTabChefPay += chefAmount;
                                                                 chefAllTabDietPay += dietAmount;
+                                                                chefAllTotal += chefAmount;
 
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
@@ -1309,16 +1331,21 @@
                                                             $('#paidMonthPicker').append(xPaid);
                                                             $('#cancelMonthPicker').append(xCancel);
 
+                                                            $('#chefAllTotalAmount').append(
+                                                                    '<div>Total Receivables for Vendor This Month</div>' +
+                                                                    '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+                                                            );
+
                                                             $('#chefPendTotalAmount').append(
-                                                                    '<div>Total Pending for Vendor This Month</div>' +
+                                                                    '<div>Total Pending Receivables for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                             );
                                                             $('#chefPaidTotalAmount').append(
-                                                                    '<div>Total Paid for Vendor This Month</div>' +
+                                                                    '<div>Total Paid Receivables for Vendor This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                             );
                                                             $('#dietPaidTotalAmount').append(
-                                                                    '<div>Total Paid for DietSelect This Month</div>' +
+                                                                    '<div>Receivables for DietSelect This Month</div>' +
                                                                     '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                             );
 
