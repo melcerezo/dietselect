@@ -463,7 +463,9 @@
                                                                     chefAllTabChefPay += chefAmount;
                                                                     chefAllTabDietPay += dietAmount;
 
-                                                                    chefAllTotal += chefAmount;
+                                                                    if(valData[i].status==0){
+                                                                        chefAllTotal += chefAmount;
+                                                                    }
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
