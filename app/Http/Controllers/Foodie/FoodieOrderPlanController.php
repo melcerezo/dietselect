@@ -1072,6 +1072,7 @@ class FoodieOrderPlanController extends Controller
             } elseif ($orderItem->order_type == 2) {
                 $orderPlan = SimpleCustomPlan::where('id', '=', $orderItem->plan_id)->first();
                 $chefOrderId=$orderPlan->plan->chef->id;
+                $mailChef = $orderPlan->plan->chef->name;
                 $orderChef[] = $orderPlan->plan->chef->id;
                 $mailType='Customized';
             }
