@@ -502,6 +502,26 @@ class ChefOrderController extends Controller
             $foodnotif->notification_type = 1;
             $foodnotif->save();
 
+            $adminnotif = new Notification();
+            $adminnotif->sender_id = $order->id;
+            $adminnotif->receiver_id = 2;
+            $adminnotif->receiver_type = 'a';
+            $adminnotif->notification = $chef->name. ' has cancelled '.$foodieName.'\'s order for '.$planName.' on '.Carbon::now()->format('F d, Y g:i A').'.';
+            $adminnotif->notification .= 'Reason: ';
+            if($reason == 0){
+                $adminnotif->notification .= "Out of Stock.";
+            }else if($reason == 1){
+                $adminnotif->notification .= "Not Interested.";
+            }else if($reason == 2){
+                $adminnotif->notification .= "Unable to take delivery.";
+            }else if($reason == 3){
+                $adminnotif->notification .= "Out of Town.";
+            }else if($reason == 4){
+                $adminnotif->notification .= $request['otherReason'];
+            }
+            $adminnotif->notification_type = 3;
+            $adminnotif->save();
+
             $chefnotif = new Notification();
             $chefnotif->sender_id = 0;
             $chefnotif->receiver_id = $chef->id;

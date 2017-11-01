@@ -927,7 +927,7 @@ $(document).ready(function() {
             }else if(notifs[index].notification_type==1){
                 notifCntnt=
                     '<li id="notif'+notifs[index].id+'" class="collection-item">'+
-                    '<a class="msgLink notifLink" href="'+pendRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<a class="msgLink notifLink notifFoodiePaid" href="#" data-send-id="'+notifs[index].sender_id+'" data-id="'+notifs[index].id+'">'+
                     '<div class="row msCntr">'+
                     '<div class="msMsCnt col s12">'+
                     '<span>'+notifs[index].notification+'</span>'+
@@ -941,7 +941,7 @@ $(document).ready(function() {
             }else if(notifs[index].notification_type==2){
                 notifCntnt=
                     '<li id="notif'+notifs[index].id+'" class="collection-item">'+
-                    '<a class="msgLink notifLink" href="'+paidRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<a class="msgLink notifLink notifFoodiePaid" href="#" data-send-id="'+notifs[index].sender_id+'" data-id="'+notifs[index].id+'">'+
                     '<div class="row msCntr">'+
                     '<div class="msMsCnt col s12">'+
                     '<span>'+notifs[index].notification+'</span>'+
@@ -955,7 +955,7 @@ $(document).ready(function() {
             }else if(notifs[index].notification_type==3){
                 notifCntnt=
                     '<li id="notif'+notifs[index].id+'" class="collection-item">'+
-                    '<a class="msgLink notifLink" href="'+cancelRoute+'" data-id="'+notifs[index].id+'">'+
+                    '<a class="msgLink notifLink notifFoodiePaid" href="#" data-send-id="'+notifs[index].sender_id+'" data-id="'+notifs[index].id+'">'+
                     '<div class="row msCntr">'+
                     '<div class="msMsCnt col s12">'+
                     '<span>'+notifs[index].notification+'</span>'+
