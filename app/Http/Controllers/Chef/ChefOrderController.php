@@ -59,7 +59,7 @@ class ChefOrderController extends Controller
 
         $totalPaid=0;
 
-        foreach($orderItems->where('is_paid','=',1)->where('is_cancelled','=',0) as $orderItem){
+        foreach($orderItems->where('is_paid','=',1) as $orderItem){
             $totalPaid+=$orderItem->price;
         }
 
