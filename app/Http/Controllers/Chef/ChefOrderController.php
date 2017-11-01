@@ -844,7 +844,7 @@ class ChefOrderController extends Controller
         $thisInput = null;
         if($type==1){
             if($id==0){
-                $orderItems = OrderItem::join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')->where('order_items.is_cancelled','=',0)
+                $orderItems = OrderItem::join('orders','order_items.order_id','=','orders.id')->orderBy('is_paid','ASC')
                     ->where('order_items.is_cancelled','=',0)
                     ->where('order_items.created_at', '>=', $thisDay)
                     ->where('chef_id', '=', Auth::guard('chef')->user()->id)
