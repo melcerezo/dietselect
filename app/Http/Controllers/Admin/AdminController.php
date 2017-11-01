@@ -7,6 +7,7 @@ use App\ChefBankAccount;
 use App\FoodiePreference;
 use App\Http\Controllers\Controller;
 use App\Mail\AdminCancelFoodie;
+use App\Mail\ChefCommission;
 use App\Mail\ChefFreeze;
 use App\Mail\FreezeMail;
 use App\Mail\RefundSuccessFoodie;
