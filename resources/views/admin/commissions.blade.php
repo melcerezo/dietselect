@@ -546,7 +546,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
-                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTotal +=valData[j].pendAmount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
                                                                             chefPendTabDietPay += pendDietAmount;
@@ -746,10 +746,10 @@
                                                                 $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                                 $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                                $('#chefAllTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Total Payables for Vendor This Month</div>' +
-                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
-                                                                );
+                                                                {{--$('#chefAllTotalAmount{{$uniqueComChef}}').append(--}}
+                                                                        {{--'<div>Total Payables for Vendor This Month</div>' +--}}
+                                                                        {{--'<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'--}}
+                                                                {{--);--}}
 
                                                                 $('#chefPendTotalAmount{{$uniqueComChef}}').append(
                                                                         '<div>Total Pending Payables for Vendor This Month</div>' +
@@ -1009,7 +1009,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
-                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTotal +=valData[j].amount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
                                                                             chefPendTabDietPay += pendDietAmount;
@@ -1209,10 +1209,10 @@
                                                                 $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                                 $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                                $('#chefAllTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Total Payables for Vendor This Month</div>' +
-                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
-                                                                );
+                                                                {{--$('#chefAllTotalAmount{{$uniqueComChef}}').append(--}}
+                                                                        {{--'<div>Total Payables for Vendor This Month</div>' +--}}
+                                                                        {{--'<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'--}}
+                                                                {{--);--}}
 
                                                                 $('#chefPendTotalAmount{{$uniqueComChef}}').append(
                                                                         '<div>Total Pending Payables for Vendor This Month</div>' +
@@ -1389,7 +1389,7 @@
                                                                     var pendDietAmount = valData[j].dietAmount;
 
                                                                     if(valData[j].status==0){
-                                                                        chefPendTotal +=valData[j].chefAmount;
+                                                                        chefPendTotal +=valData[j].amount;
                                                                         chefPendTabPay += pendAmount;
                                                                         chefPendTabChefPay += pendChefAmount;
                                                                         chefPendTabDietPay += pendDietAmount;
@@ -1587,10 +1587,10 @@
                                                             $('#paidMonthPicker{{$uniqueComChef}}').append(xPaid);
                                                             $('#cancelMonthPicker{{$uniqueComChef}}').append(xCancel);
 
-                                                            $('#chefAllTotalAmount{{$uniqueComChef}}').append(
-                                                                    '<div>Total Payables for Vendor This Month</div>' +
-                                                                    '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
-                                                            );
+                                                            {{--$('#chefAllTotalAmount{{$uniqueComChef}}').append(--}}
+                                                                    {{--'<div>Total Payables for Vendor This Month</div>' +--}}
+                                                                    {{--'<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'--}}
+                                                            {{--);--}}
 
                                                             $('#chefPendTotalAmount{{$uniqueComChef}}').append(
                                                                     '<div>Total Pending Payables for Vendor This Month</div>' +
