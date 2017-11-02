@@ -902,6 +902,10 @@
                                                                 var valData = JSON.parse(response);
                                                                 console.log(valData);
 
+                                                                var chefPendNumber = 0;
+                                                                var chefPaidNumber = 0;
+                                                                var chefCancelNumber = 0;
+
                                                                 var chefAllTotal = 0;
                                                                 var chefPendTotal = 0;
                                                                 var chefPaidTotal = 0;
@@ -1038,6 +1042,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
+                                                                            chefPendNumber += 1;
                                                                             chefPendTotal +=valData[j].amount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
@@ -1121,6 +1126,7 @@
                                                                         var paidDietAmount = valData[k].dietAmount;
 
                                                                         if(valData[k].status==0){
+                                                                            chefPaidNumber += 1;
                                                                             chefPaidTotal +=paidChefAmount;
                                                                             dietTotal += paidDietAmount;
                                                                             chefPaidTabPay += paidAmount;
@@ -1198,6 +1204,7 @@
                                                                 xCancel += '<tbody>';
                                                                 for(var l in valData){
                                                                     if(valData[l].status==1){
+                                                                        chefCancelNumber += 1;
                                                                         xCancel += '<tr>';
                                                                         xCancel += '<td>'+valData[l].id+'</td>';
                                                                         xCancel += '<td>'+valData[l].name+'</td>';
@@ -1243,6 +1250,19 @@
                                                                         {{--'<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'--}}
                                                                 {{--);--}}
 
+                                                                $('#chefPendNumber{{$uniqueComChef}}').append(
+                                                                        '<div>Total Pending Commissions This Month</div>' +
+                                                                        '<div>'+chefPendNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefPaidNumber{{$uniqueComChef}}').append(
+                                                                        '<div>Total Paid Commissions This Month</div>' +
+                                                                        '<div>'+chefPaidNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefCancelNumber{{$uniqueComChef}}').append(
+                                                                        '<div>Total Cancelled Commissions This Month</div>' +
+                                                                        '<div>'+chefCancelNumber+' Commissions</div>'
+                                                                );
+
                                                                 $('#chefPendTotalAmount{{$uniqueComChef}}').append(
                                                                         '<div>Total Pending Payables This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
@@ -1283,6 +1303,10 @@
                                                         }else{
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
+
+                                                            var chefPendNumber = 0;
+                                                            var chefPaidNumber = 0;
+                                                            var chefCancelNumber = 0;
 
                                                             var chefAllTotal = 0;
                                                             var chefPendTotal = 0;
@@ -1420,6 +1444,7 @@
                                                                     var pendDietAmount = valData[j].dietAmount;
 
                                                                     if(valData[j].status==0){
+                                                                        chefPendNumber += 1;
                                                                         chefPendTotal +=valData[j].amount;
                                                                         chefPendTabPay += pendAmount;
                                                                         chefPendTabChefPay += pendChefAmount;
@@ -1501,6 +1526,7 @@
                                                                     var paidDietAmount = valData[k].dietAmount;
 
                                                                     if(valData[k].status==0){
+                                                                        chefPaidNumber += 1;
                                                                         chefPaidTotal +=paidChefAmount;
                                                                         dietTotal += paidDietAmount;
                                                                         chefPaidTabPay += paidAmount;
@@ -1578,6 +1604,7 @@
                                                             xCancel += '<tbody>';
                                                             for(var l in valData){
                                                                 if(valData[l].status==1){
+                                                                    chefCancelNumber += 1;
                                                                     xCancel += '<tr>';
                                                                     xCancel += '<td>'+valData[l].id+'</td>';
                                                                     xCancel += '<td>'+valData[l].name+'</td>';
@@ -1622,6 +1649,19 @@
                                                                     {{--'<div>Total Payables for Vendor This Month</div>' +--}}
                                                                     {{--'<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'--}}
                                                             {{--);--}}
+
+                                                            $('#chefPendNumber{{$uniqueComChef}}').append(
+                                                                    '<div>Total Pending Commissions This Month</div>' +
+                                                                    '<div>'+chefPendNumber+' Commissions</div>'
+                                                            );
+                                                            $('#chefPaidNumber{{$uniqueComChef}}').append(
+                                                                    '<div>Total Paid Commissions This Month</div>' +
+                                                                    '<div>'+chefPaidNumber+' Commissions</div>'
+                                                            );
+                                                            $('#chefCancelNumber{{$uniqueComChef}}').append(
+                                                                    '<div>Total Cancelled Commissions This Month</div>' +
+                                                                    '<div>'+chefCancelNumber+' Commissions</div>'
+                                                            );
 
                                                             $('#chefPendTotalAmount{{$uniqueComChef}}').append(
                                                                     '<div>Total Pending Payables This Month</div>' +
