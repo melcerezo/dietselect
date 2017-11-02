@@ -83,6 +83,12 @@
                                                             <option value="3">Cancelled</option>
                                                         </select>
                                                     </div>
+                                                    <div id="chefPendNumber" class="col s12 m3 center">
+                                                    </div>
+                                                    <div id="chefPaidNumber" class="col s12 m3 center">
+                                                    </div>
+                                                    <div id="chefCancelNumber" class="col s12 m3 center">
+                                                    </div>
                                                 </div>
                                                 <div class="divider">
                                                 </div>
@@ -179,6 +185,9 @@
                                                         var changeMonth = monthChange(yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
+                                                            $('#chefPendNumber').empty();
+                                                            $('#chefPaidNumber').empty();
+                                                            $('#chefCancelNumber').empty();
                                                             $('#monthPicker').empty();
                                                             $('#pendMonthPicker').empty();
                                                             $('#paidMonthPicker').empty();
@@ -195,6 +204,10 @@
                                                             }else{
                                                                 var valData = JSON.parse(response);
                                                                 console.log(valData);
+
+                                                                var chefPendNumber = 0;
+                                                                var chefPaidNumber = 0;
+                                                                var chefCancelNumber = 0;
 
                                                                 var chefAllTotal = 0;
                                                                 var chefPendTotal = 0;
@@ -255,8 +268,8 @@
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
                                                                     x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].status==0){
+                                                                        x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                         if(valData[i].paid==0){
                                                                             x += '<td>PHP 0.00</td>';
                                                                             x += '<td>PHP 0.00</td>';
@@ -264,8 +277,9 @@
                                                                             x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
                                                                             x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
                                                                         }
+//                                                                        x += '<td>Paid</td>';
                                                                     }else{
-//                                                                        x += '<td>PHP 0.00</td>';
+                                                                        x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
 //                                                                        x += '<td>Cancelled</td>';
@@ -329,6 +343,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
+                                                                            chefPendNumber += 1;
                                                                             chefPendTotal +=valData[j].chefAmount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
@@ -410,6 +425,7 @@
                                                                         var paidDietAmount = valData[k].dietAmount;
 
                                                                         if(valData[k].status==0){
+                                                                            chefPaidNumber += 1;
                                                                             chefPaidTotal +=paidChefAmount;
                                                                             dietTotal += paidDietAmount;
                                                                             chefPaidTabPay += paidAmount;
@@ -487,6 +503,7 @@
                                                                 xCancel += '<tbody>';
                                                                 for(var l in valData){
                                                                     if(valData[l].status==1){
+                                                                        chefCancelNumber += 1;
                                                                         xCancel += '<tr>';
                                                                         xCancel += '<td>'+valData[l].id+'</td>';
                                                                         xCancel += '<td>'+valData[l].name+'</td>';
@@ -531,6 +548,19 @@
 //                                                                        '<div>Total Receivables for Vendor This Month</div>' +
 //                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
 //                                                                );
+
+                                                                $('#chefPendNumber').append(
+                                                                        '<div>Total Pending Commissions This Month</div>' +
+                                                                        '<div>'+chefPendNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefPaidNumber').append(
+                                                                        '<div>Total Paid Commissions This Month</div>' +
+                                                                        '<div>'+chefPaidNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefCancelNumber').append(
+                                                                        '<div>Total Cancelled Commissions This Month</div>' +
+                                                                        '<div>'+chefCancelNumber+' Commissions</div>'
+                                                                );
 
                                                                 $('#chefPendTotalAmount').append(
                                                                         '<div>Total Pending Receivables for Vendor This Month</div>' +
@@ -639,6 +669,9 @@
                                                         var changeMonth = monthChange(yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
+                                                            $('#chefPendNumber').empty();
+                                                            $('#chefPaidNumber').empty();
+                                                            $('#chefCancelNumber').empty();
                                                             $('#monthPicker').empty();
                                                             $('#pendMonthPicker').empty();
                                                             $('#paidMonthPicker').empty();
@@ -655,6 +688,10 @@
                                                             }else{
                                                                 var valData = JSON.parse(response);
                                                                 console.log(valData);
+
+                                                                var chefPendNumber = 0;
+                                                                var chefPaidNumber = 0;
+                                                                var chefCancelNumber = 0;
 
                                                                 var chefAllTotal = 0;
                                                                 var chefPendTotal = 0;
@@ -715,8 +752,8 @@
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
                                                                     x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].status==0){
+                                                                        x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                         if(valData[i].paid==0){
                                                                             x += '<td>PHP 0.00</td>';
                                                                             x += '<td>PHP 0.00</td>';
@@ -726,7 +763,7 @@
                                                                         }
 //                                                                        x += '<td>Paid</td>';
                                                                     }else{
-//                                                                        x += '<td>PHP 0.00</td>';
+                                                                        x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
 //                                                                        x += '<td>Cancelled</td>';
@@ -790,6 +827,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
+                                                                            chefPendNumber += 1;
                                                                             chefPendTotal +=valData[j].chefAmount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
@@ -871,6 +909,7 @@
                                                                         var paidDietAmount = valData[k].dietAmount;
 
                                                                         if(valData[k].status==0){
+                                                                            chefPaidNumber += 1;
                                                                             chefPaidTotal +=paidChefAmount;
                                                                             dietTotal += paidDietAmount;
                                                                             chefPaidTabPay += paidAmount;
@@ -948,6 +987,7 @@
                                                                 xCancel += '<tbody>';
                                                                 for(var l in valData){
                                                                     if(valData[l].status==1){
+                                                                        chefCancelNumber += 1;
                                                                         xCancel += '<tr>';
                                                                         xCancel += '<td>'+valData[l].id+'</td>';
                                                                         xCancel += '<td>'+valData[l].name+'</td>';
@@ -988,9 +1028,22 @@
                                                                 $('#paidMonthPicker').append(xPaid);
                                                                 $('#cancelMonthPicker').append(xCancel);
 
-                                                                $('#chefAllTotalAmount').append(
-                                                                        '<div>Total Receivables for Vendor This Month</div>' +
-                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+//                                                                $('#chefAllTotalAmount').append(
+//                                                                        '<div>Total Receivables for Vendor This Month</div>' +
+//                                                                        '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+//                                                                );
+
+                                                                $('#chefPendNumber').append(
+                                                                        '<div>Total Pending Commissions This Month</div>' +
+                                                                        '<div>'+chefPendNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefPaidNumber').append(
+                                                                        '<div>Total Paid Commissions This Month</div>' +
+                                                                        '<div>'+chefPaidNumber+' Commissions</div>'
+                                                                );
+                                                                $('#chefCancelNumber').append(
+                                                                        '<div>Total Cancelled Commissions This Month</div>' +
+                                                                        '<div>'+chefCancelNumber+' Commissions</div>'
                                                                 );
 
                                                                 $('#chefPendTotalAmount').append(
@@ -1017,6 +1070,9 @@
                                                     console.log(selectVal);
                                                     var changeMonth = monthChange(yearVal,selectVal);
                                                     changeMonth.done(function (response) {
+                                                        $('#chefPendNumber').empty();
+                                                        $('#chefPaidNumber').empty();
+                                                        $('#chefCancelNumber').empty();
                                                         $('#monthPicker').empty();
                                                         $('#pendMonthPicker').empty();
                                                         $('#paidMonthPicker').empty();
@@ -1033,6 +1089,10 @@
                                                         }else{
                                                             var valData = JSON.parse(response);
                                                             console.log(valData);
+
+                                                            var chefPendNumber = 0;
+                                                            var chefPaidNumber = 0;
+                                                            var chefCancelNumber = 0;
 
                                                             var chefAllTotal = 0;
                                                             var chefPendTotal = 0;
@@ -1071,7 +1131,7 @@
                                                             x += '<th>Date</th>';
                                                             x += '<th>Total Receivable</th>';
                                                             x += '<th>Receivable to Vendor</th>';
-                                                            x += '<th>Receivable to DietSelect</th>';
+                                                            x += '<th>Receivable to DietSelect(10%)</th>';
 //                                                            x += '<th>Order Status</th>';
                                                             x += '<th>Payment Status</th>';
                                                             x += '</tr>';
@@ -1095,14 +1155,20 @@
                                                                 x += '<td>'+valData[i].created_at+'</td>';
                                                                 x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                 if(valData[i].status==0){
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>Paid</td>';
+                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
+                                                                    if(valData[i].paid==0){
+                                                                        x += '<td>PHP 0.00</td>';
+                                                                        x += '<td>PHP 0.00</td>';
+                                                                    }else{
+                                                                        x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                        x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                    }
+//                                                                        x += '<td>Paid</td>';
                                                                 }else{
                                                                     x += '<td>PHP 0.00</td>';
                                                                     x += '<td>PHP 0.00</td>';
                                                                     x += '<td>PHP 0.00</td>';
-                                                                    x += '<td>Cancelled</td>';
+//                                                                        x += '<td>Cancelled</td>';
                                                                 }
                                                                 if(valData[i].status==0){
                                                                     if(valData[i].paid==0){
@@ -1150,8 +1216,8 @@
                                                             xPend += '<th>Date</th>';
                                                             xPend += '<th>Total Receivable</th>';
                                                             xPend += '<th>Receivable to Vendor</th>';
-                                                            xPend += '<th>Receivable to DietSelect</th>';
-                                                            xPend += '<th>Order Status</th>';
+                                                            xPend += '<th>Receivable to DietSelect(10%)</th>';
+//                                                            xPend += '<th>Order Status</th>';
                                                             xPend += '<th>Payment Status</th>';
                                                             xPend += '</tr>';
                                                             xPend += '</thead>';
@@ -1163,6 +1229,7 @@
                                                                     var pendDietAmount = valData[j].dietAmount;
 
                                                                     if(valData[j].status==0){
+                                                                        chefPendNumber += 1;
                                                                         chefPendTotal +=valData[j].chefAmount;
                                                                         chefPendTabPay += pendAmount;
                                                                         chefPendTabChefPay += pendChefAmount;
@@ -1175,14 +1242,14 @@
                                                                     xPend += '<td>'+valData[j].created_at+'</td>';
                                                                     if(valData[j].status==0){
                                                                         xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>Paid</td>';
-                                                                    }else{
+//                                                                        xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+//                                                                        xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+//                                                                        xPend += '<td>Paid</td>';
+//                                                                    }else{
+//                                                                        xPend += '<td>PHP 0.00</td>';
                                                                         xPend += '<td>PHP 0.00</td>';
                                                                         xPend += '<td>PHP 0.00</td>';
-                                                                        xPend += '<td>PHP 0.00</td>';
-                                                                        xPend += '<td>Cancelled</td>';
+//                                                                        xPend += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[j].status==0){
                                                                         if(valData[j].paid==0){
@@ -1231,8 +1298,8 @@
                                                             xPaid += '<th>Date</th>';
                                                             xPaid += '<th>Total Receivable</th>';
                                                             xPaid += '<th>Receivable to Vendor</th>';
-                                                            xPaid += '<th>Receivable to DietSelect</th>';
-                                                            xPaid += '<th>Order Status</th>';
+                                                            xPaid += '<th>Receivable to DietSelect(10%)</th>';
+//                                                            xPaid += '<th>Order Status</th>';
                                                             xPaid += '<th>Payment Status</th>';
                                                             xPaid += '</tr>';
                                                             xPaid += '</thead>';
@@ -1244,6 +1311,7 @@
                                                                     var paidDietAmount = valData[k].dietAmount;
 
                                                                     if(valData[k].status==0){
+                                                                        chefPaidNumber += 1;
                                                                         chefPaidTotal +=paidChefAmount;
                                                                         dietTotal += paidDietAmount;
                                                                         chefPaidTabPay += paidAmount;
@@ -1260,12 +1328,12 @@
                                                                         xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
                                                                         xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
                                                                         xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
-                                                                        xPaid += '<td>Paid</td>';
+//                                                                        xPaid += '<td>Paid</td>';
                                                                     }else{
                                                                         xPaid += '<td>PHP 0.00</td>';
                                                                         xPaid += '<td>PHP 0.00</td>';
                                                                         xPaid += '<td>PHP 0.00</td>';
-                                                                        xPaid += '<td>Cancelled</td>';
+//                                                                        xPaid += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[k].status==0){
                                                                         if(valData[k].paid==0){
@@ -1314,14 +1382,15 @@
                                                             xCancel += '<th>Date</th>';
                                                             xCancel += '<th>Total Receivable</th>';
                                                             xCancel += '<th>Receivable to Vendor</th>';
-                                                            xCancel += '<th>Receivable to DietSelect</th>';
-                                                            xCancel += '<th>Order Status</th>';
+                                                            xCancel += '<th>Receivable to DietSelect(10%)</th>';
+//                                                            xCancel += '<th>Order Status</th>';
                                                             xCancel += '<th>Payment Status</th>';
                                                             xCancel += '</tr>';
                                                             xCancel += '</thead>';
                                                             xCancel += '<tbody>';
                                                             for(var l in valData){
                                                                 if(valData[l].status==1){
+                                                                    chefCancelNumber += 1;
                                                                     xCancel += '<tr>';
                                                                     xCancel += '<td>'+valData[l].id+'</td>';
                                                                     xCancel += '<td>'+valData[l].name+'</td>';
@@ -1329,7 +1398,7 @@
                                                                     xCancel += '<td>PHP 0.00</td>';
                                                                     xCancel += '<td>PHP 0.00</td>';
                                                                     xCancel += '<td>PHP 0.00</td>';
-                                                                    xCancel += '<td>Cancelled</td>';
+//                                                                    xCancel += '<td>Cancelled</td>';
                                                                     if(valData[l].status==0){
                                                                         if(valData[l].paid==0){
                                                                             xCancel += '<td>Pending</td>';
@@ -1362,9 +1431,22 @@
                                                             $('#paidMonthPicker').append(xPaid);
                                                             $('#cancelMonthPicker').append(xCancel);
 
-                                                            $('#chefAllTotalAmount').append(
-                                                                    '<div>Total Receivables for Vendor This Month</div>' +
-                                                                    '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+//                                                            $('#chefAllTotalAmount').append(
+//                                                                    '<div>Total Receivables for Vendor This Month</div>' +
+//                                                                    '<div>PHP '+addCommas(chefAllTotal.toFixed(2))+'</div>'
+//                                                            );
+
+                                                            $('#chefPendNumber').append(
+                                                                    '<div>Total Pending Commissions This Month</div>' +
+                                                                    '<div>'+chefPendNumber+' Commissions</div>'
+                                                            );
+                                                            $('#chefPaidNumber').append(
+                                                                    '<div>Total Paid Commissions This Month</div>' +
+                                                                    '<div>'+chefPaidNumber+' Commissions</div>'
+                                                            );
+                                                            $('#chefCancelNumber').append(
+                                                                    '<div>Total Cancelled Commissions This Month</div>' +
+                                                                    '<div>'+chefCancelNumber+' Commissions</div>'
                                                             );
 
                                                             $('#chefPendTotalAmount').append(
