@@ -10,7 +10,7 @@
     @if(count($mealPlans)==0)
         <div>
             <h2>This Meal Plan is Empty!</h2>
-            @if($orderItem->is_cancelled==0)
+            @if($orderItem->is_cancelled==0 && $orderItem->order->is_paid==0)
                 @if($orderItem->is_delivered == 0)
                     <div>
                         <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
@@ -388,7 +388,7 @@
 
                                 </li>
                             </ul>
-                            @if($orderItem->is_cancelled==0)
+                            @if($orderItem->is_cancelled==0 && $orderItem->order->is_paid==0)
                                 @if($orderItem->is_delivered == 0)
                                     <div>
                                         <button data-target="cancelModal" class="btn red waves-effect waves-light modal-trigger">Cancel</button>
