@@ -471,8 +471,8 @@
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
                                                                     x += '<td>'+valData[i].created_at+'</td>';
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].status==0){
+                                                                        x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                         if(valData[i].paid==0){
                                                                             x += '<td>PHP 0.00</td>';
                                                                             x += '<td>PHP 0.00</td>';
@@ -482,7 +482,7 @@
                                                                         }
 //                                                                        x += '<td>Paid</td>';
                                                                     }else{
-//                                                                        x += '<td>PHP 0.00</td>';
+                                                                        x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
 //                                                                        x += '<td>Cancelled</td>';
