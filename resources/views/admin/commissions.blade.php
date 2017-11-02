@@ -546,7 +546,7 @@
                                                                         var pendDietAmount = valData[j].dietAmount;
 
                                                                         if(valData[j].status==0){
-                                                                            chefPendTotal +=valData[j].pendAmount;
+                                                                            chefPendTotal +=valData[j].amount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
                                                                             chefPendTabDietPay += pendDietAmount;
