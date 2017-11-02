@@ -302,8 +302,8 @@
                                                 <div class="divider">
                                                 </div>
                                                 <div class="row center" style="margin-top:5px;">
-                                                    <div id="chefAllTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
-                                                    </div>
+                                                    {{--<div id="chefAllTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">--}}
+                                                    {{--</div>--}}
                                                     <div id="chefPendTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
                                                     </div>
                                                     <div id="chefPaidTotalAmount{{$uniqueComChef}}" class="col s12 m3 center">
