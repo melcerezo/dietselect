@@ -754,7 +754,7 @@
                                                                 {{--);--}}
 
                                                                 $('#chefPendTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Total Pending Payables for Vendor This Month</div>' +
+                                                                        '<div>Total Pending Payables This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
@@ -1219,7 +1219,7 @@
                                                                 {{--);--}}
 
                                                                 $('#chefPendTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Total Pending Payables for Vendor This Month</div>' +
+                                                                        '<div>Total Pending Payables This Month</div>' +
                                                                         '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
@@ -1599,7 +1599,7 @@
                                                             {{--);--}}
 
                                                             $('#chefPendTotalAmount{{$uniqueComChef}}').append(
-                                                                    '<div>Total Pending Payables for Vendor This Month</div>' +
+                                                                    '<div>Total Pending Payables This Month</div>' +
                                                                     '<div>PHP '+addCommas(chefPendTotal.toFixed(2))+'</div>'
                                                             );
                                                             $('#chefPaidTotalAmount{{$uniqueComChef}}').append(
