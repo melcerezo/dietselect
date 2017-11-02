@@ -258,11 +258,13 @@
                                                                     var dietAmount = valData[i].dietAmount;
 
                                                                     if(valData[i].status==0){
+                                                                        if(valData[i].paid==1){
+                                                                            chefAllTabChefPay += chefAmount;
+                                                                            chefAllTabDietPay += dietAmount;
+                                                                        }
                                                                         chefAllTabPay += amount;
-                                                                        chefAllTabChefPay += chefAmount;
-                                                                        chefAllTabDietPay += dietAmount;
-                                                                        chefAllTotal += chefAmount;
                                                                     }
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -742,11 +744,13 @@
                                                                     var dietAmount = valData[i].dietAmount;
 
                                                                     if(valData[i].status==0){
+                                                                        if(valData[i].paid==1){
+                                                                            chefAllTabChefPay += chefAmount;
+                                                                            chefAllTabDietPay += dietAmount;
+                                                                        }
                                                                         chefAllTabPay += amount;
-                                                                        chefAllTabChefPay += chefAmount;
-                                                                        chefAllTabDietPay += dietAmount;
-                                                                        chefAllTotal += chefAmount;
                                                                     }
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
@@ -1143,11 +1147,13 @@
                                                                 var dietAmount = valData[i].dietAmount;
 
                                                                 if(valData[i].status==0){
+                                                                    if(valData[i].paid==1){
+                                                                        chefAllTabChefPay += chefAmount;
+                                                                        chefAllTabDietPay += dietAmount;
+                                                                    }
                                                                     chefAllTabPay += amount;
-                                                                    chefAllTabChefPay += chefAmount;
-                                                                    chefAllTabDietPay += dietAmount;
-                                                                    chefAllTotal += chefAmount;
                                                                 }
+                                                                chefAllTotal += chefAmount;
 
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
