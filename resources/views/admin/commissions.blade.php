@@ -925,10 +925,12 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    if(valData[i].status==0 && valData[i].paid==1){
+                                                                    if(valData[i].status==0){
+                                                                        if(valData[i].paid==1){
+                                                                            chefAllTabChefPay += chefAmount;
+                                                                            chefAllTabDietPay += dietAmount;
+                                                                        }
                                                                         chefAllTabPay += amount;
-                                                                        chefAllTabChefPay += chefAmount;
-                                                                        chefAllTabDietPay += dietAmount;
                                                                     }
                                                                     chefAllTotal += chefAmount;
 
@@ -1305,10 +1307,12 @@
                                                                 var chefAmount = valData[i].chefAmount;
                                                                 var dietAmount = valData[i].dietAmount;
 
-                                                                if(valData[i].status==0 && valData[i].paid==1){
+                                                                if(valData[i].status==0){
+                                                                    if(valData[i].paid==1){
+                                                                        chefAllTabChefPay += chefAmount;
+                                                                        chefAllTabDietPay += dietAmount;
+                                                                    }
                                                                     chefAllTabPay += amount;
-                                                                    chefAllTabChefPay += chefAmount;
-                                                                    chefAllTabDietPay += dietAmount;
                                                                 }
                                                                 chefAllTotal += chefAmount;
 
