@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Foodie;
 
 use App\Chat;
 use App\ChefCustomizedMeal;
+use App\Commission;
 use App\CustomPlan;
 use App\Mail\CancelFoodieSideChef;
 use App\Mail\CancelFoodieSideFoodie;
@@ -656,6 +657,13 @@ class FoodieOrderPlanController extends Controller
             $orderItem->quantity = $cartItem->qty;
             $orderItem->price = $cartItem->price;
             $orderItem->save();
+
+            $com = new Commission();
+            $com->chef_id = $cartItem->options->chef;
+            $com->order_item_id =$orderItem->id;
+            $com->amount = $orderItem->price * $orderItem->quantity;
+            $com->save();
+
             $mailNameHTML = $cartItem->name;
             $mailQtyHTML = $cartItem->qty;
             $mailPriceHTML = $cartItem->price;

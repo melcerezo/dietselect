@@ -235,15 +235,15 @@
                     <button class="disabled btn">Cancel</button>
                 @endif
             </div>
-            @if($order->is_cancelled==0)
-                @unless(!($pendComCount))
-                    @if($comCount != $orderItems->count())
-                        <div class="col s12 m3">
-                            <button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>
-                        </div>
-                    @endif
-                @endunless
-            @endif
+            {{--@if($order->is_cancelled==0)--}}
+                {{--@unless(!($pendComCount))--}}
+                    {{--@if($comCount != $orderItems->count())--}}
+                        {{--<div class="col s12 m3">--}}
+                            {{--<button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>--}}
+                        {{--</div>--}}
+                    {{--@endif--}}
+                {{--@endunless--}}
+            {{--@endif--}}
         </div>
     </div>
     <div id="commissionModal" class="modal">

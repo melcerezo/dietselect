@@ -266,10 +266,8 @@ class AddMoneyController extends Controller{
                         'type'=>'Customized');
                 }
 
-                $com = new Commission();
-                $com->chef_id = $ratingChef;
-                $com->order_item_id =$orderItem->id;
-                $com->amount = $price * $orderItem->quantity;
+                $com = $orderItem->commission;
+                $com->paid = 1;
                 $com->save();
 
 
