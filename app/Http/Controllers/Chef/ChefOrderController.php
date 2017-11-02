@@ -659,6 +659,8 @@ class ChefOrderController extends Controller
             }
             $orderItem->save();
 
+
+
             if(!($order->order_item()->where('is_cancelled','=',0)->count())){
                 $order->is_cancelled=1;
 //                if($reason == 0){

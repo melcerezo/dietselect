@@ -450,7 +450,7 @@
                                                                 x += '<th>Total Payable</th>';
                                                                 x += '<th>Payable to Vendor</th>';
                                                                 x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
+//                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
                                                                 x += '</thead>';
@@ -460,27 +460,32 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    if(valData[i].status==0){
+                                                                    if(valData[i].status==0 && valData[i].paid==1){
                                                                         chefAllTabPay += amount;
                                                                         chefAllTabChefPay += chefAmount;
                                                                         chefAllTabDietPay += dietAmount;
-                                                                        chefAllTotal += chefAmount;
                                                                     }
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
                                                                     x += '<td>'+valData[i].created_at+'</td>';
+                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].status==0){
-                                                                        x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                        x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                        x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                        x += '<td>Paid</td>';
+                                                                        if(valData[i].paid==0){
+                                                                            x += '<td>PHP 0.00</td>';
+                                                                            x += '<td>PHP 0.00</td>';
+                                                                        }else{
+                                                                            x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                            x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                        }
+//                                                                        x += '<td>Paid</td>';
                                                                     }else{
+//                                                                        x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
-                                                                        x += '<td>PHP 0.00</td>';
-                                                                        x += '<td>Cancelled</td>';
+//                                                                        x += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[i].status==0){
                                                                         if(valData[i].paid==0){
@@ -553,14 +558,14 @@
                                                                         xPend += '<td>'+valData[j].created_at+'</td>';
                                                                         if(valData[j].status==0){
                                                                             xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>Paid</td>';
-                                                                        }else{
+//                                                                            xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+//                                                                            xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+//                                                                            xPend += '<td>Paid</td>';
+//                                                                        }else{
+//                                                                            xPend += '<td>PHP 0.00</td>';
                                                                             xPend += '<td>PHP 0.00</td>';
                                                                             xPend += '<td>PHP 0.00</td>';
-                                                                            xPend += '<td>PHP 0.00</td>';
-                                                                            xPend += '<td>Cancelled</td>';
+//                                                                            xPend += '<td>Cancelled</td>';
                                                                         }
                                                                         if(valData[j].status==0){
                                                                             if(valData[j].paid==0){
@@ -579,8 +584,10 @@
                                                                 xPend +='<td></td>';
                                                                 xPend +='<td>Total:</td>';
                                                                 xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+//                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+//                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '</tr>';
@@ -610,7 +617,7 @@
                                                                 xPaid += '<th>Total Payable</th>';
                                                                 xPaid += '<th>Payable to Vendor</th>';
                                                                 xPaid += '<th>Payable to DietSelect</th>';
-                                                                xPaid += '<th>Order Status</th>';
+//                                                                xPaid += '<th>Order Status</th>';
                                                                 xPaid += '<th>Payment Status</th>';
                                                                 xPaid += '</tr>';
                                                                 xPaid += '</thead>';
@@ -637,12 +644,12 @@
                                                                             xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
                                                                             xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
                                                                             xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
-                                                                            xPaid += '<td>Paid</td>';
+//                                                                            xPaid += '<td>Paid</td>';
                                                                         }else{
                                                                             xPaid += '<td>PHP 0.00</td>';
                                                                             xPaid += '<td>PHP 0.00</td>';
                                                                             xPaid += '<td>PHP 0.00</td>';
-                                                                            xPaid += '<td>Cancelled</td>';
+//                                                                            xPaid += '<td>Cancelled</td>';
                                                                         }
                                                                         if(valData[k].status==0){
                                                                             if(valData[k].paid==0){
@@ -906,7 +913,7 @@
                                                                 x += '<th>Total Payable</th>';
                                                                 x += '<th>Payable to Vendor</th>';
                                                                 x += '<th>Payable to DietSelect</th>';
-                                                                x += '<th>Order Status</th>';
+//                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
                                                                 x += '</thead>';
@@ -916,27 +923,32 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    if(valData[i].status==0){
+                                                                    if(valData[i].status==0 && valData[i].paid==1){
                                                                         chefAllTabPay += amount;
                                                                         chefAllTabChefPay += chefAmount;
                                                                         chefAllTabDietPay += dietAmount;
-                                                                        chefAllTotal += chefAmount;
                                                                     }
+                                                                    chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
                                                                     x += '<td>'+valData[i].id+'</td>';
                                                                     x += '<td>'+valData[i].name+'</td>';
                                                                     x += '<td>'+valData[i].created_at+'</td>';
+                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].status==0){
-                                                                        x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                        x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                        x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                        x += '<td>Paid</td>';
+                                                                        if(valData[i].paid==0){
+                                                                            x += '<td>PHP 0.00</td>';
+                                                                            x += '<td>PHP 0.00</td>';
+                                                                        }else{
+                                                                            x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                            x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                        }
+//                                                                        x += '<td>Paid</td>';
                                                                     }else{
+//                                                                        x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
                                                                         x += '<td>PHP 0.00</td>';
-                                                                        x += '<td>PHP 0.00</td>';
-                                                                        x += '<td>Cancelled</td>';
+//                                                                        x += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[i].status==0){
                                                                         if(valData[i].paid==0){
@@ -985,7 +997,7 @@
                                                                 xPend += '<th>Total Payable</th>';
                                                                 xPend += '<th>Payable to Vendor</th>';
                                                                 xPend += '<th>Payable to DietSelect</th>';
-                                                                xPend += '<th>Order Status</th>';
+//                                                                xPend += '<th>Order Status</th>';
                                                                 xPend += '<th>Payment Status</th>';
                                                                 xPend += '</tr>';
                                                                 xPend += '</thead>';
@@ -1009,14 +1021,14 @@
                                                                         xPend += '<td>'+valData[j].created_at+'</td>';
                                                                         if(valData[j].status==0){
                                                                             xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
-                                                                            xPend += '<td>Paid</td>';
-                                                                        }else{
+//                                                                            xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+//                                                                            xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+//                                                                            xPend += '<td>Paid</td>';
+//                                                                        }else{
+//                                                                            xPend += '<td>PHP 0.00</td>';
                                                                             xPend += '<td>PHP 0.00</td>';
                                                                             xPend += '<td>PHP 0.00</td>';
-                                                                            xPend += '<td>PHP 0.00</td>';
-                                                                            xPend += '<td>Cancelled</td>';
+//                                                                            xPend += '<td>Cancelled</td>';
                                                                         }
                                                                         if(valData[j].status==0){
                                                                             if(valData[j].paid==0){
@@ -1035,8 +1047,10 @@
                                                                 xPend +='<td></td>';
                                                                 xPend +='<td>Total:</td>';
                                                                 xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+//                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+//                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '</tr>';
@@ -1066,7 +1080,7 @@
                                                                 xPaid += '<th>Total Payable</th>';
                                                                 xPaid += '<th>Payable to Vendor</th>';
                                                                 xPaid += '<th>Payable to DietSelect</th>';
-                                                                xPaid += '<th>Order Status</th>';
+//                                                                xPaid += '<th>Order Status</th>';
                                                                 xPaid += '<th>Payment Status</th>';
                                                                 xPaid += '</tr>';
                                                                 xPaid += '</thead>';
@@ -1093,12 +1107,12 @@
                                                                             xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
                                                                             xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
                                                                             xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
-                                                                            xPaid += '<td>Paid</td>';
+//                                                                            xPaid += '<td>Paid</td>';
                                                                         }else{
                                                                             xPaid += '<td>PHP 0.00</td>';
                                                                             xPaid += '<td>PHP 0.00</td>';
                                                                             xPaid += '<td>PHP 0.00</td>';
-                                                                            xPaid += '<td>Cancelled</td>';
+//                                                                            xPaid += '<td>Cancelled</td>';
                                                                         }
                                                                         if(valData[k].status==0){
                                                                             if(valData[k].paid==0){
@@ -1279,7 +1293,7 @@
                                                             x += '<th>Total Payable</th>';
                                                             x += '<th>Payable to Vendor</th>';
                                                             x += '<th>Payable to DietSelect</th>';
-                                                            x += '<th>Order Status</th>';
+//                                                                x += '<th>Order Status</th>';
                                                             x += '<th>Payment Status</th>';
                                                             x += '</tr>';
                                                             x += '</thead>';
@@ -1289,27 +1303,32 @@
                                                                 var chefAmount = valData[i].chefAmount;
                                                                 var dietAmount = valData[i].dietAmount;
 
-                                                                if(valData[i].status==0){
+                                                                if(valData[i].status==0 && valData[i].paid==1){
                                                                     chefAllTabPay += amount;
                                                                     chefAllTabChefPay += chefAmount;
                                                                     chefAllTabDietPay += dietAmount;
-                                                                    chefAllTotal += chefAmount;
                                                                 }
+                                                                chefAllTotal += chefAmount;
 
                                                                 x += '<tr>';
                                                                 x += '<td>'+valData[i].id+'</td>';
                                                                 x += '<td>'+valData[i].name+'</td>';
                                                                 x += '<td>'+valData[i].created_at+'</td>';
+                                                                x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                 if(valData[i].status==0){
-                                                                    x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
-                                                                    x += '<td>Paid</td>';
+                                                                    if(valData[i].paid==0){
+                                                                        x += '<td>PHP 0.00</td>';
+                                                                        x += '<td>PHP 0.00</td>';
+                                                                    }else{
+                                                                        x += '<td>PHP '+addCommas(chefAmount.toFixed(2))+'</td>';
+                                                                        x += '<td>PHP '+addCommas(dietAmount.toFixed(2))+'</td>';
+                                                                    }
+//                                                                        x += '<td>Paid</td>';
                                                                 }else{
+//                                                                        x += '<td>PHP 0.00</td>';
                                                                     x += '<td>PHP 0.00</td>';
                                                                     x += '<td>PHP 0.00</td>';
-                                                                    x += '<td>PHP 0.00</td>';
-                                                                    x += '<td>Cancelled</td>';
+//                                                                        x += '<td>Cancelled</td>';
                                                                 }
                                                                 if(valData[i].status==0){
                                                                     if(valData[i].paid==0){
@@ -1358,7 +1377,7 @@
                                                             xPend += '<th>Total Payable</th>';
                                                             xPend += '<th>Payable to Vendor</th>';
                                                             xPend += '<th>Payable to DietSelect</th>';
-                                                            xPend += '<th>Order Status</th>';
+//                                                            xPend += '<th>Order Status</th>';
                                                             xPend += '<th>Payment Status</th>';
                                                             xPend += '</tr>';
                                                             xPend += '</thead>';
@@ -1382,14 +1401,14 @@
                                                                     xPend += '<td>'+valData[j].created_at+'</td>';
                                                                     if(valData[j].status==0){
                                                                         xPend += '<td>PHP '+addCommas(pendAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
-                                                                        xPend += '<td>Paid</td>';
-                                                                    }else{
+//                                                                        xPend += '<td>PHP '+addCommas(pendChefAmount.toFixed(2))+'</td>';
+//                                                                        xPend += '<td>PHP '+addCommas(pendDietAmount.toFixed(2))+'</td>';
+//                                                                        xPend += '<td>Paid</td>';
+//                                                                    }else{
+//                                                                        xPend += '<td>PHP 0.00</td>';
                                                                         xPend += '<td>PHP 0.00</td>';
                                                                         xPend += '<td>PHP 0.00</td>';
-                                                                        xPend += '<td>PHP 0.00</td>';
-                                                                        xPend += '<td>Cancelled</td>';
+//                                                                        xPend += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[j].status==0){
                                                                         if(valData[j].paid==0){
@@ -1408,8 +1427,8 @@
                                                             xPend +='<td></td>';
                                                             xPend +='<td>Total:</td>';
                                                             xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                            xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                            xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                            xPend += '<td>PHP 0.00</td>';
+                                                            xPend += '<td>PHP 0.00</td>';
                                                             xPend += '<td></td>';
                                                             xPend += '<td></td>';
                                                             xPend += '</tr>';
@@ -1439,7 +1458,7 @@
                                                             xPaid += '<th>Total Payable</th>';
                                                             xPaid += '<th>Payable to Vendor</th>';
                                                             xPaid += '<th>Payable to DietSelect</th>';
-                                                            xPaid += '<th>Order Status</th>';
+//                                                            xPaid += '<th>Order Status</th>';
                                                             xPaid += '<th>Payment Status</th>';
                                                             xPaid += '</tr>';
                                                             xPaid += '</thead>';
@@ -1466,12 +1485,12 @@
                                                                         xPaid += '<td>PHP '+addCommas(paidAmount.toFixed(2))+'</td>';
                                                                         xPaid += '<td>PHP '+addCommas(paidChefAmount.toFixed(2))+'</td>';
                                                                         xPaid += '<td>PHP '+addCommas(paidDietAmount.toFixed(2))+'</td>';
-                                                                        xPaid += '<td>Paid</td>';
+//                                                                        xPaid += '<td>Paid</td>';
                                                                     }else{
                                                                         xPaid += '<td>PHP 0.00</td>';
                                                                         xPaid += '<td>PHP 0.00</td>';
                                                                         xPaid += '<td>PHP 0.00</td>';
-                                                                        xPaid += '<td>Cancelled</td>';
+//                                                                        xPaid += '<td>Cancelled</td>';
                                                                     }
                                                                     if(valData[k].status==0){
                                                                         if(valData[k].paid==0){
