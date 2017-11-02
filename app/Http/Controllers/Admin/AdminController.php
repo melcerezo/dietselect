@@ -686,9 +686,11 @@ class AdminController extends Controller
             $orderAddress="none";
         }
         $comCount = 0;
+        $pendComCount = false;
         foreach($orderItems as $orderItem){
             $com = Commission::where('order_item_id','=',$orderItem->id)->first();
             if($com!=null){
+                $pendComCount = true;
                 if($com->paid == 1){
                     $comCount += 1;
                 }
@@ -729,7 +731,8 @@ class AdminController extends Controller
             'orderItemArray'=>$orderItemArray,
             'orderAddress'=>$orderAddress,
             'notifications'=>$notification,
-            'comCount'=>$comCount
+            'comCount'=>$comCount,
+            'pendComCount'=>$pendComCount
         ]);
     }
 
