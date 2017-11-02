@@ -1153,7 +1153,6 @@
                                                                 x += '<td>'+valData[i].id+'</td>';
                                                                 x += '<td>'+valData[i].name+'</td>';
                                                                 x += '<td>'+valData[i].created_at+'</td>';
-                                                                x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                 if(valData[i].status==0){
                                                                     x += '<td>PHP '+addCommas(amount.toFixed(2))+'</td>';
                                                                     if(valData[i].paid==0){
