@@ -400,6 +400,9 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
+                                                            $('#chefPendNumber{{$uniqueComChef}}').empty();
+                                                            $('#chefPaidNumber{{$uniqueComChef}}').empty();
+                                                            $('#chefCancelNumber{{$uniqueComChef}}').empty();
                                                             $('#monthPicker{{$uniqueComChef}}').empty();
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
@@ -885,6 +888,9 @@
                                                         var changeMonth = monthChange('{{$uniqueComChef}}',yearVal,selectVal);
 
                                                         changeMonth.done(function (response) {
+                                                            $('#chefPendNumber{{$uniqueComChef}}').empty();
+                                                            $('#chefPaidNumber{{$uniqueComChef}}').empty();
+                                                            $('#chefCancelNumber{{$uniqueComChef}}').empty();
                                                             $('#monthPicker{{$uniqueComChef}}').empty();
                                                             $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                             $('#paidMonthPicker{{$uniqueComChef}}').empty();
@@ -1287,6 +1293,9 @@
                                                     console.log(selectVal);
                                                     var changeMonth = monthChange('{{$uniqueComChef}}',yearVal,selectVal);
                                                     changeMonth.done(function (response) {
+                                                        $('#chefPendNumber{{$uniqueComChef}}').empty();
+                                                        $('#chefPaidNumber{{$uniqueComChef}}').empty();
+                                                        $('#chefCancelNumber{{$uniqueComChef}}').empty();
                                                         $('#monthPicker{{$uniqueComChef}}').empty();
                                                         $('#pendMonthPicker{{$uniqueComChef}}').empty();
                                                         $('#paidMonthPicker{{$uniqueComChef}}').empty();
