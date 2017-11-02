@@ -246,7 +246,7 @@
                                                                 x += '<th>Date</th>';
                                                                 x += '<th>Total Receivable</th>';
                                                                 x += '<th>Receivable to Vendor</th>';
-                                                                x += '<th>Receivable to DietSelect</th>';
+                                                                x += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
@@ -330,7 +330,7 @@
                                                                 xPend += '<th>Date</th>';
                                                                 xPend += '<th>Total Receivable</th>';
                                                                 xPend += '<th>Receivable to Vendor</th>';
-                                                                xPend += '<th>Receivable to DietSelect</th>';
+                                                                xPend += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                xPend += '<th>Order Status</th>';
                                                                 xPend += '<th>Payment Status</th>';
                                                                 xPend += '</tr>';
@@ -344,7 +344,7 @@
 
                                                                         if(valData[j].status==0){
                                                                             chefPendNumber += 1;
-                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTotal +=valData[j].amount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
                                                                             chefPendTabDietPay += pendDietAmount;
@@ -412,7 +412,7 @@
                                                                 xPaid += '<th>Date</th>';
                                                                 xPaid += '<th>Total Receivable</th>';
                                                                 xPaid += '<th>Receivable to Vendor</th>';
-                                                                xPaid += '<th>Receivable to DietSelect</th>';
+                                                                xPaid += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                xPaid += '<th>Order Status</th>';
                                                                 xPaid += '<th>Payment Status</th>';
                                                                 xPaid += '</tr>';
@@ -495,7 +495,7 @@
                                                                 xCancel += '<th>Date</th>';
                                                                 xCancel += '<th>Total Receivable</th>';
                                                                 xCancel += '<th>Receivable to Vendor</th>';
-                                                                xCancel += '<th>Receivable to DietSelect</th>';
+                                                                xCancel += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                xCancel += '<th>Order Status</th>';
                                                                 xCancel += '<th>Payment Status</th>';
                                                                 xCancel += '</tr>';
@@ -730,7 +730,7 @@
                                                                 x += '<th>Date</th>';
                                                                 x += '<th>Total Receivable</th>';
                                                                 x += '<th>Receivable to Vendor</th>';
-                                                                x += '<th>Receivable to DietSelect</th>';
+                                                                x += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
@@ -814,7 +814,7 @@
                                                                 xPend += '<th>Date</th>';
                                                                 xPend += '<th>Total Receivable</th>';
                                                                 xPend += '<th>Receivable to Vendor</th>';
-                                                                xPend += '<th>Receivable to DietSelect</th>';
+                                                                xPend += '<th>Receivable to DietSelect(10%)</th>';
 //                                                                xPend += '<th>Order Status</th>';
                                                                 xPend += '<th>Payment Status</th>';
                                                                 xPend += '</tr>';
@@ -828,7 +828,7 @@
 
                                                                         if(valData[j].status==0){
                                                                             chefPendNumber += 1;
-                                                                            chefPendTotal +=valData[j].chefAmount;
+                                                                            chefPendTotal +=valData[j].amount;
                                                                             chefPendTabPay += pendAmount;
                                                                             chefPendTabChefPay += pendChefAmount;
                                                                             chefPendTabDietPay += pendDietAmount;
@@ -1230,7 +1230,7 @@
 
                                                                     if(valData[j].status==0){
                                                                         chefPendNumber += 1;
-                                                                        chefPendTotal +=valData[j].chefAmount;
+                                                                        chefPendTotal +=valData[j].amount;
                                                                         chefPendTabPay += pendAmount;
                                                                         chefPendTabChefPay += pendChefAmount;
                                                                         chefPendTabDietPay += pendDietAmount;
