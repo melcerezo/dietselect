@@ -382,8 +382,8 @@
                                                                 xPend +='<td></td>';
                                                                 xPend +='<td>Total:</td>';
                                                                 xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '</tr>';
@@ -866,8 +866,8 @@
                                                                 xPend +='<td></td>';
                                                                 xPend +='<td>Total:</td>';
                                                                 xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                                xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
+                                                                xPend += '<td>PHP 0.00</td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '<td></td>';
                                                                 xPend += '</tr>';
@@ -1268,8 +1268,8 @@
                                                             xPend +='<td></td>';
                                                             xPend +='<td>Total:</td>';
                                                             xPend += '<td>PHP '+addCommas(chefPendTabPay.toFixed(2))+'</td>';
-                                                            xPend += '<td>PHP '+addCommas(chefPendTabChefPay.toFixed(2))+'</td>';
-                                                            xPend += '<td>PHP '+addCommas(chefPendTabDietPay.toFixed(2))+'</td>';
+                                                            xPend += '<td>PHP 0.00</td>';
+                                                            xPend += '<td>PHP 0.00</td>';
                                                             xPend += '<td></td>';
                                                             xPend += '<td></td>';
                                                             xPend += '</tr>';
