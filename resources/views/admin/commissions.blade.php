@@ -449,7 +449,7 @@
                                                                 x += '<th>Date</th>';
                                                                 x += '<th>Total Payable</th>';
                                                                 x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
+                                                                x += '<th>Payable to DietSelect(10%)</th>';
 //                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
@@ -535,8 +535,8 @@
                                                                 xPend += '<th>Date</th>';
                                                                 xPend += '<th>Total Payable</th>';
                                                                 xPend += '<th>Payable to Vendor</th>';
-                                                                xPend += '<th>Payable to DietSelect</th>';
-                                                                xPend += '<th>Order Status</th>';
+                                                                xPend += '<th>Payable to DietSelect(10%)</th>';
+//                                                                xPend += '<th>Order Status</th>';
                                                                 xPend += '<th>Payment Status</th>';
                                                                 xPend += '</tr>';
                                                                 xPend += '</thead>';
@@ -618,7 +618,7 @@
                                                                 xPaid += '<th>Date</th>';
                                                                 xPaid += '<th>Total Payable</th>';
                                                                 xPaid += '<th>Payable to Vendor</th>';
-                                                                xPaid += '<th>Payable to DietSelect</th>';
+                                                                xPaid += '<th>Payable to DietSelect(10%)</th>';
 //                                                                xPaid += '<th>Order Status</th>';
                                                                 xPaid += '<th>Payment Status</th>';
                                                                 xPaid += '</tr>';
@@ -700,8 +700,8 @@
                                                                 xCancel += '<th>Date</th>';
                                                                 xCancel += '<th>Total Payable</th>';
                                                                 xCancel += '<th>Payable to Vendor</th>';
-                                                                xCancel += '<th>Payable to DietSelect</th>';
-                                                                xCancel += '<th>Order Status</th>';
+                                                                xCancel += '<th>Payable to DietSelect(10%)</th>';
+//                                                                xCancel += '<th>Order Status</th>';
                                                                 xCancel += '<th>Payment Status</th>';
                                                                 xCancel += '</tr>';
                                                                 xCancel += '</thead>';
@@ -715,7 +715,7 @@
                                                                         xCancel += '<td>PHP 0.00</td>';
                                                                         xCancel += '<td>PHP 0.00</td>';
                                                                         xCancel += '<td>PHP 0.00</td>';
-                                                                        xCancel += '<td>Cancelled</td>';
+//                                                                        xCancel += '<td>Cancelled</td>';
                                                                         if(valData[l].status==0){
                                                                             if(valData[l].paid==0){
                                                                                 xCancel += '<td>Pending</td>';
@@ -762,7 +762,7 @@
                                                                         '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Receivables for DietSelect This Month</div>' +
+                                                                        '<div>Receivables for DietSelect This Month(10%)</div>' +
                                                                         '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                                 );
 
@@ -914,7 +914,7 @@
                                                                 x += '<th>Date</th>';
                                                                 x += '<th>Total Payable</th>';
                                                                 x += '<th>Payable to Vendor</th>';
-                                                                x += '<th>Payable to DietSelect</th>';
+                                                                x += '<th>Payable to DietSelect(10%)</th>';
 //                                                                x += '<th>Order Status</th>';
                                                                 x += '<th>Payment Status</th>';
                                                                 x += '</tr>';
@@ -1000,7 +1000,7 @@
                                                                 xPend += '<th>Date</th>';
                                                                 xPend += '<th>Total Payable</th>';
                                                                 xPend += '<th>Payable to Vendor</th>';
-                                                                xPend += '<th>Payable to DietSelect</th>';
+                                                                xPend += '<th>Payable to DietSelect(10%)</th>';
 //                                                                xPend += '<th>Order Status</th>';
                                                                 xPend += '<th>Payment Status</th>';
                                                                 xPend += '</tr>';
@@ -1083,7 +1083,7 @@
                                                                 xPaid += '<th>Date</th>';
                                                                 xPaid += '<th>Total Payable</th>';
                                                                 xPaid += '<th>Payable to Vendor</th>';
-                                                                xPaid += '<th>Payable to DietSelect</th>';
+                                                                xPaid += '<th>Payable to DietSelect(10%)</th>';
 //                                                                xPaid += '<th>Order Status</th>';
                                                                 xPaid += '<th>Payment Status</th>';
                                                                 xPaid += '</tr>';
@@ -1165,8 +1165,8 @@
                                                                 xCancel += '<th>Date</th>';
                                                                 xCancel += '<th>Total Payable</th>';
                                                                 xCancel += '<th>Payable to Vendor</th>';
-                                                                xCancel += '<th>Payable to DietSelect</th>';
-                                                                xCancel += '<th>Order Status</th>';
+                                                                xCancel += '<th>Payable to DietSelect(10%)</th>';
+//                                                                xCancel += '<th>Order Status</th>';
                                                                 xCancel += '<th>Payment Status</th>';
                                                                 xCancel += '</tr>';
                                                                 xCancel += '</thead>';
@@ -1180,7 +1180,7 @@
                                                                         xCancel += '<td>PHP 0.00</td>';
                                                                         xCancel += '<td>PHP 0.00</td>';
                                                                         xCancel += '<td>PHP 0.00</td>';
-                                                                        xCancel += '<td>Cancelled</td>';
+//                                                                        xCancel += '<td>Cancelled</td>';
                                                                         if(valData[l].status==0){
                                                                             if(valData[l].paid==0){
                                                                                 xCancel += '<td>Pending</td>';
@@ -1227,7 +1227,7 @@
                                                                         '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                                 );
                                                                 $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
-                                                                        '<div>Receivables for DietSelect This Month</div>' +
+                                                                        '<div>Receivables for DietSelect This Month(10%)</div>' +
                                                                         '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                                 );
 
@@ -1296,7 +1296,7 @@
                                                             x += '<th>Date</th>';
                                                             x += '<th>Total Payable</th>';
                                                             x += '<th>Payable to Vendor</th>';
-                                                            x += '<th>Payable to DietSelect</th>';
+                                                            x += '<th>Payable to DietSelect(10%)</th>';
 //                                                                x += '<th>Order Status</th>';
                                                             x += '<th>Payment Status</th>';
                                                             x += '</tr>';
@@ -1382,7 +1382,7 @@
                                                             xPend += '<th>Date</th>';
                                                             xPend += '<th>Total Payable</th>';
                                                             xPend += '<th>Payable to Vendor</th>';
-                                                            xPend += '<th>Payable to DietSelect</th>';
+                                                            xPend += '<th>Payable to DietSelect(10%)</th>';
 //                                                            xPend += '<th>Order Status</th>';
                                                             xPend += '<th>Payment Status</th>';
                                                             xPend += '</tr>';
@@ -1463,7 +1463,7 @@
                                                             xPaid += '<th>Date</th>';
                                                             xPaid += '<th>Total Payable</th>';
                                                             xPaid += '<th>Payable to Vendor</th>';
-                                                            xPaid += '<th>Payable to DietSelect</th>';
+                                                            xPaid += '<th>Payable to DietSelect(10%)</th>';
 //                                                            xPaid += '<th>Order Status</th>';
                                                             xPaid += '<th>Payment Status</th>';
                                                             xPaid += '</tr>';
@@ -1545,8 +1545,8 @@
                                                             xCancel += '<th>Date</th>';
                                                             xCancel += '<th>Total Payable</th>';
                                                             xCancel += '<th>Payable to Vendor</th>';
-                                                            xCancel += '<th>Payable to DietSelect</th>';
-                                                            xCancel += '<th>Order Status</th>';
+                                                            xCancel += '<th>Payable to DietSelect(10%)</th>';
+//                                                            xCancel += '<th>Order Status</th>';
                                                             xCancel += '<th>Payment Status</th>';
                                                             xCancel += '</tr>';
                                                             xCancel += '</thead>';
@@ -1560,7 +1560,7 @@
                                                                     xCancel += '<td>PHP 0.00</td>';
                                                                     xCancel += '<td>PHP 0.00</td>';
                                                                     xCancel += '<td>PHP 0.00</td>';
-                                                                    xCancel += '<td>Cancelled</td>';
+//                                                                    xCancel += '<td>Cancelled</td>';
                                                                     if(valData[l].status==0){
                                                                         if(valData[l].paid==0){
                                                                             xCancel += '<td>Pending</td>';
@@ -1607,7 +1607,7 @@
                                                                     '<div>PHP '+addCommas(chefPaidTotal.toFixed(2))+'</div>'
                                                             );
                                                             $('#dietPaidTotalAmount{{$uniqueComChef}}').append(
-                                                                    '<div>Receivables for DietSelect This Month</div>' +
+                                                                    '<div>Receivables for DietSelect This Month(10%)</div>' +
                                                                     '<div>PHP '+addCommas(dietTotal.toFixed(2))+'</div>'
                                                             );
 
