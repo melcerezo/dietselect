@@ -236,11 +236,13 @@
                 @endif
             </div>
             @if($order->is_cancelled==0)
-                @if($comCount != $orderItems->count())
-                    <div class="col s12 m3">
-                        <button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>
-                    </div>
-                @endif
+                @unless($comCount == 0)
+                    @if($comCount != $orderItems->count())
+                        <div class="col s12 m3">
+                            <button data-target="commissionModal" class="btn waves-effect waves-light modal-trigger">Commission</button>
+                        </div>
+                    @endif
+                @endunless
             @endif
         </div>
     </div>
