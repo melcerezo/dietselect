@@ -688,7 +688,7 @@ class AdminController extends Controller
         $comCount = 0;
         foreach($orderItems as $orderItem){
             $com = Commission::where('order_item_id','=',$orderItem->id)->first();
-            if($com->count()){
+            if($com==null){
                 if($com->paid == 1){
                     $comCount += 1;
                 }
