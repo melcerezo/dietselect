@@ -460,11 +460,13 @@
                                                                     var chefAmount = valData[i].chefAmount;
                                                                     var dietAmount = valData[i].dietAmount;
 
-                                                                    if(valData[i].status==0 && valData[i].paid==1){
-                                                                        chefAllTabChefPay += chefAmount;
-                                                                        chefAllTabDietPay += dietAmount;
+                                                                    if(valData[i].status==0){
+                                                                        if(valData[i].paid==1){
+                                                                            chefAllTabChefPay += chefAmount;
+                                                                            chefAllTabDietPay += dietAmount;
+                                                                        }
+                                                                        chefAllTabPay += amount;
                                                                     }
-                                                                    chefAllTabPay += amount;
                                                                     chefAllTotal += chefAmount;
 
                                                                     x += '<tr>';
