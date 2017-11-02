@@ -32,6 +32,9 @@
                         <li class="collection-item" style="border: 1px solid #f57c00;">
                             <a href="{{route("chef.order.view", ['id'=> 0])}}" style="color: #f57c00;" >Orders</a>
                         </li>
+                        <li class="collection-item">
+                            <a href="{{route("chef.getCommissions")}}">Commissions</a>
+                        </li>
                         <li class="collection-item" >
                             <a href="{{route('chef.plan')}}" >View Your Plans</a>
                         </li>

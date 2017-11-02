@@ -16,6 +16,9 @@
                     <li class="collection-item" >
                         <a href="{{route("chef.order.view", ['id'=> 0])}}"  >Orders</a>
                     </li>
+                    <li class="collection-item">
+                        <a href="{{route("chef.getCommissions")}}">Commissions</a>
+                    </li>
                     <li class="collection-item" >
                         <a href="{{route('chef.plan')}}" >View Your Plans</a>
                     </li>
